@@ -1,11 +1,13 @@
-
+using SportClub.BLL.Services;
 using SportClub.BLL.Infrastructure;
+using SportClub.BLL.Interfaces;
 using SportClub.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddSportClubContext(connection);
 builder.Services.AddUnitOfWorkService();
+builder.Services.AddTransient<IAdmin, AdminService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();

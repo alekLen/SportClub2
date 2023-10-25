@@ -22,5 +22,6 @@ namespace SportClub.DAL.Interfaces
         ISetGetRepository<Timetable> Timetables { get; }
         ISetGetRepository<Training> Trainings { get; }
         ISetGetRepository<TypeOfTraining> TypeOfTrainings { get; }
+        Task Save();
     }
 }
