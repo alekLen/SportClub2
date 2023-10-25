@@ -1,0 +1,41 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SportClub.Models.LoginModel
+@*@using Microsoft.AspNetCore.Http
+
+<div class="center pr">
+    @using (Html.BeginForm())
+    {
+      @Html.AntiForgeryToken()
+        <div class="card c22">
+            @if (Context.Session.GetString("login") == null)
+            {
+                @Html.ValidationSummary(true, "")
+                <div>
+                    @Html.LabelFor(model => model.Login)
+                    <div>
+                        @Html.EditorFor(model => model.Login)
+                        @Html.ValidationMessageFor(model => model.Login, "")
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.Password)
+                    <div>
+                        @Html.PasswordFor(model => model.Password)
+                        @Html.ValidationMessageFor(model => model.Password, "")
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <div>
+                        <input type="submit" class="y" value="Вход" />
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+    </div>*@

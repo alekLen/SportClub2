@@ -1,0 +1,14 @@
+﻿@*<form asp-controller="Login" method="post">
+    @model SportClub.Models.Speciality
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <span>@Resources.Resource.Name </span><br />
+        <input asp-for="Name" class="form-control card _c7" />
+        <input asp-for="Id" type="hidden" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+    </div>
+</form>*@
