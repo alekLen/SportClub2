@@ -10,7 +10,7 @@ using SportClub.DAL.Entities;
 
 namespace SportClub.DAL.Repositories
 {
-    public class CoachRepository : ISetGetRepository<Coach>
+    public class CoachRepository : ICoachRepository
     {
         private SportClubContext db;
 
@@ -47,6 +47,10 @@ namespace SportClub.DAL.Repositories
                 db.Coaches.Remove(c);
 
             }
+        }
+        public async Task<Coach> GetCoachLogin(string login)
+        {
+            return await db.Coaches.FirstOrDefaultAsync(m => m.Login == login);
         }
     }
 }

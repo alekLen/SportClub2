@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SportClub.DAL.Repositories
 {
-    public class AdminRepository : ISetGetRepository<Admin>
+    public class AdminRepository : IAdminRepository
     {
         private SportClubContext db;
 
@@ -47,6 +47,10 @@ namespace SportClub.DAL.Repositories
                 db.Admins.Remove(c);
 
             }
+        }
+        public async Task<Admin> GetAdminLogin(string login)
+        {
+            return  await db.Admins.FirstOrDefaultAsync(m => m.Login == login);           
         }
     }
 }

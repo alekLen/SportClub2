@@ -1,13 +1,12 @@
 ﻿using SportClub.BLL.Interfaces;
+using SportClub.BLL.Infrastructure;
 using SportClub.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using SportClub.BLL.DTO;
 using SportClub.DAL.Entities;
 using System.Security.Cryptography;
+using AutoMapper;
+
 
 namespace SportClub.BLL.Services
 {
@@ -50,6 +49,86 @@ namespace SportClub.BLL.Services
             s.admin = a;
             await Database.Salts.AddItem(s);
             await Database.Save();
+        }
+        public async Task<AdminDTO> GetAdmin(int id)
+        {
+            Admin a = await Database.Admins.Get(id);
+            if (a == null)
+                throw new ValidationException("Wrong artist!", "");
+            /* return new AdminDTO
+             {
+                 Id = a.Id,
+                 Name = a.Name,
+
+             };*/
+            try
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Admin, AdminDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<AdminDTO>(a);
+            }
+            catch { return null; }
+        }
+        public async Task<IEnumerable<AdminDTO>> GetAllAdmins()
+        {
+            try
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Admin, AdminDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<IEnumerable<Admin>, IEnumerable<AdminDTO>>(await Database.Admins.GetAll());
+            }
+            catch { return null; }
+        }
+        public async Task DeleteAdmin(int id)
+        {
+            await Database.Admins.Delete(id);
+            await Database.Save();
+        }
+        public async Task UpdateAdmin(AdminDTO a)
+        {
+            Admin admin= await Database.Admins.Get(a.Id);
+            admin.Name = a.Name;
+            admin.Surname = a.Surname;
+            admin.Dopname = a.Dopname;
+            admin.DateOfBirth = a.DateOfBirth;
+            admin.Phone = a.Phone;
+            admin.Email = a.Email;
+            admin.Age = a.Age;
+            admin.Gender = a.Gender;
+            admin.Login = a.Login;
+            if (admin.Password != a.Password)
+            {
+
+            }
+            await Database.Admins.Update(admin);
+            await Database.Save();
+        }
+        public async Task<bool> CheckPasswordA(AdminDTO u, string p)
+        {
+            var us = new Admin
+            {
+                Id = u.Id,
+                Login = u.Login,
+                Password = u.Password,
+
+            };
+            Salt s = await Database.Salts.GetAdminSalt(us);
+            string conf = s.salt + p;
+            if (BCrypt.Net.BCrypt.Verify(conf, us.Password))
+                return true;
+            else
+                return false;
+        }
+        public async Task<AdminDTO> GetAdminByLogin(string login)
+        {
+            try
+            {
+                Admin a = await Database.Admins.GetAdminLogin(login);
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Admin, AdminDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<AdminDTO>(a);
+            }
+            catch { return null; }
         }
     }
 }

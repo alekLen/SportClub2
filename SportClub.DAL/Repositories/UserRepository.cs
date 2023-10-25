@@ -5,7 +5,7 @@ using SportClub.DAL.Entities;
 
 namespace SportClub.DAL.Repositories
 {
-    public class UserRepository : ISetGetRepository<User>
+    public class UserRepository : IUserRepository
     {
         private SportClubContext db;
 
@@ -42,6 +42,10 @@ namespace SportClub.DAL.Repositories
                 db.Users.Remove(c);
 
             }
+        }
+        public async Task<User> GetUserLogin(string login)
+        {
+            return await db.Users.FirstOrDefaultAsync(m => m.Login == login);
         }
     }
 }

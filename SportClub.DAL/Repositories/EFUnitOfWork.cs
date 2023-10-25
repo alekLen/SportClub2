@@ -33,7 +33,7 @@ namespace SportClub.DAL.Repositories
             db = context;
         }
 
-        public ISetGetRepository<Coach> Coaches
+        public ICoachRepository Coaches
         {
             get
             {
@@ -51,7 +51,7 @@ namespace SportClub.DAL.Repositories
                 return postRepository;
             }
         }
-        public ISetGetRepository<Admin> Admins
+        public IAdminRepository Admins
         {
             get
             {
@@ -60,7 +60,7 @@ namespace SportClub.DAL.Repositories
                 return adminRepository;
             }
         }
-        public ISetGetRepository<User> Users
+        public IUserRepository Users
         {
             get
             {
@@ -87,7 +87,7 @@ namespace SportClub.DAL.Repositories
                 return roomRepository;
             }
         }
-        public ISetGetRepository<Salt> Salts
+        public ISaltRepository Salts
         {
             get
             {

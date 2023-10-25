@@ -8,6 +8,9 @@ using SportClub.Filters;
 using SportClub.Models;
 using System.Security.Cryptography;
 using System.Text;
+using SportClub.BLL.Interfaces;
+using SportClub.BLL.DTO;
+using SportClub.DAL.Entities;
 
 namespace SportClub.Controllers
 {
@@ -15,13 +18,18 @@ namespace SportClub.Controllers
     [Culture]
     public class LoginController : Controller
     {
-     /*   SportClubContext db;
-        public LoginController(SportClubContext context)
+        private readonly IAdmin adminService;
+        private readonly IUser userService;
+        private readonly ICoach coachService;
+        public LoginController(IAdmin adm,IUser us, ICoach c)
         {
-            db = context;
+            adminService = adm;
+            userService = us;
+            coachService = c;
         }
 
-        int age {  get; set; }
+        int age { get; set; }
+        [HttpGet]
         public IActionResult Registration()
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -30,94 +38,14 @@ namespace SportClub.Controllers
         public async Task<IActionResult> RegistrationCoach()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            await putSpecialities();
-            await putPosts();
+            /*await putSpecialities();
+            await putPosts();*/
             return View("RegisterCoach");
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Registration(RegisterClientModel user)
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-           
-            try
-            {
-               
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                {
-                    // 2. Вычисление возраста
-                    DateTime currentDate = DateTime.Now;
-                    age = currentDate.Year - birthDate.Year;
-
-                    // Учитываем месяц и день рождения для точного определения возраста
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
-
-                    Console.WriteLine("Ваш возраст: " + age + " лет");
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }      
-
-            }
-            catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
-            if (ModelState.IsValid)
-            {
-               /* if (await userService.GetUser(user.Login) != null)
-                {
-                    ModelState.AddModelError("login", "this login already exists");
-                    return View(user);
-                }
-                if (await userService.GetEmail(user.email) != null)
-                {
-                    ModelState.AddModelError("email", "this email is already registred");
-                    return View(user);
-                }*/
-              /*  User u = new();
-                u.Login = user.Login;
-                u.Gender = user.Gender;
-                u.Email = user.Email;
-                u.Age = age;
-                u.Phone = user.Phone;
-                u.Name=user.Name;
-                u.Surname = user.Surname;
-                u.Dopname=user.Dopname;
-                u.DateOfBirth = user.DateOfBirth;
-              
-                byte[] saltbuf = new byte[16];
-                RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
-                randomNumberGenerator.GetBytes(saltbuf);
-                StringBuilder sb = new StringBuilder(16);
-                for (int i = 0; i < 16; i++)
-                    sb.Append(string.Format("{0:X2}", saltbuf[i]));
-                string salt = sb.ToString();
-                Salt s = new();
-                s.salt = salt;
-                string password = salt + user.Password;
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-                u.Password = hashedPassword;
-                try
-                {
-                    db.Users.Add(u);
-                   db.SaveChanges();
-                    s.user = u;
-                    db.Salts.Add(s);
-                    db.SaveChanges();
-                }
-                catch { }
-                return RedirectToAction("Login");
-            }
-            return View("Register",user);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrationCoach(RegisterCoachModel user)
+        public async Task<IActionResult> RegistrationAdmin(RegisterAdminModel user)
         {
             HttpContext.Session.SetString("path", Request.Path);
 
@@ -159,7 +87,7 @@ namespace SportClub.Controllers
                      ModelState.AddModelError("email", "this email is already registred");
                      return View(user);
                  }*/
-               /* User u = new();
+                AdminDTO u = new();
                 u.Login = user.Login;
                 u.Gender = user.Gender;
                 u.Email = user.Email;
@@ -170,25 +98,129 @@ namespace SportClub.Controllers
                 u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
 
-                byte[] saltbuf = new byte[16];
-                RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
-                randomNumberGenerator.GetBytes(saltbuf);
-                StringBuilder sb = new StringBuilder(16);
-                for (int i = 0; i < 16; i++)
-                    sb.Append(string.Format("{0:X2}", saltbuf[i]));
-                string salt = sb.ToString();
-                Salt s = new();
-                s.salt = salt;
-                string password = salt + user.Password;
-                string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-                u.Password = hashedPassword;
+                /*  byte[] saltbuf = new byte[16];
+                  RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
+                  randomNumberGenerator.GetBytes(saltbuf);
+                  StringBuilder sb = new StringBuilder(16);
+                  for (int i = 0; i < 16; i++)
+                      sb.Append(string.Format("{0:X2}", saltbuf[i]));
+                  string salt = sb.ToString();
+                  Salt s = new();
+                  s.salt = salt;
+                  string password = salt + user.Password;
+                  string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+                  u.Password = hashedPassword;*/
+                u.Password = user.Password;
                 try
                 {
-                    db.Users.Add(u);
+                    /* db.Users.Add(u);
                     db.SaveChanges();
                     s.user = u;
-                    db.Salts.Add(s);
-                    db.SaveChanges();
+                     db.Salts.Add(s);
+                     db.SaveChanges();*/
+                    adminService.AddAdmin(u);
+                }
+                catch { }
+                return RedirectToAction("Login");
+            }
+            return View("Register", user);
+        }
+    
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrationCoach(RegisterCoachModel user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+
+            try
+            {
+                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
+                DateTime birthDate;
+                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                {
+                    DateTime currentDate = DateTime.Now;
+                    age = currentDate.Year - birthDate.Year;
+                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                    {
+                        age--;
+                    }
+
+                    Console.WriteLine("Ваш возраст: " + age + " лет");
+                }
+                else
+                {
+                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                }
+
+            }
+            catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
+            if (ModelState.IsValid)
+            {             
+               CoachDTO u = new();
+                u.Login = user.Login;
+                u.Gender = user.Gender;
+                u.Email = user.Email;
+                u.Age = age;
+                u.Phone = user.Phone;
+                u.Name = user.Name;
+                u.Surname = user.Surname;
+                u.Dopname = user.Dopname;
+                u.DateOfBirth = user.DateOfBirth;
+                u.Password = user.Password;            
+                try
+                {
+                  await coachService.AddCoach(u);
+                }
+                catch { }
+                return RedirectToAction("Login");
+            }
+            return View("RegisterCoach", user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrationUser(RegisterClientModel user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+
+            try
+            {
+                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
+                DateTime birthDate;
+                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                {
+                    DateTime currentDate = DateTime.Now;
+                    age = currentDate.Year - birthDate.Year;
+                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                    {
+                        age--;
+                    }
+
+                    Console.WriteLine("Ваш возраст: " + age + " лет");
+                }
+                else
+                {
+                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                }
+
+            }
+            catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
+            if (ModelState.IsValid)
+            {
+                CoachDTO u = new();
+                u.Login = user.Login;
+                u.Gender = user.Gender;
+                u.Email = user.Email;
+                u.Age = age;
+                u.Phone = user.Phone;
+                u.Name = user.Name;
+                u.Surname = user.Surname;
+                u.Dopname = user.Dopname;
+                u.DateOfBirth = user.DateOfBirth;
+                u.Password = user.Password;
+                try
+                {
+                    await coachService.AddCoach(u);
                 }
                 catch { }
                 return RedirectToAction("Login");
@@ -208,13 +240,13 @@ namespace SportClub.Controllers
 
             if (ModelState.IsValid)
             {
-                User u = await db.Users.FirstOrDefaultAsync(m => m.Login == user.Login);
-                if(u==null)
+                UserDTO u = await userService.GetUserByLogin(user.Login);
+                if (u==null)
                 {
-                    Admin a= await db.Admins.FirstOrDefaultAsync(m => m.Login == user.Login);
+                    AdminDTO a= await adminService.GetAdminByLogin(user.Login);
                     if(a!=null)
                     {
-                        if (await CheckPasswordA(a, user.Password))
+                        if (await adminService.CheckPasswordA(a, user.Password))
                         {
                             HttpContext.Session.SetString("login", user.Login);
                             HttpContext.Session.SetString("admin", "admin");
@@ -228,10 +260,10 @@ namespace SportClub.Controllers
                     }
                     else
                     {
-                        Coach c = await db.Coaches.FirstOrDefaultAsync();
+                        CoachDTO c = await coachService.GetCoachByLogin(user.Login);
                         if (c != null)
                         {
-                            if (await CheckPasswordC(c, user.Password))
+                            if (await coachService.CheckPasswordC(c, user.Password))
                             {
                                 HttpContext.Session.SetString("login", user.Login);
                                 HttpContext.Session.SetString("coach", "coach");
@@ -252,7 +284,7 @@ namespace SportClub.Controllers
                 }           
                 else
                 {
-                        if (await CheckPasswordU(u, user.Password))
+                        if (await userService.CheckPasswordU(u, user.Password))
                         {
                             HttpContext.Session.SetString("login", user.Login);                            
                                 HttpContext.Session.SetString("client", "client");
@@ -268,19 +300,35 @@ namespace SportClub.Controllers
             return View(user);
         }
         [AcceptVerbs("Get", "Post")]
-        public async Task<IActionResult> IsEmailInUse(string email)
+      /*  public async Task<IActionResult> IsEmailInUse(string email)
         {
             User u = await db.Users.FirstOrDefaultAsync(m => m.Email == email);
             if (u == null)
                 return Json(true);
             else
                 return Json(false);
-        }
+        }*/
         [AcceptVerbs("Get", "Post")]
-        public async Task<IActionResult> IsLoginInUse(string login)
+        public async Task<IActionResult> IsUserLoginInUse(string login)
         {
-            User u = await db.Users.FirstOrDefaultAsync(m => m.Login == login);
+            UserDTO u = await userService.GetUserByLogin(login);         
             if (u == null)
+                return Json(true);
+            else
+                return Json(false);
+        }
+        public async Task<IActionResult> IsAdminLoginInUse(string login)
+        {
+            AdminDTO a = await adminService.GetAdminByLogin(login);
+            if (a == null)
+                return Json(true);
+            else
+                return Json(false);
+        }
+        public async Task<IActionResult> IsCoachLoginInUse(string login)
+        {
+            CoachDTO c = await coachService.GetCoachByLogin(login);
+            if (c == null)
                 return Json(true);
             else
                 return Json(false);
@@ -301,7 +349,7 @@ namespace SportClub.Controllers
             }
             catch { return Json(false); }
         }
-        public IActionResult CheckPassword(string password)
+       public IActionResult CheckPassword(string password)
         {
             int length = password.Length;
             if (length < 9)
@@ -319,7 +367,7 @@ namespace SportClub.Controllers
                 return Json(true);
             }
         }
-        public async Task<bool> CheckPasswordU(User u, string p)
+      /*  public async Task<bool> CheckPasswordU(User u, string p)
         {
             var us = new User
             {
@@ -334,8 +382,8 @@ namespace SportClub.Controllers
                 return true;
             else
                 return false;
-        }
-        public async Task<bool> CheckPasswordA(Admin u, string p)
+        }*/
+       /* public async Task<bool> CheckPasswordA(AdminDTO u, string p)
         {
             var us = new Admin
             {
@@ -350,8 +398,8 @@ namespace SportClub.Controllers
                 return true;
             else
                 return false;
-        }
-        public async Task<bool> CheckPasswordC(Coach u, string p)
+        }*/
+    /*    public async Task<bool> CheckPasswordC(Coach u, string p)
         {
             var us = new Coach
             {
@@ -366,7 +414,7 @@ namespace SportClub.Controllers
                 return true;
             else
                 return false;
-        }
+        }*/
         public async Task<IActionResult> AddPost()
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -511,6 +559,6 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             IEnumerable<Speciality> p = await db.Specialitys.ToListAsync();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
-        }*/
+        }
     }
 }

@@ -9,12 +9,12 @@ namespace SportClub.DAL.Interfaces
 {
     public interface IUnitOfWork
     {
-        ISetGetRepository<Coach> Coaches { get; }
+        ICoachRepository Coaches { get; }
         ISetGetRepository<Post> Posts { get; }
         ISetGetRepository<Speciality> Specialitys { get; }
-        ISetGetRepository<User> Users { get; }
-        ISetGetRepository<Admin> Admins { get; }
-        ISetGetRepository<Salt> Salts { get; }
+        IUserRepository Users { get; }
+        IAdminRepository Admins { get; }
+        ISaltRepository Salts { get; }
         ISetGetRepository<Room> Rooms { get; }
         ISetGetRepository<Group> Groups { get; }
         ISetGetRepository<Shedule> Shedules { get; }

@@ -7,7 +7,7 @@ namespace SportClub.Models
     {
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "LogRequired")]
         [Display(Name = "loginN", ResourceType = typeof(Resources.Resource))]
-        [Remote("IsLoginInUse", "Login", ErrorMessageResourceType = typeof(Resources.Resource),
+        [Remote("IsCoachLoginInUse", "Login", ErrorMessageResourceType = typeof(Resources.Resource),
          ErrorMessageResourceName = "loginused")]
         public string? Login { get; set; }
 

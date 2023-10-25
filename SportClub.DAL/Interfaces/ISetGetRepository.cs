@@ -10,5 +10,8 @@ namespace SportClub.DAL.Interfaces
     {
         Task<T> Get(int id);
         Task AddItem(T s);
+        Task<IEnumerable<T>> GetAll();
+        Task  Delete(int id);
+        Task Update(T s);
     }
 }

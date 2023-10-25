@@ -5,7 +5,7 @@ using SportClub.DAL.Entities;
 
 namespace SportClub.DAL.Repositories
 {
-    public class SaltRepository : ISetGetRepository<Salt>
+    public class SaltRepository : ISaltRepository
     {
         private SportClubContext db;
 
@@ -42,6 +42,18 @@ namespace SportClub.DAL.Repositories
                 db.Salts.Remove(c);
 
             }
+        }
+        public async Task<Salt> GetAdminSalt(Admin a)
+        {           
+                return await db.Salts.FirstOrDefaultAsync(m => m.admin == a);           
+        }
+        public async Task<Salt> GetCoachSalt(Coach a)
+        {
+            return await db.Salts.FirstOrDefaultAsync(m => m.coach == a);
+        }
+        public async Task<Salt> GetUserSalt(User a)
+        {
+            return await db.Salts.FirstOrDefaultAsync(m => m.user == a);
         }
     }
 }
