@@ -130,5 +130,16 @@ namespace SportClub.BLL.Services
             }
             catch { return null; }
         }
+        public async Task<AdminDTO> GetAdminByEmail(string email)
+        {
+            try
+            {
+                Admin a = await Database.Admins.GetAdminEmail(email);
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Admin, AdminDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<AdminDTO>(a);
+            }
+            catch { return null; }
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace SportClub.BLL.Interfaces
         Task UpdateCoach(CoachDTO a);
         Task<bool> CheckPasswordC(CoachDTO u, string p);
         Task<CoachDTO> GetCoachByLogin(string login);
+        Task<CoachDTO> GetCoachByEmail(string email);
     }
 }

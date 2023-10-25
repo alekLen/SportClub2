@@ -129,5 +129,16 @@ namespace SportClub.BLL.Services
             }
             catch { return null; }
         }
+        public async Task<CoachDTO> GetCoachByEmail(string email)
+        {
+            try
+            {
+                Coach a = await Database.Coaches.GetCoachEmail(email);
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<Coach, CoachDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<CoachDTO>(a);
+            }
+            catch { return null; }
+        }
     }
 }

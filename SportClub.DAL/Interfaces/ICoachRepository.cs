@@ -10,6 +10,7 @@ namespace SportClub.DAL.Interfaces
     public interface ICoachRepository : ISetGetRepository<Coach>
     {
         Task<Coach> GetCoachLogin(string login);
+        Task<Coach> GetCoachEmail(string email);
     }
   
 }

@@ -10,5 +10,6 @@ namespace SportClub.DAL.Interfaces
     public interface IAdminRepository:ISetGetRepository<Admin>
     {
         Task<Admin> GetAdminLogin(string login);
+        Task<Admin> GetAdminEmail(string email);
     }
 }

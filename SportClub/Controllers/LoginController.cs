@@ -304,14 +304,16 @@ namespace SportClub.Controllers
             return View(user);
         }
         [AcceptVerbs("Get", "Post")]
-      /*  public async Task<IActionResult> IsEmailInUse(string email)
+       public async Task<IActionResult> IsEmailInUse(string email)
         {
-            User u = await db.Users.FirstOrDefaultAsync(m => m.Email == email);
-            if (u == null)
+            UserDTO u = await userService.GetUserByEmail(email);
+            CoachDTO c = await coachService.GetCoachByEmail(email);
+            AdminDTO a = await adminService.GetAdminByEmail(email);
+            if (u == null && c==null && a==null)
                 return Json(true);
             else
                 return Json(false);
-        }*/
+        }
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsUserLoginInUse(string login)
         {
@@ -321,6 +323,7 @@ namespace SportClub.Controllers
             else
                 return Json(false);
         }
+        [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsAdminLoginInUse(string login)
         {
             AdminDTO a = await adminService.GetAdminByLogin(login);
@@ -329,6 +332,7 @@ namespace SportClub.Controllers
             else
                 return Json(false);
         }
+        [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsCoachLoginInUse(string login)
         {
             CoachDTO c = await coachService.GetCoachByLogin(login);
@@ -342,6 +346,7 @@ namespace SportClub.Controllers
             HttpContext.Session.Clear(); // очищается сессия
             return RedirectToAction("Index", "Home");
         }
+        [AcceptVerbs("Get", "Post")]
         public IActionResult CheckAge(int age)
         {
             try

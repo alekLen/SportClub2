@@ -52,5 +52,9 @@ namespace SportClub.DAL.Repositories
         {
             return  await db.Admins.FirstOrDefaultAsync(m => m.Login == login);           
         }
+        public async Task<Admin> GetAdminEmail(string email)
+        {
+            return await db.Admins.FirstOrDefaultAsync(m => m.Email == email);
+        }
     }
 }

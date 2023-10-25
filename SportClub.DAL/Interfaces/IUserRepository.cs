@@ -10,5 +10,6 @@ namespace SportClub.DAL.Interfaces
     public interface IUserRepository : ISetGetRepository<User>
     {
         Task<User> GetUserLogin(string login);
+        Task<User> GetUserEmail(string email);
     }
 }
