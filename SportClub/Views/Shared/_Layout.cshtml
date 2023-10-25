@@ -29,7 +29,7 @@
                 </div>
             </div>
         </nav>
-       @*  @using (Html.BeginForm("ChangeCulture", "Home"))
+         @using (Html.BeginForm("ChangeCulture", "Home"))
         {
             <div>
                 <select name="lang">
@@ -44,15 +44,17 @@
                 <input type="hidden" value="@(Model.SortViewModel.Current)" name="sortorder">
                 <input type="hidden" value="@(Model.PageViewModel.PageNumber)" name="page">
             <input type="hidden" value="@(Model.find)" name="str">*@
-         @*       <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="btn btn-default c20 yellow-link p">
+              <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="btn btn-default c20 yellow-link p">
             </div>
         }
+       @*
         @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
         {
             <div>
                 <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
             </div>
         }
+        *@
         @using Microsoft.AspNetCore.Http
         @if (Context.Session.GetString("client") != null || Context.Session.GetString("admin") != null || Context.Session.GetString("coach") != null)
         {
@@ -79,7 +81,10 @@
                     <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="Registration">@Resources.Resource.Registration</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.Registration Coach</a>
+                    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">Зарегестрировать админа</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="AddPost">Add Post</a>
@@ -88,7 +93,7 @@
                     <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="AddSpeciality">Add Speciality</a>
                 </li>
             </ul>
-            }*@
+            }
     </header>
     <div class="container">
         <main role="main" class="pb-3">

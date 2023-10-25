@@ -8,6 +8,10 @@ string? connection = builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddSportClubContext(connection);
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IAdmin, AdminService>();
+builder.Services.AddTransient<IUser, UserService>();
+builder.Services.AddTransient<ICoach, CoachService>();
+builder.Services.AddTransient<IPost, PostService>();
+builder.Services.AddTransient<ISpeciality, SpecialityService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
