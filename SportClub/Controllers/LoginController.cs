@@ -21,11 +21,15 @@ namespace SportClub.Controllers
         private readonly IAdmin adminService;
         private readonly IUser userService;
         private readonly ICoach coachService;
-        public LoginController(IAdmin adm,IUser us, ICoach c)
+        private readonly IPost postService;
+        private readonly ISpeciality specialityService;
+        public LoginController(IAdmin adm,IUser us, ICoach c, ISpeciality sp,IPost p)
         {
             adminService = adm;
             userService = us;
             coachService = c;
+            postService = p;
+            specialityService = sp;
         }
 
         int age { get; set; }
@@ -428,10 +432,9 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                Post p = new();
+                PostDTO p = new();
                 p.Name = name;
-                db.Posts.Add(p);
-                await db.SaveChangesAsync();
+                postService.AddPost(p);
                 return RedirectToAction("Index", "Home");
             }
             catch
@@ -443,7 +446,7 @@ namespace SportClub.Controllers
         public async Task<IActionResult> EditPost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            Post p = await db.Posts.FirstOrDefaultAsync(m => m.Id == id);
+            PostDTO p = await postService.GetPost( id);
             if (p != null)
             {
                 return View("EditPost", p);
@@ -458,21 +461,20 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                Post p = await db.Posts.FirstOrDefaultAsync(m => m.Id == id);
+                PostDTO p = await postService.GetPost(id);
                 if (p == null)
                 {
                     await putPosts();
                     return View("Post");
                 }
                 p.Name = name;
-                db.Posts.Update(p);
-                await db.SaveChangesAsync();
+               await postService.UpdatePost(p);             
                 return RedirectToAction("Index", "Home");
             }
             catch
             {
-                await putSpecialities();
-                return View("Speciality");
+                await putPosts();
+                return View("Post");
             }
         }
         [HttpPost]
@@ -480,10 +482,24 @@ namespace SportClub.Controllers
         public async Task<IActionResult> DeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            Post p = await db.Posts.FirstOrDefaultAsync(m => m.Id == id);
+            PostDTO p = await postService.GetPost(id);
             if (p != null)
             {
                 return View("DeletePost", p);
+            }
+            await putPosts();
+            return View("Post");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDeletePost(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            PostDTO p = await postService.GetPost(id);
+            if (p != null)
+            {
+                await postService.DeletePost(id);
+                return View("Index", p);
             }
             await putPosts();
             return View("Post");
@@ -501,22 +517,21 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                Speciality sp = new();
+                SpecialityDTO sp = new();
                 sp.Name = name;
-                db.Specialitys.Add(sp);
-                await db.SaveChangesAsync();
+               await specialityService.AddSpeciality(sp);              
                 return RedirectToAction("Index", "Home");
             }
             catch
             {
-                await putPosts();
+                await putSpecialities();
                 return View("Speciality");
             }
         }
         public async Task<IActionResult> EditSpeciality(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            Speciality sp = await db.Specialitys.FirstOrDefaultAsync(m => m.Id == id);
+            SpecialityDTO sp = await specialityService.GetSpeciality(id);
             if (sp != null)
             {              
                 return View("EditSpeciality",sp);
@@ -531,15 +546,14 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                Speciality sp = await db.Specialitys.FirstOrDefaultAsync(m => m.Id == id);
-                if(sp == null)
+                SpecialityDTO sp = await specialityService.GetSpeciality(id);
+                if (sp == null)
                 {
                     await putSpecialities();
                     return View("Speciality");
                 }
                 sp.Name = name;
-                db.Specialitys.Update(sp);
-                await db.SaveChangesAsync();
+               await specialityService.UpdateSpeciality(sp);               
                 return RedirectToAction("Index", "Home");
             }
             catch
@@ -551,13 +565,13 @@ namespace SportClub.Controllers
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            IEnumerable<Post> p = await db.Posts.ToListAsync();
+            IEnumerable<PostDTO> p = await postService.GetAllPosts();
             ViewData["PostId"] = new SelectList(p, "Id", "Name");
         }
         public async Task putSpecialities()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            IEnumerable<Speciality> p = await db.Specialitys.ToListAsync();
+            IEnumerable<SpecialityDTO> p = await specialityService.GetAllSpecialitys();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
         }
     }
