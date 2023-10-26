@@ -48,18 +48,7 @@
             </div>
         }
 
-        @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
-        {
-            <div>
-                <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
-            </div>
-        }
-        @using (Html.BeginForm("Coaches", "Users", FormMethod.Get))
-        {
-            <div>
-                <input class="y" type="submit" value="All Coaches" />&nbsp;
-            </div>
-        }
+       
         @using Microsoft.AspNetCore.Http
         @if (Context.Session.GetString("admin") != null || Context.Session.GetString("client") != null || Context.Session.GetString("coach") != null)
         {
@@ -87,7 +76,18 @@
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="AddPost">Add Post</a>
             
             <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="AddSpeciality">Add Speciality</a>
-
+            @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
+            {
+                <div>
+                    <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
+                </div>
+            }
+            @using (Html.BeginForm("Coaches", "Users", FormMethod.Get))
+            {
+                <div>
+                    <input class="y" type="submit" value="All Coaches" />&nbsp;
+                </div>
+            }
         }
         else if (Context.Session.GetString("client") != null)
         {

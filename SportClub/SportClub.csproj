@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Coaches\" />
+    <Folder Include="wwwroot\Sport\" />
   </ItemGroup>
 
 </Project>
