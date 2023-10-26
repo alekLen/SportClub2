@@ -47,14 +47,19 @@
               <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="btn btn-default c20 yellow-link p">
             </div>
         }
-       @*
+      
         @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
         {
             <div>
                 <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
             </div>
         }
-        *@
+        @using (Html.BeginForm("Coaches", "Users", FormMethod.Get))
+        {
+            <div>
+                <input class="y" type="submit" value="All Coaches" />&nbsp;
+            </div>
+        }
         @using Microsoft.AspNetCore.Http
         @if (Context.Session.GetString("client") != null || Context.Session.GetString("admin") != null || Context.Session.GetString("coach") != null)
         {

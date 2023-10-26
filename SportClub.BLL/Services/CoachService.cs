@@ -30,6 +30,8 @@ namespace SportClub.BLL.Services
             s.salt = salt;
             string password = salt + cDto.Password;
             string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            Post p = await Database.Posts.Get(cDto.PostId.Value);
+            Speciality spec=await Database.Specialitys.Get(cDto.SpecialityId.Value);
             var a = new Coach()
             {
                 Name = cDto.Name,
@@ -37,11 +39,15 @@ namespace SportClub.BLL.Services
                 Dopname = cDto.Dopname,
                 DateOfBirth = cDto.DateOfBirth,
                 Phone = cDto.Phone,
+                Photo = cDto.Photo,
+                Description = cDto.Description,
                 Email = cDto.Email,
                 Age = cDto.Age,
                 Gender = cDto.Gender,
                 Login = cDto.Login,
-                Password = hashedPassword
+                Password = hashedPassword,
+                Speciality= spec ,
+                Post= p
             };
             await Database.Coaches.AddItem(a);
             await Database.Save();
@@ -85,16 +91,22 @@ namespace SportClub.BLL.Services
         }
         public async Task UpdateCoach(CoachDTO a)
         {
-            Coach c = await Database.Coaches.Get(a.Id);
+            Coach c = await Database.Coaches.Get(a.Id.Value);
+            Post p = await Database.Posts.Get(a.PostId.Value);
+            Speciality spec = await Database.Specialitys.Get(a.SpecialityId.Value);
             c.Name = a.Name;
             c.Surname = a.Surname;
             c.Dopname = a.Dopname;
             c.DateOfBirth = a.DateOfBirth;
             c.Phone = a.Phone;
+            c.Photo = a.Photo;
+            c.Description = a.Description;
             c.Email = a.Email;
             c.Age = a.Age;
             c.Gender = a.Gender;
             c.Login = a.Login;
+            c.Speciality = spec;
+            c.Post = p;
             if (c.Password != a.Password)
             {
 
@@ -106,7 +118,7 @@ namespace SportClub.BLL.Services
         {
             var us = new Coach
             {
-                Id = u.Id,
+                Id = u.Id.Value,
                 Login = u.Login,
                 Password = u.Password,
 

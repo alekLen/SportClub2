@@ -53,9 +53,7 @@ namespace SportClub.Models
         [RegularExpression("^[a-zA-Z-а-яА-Я]+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
         [Display(Name = "Dopname", ResourceType = typeof(Resources.Resource))]
         public string Dopname { get; set; }
-        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
-        [Display(Name = "Photo", ResourceType = typeof(Resources.Resource))]
-        public string? Photo { get; set; }
+        
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Post", ResourceType = typeof(Resources.Resource))]
         public int PostId { get; set; }

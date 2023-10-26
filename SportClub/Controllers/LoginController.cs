@@ -1,16 +1,11 @@
-﻿using Humanizer.Localisation;
+﻿
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 using SportClub.Filters;
 using SportClub.Models;
-using System.Security.Cryptography;
-using System.Text;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.DTO;
-using SportClub.DAL.Entities;
+
 
 namespace SportClub.Controllers
 {
@@ -18,33 +13,42 @@ namespace SportClub.Controllers
     [Culture]
     public class LoginController : Controller
     {
+        IWebHostEnvironment _appEnvironment;
         private readonly IAdmin adminService;
         private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public LoginController(IAdmin adm,IUser us, ICoach c, ISpeciality sp,IPost p)
+        public LoginController(IAdmin adm,IUser us, ICoach c, ISpeciality sp,IPost p, IWebHostEnvironment _appEnv)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
+            _appEnvironment = _appEnv;
         }
 
         int age { get; set; }
         [HttpGet]
-        public IActionResult Registration()
+        public IActionResult RegistrationClient()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            return View("Register");
+            return View("RegisterClient");
         }
         public async Task<IActionResult> RegistrationCoach()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            /*await putSpecialities();
-            await putPosts();*/
+            await putSpecialities();
+            await putPosts();
             return View("RegisterCoach");
+        }
+        public async Task<IActionResult> RegistrationAdmin()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            await putSpecialities();
+            await putPosts();
+            return View("RegisterAdmin");
         }
 
         [HttpPost]
@@ -127,13 +131,13 @@ namespace SportClub.Controllers
                 catch { }
                 return RedirectToAction("Login");
             }
-            return View("Register", user);
+            return View("RegisterAdmin", user);
         }
     
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrationCoach(RegisterCoachModel user)
+        public async Task<IActionResult> RegistrationCoach( RegisterCoachModel user, IFormFile p)
         {
             HttpContext.Session.SetString("path", Request.Path);
 
@@ -159,31 +163,51 @@ namespace SportClub.Controllers
 
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
+           
+           
             if (ModelState.IsValid)
-            {             
-               CoachDTO u = new();
-                u.Login = user.Login;
-                u.Gender = user.Gender;
-                u.Email = user.Email;
-                u.Age = age;
-                u.Phone = user.Phone;
-                u.Name = user.Name;
-                u.Surname = user.Surname;
-                u.Dopname = user.Dopname;
-                u.DateOfBirth = user.DateOfBirth;
-                u.Password = user.Password;            
-                try
+            {
+                if (p != null)
                 {
-                  await coachService.AddCoach(u);
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    // Путь к папке Files
+                    string path = "/Coaches/" + str1; // имя файла
+
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    CoachDTO u = new();
+                    u.Login = user.Login;
+                    u.Gender = user.Gender;
+                    u.Email = user.Email;
+                    u.Age = age;
+                    u.Phone = user.Phone;
+                    u.Photo = path;
+                    u.Name = user.Name;
+                    u.Surname = user.Surname;
+                    u.Dopname = user.Dopname;
+                    u.DateOfBirth = user.DateOfBirth;
+                    u.Password = user.Password;
+                    u.Description = user.Description;
+                    u.PostId = user.PostId;
+                    u.SpecialityId=user.SpecialityId;
+                    try
+                    {
+                        await coachService.AddCoach(u);
+                    }
+                    catch { }
+                    return RedirectToAction("Login");
                 }
-                catch { }
-                return RedirectToAction("Login");
             }
+            await putSpecialities();
+            await putPosts();
             return View("RegisterCoach", user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RegistrationUser(RegisterClientModel user)
+        public async Task<IActionResult> RegistrationClient(RegisterClientModel user)
         {
             HttpContext.Session.SetString("path", Request.Path);
 
@@ -229,7 +253,7 @@ namespace SportClub.Controllers
                 catch { }
                 return RedirectToAction("Login");
             }
-            return View("RegisterCoach", user);
+            return View("RegisterClient", user);
         }
         public async Task<IActionResult> Login()
         {

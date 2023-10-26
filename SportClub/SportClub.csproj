@@ -19,4 +19,8 @@
     <ProjectReference Include="..\SportClub.BLL\SportClub.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Coaches\" />
+  </ItemGroup>
+
 </Project>

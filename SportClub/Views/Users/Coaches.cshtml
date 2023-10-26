@@ -1,25 +1,19 @@
-﻿@model IEnumerable<SportClub.BLL.DTO.UserDTO>
+﻿@model IEnumerable<SportClub.BLL.DTO.CoachDTO>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Coaches";
 }
 
-<h1>Index</h1>
+<h1>Coaches</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Coach</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
-            </th>
-              <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Dopname)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -33,7 +27,19 @@
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
             </th>
-           
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+
             <th></th>
         </tr>
     </thead>
@@ -43,12 +49,6 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Dopname)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DateOfBirth)
@@ -61,7 +61,20 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Gender)
-                </td>                                           
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Photo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

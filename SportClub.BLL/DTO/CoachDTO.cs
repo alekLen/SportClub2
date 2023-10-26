@@ -8,7 +8,7 @@ namespace SportClub.BLL.DTO
 {
     public class CoachDTO 
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string? Surname { get; set; } = string.Empty;
         public string? Dopname { get; set; } = string.Empty;
@@ -18,13 +18,15 @@ namespace SportClub.BLL.DTO
         public string Email { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
         public int? PostId { get; set; } = null;
+        public string? PostName {  get; set; } = string.Empty;
         public int? SpecialityId { get; set; } = null;
+        public string? SpecialityName { get; set; }
         public string? Description { get; set; } = null;
         public string? Photo { get; set; } = null;
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public  List<int> trainingsId { get; set; }
-        public  List<int> groupsId { get; set; }
+        public  List<int>? trainingsId { get; set; }
+        public  List<int>? groupsId { get; set; }
 
     }
 }

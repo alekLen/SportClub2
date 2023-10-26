@@ -1,10 +1,10 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model SportClub.Models.RegisterCoachModel
+@model SportClub.Models.RegisterClientModel
 @using Microsoft.AspNetCore.Http
 <div class="center pr">
-    <form id="registrationCoachForm" action="RegistrationCoach" method="post" enctype="multipart/form-data" >
+    <form id="registrationForm" action="RegistrationClient" method="post">
         @Html.AntiForgeryToken()
         <div class="card c22">
             @Html.ValidationSummary(true, "")
@@ -34,7 +34,7 @@
                 <div>
                     @Html.EditorFor(model => model.Login, new { id = "login" })
                     @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
-                   <span asp-validation-for="Login" class="text-danger"></span>
+                    <span asp-validation-for="Login" class="text-danger"></span>
                 </div>
             </div>
 
@@ -61,14 +61,6 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
-            <span>@Resources.Resource.Photo</span><br />
-            <input type="file"  name="p" accept=".jpg, .jpeg" /><br /><br />
-            <label>@Resources.Resource.Post</label>
-            <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId"></select>
-            <span asp-validation-for="PostId" class="text-danger"></span>
-            <label>@Resources.Resource.Speciality</label>
-            <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId"></select>
-            <span asp-validation-for="SpecialityId" class="text-danger"></span>
             <div class="form-group">
                 <label asp-for="Phone">@Resources.Resource.Phone:</label>
                 <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" />
@@ -88,15 +80,12 @@
             <div>
                 @Html.DisplayNameFor(model => model.DateOfBirth)
                 <div>
-                    <input type="date"  asp-for="DateOfBirth" />
+                    @Html.EditorFor(model => model.DateOfBirth)
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
             </div>
             <div>
                 <br />
-                @Html.DisplayNameFor(model => model.Description)
-                <textarea asp-for="Description"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span><br />
                 <div>
                     <button class="y" type="submit">@Resources.Resource.Confirm</button>
                 </div>
@@ -125,11 +114,7 @@
                         $("#log").css("display", "none");
                     }
                 })
-
-
             });
-
-
         });
 
 
@@ -139,7 +124,6 @@
                 if (data === true) {
                     $('#emailStatus').text('Email уже занят.');
                 }
-
             });
         });
     });
