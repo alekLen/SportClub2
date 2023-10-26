@@ -8,7 +8,7 @@ namespace SportClub.BLL.DTO
 {
     public class CoachDTO 
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public string? Surname { get; set; } = string.Empty;
         public string? Dopname { get; set; } = string.Empty;

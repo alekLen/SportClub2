@@ -278,6 +278,7 @@ namespace SportClub.Controllers
                         {
                             HttpContext.Session.SetString("login", user.Login);
                             HttpContext.Session.SetString("admin", "admin");
+                            HttpContext.Session.SetString("Id", a.Id.ToString());
                             return RedirectToAction("Index", "Home");
                         }
                         else
@@ -295,6 +296,7 @@ namespace SportClub.Controllers
                             {
                                 HttpContext.Session.SetString("login", user.Login);
                                 HttpContext.Session.SetString("coach", "coach");
+                                HttpContext.Session.SetString("Id", c.Id.ToString());
                                 return RedirectToAction("Index", "Home");
                             }
                             else
@@ -314,9 +316,10 @@ namespace SportClub.Controllers
                 {
                         if (await userService.CheckPasswordU(u, user.Password))
                         {
-                            HttpContext.Session.SetString("login", user.Login);                            
-                                HttpContext.Session.SetString("client", "client");
-                            return RedirectToAction("Index", "Home");
+                             HttpContext.Session.SetString("login", user.Login);                            
+                             HttpContext.Session.SetString("client", "client");
+                             HttpContext.Session.SetString("Id", u.Id.ToString());
+                             return RedirectToAction("Index", "Home");
                         }
                         else
                         {

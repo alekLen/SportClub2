@@ -36,6 +36,30 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
+        public async Task<IActionResult> GetClients()
+        {
+            /* return _context.Users != null ?
+                         View(await _context.Users.ToListAsync()) :
+                         Problem("Entity set 'SportClubContext.Users'  is null.");*/
+            var p = await userService.GetAllUsers();
+            await putPosts();
+            await putSpecialities();
+            return View(p);
+        }
+        public async Task<IActionResult> ClientProfile()
+        {
+            string s = HttpContext.Session.GetString("Id");
+            int id =Int32.Parse(s);
+            UserDTO p = await userService.GetUser(id);
+            return View(p);
+        }
+        public async Task<IActionResult> CoachProfile()
+        {
+            string s = HttpContext.Session.GetString("Id");
+            int id = Int32.Parse(s);
+            CoachDTO p = await coachService.GetCoach(id);
+            return View(p);
+        }
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);

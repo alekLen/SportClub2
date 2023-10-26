@@ -53,7 +53,7 @@ namespace SportClub.BLL.Services
         {
             User a = await Database.Users.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong artist!", "");
+                throw new ValidationException("Wrong!", "");
             /* return new AdminDTO
              {
                  Id = a.Id,

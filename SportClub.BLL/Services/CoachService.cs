@@ -91,7 +91,7 @@ namespace SportClub.BLL.Services
         }
         public async Task UpdateCoach(CoachDTO a)
         {
-            Coach c = await Database.Coaches.Get(a.Id.Value);
+            Coach c = await Database.Coaches.Get(a.Id);
             Post p = await Database.Posts.Get(a.PostId.Value);
             Speciality spec = await Database.Specialitys.Get(a.SpecialityId.Value);
             c.Name = a.Name;
@@ -118,7 +118,7 @@ namespace SportClub.BLL.Services
         {
             var us = new Coach
             {
-                Id = u.Id.Value,
+                Id = u.Id,
                 Login = u.Login,
                 Password = u.Password,
 
