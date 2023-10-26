@@ -1,5 +1,114 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model SportClub.BLL.DTO.CoachDTO
+
 @{
+    ViewData["Title"] = "CoachProfile";
+}
+
+
+@Html.DisplayFor(modelItem => Model.Name)
+
+@Html.DisplayFor(modelItem => Model.Surname)
+
+@Html.DisplayFor(modelItem => Model.Dopname)
+
+@Html.DisplayFor(modelItem => Model.DateOfBirth)
+
+@Html.DisplayFor(modelItem => Model.Phone)
+
+@Html.DisplayFor(modelItem => Model.Email)
+
+@Html.DisplayFor(modelItem => Model.Gender)
+
+<a asp-action="EditCoachProfile" asp-route-id="@Model.Id">Edit Profile</a> |
+<a asp-action="DeleteCoachProfile" asp-route-id="@Model.Id">Delete Profile</a>
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="card c22">
+        @Html.ValidationSummary(true, "")
+        <div>
+            @Html.DisplayNameFor(model => model.Name)
+            <div>
+                @Html.EditorFor(model => model.Name)
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div>
+            @Html.DisplayNameFor(model => model.Surname)
+            <div>
+                @Html.EditorFor(model => model.Surname)
+                <span asp-validation-for="Surname" class="text-danger"></span>
+            </div>
+        </div>
+        <div>
+            @Html.DisplayNameFor(model => model.Dopname)
+            <div>
+                @Html.EditorFor(model => model.Dopname)
+                <span asp-validation-for="Dopname" class="text-danger"></span>
+            </div>
+        </div>
+        <div>
+            @Html.DisplayNameFor(model => model.Login)
+            <div>
+                @Html.EditorFor(model => model.Login, new { id = "login" })
+                @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div>
+            @Html.DisplayNameFor(model => model.Email)
+            <div>
+                @Html.EditorFor(model => model.Email, new { id = "emailInput" })
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        <span>@Resources.Resource.Photo</span><br />
+        <input type="file" name="p" accept=".jpg, .jpeg" /><br /><br />
+        <label>@Resources.Resource.Post</label>
+        <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId"></select>
+        <span asp-validation-for="PostId" class="text-danger"></span>
+        <label>@Resources.Resource.Speciality</label>
+        <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId"></select>
+        <span asp-validation-for="SpecialityId" class="text-danger"></span>
+        <div class="form-group">
+            <label asp-for="Phone">@Resources.Resource.Phone:</label>
+            <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label>@Resources.Resource.gender:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
+                <label class="form-check-label" for="male">@Resources.Resource.man:</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
+                <label class="form-check-label" for="female">@Resources.Resource.female:</label>
+            </div>
+        </div>
+        <div>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+            <div>
+                <input type="date" asp-for="DateOfBirth" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+        </div>
+        <div>
+            <br />
+            @Html.DisplayNameFor(model => model.Description)
+            <textarea asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span><br />
+            <div>
+                <button class="y" formaction="EditCoachProfile" asp-route-id="@Model.Id" type="submit">Edite Profile</button>
+                <button class="y" formaction="ChangeCoachPassword" asp-route-id="@Model.Id" type="submit">Change Password</button>
+                <button class="y" formaction="DeleteCoachProfile" asp-route-id="@Model.Id" type="submit">Delete Profile</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
