@@ -43,6 +43,31 @@ namespace SportClub.Controllers
             CoachDTO p = await coachService.GetCoach(id);
             return View(p);
         }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            CoachDTO p = await coachService.GetCoach(id);
+            await putPosts();
+            await putSpecialities();
+            return View(p);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(CoachDTO c)
+        {
+            try
+            {
+                CoachDTO p = await coachService.GetCoach(c.Id);
+                p.PostId = c.PostId;
+                p.SpecialityId = c.SpecialityId;
+                p.Description = c.Description;
+                p.Phone= c.Phone;
+                p.Email= c.Email;
+                p.Photo = c.Photo;
+                await coachService.UpdateCoach(p);
+                return RedirectToAction("GetCoaches");
+            }
+            catch { return View(c); }
+        }
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);

@@ -92,29 +92,29 @@ namespace SportClub.BLL.Services
             await Database.Save();
         }
         public async Task UpdateCoach(CoachDTO a)
-        {
-            Coach c = await Database.Coaches.Get(a.Id);
-            Post p = await Database.Posts.Get(a.PostId.Value);
-            Speciality spec = await Database.Specialitys.Get(a.SpecialityId.Value);
-            c.Name = a.Name;
-            c.Surname = a.Surname;
-            c.Dopname = a.Dopname;
-            c.DateOfBirth = a.DateOfBirth;
-            c.Phone = a.Phone;
-            c.Photo = a.Photo;
-            c.Description = a.Description;
-            c.Email = a.Email;
-            c.Age = a.Age;
-            c.Gender = a.Gender;
-            c.Login = a.Login;
-            c.Speciality = spec;
-            c.Post = p;
-            if (c.Password != a.Password)
-            {
+        {          
+                Coach c = await Database.Coaches.Get(a.Id);
+                Post p = await Database.Posts.Get(a.PostId.Value);
+                Speciality spec = await Database.Specialitys.Get(a.SpecialityId.Value);
+                c.Name = a.Name;
+                c.Surname = a.Surname;
+                c.Dopname = a.Dopname;
+                c.DateOfBirth = a.DateOfBirth;
+                c.Phone = a.Phone;
+                c.Photo = a.Photo;
+                c.Description = a.Description;
+                c.Email = a.Email;
+                c.Age = a.Age;
+                c.Gender = a.Gender;
+                c.Login = a.Login;
+                c.Speciality = spec;
+                c.Post = p;
+                if (c.Password != a.Password)
+                {
 
-            }
-            await Database.Coaches.Update(c);
-            await Database.Save();
+                }
+                await Database.Coaches.Update(c);
+                await Database.Save();           
         }
         public async Task<bool> CheckPasswordC(CoachDTO u, string p)
         {
