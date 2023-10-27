@@ -10,6 +10,7 @@
 </head>
 <body>
     <header>
+        <div style="background-color:antiquewhite; padding:10px;">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
@@ -19,7 +20,7 @@
                 </button>
                
             </div>
-        </nav>
+       
         @using (Html.BeginForm("ChangeCulture", "Home"))
         {
             <div>
@@ -73,7 +74,7 @@
                     <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
                 </div>
             }
-            @using (Html.BeginForm("GetCoaches", "Users", FormMethod.Get))
+            @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
             {
                 <div>
                     <input class="y" type="submit" value="All Coaches" />&nbsp;
@@ -85,16 +86,16 @@
              @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
             {
                 <div>
-                    <input class="y" type="submit" value="All Coaches" />&nbsp;
+                    <input class="y" type="submit" value="Profile" />&nbsp;
                 </div>
             }
         }
         else if (Context.Session.GetString("coach") != null)
         {
-            @using (Html.BeginForm("CoacheProfile", "Users", FormMethod.Get))
+            @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
             {
                 <div>
-                    <input class="y" type="submit" value="All Coaches" />&nbsp;
+                    <input class="y" type="submit" value="Profile" />&nbsp;
                 </div>
             }
         }
@@ -110,6 +111,8 @@
                
             </ul>
         }
+        </nav>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

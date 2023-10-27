@@ -19,4 +19,15 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color:antiquewhite;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+}
+.login {
+    width: 300px;
+    padding:10px;
 }

@@ -26,7 +26,7 @@ namespace SportClub.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Coaches()
+        public async Task<IActionResult> GetCoaches()
         {
             /* return _context.Users != null ?
                          View(await _context.Users.ToListAsync()) :

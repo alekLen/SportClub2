@@ -20,11 +20,11 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Coach>> GetAll()
         {
-            return await db.Coaches.ToListAsync();
+            return await db.Coaches.Include((p) => p.Post).Include((p) => p.Speciality).ToListAsync();
         }
         public async Task<Coach> Get(int id)
         {
-            return await db.Coaches.FirstOrDefaultAsync(m => m.Id == id);
+            return await db.Coaches.Include((p) => p.Post).Include((p) => p.Speciality).FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(Coach c)
         {
@@ -50,11 +50,11 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<Coach> GetCoachLogin(string login)
         {
-            return await db.Coaches.FirstOrDefaultAsync(m => m.Login == login);
+            return await db.Coaches.Include((p) => p.Post).Include((p) => p.Speciality).FirstOrDefaultAsync(m => m.Login == login);
         }
         public async Task<Coach> GetCoachEmail(string email)
         {
-            return await db.Coaches.FirstOrDefaultAsync(m => m.Email == email);
+            return await db.Coaches.Include((p) => p.Post).Include((p) => p.Speciality).FirstOrDefaultAsync(m => m.Email == email);
         }
     }
 }

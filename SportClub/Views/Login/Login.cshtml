@@ -4,11 +4,12 @@
 @model SportClub.Models.LoginModel
 @using Microsoft.AspNetCore.Http
 
-< class="center pr">
+
     @using (Html.BeginForm())
     {
       @Html.AntiForgeryToken()
-        <div class="card c22">
+    <div class="center ">
+        <div class="card c22 login">
             @if (Context.Session.GetString("login") == null)
             {
                 @Html.ValidationSummary(true, "")
@@ -35,7 +36,7 @@
                     </div>
                 </div>
             }
-
+        </div>
         </div>
     }
-    
+   
