@@ -132,7 +132,7 @@ namespace SportClub.DAL.Repositories
                 return timetableRepository;
             }
         }
-        public ISetGetRepository<TrainingInd> TrainingInds
+        public ITrainingIndRepository TrainingInds
         {
             get
             {

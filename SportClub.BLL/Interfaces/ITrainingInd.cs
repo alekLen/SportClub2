@@ -12,6 +12,8 @@ namespace SportClub.BLL.Interfaces
         Task AddTrainingInd(TrainingIndDTO postDto);
         Task<TrainingIndDTO> GetTrainingInd(int id);
         Task<IEnumerable<TrainingIndDTO>> GetAllTrainingInds();
+        Task<IEnumerable<TrainingIndDTO>> GetAllOfCoachTrainingInds(int id);
+        Task<IEnumerable<TrainingIndDTO>> GetAllOfClientTrainingInds(int id);
         Task DeleteTrainingInd(int id);
         Task UpdateTrainingInd(TrainingIndDTO a);
     }

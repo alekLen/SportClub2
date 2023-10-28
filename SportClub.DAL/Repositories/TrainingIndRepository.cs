@@ -2,10 +2,11 @@
 using SportClub.DAL.Interfaces;
 using SportClub.DAL.EF;
 using SportClub.DAL.Entities;
+using System.Linq;
 
 namespace SportClub.DAL.Repositories
 {
-    public class TrainingIndRepository : ISetGetRepository<TrainingInd>
+    public class TrainingIndRepository : ITrainingIndRepository
     {
         private SportClubContext db;
 
@@ -15,11 +16,20 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<TrainingInd>> GetAll()
         {
-            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).ToListAsync();
+            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
         }
+        public async Task<IEnumerable<TrainingInd>> GetAllOfCoach(int id)
+        {
+            return await db.TrainingsInd.Where((p) => p.Coach.Id == id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
+        }
+        public async Task<IEnumerable<TrainingInd>> GetAllOfClient(int id)
+        {
+            return await db.TrainingsInd.Where((p) => p.User.Id==id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
+        }
+
         public async Task<TrainingInd> Get(int id)
         {
-            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).FirstOrDefaultAsync(m => m.Id == id);
+            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(TrainingInd c)
         {

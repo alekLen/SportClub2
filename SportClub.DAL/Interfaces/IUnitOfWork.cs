@@ -20,7 +20,7 @@ namespace SportClub.DAL.Interfaces
         ISetGetRepository<Shedule> Shedules { get; }
         ISetGetRepository<TimeT> Times { get; }
         ISetGetRepository<Timetable> Timetables { get; }
-        ISetGetRepository<TrainingInd> TrainingInds { get; }
+        ITrainingIndRepository TrainingInds { get; }
         ISetGetRepository<TypeOfTraining> TypeOfTrainings { get; }
         Task Save();
     }

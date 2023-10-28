@@ -4,10 +4,7 @@ using SportClub.DAL.Entities;
 using SportClub.DAL.Interfaces;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Infrastructure;
-using SportClub.DAL.Interfaces;
-using SportClub.BLL.DTO;
-using SportClub.DAL.Entities;
-using AutoMapper;
+
 
 namespace SportClub.BLL.Services
 {
@@ -19,6 +16,7 @@ namespace SportClub.BLL.Services
         {
             Database = uow;
         }
+
         public async Task AddTrainingInd(TrainingIndDTO pDto)
         {
             TimeT t = await Database.Times.Get(pDto.TimeId);
@@ -68,6 +66,34 @@ namespace SportClub.BLL.Services
                  .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<IEnumerable<TrainingInd>, IEnumerable<TrainingIndDTO>>(await Database.TrainingInds.GetAll());
+            }
+            catch { return null; }
+        }
+        public async Task<IEnumerable<TrainingIndDTO>> GetAllOfCoachTrainingInds(int id)
+        {
+            try
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingInd, TrainingIndDTO>()
+                 .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id))
+                 .ForMember("TimeId", opt => opt.MapFrom(c => c.Time.Id)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
+                 .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
+                var mapper = new Mapper(config);
+                return mapper.Map<IEnumerable<TrainingInd>, IEnumerable<TrainingIndDTO>>(await Database.TrainingInds.GetAllOfCoach(id));
+            }
+            catch { return null; }
+        }
+        public async Task<IEnumerable<TrainingIndDTO>> GetAllOfClientTrainingInds(int id)
+        {
+            try
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingInd, TrainingIndDTO>()
+                 .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id))
+                 .ForMember("TimeId", opt => opt.MapFrom(c => c.Time.Id)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
+                 .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
+                var mapper = new Mapper(config);
+                return mapper.Map<IEnumerable<TrainingInd>, IEnumerable<TrainingIndDTO>>(await Database.TrainingInds.GetAllOfClient(id));
             }
             catch { return null; }
         }
