@@ -45,7 +45,7 @@ namespace SportClub.DAL.EF
         public DbSet<Post> Posts { get; set; }
         public DbSet<SportClub.DAL.Entities.Group> Groups { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Training> Trainings { get; set; }
+        public DbSet<TrainingInd> TrainingsInd { get; set; }
         public DbSet<TimeT> Times { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
         public DbSet<TypeOfTraining> TypeOfTrainings { get; set; }

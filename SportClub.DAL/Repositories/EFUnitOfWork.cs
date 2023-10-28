@@ -23,7 +23,7 @@ namespace SportClub.DAL.Repositories
         private SpecialityRepository specialityRepository;
         private TimeTRepository timeRepository;
         private TimetableRepository timetableRepository;
-        private TrainingRepository trainingRepository;
+        private TrainingIndRepository trainingIndRepository;
         private TypeOfTrainingRepository typeoftrainingRepository;
 
 
@@ -132,13 +132,13 @@ namespace SportClub.DAL.Repositories
                 return timetableRepository;
             }
         }
-        public ISetGetRepository<Training> Trainings
+        public ISetGetRepository<TrainingInd> TrainingInds
         {
             get
             {
-                if (trainingRepository == null)
-                    trainingRepository = new TrainingRepository(db);
-                return trainingRepository;
+                if (trainingIndRepository == null)
+                    trainingIndRepository = new TrainingIndRepository(db);
+                return trainingIndRepository;
             }
         }
         public ISetGetRepository<TypeOfTraining> TypeOfTrainings
