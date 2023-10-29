@@ -15,7 +15,7 @@ namespace SportClub.DAL.Entities
         public string? Photo { get; set; } = null;
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public virtual List<Training> training { get; set; }
+        public virtual List<TrainingInd>? trainingInds { get; set; }
         public virtual List<Group> groups { get; set; }
 
     }

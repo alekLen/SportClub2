@@ -12,7 +12,7 @@ namespace SportClub.DAL.Entities
        
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public List<Training> training { get; set; }
+        public List<TrainingInd> trainingInds { get; set; }
         public List<Group> groups { get; set; }
     }
 }

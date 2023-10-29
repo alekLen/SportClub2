@@ -9,6 +9,6 @@ namespace SportClub.DAL.Entities
     public class Shedule
     {
         public int Id { get; set; }
-        public List<Training> training { get; set; }
+        public List<TrainingInd> trainingInds { get; set; }
     }
 }

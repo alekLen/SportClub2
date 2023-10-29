@@ -24,6 +24,7 @@ namespace SportClub.DAL.Repositories
         private TimeTRepository timeRepository;
         private TimetableRepository timetableRepository;
         private TrainingIndRepository trainingIndRepository;
+        private TrainingGroupRepository trainingGroupRepository;
         private TypeOfTrainingRepository typeoftrainingRepository;
 
 
@@ -139,6 +140,15 @@ namespace SportClub.DAL.Repositories
                 if (trainingIndRepository == null)
                     trainingIndRepository = new TrainingIndRepository(db);
                 return trainingIndRepository;
+            }
+        }
+        public ITrainingGroupRepository TrainingGroups
+        {
+            get
+            {
+                if (trainingGroupRepository == null)
+                    trainingGroupRepository = new TrainingGroupRepository(db);
+                return trainingGroupRepository;
             }
         }
         public ISetGetRepository<TypeOfTraining> TypeOfTrainings
