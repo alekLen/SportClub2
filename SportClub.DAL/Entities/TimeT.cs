@@ -9,6 +9,7 @@ namespace SportClub.DAL.Entities
     public class TimeT
     {
         public int Id { get; set; }
-        public string Time { get; set; } = string.Empty;
+        public string Name { get; set; }    
+        public List<string> Times { get; set; }
     }
 }
