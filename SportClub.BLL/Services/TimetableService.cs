@@ -2,13 +2,12 @@
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Infrastructure;
 using SportClub.DAL.Interfaces;
-using SportClub.BLL.DTO;
 using SportClub.DAL.Entities;
 using AutoMapper;
 
 namespace SportClub.BLL.Services
 {
-    public class TimetableService : ITime
+    public class TimetableService 
     {
         IUnitOfWork Database { get; set; }
 
@@ -16,49 +15,76 @@ namespace SportClub.BLL.Services
         {
             Database = uow;
         }
-        public async Task AddTimeT(TimeTDTO pDto)
+        public async Task AddTimetable(TimetableDTO pDto)
         {
-            var a = new TimeT()
+            var a = new Timetable();
+            foreach(var t in pDto.TimesId)
             {
-                Name = pDto.Name,
-                Times= pDto.Times
-            };
-            await Database.Times.AddItem(a);
+                TimeT time=await Database.Times.Get(t);
+                a.Times.Add(time);
+            }
+            
+            await Database.Timetables.AddItem(a);
             await Database.Save();
         }
-        public async Task<TimeTDTO> GetTimeT(int id)
+        public async Task AddTimeT(string start,string end,TimetableDTO time)
         {
-            TimeT a = await Database.Times.Get(id);
+            TimeT t =await Database.Times.Find(start, end);
+            if (t != null)
+                time.TimesId.Add(t.Id);
+            else
+            {  
+                var a = new TimeT()
+                {
+                    StartTime = start,
+                    EndTime = end
+                };
+                await Database.Times.AddItem(a);
+                await Database.Save();
+                TimeT t1 = await Database.Times.Find(start, end);
+                time.TimesId.Add(t1.Id);
+            }
+        }
+        public async Task<TimetableDTO> GetTimetable(int id)
+        {
+            Timetable a = await Database.Timetables.Get(id);
             if (a == null)
                 throw new ValidationException("Wrong", "");
-            return new TimeTDTO
+            TimetableDTO tt = new();
+            foreach (var t in a.Times)
             {
-                Id = a.Id,
-                Name = a.Name,
-                Times = a.Times
-            };
-        }
-        public async Task<IEnumerable<TimeTDTO>> GetAllTimeTs()
-        {
-            try
-            {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<TimeT, TimeTDTO>());
-                var mapper = new Mapper(config);
-                return mapper.Map<IEnumerable<TimeT>, IEnumerable<TimeTDTO>>(await Database.Times.GetAll());
+               tt.TimesId.Add(t.Id);
             }
-            catch { return null; }
+            return tt;
         }
-        public async Task DeleteTimeT(int id)
+        public async Task<IEnumerable<TimetableDTO>> GetAllTimetables()
         {
-            await Database.Times.Delete(id);
+            /*  try
+              {
+                  var config = new MapperConfiguration(cfg => cfg.CreateMap<Timetable, TimetableDTO>());
+                  var mapper = new Mapper(config);
+                  return mapper.Map<IEnumerable<Timetable>, IEnumerable<TimetableDTO>>(await Database.Timetables.GetAll());
+              }
+              catch { return null; }*/
+            IEnumerable<Timetable> timetables = await Database.Timetables.GetAll();
+            IEnumerable<TimetableDTO> timetables2 = new List<TimetableDTO> ();
+            foreach(var a in timetables)
+            {
+                foreach (var t in timetables2)
+                    TimesId
+            }
+        }
+        public async Task DeleteTimetable(int id)
+        {
+            await Database.Timetables.Delete(id);
             await Database.Save();
         }
-        public async Task UpdateTimeT(TimeTDTO a)
+        public async Task UpdateTimetable(TimetableDTO a)
         {
-            TimeT t = await Database.Times.Get(a.Id);
+            Timetable t = await Database.Timetables.Get(a.Id);
             t.Name = a.Name;
             t.Times = a.Times;
-            await Database.Times.Update(t);
+            await Database.Timetables.Update(t);
             await Database.Save();
         }
     }

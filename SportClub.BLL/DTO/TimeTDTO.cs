@@ -9,7 +9,7 @@ namespace SportClub.BLL.DTO
     public class TimeTDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public List<string> Times { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
     }
 }

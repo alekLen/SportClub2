@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace SportClub.DAL.Repositories
 {
-    public class TrainingIndRepository : ITrainingIndRepository
+    public class TrainingIndRepository : ITrainingIndRepository 
     {
         private SportClubContext db;
 

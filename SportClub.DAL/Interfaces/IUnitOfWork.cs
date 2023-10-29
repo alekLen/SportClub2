@@ -18,7 +18,7 @@ namespace SportClub.DAL.Interfaces
         ISetGetRepository<Room> Rooms { get; }
         ISetGetRepository<Group> Groups { get; }
         ISetGetRepository<Shedule> Shedules { get; }
-        ISetGetRepository<TimeT> Times { get; }
+        ITimeTRepository Times { get; }
         ISetGetRepository<Timetable> Timetables { get; }
         ITrainingIndRepository TrainingInds { get; }
         ITrainingGroupRepository TrainingGroups { get; }

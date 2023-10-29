@@ -5,7 +5,7 @@ using SportClub.DAL.Entities;
 
 namespace SportClub.DAL.Repositories
 {
-    public class TimeTRepository : ISetGetRepository<TimeT>
+    public class TimeTRepository : ITimeTRepository
     {
         private SportClubContext db;
 
@@ -20,6 +20,10 @@ namespace SportClub.DAL.Repositories
         public async Task<TimeT> Get(int id)
         {
             return await db.Times.FirstOrDefaultAsync(m => m.Id == id);
+        }
+        public async Task<TimeT> Find(string s,string e)
+        {
+            return await db.Times.FirstOrDefaultAsync(m => m.StartTime == s && m.EndTime==e);
         }
         public async Task AddItem(TimeT c)
         {

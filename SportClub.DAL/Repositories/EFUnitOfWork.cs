@@ -115,7 +115,7 @@ namespace SportClub.DAL.Repositories
                 return specialityRepository;
             }
         }
-        public ISetGetRepository<TimeT> Times
+        public ITimeTRepository Times
         {
             get
             {
