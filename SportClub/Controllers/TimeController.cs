@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.Models;
+using System.Drawing;
 
 namespace SportClub.Controllers
 {
@@ -20,14 +23,39 @@ namespace SportClub.Controllers
             specialityService = sp;
         }
         [HttpGet]
-        public IActionResult AddTimeT()
+        public async Task<IActionResult> AddTimeT()
         {
+            IEnumerable<TimeTDTO> p= await timeService.GetAllTimeTs();
+            List<TimeShow> p1 = new();
+            foreach (var t in p)
+            {
+                TimeShow ts = new()
+                {
+                    Id = t.Id,
+                    Time = t.StartTime + "/" + t.EndTime
+                };
+                p1.Add(ts);
+            }
+
+            ViewData["TimeId"] = new SelectList(p1, "Id", "Time");
             return View();
         }
         [HttpPost]
-        public IActionResult AddTimeT(TimeTDTO t)
+        public async Task<IActionResult> AddTimeT(string Start,string End)
         {
-            timeService.AddTimeT(t);
+           await timeService.AddTimeT(Start,End);
+            IEnumerable<TimeTDTO> p = await timeService.GetAllTimeTs();
+            List<TimeShow> p1 = new();
+            foreach (var t in p)
+            {
+                TimeShow ts = new()
+                {
+                    Id = t.Id,
+                    Time = t.StartTime + "/" + t.EndTime
+                };
+                p1.Add(ts);
+            }
+            ViewData["TimeId"] = new SelectList(p1, "Id", "Time");
             return View();
         }
     }

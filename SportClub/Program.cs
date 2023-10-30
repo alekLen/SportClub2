@@ -12,6 +12,8 @@ builder.Services.AddTransient<IUser, UserService>();
 builder.Services.AddTransient<ICoach, CoachService>();
 builder.Services.AddTransient<IPost, PostService>();
 builder.Services.AddTransient<ISpeciality, SpecialityService>();
+builder.Services.AddTransient<ITime, TimeTService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();

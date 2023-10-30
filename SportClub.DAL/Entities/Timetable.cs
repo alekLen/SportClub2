@@ -9,6 +9,6 @@ namespace SportClub.DAL.Entities
     public class Timetable
     {
         public int Id { get; set; }
-        public List<TimeT> Times{ get; set; }
+        public List<TimeT> Times{ get; set; }=new List<TimeT>();
     }
 }

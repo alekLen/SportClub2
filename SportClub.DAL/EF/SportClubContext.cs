@@ -35,6 +35,11 @@ namespace SportClub.DAL.EF
                 s.admin = a;
                 Salts.Add(s);
                 SaveChanges();
+                TimeT t = new TimeT { StartTime = "9:00", EndTime = "10:00" };
+                TimeT t1 = new TimeT { StartTime = "10:00", EndTime = "11:00" };
+                Times.Add(t);
+                Times.Add(t1);
+                SaveChanges();
             }
         }
         public DbSet<User> Users { get; set; }
