@@ -1,12 +1,11 @@
-﻿<h4 class=" b1 b3 c20 center pr">График</h4>
-<div class="center pr">
-    <div class="flex">
+﻿<div class="center pr">
+   
 
         <div class=" card c7">
             <h4>@Resources.Resource.Addition</h4>
             <form asp-controller="Time" method="post">
                 @model SportClub.BLL.DTO.TimeTDTO
-
+                <input type="hidden" asp-for=Id />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <span>Время начала</span><br />
@@ -22,20 +21,5 @@
                     <input type="submit" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary c2" />
                 </div>
             </form>
-
-        </div>
-        <div class=" card c7">
-            <h4> @Resources.Resource.Editing</h4>
-            <form asp-controller="Time" method="post">
-                <label>График</label>
-                <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
-
-                <br />
-                <div class="form-group">           
-                    <input type="submit" formmethod="get" formaction="EditTime"  value="@Resources.Resource.Edit" class="btn btn-primary c2" />
-                    <input type="submit" formaction="DeleteTime" value="Удалить время" class="btn btn-primary c2 " /><br /><br />
-                </div>
-            </form>
         </div>
     </div>
-</div>
