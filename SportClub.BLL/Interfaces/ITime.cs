@@ -9,7 +9,7 @@ namespace SportClub.BLL.Interfaces
 {
     public interface ITime
     {
-        Task AddTimeT(TimeTDTO pDto);
+        Task AddTimeT(string s, string e);
         Task<TimeTDTO> GetTimeT(int id);
         Task<IEnumerable<TimeTDTO>> GetAllTimeTs();
         Task DeleteTimeT(int id);

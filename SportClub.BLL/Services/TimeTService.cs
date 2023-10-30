@@ -15,8 +15,38 @@ namespace SportClub.BLL.Services
         {
             Database = uow;
         }
-        public async Task AddTimeT(TimeTDTO pDto)
-        {          
+        public async Task<TimeTDTO> AddTimeT(string s, string e)
+        {
+            TimeT a1 = await Database.Times.Find(s, e);
+            if (a1 != null)
+            {
+                return new TimeTDTO
+                {
+                    Id = a1.Id,
+                    StartTime = a1.StartTime,
+                    EndTime = a1.EndTime
+                };
+            }
+            else {
+                var a = new TimeT()
+                {
+                    StartTime = s,
+                    EndTime = e
+                };
+                await Database.Times.AddItem(a);
+                await Database.Save();
+                TimeT a2 = await Database.Times.Find(s, e);
+                return new TimeTDTO
+                {
+                    Id = a2.Id,
+                    StartTime = a2.StartTime,
+                    EndTime = a2.EndTime
+                };
+            }
+        }
+
+      /* public async Task AddTimeT(TimeTDTO pDto)
+        {
             var a = new TimeT()
             {
                 StartTime = pDto.StartTime,
@@ -24,7 +54,7 @@ namespace SportClub.BLL.Services
             };
             await Database.Times.AddItem(a);
             await Database.Save();
-        }
+        }*/
         public async Task<TimeTDTO> GetTimeT(int id)
         {
             TimeT a = await Database.Times.Get(id);
@@ -37,7 +67,7 @@ namespace SportClub.BLL.Services
                 EndTime = a.EndTime
             };
         }
-        public async Task<TimeTDTO> FindTimeT(string s,string e)
+       public async Task<TimeTDTO> FindTimeT(string s,string e)
         {
             TimeT a = await Database.Times.Find(s,e);
             if (a == null)

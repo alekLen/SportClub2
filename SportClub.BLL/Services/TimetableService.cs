@@ -27,7 +27,7 @@ namespace SportClub.BLL.Services
             await Database.Timetables.AddItem(a);
             await Database.Save();
         }
-        public async Task AddTimeT(string start,string end,TimetableDTO time)
+        public async Task AddTimeToTimetable(string start,string end,TimetableDTO time)
         {
             TimeT t =await Database.Times.Find(start, end);
             if (t != null)
@@ -68,11 +68,20 @@ namespace SportClub.BLL.Services
               catch { return null; }*/
             IEnumerable<Timetable> timetables = await Database.Timetables.GetAll();
             IEnumerable<TimetableDTO> timetables2 = new List<TimetableDTO> ();
-            foreach(var a in timetables)
+            List<Timetable> ti =timetables.ToList();
+            List<TimetableDTO> ti2 = timetables2.ToList();
+            for (var i=0;i<ti.Count;i++)
             {
-                foreach (var t in timetables2)
-                    TimesId
+                TimetableDTO a =new ();
+                a.Id = ti[i].Id;
+                a.TimesId = new List<int>();
+                foreach (var t in ti[i].Times)
+                {
+                    a.TimesId.Add(t.Id);
+                }
+                ti2.Add(a);
             }
+            return ti2;
         }
         public async Task DeleteTimetable(int id)
         {
@@ -81,9 +90,14 @@ namespace SportClub.BLL.Services
         }
         public async Task UpdateTimetable(TimetableDTO a)
         {
+
             Timetable t = await Database.Timetables.Get(a.Id);
-            t.Name = a.Name;
-            t.Times = a.Times;
+            t.Times.Clear();
+            for (var i = 0; i < a.TimesId.Count; i++)
+            {
+                TimeT time = await Database.Times.Get(a.TimesId[i]);
+                t.Times.Add(time);
+            }
             await Database.Timetables.Update(t);
             await Database.Save();
         }
