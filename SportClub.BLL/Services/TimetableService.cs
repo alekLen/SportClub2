@@ -7,7 +7,7 @@ using AutoMapper;
 
 namespace SportClub.BLL.Services
 {
-    public class TimetableService 
+    public class TimetableService: ITimetable
     {
         IUnitOfWork Database { get; set; }
 

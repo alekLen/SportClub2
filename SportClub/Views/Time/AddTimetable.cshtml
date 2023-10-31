@@ -1,0 +1,33 @@
+﻿<h4 class=" b1 b3 c20 center pr">График</h4>
+<div class="center pr">
+    <div class="flex">
+
+        <div class=" card c7">
+            <h4>@Resources.Resource.Addition</h4>
+            <form asp-controller="Time" method="post">
+                @model SportClub.BLL.DTO.TimetableDTO
+
+                <label>График</label>
+                <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
+
+                <div class="form-group">
+                    <input type="submit" formaction="AddTimetable" value="@Resources.Resource.Add" class="btn btn-primary c2" />
+                </div>
+            </form>
+
+        </div>
+        <div class=" card c7">
+            <h4> @Resources.Resource.Editing</h4>
+            <form asp-controller="Time" method="post">
+                <label>Выберите время для графика</label>
+                <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить в график" class="btn btn-primary c2" />
+                   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
