@@ -10,5 +10,6 @@ namespace SportClub.DAL.Interfaces
     public interface ITimeTRepository: ISetGetRepository<TimeT>
     {
         Task<TimeT> Find(string s, string e);
+        Task DeleteAll();
     }
 }

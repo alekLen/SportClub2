@@ -47,5 +47,11 @@ namespace SportClub.DAL.Repositories
 
             }
         }
+        public async Task DeleteAll()
+        {
+            var allEntities = await db.Times.ToListAsync();
+            // Удалите все записи из DbSet
+            db.Times.RemoveRange(allEntities);           
+        }
     }
 }

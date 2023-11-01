@@ -94,6 +94,11 @@ namespace SportClub.BLL.Services
             await Database.Times.Delete(id);
             await Database.Save();
         }
+        public async Task DeleteAllTimeT()
+        {
+            await Database.Times.DeleteAll();
+            await Database.Save();
+        }
         public async Task UpdateTimeT(TimeTDTO a)
         {
             TimeT t = await Database.Times.Get(a.Id);

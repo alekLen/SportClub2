@@ -14,5 +14,6 @@ namespace SportClub.BLL.Interfaces
         Task<IEnumerable<TimeTDTO>> GetAllTimeTs();
         Task DeleteTimeT(int id);
         Task UpdateTimeT(TimeTDTO a);
+        Task DeleteAllTimeT();
     }
 }

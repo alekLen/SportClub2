@@ -13,6 +13,7 @@ builder.Services.AddTransient<ICoach, CoachService>();
 builder.Services.AddTransient<IPost, PostService>();
 builder.Services.AddTransient<ISpeciality, SpecialityService>();
 builder.Services.AddTransient<ITime, TimeTService>();
+builder.Services.AddTransient<ITimetable, TimetableService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
