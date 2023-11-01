@@ -25,8 +25,8 @@ namespace SportClub.BLL.DTO
         public string? Photo { get; set; } = null;
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public  List<int>? trainingsId { get; set; }
-        public  List<int>? groupsId { get; set; }
+        public List<int>? trainingsId { get; set; } = new();
+        public  List<int>? groupsId { get; set; } = new();
 
     }
 }

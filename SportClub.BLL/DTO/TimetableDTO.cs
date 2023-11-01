@@ -9,6 +9,6 @@ namespace SportClub.BLL.DTO
     public class TimetableDTO
     {
         public int Id { get; set; }
-        public List<int> TimesId { get; set; }
+        public List<int> TimesId { get; set; } = new();
     }
 }

@@ -13,6 +13,6 @@ namespace SportClub.BLL.DTO
         public int Number { get; set; }
         public int CoachId { get; set; }
         public int trainingId { get; set; }
-        public List<int> usersId { get; set; }
+        public List<int> usersId { get; set; } = new();
     }
 }

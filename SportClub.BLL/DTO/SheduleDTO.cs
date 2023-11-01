@@ -9,6 +9,6 @@ namespace SportClub.BLL.DTO
     public class SheduleDTO
     {
         public int Id { get; set; }
-        public List<int> trainingId { get; set; }
+        public List<int> trainingId { get; set; } = new();
     }
 }
