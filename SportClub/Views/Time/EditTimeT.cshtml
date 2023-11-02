@@ -9,16 +9,16 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <span>Время начала</span><br />
-                    <input name="Start" class="form-control card _c7" />
+                    <input asp-for="StartTime" name="Start"  class="form-control card _c7" />
                     <span asp-validation-for="StartTime" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <span>Время окончания</span><br />
-                    <input name="End" class="form-control card _c7" />
+                    <input asp-for="EndTime"  name="End" class="form-control card _c7" />
                     <span asp-validation-for="EndTime" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <input type="submit" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary c2" />
+                    <input type="submit" formaction="EditTime" value="@Resources.Resource.Add" class="btn btn-primary c2" />
                 </div>
             </form>
         </div>

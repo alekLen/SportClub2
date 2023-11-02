@@ -1,0 +1,17 @@
+﻿@model IEnumerable<SportClub.Models.TimetableShow>
+
+@{
+    ViewData["Title"] = "Timetables";
+}
+<div class="flex">
+    @foreach (var item in Model)
+    {
+        <div>
+            <input type="number" value="@item.Id"> <br />
+            @foreach (var t in item.Times)
+            {
+                <input type="text" value="@t"> <br />
+            }
+        </div>
+    }
+</div>

@@ -15,7 +15,7 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Timetable>> GetAll()
         {
-            return await db.Timetables.ToListAsync();
+            return await db.Timetables.Include(p=>p.Times).ToListAsync();
         }
         public async Task<Timetable> Get(int id)
         {

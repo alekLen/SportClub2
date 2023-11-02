@@ -1,0 +1,25 @@
+﻿<div class="center pr">
+
+
+    <div class=" card c7">
+        <h4>@Resources.Resource.Addition</h4>
+        <form asp-controller="Time" method="post">
+            @model SportClub.BLL.DTO.TimeTDTO
+            <input type="hidden" asp-for=Id />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span>Время начала</span><br />
+                <input asp-for="StartTime" name="Start" class="form-control card _c7" readonly />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span>Время окончания</span><br />
+                <input asp-for="EndTime" name="End" class="form-control card _c7" readonly />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" formaction="ConfirmDeleteTime" value="Потвердить удаление" class="btn btn-primary c2" />
+            </div>
+        </form>
+    </div>
+</div>

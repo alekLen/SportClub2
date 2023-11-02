@@ -11,7 +11,9 @@
                 <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
 
                 <div class="form-group">
-                    <input type="submit" formaction="AddTimetable" value="@Resources.Resource.Add" class="btn btn-primary c2" />
+                    <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary c2" />
+                    <input type="submit" formaction="Cancel" value="отмена" class="btn btn-primary c2" />
+                    <input type="submit" formaction="Exit" value="выход" class="btn btn-primary c2" />
                 </div>
             </form>
 

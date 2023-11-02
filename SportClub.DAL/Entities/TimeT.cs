@@ -12,5 +12,6 @@ namespace SportClub.DAL.Entities
        //public string Name { get; set; }    
         public string StartTime { get; set; }
         public string EndTime { get; set; }
+        public List<Timetable> Timetable { get; set; } = new();
     }
 }

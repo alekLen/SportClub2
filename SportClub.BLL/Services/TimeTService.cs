@@ -59,7 +59,7 @@ namespace SportClub.BLL.Services
         {
             TimeT a = await Database.Times.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong", "");
+                return null;
             return new TimeTDTO
             {
                 Id = a.Id,
@@ -71,7 +71,7 @@ namespace SportClub.BLL.Services
         {
             TimeT a = await Database.Times.Find(s,e);
             if (a == null)
-                throw new ValidationException("Wrong", "");
+                return null;
             return new TimeTDTO
             {
                 Id = a.Id,
