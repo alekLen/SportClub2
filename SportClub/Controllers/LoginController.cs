@@ -213,7 +213,6 @@ namespace SportClub.Controllers
 
             try
             {
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
@@ -223,8 +222,6 @@ namespace SportClub.Controllers
                     {
                         age--;
                     }
-
-                    Console.WriteLine("Ваш возраст: " + age + " лет");
                 }
                 else
                 {
@@ -235,7 +232,7 @@ namespace SportClub.Controllers
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
             if (ModelState.IsValid)
             {
-                CoachDTO u = new();
+                UserDTO u = new();
                 u.Login = user.Login;
                 u.Gender = user.Gender;
                 u.Email = user.Email;
@@ -248,9 +245,9 @@ namespace SportClub.Controllers
                 u.Password = user.Password;
                 try
                 {
-                    await coachService.AddCoach(u);
+                    await userService.AddUser(u);
                 }
-                catch { }
+                catch { return View("RegisterClient", user); }
                 return RedirectToAction("Login");
             }
             return View("RegisterClient", user);
@@ -451,7 +448,7 @@ namespace SportClub.Controllers
             else
                 return false;
         }*/
-        public async Task<IActionResult> AddPost()
+      /*  public async Task<IActionResult> AddPost()
         {
             HttpContext.Session.SetString("path", Request.Path);
             await putPosts();
@@ -466,8 +463,10 @@ namespace SportClub.Controllers
             {
                 PostDTO p = new();
                 p.Name = name;
-                postService.AddPost(p);
-                return RedirectToAction("Index", "Home");
+               await postService.AddPost(p);
+                // return RedirectToAction("Index", "Home");
+                await putPosts();
+                return View("Post");
             }
             catch
             {
@@ -593,7 +592,7 @@ namespace SportClub.Controllers
                 await putSpecialities();
                 return View("Speciality");
             }
-        }
+        }*/
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);

@@ -1,5 +1,5 @@
-﻿@*<form asp-controller="Login" method="post">
-    @model SportClub.BLL.DTO.SpecialityDTO
+﻿<form asp-controller="Login" method="post">
+    @model SportClub.BLL.DTO.PostDTO
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group">
@@ -9,6 +9,6 @@
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="submit" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+        <input type="submit" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
     </div>
-</form>*@
+</form>

@@ -4,6 +4,7 @@ using SportClub.Filters;
 using SportClub.Models;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.DTO;
+using SportClub.DAL.Entities;
 
 
 namespace SportClub.Controllers
@@ -46,6 +47,7 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
+       
         public async Task<IActionResult> ClientProfile()
         {
             string s = HttpContext.Session.GetString("Id");
@@ -53,6 +55,7 @@ namespace SportClub.Controllers
             UserDTO p = await userService.GetUser(id);
             return View(p);
         }
+        [HttpPost]
         public async Task<IActionResult> CoachProfile()
         {
             string s = HttpContext.Session.GetString("Id");
@@ -71,6 +74,60 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             IEnumerable<SpecialityDTO> p = await specialityService.GetAllSpecialitys();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
+        }
+        public async Task<IActionResult> EditClientProfile( UserDTO user)
+        {
+            int age = 0;
+            try
+            {                
+                DateTime birthDate;
+                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                {
+                    DateTime currentDate = DateTime.Now;
+                    age = currentDate.Year - birthDate.Year;
+                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                    {
+                        age--;
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                }
+            }
+            catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
+            UserDTO u = await userService.GetUser(user.Id);
+            if (u != null)
+            {
+                u.Login = user.Login;
+                u.Gender = user.Gender;
+                u.Email = user.Email;
+                u.Age = age;
+                u.Phone = user.Phone;
+                u.Name = user.Name;
+                u.Surname = user.Surname;
+                u.Dopname = user.Dopname;
+                u.DateOfBirth = user.DateOfBirth;
+                await userService.UpdateUser(u);
+                return RedirectToAction("ClientProfile");
+            }
+            return RedirectToAction("ClientProfile");
+        }
+        public IActionResult ChangeClientPassword(UserDTO user)
+        {
+            return View("PutPassword",user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PutPassword(int id, string pass)
+        {
+            UserDTO u = await userService.GetUser(id);
+            if (await userService.CheckPasswordU(u, pass))
+            {
+                CangePasswordModel m = new();
+                m.Id = u.Id;
+                return View("ChangePassword", m);
+            }
+                return View("PutPassword", u);
         }
         // GET: Users/Details/5
         /*  public async Task<IActionResult> Details(int? id)

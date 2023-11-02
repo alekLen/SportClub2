@@ -7,6 +7,7 @@
 @using Microsoft.AspNetCore.Http
 <div class="center pr">
     <form method="post">
+        <input type="hidden" asp-for="@Model.Id" />
         @Html.AntiForgeryToken()
         <div class="card c22">
             @Html.ValidationSummary(true, "")
@@ -72,9 +73,9 @@
             <div>
                 <br />
                 <div>
-                    <button class="y" formaction="EditClientProfile" asp-route-id="@Model.Id" type="submit">Edit Profile</button>
-                    <button class="y" formaction="ChangeClientPassword" asp-route-id="@Model.Id" type="submit"> Change Password</button>
-                    <button class="y" formaction="DeleteClientProfile" asp-route-id="@Model.Id" type="submit">Delete Profile</button>
+                   <input type="submit" class="y" formaction="EditClientProfile" value="Edit Profile" />
+                    <a class="y" formaction="ChangeClientPassword" asp-route-id="@Model.Id" type="submit"> Change Password</a>
+                    <a class="y" formaction="DeleteClientProfile" asp-route-id="@Model.Id" type="submit">Delete Profile</a>
                 </div>
             </div>
         </div>
