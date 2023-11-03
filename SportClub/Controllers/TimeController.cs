@@ -149,7 +149,7 @@ namespace SportClub.Controllers
              TimeTDTO p = await timeService.GetTimeT(id);
              timesT.Add(p);
              await PutTimes();
-             await PutTimesToTable();
+              PutTimesToTable();
              return View("AddTimetable");
          }
          [HttpPost]
@@ -167,7 +167,7 @@ namespace SportClub.Controllers
              else
              {
                 await PutTimes();
-                await PutTimesToTable();
+                PutTimesToTable();
                  return View();
              }
          }
@@ -178,7 +178,7 @@ namespace SportClub.Controllers
             {              
                 timesT.RemoveAt(timesT.Count-1);
                 await PutTimes();
-                await PutTimesToTable();
+                PutTimesToTable();
                 return View("AddTimetable");              
             }
             else
@@ -192,7 +192,7 @@ namespace SportClub.Controllers
             timesT.Clear();
             return Redirect("/Home/Index");            
         }
-        public async Task PutTimesToTable()
+        public void PutTimesToTable()
          {
 
              List<TimeShow> p1 = new();

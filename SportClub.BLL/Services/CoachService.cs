@@ -59,7 +59,7 @@ namespace SportClub.BLL.Services
         {
             Coach a = await Database.Coaches.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong artist!", "");
+                return null;
             /* return new AdminDTO
              {
                  Id = a.Id,

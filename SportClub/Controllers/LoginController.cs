@@ -56,31 +56,24 @@ namespace SportClub.Controllers
         public async Task<IActionResult> RegistrationAdmin(RegisterAdminModel user)
         {
             HttpContext.Session.SetString("path", Request.Path);
-
             try
             {
-
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
                     // 2. Вычисление возраста
                     DateTime currentDate = DateTime.Now;
                     age = currentDate.Year - birthDate.Year;
-
                     // Учитываем месяц и день рождения для точного определения возраста
                     if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
                     {
                         age--;
                     }
-
-                    Console.WriteLine("Ваш возраст: " + age + " лет");
                 }
                 else
                 {
                     ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
                 }
-
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
             if (ModelState.IsValid)
@@ -126,7 +119,7 @@ namespace SportClub.Controllers
                     s.user = u;
                      db.Salts.Add(s);
                      db.SaveChanges();*/
-                    adminService.AddAdmin(u);
+                   await adminService.AddAdmin(u);
                 }
                 catch { }
                 return RedirectToAction("Login");
@@ -252,9 +245,8 @@ namespace SportClub.Controllers
             }
             return View("RegisterClient", user);
         }
-        public async Task<IActionResult> Login()
-        {
-         
+        public IActionResult Login()
+        {        
             return View();
         }
         [HttpPost]
