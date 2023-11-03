@@ -49,6 +49,16 @@ namespace SportClub.BLL.Services
             await Database.Salts.AddItem(s);
             await Database.Save();
         }
+        public async Task ChangeUserPassword(UserDTO uDto,string pass)
+        {
+            User user = await Database.Users.Get(uDto.Id);
+            Salt s = await Database.Salts.GetUserSalt(user);
+            string password = s.salt + pass;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            user.Password = hashedPassword;
+            await Database.Users.Update(user);
+            await Database.Save();
+        }
         public async Task<UserDTO> GetUser(int id)
         {
             User a = await Database.Users.Get(id);

@@ -113,6 +113,7 @@ namespace SportClub.Controllers
             }
             return RedirectToAction("ClientProfile");
         }
+        [HttpPost]
         public IActionResult ChangeClientPassword(UserDTO user)
         {
             return View("PutPassword",user);
@@ -127,7 +128,18 @@ namespace SportClub.Controllers
                 m.Id = u.Id;
                 return View("ChangePassword", m);
             }
-                return View("PutPassword", u);
+            return View("PutPassword");
+        }
+        public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
+        {
+            UserDTO u = await userService.GetUser(m.Id);
+            string pass = m.Password;
+            if (!string.IsNullOrEmpty(pass) && u!=null)
+            {
+               await userService.ChangeUserPassword(u, pass);
+                return RedirectToAction("ClientProfile");
+            }
+            return RedirectToAction("ClientProfile");
         }
         // GET: Users/Details/5
         /*  public async Task<IActionResult> Details(int? id)

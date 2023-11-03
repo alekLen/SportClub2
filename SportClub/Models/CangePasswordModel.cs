@@ -12,7 +12,7 @@ namespace SportClub.Models
         [Display(Name = "password", ResourceType = typeof(Resources.Resource))]
         [Remote("CheckPassword", "Login", ErrorMessageResourceType = typeof(Resources.Resource),
                 ErrorMessageResourceName = "LightPass")]      
-        public string? NewPassword { get; set; }
+        public string? Password { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource),
                 ErrorMessageResourceName = "PassConRequired")]
