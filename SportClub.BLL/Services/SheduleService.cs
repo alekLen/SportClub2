@@ -1,4 +1,5 @@
 ﻿using SportClub.BLL.DTO;
+using SportClub.BLL.Interfaces;
 using SportClub.DAL.Entities;
 using SportClub.DAL.Interfaces;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SportClub.BLL.Services
 {
-    public class SheduleService
+    public class SheduleService : IShedule
     {
         IUnitOfWork Database { get; set; }
 

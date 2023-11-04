@@ -40,6 +40,11 @@ namespace SportClub.DAL.EF
                 Times.Add(t);
                 Times.Add(t1);
                 SaveChanges();
+                Room r1 = new Room { Name = "Room number 1" };
+                Room r2 = new Room { Name = "Room number 2" };
+                Room r3 = new Room { Name = "Room number 3" };
+                Rooms.Add(r1); Rooms.Add(r2); Rooms.Add(r3);
+                SaveChanges();
             }
         }
         public DbSet<User> Users { get; set; }

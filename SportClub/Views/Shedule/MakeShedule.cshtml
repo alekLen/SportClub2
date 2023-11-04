@@ -1,0 +1,31 @@
+﻿ @model SportClub.Models.MakeSheduleView
+<select asp-for="room.Id" class="form-control card _c7" asp-items="ViewBag.RoomId"></select>
+<br />
+<br />
+<div style="display:flex">
+<div>
+<table>
+    <tr>
+        <td>Понедельник</td>
+        <td>Вторник</td>
+        <td>Среда</td>
+        <td>Четверг</td>
+        <td>Пятница</td>
+        <td>Суббота</td>
+        <td>Воскрксенье</td>
+    </tr>
+    <tr>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.MondayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.TuesdayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.WednesdayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.ThursdayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.FridayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.saturdayId"></select></td>
+        <td><select  class="form-control card _c7" size="14" asp-items="ViewBag.SundayId"></select></td>
+    </tr>
+    </table>
+</div>
+<div>
+
+</div>
+</div>
