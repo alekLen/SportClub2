@@ -15,11 +15,11 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Shedule>> GetAll()
         {
-            return await db.Shedules.Include(p => p.Monday).Include(p => p.Tuesday).Include(p => p.Wednesday).Include(p => p.Thursday).Include(p => p.Friday).Include(p => p.Saturday).Include(p => p.Sunday).ToListAsync();
+            return await db.Shedules/*.Include(p => p.Monday).Include(p => p.Tuesday).Include(p => p.Wednesday).Include(p => p.Thursday).Include(p => p.Friday).Include(p => p.Saturday).Include(p => p.Sunday)*/.ToListAsync();
         }
         public async Task<Shedule> Get(int id)
         {
-            return await db.Shedules.Include(p=>p.Monday).Include(p => p.Tuesday).Include(p => p.Wednesday).Include(p => p.Thursday).Include(p => p.Friday).Include(p => p.Saturday).Include(p => p.Sunday).FirstOrDefaultAsync(m => m.Id == id);
+            return await db.Shedules/*.Include(p=>p.Monday).Include(p => p.Tuesday).Include(p => p.Wednesday).Include(p => p.Thursday).Include(p => p.Friday).Include(p => p.Saturday).Include(p => p.Sunday)*/.FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(Shedule c)
         {

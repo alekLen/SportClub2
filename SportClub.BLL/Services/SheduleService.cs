@@ -21,7 +21,7 @@ namespace SportClub.BLL.Services
         public async Task AddShedule(SheduleDTO pDto)
         {
             var a = new Shedule();
-            Timetable t1 = await Database.Timetables.Get(pDto.MondayId);
+           /* Timetable t1 = await Database.Timetables.Get(pDto.MondayId);
             a.Monday = t1;
             Timetable t2 = await Database.Timetables.Get(pDto.TuesdayId);
             a.Tuesday = t2;
@@ -36,7 +36,7 @@ namespace SportClub.BLL.Services
             Timetable t7 = await Database.Timetables.Get(pDto.SundayId);
             a.Sunday = t7;
             await Database.Shedules.AddItem(a);
-            await Database.Save();
+            await Database.Save();*/
         }
        /* public async Task AddTimetableToShedule(string start, string end, TimetableDTO time)
         {
@@ -62,7 +62,8 @@ namespace SportClub.BLL.Services
             if (a == null)
                 return null;
             SheduleDTO tt = new();
-            if (a.Monday != null)
+            tt.Id= id;
+           /* if (a.Monday != null)
                 tt.MondayId = a.Monday.Id;
             else
                 tt.MondayId = 0;
@@ -78,7 +79,7 @@ namespace SportClub.BLL.Services
                 tt.ThursdayId = a.Thursday.Id;
             else
                 tt.ThursdayId = 0;
-            if (a.Friday != null)
+           if (a.Friday != null)
                 tt.FridayId = a.Friday.Id;
             else
                 tt.FridayId = 0;
@@ -89,7 +90,7 @@ namespace SportClub.BLL.Services
             if (a.Sunday != null)
                 tt.SundayId = a.Sunday.Id;
             else
-                tt.SundayId = 0;
+                tt.SundayId = 0;*/
             return tt;
         }
         public async Task<IEnumerable<SheduleDTO>> GetAllShedules()
@@ -102,7 +103,7 @@ namespace SportClub.BLL.Services
             {
                 SheduleDTO tt = new();
                 tt.Id = ti[i].Id;
-                if (ti[i].Monday != null)
+               /* if (ti[i].Monday != null)
                     tt.MondayId = ti[i].Monday.Id;
                 else
                     tt.MondayId = 0;
@@ -130,7 +131,7 @@ namespace SportClub.BLL.Services
                     tt.SundayId = ti[i].Sunday.Id;
                 else
                     tt.SundayId = 0;
-                ti2.Add(tt);
+                ti2.Add(tt);*/
             }
             return ti2;
         }
@@ -142,7 +143,7 @@ namespace SportClub.BLL.Services
         public async Task UpdateShedule(SheduleDTO pDto)
         {
             Shedule a = await Database.Shedules.Get(pDto.Id);
-            Timetable t1 = await Database.Timetables.Get(pDto.MondayId);
+           /* Timetable t1 = await Database.Timetables.Get(pDto.MondayId);
             a.Monday = t1;
             Timetable t2 = await Database.Timetables.Get(pDto.TuesdayId);
             a.Tuesday = t2;
@@ -150,12 +151,12 @@ namespace SportClub.BLL.Services
             a.Wednesday = t3;
             Timetable t4 = await Database.Timetables.Get(pDto.ThursdayId);
             a.Thursday = t4;
-            Timetable t5 = await Database.Timetables.Get(pDto.FridayId);
+           Timetable t5 = await Database.Timetables.Get(pDto.FridayId);
             a.Friday = t5;
-            Timetable t6 = await Database.Timetables.Get(pDto.SaturdayId);
+           Timetable t6 = await Database.Timetables.Get(pDto.SaturdayId);
             a.Saturday = t6;
             Timetable t7 = await Database.Timetables.Get(pDto.SundayId);
-            a.Sunday = t7;
+            a.Sunday = t7;*/
             await Database.Shedules.Update(a);
             await Database.Save();
         }

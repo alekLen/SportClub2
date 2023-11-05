@@ -14,6 +14,8 @@ builder.Services.AddTransient<IPost, PostService>();
 builder.Services.AddTransient<ISpeciality, SpecialityService>();
 builder.Services.AddTransient<ITime, TimeTService>();
 builder.Services.AddTransient<ITimetable, TimetableService>();
+builder.Services.AddTransient<IRoom, RoomService>();
+builder.Services.AddTransient<IShedule, SheduleService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

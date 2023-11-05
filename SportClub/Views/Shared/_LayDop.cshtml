@@ -104,6 +104,8 @@
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Добавить график</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="GetAllTimetable">все графики</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Add Speciality</a>
+                <a class="nav-link text-dark card2" asp-area="" asp-controller="Shedule" asp-action="MakeShedule">Timetable to room</a>
+
                 @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
                 {
                     <div>
