@@ -8,9 +8,10 @@ namespace SportClub.Models
     {
       //  public RoomDTO room { get; set; }
        public TimetableDTO newT { get; set; }
-        public IEnumerable<TimetableDTO> timetables { get; set; }
-        public TimetableDTO mn { get; set; }
-        public TimetableDTO tun { get; set; }
+        public List<TimetableDTO> timetables { get; set; }
+        public List<TimetableShow> times { get; set; }
+        public IEnumerable<TimeTDTO> mn { get; set; }
+        public IEnumerable<TimeTDTO> tun { get; set; }
         public TimetableDTO we { get; set; }
         public TimetableDTO th { get; set; }
         public TimetableDTO fr { get; set; }
