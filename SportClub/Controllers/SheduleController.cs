@@ -61,9 +61,9 @@ namespace SportClub.Controllers
 
             return View("MakeShedule",mv);
         }
-        public async Task<IActionResult> AddTimesToTable(MakeSheduleView mv, int id)
+        public async Task<IActionResult> AddTimesToTable(MakeSheduleView mv)
         {
-            TimeTDTO p = await timeService.GetTimeT(id);
+            TimeTDTO p = await timeService.GetTimeT(mv.newT.Id);
             timesT.Add(p);
             await PutTimes();
             PutTimesToTable();
@@ -75,9 +75,17 @@ namespace SportClub.Controllers
             if (timesT.Count > 0)
             {
                 TimetableDTO t = new();
+                TimetableShow t1 = new();
                 foreach (var time in timesT)
+                { 
                     t.TimesId.Add(time.Id);
+                    TimeTDTO td = await timeService.GetTimeT(time.Id);
+                    string st = td.StartTime + "/" + td.EndTime;
+                    t1.Times.Add(st);
+                    t1.T.Add(td);
+                }
                 mv.timetables.Add(t);
+                mv.times.Add(t1);
                 timesT.Clear();
                 PutTimetables(mv);
                 return View("MakeShedule",mv);
@@ -129,7 +137,17 @@ namespace SportClub.Controllers
             {
                 List<TimeShow> p1 = new();
                 IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                MakeViewData(p1, t1, "MondayId");
+                foreach (var t in t1)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p1.Add(ts);
+                }
+                // MakeViewData(p1, t1, "MondayId");
+                ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
             }
             if (mv.times.Count == 2)
             {
