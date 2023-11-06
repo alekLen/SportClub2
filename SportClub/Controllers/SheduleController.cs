@@ -17,6 +17,7 @@ namespace SportClub.Controllers
         private readonly IShedule sheduleService;
         private readonly ITime timeService;
         private static List<TimeTDTO> timesT = new();
+        public static List<TimetableShow> times { get; set; } = new();
 
         public SheduleController(IRoom r, ITimetable t, IShedule c, ITime n, IWebHostEnvironment _appEnv)
         {
@@ -56,9 +57,12 @@ namespace SportClub.Controllers
                     TimeTDTO td = await timeService.GetTimeT(i);
                     string st = td.StartTime + "/" + td.EndTime;
                     t1.Times.Add(st);
+ 
                 }
                 //ts.Add(t1);
-                mv.times.Add(t1);
+                //mv.times.Add(t1);
+                times.Add(t1);
+
             }
             PutTimesToTable();
             PutTimetables(mv);
@@ -89,7 +93,8 @@ namespace SportClub.Controllers
                     t1.T.Add(td);
                 }
                 mv.timetables.Add(t);
-                mv.times.Add(t1);
+                // mv.times.Add(t1);
+                times.Add(t1);
                 timesT.Clear();
                 PutTimetables(mv);
                 IEnumerable<TimetableDTO> t2 = await timetableService.GetAllTimetables();
@@ -146,10 +151,12 @@ namespace SportClub.Controllers
         }
         void PutTimetables(MakeSheduleView mv)
         {
-            if (mv.times.Count == 1)
+            // if (mv.times.Count == 1)
+            if(times.Count == 1)
             {
                 List<TimeShow> p1 = new();
-                IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                //  IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                IEnumerable<TimeTDTO> t1 = times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
                 foreach (var t in t1)
                 {
                     TimeShow ts = new()
@@ -161,10 +168,11 @@ namespace SportClub.Controllers
                 }            
                 ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
             }
-            if (mv.times.Count == 2)
+            // if (mv.times.Count == 2)
+            if (times.Count == 2)
             {
                 List<TimeShow> p1 = new();
-                IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                IEnumerable<TimeTDTO> t1 = times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
                 foreach (var t in t1)
                 {
                     TimeShow ts = new()
@@ -176,7 +184,7 @@ namespace SportClub.Controllers
                 }
                 ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
                 List<TimeShow> p2 = new();
-                IEnumerable<TimeTDTO> t2 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                IEnumerable<TimeTDTO> t2 = times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
                 foreach (var t in t2)
                 {
                     TimeShow ts = new()
