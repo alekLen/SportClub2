@@ -36,6 +36,8 @@ namespace SportClub.Controllers
             IEnumerable<TimetableDTO> t = await timetableService.GetAllTimetables();
             ViewData["TimetableId"] = new SelectList(t, "Id", "Name");
             await PutTimes();
+            PutTimesToTable();
+            PutTimetables(mv);
             return View(mv);
         }
         public async Task<IActionResult> AddTimetableToShedule(MakeSheduleView mv,int id)
@@ -58,7 +60,8 @@ namespace SportClub.Controllers
                 //ts.Add(t1);
                 mv.times.Add(t1);
             }
-
+            PutTimesToTable();
+            PutTimetables(mv);
             return View("MakeShedule",mv);
         }
         public async Task<IActionResult> AddTimesToTable(MakeSheduleView mv)
@@ -67,6 +70,7 @@ namespace SportClub.Controllers
             timesT.Add(p);
             await PutTimes();
             PutTimesToTable();
+            PutTimetables(mv);
             return View("MakeShedule",mv);
         }
         [HttpPost]
@@ -88,12 +92,21 @@ namespace SportClub.Controllers
                 mv.times.Add(t1);
                 timesT.Clear();
                 PutTimetables(mv);
+                IEnumerable<TimetableDTO> t2 = await timetableService.GetAllTimetables();
+                ViewData["TimetableId"] = new SelectList(t2, "Id", "Name");
+                await PutTimes();
+                PutTimesToTable();
+                PutTimetables(mv);
                 return View("MakeShedule",mv);
             }
             else
             {
                 await PutTimes();
                 PutTimesToTable();
+                IEnumerable<TimetableDTO> t3 = await timetableService.GetAllTimetables();
+                ViewData["TimetableId"] = new SelectList(t3, "Id", "Name");
+                await PutTimes();
+                PutTimetables(mv);
                 return View();
             }
         }
@@ -145,18 +158,35 @@ namespace SportClub.Controllers
                         Time = t.StartTime + "/" + t.EndTime
                     };
                     p1.Add(ts);
-                }
-                // MakeViewData(p1, t1, "MondayId");
+                }            
                 ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
             }
             if (mv.times.Count == 2)
             {
                 List<TimeShow> p1 = new();
-                IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));                
-                MakeViewData(p1, t1, "MondayId");
+                IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var t in t1)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p1.Add(ts);
+                }
+                ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
                 List<TimeShow> p2 = new();
-                IEnumerable<TimeTDTO> t2 = mv.times[1].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                MakeViewData(p2, t2, "TuesdayId");
+                IEnumerable<TimeTDTO> t2 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var t in t2)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p2.Add(ts);
+                }
+                ViewData["TuesdayId"] = new SelectList(p2, "Id", "Time");
             }
             if (mv.times.Count == 3)
             {
@@ -230,26 +260,29 @@ namespace SportClub.Controllers
             {
                 List<TimeShow> p1 = new();
                 IEnumerable<TimeTDTO> t1 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                /* foreach (var t in p2)
-                 {
-                     TimeShow ts = new()
-                     {
-                         Id = t.Id,
-                         Time = t.StartTime + "/" + t.EndTime
-                     };
-                     p1.Add(ts);
-                 }
-                 ViewData["MondayId"] = new SelectList(p1, "Id", "Time");*/
-                MakeViewData(p1, t1, "MondayId");
-                /* mv.tun = t[1];
-                 mv.we = t[2];
-                 mv.th = t[3];
-                 mv.fr = t[4];
-                 mv.sa = t[5];
-                 mv.su = t[6];*/
+                foreach (var t in t1)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p1.Add(ts);
+                }
+                ViewData["MondayId"] = new SelectList(p1, "Id", "Time");
                 List<TimeShow> p2 = new();
-                IEnumerable<TimeTDTO> t2 = mv.times[1].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                MakeViewData(p2, t2, "TuesdayId");
+                IEnumerable<TimeTDTO> t2 = mv.times[0].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var t in t2)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p2.Add(ts);
+                }
+                ViewData["TuesdayId"] = new SelectList(p2, "Id", "Time");
+              
                 List<TimeShow> p3 = new();
                 IEnumerable<TimeTDTO> t3 = mv.times[2].T.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
                 MakeViewData(p3, t3, "WednesdayId");
