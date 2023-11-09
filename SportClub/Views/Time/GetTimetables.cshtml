@@ -1,17 +1,52 @@
-﻿@model IEnumerable<SportClub.Models.TimetableShow>
-
+﻿@*@model IEnumerable<SportClub.Models.TimetableShow>*@
+ @model  MakeSheduleView
 @{
     ViewData["Title"] = "Timetables";
 }
+<h4>Графики:</h4>
 <div class="flex">
-    @foreach (var item in Model)
+    
+    @foreach (var item in Model.times)
     {
         <div>
-            <input type="number" value="@item.Id"> <br />
+          <form method="post">
+               <input type="hidden" name="roomId" value="@Model.room.Id" />
+              <input type="hidden" name="id" value="@item.Id" />
             @foreach (var t in item.Times)
             {
-                <input type="text" value="@t"> <br />
+                <input type="text" value="@t" style="width:150px;"> <br />
             }
+            <input type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary c2" />
+            </form>
         </div>
     }
+</div>
+<div>
+    <h1>@Model.room.Name</h1>
+    <table style="border-collapse: collapse; border: 1px solid black;">
+        <thead>
+        <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
+        <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
+        <th style=" padding: 8px; border: 1px solid black;">Среда</th>
+        <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
+        <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
+        <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
+        <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
+        </thead>
+        <tbody>
+<tr>
+                @foreach (var item in Model.timesAdded)
+                {
+                    <td>
+                                                                          
+                            @foreach (var t in item.Times)
+                            {
+                                <input type="text" value="@t" style="width:150px;"> <br />
+                            }                         
+                       
+                    </td>
+                }
+</tr>
+</tbody>
+    </table>
 </div>

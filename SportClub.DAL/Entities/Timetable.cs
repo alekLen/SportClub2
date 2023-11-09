@@ -11,6 +11,6 @@ namespace SportClub.DAL.Entities
         public int Id { get; set; }
         public List<TimeT> Times{ get; set; }=new List<TimeT>();
        // public List<Shedule> Shedules { get; set; } = new List<Shedule>();
-        public Shedule Shedule { get; set; }
+       // public Shedule? Shedule { get; set; }
     }
 }

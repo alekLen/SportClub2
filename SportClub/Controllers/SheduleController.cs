@@ -64,7 +64,7 @@ namespace SportClub.Controllers
             PutTimetables(mv);
             return View("MakeShedule",mv);
         }
-        public async Task<IActionResult> AddTimesToTable(MakeSheduleView mv)
+       /* public async Task<IActionResult> AddTimesToTable(MakeSheduleView mv)
         {
             TimeTDTO p = await timeService.GetTimeT(mv.newT.Id);
             timesT.Add(p);
@@ -72,9 +72,9 @@ namespace SportClub.Controllers
             PutTimesToTable();
             PutTimetables(mv);
             return View("MakeShedule",mv);
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddTimeTable(MakeSheduleView mv, int id)
+        }*/
+       // [HttpPost]
+     /*   public async Task<IActionResult> AddTimeTable(MakeSheduleView mv, int id)
         {
             if (timesT.Count > 0)
             {
@@ -109,7 +109,7 @@ namespace SportClub.Controllers
                 PutTimetables(mv);
                 return View();
             }
-        }
+        }*/
         public void PutTimesToTable()
         {
 

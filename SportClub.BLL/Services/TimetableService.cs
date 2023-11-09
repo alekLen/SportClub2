@@ -49,7 +49,7 @@ namespace SportClub.BLL.Services
         {
             Timetable a = await Database.Timetables.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong", "");
+                return null;
             TimetableDTO tt = new();
             foreach (var t in a.Times)
             {

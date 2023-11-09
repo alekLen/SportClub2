@@ -15,19 +15,22 @@ namespace SportClub.Controllers
     public class TimeController : Controller
     {
         private readonly IAdmin adminService;
+        private readonly IRoom roomService;
         private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly ITime timeService;
         private readonly ITimetable timetableService;
         private readonly ISpeciality specialityService;
         private static List<TimeTDTO> timesT=new();
-        public TimeController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService)
+        private static List<TimetableDTO> timetables = new();
+        public TimeController(IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             timeService = t;
             specialityService = sp;
+            roomService=room;
             this.timetableService = timetableService;
         }
         [HttpGet]
@@ -209,7 +212,14 @@ namespace SportClub.Controllers
              ViewData["TimetableId"] = new SelectList(p1, "Id", "Time");
          }
         [HttpGet]
-        public async Task<IActionResult> GetAllTimetable()
+        public async Task <IActionResult> ChoseRomm()
+        {
+            IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
+            ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
+            return View("ChoseRomm");
+        }
+        [HttpPost]
+        public async Task<IActionResult> GetAllTimetable(int Id)
         {
             List<TimetableShow> ts = new();
             IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
@@ -226,8 +236,57 @@ namespace SportClub.Controllers
                 }
                 ts.Add(t1);
             }
-        
-            return View("GetTimetables",ts);
+           // IEnumerable<RoomDTO> r= await roomService.GetAllRooms();
+           RoomDTO r=await roomService.GetRoom(Id);
+            MakeSheduleView m = new();
+            m.times = ts;
+            m.room = r;
+           // ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
+            // return View("GetTimetables",ts);
+            return View("GetTimetables", m);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddTimetableToShedule(int id, int roomId)
+        {
+            TimetableDTO tt=await timetableService.GetTimetable(id);
+            if(timetables.Count<7)
+                timetables.Add(tt);
+            RoomDTO r = await roomService.GetRoom(roomId);
+            List<TimetableShow> ts = new();
+            IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
+            foreach (var t in p)
+            {
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                    string st = td.StartTime + "/" + td.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts.Add(t1);
+            }
+            List<TimetableShow> ts2 = new();        
+            foreach (var t in timetables)
+            {
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                    string st = td.StartTime + "/" + td.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts2.Add(t1);
+            }
+
+            MakeSheduleView m = new();
+            m.times = ts;
+            m.room = r;
+            m.timesAdded = ts2;
+            return View("GetTimetables", m);
         }
     }
 }

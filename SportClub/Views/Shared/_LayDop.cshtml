@@ -58,7 +58,7 @@
             }
         }
        
-       @if (Context.Session.GetString("client") != null)
+         @if (Context.Session.GetString("client") != null)
         {
              @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
             {
@@ -67,7 +67,7 @@
                 </div>
             }
         }
-                else if (Context.Session.GetString("coach") != null )
+        else if (Context.Session.GetString("coach") != null )
         {
             @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
             {
@@ -75,6 +75,15 @@
                     <input class="y" type="submit" value="Profile" />&nbsp;
                 </div>
             }
+        }
+        else if (Context.Session.GetString("admin") != null)
+         {
+             @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
+             {
+                  <div>
+                       <input class="y" type="submit" value="Profile" />&nbsp;
+                  </div>
+             }
         }
         else 
         {
@@ -102,7 +111,7 @@
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Add Post</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Добавить график</a>
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="GetAllTimetable">все графики</a>
+                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить график</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Add Speciality</a>
                 <a class="nav-link text-dark card2" asp-area="" asp-controller="Shedule" asp-action="MakeShedule">Timetable to room</a>
 

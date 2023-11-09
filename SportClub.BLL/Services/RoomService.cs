@@ -42,14 +42,21 @@ namespace SportClub.BLL.Services
         }
         public async Task<RoomDTO> GetRoom(int id)
         {
+            int shId = 0;
             Room a = await Database.Rooms.Get(id);
             if (a == null)
                 return null;
+            if (a.Shedule != null)
+            {
+                Shedule sh = await Database.Shedules.Get(a.Shedule.Id);
+                shId = sh.Id;
+            }
+          
             return new RoomDTO
             {
                 Id = a.Id,
                 Name = a.Name,
-                sheduleId = a.Shedule.Id
+                sheduleId = shId
             };
         }
         public async Task<IEnumerable<RoomDTO>> GetAllRooms()

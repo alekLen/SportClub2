@@ -15,11 +15,11 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Room>> GetAll()
         {
-            return await db.Rooms.ToListAsync();
+            return await db.Rooms.Include(r => r.Shedule).ToListAsync();
         }
         public async Task<Room> Get(int id)
         {
-            return await db.Rooms.FirstOrDefaultAsync(m => m.Id == id);
+            return await db.Rooms.Include(r=>r.Shedule).FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(Room c)
         {

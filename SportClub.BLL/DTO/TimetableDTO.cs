@@ -10,6 +10,6 @@ namespace SportClub.BLL.DTO
     {
         public int Id { get; set; }
         public List<int> TimesId { get; set; } = new();
-        public int SheduleId { get; set; }  
+        public int? SheduleId { get; set; }  
     }
 }
