@@ -21,6 +21,12 @@
             </form>
         </div>
     }
+    <form method="post">
+    <input value="ВЫХОДНОЙ" readonly /><br />
+        <input type="hidden" name="roomId" value="@Model.room.Id" />
+        <input type="hidden" name="id" value=0 />
+    <input type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary c2" />
+    </form>
 </div>
 <div>
     <h1>@Model.room.Name</h1>

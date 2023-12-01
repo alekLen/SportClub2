@@ -22,14 +22,14 @@ namespace SportClub.BLL.Services
         public async Task AddShedule(SheduleDTO pDto,RoomDTO room)
         {
             var a = new Shedule();
-            a.Week.Clear();
-         foreach (var sh in pDto.timetables)
+          //  a.Week.Clear();
+        /* foreach (var sh in pDto.timetables)
             {
                 Timetable t = await Database.Timetables.Get(sh.Id);
-            // a.Week.Add(t);
-           a.Monday = t.Id;
-              }
-           // Timetable t2 = await Database.Timetables.Get(pDto.timetables[1].Id);
+             a.Week.Add(t);         
+              }*/
+            a.Monday = pDto.timetables[0].Id;
+            // Timetable t2 = await Database.Timetables.Get(pDto.timetables[1].Id);
             a.Tuesday = pDto.timetables[1].Id;
             //Timetable t3 = await Database.Timetables.Get(pDto.timetables[2].Id);
             a.Wednesday = pDto.timetables[2].Id;
@@ -48,10 +48,14 @@ namespace SportClub.BLL.Services
             r.Shedule = a;
             foreach (var sh in pDto.timetables)
             {
-                Timetable t = await Database.Timetables.Get(sh.Id);
-               t.Shedules.Add(a);
-                await Database.Timetables.Update(t);
-                await Database.Save();
+                if (sh.Id != 0)
+                {
+                    Timetable t = await Database.Timetables.Get(sh.Id);
+                    t.Shedules.Add(a);
+                    await Database.Timetables.Update(t);
+
+                    await Database.Save();
+                }
             }
             await Database.Rooms.Update(r);
             await Database.Save();
@@ -92,55 +96,111 @@ namespace SportClub.BLL.Services
                  }
                  tt.timetables.Add(tm1);
              }*/
-            Timetable t1 = await Database.Timetables.Get(a.Monday);
-            TimetableDTO tm1 = new();
-            foreach (var time in t1.Times)
+            if (a.Monday != 0)
             {
-                tm1.TimesId.Add(time.Id);
+                Timetable t1 = await Database.Timetables.Get(a.Monday);
+                TimetableDTO tm1 = new();
+                foreach (var time in t1.Times)
+                {
+                    tm1.TimesId.Add(time.Id);
+                }
+                tt.timetables.Add(tm1);
             }
-            tt.timetables.Add(tm1);
-            Timetable t2 = await Database.Timetables.Get(a.Tuesday);
-            TimetableDTO tm2 = new();
-            foreach (var time in t2.Times)
+            else
             {
-                tm2.TimesId.Add(time.Id);
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
             }
-            tt.timetables.Add(tm2);
-            Timetable t3 = await Database.Timetables.Get(a.Wednesday);
+            if (a.Tuesday != 0)
+            {
+                Timetable t2 = await Database.Timetables.Get(a.Tuesday);
+                TimetableDTO tm2 = new();
+                foreach (var time in t2.Times)
+                {
+                    tm2.TimesId.Add(time.Id);
+                }
+                tt.timetables.Add(tm2);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
+            if (a.Wednesday != 0)
+            {
+                Timetable t3 = await Database.Timetables.Get(a.Wednesday);
             TimetableDTO tm3 = new();
             foreach (var time in t3.Times)
             {
                 tm3.TimesId.Add(time.Id);
             }
             tt.timetables.Add(tm3);
-            Timetable t4 = await Database.Timetables.Get(a.Thursday);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
+            if (a.Thursday != 0)
+            {
+                Timetable t4 = await Database.Timetables.Get(a.Thursday);
             TimetableDTO tm4 = new();
             foreach (var time in t4.Times)
             {
                 tm4.TimesId.Add(time.Id);
             }
             tt.timetables.Add(tm4);
-            Timetable t5 = await Database.Timetables.Get(a.Friday);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
+            if (a.Friday != 0)
+            {
+                Timetable t5 = await Database.Timetables.Get(a.Friday);
             TimetableDTO tm5 = new();
             foreach (var time in t5.Times)
             {
                 tm5.TimesId.Add(time.Id);
             }
             tt.timetables.Add(tm5);
-            Timetable t6 = await Database.Timetables.Get(a.Saturday);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
+            if (a.Saturday != 0)
+            {
+                Timetable t6 = await Database.Timetables.Get(a.Saturday);
             TimetableDTO tm6 = new();
             foreach (var time in t6.Times)
             {
                 tm6.TimesId.Add(time.Id);
             }
             tt.timetables.Add(tm6);
-            Timetable t7 = await Database.Timetables.Get(a.Sunday);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
+            if (a.Sunday != 0)
+            {
+                Timetable t7 = await Database.Timetables.Get(a.Sunday);
             TimetableDTO tm7 = new();
             foreach (var time in t7.Times)
             {
                 tm7.TimesId.Add(time.Id);
             }
             tt.timetables.Add(tm7);
+            }
+            else
+            {
+                TimetableDTO tm1 = new();
+                tt.timetables.Add(tm1);
+            }
 
             return tt;
         }
