@@ -12,31 +12,50 @@ namespace SportClub.BLL.Services
 {
     public class SheduleService : IShedule
     {
+        
         IUnitOfWork Database { get; set; }
 
         public SheduleService(IUnitOfWork uow)
         {
             Database = uow;
         }
-        public async Task AddShedule(SheduleDTO pDto)
+        public async Task AddShedule(SheduleDTO pDto,RoomDTO room)
         {
             var a = new Shedule();
-           /* Timetable t1 = await Database.Timetables.Get(pDto.MondayId);
-            a.Monday = t1;
-            Timetable t2 = await Database.Timetables.Get(pDto.TuesdayId);
-            a.Tuesday = t2;
-            Timetable t3 = await Database.Timetables.Get(pDto.WednesdayId);
-            a.Wednesday = t3;
-            Timetable t4 = await Database.Timetables.Get(pDto.ThursdayId);
-            a.Thursday = t4;
-            Timetable t5 = await Database.Timetables.Get(pDto.FridayId);
-            a.Friday = t5;
-            Timetable t6 = await Database.Timetables.Get(pDto.SaturdayId);
-            a.Saturday = t6;
-            Timetable t7 = await Database.Timetables.Get(pDto.SundayId);
-            a.Sunday = t7;
+            a.Week.Clear();
+         foreach (var sh in pDto.timetables)
+            {
+                Timetable t = await Database.Timetables.Get(sh.Id);
+            // a.Week.Add(t);
+           a.Monday = t.Id;
+              }
+           // Timetable t2 = await Database.Timetables.Get(pDto.timetables[1].Id);
+            a.Tuesday = pDto.timetables[1].Id;
+            //Timetable t3 = await Database.Timetables.Get(pDto.timetables[2].Id);
+            a.Wednesday = pDto.timetables[2].Id;
+           // Timetable t4 = await Database.Timetables.Get(pDto.timetables[3].Id);
+            a.Thursday = pDto.timetables[3].Id;
+            //Timetable t5 = await Database.Timetables.Get(pDto.timetables[4].Id);
+            a.Friday = pDto.timetables[4].Id;
+          //  Timetable t6 = await Database.Timetables.Get(pDto.timetables[5].Id);
+            a.Saturday = pDto.timetables[5].Id;
+          //  Timetable t7 = await Database.Timetables.Get(pDto.timetables[6].Id);
+            a.Sunday = pDto.timetables[6].Id;
+
             await Database.Shedules.AddItem(a);
-            await Database.Save();*/
+            await Database.Save();
+            Room r= await Database.Rooms.Get(room.Id);
+            r.Shedule = a;
+            foreach (var sh in pDto.timetables)
+            {
+                Timetable t = await Database.Timetables.Get(sh.Id);
+               t.Shedules.Add(a);
+                await Database.Timetables.Update(t);
+                await Database.Save();
+            }
+            await Database.Rooms.Update(r);
+            await Database.Save();
+                    
         }
        /* public async Task AddTimetableToShedule(string start, string end, TimetableDTO time)
         {
@@ -62,35 +81,67 @@ namespace SportClub.BLL.Services
             if (a == null)
                 return null;
             SheduleDTO tt = new();
-            tt.Id= id;
-           /* if (a.Monday != null)
-                tt.MondayId = a.Monday.Id;
-            else
-                tt.MondayId = 0;
-            if (a.Tuesday != null)
-                tt.TuesdayId = a.Tuesday.Id;
-            else
-                tt.TuesdayId = 0;
-            if (a.Wednesday != null)
-                tt.WednesdayId = a.Wednesday.Id;
-            else
-                tt.WednesdayId = 0;
-            if (a.Thursday != null)
-                tt.ThursdayId = a.Thursday.Id;
-            else
-                tt.ThursdayId = 0;
-           if (a.Friday != null)
-                tt.FridayId = a.Friday.Id;
-            else
-                tt.FridayId = 0;
-            if (a.Saturday != null)
-                tt.SaturdayId = a.Saturday.Id;
-            else
-                tt.SaturdayId = 0;
-            if (a.Sunday != null)
-                tt.SundayId = a.Sunday.Id;
-            else
-                tt.SundayId = 0;*/
+            tt.Id = a.Id;
+            /* foreach (var t in a.Week)
+             {
+                 Timetable t1 = await Database.Timetables.Get(t.Id);
+                 TimetableDTO tm1 = new();
+                 foreach (var time in t1.Times)
+                 {
+                     tm1.TimesId.Add(time.Id);
+                 }
+                 tt.timetables.Add(tm1);
+             }*/
+            Timetable t1 = await Database.Timetables.Get(a.Monday);
+            TimetableDTO tm1 = new();
+            foreach (var time in t1.Times)
+            {
+                tm1.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm1);
+            Timetable t2 = await Database.Timetables.Get(a.Tuesday);
+            TimetableDTO tm2 = new();
+            foreach (var time in t2.Times)
+            {
+                tm2.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm2);
+            Timetable t3 = await Database.Timetables.Get(a.Wednesday);
+            TimetableDTO tm3 = new();
+            foreach (var time in t3.Times)
+            {
+                tm3.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm3);
+            Timetable t4 = await Database.Timetables.Get(a.Thursday);
+            TimetableDTO tm4 = new();
+            foreach (var time in t4.Times)
+            {
+                tm4.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm4);
+            Timetable t5 = await Database.Timetables.Get(a.Friday);
+            TimetableDTO tm5 = new();
+            foreach (var time in t5.Times)
+            {
+                tm5.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm5);
+            Timetable t6 = await Database.Timetables.Get(a.Saturday);
+            TimetableDTO tm6 = new();
+            foreach (var time in t6.Times)
+            {
+                tm6.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm6);
+            Timetable t7 = await Database.Timetables.Get(a.Sunday);
+            TimetableDTO tm7 = new();
+            foreach (var time in t7.Times)
+            {
+                tm7.TimesId.Add(time.Id);
+            }
+            tt.timetables.Add(tm7);
+
             return tt;
         }
         public async Task<IEnumerable<SheduleDTO>> GetAllShedules()

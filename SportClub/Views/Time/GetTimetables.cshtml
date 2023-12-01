@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Timetables";
 }
+
 <h4>Графики:</h4>
 <div class="flex">
     
@@ -38,6 +39,7 @@
                 @foreach (var item in Model.timesAdded)
                 {
                     <td>
+                        <input type="hidden" name="tId" value="@item.Id" />
                                                                           
                             @foreach (var t in item.Times)
                             {
@@ -49,4 +51,8 @@
 </tr>
 </tbody>
     </table>
+    <form method="post">
+        <input type="hidden" name="rId" value="@Model.room.Id" />
+        <input type="submit" asp-controller="Time" asp-action="SaveShedule" value="Сохранить график работы" class="btn btn-primary c2" />
+    </form>
 </div>

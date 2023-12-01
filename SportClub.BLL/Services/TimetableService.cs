@@ -47,13 +47,18 @@ namespace SportClub.BLL.Services
         }
         public async Task<TimetableDTO> GetTimetable(int id)
         {
-            Timetable a = await Database.Timetables.Get(id);
+            Timetable a = await Database.Timetables.Get(id);         
             if (a == null)
-                return null;
+                return null;        
             TimetableDTO tt = new();
+            tt.Id = a.Id;
             foreach (var t in a.Times)
             {
                tt.TimesId.Add(t.Id);
+            }
+            foreach (var t1 in a.Shedules)
+            {
+                tt.SheduleId.Add(t1.Id);
             }
             return tt;
         }

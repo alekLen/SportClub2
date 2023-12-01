@@ -16,11 +16,11 @@ namespace SportClub.BLL.Services
         }
         public async Task AddRoom(RoomDTO pDto)
         {
-            Shedule sh = await Database.Shedules.Get(pDto.sheduleId.Value);
+           // Shedule sh = await Database.Shedules.Get(pDto.sheduleId.Value);
             var a = new Room()
             {
                 Name = pDto.Name,
-                Shedule=sh
+               // Shedule=sh
             };
             await Database.Rooms.AddItem(a);
             await Database.Save();

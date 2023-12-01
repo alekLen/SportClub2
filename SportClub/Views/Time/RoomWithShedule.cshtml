@@ -1,0 +1,36 @@
+﻿@model MakeSheduleView
+@{
+    ViewData["Title"] = "Timetables";
+}
+<form method="post">
+   
+        <h1>@Model.room.Name</h1>
+        <table style="border-collapse: collapse; border: 1px solid black;">
+            <thead>
+            <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
+            <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
+            <th style=" padding: 8px; border: 1px solid black;">Среда</th>
+            <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
+            <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
+            <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
+            <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (var item in Model.times)
+                    {
+                        <td>
+
+                            @foreach (var t in item.Times)
+                            {
+                                <input type="text" value="@t" style="width:150px;"> <br />
+                            }
+
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" formaction="" value="Сохранить..." class="btn btn-primary c2" />
+    
+</form>

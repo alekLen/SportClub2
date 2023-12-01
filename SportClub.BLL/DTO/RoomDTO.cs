@@ -11,5 +11,6 @@ namespace SportClub.BLL.DTO
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public int? sheduleId { get; set; }
+       // public SheduleDTO? sheduleDto { get; set; }
     }
 }

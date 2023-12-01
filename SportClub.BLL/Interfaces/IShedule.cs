@@ -9,7 +9,7 @@ namespace SportClub.BLL.Interfaces
 {
     public interface IShedule
     {
-        Task AddShedule(SheduleDTO pDto);
+        Task AddShedule(SheduleDTO pDto, RoomDTO room);
         Task<SheduleDTO> GetShedule(int id);
         Task<IEnumerable<SheduleDTO>> GetAllShedules();
         Task DeleteShedule(int id);
