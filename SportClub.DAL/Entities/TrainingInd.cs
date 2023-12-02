@@ -10,14 +10,14 @@ namespace SportClub.DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public TimeT Time { get; set; }
+        public string Time { get; set; }
        // public Timetable Timetable { get; set; }
         public int Day {  get; set; }
         public Room Room { get; set; }
         public Coach Coach { get; set; } 
-        public User User { get; set; }
-        public  Speciality Speciality { get; set; }
+        public User? User { get; set; }
+      //  public  Speciality Speciality { get; set; }
         //  public TypeOfTraining typeOfTraining { get; set; }
-        public bool available { get; set; } = true;
+      //  public bool available { get; set; } = true;
     }
 }

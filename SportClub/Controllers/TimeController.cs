@@ -22,6 +22,7 @@ namespace SportClub.Controllers
         private readonly ITimetable timetableService;
         private readonly IShedule sheduleService;
         private readonly ISpeciality specialityService;
+        private readonly ITrainingInd trainingIndService;
         private static List<TimeTDTO> timesT=new();
         private static List<TimetableDTO> timetables = new();
         public TimeController(IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService)
@@ -385,6 +386,7 @@ namespace SportClub.Controllers
             training.Time = time;
             training.Day = day;
             training.RoomName=roomName;
+            training.UserId = 0;
             if (day == 0) training.DayName = "Понедельник";
             else if (day == 1) training.DayName = "Вторник";
             else if (day == 2) training.DayName = "Среда";
@@ -392,8 +394,58 @@ namespace SportClub.Controllers
             else if (day == 4) training.DayName = "Пятница";
             else if (day == 5) training.DayName = "Суббота";
             else if (day == 6) training.DayName = "Воскресенье";
-
+            IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
+            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
             return View(training);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ToAddTrainingInd(int day, int roomId, string time, string roomName, int coachId,int userId,string userName)
+        {
+            TrainingIndDTO tr = new();
+            tr.CoachId = coachId;
+            tr.RoomId = roomId;
+            tr.RoomName = roomName;
+            tr.Day = day;
+            tr.Time = time;
+            tr.UserId = userId;
+            tr.UserName = userName;
+           
+            await trainingIndService.AddTrainingInd(tr);
+            return View("RoomwithShedule");
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddUserToTrainingInd(int day, int roomId, string time, string roomName, int coachId)
+        {
+            TrainingIndDTO tr = new();
+            tr.CoachId = coachId;
+            tr.RoomId = roomId;
+            tr.RoomName = roomName;
+            tr.Day = day;
+            tr.Time = time;
+            IEnumerable<UserDTO> p = await userService.GetAllUsers();
+            ViewData["UserId"] = new SelectList(p, "Id", "Name");
+
+            await trainingIndService.AddTrainingInd(tr);
+            return View(tr);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddingToTrainingInd(int day, int roomId, string time, string roomName, int coachId,int userId)
+        {
+            TrainingIndDTO tr = new();
+            tr.CoachId = coachId;
+            tr.RoomId = roomId;
+            tr.RoomName = roomName;
+            tr.Day = day;
+            tr.Time = time;
+            if (userId != 0)
+            {
+                UserDTO user = await userService.GetUser(userId);
+                tr.UserId = user.Id;
+                tr.UserName = user.Name;
+            }
+           
+            await trainingIndService.AddTrainingInd(tr);
+            return View("AddIndTraining",tr);
         }
     }
 }

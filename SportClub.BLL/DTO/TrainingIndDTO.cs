@@ -20,8 +20,10 @@ namespace SportClub.BLL.DTO
         public int? CoachId { get; set; }
         public string? UserName { get; set; }
         public int? UserId { get; set; }
-        public string? SpecialityName { get; set; }
-        public int? SpecialityId { get; set; }
+       /// <summary>
+       //public string? SpecialityName { get; set; }
+       /// </summary>
+      //  public int? SpecialityId { get; set; }
         //  public int typeOfTrainingId { get; set; }
     }
 }

@@ -4,8 +4,21 @@
 <form>
     <div>
         <input type="hidden" name="day" value="@Model.Day" />
-        <input  name="dayName" value="@Model.DayName" />
+        <input  name="dayName" value="@Model.DayName" readonly/>
+        <input name="time" value="@Model.Time" readonly/><br />
         <input type="hidden" name="roomId" value="@Model.RoomId" />
-        <input  name="roomName" value="@Model.RoomName" />
+        <input  name="roomName" value="@Model.RoomName" readonly/><br />
+        <label>Выбрать тренера</label>
+        <select asp-for="Id" name="coachId" class="form-control card _c7" asp-items="ViewBag.CoachId"></select>
+        @if (@Model.UserId == 0)
+        {
+            <input type="submit" value="Добавить пользователя" formaction="AddUserToTrainingInd"/>
+        }
+        else
+        {
+            <input name="userId" value="@Model.UserId" type="hidden" />
+            <input name="userName" value="@Model.UserName" readonly />
+        }
+        <input type="submit" value="Сохранить" formaction="ToAddTrainingInd" />
     </div>
 </form>

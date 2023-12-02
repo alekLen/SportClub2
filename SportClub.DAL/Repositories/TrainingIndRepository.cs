@@ -16,20 +16,20 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<TrainingInd>> GetAll()
         {
-            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
+            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Room).ToListAsync();
         }
         public async Task<IEnumerable<TrainingInd>> GetAllOfCoach(int id)
         {
-            return await db.TrainingsInd.Where((p) => p.Coach.Id == id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
+            return await db.TrainingsInd.Where((p) => p.Coach.Id == id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Room).ToListAsync();
         }
         public async Task<IEnumerable<TrainingInd>> GetAllOfClient(int id)
         {
-            return await db.TrainingsInd.Where((p) => p.User.Id==id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).ToListAsync();
+            return await db.TrainingsInd.Where((p) => p.User.Id==id).Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Room).ToListAsync();
         }
 
         public async Task<TrainingInd> Get(int id)
         {
-            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Speciality).Include((p) => p.Time).FirstOrDefaultAsync(m => m.Id == id);
+            return await db.TrainingsInd.Include((p) => p.User).Include((p) => p.Coach).Include((p) => p.Room).FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(TrainingInd c)
         {
