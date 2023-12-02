@@ -57,10 +57,10 @@ namespace SportClub.Controllers
         {
             try
             {
-                TrainingIndDTO t = await trainingIndService.GetTrainingInd(c.Id);
+                TrainingIndDTO t = await trainingIndService.GetTrainingInd(c.Id.Value);
                 t.Id = c.Id;
                 t.Name = c.Name;
-                t.TimeId = c.TimeId;
+                //t.TimeId = c.TimeId;
                 t.RoomId = c.RoomId;
                 t.CoachName = c.CoachName;
                 t.CoachId = c.CoachId;

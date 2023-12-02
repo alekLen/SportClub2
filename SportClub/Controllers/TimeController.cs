@@ -339,6 +339,7 @@ namespace SportClub.Controllers
             catch { }
             MakeSheduleView m = new();
             m.room = room;
+           // m.shedule = room.sheduleId;
             if (shDto != null)
             {
                 m.times = new();
@@ -375,6 +376,24 @@ namespace SportClub.Controllers
                 m.message = "для зала не составлен график";
             }
             return View(m);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddIndTraining(int day, int roomId, string time, string roomName)
+        {
+            TrainingIndDTO training = new();
+            training.RoomId = roomId;
+            training.Time = time;
+            training.Day = day;
+            training.RoomName=roomName;
+            if (day == 0) training.DayName = "Понедельник";
+            else if (day == 1) training.DayName = "Вторник";
+            else if (day == 2) training.DayName = "Среда";
+            else if (day == 3) training.DayName = "Четверг";
+            else if (day == 4) training.DayName = "Пятница";
+            else if (day == 5) training.DayName = "Суббота";
+            else if (day == 6) training.DayName = "Воскресенье";
+
+            return View(training);
         }
     }
 }

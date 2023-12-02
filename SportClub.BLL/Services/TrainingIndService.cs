@@ -19,7 +19,7 @@ namespace SportClub.BLL.Services
 
         public async Task AddTrainingInd(TrainingIndDTO pDto)
         {
-            TimeT t = await Database.Times.Get(pDto.TimeId);
+            //TimeT t = await Database.Times.Get(pDto.TimeId);
             Room r = await Database.Rooms.Get(pDto.RoomId);
             Coach c = await Database.Coaches.Get(pDto.CoachId.Value);
             User u = await Database.Users.Get(pDto.UserId.Value);
@@ -27,7 +27,7 @@ namespace SportClub.BLL.Services
             var a = new TrainingInd()
             {
                 Name = pDto.Name,
-                Time = t,
+               // Time = t,
                 Room = r,
                 Coach = c,
                 User =u,
@@ -45,7 +45,7 @@ namespace SportClub.BLL.Services
             {
                 Id = a.Id,
                 Name = a.Name,
-         TimeId =a.Time.Id,
+      //  TimeId =a.Time.Id,
          RoomId =a.Room.Id,
          CoachName =a.Coach.Name,
          CoachId =a.Coach.Id,
@@ -104,15 +104,15 @@ namespace SportClub.BLL.Services
         }
         public async Task UpdateTrainingInd(TrainingIndDTO a)
         {
-            TimeT t = await Database.Times.Get(a.TimeId);
+          //  TimeT t = await Database.Times.Get(a.TimeId);
             Room r = await Database.Rooms.Get(a.RoomId);
             Coach c = await Database.Coaches.Get(a.CoachId.Value);
             User u = await Database.Users.Get(a.UserId.Value);
             Speciality s = await Database.Specialitys.Get(a.SpecialityId.Value);
-            TrainingInd tr = await Database.TrainingInds.Get(a.Id);
-            tr.Id = a.Id;
+            TrainingInd tr = await Database.TrainingInds.Get(a.Id.Value);
+           // tr.Id = a.Id;
             tr.Name = a.Name;
-            tr.Time = t;
+            //tr.Time = t;
             tr.Room = r;
             tr.Coach = c;
             tr.User = u;

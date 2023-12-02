@@ -15,20 +15,30 @@
             <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
             <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
             </thead>
-            <tbody>
+            <tbody>              
                 <tr>
                     @foreach (var item in Model.times)
                     {
                         <td>
 
-                            @foreach (var t in item.Times)
+                            @for (var t=0;t<item.Times.Count;t++)
                             {
-                                <input type="text" value="@t" style="width:150px;"> <br />
+                            <input type="hidden" name="day" value="@t" />
+                            <input type="hidden" name="roomId" value="@Model.room.Id" />
+                            <input type="hidden" name="roomName" value="@Model.room.Name" />
+                           
+                            <input type="text" name="time" value="@item.Times[t]" style="width:100px;" readonly> <br />
+                            @if (@item.Times[t] != "Выходной")
+                            {
+                                <input type="submit" formaction="AddIndTraining" value="Добавить индивидуальную тренировку" /> <br />
+                                <input type="submit" formaction="AddGroupTraining" value="Добавить групповую тренировку" />  <br />
                             }
+                        }
 
                         </td>
                     }
                 </tr>
+
             </tbody>
         </table>
        <h1>@Model.message</h1>
