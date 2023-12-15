@@ -34,8 +34,8 @@ namespace SportClub.BLL.Services
             var a = new Admin()
             {              
                 Name = adminDto.Name,
-                Surname = adminDto.Surname,
-                Dopname = adminDto.Dopname,
+              //  Surname = adminDto.Surname,
+               // Dopname = adminDto.Dopname,
                 DateOfBirth = adminDto.DateOfBirth,
                 Phone = adminDto.Phone,
                 Email = adminDto.Email,
@@ -88,8 +88,8 @@ namespace SportClub.BLL.Services
         {
             Admin admin= await Database.Admins.Get(a.Id);
             admin.Name = a.Name;
-            admin.Surname = a.Surname;
-            admin.Dopname = a.Dopname;
+           // admin.Surname = a.Surname;
+           // admin.Dopname = a.Dopname;
             admin.DateOfBirth = a.DateOfBirth;
             admin.Phone = a.Phone;
             admin.Email = a.Email;

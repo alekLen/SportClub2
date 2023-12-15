@@ -29,7 +29,7 @@ namespace SportClub.DAL.EF
                 s.salt = salt;
                 string password = salt + pass;
                 string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-                Admin a = new Admin { Name = "Elena", Surname = "Alekseeva", Login = "admin", Password = hashedPassword, DateOfBirth = "27-11-2002", Email = "asd@gmail.com", Phone = "0971234567", Gender = "female" };
+                Admin a = new Admin { Name = "Elena",/* Surname = "Alekseeva",*/ Login = "admin", Password = hashedPassword, DateOfBirth = "27-11-2002", Email = "asd@gmail.com", Phone = "0971234567", Gender = "female", Level = 2 };
                 Admins.Add(a);
                 SaveChanges();
                 s.admin = a;

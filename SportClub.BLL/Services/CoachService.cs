@@ -35,8 +35,8 @@ namespace SportClub.BLL.Services
             var a = new Coach()
             {
                 Name = cDto.Name,
-                Surname = cDto.Surname,
-                Dopname = cDto.Dopname,
+              //  Surname = cDto.Surname,
+              //  Dopname = cDto.Dopname,
                 DateOfBirth = cDto.DateOfBirth,
                 Phone = cDto.Phone,
                 Photo = cDto.Photo,
@@ -97,8 +97,8 @@ namespace SportClub.BLL.Services
                 Post p = await Database.Posts.Get(a.PostId.Value);
                 Speciality spec = await Database.Specialitys.Get(a.SpecialityId.Value);
                 c.Name = a.Name;
-                c.Surname = a.Surname;
-                c.Dopname = a.Dopname;
+               // c.Surname = a.Surname;
+               // c.Dopname = a.Dopname;
                 c.DateOfBirth = a.DateOfBirth;
                 c.Phone = a.Phone;
                 c.Photo = a.Photo;

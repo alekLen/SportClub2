@@ -10,6 +10,7 @@ namespace SportClub.DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
+        public string? Photo { get; set; } = string.Empty;
         public Shedule? Shedule { get; set; }    
     }
 }

@@ -44,15 +44,15 @@ namespace SportClub.Models
         public string Gender { get; set; }
         [Display(Name = "Name", ResourceType = typeof(Resources.Resource))]
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
-        [RegularExpression("^[a-zA-Z-а-яА-Я]+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
+        [RegularExpression("^[a-zA-Z-а-яА-Я,' ']+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
         public string Name { get; set; }
-        [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
+       /* [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Surname", ResourceType = typeof(Resources.Resource))]
         [RegularExpression("^[a-zA-Z-а-яА-Я]+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
         public string Surname { get; set; }
         [RegularExpression("^[a-zA-Z-а-яА-Я]+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
         [Display(Name = "Dopname", ResourceType = typeof(Resources.Resource))]
-        public string Dopname { get; set; }
+        public string Dopname { get; set; }*/
         
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Post", ResourceType = typeof(Resources.Resource))]

@@ -33,8 +33,8 @@ namespace SportClub.BLL.Services
             var a = new User()
             {
                 Name = uDto.Name,
-                Surname = uDto.Surname,
-                Dopname = uDto.Dopname,
+              //  Surname = uDto.Surname,
+               // Dopname = uDto.Dopname,
                 DateOfBirth = uDto.DateOfBirth,
                 Phone = uDto.Phone,
                 Email = uDto.Email,
@@ -97,8 +97,8 @@ namespace SportClub.BLL.Services
         {
             User u = await Database.Users.Get(a.Id);
             u.Name = a.Name;
-            u.Surname = a.Surname;
-            u.Dopname = a.Dopname;
+          //  u.Surname = a.Surname;
+          //  u.Dopname = a.Dopname;
             u.DateOfBirth = a.DateOfBirth;
             u.Phone = a.Phone;
             u.Email = a.Email;

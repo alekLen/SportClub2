@@ -105,8 +105,8 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-                u.Surname = user.Surname;
-                u.Dopname = user.Dopname;
+              //  u.Surname = user.Surname;
+               // u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
                 await userService.UpdateUser(u);
                 return RedirectToAction("ClientProfile");

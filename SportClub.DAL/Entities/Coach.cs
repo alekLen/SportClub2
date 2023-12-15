@@ -13,8 +13,8 @@ namespace SportClub.DAL.Entities
         public Speciality? Speciality { get; set; } = null;
         public string? Description { get; set; } = null;
         public string? Photo { get; set; } = null;
-        public string Login { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
+       // public string Login { get; set; } = string.Empty;
+      //  public string Password { get; set; } = string.Empty;
         public virtual List<TrainingInd>? trainingInds { get; set; }=new List<TrainingInd>();
         public virtual List<Group> groups { get; set; }=new List<Group>() { };
 

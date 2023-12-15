@@ -66,8 +66,8 @@ namespace SportClub.Controllers
                 t.CoachId = c.CoachId;
                 t.UserName = c.UserName;
                 t.UserId = c.UserId;
-                t.SpecialityName = c.SpecialityName;
-                t.SpecialityId = c.SpecialityId;
+               // t.SpecialityName = c.SpecialityName;
+               // t.SpecialityId = c.SpecialityId;
                  await trainingIndService.UpdateTrainingInd(t);
                 return RedirectToAction("GetTrainingInds");
             }

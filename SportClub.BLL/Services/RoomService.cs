@@ -20,6 +20,7 @@ namespace SportClub.BLL.Services
             var a = new Room()
             {
                 Name = pDto.Name,
+                Photo=pDto.Photo
                // Shedule=sh
             };
             await Database.Rooms.AddItem(a);
@@ -80,6 +81,7 @@ namespace SportClub.BLL.Services
             Room a = await Database.Rooms.Get(pDto.Id);
             Shedule sh = await Database.Shedules.Get(id);
             a.Name = pDto.Name;
+            a.Photo = pDto.Photo;
             a.Shedule = sh;
             await Database.Rooms.Update(a);
             await Database.Save();

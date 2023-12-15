@@ -95,8 +95,8 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-                u.Surname = user.Surname;
-                u.Dopname = user.Dopname;
+              //  u.Surname = user.Surname;
+              //  u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
 
                 /*  byte[] saltbuf = new byte[16];
@@ -179,8 +179,8 @@ namespace SportClub.Controllers
                     u.Phone = user.Phone;
                     u.Photo = path;
                     u.Name = user.Name;
-                    u.Surname = user.Surname;
-                    u.Dopname = user.Dopname;
+                  //  u.Surname = user.Surname;
+                  //  u.Dopname = user.Dopname;
                     u.DateOfBirth = user.DateOfBirth;
                     u.Password = user.Password;
                     u.Description = user.Description;
@@ -232,8 +232,8 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-                u.Surname = user.Surname;
-                u.Dopname = user.Dopname;
+              //  u.Surname = user.Surname;
+              //  u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
                 u.Password = user.Password;
                 try
