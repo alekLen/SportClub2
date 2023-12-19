@@ -7,3 +7,50 @@
 <div style="width:800px;height:300px;background-image: url('/Sport/2.jpg')">
 
 </div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("body").on("click", ".btn-Login", function (e) {
+                e.preventDefault();
+                $("<div id='dialogContent'></div>")
+                    .addClass("dialog")
+                    .appendTo("body")
+                    .load("/Login/Login")
+                    .dialog({
+                        title: "Авторизация",
+                        close: function () { $(this).remove() },
+                        modal: true,
+                        buttons: {
+                            "Войти": function () {
+                                $.ajax({
+                                    url: "@Url.Action("Login", "Login")",
+                                    type: "POST",
+                                    data: $('#formLog').serialize(),
+                                    datatype: "json",
+                                    success: function (response) {
+
+                                        if (response) {                                       
+                                           // $("#dialogContent").remove();
+                                            location.reload(true);
+                                        }
+                                        else {
+                                            let l2 = document.getElementById("error-login1");
+                                            l2.style.display = "inline";
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+            });
+        });
+
+
+
+
+    </script>
+}
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

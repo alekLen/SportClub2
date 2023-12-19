@@ -4,12 +4,14 @@
 @model SportClub.Models.LoginModel
 @using Microsoft.AspNetCore.Http
 
-
-    @using (Html.BeginForm())
+<form id="formLog">
+  @using (Html.BeginForm())
     {
       @Html.AntiForgeryToken()
-    <div class="center ">
-        <div class="card c22 login">
+        @* <div class="center ">*@
+        <span id="error-login1" style="color:red;display:none;">*не верный логин или пароль</span>
+
+        <div class="card c22 ">
             @if (Context.Session.GetString("login") == null)
             {
                 @Html.ValidationSummary(true, "")
@@ -29,14 +31,22 @@
                     </div>
                 </div>
 
-                <div>
+               @* <div>
                     <br>
                     <div>
                         <input type="submit" class="y" value="Вход" />
                     </div>
-                </div>
+                </div>*@
             }
         </div>
-        </div>
+        @* </div>*@
     }
+</form>
+<script>
+    let focusl = function () {
+        let l1 = document.getElementById("error-login1");
+        l1.style.display = "none";
+    }
+</script>
+
    
