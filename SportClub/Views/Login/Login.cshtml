@@ -9,9 +9,9 @@
     {
       @Html.AntiForgeryToken()
         @* <div class="center ">*@
-        <span id="error-login1" style="color:red;display:none;">*не верный логин или пароль</span>
+        <span id="error-login1" style="color:red;display:none;">* @Resources.Resource.loginpassword</span>
 
-        <div class="card c22 ">
+        <div class="paddingLeft ">
             @if (Context.Session.GetString("login") == null)
             {
                 @Html.ValidationSummary(true, "")

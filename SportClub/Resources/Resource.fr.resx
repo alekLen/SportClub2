@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Ajouter</value>
   </data>
-  <data name="AddArt" xml:space="preserve">
-    <value>ajouter un artiste</value>
-  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>L'artiste a été ajouté :  </value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="ArtSort" xml:space="preserve">
     <value>chanteurs</value>
+  </data>
+  <data name="Authorization" xml:space="preserve">
+    <value>Autorisation</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Dos</value>

@@ -72,9 +72,10 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to добавить исполнителя.
         /// </summary>
-        public static string AddArt {
+        public static string Authorization
+        {
             get {
-                return ResourceManager.GetString("AddArt", resourceCulture);
+                return ResourceManager.GetString("Authorization", resourceCulture);
             }
         }
         

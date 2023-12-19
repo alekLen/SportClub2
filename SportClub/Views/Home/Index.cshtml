@@ -9,6 +9,7 @@
 </div>
 @section Scripts{
     <script>
+   
         $(document).ready(function () {
             $("body").on("click", ".btn-Login", function (e) {
                 e.preventDefault();
@@ -17,11 +18,11 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "Авторизация",
-                        close: function () { $(this).remove() },
+                        title: "Авторизация" /*@Resources.Resource.Authorization*/,
+                        close: function () { $(this).remove(); },
                         modal: true,
                         buttons: {
-                            "Войти": function () {
+                            "Вход" : function () {
                                 $.ajax({
                                     url: "@Url.Action("Login", "Login")",
                                     type: "POST",
