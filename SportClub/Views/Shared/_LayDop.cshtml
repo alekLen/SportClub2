@@ -155,5 +155,52 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+   
+        $(document).ready(function () {
+            $("body").on("click", ".btn-Login", function (e) {
+                e.preventDefault();
+                $("<div id='dialogContent'></div>")
+                    .addClass("dialog")
+                    .appendTo("body")
+                    .load("/Login/Login")
+                    .dialog({
+                        title: "Авторизация",
+                        close: function () { $(this).remove(); },
+                        modal: true,
+                        buttons: {
+                            "Вход" : function () {
+                                $.ajax({
+                                    url: "@Url.Action("Login", "Login")",
+                                    type: "POST",
+                                    data: $('#formLog').serialize(),
+                                    datatype: "json",
+                                    success: function (response) {
+
+                                        if (response) {                                            
+                                           // location.reload(true);
+                                            window.location.href = "@Url.Action("Index","Home")";                                      
+                                        }
+                                        else {
+                                            let l2 = document.getElementById("error-login1");
+                                            l2.style.display = "inline";
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+            });
+        });
+
+
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 </body>
 </html>

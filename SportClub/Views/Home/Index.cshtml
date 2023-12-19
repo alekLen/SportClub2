@@ -7,7 +7,7 @@
 <div style="width:800px;height:300px;background-image: url('/Sport/2.jpg')">
 
 </div>
-@section Scripts{
+@*@section Scripts{
     <script>
    
         $(document).ready(function () {
@@ -18,8 +18,8 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "Авторизация" /*@Resources.Resource.Authorization*/,
-                        close: function () { $(this).remove(); },
+                        title: "Авторизация" ,
+                       close: function () { $(this).remove(); },
                         modal: true,
                         buttons: {
                             "Вход" : function () {
@@ -51,7 +51,7 @@
 
     </script>
 }
-
+*@
 @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
