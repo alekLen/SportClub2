@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Добавить</value>
   </data>
-  <data name="AddArt" xml:space="preserve">
-    <value>добавить исполнителя</value>
-  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>Был добавлен исполнитель:  </value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="ArtSort" xml:space="preserve">
     <value>исполнителям</value>
+  </data>
+  <data name="Authorization" xml:space="preserve">
+    <value>Авторизация</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Назад</value>

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+
 </head>
 <body>
     <header>
@@ -89,7 +91,8 @@
         {
             <ul class="navbar-nav flex-grow-1 c c1">
                 <li class="nav-item">
-                    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a>
+                   @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a>*@
+                            <a href="javascript:void(0)" class="nav-link text-dark card2 btn-Login">Войти</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
@@ -141,9 +144,63 @@
             &copy; 2023 - SportClub
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)*@
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+
+
+    <script>
+   
+        $(document).ready(function () {
+            $("body").on("click", ".btn-Login", function (e) {
+                e.preventDefault();
+                $("<div id='dialogContent'></div>")
+                    .addClass("dialog")
+                    .appendTo("body")
+                    .load("/Login/Login")
+                    .dialog({
+                        title: "Авторизация",
+                        close: function () { $(this).remove(); },
+                        modal: true,
+                        buttons: {
+                            "Вход" : function () {
+                                $.ajax({
+                                    url: "@Url.Action("Login", "Login")",
+                                    type: "POST",
+                                    data: $('#formLog').serialize(),
+                                    datatype: "json",
+                                    success: function (response) {
+
+                                        if (response) {                                            
+                                           // location.reload(true);
+                                            window.location.href = "@Url.Action("Index","Home")";                                      
+                                        }
+                                        else {
+                                            let l2 = document.getElementById("error-login1");
+                                            l2.style.display = "inline";
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+            });
+        });
+
+
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 </body>
 </html>
