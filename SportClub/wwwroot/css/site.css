@@ -34,6 +34,11 @@ body {
 .flex{
     display:flex;
 }
+
+.paddingLeft{
+    padding-left:20px;
+}
+
 .font {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -42,7 +47,4 @@ body {
     height: 20px;
     border-radius: 7px;
 }
-}
-.paddingLeft{
-    padding-left:20px;
-}
+

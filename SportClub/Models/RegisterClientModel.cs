@@ -58,7 +58,7 @@ namespace SportClub.Models
         /* [Required(ErrorMessageResourceName = "Обязательное поле")]*/
         [Display(Name = "Name", ResourceType = typeof(Resources.Resource))]
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
-        [RegularExpression("^[a-zA-Z-а-яА-Я,' ']+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
+        [RegularExpression("^[a-zA-Z-а-яА-Я' ']+$", ErrorMessage = "Поле 'Имя' должно содержать только буквы.")]
         public string Name { get; set; }
        /* [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Surname", ResourceType = typeof(Resources.Resource))]
