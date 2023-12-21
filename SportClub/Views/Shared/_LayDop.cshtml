@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SportClub</title>
     <link rel="stylesheet" href="~/css/Style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <style> 
         .my_bg-white {
             background-color: #042940;
@@ -103,7 +107,8 @@
             else
             {
 
-                <a style="float: right;" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a>
+                @* <a style="float: right;" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a> *@
+                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">Войти</a>
 
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
             }
