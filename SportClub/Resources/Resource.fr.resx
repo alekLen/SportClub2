@@ -291,6 +291,9 @@
   <data name="Login" xml:space="preserve">
     <value>Se connecter</value>
   </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>La longueur de connexion doit être comprise entre 3 et 15 caractères</value>
+  </data>
   <data name="loginN" xml:space="preserve">
     <value>se connecter</value>
   </data>
@@ -391,7 +394,7 @@
     <value>en attente d'inscription</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Accueillir</value>
+    <value>Bonjour</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Année</value>

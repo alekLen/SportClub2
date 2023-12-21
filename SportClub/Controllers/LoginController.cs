@@ -35,6 +35,7 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             return View("RegisterClient");
+            //return RedirectToAction("");
         }
         public async Task<IActionResult> RegistrationCoach()
         {
