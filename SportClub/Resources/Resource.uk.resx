@@ -280,7 +280,7 @@
     <value>Рівень доступу</value>
   </data>
   <data name="LightPass" xml:space="preserve">
-    <value>більше 8 симолів, як мінімум, одна цифра, одна(A-Z), одна(a-z), один спеціальний символ</value>
+    <value>більше 8 симолів, мінімум, одна цифра, одна(A-Z), одна(a-z), один спеціальний символ</value>
   </data>
   <data name="Listofartists" xml:space="preserve">
     <value>Виберіть автора зі списку</value>
@@ -290,6 +290,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Увійти</value>
+  </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>Довжина логіну має бути від 3 до 15 символів</value>
   </data>
   <data name="loginN" xml:space="preserve">
     <value>логін</value>
@@ -391,7 +394,7 @@
     <value>очікування на реєстрацію</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Ласкаво просимо</value>
+    <value>Вітаю</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Рік</value>

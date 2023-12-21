@@ -291,6 +291,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>Die Anmeldelänge muss zwischen 3 und 15 Zeichen liegen</value>
+  </data>
   <data name="loginN" xml:space="preserve">
     <value>login</value>
   </data>
@@ -391,7 +394,7 @@
     <value>warte auf die Anmeldung</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Willkommen zurück</value>
+    <value>Guten Tag</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Jahr</value>
