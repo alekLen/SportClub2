@@ -34,3 +34,6 @@ body {
 .flex{
     display:flex;
 }
+.paddingLeft{
+    padding-left:20px;
+}

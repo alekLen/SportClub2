@@ -32,7 +32,8 @@ namespace SportClub.Controllers
         }
         public ActionResult ChangeCulture(string lang)
         {
-            string? returnUrl = HttpContext.Session.GetString("path") ?? "/Home/Index";
+          //  string? returnUrl = HttpContext.Session.GetString("path") ?? "/Home/Index";
+            string? returnUrl =  "/Home/Index";
 
             // Список культур
             List<string> cultures = new List<string>() { "ru", "en", "uk", "de", "fr" };
