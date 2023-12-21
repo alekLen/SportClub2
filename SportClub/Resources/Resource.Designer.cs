@@ -569,7 +569,18 @@ namespace Resources {
                 return ResourceManager.GetString("Login", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Войти.
+        /// </summary>
+        public static string LoginLength
+        {
+            get
+            {
+                return ResourceManager.GetString("LoginLength", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to логин.
         /// </summary>
