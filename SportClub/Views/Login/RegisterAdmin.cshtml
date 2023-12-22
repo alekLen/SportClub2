@@ -3,82 +3,93 @@
 *@
 @model SportClub.Models.RegisterAdminModel
 @using Microsoft.AspNetCore.Http
-<div class="center pr">
-<form id="registrationForm" action="RegistrationAdmin" method="post">
-    @Html.AntiForgeryToken()
-    <div class="card c22">
-        @Html.ValidationSummary(true, "")
-            <div>
-                @Html.DisplayNameFor(model => model.Name)
-                <div>
-                    @Html.EditorFor(model => model.Name)
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-            </div>
-           
-        <div>
-            @Html.DisplayNameFor(model => model.Login)
-            <div>
-                @Html.EditorFor(model => model.Login, new { id = "login" })
-                    @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
-                <span asp-validation-for="Login"  class="text-danger"></span>
-            </div>
-        </div>
+<br>
+<div>
+    <div class="dv1 ">
+        <h1 class="h1_n">Регистрация админа</h1>
+        <div class="div_l1 div_l2n1">
+            <form id="registrationForm" action="RegistrationAdmin" method="post">
+                @Html.AntiForgeryToken()
+                <div class="div_l2 div_l2n" style="height: max-content">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="div_l3">
+                        <div class="div_l4">
+                            <label asp-for="Name" class="label_l1"></label>
+                            <input asp-for="Name" class="input1 " type="text" placeholder="Иванов Иван" />
+                        </div>
+                        <span asp-validation-for="Name" class="span_error"></span>
+                    </div>
 
-        <div>
-            @Html.DisplayNameFor(model => model.Password)
-            <div>
-                @Html.PasswordFor(model => model.Password, new { id = "Password" })
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-        </div>
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Login" class="label_l1"></label>
+                            <input id="login" asp-for="Login" class="input1 " type="text" /> 
+                        </div>
+                        <span asp-validation-for="Login" class="span_error"></span>
+                    </div> 
+                     
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Password" class="label_l1"></label>
+                            <input id="Password" asp-for="Password" class="input1 " type="password" /> 
+                        </div>
+                        <span asp-validation-for="Password" class="span_error"></span>
+                    </div>
+                    
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="PasswordConfirm" class="label_l1"></label>
+                            <input asp-for="PasswordConfirm" class="input1 " type="password" /> 
+                        </div>
+                        <span asp-validation-for="PasswordConfirm" class="span_error"></span>
+                    </div>
 
-        <div>
-            @Html.DisplayNameFor(model => model.PasswordConfirm)
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label class="label_l1" asp-for="Phone">@Resources.Resource.Phone:</label>
+                            <input asp-for="Phone" class="input1" placeholder="+3800974318145" />
+                        </div>
+                        <span asp-validation-for="Phone" class="span_error"></span>
+                    </div>
 
-            <div>
-                @Html.PasswordFor(model => model.PasswordConfirm)
-                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
-            </div>
-        </div>
-        <div>
-            @Html.DisplayNameFor(model => model.Email)
-            <div>
-                @Html.EditorFor(model => model.Email, new { id = "emailInput" })
-                <span asp-validation-for="Email"  class="text-danger"></span>
-            </div>
-        </div>
-            <div class="form-group">
-                <label asp-for="Phone">@Resources.Resource.Phone:</label>
-                <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label>@Resources.Resource.gender:</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
-                    <label class="form-check-label" for="male">@Resources.Resource.man:</label>
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="DateOfBirth" class="label_l1"> </label>
+                            <input asp-for="DateOfBirth" class="input1 " type="text" placeholder="10/08/2000" />
+                        </div>
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Email" class="label_l1"></label>
+                            <input id="emailInput" asp-for="Email" class="input1 " type="email" placeholder="email12@gmail.com" />
+                        </div>
+                        <span asp-validation-for="Email" class="span_error"></span>
+                    </div>
+
+                    <div class="form-group div_l3n">
+                        <label class="label_l1n">@Resources.Resource.gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
+                            <label class="form-check-label label_l1n1" for="male">@Resources.Resource.man:</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
+                            <label class="form-check-label label_l1n1" for="female">@Resources.Resource.female:</label>
+                        </div>
+                    </div>
+
+                    <div class="div_subm">
+                        <input class="input_subm" type="submit" value="@Resources.Resource.Confirm" />
+                    </div>
+                     
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
-                    <label class="form-check-label" for="female">@Resources.Resource.female:</label>
-                </div>
-            </div>
-        <div>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-            <div>
-                @Html.EditorFor(model => model.DateOfBirth)
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-        </div>
-        <div><br />
-            <div>
-                    <button class="y" type="submit">@Resources.Resource.Confirm</button>
-            </div>
+            </form>
         </div>
     </div>
-</form>
 </div>
+ 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

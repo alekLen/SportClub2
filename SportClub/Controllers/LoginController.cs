@@ -35,6 +35,7 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             return View("RegisterClient");
+            //return RedirectToAction("");
         }
         public async Task<IActionResult> RegistrationCoach()
         {
@@ -247,7 +248,7 @@ namespace SportClub.Controllers
         }
         public IActionResult Login()
         {        
-            return View();
+            return PartialView();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -268,12 +269,14 @@ namespace SportClub.Controllers
                             HttpContext.Session.SetString("login", user.Login);
                             HttpContext.Session.SetString("admin", "admin");
                             HttpContext.Session.SetString("Id", a.Id.ToString());
-                            return RedirectToAction("Index", "Home");
+                           // return RedirectToAction("Index", "Home");
+                            return Json(true);
                         }
                         else
                         {
                             ModelState.AddModelError("", "логин или пароль неверные");
-                            return View(user);
+                            // return View(user);
+                            return Json(false);
                         }
                     }
                     else
@@ -286,18 +289,21 @@ namespace SportClub.Controllers
                                 HttpContext.Session.SetString("login", user.Login);
                                 HttpContext.Session.SetString("coach", "coach");
                                 HttpContext.Session.SetString("Id", c.Id.ToString());
-                                return RedirectToAction("Index", "Home");
+                               // return RedirectToAction("Index", "Home");
+                                return Json(true);
                             }
                             else
                             {
                                 ModelState.AddModelError("", "логин или пароль неверные");
-                                return View(user);
+                                //returnView(user);
+                                return Json(false);
                             }
                         }
                         else
                         {
                             ModelState.AddModelError("", "логин или пароль неверные");
-                            return View(user);
+                            // returnView(user);
+                            return Json(false);
                         }
                     }
                 }           
@@ -308,16 +314,19 @@ namespace SportClub.Controllers
                              HttpContext.Session.SetString("login", user.Login);                            
                              HttpContext.Session.SetString("client", "client");
                              HttpContext.Session.SetString("Id", u.Id.ToString());
-                             return RedirectToAction("Index", "Home");
-                        }
+                       //  return RedirectToAction("Index", "Home");
+                        return Json(true);
+                    }
                         else
                         {
                             ModelState.AddModelError("", "логин или пароль неверные");
-                            return View(user);
-                        }
+                        // returnView(user);
+                        return Json(false);
+                    }
                  }              
             }
-            return View(user);
+            // return View(user);
+            return Json(false);
         }
         [AcceptVerbs("Get", "Post")]
        public async Task<IActionResult> IsEmailInUse(string email)

@@ -120,9 +120,6 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
-  <data name="AddArt" xml:space="preserve">
-    <value>Add the Artist</value>
-  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>Artist has been added:  </value>
   </data>
@@ -158,6 +155,9 @@
   </data>
   <data name="ArtSort" xml:space="preserve">
     <value>singers</value>
+  </data>
+  <data name="Authorization" xml:space="preserve">
+    <value>Authorization</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
@@ -291,6 +291,9 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>The login length must be from 3 to 15 characters</value>
+  </data>
   <data name="loginN" xml:space="preserve">
     <value>login</value>
   </data>
@@ -391,7 +394,7 @@
     <value>waiting for confirm registration</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Hello</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
