@@ -42,7 +42,7 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach");
+            return View("RegisterCoach1");
         }
         public async Task<IActionResult> RegistrationAdmin()
         {
@@ -169,12 +169,12 @@ namespace SportClub.Controllers
                         await coachService.AddCoach(u);
                     }
                     catch { }
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index","Home");
                 }
             }
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach", user);
+            return View("RegisterCoach1", user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

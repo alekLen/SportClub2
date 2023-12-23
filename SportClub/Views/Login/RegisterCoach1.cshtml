@@ -1,0 +1,150 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SportClub.Models.RegisterCoachModel
+@using Microsoft.AspNetCore.Http
+<br>
+<div>
+    <div class="dv1 ">
+        <h1 class="h1_n">Регистрация тренера</h1>
+        <div class="div_l1 div_l2n1">
+            <form id="registrationForm" action="RegistrationCoach" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <div class="div_l2 div_l2n" style="height: max-content">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="div_l3">
+                        <div class="div_l4">
+                            <label asp-for="Name" class="label_l1"></label>
+                            <input asp-for="Name" class="input1 " type="text" placeholder="Иванов Иван" />
+                        </div>
+                        <span asp-validation-for="Name" class="span_error"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Login" class="label_l1"></label>
+                            <input id="login" asp-for="Login" class="input1 " type="text" />
+                        </div>
+                        <span asp-validation-for="Login" class="span_error"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Password" class="label_l1"></label>
+                            <input id="Password" asp-for="Password" class="input1 " type="password" />
+                        </div>
+                        <span asp-validation-for="Password" class="span_error"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="PasswordConfirm" class="label_l1"></label>
+                            <input asp-for="PasswordConfirm" class="input1 " type="password" />
+                        </div>
+                        <span asp-validation-for="PasswordConfirm" class="span_error"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label class="label_l1" asp-for="Phone">@Resources.Resource.Phone:</label>
+                            <input asp-for="Phone" class="input1" placeholder="+3800974318145" />
+                        </div>
+                        <span asp-validation-for="Phone" class="span_error"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="DateOfBirth" class="label_l1"> </label>
+                            <input asp-for="DateOfBirth" class="input1 " type="text" placeholder="10/08/2000" />
+                        </div>
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+
+                    <div class="div_l3n">
+                        <div class="div_l4">
+                            <label asp-for="Email" class="label_l1"></label>
+                            <input id="emailInput" asp-for="Email" class="input1 " type="email" placeholder="email12@gmail.com" />
+                        </div>
+                        <span asp-validation-for="Email" class="span_error"></span>
+                    </div>
+
+                    <div class="form-group div_l3n">
+                        <label class="label_l1n">@Resources.Resource.gender:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
+                            <label class="form-check-label label_l1n1" for="male">@Resources.Resource.man:</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
+                            <label class="form-check-label label_l1n1" for="female">@Resources.Resource.female:</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group div_l3n">
+                      
+                        <label asp-for="Description" class="label_l1"></label>  <br />
+                        <textarea asp-for="Description" class=" input1" style="width:320px;" size="3" ></textarea>
+                        <span asp-validation-for="Description" class="span_error"></span>
+                                        
+                        <label class="label_l1">@Resources.Resource.Photo</label> <br />
+                        <input  type="file" name="p" accept=".jpg, .jpeg" /><br />
+                   
+                        <label  class="label_l1">@Resources.Resource.Post</label>
+                        <select asp-for="PostId" class=" input1" style="width:320px" asp-items="ViewBag.PostId" style="width: 420px"></select>
+                        <span asp-validation-for="PostId" class="span_error"></span>
+                                      
+                        <label  class="label_l1">@Resources.Resource.Speciality</label>
+                       <select asp-for="SpecialityId" class=" input1" style="width:320px" asp-items="ViewBag.SpecialityId" style="width: 420px"></select>
+                        <span asp-validation-for="SpecialityId" class="span_error" style="width: 450px"></span>
+                   
+                    </div>
+
+                    <div class="form-group div_l3n">
+                    <div class="div_subm">                        
+                        <input class="input_subm" type="submit" value="@Resources.Resource.Confirm" />
+                    </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    $(document).ready(function () {
+
+        $("#login").on("change", function (e) {
+            let log = e.target.value;
+            let r = true;
+            $.getJSON('/Login/IsLoginIn', function (data) {
+                $.each(data, function (key, val) {
+                    if (log == val) {
+                        $("#log").css("display", "block");
+                        r = false;
+                    }
+                    if (r) {
+                        $("#log").css("display", "none");
+                    }
+                })
+            });
+        });
+
+
+        $('#emailInput').on('blur', function () {
+            var email = $(this).val();
+            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
+                if (data === true) {
+                    $('#emailStatus').text('Email уже занят.');
+                }
+            });
+        });
+    });
+</script>
+
