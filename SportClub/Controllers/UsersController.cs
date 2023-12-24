@@ -47,7 +47,7 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
-       
+     
         public async Task<IActionResult> ClientProfile()
         {
             string s = HttpContext.Session.GetString("Id");
@@ -202,7 +202,7 @@ namespace SportClub.Controllers
           // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
           [HttpPost]
           [ValidateAntiForgeryToken]
-          public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateOfBirth,Phone,Email,Sex,Description,Photo,Login,Password,Status")] User user)
+          public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateOfBirth,Phone,Email,,Description,Photo,Login,Password,Status")] User user)
           {
               if (id != user.Id)
               {

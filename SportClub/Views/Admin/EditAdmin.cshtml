@@ -1,4 +1,4 @@
-﻿@model SportClub.BLL.DTO.CoachDTO
+﻿@model SportClub.BLL.DTO.AdminDTO
 
 
 @{
@@ -11,7 +11,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="EditClient">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -39,37 +39,23 @@
                 <input asp-for="Gender" class="form-control" />
                 <span asp-validation-for="Gender" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
+     
             <div class="form-group">
                 <label asp-for="Login" class="control-label"></label>
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
-            </div>
-
-
+            </div>           
+            
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Сохранить" class="btn btn-primary" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div> *@
 <div class="div_reg">
-    <p class="font">Редактирование тренера </p>
+    <p class="font">Изменение админа </p>
     <div class="row">
-        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-action="EditClient">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             @Html.AntiForgeryToken()
@@ -83,39 +69,9 @@
             </div>
 
             <div class="form-group" style="margin-left: 40px">
-
-                <label asp-for="Login" class="control-label font white-color_size20"></label>
-                <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px">
-                <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
-            </div>
-
-            <div class="form-group" style="margin-left: 40px">
-                <label asp-for="Password" class="control-label font white-color_size20"></label>
-                <input asp-for="Password" type="password" class="form-control" style="width: 420px">
-                <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
-            </div>
-             
-            <div class="form-group" style="margin-left: 40px">
                 <label asp-for="Email" class="control-label font white-color_size20"></label>
                 <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                 <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
-            </div>
-
-            <div class="form-group" style="margin-left: 40px;">
-                <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
-                <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
-            </div>
-
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId" style="width: 420px"></select>
-                <span asp-validation-for="PostId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Speciality</label>
-                <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId" style="width: 420px"></select>
-                <span asp-validation-for="SpecialityId" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 40px">
@@ -143,24 +99,18 @@
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
 
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Description</label>
-                <textarea asp-for="Description" style="width: 420px"></textarea>
-                <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
-            </div>
-
             <br />
             <div class="form-group" style="margin-left: 200px">
                 <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
             </div>
         </form>
     </div>
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
