@@ -54,7 +54,7 @@ namespace SportClub.BLL.Services
         {
             Admin a = await Database.Admins.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong artist!", "");
+                throw new ValidationException("Wrong admin!", "");
             /* return new AdminDTO
              {
                  Id = a.Id,
@@ -140,6 +140,16 @@ namespace SportClub.BLL.Services
                 return mapper.Map<AdminDTO>(a);
             }
             catch { return null; }
+        }
+        public async Task ChangeAdminPassword(AdminDTO uDto, string pass)
+        {
+            Admin user = await Database.Admins.Get(uDto.Id);
+            Salt s = await Database.Salts.GetAdminSalt(user);
+            string password = s.salt + pass;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            user.Password = hashedPassword;
+            await Database.Admins.Update(user);
+            await Database.Save();
         }
     }
 }

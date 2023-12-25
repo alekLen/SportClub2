@@ -187,6 +187,85 @@ namespace SportClub.Controllers
             IEnumerable<SpecialityDTO> p = await specialityService.GetAllSpecialitys();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
         }
+        public async Task<IActionResult> AdminProfile()
+        {
+            try
+            {
+                string s = HttpContext.Session.GetString("Id");
+                int id = Int32.Parse(s);
+                AdminDTO p = await adminService.GetAdmin(id);
+                return View(p);
+            }
+            catch { return View("Index", "Home"); }
+        }
+        public async Task<IActionResult> EditAdminProfile(AdminDTO user)
+        {
+            int age = 0;
+            try
+            {
+                DateTime birthDate;
+                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                {
+                    DateTime currentDate = DateTime.Now;
+                    age = currentDate.Year - birthDate.Year;
+                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                    {
+                        age--;
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                }
+            }
+            catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
+            AdminDTO u = await adminService.GetAdmin(user.Id);
+            if (u != null)
+            {
+                u.Login = user.Login;
+                u.Gender = user.Gender;
+                u.Email = user.Email;
+                u.Age = age;
+                u.Phone = user.Phone;
+                u.Name = user.Name;                     
+                u.DateOfBirth = user.DateOfBirth;
+                await adminService.UpdateAdmin(u);
+                return View("YouChangedProfile");
+            }
+            return RedirectToAction("AdminProfile");
+        }
+        [HttpPost]
+        public IActionResult ChangeAdminPassword(AdminDTO user)
+        {
+            return View("PutPassword", user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> PutPassword(int id, string pass)
+        {
+            AdminDTO u = await adminService.GetAdmin(id);
+            try
+            {
+                if (await adminService.CheckPasswordA(u, pass))
+                {
+                    CangePasswordModel m = new();
+                    m.Id = u.Id;
+                    return View("ChangePassword", m);
+                }
+            }
+            catch { }
+            return View("PutPassword",u);
+        }
+        public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
+        {
+            AdminDTO u = await adminService.GetAdmin(m.Id);
+            string pass = m.Password;
+            if (!string.IsNullOrEmpty(pass) && u != null)
+            {
+                await adminService.ChangeAdminPassword(u, pass);
+                return View("YouChangedPassword");
+            }
+            return View("ErrorChangedPassword");
+        }
          
         public async Task<IActionResult> Edit(int id)
         {

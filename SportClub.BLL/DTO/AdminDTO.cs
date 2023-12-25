@@ -22,5 +22,6 @@ namespace SportClub.BLL.DTO
         public string Gender { get; set; } = string.Empty;
         public string Login { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+        public int? Level { get; set; }
     }
 }
