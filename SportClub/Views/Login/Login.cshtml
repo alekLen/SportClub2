@@ -8,7 +8,8 @@
   @using (Html.BeginForm())
     {
       @Html.AntiForgeryToken()
-        @* <div class="center ">*@
+        <div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 10px; width: 270px;padding:10px">
+   
         <span id="error-login1" style="color:red;display:none;">* @Resources.Resource.loginpassword</span>
 
         <div class="paddingLeft ">
@@ -16,7 +17,7 @@
             {
                 @Html.ValidationSummary(true, "")
                 <div>
-                    @Html.LabelFor(model => model.Login)
+                        @Html.LabelFor(model => model.Login, new { @class = "white" })
                     <div>
                         @Html.EditorFor(model => model.Login)
                         @Html.ValidationMessageFor(model => model.Login, "")
@@ -24,7 +25,7 @@
                 </div>
 
                 <div>
-                    @Html.LabelFor(model => model.Password)
+                        @Html.LabelFor(model => model.Password, new { @class = "white" })
                     <div>
                         @Html.PasswordFor(model => model.Password)
                         @Html.ValidationMessageFor(model => model.Password, "")
@@ -39,7 +40,7 @@
                 </div>*@
             }
         </div>
-        @* </div>*@
+        </div>
     }
 </form>
 <script>
