@@ -54,4 +54,7 @@ body {
 .white{
     color:white;
 }
+#dialogContent{
+    background-color:gray;
+}
 
