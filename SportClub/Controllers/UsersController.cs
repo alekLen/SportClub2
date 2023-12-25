@@ -109,7 +109,7 @@ namespace SportClub.Controllers
                // u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
                 await userService.UpdateUser(u);
-                return RedirectToAction("ClientProfile");
+                return RedirectToAction("YouChangedProfile", "Admin");
             }
             return RedirectToAction("ClientProfile");
         }
