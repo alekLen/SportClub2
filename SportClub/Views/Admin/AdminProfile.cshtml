@@ -37,11 +37,11 @@
                             <input asp-for="Login" type="text" class="form-control" name="login" id="login" style="width: 420px">
                             <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
                         </div>
-                        <div class="form-group" style="margin-left: 40px">
+                      @*   <div class="form-group" style="margin-left: 40px">
                             <label asp-for="Password" class="control-label" style="color: white" class="font"></label>
                             <input asp-for="Password" type="password" class="form-control" name="password" id="password" style="width: 420px">
                             <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
-                        </div>                       
+                        </div>  *@                      
                         <div class="form-group" style="margin-left: 40px">
                             <label asp-for="Email" class="control-label" style="color: white" class="font"></label>
                             <input asp-for="Email"  class="form-control"  id="emailInput" style="width: 420px">
@@ -73,15 +73,21 @@
                         </div>                       
                         <br />
                         <br />
-                        <div class="form-group" style="margin-left: 200px">
+                       @*  <div class="form-group" style="margin-left: 200px"> *@
                            @*  <button type="submit" class="btn btn-primary font y" style="color: white">@Resources.Resource.Confirm</button> *@
-                            <input type="submit"  formaction="EditAdminProfile" value="Редактировать профиль" class="y btn btn-primary font " style="color: white; font-weight:bold" />
+                          @*   <input type="submit"  formaction="EditAdminProfile" value="Редактировать профиль" class="y btn btn-primary font " style="color: white; font-weight:bold" />
                         </div>
                         <br />                        
                         <div class="form-group" style="margin-left: 200px">
                             <input formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" class="y btn btn-primary font " style="color: white; font-weight:bold" /><br /><br />
+                        </div> *@
+                        <div style="margin-left: 10px">
+                            <input type="submit" class="btn btn-outline-light" formaction="EditAdminProfile" value="Редактировать" />
+                            <input class="btn btn-outline-light" formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" />
+                            <button type="button" class="btn btn-outline-light">
+                                <a formaction="DeleteAdminProfile" value="Удалить и Выйти" asp-route-id="@Model.Id" style="text-decoration:none; color: white">Удалить</a>
+                            </button>                          
                         </div>
-
                     </div>
                 </div>
             </form>
