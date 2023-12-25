@@ -1,55 +1,100 @@
 ﻿@model SportClub.BLL.DTO.CoachDTO
 
-
 @{
-    ViewData["Title"] = "EditCoach";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
 
-<h4>Coach</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-           <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+@* Coach *@
+<div class="div_reg">
+    <p class="font">Изменение тренера </p>
+    <div class="row">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateOfBirth" />
+            <input type="hidden" asp-for="Login" />
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "")
+
+            <div class="form-group" style="margin-left: 40px">
+
+                <label asp-for="Name" class="control-label font white-color_size20"></label>
+                <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
+                <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>           
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+
+
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="Email" class="control-label font white-color_size20"></label>
+                <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
+                <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
+
+            <div class="form-group" style="margin-left: 40px;">
+                <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
+                <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
             </div>
-            <label>@Resources.Resource.Post</label>
-            <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId"></select>
-            <span asp-validation-for="PostId" class="text-danger"></span>
-            <label>@Resources.Resource.Speciality</label>
-            <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId"></select>
-            <span asp-validation-for="SpecialityId" class="text-danger"></span>
-            
-            <div class="form-group">
-                <input type="submit" value="Сохранить изменения" class="btn btn-primary" />
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.Post</label>
+                <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId" style="width: 420px"></select>
+                <span asp-validation-for="PostId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.Speciality</label>
+                <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId" style="width: 420px"></select>
+                <span asp-validation-for="SpecialityId" class="text-danger" style="width: 450px"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="Phone" class="font white-color_size20">@Resources.Resource.Phone</label>
+                <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" style="width: 420px" />
+                <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.gender</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
+                    <label class="font form-check-label white-color_size20" for="male">@Resources.Resource.man</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
+                    <label class="font form-check-label white-color_size20" for="female">@Resources.Resource.female</label>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger" style="width: 450px"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.Description</label>
+                <textarea asp-for="Description" style="width: 420px"></textarea>
+                <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
+            </div>
+
+            <br />
+            <div class="form-group" style="margin-left: 200px">
+                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
             </div>
         </form>
     </div>
 </div>
-
-
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+<script>
+    $(document).ready(function () {
+
+        $('#emailInput').on('blur', function () {
+            var email = $(this).val();
+            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
+                if (data === true) {
+                    $('#emailStatus').text('Email уже занят.');
+                }
+            });
+        });
+    });
+</script>  

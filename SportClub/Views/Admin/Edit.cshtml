@@ -55,9 +55,11 @@
 <div class="div_reg">
     <p class="font">Изменение админа </p>
     <div class="row">
-        <form asp-action="EditClient">
+        <form asp-action="EditAdmin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateOfBirth" />
+            <input type="hidden" asp-for="Login" />
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
 
@@ -93,15 +95,15 @@
                 <span asp-validation-for="Gender" class="text-danger" style="width: 450px"></span>
             </div>
 
-            <div class="form-group" style="margin-left: 40px">
+            @* <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.DateB</label><br />
-                <input type="date" asp-for="DateOfBirth" /><br />
+                <input id="dateTime" type="date" asp-for="DateOfBirth" /><br />
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
-            </div>
+            </div> *@
 
             <br />
             <div class="form-group" style="margin-left: 200px">
-                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+                <button type="submit" formaction="EditAdmin" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
             </div>
         </form>
     </div>
@@ -114,3 +116,16 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+<script>
+    $(document).ready(function () {
+
+        $('#emailInput').on('blur', function () {
+            var email = $(this).val();
+            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
+                if (data === true) {
+                    $('#emailStatus').text('Email уже занят.');
+                }
+            });
+        });
+    });
+</script> 

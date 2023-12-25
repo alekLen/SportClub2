@@ -141,6 +141,59 @@ namespace SportClub.Controllers
             }
             return RedirectToAction("ClientProfile");
         }
+
+
+
+//Client
+        public async Task<IActionResult> Edit(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            UserDTO us = await userService.GetUser(id);
+            if (us != null)
+            {
+                return View("Edit", us);
+            }
+
+            return View("GetClients"/*, "User"*/);
+        }
+//Client
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, UserDTO user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                UserDTO usdt = await userService.GetUser(id);
+                if (usdt == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    usdt = user;
+                    //us.Gender = user.Gender;
+                    //us.Login = user.Login;
+                    //us.Phone = user.Phone;
+                    //us.Name = user.Name;
+                    //us.Email = user.Email;Client
+                    //us.DateOfBirth = user.DateOfBirth;
+                    //us.Password = user.Password;
+
+                    try
+                    {
+                        await userService.UpdateUser(usdt);
+                    }
+                    catch { return View("Edit", user); }
+                }
+                return RedirectToAction("GetClients"/*, "Users"*/);
+            }
+            catch
+            {
+                return View("GetClients");
+            }
+        }
         // GET: Users/Details/5
         /*  public async Task<IActionResult> Details(int? id)
           {

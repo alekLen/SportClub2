@@ -34,8 +34,7 @@ namespace SportClub.Controllers
         public IActionResult RegistrationClient()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            return View("RegisterClient");
-            //return RedirectToAction("");
+            return View("RegisterClient"); 
         }
         public async Task<IActionResult> RegistrationCoach()
         {
@@ -59,22 +58,27 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                {
-                    // 2. Вычисление возраста
-                    DateTime currentDate = DateTime.Now;
-                    age = currentDate.Year - birthDate.Year;
-                    // Учитываем месяц и день рождения для точного определения возраста
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }
+                DateTime currentDate = DateTime.Today;
+
+                age = currentDate.Year - user.DateOfBirth.Year;
+                if (user.DateOfBirth > currentDate.AddYears(-age))
+                    age--;
+                //DateTime birthDate;
+                //if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                //{
+                //    // 2. Вычисление возраста
+                //    DateTime currentDate = DateTime.Now;
+                //    age = currentDate.Year - birthDate.Year;
+                //    // Учитываем месяц и день рождения для точного определения возраста
+                //    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                //    {
+                //        age--;
+                //    }
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                //}
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
             if (ModelState.IsValid)
@@ -96,10 +100,10 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-              //  u.Surname = user.Surname;
-              //  u.Dopname = user.Dopname;
-                u.DateOfBirth = user.DateOfBirth;
-
+                //  u.Surname = user.Surname;
+                //  u.Dopname = user.Dopname;
+                //  u.DateOfBirth = user.DateOfBirth;
+                u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                 /*  byte[] saltbuf = new byte[16];
                   RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
                   randomNumberGenerator.GetBytes(saltbuf);
@@ -123,7 +127,8 @@ namespace SportClub.Controllers
                    await adminService.AddAdmin(u);
                 }
                 catch { }
-                return RedirectToAction("Login");
+                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Login");
             }
             return View("RegisterAdmin", user);
         }
@@ -137,23 +142,28 @@ namespace SportClub.Controllers
 
             try
             {
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                {
-                    DateTime currentDate = DateTime.Now;
-                    age = currentDate.Year - birthDate.Year;
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
+                DateTime currentDate = DateTime.Today;
 
-                    Console.WriteLine("Ваш возраст: " + age + " лет");
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }
+                age = currentDate.Year - user.DateOfBirth.Year;
+                if (user.DateOfBirth > currentDate.AddYears(-age))
+                    age--;
+                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
+                //DateTime birthDate;
+                //if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                //{
+                //    DateTime currentDate = DateTime.Now;
+                //    age = currentDate.Year - birthDate.Year;
+                //    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                //    {
+                //        age--;
+                //    }
+
+                //    Console.WriteLine("Ваш возраст: " + age + " лет");
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                //}
 
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
@@ -180,9 +190,10 @@ namespace SportClub.Controllers
                     u.Phone = user.Phone;
                     u.Photo = path;
                     u.Name = user.Name;
-                  //  u.Surname = user.Surname;
-                  //  u.Dopname = user.Dopname;
-                    u.DateOfBirth = user.DateOfBirth;
+                    //  u.Surname = user.Surname;
+                    //  u.Dopname = user.Dopname;
+                    //u.DateOfBirth = user.DateOfBirth;
+                    u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                     u.Password = user.Password;
                     u.Description = user.Description;
                     u.PostId = user.PostId;
@@ -192,7 +203,9 @@ namespace SportClub.Controllers
                         await coachService.AddCoach(u);
                     }
                     catch { }
-                    return RedirectToAction("Login");
+
+                    //return RedirectToAction("Login");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             await putSpecialities();
@@ -207,20 +220,25 @@ namespace SportClub.Controllers
 
             try
             {
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                {
-                    DateTime currentDate = DateTime.Now;
-                    age = currentDate.Year - birthDate.Year;
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }
+                DateTime currentDate = DateTime.Today; 
+                age = currentDate.Year - user.DateOfBirth.Year;
+                if (user.DateOfBirth > currentDate.AddYears(-age))
+                    age--;
+                //if(currentDate )
+                //DateTime birthDate;
+                //if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                //{
+                //    DateTime currentDate = DateTime.Now;
+                //    age = currentDate.Year - birthDate.Year;
+                //    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                //    {
+                //        age--;
+                //    }
+                //}
+                //else
+                //{
+                //    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                //}
 
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
@@ -233,16 +251,19 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-              //  u.Surname = user.Surname;
-              //  u.Dopname = user.Dopname;
-                u.DateOfBirth = user.DateOfBirth;
+                //  u.Surname = user.Surname;
+                //  u.Dopname = user.Dopname;
+                //  u.DateOfBirth = user.DateOfBirth;
+                u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                 u.Password = user.Password;
                 try
                 {
                     await userService.AddUser(u);
                 }
                 catch { return View("RegisterClient", user); }
-                return RedirectToAction("Login");
+
+                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Login");
             }
             return View("RegisterClient", user);
         }

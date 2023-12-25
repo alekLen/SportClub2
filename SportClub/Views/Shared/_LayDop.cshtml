@@ -137,13 +137,27 @@
                         
                  @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
                  @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
+                
+
+                <div class="mdropdown">
+                    <button class="mdropbtn">
+                        Добавление...
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mdropdown-content">
+                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>
+                        <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>
+                    </div>
+                </div>
+
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
                 <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
 
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>*@
-                <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>
+                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
+                <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
+
                 <div class="mdropdown" style="float:right">
                     <button class="mdropbtn">
                         Списки всех..

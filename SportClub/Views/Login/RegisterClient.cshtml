@@ -7,7 +7,7 @@
 <div class="div_reg">
     <p class="font">Регистрация пользователя </p>
     <div class="row">
-        <form id="registrationCoachForm" action="RegistrationCoach" method="post" enctype="multipart/form-data">
+        <form id="registrationForm" action="RegistrationClient" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
@@ -65,7 +65,7 @@
 
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.DateB</label><br />
-                <input data-date="" data-date-format="MM.DD.YYYY" id="date" type="date" asp-for="DateOfBirth" value="2015-08-09" /><br />
+                <input id="date" type="date" asp-for="DateOfBirth" /><br />
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
               
@@ -83,7 +83,7 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+}
 <script>
     $(document).ready(function () {
 
@@ -113,12 +113,6 @@
             });
         });
 
-        $("#date").on("change", function () {
-            this.setAttribute(
-                "data-date",
-                moment(this.value, "YYYY-MM-DD")
-                    .format(this.getAttribute("data-date-format"))
-            )
-        }).trigger("change")
+       
     });
 </script>

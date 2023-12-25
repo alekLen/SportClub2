@@ -187,133 +187,42 @@ namespace SportClub.Controllers
             IEnumerable<SpecialityDTO> p = await specialityService.GetAllSpecialitys();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
         }
-
-        public async Task<IActionResult> EditClient(int id)
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-            UserDTO us = await userService.GetUser(id);
-            if (us != null)
-            {
-                return View("EditClient", us);
-            }
-           
-            return View("GetClients", "User");
-
-        }
          
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditClient(int id, RegisterClientModel user)
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-            try
-            {
-                UserDTO us = await userService.GetUser(id);
-                if (us == null)
-                {
-                    return NotFound();
-                }
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                {
-                    DateTime currentDate = DateTime.Now;
-                    int age = currentDate.Year - birthDate.Year;
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
-                    us.Age = age;
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }
-
-                //if (ModelState.IsValid)
-                //{
-                    us.Gender = user.Gender;
-                    us.Login = user.Login;
-                    us.DateOfBirth = user.DateOfBirth;
-                    us.Phone = user.Phone;
-                    us.Name = user.Name;
-                    us.Email = user.Email;
-                    us.DateOfBirth = user.DateOfBirth;
-                    us.Password = user.Password;
-
-                    try
-                    {
-                        await userService.UpdateUser(us);
-                    }
-                    catch { return View("EditClient", us); }
-                //}
-                return RedirectToAction("GetClients", "Users");
-            }
-            catch
-            {
-                return View("GetClients");
-            }
-        }
-
-
-        public async Task<IActionResult> EditAdmin(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
             AdminDTO us = await adminService.GetAdmin(id);
             if (us != null)
             {
-                return View("EditAdmin", us);
+                return View("Edit", us);
             }
 
-            return View("GetAdmins", "Admin");
-
+            return View("GetAdmins", "Admin"); 
         }
-
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditAdmin(int id, RegisterAdminModel user)
+        public async Task<IActionResult> Edit(int id, AdminDTO user)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                AdminDTO a = await adminService.GetAdmin(id);
-                if (a == null)
+                AdminDTO admindto = await adminService.GetAdmin(id);
+                if (admindto == null)
                 {
                     return NotFound();
                 }
-                DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                 
+                if (ModelState.IsValid)
                 {
-                    DateTime currentDate = DateTime.Now;
-                    int age = currentDate.Year - birthDate.Year;
-                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                    {
-                        age--;
-                    }
-                    a.Age = age;
-                }
-                else
-                {
-                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                }
-
-                //if (ModelState.IsValid)
-                //{
-                    a.Gender = user.Gender;
-                    a.Login = user.Login;
-                    a.DateOfBirth = user.DateOfBirth;
-                    a.Phone = user.Phone;
-                    a.Name = user.Name;
-                    a.Email = user.Email;
-                    a.DateOfBirth = user.DateOfBirth;
-                    a.Password = user.Password;
-                   
+                    admindto = user; 
                     try
                     {
-                        await adminService.UpdateAdmin(a);
+                        await adminService.UpdateAdmin(admindto);
                     }
-                    catch { return View("EditAdmin", user); }
-                //}
-                return RedirectToAction("Index", "Home");
+                    catch { return View("Edit", user); }
+                }
+                return RedirectToAction("GetAdmins", "Admin");
             }
             catch
             {
@@ -328,5 +237,8 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
+
+
+        
     }
 }

@@ -51,7 +51,7 @@
                     @Html.DisplayFor(modelItem => item.Gender)
                 </td>
                 <td>
-                    <a asp-controller="Admin" asp-action="EditClient" asp-route-id="@item.Id">Edit</a>
+                    <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

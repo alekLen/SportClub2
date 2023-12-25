@@ -29,8 +29,8 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
-        
-      
+
+
         public async Task<IActionResult> CoachProfile()
         {
             string s = HttpContext.Session.GetString("Id");
@@ -39,35 +39,83 @@ namespace SportClub.Controllers
             return View(p);
         }
         public async Task<IActionResult> Details(int id)
-        {           
-            CoachDTO p = await coachService.GetCoach(id);
-            return View(p);
-        }
-        [HttpGet]
-        public async Task<IActionResult> Edit(int id)
         {
             CoachDTO p = await coachService.GetCoach(id);
-            await putPosts();
-            await putSpecialities();
             return View(p);
         }
+        //[HttpGet]
+        //public async Task<IActionResult> Edit(int id)
+        //{
+        //    CoachDTO p = await coachService.GetCoach(id);
+        //    await putPosts();
+        //    await putSpecialities();
+        //    return View(p);
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> Edit(CoachDTO c)
+        //{
+        //    try
+        //    {
+        //        CoachDTO p = await coachService.GetCoach(c.Id);
+        //        p.PostId = c.PostId;
+        //        p.SpecialityId = c.SpecialityId;
+        //        p.Description = c.Description;
+        //        p.Phone= c.Phone;
+        //        p.Email= c.Email;
+        //        p.Photo = c.Photo;
+        //        await coachService.UpdateCoach(p);
+        //        return RedirectToAction("GetCoaches");
+        //    }
+        //    catch { return View(c); }
+        //}
+
+        public async Task<IActionResult> Edit(int id)/*Coach*/
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            CoachDTO coachdto = await coachService.GetCoach(id);
+            if (coachdto != null)
+            {
+                await putSpecialities();
+                await putPosts();
+                return View("Edit", coachdto);/*Coach*/
+            }
+
+            return View("GetCoaches"/*, "Coach"*/);
+
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Edit(CoachDTO c)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, CoachDTO coach, IFormFile Photo_URL)/*Coach*/
         {
+            HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                CoachDTO p = await coachService.GetCoach(c.Id);
-                p.PostId = c.PostId;
-                p.SpecialityId = c.SpecialityId;
-                p.Description = c.Description;
-                p.Phone= c.Phone;
-                p.Email= c.Email;
-                p.Photo = c.Photo;
-                await coachService.UpdateCoach(p);
+                CoachDTO coachdto = await coachService.GetCoach(id);
+                if (coachdto == null)
+                {
+                    return NotFound();
+                }
+
+
+                if (ModelState.IsValid)
+                {
+                    coachdto = coach;
+
+                    try
+                    {
+                        await coachService.UpdateCoach(coachdto);
+                    }
+                    catch { return View("Edit", coach); }/*Coach*/
+                }
                 return RedirectToAction("GetCoaches");
             }
-            catch { return View(c); }
+            catch
+            {
+                return View("GetCoaches"/*, "Coach"*/);
+            }
         }
+
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);
