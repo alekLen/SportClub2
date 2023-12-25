@@ -198,11 +198,11 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "Авторизация",
+                        title: "АВТОРИЗАЦИЯ",
                         close: function () { $(this).remove(); },
                         modal: true,
                         buttons: {
-                            "Вход" : function () {
+                            "ВХОД" : function () {
                                 $.ajax({
                                     url: "@Url.Action("Login", "Login")",
                                     type: "POST",
@@ -221,6 +221,21 @@
                                     }
                                 });
                             }
+                        },
+                        open: function (event, ui) {
+                            // Устанавливаем стили для заголовка
+                            $(this).closest(".ui-dialog")
+                                .find(".ui-dialog-titlebar")
+                                .css({
+                                    "background-color": "gray", // Фон заголовка
+                                    "color": "black" // Цвет текста заголовка
+                                    
+                                });                         
+                            $(this).closest(".ui-dialog")
+                                // .find(".ui-button")
+                                .css({
+                                    "background-color": "gray"  
+                                });
                         }
                     });
             });
