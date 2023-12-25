@@ -39,7 +39,9 @@ namespace SportClub.Models
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Phone", ResourceType = typeof(Resources.Resource))]
-        [RegularExpression(@"\(\d{3}\)-\d{3} \d{2} \d{2}", ErrorMessage = "Введите номер в формате (097)-111 11 11")]
+        // [RegularExpression(@"\(\d{3}\)-\d{3} \d{2} \d{2}", ErrorMessage = "Введите номер в формате (097)-111 11 11")]
+        [RegularExpression(@"^(\+\d{1,3}\s?)?(\(\d{3}\)|\d{3}[-\.\s]?)(\d{3}[-\.\s]?)(\d{4})$", ErrorMessage = "Введите номер в формате +380971315143")]
+
         public string? Phone { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]

@@ -55,6 +55,17 @@ namespace SportClub.Controllers
             UserDTO p = await userService.GetUser(id);
             return View(p);
         }
+        //public async Task<IActionResult> AdminProfile()
+        //{
+        //    try
+        //    {
+        //        string s = HttpContext.Session.GetString("Id");
+        //        int id = Int32.Parse(s);
+        //        AdminDTO p = await adminService.GetAdmin(id);
+        //        return View(p);
+        //    }
+        //    catch { return View("Index", "Home"); }
+        //}
         [HttpPost]
         public async Task<IActionResult> CoachProfile()
         {

@@ -42,7 +42,7 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach");
+            return View("RegisterCoach1");
         }
         public async Task<IActionResult> RegistrationAdmin()
         {
@@ -70,6 +70,10 @@ namespace SportClub.Controllers
                     {
                         age--;
                     }
+                    if (age < 18)
+                    {
+                        ModelState.AddModelError("DateOfBirth", "Недопустимый возраст меньше 18лет");
+                    }
                 }
                 else
                 {
@@ -78,52 +82,23 @@ namespace SportClub.Controllers
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
             if (ModelState.IsValid)
-            {
-                /* if (await userService.GetUser(user.Login) != null)
-                 {
-                     ModelState.AddModelError("login", "this login already exists");
-                     return View(user);
-                 }
-                 if (await userService.GetEmail(user.email) != null)
-                 {
-                     ModelState.AddModelError("email", "this email is already registred");
-                     return View(user);
-                 }*/
+            {             
                 AdminDTO u = new();
                 u.Login = user.Login;
                 u.Gender = user.Gender;
                 u.Email = user.Email;
                 u.Age = age;
                 u.Phone = user.Phone;
-                u.Name = user.Name;
-              //  u.Surname = user.Surname;
-              //  u.Dopname = user.Dopname;
+                u.Name = user.Name;            
                 u.DateOfBirth = user.DateOfBirth;
-
-                /*  byte[] saltbuf = new byte[16];
-                  RandomNumberGenerator randomNumberGenerator = RandomNumberGenerator.Create();
-                  randomNumberGenerator.GetBytes(saltbuf);
-                  StringBuilder sb = new StringBuilder(16);
-                  for (int i = 0; i < 16; i++)
-                      sb.Append(string.Format("{0:X2}", saltbuf[i]));
-                  string salt = sb.ToString();
-                  Salt s = new();
-                  s.salt = salt;
-                  string password = salt + user.Password;
-                  string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
-                  u.Password = hashedPassword;*/
                 u.Password = user.Password;
+                u.Level = 1;
                 try
-                {
-                    /* db.Users.Add(u);
-                    db.SaveChanges();
-                    s.user = u;
-                     db.Salts.Add(s);
-                     db.SaveChanges();*/
+                {               
                    await adminService.AddAdmin(u);
                 }
                 catch { }
-                return RedirectToAction("Login");
+                return RedirectToAction("Index","Home");
             }
             return View("RegisterAdmin", user);
         }
@@ -147,8 +122,10 @@ namespace SportClub.Controllers
                     {
                         age--;
                     }
-
-                    Console.WriteLine("Ваш возраст: " + age + " лет");
+                    if (age < 18)
+                    {
+                        ModelState.AddModelError("DateOfBirth", "Недопустимый возраст меньше 18лет");
+                    }
                 }
                 else
                 {
@@ -192,12 +169,12 @@ namespace SportClub.Controllers
                         await coachService.AddCoach(u);
                     }
                     catch { }
-                    return RedirectToAction("Login");
+                    return RedirectToAction("Index","Home");
                 }
             }
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach", user);
+            return View("RegisterCoach1", user);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
