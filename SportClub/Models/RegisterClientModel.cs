@@ -52,18 +52,12 @@ namespace SportClub.Models
         public string? Email { get; set; }
 
 
-        //[Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
-        //[Display(Name = "DateB", ResourceType = typeof(Resources.Resource))]
-        //[RegularExpression(@"^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).\d{4}$", ErrorMessage = "Введите дату в формате день/месяц/год")]
-        //public string? DateOfBirth { get; set; }//^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([19 | 20]\d\d)$
-
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd'/'MM'/'yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "DateB", ResourceType = typeof(Resources.Resource))]
-        //[RegularExpression(@"^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).\d{4}$", ErrorMessage = "Введите дату в формате день/месяц/год")]
-        public DateTime DateOfBirth { get; set; }//^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([19 | 20]\d\d)$
+        [RegularExpression(@"^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).\d{4}$", ErrorMessage = "Введите дату в формате день/месяц/год")]
+        public string? DateOfBirth { get; set; }//^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([19 | 20]\d\d)$
+
+         
 
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]

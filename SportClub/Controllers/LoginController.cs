@@ -111,12 +111,7 @@ namespace SportClub.Controllers
 
             try
             {
-                DateTime currentDate = DateTime.Today;
-
-                age = currentDate.Year - user.DateOfBirth.Year;
-                if (user.DateOfBirth > currentDate.AddYears(-age))
-                    age--;
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
+                
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
@@ -163,8 +158,8 @@ namespace SportClub.Controllers
                     u.Name = user.Name;
                     //  u.Surname = user.Surname;
                     //  u.Dopname = user.Dopname;
-                    //u.DateOfBirth = user.DateOfBirth;
-                    u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
+                    u.DateOfBirth = user.DateOfBirth;
+                    //u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                     u.Password = user.Password;
                     u.Description = user.Description;
                     u.PostId = user.PostId;
@@ -188,26 +183,21 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
 
             try
-            {
-                DateTime currentDate = DateTime.Today; 
-                age = currentDate.Year - user.DateOfBirth.Year;
-                if (user.DateOfBirth > currentDate.AddYears(-age))
-                    age--;
-                //if(currentDate )
-                //DateTime birthDate;
-                //if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-                //{
-                //    DateTime currentDate = DateTime.Now;
-                //    age = currentDate.Year - birthDate.Year;
-                //    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-                //    {
-                //        age--;
-                //    }
-                //}
-                //else
-                //{
-                //    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-                //}
+            { 
+                DateTime birthDate;
+                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                {
+                    DateTime currentDate = DateTime.Now;
+                    age = currentDate.Year - birthDate.Year;
+                    if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
+                    {
+                        age--;
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
+                }
 
             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
@@ -222,8 +212,8 @@ namespace SportClub.Controllers
                 u.Name = user.Name;
                 //  u.Surname = user.Surname;
                 //  u.Dopname = user.Dopname;
-                //  u.DateOfBirth = user.DateOfBirth;
-                u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
+                  u.DateOfBirth = user.DateOfBirth;
+                //u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                 u.Password = user.Password;
                 try
                 {
