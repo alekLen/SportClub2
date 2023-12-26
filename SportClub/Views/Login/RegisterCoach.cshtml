@@ -44,6 +44,7 @@
             <div class="form-group" style="margin-left: 40px;"> 
                 <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
                 <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
+
             </div>
 
             <div class="form-group" style="margin-left: 40px">
@@ -79,7 +80,7 @@
 
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.DateB</label><br />
-                <input type="date" asp-for="DateOfBirth" /><br />
+                <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
 
@@ -116,8 +117,8 @@
                     if (r) {
                         $("#log").css("display", "none");
                     }
-                }) 
-            }); 
+                })
+            });
         });
 
 
@@ -126,8 +127,8 @@
             $.get('/Login/IsEmailInUse', { email: email }, function (data) {
                 if (data === true) {
                     $('#emailStatus').text('Email уже занят.');
-                } 
+                }
             });
         });
     });
-</script>  
+</script>

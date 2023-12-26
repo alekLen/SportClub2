@@ -14,6 +14,7 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateOfBirth" />
             <input type="hidden" asp-for="Login" />
+            <input type="hidden" asp-for="Age" />
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
 
@@ -34,6 +35,7 @@
             <div class="form-group" style="margin-left: 40px;">
                 <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
                 <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
+                <span asp-validation-for="Photo" class="text-danger"></span>
             </div>
 
             <div class="form-group" style="margin-left: 40px">

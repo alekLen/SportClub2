@@ -2,23 +2,26 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.DAL.Entities;
 
 namespace SportClub.Controllers
 {
     public class CoachController : Controller
     {
+        IWebHostEnvironment _appEnvironment;
         private readonly IAdmin adminService;
         private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public CoachController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p)
+        public CoachController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
+            _appEnvironment = appEnvironment;
         }
 
         // GET: Users
@@ -69,7 +72,7 @@ namespace SportClub.Controllers
         //    catch { return View(c); }
         //}
 
-        public async Task<IActionResult> Edit(int id)/*Coach*/
+        public async Task<IActionResult> Edit(int id) 
         {
             HttpContext.Session.SetString("path", Request.Path);
             CoachDTO coachdto = await coachService.GetCoach(id);
@@ -77,16 +80,16 @@ namespace SportClub.Controllers
             {
                 await putSpecialities();
                 await putPosts();
-                return View("Edit", coachdto);/*Coach*/
+                return View("Edit", coachdto); 
             }
 
-            return View("GetCoaches"/*, "Coach"*/);
+            return View("GetCoaches", "Coach");
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, CoachDTO coach, IFormFile Photo_URL)/*Coach*/
+        public async Task<IActionResult> Edit(int id, CoachDTO coach, IFormFile p)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
@@ -96,23 +99,46 @@ namespace SportClub.Controllers
                 {
                     return NotFound();
                 }
-
-
+                 
                 if (ModelState.IsValid)
-                {
-                    coachdto = coach;
-
-                    try
+                { 
+                    if (p != null)
                     {
-                        await coachService.UpdateCoach(coachdto);
-                    }
-                    catch { return View("Edit", coach); }/*Coach*/
+                        string str = p.FileName.Replace(" ", "_");
+                        string str1 = str.Replace("-", "_");
+                        // Путь к папке Files
+                        string path = "/Coaches/" + str1; // имя файла
+
+                        using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                        {
+                            await p.CopyToAsync(fileStream); // копируем файл в поток
+                        }
+                        
+                        coachdto.Login = coach.Login;
+                        coachdto.Gender = coach.Gender;
+                        coachdto.Email = coach.Email;
+                        coachdto.Age = coach.Age;
+                        coachdto.Phone = coach.Phone;
+                        coachdto.Photo = path;
+                        coachdto.Name = coach.Name;
+                        coachdto.DateOfBirth = coach.DateOfBirth; 
+                        coachdto.Password = coach.Password;
+                        coachdto.Description = coach.Description;
+                        coachdto.PostId = coach.PostId;
+                        coachdto.SpecialityId = coach.SpecialityId;
+                        try
+                        {
+                            await coachService.UpdateCoach(coachdto);
+                        }
+                        catch { return View("Edit", coach); } 
+                        return RedirectToAction("GetCoaches", "Coach");
+                    } 
                 }
                 return RedirectToAction("GetCoaches");
             }
             catch
             {
-                return View("GetCoaches"/*, "Coach"*/);
+                return View("GetCoaches", "Coach");
             }
         }
 

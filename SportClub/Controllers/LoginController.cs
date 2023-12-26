@@ -41,7 +41,7 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach1");
+            return View("RegisterCoach");/*RegisterCoach1*/
         }
         public async Task<IActionResult> RegistrationAdmin()
         {
@@ -174,7 +174,7 @@ namespace SportClub.Controllers
             }
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach1", user);
+            return View("RegisterCoach", user);/*RegisterCoach1*/
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

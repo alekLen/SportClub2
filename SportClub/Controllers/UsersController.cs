@@ -184,13 +184,14 @@ namespace SportClub.Controllers
                 if (ModelState.IsValid)
                 {
                     usdt = user;
-                    //us.Gender = user.Gender;
-                    //us.Login = user.Login;
-                    //us.Phone = user.Phone;
-                    //us.Name = user.Name;
-                    //us.Email = user.Email;Client
-                    //us.DateOfBirth = user.DateOfBirth;
-                    //us.Password = user.Password;
+                    //usdt.Age = user.Age;
+                    //usdt.Gender = user.Gender;
+                    //usdt.Login = user.Login;
+                    //usdt.Phone = user.Phone;
+                    //usdt.Name = user.Name;
+                    //usdt.Email = user.Email;
+                    //usdt.DateOfBirth = user.DateOfBirth;
+                    //usdt.Password = user.Password;
 
                     try
                     {
