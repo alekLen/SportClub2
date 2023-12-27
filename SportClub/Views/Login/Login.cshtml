@@ -12,7 +12,7 @@
    
         <span id="error-login1" style="color:red;display:none;">* @Resources.Resource.loginpassword</span>
 
-        <div class="paddingLeft ">
+        <div >
             @if (Context.Session.GetString("login") == null)
             {
                 @Html.ValidationSummary(true, "")
