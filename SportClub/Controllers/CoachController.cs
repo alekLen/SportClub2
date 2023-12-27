@@ -89,7 +89,7 @@ namespace SportClub.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, CoachDTO coach, IFormFile p)
+        public async Task<IActionResult> Edit(int id, CoachDTO coach, IFormFile? p)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
@@ -101,7 +101,7 @@ namespace SportClub.Controllers
                 }
                  
                 if (ModelState.IsValid)
-                { 
+                {
                     if (p != null)
                     {
                         string str = p.FileName.Replace(" ", "_");
@@ -113,13 +113,14 @@ namespace SportClub.Controllers
                         {
                             await p.CopyToAsync(fileStream); // копируем файл в поток
                         }
-                        
+                        coachdto.Photo = path;
+                    }
                         coachdto.Login = coach.Login;
                         coachdto.Gender = coach.Gender;
                         coachdto.Email = coach.Email;
                         coachdto.Age = coach.Age;
                         coachdto.Phone = coach.Phone;
-                        coachdto.Photo = path;
+                     //   coachdto.Photo = path;
                         coachdto.Name = coach.Name;
                         coachdto.DateOfBirth = coach.DateOfBirth; 
                         coachdto.Password = coach.Password;
@@ -132,7 +133,7 @@ namespace SportClub.Controllers
                         }
                         catch { return View("Edit", coach); } 
                         return RedirectToAction("GetCoaches", "Coach");
-                    } 
+                   // } 
                 }
                 return RedirectToAction("GetCoaches");
             }
