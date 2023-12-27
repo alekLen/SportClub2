@@ -316,8 +316,24 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
+        [HttpPost]
+        public async Task<IActionResult> DeleteAdminProfile(AdminDTO user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);           
+            return View(user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteAdminProfile(int id)
+        {
+            AdminDTO admindto = await adminService.GetAdmin(id);
+            if (admindto == null)
+            {
+                return NotFound();
+            }
+            await adminService.DeleteAdmin(id);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index","Home");
+        }
 
-
-        
     }
 }
