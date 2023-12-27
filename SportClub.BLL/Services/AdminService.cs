@@ -81,6 +81,9 @@ namespace SportClub.BLL.Services
         }
         public async Task DeleteAdmin(int id)
         {
+            Admin admin=await Database.Admins.Get(id);
+            Salt salt=await Database.Salts.GetAdminSalt(admin);
+            await Database.Salts.Delete(salt.Id);
             await Database.Admins.Delete(id);
             await Database.Save();
         }
