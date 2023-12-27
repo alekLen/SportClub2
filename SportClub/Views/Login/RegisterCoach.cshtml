@@ -41,7 +41,7 @@
       <input asp-for="Email" type="email" class="form-control" name="password" id="emailInput" style="width: 420px">
                         <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
      </div>
-                    <div class="form-group" style="margin-left: 40px">
+                           <div class="form-group" style="margin-left: 40px">
                                 <span style="color: white" class="font">@Resources.Resource.Photo</span><br />
                                 <input style="color: white" type="file" name="p" accept=".jpg, .jpeg" /><br /><br />
                             </div>
@@ -87,12 +87,11 @@
                                 <button type="submit" class="btn btn-primary font y" style="color: black">@Resources.Resource.Confirm</button><br /><br />
                             </div>
 
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+                       
+        </form>
+     </div>
+ </div>
+    
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
