@@ -1,31 +1,13 @@
 ﻿@model SportClub.Models.RegisterCoachModel
 @using Microsoft.AspNetCore.Http
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-     <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Регистрация тренера</p>
-     <hr style="color:white"/>
-     <div class="row">
-     <div >
-        <br />
-    <form id="registrationCoachForm" action="RegistrationCoach" method="post" enctype="multipart/form-data" >
-         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-           @Html.AntiForgeryToken()
-           <div class="row">
+ 
+<div class="div_reg">
+    <p class="font">Регистрация тренера </p> 
+    <div class="row"> 
+        <form id="registrationCoachForm" action="RegistrationCoach" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.AntiForgeryToken() 
             @Html.ValidationSummary(true, "")
-            <div style="width: 500px;  justify-content: center; ">
 
      <div class="form-group" style="margin-left: 40px">
         @*  <div class="font form-control" style="width: 420px; color: white; border-color: none" >
@@ -119,24 +101,20 @@
     <script>
         $(document).ready(function () {
 
-            $("#login").on("change", function (e) {
-                let log = e.target.value;
-                let r = true;
-                $.getJSON('/Login/IsLoginIn', function (data) {
-                    $.each(data, function (key, val) {
-                        if (log == val) {
-                            $("#log").css("display", "block");
-                            r = false;
-                        }
-                            if (r) {
+        $("#login").on("change", function (e) {
+            let log = e.target.value;
+            let r = true;
+            $.getJSON('/Login/IsLoginIn', function (data) {
+                $.each(data, function (key, val) {
+                    if (log == val) {
+                        $("#log").css("display", "block");
+                        r = false;
+                    }
+                    if (r) {
                         $("#log").css("display", "none");
                     }
                 })
-
-
             });
-
-
         });
 
 
@@ -146,11 +124,7 @@
                 if (data === true) {
                     $('#emailStatus').text('Email уже занят.');
                 }
-
             });
         });
-            });
-    </script>
-</body>
-</html>
-
+    });
+</script>

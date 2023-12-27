@@ -55,7 +55,11 @@ namespace SportClub.Models
 
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "DateB", ResourceType = typeof(Resources.Resource))]
-        public string? DateOfBirth { get; set; }
+        [RegularExpression(@"^(0[1-9]|[12][0-9]|3[01]).(0[1-9]|1[012]).\d{4}$", ErrorMessage = "Введите дату в формате день/месяц/год")]
+        public string? DateOfBirth { get; set; }//^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([19 | 20]\d\d)$
+      
+         
+
         [Required(ErrorMessageResourceType = typeof(Resources.Resource), ErrorMessageResourceName = "Required")]
         [Display(Name = "Phone", ResourceType = typeof(Resources.Resource))]
         //[RegularExpression(@"\(\d{3}\)-\d{3} \d{2} \d{2}", ErrorMessage = "Введите номер в формате (097)-111 11 11")]

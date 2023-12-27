@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Core.Types;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.DAL.Entities;
 using SportClub.Filters;
 using SportClub.Models;
 
@@ -262,5 +266,58 @@ namespace SportClub.Controllers
             }
             return View("ErrorChangedPassword");
         }
+         
+        public async Task<IActionResult> Edit(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            AdminDTO us = await adminService.GetAdmin(id);
+            if (us != null)
+            {
+                return View("Edit", us);
+            }
+
+            return View("GetAdmins", "Admin"); 
+        }
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, AdminDTO user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                AdminDTO admindto = await adminService.GetAdmin(id);
+                if (admindto == null)
+                {
+                    return NotFound();
+                }
+                 
+                if (ModelState.IsValid)
+                {
+                    admindto = user; 
+                    try
+                    {
+                        await adminService.UpdateAdmin(admindto);
+                    }
+                    catch { return View("Edit", user); }
+                }
+                return RedirectToAction("GetAdmins", "Admin");
+            }
+            catch
+            {
+                return View("GetAdmins", "Admin");
+            }
+        }
+
+        public async Task<IActionResult> GetAdmins()
+        {
+            var p = await adminService.GetAllAdmins();
+            await putPosts();
+            await putSpecialities();
+            return View(p);
+        }
+
+
+        
     }
 }

@@ -34,15 +34,14 @@ namespace SportClub.Controllers
         public IActionResult RegistrationClient()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            return View("RegisterClient");
-            //return RedirectToAction("");
+            return View("RegisterClient"); 
         }
         public async Task<IActionResult> RegistrationCoach()
         {
             HttpContext.Session.SetString("path", Request.Path);
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach1");
+            return View("RegisterCoach");/*RegisterCoach1*/
         }
         public async Task<IActionResult> RegistrationAdmin()
         {
@@ -112,7 +111,7 @@ namespace SportClub.Controllers
 
             try
             {
-                // DateTime dateTime = DateTime.Parse(user.DateOfBirth);
+                
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
@@ -157,9 +156,10 @@ namespace SportClub.Controllers
                     u.Phone = user.Phone;
                     u.Photo = path;
                     u.Name = user.Name;
-                  //  u.Surname = user.Surname;
-                  //  u.Dopname = user.Dopname;
+                    //  u.Surname = user.Surname;
+                    //  u.Dopname = user.Dopname;
                     u.DateOfBirth = user.DateOfBirth;
+                    //u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                     u.Password = user.Password;
                     u.Description = user.Description;
                     u.PostId = user.PostId;
@@ -174,7 +174,7 @@ namespace SportClub.Controllers
             }
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach1", user);
+            return View("RegisterCoach", user);/*RegisterCoach1*/
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -183,7 +183,7 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
 
             try
-            {
+            { 
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
@@ -210,16 +210,19 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-              //  u.Surname = user.Surname;
-              //  u.Dopname = user.Dopname;
-                u.DateOfBirth = user.DateOfBirth;
+                //  u.Surname = user.Surname;
+                //  u.Dopname = user.Dopname;
+                  u.DateOfBirth = user.DateOfBirth;
+                //u.DateOfBirth = user.DateOfBirth.ToString("dd.MM.yyyy");
                 u.Password = user.Password;
                 try
                 {
                     await userService.AddUser(u);
                 }
                 catch { return View("RegisterClient", user); }
-                return RedirectToAction("Login");
+
+                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Login");
             }
             return View("RegisterClient", user);
         }

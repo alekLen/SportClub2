@@ -47,7 +47,7 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
-       
+     
         public async Task<IActionResult> ClientProfile()
         {
             string s = HttpContext.Session.GetString("Id");
@@ -152,6 +152,60 @@ namespace SportClub.Controllers
             }
             return RedirectToAction("ClientProfile");
         }
+
+
+
+//Client
+        public async Task<IActionResult> Edit(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            UserDTO us = await userService.GetUser(id);
+            if (us != null)
+            {
+                return View("Edit", us);
+            }
+
+            return View("GetClients"/*, "User"*/);
+        }
+//Client
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, UserDTO user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                UserDTO usdt = await userService.GetUser(id);
+                if (usdt == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    usdt = user;
+                    //usdt.Age = user.Age;
+                    //usdt.Gender = user.Gender;
+                    //usdt.Login = user.Login;
+                    //usdt.Phone = user.Phone;
+                    //usdt.Name = user.Name;
+                    //usdt.Email = user.Email;
+                    //usdt.DateOfBirth = user.DateOfBirth;
+                    //usdt.Password = user.Password;
+
+                    try
+                    {
+                        await userService.UpdateUser(usdt);
+                    }
+                    catch { return View("Edit", user); }
+                }
+                return RedirectToAction("GetClients"/*, "Users"*/);
+            }
+            catch
+            {
+                return View("GetClients");
+            }
+        }
         // GET: Users/Details/5
         /*  public async Task<IActionResult> Details(int? id)
           {
@@ -213,7 +267,7 @@ namespace SportClub.Controllers
           // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
           [HttpPost]
           [ValidateAntiForgeryToken]
-          public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateOfBirth,Phone,Email,Sex,Description,Photo,Login,Password,Status")] User user)
+          public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateOfBirth,Phone,Email,,Description,Photo,Login,Password,Status")] User user)
           {
               if (id != user.Id)
               {

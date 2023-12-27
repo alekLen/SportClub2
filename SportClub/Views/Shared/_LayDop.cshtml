@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <style> 
         .my_bg-white {
             background-color: #042940;
@@ -27,7 +32,21 @@
             text-decoration: none;
             white-space: nowrap;
         }
-         
+
+        .div_reg {
+            background-color: #374566;
+            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;
+            border-radius: 15px;
+            width: 500px;
+            margin-left: 400px;
+        }
+
+            .div_reg p {
+                font-size: 32px;
+                color: white;
+                padding-top: 30px;
+                text-align: center
+            }
     </style>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -51,7 +70,7 @@
                     </select>
                     <br />
                     <input class="my_bg-white1 my_bn" style="color:white;width:max-content;height:27px;text-align:center" type="submit" name="submit" value="@Resources.Resource.ChooseLang">
-                    @* class=" btn-default c20 yellow-link p" *@
+               
                 </div>
             }
 
@@ -60,56 +79,35 @@
             @if (Context.Session.GetString("admin") != null || Context.Session.GetString("client") != null || Context.Session.GetString("coach") != null)
             {
                 @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
-                {
-                   @*  <div class="navbar-collapse collapse d-sm-inline-flex c c1">
-
-                        <span class="c20">
-                            @Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;
-                        </span>
-            <div> *@
-
+                { 
                     <input style="float: right; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.LogOut" />
-                    <a class=" active" style="float: right;">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
-                       @* </div>
-                    </div> *@
+                    <a class=" active" style="float: right;">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a> 
                 }
             }
             @if (Context.Session.GetString("client") != null)
             {
                 @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" />
-                   @*  <div class="dv1n" style="border:solid 1px red">
-                        <input class="y" type="submit" value="Profile" />&nbsp;
-                    </div> *@
+                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" /> 
                 }
             }
             else if (Context.Session.GetString("coach") != null)
             {
                 @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
                 {
-                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" />
-                    @* <div class="dv1n">
-                        <input type="submit" value="Profile" />&nbsp;
-                    </div> *@
+                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" /> 
                 }
             }
             else if (Context.Session.GetString("admin") != null)
             {
                 @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
-                {
-                    @* <div> *@
-                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" />
-                    @* &nbsp; *@
-                    @* </div> *@
+                { 
+                    <input style="float: right;width:61px; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" /> 
                 }
             }
             else
-            {
-
-                @* <a style="float: right;" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a> *@
-                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">Войти</a>
-
+            { 
+                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">Войти</a> 
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
             }
 
@@ -122,37 +120,74 @@
                     </button>
                     <div class="mdropdown-content">
                         <a asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">Зарегестрировать админа</a>
-                        <a  asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a>
-                        @* <a href="#">Link 3</a> *@
+                        <a  asp-area="" asp-controller="Login" asp-action="RegistrationCoach">Зарегестрировать тренера</a> 
                     </div>
                 </div>
-                 
+
+                <div class="mdropdown">
+                    <button class="mdropbtn">
+                        Создать время/график
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mdropdown-content">
+                        <a asp-area="" asp-controller="Time" asp-action="AddTimeT">Cоздать время</a>
+                        <a asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> 
+                    </div>
+                </div>
                         
-                        @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
-                  
+                 @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
+                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
+                
 
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>*@
-                <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
+                <div class="mdropdown">
+                    <button class="mdropbtn">
+                        Добавление...
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mdropdown-content">
+                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>
+                        <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>
+                    </div>
+                </div>
+
+                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
+                <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>
-                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a> *@ 
 
-                @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
+                <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
+                <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
+                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
+
+                <div class="mdropdown" style="float:right">
+                    <button class="mdropbtn">
+                        Списки всех..
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mdropdown-content">
+                        @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" />
+                        }
+                        @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
+                        }
+                        @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
+                        }
+                    </div>
+                </div>
+
+
+                @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" />
-                    @* <div>
-                        <input class="y" type="submit" value="@Resources.Resource.Users" />&nbsp;
-                    </div> *@
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" /> 
                 }
                 @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
-                    @* <div>
-                        <input class="y" type="submit" value="All Coaches" />&nbsp;
-                    </div> *@
-                }
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" /> 
+                } *@
             }
 
         </div>

@@ -231,7 +231,7 @@ html, body {
 
     /*-------------------*/
 
-input[type="file"] {
+/*input[type="file"] {
     text-align: center;
     font-size: 16px;
     border: none;
@@ -240,6 +240,7 @@ input[type="file"] {
     padding-left: 3px;
     margin-top: 5px;
     margin-bottom: 2px;
+    height: 36px;
 }
 
     input[type="file"]::-webkit-file-upload-button {
@@ -248,6 +249,7 @@ input[type="file"] {
         padding-top: 5px;
         margin-top: -7px;
         margin-bottom: 2px;
+        height: 33px;
     }
 
     input[type="file"]:hover {
@@ -260,7 +262,38 @@ input[type="file"] {
         padding-top: 5px;
         padding-bottom: 3px;
         height: 33px;
+    }*/
+input[type="file"] {
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    width: 420px;
+    padding-left: 3px;
+    margin-left: -3px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    height: 36px;
+   /* color: black;*/
+    background: rgba(255, 255, 255, 0.226);
+    border-radius: 5px;
+}
+
+    input[type="file"]::-webkit-file-upload-button {
+        border-radius: 5px;
+        border: none;
+        width: 170px;
+        margin-top: 1px;
+        height: 33px;
+        color: black;
     }
+
+    input[type="file"]:hover {
+        border: solid 2px navy;
+        height: 39px;
+        border-radius: 5px;
+    }
+
+
 .div_i {
     float: left;
     padding-top: 7px;
@@ -274,4 +307,21 @@ input[type="file"] {
     width: 284px;
     height: 33px;
     margin: 8px auto 10px 12px;
+}
+
+.white-color_size20 {
+    color:white;
+    font-size: 20px;
+}
+
+textarea{
+    border-radius:5px;
+    min-height:35px;
+}
+
+input[type="date"] {
+    text-align: center;
+    font-size: 16px; 
+    height: 36px; 
+    border-radius: 5px;
 }
