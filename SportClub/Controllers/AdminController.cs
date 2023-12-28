@@ -334,6 +334,40 @@ namespace SportClub.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index","Home");
         }
-
+ 
+        
+        public async Task<IActionResult> Delete(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            AdminDTO user = await adminService.GetAdmin(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            AdminDTO admindto = await adminService.GetAdmin(id);
+            if (admindto == null)
+            {
+                return NotFound();
+            }
+            
+            await adminService.DeleteAdmin(id);
+            return RedirectToAction("GetAdmins", "Admin"); 
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            AdminDTO admin = await adminService.GetAdmin(id);
+            if (admin == null)
+            {
+                return NotFound();
+            }
+            return View(admin);
+        }
     }
 }

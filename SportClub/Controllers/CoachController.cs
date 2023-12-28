@@ -142,7 +142,29 @@ namespace SportClub.Controllers
                 return View("GetCoaches", "Coach");
             }
         }
+        public async Task<IActionResult> Delete(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            CoachDTO coach = await coachService.GetCoach(id);
+            if (coach == null)
+            {
+                return NotFound();
+            }
+            return View(coach);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            CoachDTO coach = await coachService.GetCoach(id);
+            if (coach == null)
+            {
+                return NotFound();
+            }
 
+            await coachService.DeleteCoach(id);
+            return RedirectToAction("GetCoaches", "Coach");
+        }
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);

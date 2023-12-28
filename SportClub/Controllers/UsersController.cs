@@ -5,6 +5,7 @@ using SportClub.Models;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.DTO;
 using SportClub.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace SportClub.Controllers
@@ -153,9 +154,6 @@ namespace SportClub.Controllers
             return RedirectToAction("ClientProfile");
         }
 
-
-
-//Client
         public async Task<IActionResult> Edit(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -167,7 +165,7 @@ namespace SportClub.Controllers
 
             return View("GetClients"/*, "User"*/);
         }
-//Client
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, UserDTO user)
@@ -205,6 +203,40 @@ namespace SportClub.Controllers
             {
                 return View("GetClients");
             }
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            UserDTO user = await userService.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            UserDTO user = await userService.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            await userService.DeleteUser(id);
+            return RedirectToAction("GetClients");
+        }
+        public async Task<IActionResult> Details(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            UserDTO user = await userService.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
         }
         // GET: Users/Details/5
         /*  public async Task<IActionResult> Details(int? id)

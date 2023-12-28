@@ -1,11 +1,62 @@
-﻿@model SportClub.BLL.DTO.CoachDTO
+﻿@model SportClub.BLL.DTO.UserDTO
 
 
 @{
     ViewData["Title"] = "Details";
 }
+<div class="div_reg">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        Details user
+    </p>
+    
 
-<h1>Details</h1>
+    <div class="row">
+        <div>
+
+            <div class="row">
+                <div style="width: 500px;  justify-content: center; ">
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
+                    </div>
+                    <div class="form-group" style="margin-left: 40px">
+
+                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-left: 40px">
+                    <label asp-for="Gender" class="control-label font  white-color_size20" style="color: white"></label>
+                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.Gender)</h1>
+                </div>
+
+                <div class="form-group" style="margin-left: 40px">
+                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
+                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
+                </div> <br />
+
+                <div style="margin: 10px auto 25px auto;width: max-content;">
+                    <a class="btn btn-outline-light" asp-controller="Users" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                    <a class="btn btn-outline-light" asp-action="GetClients" asp-controller="Users">Back to List</a>
+                </div>
+                <br /><br />
+            </div>
+
+        </div>
+    </div>
+</div>
+@* <h1>Details</h1>
 
 <div>
     <h4>User</h4>
@@ -41,7 +92,7 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Gender)
         </dd>
-        <dt class = "col-sm-2">
+        @* <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
@@ -52,7 +103,7 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Photo)
-        </dd>
+        </dd> @*
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Login)
         </dt>
@@ -67,8 +118,8 @@
         </dd>
        
     </dl>
-</div>
-<div>
+</div> *@
+@* <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
-</div>
+</div> *@

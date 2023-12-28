@@ -20,28 +20,18 @@
                     @Html.ValidationSummary(true, "")
                     <div style="width: 500px;  justify-content: center; ">
 
-                        <div class="form-group" style="margin-left: 40px">
-                            @*  <div class="font form-control" style="width: 420px; color: white; border-color: none" >
-                            @Html.EditorFor(model => model.Name,
-                            new {AddHtmlAttributeValue = new {@class = "form-control"}})
-                            </div> *@
+                        <div class="form-group" style="margin-left: 40px"> 
                             <label asp-for="Name" class="control-label" style="color: white" class="font"></label>
                             <input asp-for="Name" type="text" class="form-control" name="name" id="name" class="font" style="width: 420px">
                             <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                         </div>
                         <div class="form-group" style="margin-left: 40px">
-                            @* <div class="font form-control" style="width: 420px; color: white; border-color: none" >
-                            @Html.EditorFor(model => model.Login)
-                            </div> *@
+                             
                             <label asp-for="Login" class="control-label" style="color: white" class="font"></label>
                             <input asp-for="Login" type="text" class="form-control" name="login" id="login" style="width: 420px">
                             <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
                         </div>
-                      @*   <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Password" class="control-label" style="color: white" class="font"></label>
-                            <input asp-for="Password" type="password" class="form-control" name="password" id="password" style="width: 420px">
-                            <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
-                        </div>  *@                      
+                       
                         <div class="form-group" style="margin-left: 40px">
                             <label asp-for="Email" class="control-label" style="color: white" class="font"></label>
                             <input asp-for="Email"  class="form-control"  id="emailInput" style="width: 420px">
@@ -65,22 +55,14 @@
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 40px">
-                            <label style="color: white" class="font">@Resources.Resource.DateB</label><br />
-                          @*   <input type="date" asp-for="DateOfBirth" /> *@
+                            <label style="color: white" class="font">@Resources.Resource.DateB</label><br /> 
                             <input asp-for="DateOfBirth" type="text"  />
                             <br />
                             <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
                         </div>                       
                         <br />
                         <br />
-                       @*  <div class="form-group" style="margin-left: 200px"> *@
-                           @*  <button type="submit" class="btn btn-primary font y" style="color: white">@Resources.Resource.Confirm</button> *@
-                          @*   <input type="submit"  formaction="EditAdminProfile" value="Редактировать профиль" class="y btn btn-primary font " style="color: white; font-weight:bold" />
-                        </div>
-                        <br />                        
-                        <div class="form-group" style="margin-left: 200px">
-                            <input formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" class="y btn btn-primary font " style="color: white; font-weight:bold" /><br /><br />
-                        </div> *@
+                        
                         <div style="margin-left: 10px">
                             <input type="submit" class="btn btn-outline-light" formaction="EditAdminProfile" value="Редактировать" />
                             <input class="btn btn-outline-light" formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" />
@@ -112,12 +94,8 @@
                     if (r) {
                         $("#log").css("display", "none");
                     }
-                })
-
-
-            });
-
-
+                }) 
+            }); 
         });
 
 
@@ -126,8 +104,7 @@
             $.get('/Login/IsEmailInUse', { email: email }, function (data) {
                 if (data === true) {
                     $('#emailStatus').text('Email уже занят.');
-                }
-
+                } 
             });
         });
     });
