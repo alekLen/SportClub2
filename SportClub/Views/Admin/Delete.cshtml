@@ -3,15 +3,16 @@
 *@
 @{
 }
-@model SportClub.BLL.DTO.UserDTO
+@model SportClub.BLL.DTO.AdminDTO
 <div class="div_reg">
     <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        Удаление пользователя </p>
-    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> пользователя? </p>
+        Удаление админа
+    </p>
+    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> админа? </p>
 
     <div class="row">
         <div>
-            
+
             <div class="row">
                 <div style="width: 500px;  justify-content: center; ">
                     <div class="form-group" style="margin-left: 40px">
@@ -40,14 +41,13 @@
                     <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
                 </div> <br />
  
-
                 <div style="margin: 10px auto 10px auto;width: max-content;">
                     <form method="post" asp-action="Delete" asp-controller="Users"
                           style="width: max-content; float: left;height: 38px;">
                         <input type="hidden" asp-for="Id" name="id" />
                         <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
                     </form>
-                    <a asp-action="GetClients" asp-controller="Users" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a>
+                    <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
                 </div><br />
             </div>
 

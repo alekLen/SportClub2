@@ -90,6 +90,9 @@ namespace SportClub.BLL.Services
         }
         public async Task DeleteUser(int id)
         {
+            User user = await Database.Users.Get(id);
+            Salt salt = await Database.Salts.GetUserSalt(user);
+            await Database.Salts.Delete(salt.Id);
             await Database.Users.Delete(id);
             await Database.Save();
         }

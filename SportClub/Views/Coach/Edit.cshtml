@@ -76,10 +76,10 @@
                 <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
             </div>
 
-            <br />
-            <div class="form-group" style="margin-left: 200px">
-                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
-            </div>
+            <div style="margin: 10px auto 10px auto;width: max-content;">
+                <button style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
+                <a asp-action="GetCoaches" asp-controller="Coach" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+            </div><br />
         </form>
     </div>
 </div>

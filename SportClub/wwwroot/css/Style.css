@@ -12,6 +12,12 @@ header .my_navbar {
         text-decoration: none;
         font-size: 17px;
     }
+.active {
+    background-color: #0089c2;
+    color: white;
+}
+
+
 
 header .mdropdown {
     float: left;
@@ -324,4 +330,29 @@ input[type="date"] {
     font-size: 16px; 
     height: 36px; 
     border-radius: 5px;
+}
+/*///////*/
+.input_subm_del {
+    height: 40px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 2px darkred;
+    font-size: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    background-color: rgb(228, 20, 0);
+}
+
+    .input_subm_del:hover {
+        color: white;
+        border: solid 1px navy;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #b10f00;
+    }
+
+.btn1n {
+    background: #374566;
 }
