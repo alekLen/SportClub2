@@ -66,9 +66,10 @@
                 <div style="margin-left: 10px">
                    <input type="submit" class="btn btn-outline-light" formaction="EditClientProfile" value="Редактировать" />
                     <input class="btn btn-outline-light" formaction="ChangeClientPassword" type="submit" value="Изменить пароль" />
-                    <button type="button" class="btn btn-outline-light">
-                        <a formaction="DeleteClientProfile" value="Удалить" asp-route-id="@Model.Id" style="text-decoration:none; color: white">Удалить</a>
-                    </button>
+                    @* <button type="button" class="btn btn-outline-light">
+                                    <a formaction="DeleteClientProfile" value="Удалить" asp-route-id="@Model.Id" style="text-decoration:none; color: white">Удалить и Выйти</a>
+                    </button> *@
+                                <input type="submit" class="btn btn-outline-light" formaction="DeleteClientProfile" value="Удалить и Выйти" />
                     @* <input class="btn btn-outline-light" formaction="DeleteClientProfile" value="Удалить" type="submit" /> *@
                 </div>
                 <br /><br />
