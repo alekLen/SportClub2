@@ -204,7 +204,24 @@ namespace SportClub.Controllers
                 return View("GetClients");
             }
         }
-
+        [HttpPost]
+        public async Task<IActionResult> DeleteClientProfile(UserDTO user)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            return View(user);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteClientProfile(int id)
+        {
+            UserDTO user = await userService.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            await userService.DeleteUser(id);
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
         public async Task<IActionResult> Delete(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);

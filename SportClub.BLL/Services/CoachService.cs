@@ -160,5 +160,15 @@ namespace SportClub.BLL.Services
             }
             catch { return null; }
         }
+        public async Task ChangeCoachPassword(CoachDTO uDto, string pass)
+        {
+            Coach coach = await Database.Coaches.Get(uDto.Id);
+            Salt s = await Database.Salts.GetCoachSalt(coach);
+            string password = s.salt + pass;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            coach.Password = hashedPassword;
+            await Database.Coaches.Update(coach);
+            await Database.Save();
+        }
     }
 }

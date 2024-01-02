@@ -19,15 +19,17 @@
                 <div>
                         @Html.LabelFor(model => model.Login, new { @class = "white" })
                     <div>
-                        @Html.EditorFor(model => model.Login)
+                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-15px">
+                            @* @Html.EditorFor(model => model.Login, new { @class = "bordrad7l" }) *@
                         @Html.ValidationMessageFor(model => model.Login, "")
                     </div>
                 </div>
 
                 <div>
                         @Html.LabelFor(model => model.Password, new { @class = "white" })
-                    <div>
-                        @Html.PasswordFor(model => model.Password)
+                        <div>
+                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-15px">
+                            @* @Html.PasswordFor(model => model.Password, new { @class = "bordrad7" }) *@
                         @Html.ValidationMessageFor(model => model.Password, "")
                     </div>
                 </div>

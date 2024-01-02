@@ -356,3 +356,49 @@ input[type="date"] {
 .btn1n {
     background: #374566;
 }
+/*hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh0*/
+
+.myTitleClass .ui-dialog-titlebar {
+    font-size: 26px;
+    border: none;
+    color: white;
+        
+}
+
+.myTitleClass1 .ui-dialog-titlebar {
+    font-size: 20px;
+    border: none;
+}
+
+.myTitleClass1v .ui-dialog-titlebar {
+    font-size: 20px;
+    border: none;
+    text-align: center;
+}
+/*
+.bordrad7 {
+    border-radius: 7px;
+}
+.bordrad7l {
+    border-radius: 7px;
+}*/
+
+.input_subm2 {
+    height: 40px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 2px navy;
+    font-size: 20px;
+
+    border-radius: 5px;
+    width: max-content;
+    background-color: rgb(0, 140, 255);
+}
+
+    .input_subm2:hover {
+        color: white;
+        border: solid 1px #13678a;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #13678a;
+    }
