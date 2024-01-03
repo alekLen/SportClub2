@@ -22,23 +22,23 @@
                     <span  id="en" class="text-danger"></span> 
                   
                 </div>
-                <div class="form-group">
-                    <input type="submit" id="add" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary font y" />
+                <div class="form-group" style="margin:10px">
+                    <input type="submit" id="add" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary  buttons" />
                 </div>
             </form>
 
         </div>
         <div style="width:20px"></div>
         <div class=" card c7 padd">
-            <h4> @Resources.Resource.Editing</h4>
+  
             <form asp-controller="Time" method="post">
                 <label>Сохраненное время</label>
                 <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
 
                 <br />
                 <div class="form-group">           
-                    <input type="submit" formmethod="get" formaction="EditTime"  value="@Resources.Resource.Edit" class="btn btn-primary c2" />
-                    <input type="submit" formaction="DeleteTime" value="Удалить время" class="btn btn-primary c2 " /><br /><br />
+                    <input type="submit" formmethod="get" formaction="EditTime" value="@Resources.Resource.Edit" class="btn btn-primary  buttons" />
+                    <input type="submit" formaction="DeleteTime" value="Удалить время" class="btn btn-primary   buttons " /><br /><br />
                 </div>
             </form>
         </div>

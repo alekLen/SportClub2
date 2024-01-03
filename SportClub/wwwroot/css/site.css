@@ -60,4 +60,7 @@ body {
 .padd{
     padding:20px;
 }
-
+.buttons {
+    background-color: #374566;
+    margin-bottom:10px;
+}
