@@ -150,7 +150,7 @@ namespace SportClub.Controllers
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = "Editing was not successful.";
+                    TempData["ErrorMessage"] = "некорректное редактирование";
                     return RedirectToAction("EditTime", new { Id = t.Id });
                    
                 }
@@ -252,6 +252,12 @@ namespace SportClub.Controllers
         {
             timesT.Clear();
             return Redirect("/Home/Index");            
+        }
+        [HttpPost]
+        public IActionResult ExitTime()
+        {
+            timesT.Clear();
+            return RedirectToAction("AddTimeT");
         }
         public void PutTimesToTable()
          {
