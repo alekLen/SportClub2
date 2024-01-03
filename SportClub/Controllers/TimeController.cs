@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using NuGet.Packaging.Signing;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
@@ -8,6 +9,7 @@ using SportClub.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Xml;
 
 namespace SportClub.Controllers
@@ -43,16 +45,34 @@ namespace SportClub.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddTimeT(string Start,string End)
+        public async Task<IActionResult> AddTimeT(string Start, string End)
         {
-            try
-            {
-                await timeService.AddTimeT(Start, End);
+            string pattern = @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+
+            if (Regex.IsMatch(Start, pattern) && Regex.IsMatch(End, pattern)) {
+
+                string[] str1 = Start.Split(':');
+                string[] str2 = End.Split(':');
+                if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {  
+                    try
+                    {
+                        await timeService.AddTimeT(Start, End);
+                    }
+                    catch { }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
+
+                }
             }
-            catch { }
+            else
+            {
+                ModelState.AddModelError("", "Введите время в формате 00:00 ");
+            }
             await PutTimes();
             return View();
-        }
+        }    
         public async Task PutTimes()
         {
             IEnumerable<TimeTDTO> p = await timeService.GetAllTimeTs();
@@ -446,6 +466,6 @@ namespace SportClub.Controllers
            
             await trainingIndService.AddTrainingInd(tr);
             return View("AddIndTraining",tr);
-        }
+        }    
     }
 }
