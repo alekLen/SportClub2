@@ -47,36 +47,45 @@ namespace SportClub.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
         {
-            string pattern = @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+            //string pattern = @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
 
-            if (Regex.IsMatch(Start, pattern) && Regex.IsMatch(End, pattern)) {
+            //if (Regex.IsMatch(Start, pattern) && Regex.IsMatch(End, pattern)) {
 
-                string[] str1 = Start.Split(':');
-                string[] str2 = End.Split(':');
-                if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {
-                    if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
-                    {
-                        ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
-                    }
-                    else
-                    {
-                        try
+            //    string[] str1 = Start.Split(':');
+            //    string[] str2 = End.Split(':');
+            //    if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {
+            //        if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
+            //        {
+            //            ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
+            //        }
+            //        else
+            //        {
+            //            try
 
-                        {
-                            await timeService.AddTimeT(Start, End);
-                        }
-                        catch { }
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
+            //            {
+            //                await timeService.AddTimeT(Start, End);
+            //            }
+            //            catch { }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
 
-                }
-            }
-            else
+            //    }
+            //}
+            //else
+            //{
+            //    ModelState.AddModelError("", "Введите время в формате 00:00 ");
+            //}
+            if (CheckTime(Start, End))
             {
-                ModelState.AddModelError("", "Введите время в формате 00:00 ");
+                try
+
+                {
+                    await timeService.AddTimeT(Start, End);
+                }
+                catch { }
             }
             await PutTimes();
             return View();
@@ -105,7 +114,11 @@ namespace SportClub.Controllers
             TimeTDTO p = await timeService.GetTimeT(Id);
             if (p != null)
             {
-               
+                if (TempData.ContainsKey("ErrorMessage"))
+                {
+                    // Retrieve the error message
+                    ViewBag.ErrorMessage = TempData["ErrorMessage"] as string;
+                }
                 return View("EditTimeT",p);
             }
             await PutTimes();
@@ -124,11 +137,25 @@ namespace SportClub.Controllers
                     await PutTimes();
                     return View("AddTimeT");
                 }
-                p.StartTime = Start;
-                p.EndTime = End;
-                await timeService.UpdateTimeT(p);
-                await PutTimes();
-                return View("AddTimeT");
+                if (CheckTime(Start, End))
+                {
+                    p.StartTime = Start;
+                    p.EndTime = End;
+                    await timeService.UpdateTimeT(p);
+                    try
+                    {
+                        TempData.Remove("ErrorMessage");
+                    }
+                    catch { }
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Editing was not successful.";
+                    return RedirectToAction("EditTime", new { Id = t.Id });
+                   
+                }
+
+                return RedirectToAction("AddTimeT");
             }
             catch
             {
@@ -474,6 +501,38 @@ namespace SportClub.Controllers
            
             await trainingIndService.AddTrainingInd(tr);
             return View("AddIndTraining",tr);
-        }    
+        } 
+        private bool CheckTime(string Start, string End)
+        {
+            string pattern = @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+
+            if (Regex.IsMatch(Start, pattern) && Regex.IsMatch(End, pattern))
+            {
+
+                string[] str1 = Start.Split(':');
+                string[] str2 = End.Split(':');
+                if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1])))
+                {
+                    if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
+                    {
+                        ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
+
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Введите время в формате 00:00 ");
+            }
+            return false;
+        }
     }
 }
