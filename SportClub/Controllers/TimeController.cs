@@ -53,12 +53,20 @@ namespace SportClub.Controllers
 
                 string[] str1 = Start.Split(':');
                 string[] str2 = End.Split(':');
-                if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {  
-                    try
+                if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {
+                    if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
                     {
-                        await timeService.AddTimeT(Start, End);
+                        ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
                     }
-                    catch { }
+                    else
+                    {
+                        try
+
+                        {
+                            await timeService.AddTimeT(Start, End);
+                        }
+                        catch { }
+                    }
                 }
                 else
                 {
