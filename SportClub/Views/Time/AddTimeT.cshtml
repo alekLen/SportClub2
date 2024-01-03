@@ -1,33 +1,38 @@
-﻿<h4 class=" b1 b3 c20 center pr">Время</h4>
-<div class="center pr">
-    <div class="flex">
+﻿<h4 class=" b1 b3 c20 center pr">Создать время для графиков
 
-        <div class=" card c7">
+</h4>
+<div class="div_reg">
+    <div class="flex padd">
+
+        <div class=" card c7 padd">
             <h4>@Resources.Resource.Addition</h4>
             <form asp-controller="Time" method="post">
                 @model SportClub.BLL.DTO.TimeTDTO
-
+                @Html.AntiForgeryToken()
+             
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <span>Время начала</span><br />
-                    <input name="Start" class="form-control card _c7" />
-                    <span asp-validation-for="StartTime" class="text-danger"></span>
+                    <input  name="Start" id="start"  class="form-control card _c7" />
+                    <span  id="st" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <span>Время окончания</span><br />
-                    <input name="End" class="form-control card _c7" />
-                    <span asp-validation-for="EndTime" class="text-danger"></span>
+                    <input name="End" id="end"  class="form-control card _c7" />
+                    <span  id="en" class="text-danger"></span> 
+                  
                 </div>
                 <div class="form-group">
-                    <input type="submit" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary c2" />
+                    <input type="submit" id="add" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary font y" />
                 </div>
             </form>
 
         </div>
-        <div class=" card c7">
+        <div style="width:20px"></div>
+        <div class=" card c7 padd">
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Time" method="post">
-                <label>График</label>
+                <label>Сохраненное время</label>
                 <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
 
                 <br />
@@ -39,3 +44,40 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<script>
+    $(document).ready(function () {
+
+        $("#start").on("change", function (e) {
+            let value = e.target.value;
+            let pattern="^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+            let r = true;
+            if (Regex.IsMatch(value, pattern)) {
+                        $("#st").css("display", "block");
+                        r = false;
+            }
+            if (r) {
+                $("#st").css("display", "none");
+            }
+        });
+        $("#end").on("change", function (e) {
+            let value = e.target.value;
+            let pattern = "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+            let r = true;
+            if (Regex.IsMatch(value, pattern)) {
+                $("#en").css("display", "block");
+                r = false;
+            }
+            if (r) {
+                $("#en").css("display", "none");
+            }
+        });
+
+        
+    });
+</script>

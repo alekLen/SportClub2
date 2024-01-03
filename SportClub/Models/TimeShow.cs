@@ -1,4 +1,6 @@
-﻿namespace SportClub.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace SportClub.Models
 {
     public class TimeShow
     {
