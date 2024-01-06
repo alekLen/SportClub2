@@ -1,32 +1,33 @@
-﻿<h4 class=" b1 b3 c20 center pr">График</h4>
-<div class="center pr">
-    <div class="flex">
+﻿<h4 class=" b1 b3 c20 center pr">Создание графика дня</h4>
+<div class="div_reg">
+    <div class="flex padd">
 
-        <div class=" card c7">
-            <h4>@Resources.Resource.Addition</h4>
+        <div class="padd">
+            <h4 class="white">График дня</h4>
             <form asp-controller="Time" method="post">
                 @model SportClub.BLL.DTO.TimetableDTO
 
-                <label>График</label>
-                <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
+                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
                 <br />
                 <div class="form-group">
-                    <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary c2" />
-                    <input type="submit" formaction="Cancel" value="отмена" class="btn btn-primary c2" />
-                    <input type="submit" formaction="Exit" value="выход" class="btn btn-primary c2" />
-                </div>
+                    <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary buttons1" />
+                      </div>
             </form>
-
+            <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttons1">Отмена</a>
+            <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttons1">Выход</a>
+           
         </div>
-        <div class=" card c7">
-            <h4> @Resources.Resource.Editing</h4>
+        <div style="width:20px;"></div>
+        <div class="padd">
+           
             <form asp-controller="Time" method="post">
-                <label>Выберите время для графика</label>
-                <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
+                <label class="white">Выберите время для графика</label>
+                <br />
+                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
 
-               
+                <br /> <br />
                 <div class="form-group">
-                    <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить в график" class="btn btn-primary c2" />
+                    <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить время в график" class="btn btn-primary  buttons1" />
                    
                 </div>
             </form>

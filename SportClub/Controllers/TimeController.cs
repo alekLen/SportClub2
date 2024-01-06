@@ -232,7 +232,7 @@ namespace SportClub.Controllers
                  return View();
              }
          }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> Cancel()
         {
             if (timesT.Count > 0)
@@ -247,7 +247,7 @@ namespace SportClub.Controllers
                 return Redirect("/Home/Index");
             }
         }
-        [HttpPost]
+        [HttpGet]
         public  IActionResult Exit()
         {
             timesT.Clear();
