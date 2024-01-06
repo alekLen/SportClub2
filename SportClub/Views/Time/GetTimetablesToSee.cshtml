@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Timetables";
+}
+@model MakeSheduleView
+<h4>Графики:</h4>
+<div class="flex">
+
+    @foreach (var item in Model.times)
+    {
+        <div>
+            <form method="post">
+               
+                <input type="hidden" name="id" value="@item.Id" />
+                @foreach (var t in item.Times)
+                {
+                    <input type="text" value="@t" style="width:150px;"> <br />
+                }
+                <input type="submit" formaction=" " value="Удалить" class="btn btn-primary c2" />
+            </form>
+        </div>
+    }
+  
+        <input value="ВЫХОДНОЙ" readonly /><br />       
+        <input type="hidden" name="id" value=0 />
+    
+</div>

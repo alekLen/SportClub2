@@ -287,27 +287,58 @@ namespace SportClub.Controllers
         {
             List<TimetableShow> ts = new();
             IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
-            foreach(var t in p)
+            List<TimeTDTO> pp = new();
+            foreach (var t in p)
             {
                 TimetableShow t1 = new();
                 t1.Id = t.Id;
-               
                 foreach (int i in t.TimesId)
                 {
                     TimeTDTO td = await timeService.GetTimeT(i);
-                    string st = td.StartTime + "/" + td.EndTime;
+                    pp.Add(td);
+                }
+                IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var i in p2)
+                {
+                    string st = i.StartTime + "/" + i.EndTime;
                     t1.Times.Add(st);
                 }
                 ts.Add(t1);
+                pp.Clear();
             }
-           // IEnumerable<RoomDTO> r= await roomService.GetAllRooms();
-           RoomDTO r=await roomService.GetRoom(Id);
+            RoomDTO r=await roomService.GetRoom(Id);
             MakeSheduleView m = new();
             m.times = ts;
             m.room = r;
-           // ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
-            // return View("GetTimetables",ts);
             return View("GetTimetables", m);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllTimetable()
+        {
+            List<TimetableShow> ts = new();
+            IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
+            List<TimeTDTO> pp=new ();
+            foreach (var t in p)
+            {
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                   pp.Add(td);                
+                }
+                IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var i in p2)
+                {                  
+                    string st = i.StartTime + "/" + i.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts.Add(t1);
+                pp.Clear();
+            }
+            MakeSheduleView m = new();
+            m.times = ts;
+            return View("GetTimetablesToSee",m);
         }
         [HttpPost]
         public async Task<IActionResult> AddTimetableToShedule(int id, int roomId)
