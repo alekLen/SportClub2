@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SportClub.BLL.DTO.AdminDTO>
+
+@{
+    ViewData["Title"] = "Admins";
+}
+<div style="background: #374566; border-radius: 10px; padding:25px;color:white">
+    <h1>Admins</h1>
+
+    @* <p>
+    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">зарегестрировать админа</a>
+    </p> *@
+    <table class="table" style="color:white">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Gender)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+
+                    <td>
+                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
