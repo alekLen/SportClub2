@@ -259,6 +259,16 @@ namespace SportClub.Controllers
             timesT.Clear();
             return RedirectToAction("AddTimeT");
         }
+        [HttpGet]
+        public IActionResult Back()
+        {         
+            return RedirectToAction("AddTimetable");
+        }
+        [HttpGet]
+        public IActionResult BackToAll()
+        {
+            return RedirectToAction("GetAllTimetable");
+        }
         public void PutTimesToTable()
          {
 
@@ -340,6 +350,45 @@ namespace SportClub.Controllers
             m.times = ts;
             return View("GetTimetablesToSee",m);
         }
+        [HttpGet]
+        public async Task<IActionResult> DeleteTimetable(int id)
+        {
+            if (id != 0)
+            {
+                TimetableDTO tt = await timetableService.GetTimetable(id);
+                List<TimetableShow> ts = new();              
+                List<TimeTDTO> pp = new();
+                TimetableShow tss = new();
+                tss.Id = tt.Id;
+                    foreach (var i in tt.TimesId)
+                    {
+                        TimeTDTO td = await timeService.GetTimeT(i);
+                        pp.Add(td);
+                    }
+                    IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                    foreach (var i in p2)
+                    {
+                        string st = i.StartTime + "/" + i.EndTime;
+                        tss.Times.Add(st);
+                    }
+                    ts.Add(tss);                             
+                MakeSheduleView m = new();
+                m.times = ts;
+                return View(m);
+            }
+            return Redirect("GetAllTimetable");
+        }
+        [HttpGet]
+        public async Task<IActionResult> ConfirmDeleteTimetable(int id)
+        {
+            if (id != 0)
+            {
+                await timetableService.DeleteTimetable(id);
+
+            }
+            return Redirect("GetAllTimetable");
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddTimetableToShedule(int id, int roomId)
         {
