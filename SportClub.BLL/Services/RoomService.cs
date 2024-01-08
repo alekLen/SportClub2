@@ -57,6 +57,7 @@ namespace SportClub.BLL.Services
             {
                 Id = a.Id,
                 Name = a.Name,
+                Photo= a.Photo,
                 sheduleId = shId
             };
         }
@@ -83,6 +84,14 @@ namespace SportClub.BLL.Services
             a.Name = pDto.Name;
             a.Photo = pDto.Photo;
             a.Shedule = sh;
+            await Database.Rooms.Update(a);
+            await Database.Save();
+        }
+        public async Task Update(RoomDTO pDto)
+        {
+            Room a = await Database.Rooms.Get(pDto.Id);         
+            a.Name = pDto.Name;
+            a.Photo = pDto.Photo;           
             await Database.Rooms.Update(a);
             await Database.Save();
         }
