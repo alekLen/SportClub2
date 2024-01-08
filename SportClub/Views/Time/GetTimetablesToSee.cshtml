@@ -11,19 +11,22 @@
     {
         <div>
             <form method="get">
-               
+                <div class="padd1">
                 <input type="hidden" name="id" value="@item.Id" />
                 @foreach (var t in item.Times)
                 {
                     <input type="text" value="@t" style="width:150px;"> <br />
                 }
                 <br />
-                <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" value="Удалить" class="btn btn-primary c2" />
+                    <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" readonly value="Удалить" class="btn btn-primary c2" />
+            </div>
             </form>
         </div>
     }
   <form>
-   <input value="ВЫХОДНОЙ" readonly />
+        <div class="padd1">
+            <input value="ВЫХОДНОЙ" readonly style="width:120px;"  />
+   </div>
    </form>
 
     </div>
