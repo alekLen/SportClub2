@@ -416,35 +416,43 @@ namespace SportClub.Controllers
         public async Task<IActionResult> EditRoom(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            PostDTO p = await postService.GetPost(id);
+            RoomDTO p = await roomService.GetRoom(id);
             if (p != null)
             {
-                return View("EditPost", p);
+                return View("EditRoom", p);
             }
-            await putPosts();
-            return View("Post");
+            return RedirectToAction("AddRoom");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditRoom(int id, string name)
+        public async Task<IActionResult> EditRoom(int id, string name, IFormFile? p)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                PostDTO p = await postService.GetPost(id);
-                if (p == null)
+                RoomDTO room = await roomService.GetRoom(id);
+                if (room == null)
                 {
-                    await putPosts();
-                    return View("Post");
+                    return RedirectToAction("AddRoom");
                 }
-                p.Name = name;
-                await postService.UpdatePost(p);
-                return RedirectToAction("Index", "Home");
+                if (p != null)
+                {
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    string path = "/Rooms/" + str1; // имя файла
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    room.Photo = path;
+                }
+                    room.Name = name;
+                    await roomService.Update(room);
+                return RedirectToAction("AddRoom");
             }
             catch
             {
-                await putPosts();
-                return View("Post");
+                return RedirectToAction("AddRoom");
             }
         }
         [HttpPost]

@@ -16,6 +16,7 @@ namespace SportClub.BLL.Interfaces
         Task<IEnumerable<RoomDTO>> GetAllRooms();
         Task DeleteRoom(int id);
         Task UpdateRoom(RoomDTO pDto, int id);
+        Task Update(RoomDTO pDto);
 
     }
 }
