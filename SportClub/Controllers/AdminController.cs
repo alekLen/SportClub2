@@ -386,9 +386,9 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
+                RoomDTO room = new();
                 if (p != null)
                 {
-                    RoomDTO room = new();
                     string str = p.FileName.Replace(" ", "_");
                     string str1 = str.Replace("-", "_");
                     // Путь к папке Files
@@ -398,15 +398,12 @@ namespace SportClub.Controllers
                     {
                         await p.CopyToAsync(fileStream); // копируем файл в поток
                     }
-                    room.Photo = path;                   
+                    room.Photo = path;
+                }
                     room.Name = name;
                     await roomService.AddRoom(room);
                     return Redirect("AddRoom");
-                }
-                else
-                {
-                    return Redirect("AddRoom");
-                }
+               
             }
             catch
             {
@@ -455,38 +452,33 @@ namespace SportClub.Controllers
                 return RedirectToAction("AddRoom");
             }
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]  
         public async Task<IActionResult> DeleteRoom(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            PostDTO p = await postService.GetPost(id);
+           RoomDTO p = await roomService.GetRoom(id);
             if (p != null)
             {
-                return View("DeletePost", p);
+                return View("DeleteRoom", p);
             }
-            await putPosts();
-            return View("Post");
+            return RedirectToAction("AddRoom");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDeleteRoom(int id)
+        public async Task<IActionResult> DeleteRoom(RoomDTO pp)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            PostDTO p = await postService.GetPost(id);
+            RoomDTO p = await roomService.GetRoom(pp.Id);
             if (p != null)
             {
-                await postService.DeletePost(id);
-                return View("Index", p);
+                await roomService.DeleteRoom(pp.Id);             
             }
-            await putPosts();
-            return View("Post");
+            return RedirectToAction("AddRoom");
         }
-        public async Task putRooms()
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-            IEnumerable<RoomDTO> p = await roomService.GetAllRooms();
-            ViewData["RoomId"] = new SelectList(p, "Id", "Name");
-        }
+        //public async Task putRooms()
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+        //    IEnumerable<RoomDTO> p = await roomService.GetAllRooms();
+        //    ViewData["RoomId"] = new SelectList(p, "Id", "Name");
+        //}
     }
 }
