@@ -1,27 +1,28 @@
 ﻿@model IEnumerable<SportClub.BLL.DTO.RoomDTO>
-<div>
+<div class="div_reg padd">
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
-            <label  class="control-label">Введите название зала</label>
+            <label class="white-color_size20 font">Введите название зала</label>
             <input name="Name" class="form-control" />          
         </div>
         <div class="form-group" style="margin-left: 40px;">
             <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
             <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
         </div>
-        <input formaction="AddRoom" type="submit" value="@Resources.Resource.Add" />
+        <input class="btn1n btn btn-outline-light" formaction="AddRoom" type="submit" value="@Resources.Resource.Add" />
     </form>
 </div>
+<hr class="white" />
+<div class="flex" style="flex-wrap:wrap;">
 @foreach (var item in Model)
 {
+        <div class="padd1" style="margin:10px;">           
+        <img src=@item.Photo width="130" height="130" alt="Photo" style="background-color:wheat" />          
     <div>
-        <img src=@item.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px; "/>
-    
-    <div>
-        <h4> @item.Name</h4>
+        <h4 class="white"> @item.Name</h4>
     </div>
-   
-    <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="EditRoom" asp-route-id="@item.Id">Edit</a>
-    <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="DeleteRoom" asp-route-id="@item.Id">Delete</a>          
-    </div>
+            <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="EditRoom" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
+            <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="DeleteRoom" asp-route-id="@item.Id">@Resources.Resource.Delete</a>
+    </div>  
 }
+</div>
