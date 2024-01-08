@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<SportClub.BLL.DTO.RoomDTO>
-<div class="div_reg padd">
+<div class="flex">
+    <div>
+<a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">Назад</a>
+<br />
+<h2 >Добавление спортзала:   |</h2>
+</div>
+<div class="padd1">
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label class="white-color_size20 font">Введите название зала</label>
@@ -11,6 +17,7 @@
         </div>
         <input class="btn1n btn btn-outline-light" formaction="AddRoom" type="submit" value="@Resources.Resource.Add" />
     </form>
+</div>
 </div>
 <hr class="white" />
 <div class="flex" style="flex-wrap:wrap;">

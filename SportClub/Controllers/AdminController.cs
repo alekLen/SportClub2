@@ -401,9 +401,6 @@ namespace SportClub.Controllers
                     room.Photo = path;                   
                     room.Name = name;
                     await roomService.AddRoom(room);
-                    // return RedirectToAction("Index", "Home");
-                    //await putRooms();
-                    //return View("Rooms");
                     return Redirect("AddRoom");
                 }
                 else
