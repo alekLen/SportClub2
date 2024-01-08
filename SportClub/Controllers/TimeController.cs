@@ -223,8 +223,8 @@ namespace SportClub.Controllers
                      t.TimesId.Add(time.Id);
                  await timetableService.AddTimetable(t);
                  timesT.Clear();
-                 return Redirect("/Home/Index"); 
-             }
+                return RedirectToAction("GetAllTimetable");
+            }
              else
              {
                 await PutTimes();
