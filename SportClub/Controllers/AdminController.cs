@@ -20,12 +20,14 @@ namespace SportClub.Controllers
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public AdminController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
+        private readonly IRoom roomService;
+        public AdminController(IAdmin adm,IRoom r, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             postService = p;
+            roomService = r;
             specialityService = sp;
             _appEnvironment = _appEnv;
         }
@@ -368,6 +370,118 @@ namespace SportClub.Controllers
                 return NotFound();
             }
             return View(admin);
+        }
+
+        public async Task<IActionResult> AddRoom()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            //  await putRooms();
+            IEnumerable<RoomDTO> rooms = await roomService.GetAllRooms();
+            return View("Rooms", rooms);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddRoom(string name, IFormFile? p)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                if (p != null)
+                {
+                    RoomDTO room = new();
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    // Путь к папке Files
+                    string path = "/Rooms/" + str1; // имя файла
+
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    room.Photo = path;                   
+                    room.Name = name;
+                    await roomService.AddRoom(room);
+                    // return RedirectToAction("Index", "Home");
+                    //await putRooms();
+                    //return View("Rooms");
+                    return Redirect("AddRoom");
+                }
+                else
+                {
+                    return Redirect("AddRoom");
+                }
+            }
+            catch
+            {
+                return Redirect("AddRoom");
+            }
+        }
+        public async Task<IActionResult> EditRoom(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            PostDTO p = await postService.GetPost(id);
+            if (p != null)
+            {
+                return View("EditPost", p);
+            }
+            await putPosts();
+            return View("Post");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRoom(int id, string name)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                PostDTO p = await postService.GetPost(id);
+                if (p == null)
+                {
+                    await putPosts();
+                    return View("Post");
+                }
+                p.Name = name;
+                await postService.UpdatePost(p);
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                await putPosts();
+                return View("Post");
+            }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            PostDTO p = await postService.GetPost(id);
+            if (p != null)
+            {
+                return View("DeletePost", p);
+            }
+            await putPosts();
+            return View("Post");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDeleteRoom(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            PostDTO p = await postService.GetPost(id);
+            if (p != null)
+            {
+                await postService.DeletePost(id);
+                return View("Index", p);
+            }
+            await putPosts();
+            return View("Post");
+        }
+        public async Task putRooms()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            IEnumerable<RoomDTO> p = await roomService.GetAllRooms();
+            ViewData["RoomId"] = new SelectList(p, "Id", "Name");
         }
     }
 }
