@@ -140,6 +140,23 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View("Speciality");
         }
+        public async Task<IActionResult> AddedSpeciality(string speciality)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("speciality", speciality);
+            return View();
+        }
+        public async Task<IActionResult> EditedSpeciality(string speciality)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("speciality", speciality);
+            return View();
+        }
+        public async Task<IActionResult> BackToSpeciality()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            return Redirect("AddSpeciality");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddSpeciality(string name)
@@ -150,12 +167,11 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = new();
                 sp.Name = name;
                 await specialityService.AddSpeciality(sp);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("AddedSpeciality", new { speciality = sp.Name });
             }
             catch
-            {
-                await putSpecialities();
-                return View("Speciality");
+            {              
+                return Redirect("AddSpeciality");
             }
         }
         public async Task<IActionResult> EditSpeciality(int id)
@@ -166,8 +182,7 @@ namespace SportClub.Controllers
             {
                 return View("EditSpeciality", sp);
             }
-            await putSpecialities();
-            return View("Speciality");
+            return Redirect("AddSpeciality");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -179,18 +194,42 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = await specialityService.GetSpeciality(id);
                 if (sp == null)
                 {
-                    await putSpecialities();
-                    return View("Speciality");
+                    return Redirect("AddSpeciality");
                 }
                 sp.Name = name;
                 await specialityService.UpdateSpeciality(sp);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("EditedSpeciality", new { speciality = sp.Name });
+
             }
             catch
             {
-                await putSpecialities();
-                return View("Speciality");
+                return Redirect("AddSpeciality");
             }
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteSpeciality(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            SpecialityDTO p = await specialityService.GetSpeciality(id);
+            if (p != null)
+            {
+                return View("DeleteSpeciality", p);
+            }
+            return Redirect("AddSpeciality");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmDeleteSpeciality(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            SpecialityDTO p = await specialityService.GetSpeciality(id);
+            if (p != null)
+            {
+                await specialityService.DeleteSpeciality(id);
+                return Redirect("AddSpeciality");
+            }
+            return Redirect("AddSpeciality");
         }
         public async Task putPosts()
         {

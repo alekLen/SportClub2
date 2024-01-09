@@ -1,9 +1,9 @@
-﻿<h4 class=" b1 b3 c20 center pr"> @Resources.Resource.Speciality</h4>
-<div class="center pr">
-    <div class="c3">
+﻿<h2 class=" b1 b3 c20 center pr"> @Resources.Resource.Speciality тренера</h2>
+<div class="flex div_reg padd">
 
-        <div class=" card c7">
-            <h4>@Resources.Resource.Addition</h4>
+
+    <div class="padd white">
+            <h4>Добавить специальность</h4>
             <form asp-controller="Login" method="post">
                 @model SportClub.BLL.DTO.SpecialityDTO
 
@@ -19,7 +19,7 @@
             </form>
 
         </div>
-        <div class=" card c7">
+    <div class="padd white">
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Speciality</label>
@@ -32,7 +32,7 @@
                 </div>
             </form>
         </div>
-    </div>
+   
 </div>
 
 @* <br>
