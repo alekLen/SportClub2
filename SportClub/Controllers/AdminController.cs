@@ -38,6 +38,23 @@ namespace SportClub.Controllers
             await putPosts();
             return View("Post");
         }
+        public async Task<IActionResult> AddedPost(string post)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("post", post);
+            return View();
+        }
+        public async Task<IActionResult> EditedPost(string post)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("post", post);
+            return View();
+        }
+        public async Task<IActionResult> BackToPost()
+        {
+            HttpContext.Session.SetString("path", Request.Path);           
+            return Redirect("AddPost");
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPost(string name)
@@ -49,8 +66,8 @@ namespace SportClub.Controllers
                 p.Name = name;
                 await postService.AddPost(p);
                 // return RedirectToAction("Index", "Home");
-                await putPosts();
-                return View("Post");
+               // await putPosts();
+                return RedirectToAction("AddedPost",new {post=p.Name});
             }
             catch
             {
@@ -79,17 +96,16 @@ namespace SportClub.Controllers
                 PostDTO p = await postService.GetPost(id);
                 if (p == null)
                 {
-                    await putPosts();
-                    return View("Post");
+                    return Redirect("AddPost");
                 }
                 p.Name = name;
                 await postService.UpdatePost(p);
-                return RedirectToAction("Index", "Home");
+              
+                return RedirectToAction("EditedPost", new { post = p.Name });
             }
             catch
             {
-                await putPosts();
-                return View("Post");
+                return Redirect("AddPost");
             }
         }
         [HttpPost]
@@ -114,10 +130,9 @@ namespace SportClub.Controllers
             if (p != null)
             {
                 await postService.DeletePost(id);
-                return View("Index", p);
+                return Redirect("AddPost");
             }
-            await putPosts();
-            return View("Post");
+            return Redirect("AddPost");
         }
         public async Task<IActionResult> AddSpeciality()
         {

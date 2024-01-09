@@ -1,25 +1,25 @@
-﻿<h4 class=" b1 b3 c20 center pr"> @Resources.Resource.Post</h4>
-<div class="center pr">
-    <div class="c3">
+﻿<h2 class=" b1 b3 c20 center pr"> @Resources.Resource.Post тренера</h2>
+<div class="flex div_reg padd">
+    
 
-        <div class=" card c7">
-            <h4>@Resources.Resource.Addition</h4>
+        <div class="padd white">
+            <h4>Добавить должность</h4>
             <form asp-controller="Login" method="post">
                 @model SportClub.BLL.DTO.PostDTO
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <span>@Resources.Resource.Name </span><br />
+                <div class="form-group padd">
+                    <span>Название </span><br />
                     <input asp-for="Name" name="name" class="form-control card _c7" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-                <div class="form-group">
+                <div class="form-group padd">
                     <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" />
                 </div>
             </form>
 
         </div>
-        <div class=" card c7">
+    <div class="padd white">
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Post</label>
@@ -31,6 +31,5 @@
                     <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
                 </div>
             </form>
-        </div>
-    </div>
+        </div>   
 </div>
