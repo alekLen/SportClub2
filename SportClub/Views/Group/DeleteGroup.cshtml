@@ -3,12 +3,12 @@
 *@
 @{
 }
-@model SportClub.BLL.DTO.AdminDTO
+@model SportClub.BLL.DTO.GroupDTO
 <div class="div_reg">
     <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        Удаление админа
+        Удаление группы
     </p>
-    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> админа? </p>
+    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> группу? </p>
 
     <div class="row">
         <div>
@@ -21,33 +21,29 @@
                     </div>
                     <div class="form-group" style="margin-left: 40px">
 
-                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
+                        <label asp-for="Number" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Number)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
+                        <label asp-for="CoachName" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.CoachName)</h1>
                     </div>
 
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
-                    </div>
+                    @* <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="UsersId" style="color: white" class="control-label font  white-color_size20"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.UsersId)</h1>
+                    </div> *@
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
-                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
-                </div> <br />
- 
+
                 <div style="margin: 10px auto 10px auto;width: max-content;">
-                    <form method="post" asp-action="Delete" asp-controller="Users"
+                    <form method="post" asp-action="DeleteGroup" asp-controller="Group"
                           style="width: max-content; float: left;height: 38px;">
                         <input type="hidden" asp-for="Id" name="id" />
                         <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
                     </form>
-                    <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                    <a asp-action="GetGroups" asp-controller="Group" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
                 </div><br />
             </div>
 

@@ -1,7 +1,7 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model SportClub.BLL.DTO.GroupDTO
+@model SportClub.Models.CreateGroupModel
 @using Microsoft.AspNetCore.Http
 
 <div class="div_reg">
@@ -28,20 +28,15 @@
 
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="CoachId" class="form-control" asp-items="ViewBag.CoachId" style="width: 420px"></select>
+                <select asp-for="CoachId" class="form-control" asp-items="ViewBag.CoachListId" style="width: 420px"></select>
                 <span asp-validation-for="CoachId" class="text-danger"></span>
             </div>
 
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="trainingId" class="form-control" asp-items="ViewBag.PostId" style="width: 420px"></select>
-                <span asp-validation-for="trainingId" class="text-danger"></span>
-            </div>
 
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="usersId" class="form-control" asp-items="ViewBag.PostId" style="width: 420px"></select>
-                <span asp-validation-for="usersId" class="text-danger"></span>
+                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersListId" style="width: 420px;height:36px"></select>
+                <span asp-validation-for="UsersId" class="text-danger"></span>
             </div>
              
             

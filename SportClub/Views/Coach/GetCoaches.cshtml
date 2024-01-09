@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Coaches";
 }
-<div style="background: #374566; border-radius: 10px; padding:25px;color:white">
+<div style="background: #374566; border-radius: 10px; padding:25px;color:white;width:max-content">
     <h1>Coaches</h1>
 
     @* <p>
@@ -33,7 +33,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Photo)
                 </th>
-                
+
+                <th></th>
+                <th></th>
                 <th></th>
             </tr>
         </thead>
@@ -64,7 +66,11 @@
                     </td>
                     <td>
                         <a class="btn1n btn btn-outline-light" asp-controller="Coach" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                    <td>
                         <a class="btn1n btn btn-outline-light" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                    <td>
                         <a class="btn1n btn btn-outline-light" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     </td>
                 </tr>

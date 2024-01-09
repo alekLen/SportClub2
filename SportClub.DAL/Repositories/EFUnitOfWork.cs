@@ -70,7 +70,7 @@ namespace SportClub.DAL.Repositories
                 return userRepository;
             }
         }
-        public ISetGetRepository<Group> Groups
+        public IGroupRepository Groups
         {
             get
             {

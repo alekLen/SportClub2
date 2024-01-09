@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -15,359 +16,171 @@ namespace SportClub.Controllers
     public class GroupController : Controller
     {
         IWebHostEnvironment _appEnvironment;
-        private readonly IAdmin adminService;
+        private readonly IGroup groupService;
         private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public GroupController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
+        public GroupController(IGroup group, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
         {
-            adminService = adm;
+            groupService = group;
             userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
             _appEnvironment = _appEnv;
         }
+        public async Task<IActionResult> CreateGroup()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            await putCoaches();
+            await putUsers();
+            return View("CreateGroup");
+        }
 
-        //public async Task<IActionResult> AddPost()
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    await putPosts();
-        //    return View("Post");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AddPost(string name)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    try
-        //    {
-        //        PostDTO p = new();
-        //        p.Name = name;
-        //        await postService.AddPost(p);
-        //        // return RedirectToAction("Index", "Home");
-        //        await putPosts();
-        //        return View("Post");
-        //    }
-        //    catch
-        //    {
-        //        await putPosts();
-        //        return View("Post");
-        //    }
-        //}
-        //public async Task<IActionResult> EditPost(int id)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    PostDTO p = await postService.GetPost(id);
-        //    if (p != null)
-        //    {
-        //        return View("EditPost", p);
-        //    }
-        //    await putPosts();
-        //    return View("Post");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EditPost(int id, string name)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    try
-        //    {
-        //        PostDTO p = await postService.GetPost(id);
-        //        if (p == null)
-        //        {
-        //            await putPosts();
-        //            return View("Post");
-        //        }
-        //        p.Name = name;
-        //        await postService.UpdatePost(p);
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    catch
-        //    {
-        //        await putPosts();
-        //        return View("Post");
-        //    }
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeletePost(int id)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    PostDTO p = await postService.GetPost(id);
-        //    if (p != null)
-        //    {
-        //        return View("DeletePost", p);
-        //    }
-        //    await putPosts();
-        //    return View("Post");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ConfirmDeletePost(int id)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    PostDTO p = await postService.GetPost(id);
-        //    if (p != null)
-        //    {
-        //        await postService.DeletePost(id);
-        //        return View("Index", p);
-        //    }
-        //    await putPosts();
-        //    return View("Post");
-        //}
-        //public async Task<IActionResult> AddSpeciality()
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    await putSpecialities();
-        //    return View("Speciality");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AddSpeciality(string name)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    try
-        //    {
-        //        SpecialityDTO sp = new();
-        //        sp.Name = name;
-        //        await specialityService.AddSpeciality(sp);
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    catch
-        //    {
-        //        await putSpecialities();
-        //        return View("Speciality");
-        //    }
-        //}
-        //public async Task<IActionResult> EditSpeciality(int id)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    SpecialityDTO sp = await specialityService.GetSpeciality(id);
-        //    if (sp != null)
-        //    {
-        //        return View("EditSpeciality", sp);
-        //    }
-        //    await putSpecialities();
-        //    return View("Speciality");
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EditSpeciality(int id, string name)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    try
-        //    {
-        //        SpecialityDTO sp = await specialityService.GetSpeciality(id);
-        //        if (sp == null)
-        //        {
-        //            await putSpecialities();
-        //            return View("Speciality");
-        //        }
-        //        sp.Name = name;
-        //        await specialityService.UpdateSpeciality(sp);
-        //        return RedirectToAction("Index", "Home");
-        //    }
-        //    catch
-        //    {
-        //        await putSpecialities();
-        //        return View("Speciality");
-        //    }
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateGroup(CreateGroupModel group)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            
+            if (ModelState.IsValid)
+            {
+                var coac = await coachService.GetCoach(group.CoachId);
+                GroupDTO u = new();
+                u.Name = group.Name;
+                u.Number = group.Number;
+                u.CoachName = coac.Name;
+                u.CoachId = group.CoachId;
+                u.UsersId = group.UsersId;
+                //u.Phone = group.Phone;
+                //u.Name = group.Name;
+                //u.DateOfBirth = group.DateOfBirth;
+                //u.Password = group.Password;
+                 
+                try
+                {
+                    await groupService.AddGroup(u);
+                }
+                catch { }
+                return RedirectToAction("Index", "Home");
+            }
+            return View("CreateGroup", group);
+        }
+
         public async Task putCoaches()
         {
             HttpContext.Session.SetString("path", Request.Path);
             IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
-            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
+            ViewData["CoachListId"] = new SelectList(p, "Id", "Name");
         }
-        //public async Task putSpecialities()
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    IEnumerable<Tr> p = await specialityService.GetAllSpecialitys();
-        //    ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
-        //}
-        //public async Task<IActionResult> AdminProfile()
-        //{
-        //    try
-        //    {
-        //        string s = HttpContext.Session.GetString("Id");
-        //        int id = Int32.Parse(s);
-        //        AdminDTO p = await adminService.GetAdmin(id);
-        //        return View(p);
-        //    }
-        //    catch { return View("Index", "Home"); }
-        //}
-        //public async Task<IActionResult> EditAdminProfile(AdminDTO user)
-        //{
-        //    int age = 0;
-        //    try
-        //    {
-        //        DateTime birthDate;
-        //        if (DateTime.TryParse(user.DateOfBirth, out birthDate))
-        //        {
-        //            DateTime currentDate = DateTime.Now;
-        //            age = currentDate.Year - birthDate.Year;
-        //            if (currentDate.Month < birthDate.Month || (currentDate.Month == birthDate.Month && currentDate.Day < birthDate.Day))
-        //            {
-        //                age--;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
-        //        }
-        //    }
-        //    catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
-        //    AdminDTO u = await adminService.GetAdmin(user.Id);
-        //    if (u != null)
-        //    {
-        //        u.Login = user.Login;
-        //        u.Gender = user.Gender;
-        //        u.Email = user.Email;
-        //        u.Age = age;
-        //        u.Phone = user.Phone;
-        //        u.Name = user.Name;                     
-        //        u.DateOfBirth = user.DateOfBirth;
-        //        await adminService.UpdateAdmin(u);
-        //        return View("YouChangedProfile");
-        //    }
-        //    return RedirectToAction("AdminProfile");
-        //}
-        //[HttpPost]
-        //public IActionResult ChangeAdminPassword(AdminDTO user)
-        //{
-        //    return View("PutPassword", user);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> PutPassword(int id, string pass)
-        //{
-        //    AdminDTO u = await adminService.GetAdmin(id);
-        //    try
-        //    {
-        //        if (await adminService.CheckPasswordA(u, pass))
-        //        {
-        //            CangePasswordModel m = new();
-        //            m.Id = u.Id;
-        //            return View("ChangePassword", m);
-        //        }
-        //    }
-        //    catch { }
-        //    return View("PutPassword",u);
-        //}
-        //public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
-        //{
-        //    AdminDTO u = await adminService.GetAdmin(m.Id);
-        //    string pass = m.Password;
-        //    if (!string.IsNullOrEmpty(pass) && u != null)
-        //    {
-        //        await adminService.ChangeAdminPassword(u, pass);
-        //        return View("YouChangedPassword");
-        //    }
-        //    return View("ErrorChangedPassword");
-        //}
-         
-        public async Task<IActionResult> Edit(int id)
+        public async Task putUsers()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            AdminDTO us = await adminService.GetAdmin(id);
-            if (us != null)
+            IEnumerable<UserDTO> p = await userService.GetAllUsers();
+            ViewData["UsersListId"] = new SelectList(p, "Id", "Name");
+        }
+
+        public async Task putCoach(GroupDTO groupdto)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            IEnumerable<UserDTO> p = groupdto.UsersId;
+            ViewData["UsersLId"] = new SelectList(p, "Id", "Name");
+        }
+        public async Task<IActionResult> GetGroups()
+        {
+            var p = await groupService.GetAllGroups();
+            return View(p);
+        }
+        public async Task<IActionResult> EditGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            GroupDTO groupdto = await groupService.GetGroup(id);
+            if (groupdto != null)
             {
-                return View("Edit", us);
+                await putCoaches();
+                await putUsers();
+                //await putCoach(groupdto);
+                //var ts = groupdto.UsersId;
+                
+                return View("EditGroup", groupdto);
             }
 
-            return View("GetAdmins", "Admin"); 
+            return View("GetCroups", "Group");
+
         }
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AdminDTO user)
+        public async Task<IActionResult> EditGroup(int id, GroupDTO group)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                AdminDTO admindto = await adminService.GetAdmin(id);
-                if (admindto == null)
+                GroupDTO groupdto = await groupService.GetGroup(id);
+                if (groupdto == null)
                 {
                     return NotFound();
                 }
-                 
+
                 if (ModelState.IsValid)
                 {
-                    admindto = user; 
+                    var coac = await coachService.GetCoach(group.CoachId);
+
+                    groupdto.Name = group.Name;
+                    groupdto.Number = group.Number;
+                    groupdto.CoachName = coac.Name;
+                    groupdto.CoachId = group.CoachId;
+                    groupdto.UsersId = group.UsersId;
+                     
                     try
                     {
-                        await adminService.UpdateAdmin(admindto);
+                        await groupService.UpdateGroup(groupdto);
                     }
-                    catch { return View("Edit", user); }
+                    catch { return View("EditGroup", group); }
+                    return RedirectToAction("GetGroups", "Group");
+                    // } 
                 }
-                return RedirectToAction("GetAdmins", "Admin");
+                return RedirectToAction("GetGroups");
             }
             catch
             {
-                return View("GetAdmins", "Admin");
+                return View("GetGroupss", "Group");
             }
         }
 
-        public async Task<IActionResult> GetGroups()
-        {
-            var p = await adminService.GetAllAdmins();
-            //await putPosts();
-            //await putSpecialities();
-            return View(p);
-        }
-        [HttpPost]
-        public async Task<IActionResult> DeleteAdminProfile(AdminDTO user)
-        {
-            HttpContext.Session.SetString("path", Request.Path);           
-            return View(user);
-        }
-        [HttpPost]
-        public async Task<IActionResult> ConfirmDeleteAdminProfile(int id)
-        {
-            AdminDTO admindto = await adminService.GetAdmin(id);
-            if (admindto == null)
-            {
-                return NotFound();
-            }
-            await adminService.DeleteAdmin(id);
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
-        }
- 
-        
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteGroup(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            AdminDTO user = await adminService.GetAdmin(id);
-            if (user == null)
+            GroupDTO group = await groupService.GetGroup(id);
+            if (group == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(group);
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("DeleteGroup")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            AdminDTO admindto = await adminService.GetAdmin(id);
-            if (admindto == null)
+            GroupDTO group = await groupService.GetGroup(id);
+            if (group == null)
             {
                 return NotFound();
             }
             
-            await adminService.DeleteAdmin(id);
-            return RedirectToAction("GetAdmins", "Admin"); 
+            await groupService.DeleteGroup(id);
+            return RedirectToAction("GetGroups", "Group"); 
         }
         public async Task<IActionResult> Details(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-            AdminDTO admin = await adminService.GetAdmin(id);
-            if (admin == null)
+            GroupDTO group = await groupService.GetGroup(id);
+            if (group == null)
             {
                 return NotFound();
             }
-            return View(admin);
+            return View(group);
         }
     }
 }

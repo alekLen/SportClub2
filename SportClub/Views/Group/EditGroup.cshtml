@@ -1,19 +1,15 @@
-﻿@model SportClub.BLL.DTO.AdminDTO
+﻿@model SportClub.BLL.DTO.GroupDTO
 
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "EditGroup";
 }
 
 <div class="div_reg">
-    <p class="font">Изменение админа </p>
+    <p class="font">Редактирование группы </p>
     <div class="row">
-        <form asp-action="EditAdmin">
+        <form id="EditGroup" asp-action="EditGroup" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="DateOfBirth" />
-            <input type="hidden" asp-for="Login" />
-            <input type="hidden" asp-for="Age" />
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
 
@@ -25,46 +21,42 @@
             </div>
 
             <div class="form-group" style="margin-left: 40px">
-                <label asp-for="Email" class="control-label font white-color_size20"></label>
-                <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
-                <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
+
+                <label asp-for="Number" class="control-label font white-color_size20"></label>
+                <input asp-for="Number" type="number" class="form-control" style="width: 420px">
+                <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 40px">
-                <label asp-for="Phone" class="font white-color_size20">@Resources.Resource.Phone</label>
-                <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" style="width: 420px" />
-                <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
+                <label class="font white-color_size20">@Resources.Resource.Post</label>
+                <select asp-for="CoachId" class="form-control" asp-items="ViewBag.CoachListId" style="width: 420px"></select>
+                <span asp-validation-for="CoachId" class="text-danger"></span>
             </div>
 
+            @* <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.Post</label>
+                <select class="form-control" asp-items="ViewBag.UsersLId" style="width: 420px;height:36px"></select>
+                <span class="text-danger"></span>
+            </div> *@
             <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.gender</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
-                    <label class="font form-check-label white-color_size20" for="male">@Resources.Resource.man</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
-                    <label class="font form-check-label white-color_size20" for="female">@Resources.Resource.female</label>
-                </div>
-                <span asp-validation-for="Gender" class="text-danger" style="width: 450px"></span>
+                <label class="font white-color_size20">@Resources.Resource.Post</label>
+                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersListId" style="width: 420px;height:36px"></select>
+                <span asp-validation-for="UsersId" class="text-danger"></span>
             </div>
 
-            <div style="margin: 10px auto 10px auto;width: max-content;">
-                <button style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
-            </div><br />
+
+            <br />
+            <div class="form-group" style="margin-left: 200px">
+                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+            </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-<script>
+@* <script>
     $(document).ready(function () {
 
         $('#emailInput').on('blur', function () {
@@ -76,4 +68,4 @@
             });
         });
     });
-</script> 
+</script>  *@
