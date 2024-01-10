@@ -4,6 +4,7 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.DAL.Entities;
 using SportClub.Models;
+using System.IO;
 
 namespace SportClub.Controllers
 {
@@ -83,9 +84,12 @@ namespace SportClub.Controllers
             }
             catch { return View("Index", "Home"); }
         }
-        public async Task<IActionResult> EditCoachProfile(CoachDTO user)
+        public async Task<IActionResult> EditCoachProfile(CoachDTO user, IFormFile? p)
         {
-            int age = 0;
+            CoachDTO u = await coachService.GetCoach(user.Id);
+            if (u != null)
+            {
+                int age = 0;
             try
             {
                 DateTime birthDate;
@@ -102,18 +106,29 @@ namespace SportClub.Controllers
                 {
                     ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения");
                 }
-            }
+        
+             }
             catch { ModelState.AddModelError("DateOfBirth", "Некорректный формат даты рождения"); }
-            CoachDTO u = await coachService.GetCoach(user.Id);
-            if (u != null)
-            {
+                if (p != null)
+                {
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    // Путь к папке Files
+                    string path = "/Coaches/" + str1; // имя файла
+
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    u.Photo = path;
+                }
                 u.Login = user.Login;
                 u.Gender = user.Gender;
                 u.Email = user.Email;
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-                u.DateOfBirth = user.DateOfBirth;
+                u.DateOfBirth = user.DateOfBirth;              
                 await coachService.UpdateCoach(u);
                 return View("YouChangedProfile");
             }
