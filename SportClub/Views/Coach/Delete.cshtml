@@ -12,7 +12,9 @@
 
     <div class="row">
         <div>
-
+            <div>
+                <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" />
+            </div>
             <div class="row">
                 <div style="width: 500px;  justify-content: center; ">
                     <div class="form-group" style="margin-left: 40px">
@@ -21,25 +23,16 @@
                     </div>
                     <div class="form-group" style="margin-left: 40px">
 
-                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
+                        <label  class="control-label font  white-color_size20" style="color: white">Должность</label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.PostName)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
-                    </div>
-
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
+                        <label  class="control-label font  white-color_size20" style="color: white">Специальность</label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.SpecialityName)</h1>
                     </div>
                 </div>
-
-                <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
-                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
-                </div> <br />
+                   <br />
  
                 <div style="margin: 10px auto 10px auto;width: max-content;">
                     <form method="post" asp-action="DeleteGroup" asp-controller="Group"

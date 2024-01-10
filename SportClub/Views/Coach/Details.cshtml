@@ -47,10 +47,14 @@
                     <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
                     <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
                 </div> <br />
-
+                <div class="form-group" style="margin-left: 40px">
+                    <label class="font white-color_size20">@Resources.Resource.Description</label>
+                    <textarea asp-for="Description" style="width: 420px" readonly></textarea>
+                    <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
+                </div><br />
                 <div style="margin: 10px auto 25px auto;width: max-content;">
-                    <a class="btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-                    <a class="btn btn-outline-light" asp-action="GetAdmins" asp-controller="Admin">Back to List</a>
+                    <a class="btn btn-outline-light" asp-controller="Coach" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                    <a class="btn btn-outline-light" asp-action="GetCoaches" asp-controller="Coach">Back to List</a>
                 </div>
                 <br /><br />
             </div>
