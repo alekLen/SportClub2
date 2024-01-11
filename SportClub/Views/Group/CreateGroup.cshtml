@@ -7,7 +7,8 @@
 <div class="div_reg">
     <p class="font">Создание группы </p>
     <div class="row">
-        <form id="CreateGroup" action="CreateGroup" method="post">
+        @* id="CreateGroup" action="CreateGroup" *@
+        <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
@@ -32,58 +33,108 @@
                 <span asp-validation-for="CoachId" class="text-danger"></span>
             </div>
 
-
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersListId" style="width: 420px;height:36px"></select>
-                <span asp-validation-for="UsersId" class="text-danger"></span>
+            <div>
+                <div class="padd" style="width:229px;margin-left: 20px;float:left">
+                    <h4 class="white">График дня</h4>
+                    <select name="UsersList" multiple asp-for="UsersId" size="10" id="list2" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
+                    <span id="spn1t" asp-validation-for="UsersId" class="text-danger"></span>
+                </div>
+                <div class="padd" style="width:231px;float:right;margin-right:20px;">
+                    <label class="white">Выберите время для графика</label>
+                    <br />
+                    <select id="list1" size="10" style="height:224px" class="form-control card _c7" asp-items="ViewBag.UsersList"></select>
+                </div>
+                <div class="form-group" style="margin-left:40px;width:max-content;overflow:auto">
+                    <a style="float:left;margin-right:10px" id="btncancel" class="btn btn-primary buttons1">Отмена</a>
+                    <input style="float:right;width:max-content" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttons1" />
+                    
+                </div>
             </div>
-             
             
-            <br />
-            <div class="form-group" style="margin-left: 200px">
-                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+            <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
+                <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
             </div>
         </form>
     </div>
 </div>
 
- 
- 
+@*  <h4 class=" b1 b3 c20 center pr">Создание графика дня</h4>
+<div class="div_reg">
+    <div class="flex padd">
+
+        <div class="padd">
+            <h4 class="white">График дня</h4>
+            <form asp-controller="Time" method="post">
+                @model SportClub.BLL.DTO.TimetableDTO
+
+                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
+                <br />
+                <div class="form-group">
+                    <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary buttons1" />
+                      </div>
+            </form>
+            <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttons1">Отмена</a>
+            <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttons1">Выход</a><br />
+            <a asp-area="" asp-controller="Time" asp-action="GetAllTimetable" class="btn btn-primary buttons1">Все сохраненные  графики</a>
+
+        </div>
+        <div style="width:20px;"></div>
+        <div class="padd">
+
+            <form asp-controller="Time" method="post">
+                <label class="white">Выберите время для графика</label>
+                <br />
+                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
+
+                <br /> <br />
+                <div class="form-group">
+                    <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить время в график" class="btn btn-primary  buttons1" />
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div> *@
+
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
-@* <script>
+}<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
     $(document).ready(function () {
-
-        $("#login").on("change", function (e) {
-            let log = e.target.value;
-            let r = true;
-            $.getJSON('/Login/IsLoginIn', function (data) {
-                $.each(data, function (key, val) {
-                    if (log == val) {
-                        $("#log").css("display", "block");
-                        r = false;
-                    }
-                    if (r) {
-                        $("#log").css("display", "none");
-                    }
-                })
-            });
+        $('#btnsub1').click(function () {
+            $("#list2").focus();
+            $('#list2 option').prop('selected', true);
         });
+        $('#btncancel').on('click', function () {
+            $("#list2 option:last").remove();
+            // var selectedOption = $("#list2 option:selected");// получение выделенного элемента <option>
+            // selectedOption.remove();// удаление выбранного элемента
+        });//          change
 
 
-        $('#emailInput').on('blur', function () {
-            var email = $(this).val();
-            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
-                if (data === true) {
-                    $('#emailStatus').text('Email уже занят.');
+        $('#AddUsersToTable').click(function () {
+            let selectedOptionval = $("#list1 option:selected").val();
+            let selectedOptiontext = $("#list1 option:selected").text();
+
+            var isExists = false;
+            $('#list2 option').each(function () {// Проверяем все option на наличие такого же значения
+                if ($(this).val() === selectedOptionval) {
+                    isExists = true;
+                    return false; // Прерываем цикл, если нашли совпадение
                 }
             });
-        });
 
-       
+            if (isExists) {
+                alert('Пользователь уже добавлен!');
+            } else {
+                $('#spn1t').text("");
+                $('#list2').append('<option value="' + selectedOptionval + '">' + selectedOptiontext + '</option>');
+                $("#list2").focus();
+                $('#list2 option').prop('selected', true);
+
+            }
+        });
     });
-</script> *@
+</script>

@@ -12,6 +12,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
+            <input type="hidden" asp-for="Id" />
 
             <div class="form-group" style="margin-left: 40px">
 
@@ -40,7 +41,7 @@
             </div> *@
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersListId" style="width: 420px;height:36px"></select>
+                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersList" style="width: 420px;height:90px"></select>
                 <span asp-validation-for="UsersId" class="text-danger"></span>
             </div>
 

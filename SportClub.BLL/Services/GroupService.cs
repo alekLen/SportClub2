@@ -54,7 +54,7 @@ namespace SportClub.BLL.Services
             try
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Group, GroupDTO>()
-                .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)));
+                .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("UsersId", opt => opt.MapFrom(c => c.users)));
                 var mapper = new Mapper(config);
                 return mapper.Map<GroupDTO>(a);
             }

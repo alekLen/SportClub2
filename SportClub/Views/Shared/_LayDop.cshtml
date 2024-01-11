@@ -192,6 +192,10 @@
                         {
                             <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
                         }
+                        @using (Html.BeginForm("GetTrainingGroups", "TrainingGroup", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />
+                        }
                     </div>
                 </div>
 
@@ -204,14 +208,10 @@
                         {
                             <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать группу" />
                         }
-                        @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
+                        @using (Html.BeginForm("CreateTrainingGroup", "TrainingGroup", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать тренировку" />
-                        }
-                        @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
-                        }
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
+                        } 
                     </div>
                 </div>
 
