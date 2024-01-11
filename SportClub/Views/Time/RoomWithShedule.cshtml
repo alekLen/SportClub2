@@ -17,18 +17,19 @@
             </thead>
             <tbody>              
                 <tr>
-                    @foreach (var item in Model.times)
-                    {
-                        <td>
+                @for (var t1 = 0; t1 < Model.times.Count; t1++)
+                {
+                   
+                    <td>
 
-                            @for (var t=0;t<item.Times.Count;t++)
+                        @for (var t = 0; t < Model.times[t1].Times.Count; t++)
                             {
-                            <input type="hidden" name="day" value="@t" />
+                            <input type="hidden" name="day" value="@t1" />
                             <input type="hidden" name="roomId" value="@Model.room.Id" />
                             <input type="hidden" name="roomName" value="@Model.room.Name" />
-                           
-                            <input type="text" name="time" value="@item.Times[t]" style="width:100px;" readonly> <br />
-                            @if (@item.Times[t] != "Выходной")
+
+                            <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:100px;" readonly> <br />
+                            @if (@Model.times[t1].Times[t] != "Выходной")
                             {
                                 <input type="submit" formaction="AddIndTraining" value="Добавить индивидуальную тренировку" /> <br />
                                 <input type="submit" formaction="AddGroupTraining" value="Добавить групповую тренировку" />  <br />
