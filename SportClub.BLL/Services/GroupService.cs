@@ -40,27 +40,53 @@ namespace SportClub.BLL.Services
             
         }
 
+        //public async Task<GroupDTO> GetGroup(int id)
+        //{
+        //    Group a = await Database.Groups.Get(id);
+        //    if (a == null)
+        //        return null;
+        //    /* return new AdminDTO
+        //     {
+        //         Id = a.Id,
+        //         Name = a.Name,
+
+        //     };*/
+        //    try
+        //    {
+        //        var config = new MapperConfiguration(cfg => cfg.CreateMap<Group, GroupDTO>()
+        //        .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("UsersId", opt => opt.MapFrom(c => c.users)));
+        //        var mapper = new Mapper(config);
+        //        return mapper.Map<GroupDTO>(a);
+        //    }
+        //    catch { return null; }
+        //}
         public async Task<GroupDTO> GetGroup(int id)
         {
             Group a = await Database.Groups.Get(id);
             if (a == null)
-                return null;
-            /* return new AdminDTO
-             {
-                 Id = a.Id,
-                 Name = a.Name,
-
-             };*/
+                return null; 
             try
             {
-                var config = new MapperConfiguration(cfg => cfg.CreateMap<Group, GroupDTO>()
-                .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("UsersId", opt => opt.MapFrom(c => c.users)));
-                var mapper = new Mapper(config);
-                return mapper.Map<GroupDTO>(a);
+                GroupDTO dTO = new GroupDTO();
+                dTO.Name = a.Name;
+                dTO.Number = a.Number;
+                dTO.CoachId = a.Coach.Id;
+                dTO.CoachName = a.Coach.Name;
+                dTO.UsersId = new List<UserDTO>();
+                foreach (var users in a.users)
+                {
+                    UserDTO userDTO = new UserDTO();
+                    var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
+                    var mapper = new Mapper(config);
+                    userDTO = mapper.Map<UserDTO>(users);
+                    dTO.UsersId.Add(userDTO);
+
+                }
+                 
+                return dTO;// 
             }
             catch { return null; }
         }
-
         public async Task<IEnumerable<GroupDTO>> GetAllGroups()
         {
             try

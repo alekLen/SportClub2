@@ -1,14 +1,13 @@
 ﻿@model SportClub.BLL.DTO.GroupDTO
 
-
 @{
     ViewData["Title"] = "EditGroup";
 }
-
 <div class="div_reg">
-    <p class="font">Редактирование группы </p>
+    <p class="font">Создание группы </p>
     <div class="row">
-        <form id="EditGroup" asp-action="EditGroup" method="post">
+
+        <form asp-action="EditGroup" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
@@ -34,39 +33,71 @@
                 <span asp-validation-for="CoachId" class="text-danger"></span>
             </div>
 
-            @* <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select class="form-control" asp-items="ViewBag.UsersLId" style="width: 420px;height:36px"></select>
-                <span class="text-danger"></span>
-            </div> *@
-            <div class="form-group" style="margin-left: 40px">
-                <label class="font white-color_size20">@Resources.Resource.Post</label>
-                <select asp-for="UsersId" class="form-control" asp-items="ViewBag.UsersList" style="width: 420px;height:90px"></select>
-                <span asp-validation-for="UsersId" class="text-danger"></span>
+            <div>
+                <div class="padd" style="width:229px;margin-left: 20px;float:left">
+                    <h4 class="white">График дня</h4>
+                    <select name="UsersList" multiple asp-for="UsersId" size="10" id="list2" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
+                    <span id="spn1t" asp-validation-for="UsersId" class="text-danger"></span>
+                </div>
+                <div class="padd" style="width:231px;float:right;margin-right:20px;">
+                    <label class="white">Выберите время для графика</label>
+                    <br />
+                    <select id="list1" size="10" style="height:224px" class="form-control card _c7" asp-items="ViewBag.UsersList"></select>
+                </div>
+                <div class="form-group" style="margin-left:40px;width:max-content;overflow:auto">
+                    <a style="float:left;margin-right:10px" id="btncancel" class="btn btn-primary buttons1">Отмена</a>
+                    <input style="float:right;width:max-content" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttons1" />
+
+                </div>
             </div>
 
-
-            <br />
-            <div class="form-group" style="margin-left: 200px">
-                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+            <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
+                <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
             </div>
         </form>
     </div>
 </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-@* <script>
-    $(document).ready(function () {
 
-        $('#emailInput').on('blur', function () {
-            var email = $(this).val();
-            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
-                if (data === true) {
-                    $('#emailStatus').text('Email уже занят.');
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#btnsub1').click(function () {
+            $("#list2").focus();
+            $('#list2 option').prop('selected', true);
+        });
+        $('#btncancel').on('click', function () {
+            $("#list2 option:last").remove();
+            // var selectedOption = $("#list2 option:selected");// получение выделенного элемента <option>
+            // selectedOption.remove();// удаление выбранного элемента
+        });//          change
+
+
+        $('#AddUsersToTable').click(function () {
+            let selectedOptionval = $("#list1 option:selected").val();
+            let selectedOptiontext = $("#list1 option:selected").text();
+
+            var isExists = false;
+            $('#list2 option').each(function () {// Проверяем все option на наличие такого же значения
+                if ($(this).val() === selectedOptionval) {
+                    isExists = true;
+                    return false; // Прерываем цикл, если нашли совпадение
                 }
             });
+
+            if (isExists) {
+                alert('Пользователь уже добавлен!');
+            } else {
+                $('#spn1t').text("");
+                $('#list2').append('<option value="' + selectedOptionval + '">' + selectedOptiontext + '</option>');
+                $("#list2").focus();
+                $('#list2 option').prop('selected', true);
+
+            }
         });
     });
-</script>  *@
+</script>

@@ -111,18 +111,18 @@ namespace SportClub.Controllers
             GroupDTO groupdto = await groupService.GetGroup(id);
             if (groupdto != null)
             {
-                await putUsers(groupdto); 
-                await putCoaches(); 
+                await putUsers();
+                await putCoaches();
                 return View("EditGroup", groupdto);
             }
 
-            return View("GetCroups", "Group");
+            return View("GetGroups", groupdto);
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditGroup(int id, GroupDTO group)
+        public async Task<IActionResult> EditGroup(int id, GroupDTO group, int[] UsersList)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
@@ -141,15 +141,19 @@ namespace SportClub.Controllers
                     groupdto.Number = group.Number;
                     groupdto.CoachName = coac.Name;
                     groupdto.CoachId = group.CoachId;
-                    groupdto.UsersId = group.UsersId;
-                    
+                    //groupdto.UsersId = group.UsersId;
+
+                    foreach (var i in UsersList)
+                    {
+                        groupdto.UsersId.Add(await userService.GetUser(i));
+                    }
 
                     try
                     {
                         await groupService.UpdateGroup(groupdto);
                     }
                     catch { return View("EditGroup", group); }
-                    return RedirectToAction("GetGroups", "Group"); 
+                    return RedirectToAction("GetGroups", "Group");
                 }
                 return RedirectToAction("GetGroups");
             }
