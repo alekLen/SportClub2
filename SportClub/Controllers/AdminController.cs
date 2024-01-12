@@ -81,7 +81,7 @@ namespace SportClub.Controllers
             PostDTO p = await postService.GetPost(id);
             if (p != null)
             {
-                return View("EditPost", p);
+                return PartialView("EditPost", p);
             }
             await putPosts();
             return View("Post");

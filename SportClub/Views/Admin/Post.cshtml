@@ -5,7 +5,7 @@
 <div class="flex padd1">    
         <div class="padd white">
             <h4>Добавить должность</h4>
-            <form asp-controller="Login" method="post">
+                <form asp-controller="Login" method="post" >
                     @model SportClub.Models.PostSpeciality
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -22,7 +22,7 @@
         </div>
     <div class="padd white">
             <h4> @Resources.Resource.Editing</h4>
-            <form asp-controller="Admin" method="post">
+                <form asp-controller="Admin" method="post" >
                 <label>@Resources.Resource.Post</label>
                 <select asp-for="post.Id" class="form-control card _c7 idPost" name="id" asp-items="ViewBag.PostId"></select>
 
@@ -30,8 +30,9 @@
                 <div class="form-group">
                         <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelPost" style="color:white">Удалить</a>
                         <br /><br />
-                        <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
-                </div>
+                       <a href="javascript:void(0)" class="btn btn-primary c2" id="btnEditPost" style="color:white">@Resources.Resource.Edit</a>
+
+                    </div>
             </form>
         </div>   
     </div>
@@ -289,6 +290,67 @@
                 });
         });
 
+        $("#btnEditPost").click(function () {
+            var idp = $(".idPost").val();
+            var puth = "/Admin/EditPost/" + idp;
+            $("<div id='dialogContent7'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Редактирование",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Сохранить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("EditPost", "Admin")",
+                                type: "POST",
+                                data: $('#formPost').serialize(),
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent7").remove();
+                                        $("<div id='dialogContent8'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Успешно!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
 
 
 
