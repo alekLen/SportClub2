@@ -77,3 +77,8 @@ body {
 .red{
     background-color:red;
 }
+.center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

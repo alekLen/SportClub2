@@ -36,6 +36,7 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             await putPosts();
+            await putSpecialities();
             return View("Post");
         }
         public async Task<IActionResult> AddedPost(string post)
@@ -155,7 +156,8 @@ namespace SportClub.Controllers
         public async Task<IActionResult> BackToSpeciality()
         {
             HttpContext.Session.SetString("path", Request.Path);
-            return Redirect("AddSpeciality");
+            //return Redirect("AddSpeciality");
+            return Redirect("AddPost");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -170,8 +172,9 @@ namespace SportClub.Controllers
                 return RedirectToAction("AddedSpeciality", new { speciality = sp.Name });
             }
             catch
-            {              
-                return Redirect("AddSpeciality");
+            {
+                // return Redirect("AddSpeciality");
+                return Redirect("AddPost");
             }
         }
         public async Task<IActionResult> EditSpeciality(int id)
@@ -182,7 +185,8 @@ namespace SportClub.Controllers
             {
                 return View("EditSpeciality", sp);
             }
-            return Redirect("AddSpeciality");
+            // return Redirect("AddSpeciality");
+            return Redirect("AddPost");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -194,7 +198,8 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = await specialityService.GetSpeciality(id);
                 if (sp == null)
                 {
-                    return Redirect("AddSpeciality");
+                    // return Redirect("AddSpeciality");
+                    return Redirect("AddPost");
                 }
                 sp.Name = name;
                 await specialityService.UpdateSpeciality(sp);
@@ -203,7 +208,8 @@ namespace SportClub.Controllers
             }
             catch
             {
-                return Redirect("AddSpeciality");
+                //return Redirect("AddSpeciality");
+                return Redirect("AddPost");
             }
         }
         [HttpPost]
@@ -216,7 +222,9 @@ namespace SportClub.Controllers
             {
                 return View("DeleteSpeciality", p);
             }
-            return Redirect("AddSpeciality");
+
+            return Redirect("AddPost");
+            // return Redirect("AddSpeciality");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -227,9 +235,11 @@ namespace SportClub.Controllers
             if (p != null)
             {
                 await specialityService.DeleteSpeciality(id);
-                return Redirect("AddSpeciality");
+                // return Redirect("AddSpeciality");
+                return Redirect("AddPost");
             }
-            return Redirect("AddSpeciality");
+            //  return Redirect("AddSpeciality");
+            return Redirect("AddPost");
         }
         public async Task putPosts()
         {

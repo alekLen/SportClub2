@@ -1,17 +1,19 @@
-﻿<h2 class=" b1 b3 c20 center pr"> @Resources.Resource.Post тренера</h2>
-<div class="flex div_reg padd">
+﻿<div class="flex">
+    <div>
+<h2 class="center1"> @Resources.Resource.Post тренера</h2>
+<div class="flex padd1">
     
 
         <div class="padd white">
             <h4>Добавить должность</h4>
             <form asp-controller="Login" method="post">
-                @model SportClub.BLL.DTO.PostDTO
+                    @model SportClub.Models.PostSpeciality
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group padd">
                     <span>Название </span><br />
-                    <input asp-for="Name" name="name" class="form-control card _c7" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <input asp-for="post.Name" name="name" class="form-control card _c7" />
+                    <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group padd">
                     <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" />
@@ -23,7 +25,7 @@
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Post</label>
-                <select asp-for="Id" class="form-control card _c7" asp-items="ViewBag.PostId"></select>
+                <select asp-for="post.Id" class="form-control card _c7" name="id" asp-items="ViewBag.PostId"></select>
 
                 <br />
                 <div class="form-group">
@@ -32,4 +34,45 @@
                 </div>
             </form>
         </div>   
+    </div>
+</div>
+<div style="width:20px"></div>
+<div>
+<h2 class="center1"> @Resources.Resource.Speciality тренера</h2>
+<div class="flex  padd1">
+
+
+    <div class="padd white">
+            <h4>Добавить специальность</h4>
+            <form  method="post">
+               
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <span>@Resources.Resource.Name </span><br />
+                    <input asp-for="speciality.Name" name="name" class="form-control card _c7" />
+                        <span asp-validation-for="speciality.Name" class="text-danger"></span>
+                    </div> <br />
+                <div class="form-group">
+                    <input type="submit" formaction="AddSpeciality" value="@Resources.Resource.Add" class="btn btn-primary c2" />
+                </div>
+            </form>
+
+        </div>
+    <div class="padd white">
+            <h4> @Resources.Resource.Editing</h4>
+            <form asp-controller="Admin" method="post">
+                <label>@Resources.Resource.Speciality</label>
+                    <select asp-for="speciality.Id" name="id" class="form-control card _c7" asp-items="ViewBag.SpecialityId"></select>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" formaction="DeleteSpeciality" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
+                    <input type="submit" formmethod="get" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+                </div>
+            </form>
+        </div>
+   
+     </div>
+    </div>
 </div>
