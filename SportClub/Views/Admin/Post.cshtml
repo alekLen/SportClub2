@@ -115,36 +115,8 @@
                                 }
                             }],
                             open: function (event, ui) {
-                                // Устанавливаем стили для заголовка
-                                $(this).closest(".ui-dialog")
-                                    .find(".ui-dialog-titlebar")
-                                    .css({
-                                        "background-color": "#374566", // Фон заголовка
-                                        "color": "white" // Цвет текста заголовка black
-                                    });
-                                $(this).closest(".ui-dialog")
-                                    .css({
-                                        "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                        "border-radius": "10px",
-                                        "border": "solid 1px #374566",
-                                        "background-color": "#374566"
-                                    });
-                                $(this).closest(".ui-dialog")
-                                    .find(".ui-dialog-content")
-                                    .css({
-                                        "background-color": "#374566"
-                                    });
-                                $(this).closest(".ui-widget-content")
-                                    .css({
-                                        "border": "none",
-                                        "background-color": "#374566"
-                                    });
-                                $(this).closest(".ui-dialog")
-                                    .find(".ui-dialog-buttonpane")
-                                    .css({
-                                        "border-width": "0px",
-                                        "background-color": "#374566"
-                                    });
+                                // Устанавливаем стили для диалога
+                                    StyleDialog($(this).closest(".ui-dialog"));
                             }
                         });
                 }
@@ -184,36 +156,7 @@
                                     }
                                 }],
                                 open: function (event, ui) {
-                                    // Устанавливаем стили для заголовка
-                                    $(this).closest(".ui-dialog")
-                                        .find(".ui-dialog-titlebar")
-                                        .css({
-                                            "background-color": "#374566", // Фон заголовка
-                                            "color": "white" // Цвет текста заголовка black
-                                        });
-                                    $(this).closest(".ui-dialog")
-                                        .css({
-                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                            "border-radius": "10px",
-                                            "border": "solid 1px #374566",
-                                            "background-color": "#374566"
-                                        });
-                                    $(this).closest(".ui-dialog")
-                                        .find(".ui-dialog-content")
-                                        .css({
-                                            "background-color": "#374566"
-                                        });
-                                    $(this).closest(".ui-widget-content")
-                                        .css({
-                                            "border": "none",
-                                            "background-color": "#374566"
-                                        });
-                                    $(this).closest(".ui-dialog")
-                                        .find(".ui-dialog-buttonpane")
-                                        .css({
-                                            "border-width": "0px",
-                                            "background-color": "#374566"
-                                        });
+                                    StyleDialog($(this).closest(".ui-dialog"));
                                 }
                             });
                     }
@@ -269,36 +212,7 @@
                                                     }
                                                 }],
                                                 open: function (event, ui) {
-                                                    // Устанавливаем стили для заголовка
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-titlebar")
-                                                        .css({
-                                                            "background-color": "#374566", // Фон заголовка
-                                                            "color": "white" // Цвет текста заголовка black
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .css({
-                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                                            "border-radius": "10px",
-                                                            "border": "solid 1px #374566",
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-content")
-                                                        .css({
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-widget-content")
-                                                        .css({
-                                                            "border": "none",
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-buttonpane")
-                                                        .css({
-                                                            "border-width": "0px",
-                                                            "background-color": "#374566"
-                                                        });
+                                                    StyleDialog($(this).closest(".ui-dialog"));
                                                 }
                                             });
                                     }
@@ -311,36 +225,7 @@
                         }
                     }],
                     open: function (event, ui) {
-                        // Устанавливаем стили для заголовка
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-titlebar")
-                            .css({
-                                "background-color": "#374566", // Фон заголовка
-                                "color": "white" // Цвет текста заголовка black
-                            });
-                        $(this).closest(".ui-dialog")
-                            .css({
-                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                "border-radius": "10px",
-                                "border": "solid 1px #374566",
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-content")
-                            .css({
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-widget-content")
-                            .css({
-                                "border": "none",
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-buttonpane")
-                            .css({
-                                "border-width": "0px",
-                                "background-color": "#374566"
-                            });
+                        StyleDialog($(this).closest(".ui-dialog"));
                     }
                 });
         });
@@ -389,36 +274,7 @@
                                                     }
                                                 }],
                                                 open: function (event, ui) {
-                                                    // Устанавливаем стили для заголовка
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-titlebar")
-                                                        .css({
-                                                            "background-color": "#374566", // Фон заголовка
-                                                            "color": "white" // Цвет текста заголовка black
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .css({
-                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                                            "border-radius": "10px",
-                                                            "border": "solid 1px #374566",
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-content")
-                                                        .css({
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-widget-content")
-                                                        .css({
-                                                            "border": "none",
-                                                            "background-color": "#374566"
-                                                        });
-                                                    $(this).closest(".ui-dialog")
-                                                        .find(".ui-dialog-buttonpane")
-                                                        .css({
-                                                            "border-width": "0px",
-                                                            "background-color": "#374566"
-                                                        });
+                                                    StyleDialog($(this).closest(".ui-dialog"));
                                                 }
                                             });
                                     }
@@ -431,40 +287,46 @@
                         }
                     }],
                     open: function (event, ui) {
-                        // Устанавливаем стили для заголовка
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-titlebar")
-                            .css({
-                                "background-color": "#374566", // Фон заголовка
-                                "color": "white" // Цвет текста заголовка black
-                            });
-                        $(this).closest(".ui-dialog")
-                            .css({
-                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                "border-radius": "10px",
-                                "border": "solid 1px #374566",
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-content")
-                            .css({
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-widget-content")
-                            .css({
-                                "border": "none",
-                                "background-color": "#374566"
-                            });
-                        $(this).closest(".ui-dialog")
-                            .find(".ui-dialog-buttonpane")
-                            .css({
-                                "border-width": "0px",
-                                "background-color": "#374566"
-                            });
+                        StyleDialog($(this).closest(".ui-dialog"));
                     }
                 });
         });
 
 
-  });
+
+
+    function StyleDialog(dialog) {
+            dialog
+                .find(".ui-dialog-titlebar")
+                .css({
+                    "background-color": "#374566", // Фон заголовка
+                    "color": "white" // Цвет текста заголовка black
+                });
+            dialog
+                .css({
+                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                    "border-radius": "10px",
+                    "border": "solid 1px #374566",
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-dialog-content")
+                .css({
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-widget-content")
+                .css({
+                    "border": "none",
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-dialog-buttonpane")
+                .css({
+                    "border-width": "0px",
+                    "background-color": "#374566"
+                });
+    }
+
+});
 </script>
