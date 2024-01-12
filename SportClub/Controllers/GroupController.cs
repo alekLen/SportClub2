@@ -141,7 +141,7 @@ namespace SportClub.Controllers
                     groupdto.Number = group.Number;
                     groupdto.CoachName = coac.Name;
                     groupdto.CoachId = group.CoachId;
-                    //groupdto.UsersId = group.UsersId;
+                    groupdto.Id = group.Id;
 
                     foreach (var i in UsersList)
                     {

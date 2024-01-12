@@ -50,52 +50,19 @@
                     
                 </div>
             </div>
-            
-            <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
+
+
+            <div style="margin: 10px auto 10px auto;width: max-content;">
+                <button id="btnsub1" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
+                <a asp-action="GetGroups" asp-controller="Groups" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+            </div><br />
+           @*  <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
                 <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
-            </div>
+            </div> *@
         </form>
     </div>
 </div>
-
-@*  <h4 class=" b1 b3 c20 center pr">Создание графика дня</h4>
-<div class="div_reg">
-    <div class="flex padd">
-
-        <div class="padd">
-            <h4 class="white">График дня</h4>
-            <form asp-controller="Time" method="post">
-                @model SportClub.BLL.DTO.TimetableDTO
-
-                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimetableId"></select>
-                <br />
-                <div class="form-group">
-                    <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary buttons1" />
-                      </div>
-            </form>
-            <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttons1">Отмена</a>
-            <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttons1">Выход</a><br />
-            <a asp-area="" asp-controller="Time" asp-action="GetAllTimetable" class="btn btn-primary buttons1">Все сохраненные  графики</a>
-
-        </div>
-        <div style="width:20px;"></div>
-        <div class="padd">
-
-            <form asp-controller="Time" method="post">
-                <label class="white">Выберите время для графика</label>
-                <br />
-                <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimeId"></select>
-
-                <br /> <br />
-                <div class="form-group">
-                    <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить время в график" class="btn btn-primary  buttons1" />
-
-                </div>
-            </form>
-        </div>
-    </div>
-</div> *@
-
+ 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
