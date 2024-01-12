@@ -12,12 +12,13 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group padd">
                     <span>Название </span><br />
-                    <input asp-for="post.Name" name="name" class="form-control card _c7" />
+                    <input asp-for="post.Name" name="name" id="post" class="form-control card _c7" />
                     <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group padd">
-                    <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" />
-                </div>
+                   @*  <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" /> *@
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddPost" style="color:white">Добавить</a>
+               </div>
             </form>
 
         </div>
@@ -25,12 +26,15 @@
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Post</label>
-                <select asp-for="post.Id" class="form-control card _c7" name="id" asp-items="ViewBag.PostId"></select>
+                <select asp-for="post.Id" class="form-control card _c7 idPost" name="id" asp-items="ViewBag.PostId"></select>
 
                 <br />
                 <div class="form-group">
-                    <input type="submit" formaction="DeletePost" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
-                    <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+                   @*  <input type="submit" formaction="DeletePost" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
+                    *@
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelPost" style="color:white">Удалить</a>
+                        <br /><br />
+                        <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
                 </div>
             </form>
         </div>   
@@ -50,12 +54,13 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <span>@Resources.Resource.Name </span><br />
-                    <input asp-for="speciality.Name" name="name" class="form-control card _c7" />
+                    <input asp-for="speciality.Name" name="name" id="spec" class="form-control card _c7" />
                         <span asp-validation-for="speciality.Name" class="text-danger"></span>
                     </div> <br />
                 <div class="form-group">
-                    <input type="submit" formaction="AddSpeciality" value="@Resources.Resource.Add" class="btn btn-primary c2" />
-                </div>
+                      @*   <input type="submit" formaction="AddSpeciality" value="@Resources.Resource.Add" class="btn btn-primary c2 btn-AddSpeciality" /> *@
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddSpec" style="color:white">Добавить</a>
+                  </div>
             </form>
 
         </div>
@@ -63,11 +68,13 @@
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Speciality</label>
-                    <select asp-for="speciality.Id" name="id" class="form-control card _c7" asp-items="ViewBag.SpecialityId"></select>
+                    <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
 
                 <br />
                 <div class="form-group">
-                    <input type="submit" formaction="DeleteSpeciality" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
+                   @*  <input type="submit" formaction="DeleteSpeciality" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /> *@
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelSpec" style="color:white">Удалить</a>
+                        <br /><br />
                     <input type="submit" formmethod="get" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
                 </div>
             </form>
@@ -76,3 +83,388 @@
      </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+
+     $("#btnAddSpec").click(function () {
+        var objectName = $("#spec").val();
+        $.ajax({
+            url: "@Url.Action("AddSpeciality", "Admin")",
+            type: "POST",
+            data: { name: objectName },
+            datatype: "json",
+            success: function (response) {
+
+                if (response) {
+                    $("<div id='dialogContent1'></div>")
+                        .addClass("dialog")
+                        .appendTo("body")
+                        .load("/Admin/AddedSpeciality")
+                        .dialog({
+                            title: "Добавленo!",
+                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                            dialogClass: 'myTitleClass',
+                            modal: true,
+                            resizable: false,
+                            buttons: [{
+                                class: "input_subm2",//
+                                text: "Назад",
+                                click: function () {
+                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                }
+                            }],
+                            open: function (event, ui) {
+                                // Устанавливаем стили для заголовка
+                                $(this).closest(".ui-dialog")
+                                    .find(".ui-dialog-titlebar")
+                                    .css({
+                                        "background-color": "#374566", // Фон заголовка
+                                        "color": "white" // Цвет текста заголовка black
+                                    });
+                                $(this).closest(".ui-dialog")
+                                    .css({
+                                        "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                        "border-radius": "10px",
+                                        "border": "solid 1px #374566",
+                                        "background-color": "#374566"
+                                    });
+                                $(this).closest(".ui-dialog")
+                                    .find(".ui-dialog-content")
+                                    .css({
+                                        "background-color": "#374566"
+                                    });
+                                $(this).closest(".ui-widget-content")
+                                    .css({
+                                        "border": "none",
+                                        "background-color": "#374566"
+                                    });
+                                $(this).closest(".ui-dialog")
+                                    .find(".ui-dialog-buttonpane")
+                                    .css({
+                                        "border-width": "0px",
+                                        "background-color": "#374566"
+                                    });
+                            }
+                        });
+                }
+                else {
+                    let l2 = document.getElementById("error-login1");
+                    l2.style.display = "inline";
+                }
+            }
+        });
+     });
+
+        $("#btnAddPost").click(function () {
+            var objectName1 = $("#post").val();
+            $.ajax({
+                url: "@Url.Action("AddPost", "Admin")",
+                type: "POST",
+                data: { name: objectName1 },
+                datatype: "json",
+                success: function (response) {
+
+                    if (response) {
+                        $("<div id='dialogContent2'></div>")
+                            .addClass("dialog")
+                            .appendTo("body")
+                            .load("/Admin/AddedPost")
+                            .dialog({
+                                title: "Добавленo!",
+                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                dialogClass: 'myTitleClass',
+                                modal: true,
+                                resizable: false,
+                                buttons: [{
+                                    class: "input_subm2",//
+                                    text: "Назад",
+                                    click: function () {
+                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                    }
+                                }],
+                                open: function (event, ui) {
+                                    // Устанавливаем стили для заголовка
+                                    $(this).closest(".ui-dialog")
+                                        .find(".ui-dialog-titlebar")
+                                        .css({
+                                            "background-color": "#374566", // Фон заголовка
+                                            "color": "white" // Цвет текста заголовка black
+                                        });
+                                    $(this).closest(".ui-dialog")
+                                        .css({
+                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                            "border-radius": "10px",
+                                            "border": "solid 1px #374566",
+                                            "background-color": "#374566"
+                                        });
+                                    $(this).closest(".ui-dialog")
+                                        .find(".ui-dialog-content")
+                                        .css({
+                                            "background-color": "#374566"
+                                        });
+                                    $(this).closest(".ui-widget-content")
+                                        .css({
+                                            "border": "none",
+                                            "background-color": "#374566"
+                                        });
+                                    $(this).closest(".ui-dialog")
+                                        .find(".ui-dialog-buttonpane")
+                                        .css({
+                                            "border-width": "0px",
+                                            "background-color": "#374566"
+                                        });
+                                }
+                            });
+                    }
+                    else {
+                        let l2 = document.getElementById("error-login1");
+                        l2.style.display = "inline";
+                    }
+                }
+            });
+        });
+
+        $("#btnDelPost").click(function () {          
+            var idp = $(".idPost").val();
+            var puth = "/Admin/DeletePost/" + idp;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Потвердите",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {                         
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeletePost", "Admin")",
+                                type: "POST",
+                                data: { id: idp },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    // Устанавливаем стили для заголовка
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "#374566", // Фон заголовка
+                                                            "color": "white" // Цвет текста заголовка black
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "10px",
+                                                            "border": "solid 1px #374566",
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "#374566"
+                                                        });
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        // Устанавливаем стили для заголовка
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-titlebar")
+                            .css({
+                                "background-color": "#374566", // Фон заголовка
+                                "color": "white" // Цвет текста заголовка black
+                            });
+                        $(this).closest(".ui-dialog")
+                            .css({
+                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                "border-radius": "10px",
+                                "border": "solid 1px #374566",
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-content")
+                            .css({
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-widget-content")
+                            .css({
+                                "border": "none",
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-buttonpane")
+                            .css({
+                                "border-width": "0px",
+                                "background-color": "#374566"
+                            });
+                    }
+                });
+        });
+
+        $("#btnDelSpec").click(function () {
+            var ids = $(".idSpec").val();
+            var puth = "/Admin/DeleteSpeciality/" + ids;
+            $("<div id='dialogContent5'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Потвердите",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteSpeciality", "Admin")",
+                                type: "POST",
+                                data: { id: ids },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent5").remove();
+                                        $("<div id='dialogContent6'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    // Устанавливаем стили для заголовка
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "#374566", // Фон заголовка
+                                                            "color": "white" // Цвет текста заголовка black
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "10px",
+                                                            "border": "solid 1px #374566",
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "#374566"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "#374566"
+                                                        });
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        // Устанавливаем стили для заголовка
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-titlebar")
+                            .css({
+                                "background-color": "#374566", // Фон заголовка
+                                "color": "white" // Цвет текста заголовка black
+                            });
+                        $(this).closest(".ui-dialog")
+                            .css({
+                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                "border-radius": "10px",
+                                "border": "solid 1px #374566",
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-content")
+                            .css({
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-widget-content")
+                            .css({
+                                "border": "none",
+                                "background-color": "#374566"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-buttonpane")
+                            .css({
+                                "border-width": "0px",
+                                "background-color": "#374566"
+                            });
+                    }
+                });
+        });
+
+
+  });
+</script>

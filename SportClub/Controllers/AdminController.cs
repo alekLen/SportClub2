@@ -57,7 +57,6 @@ namespace SportClub.Controllers
             return Redirect("AddPost");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPost(string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -66,14 +65,14 @@ namespace SportClub.Controllers
                 PostDTO p = new();
                 p.Name = name;
                 await postService.AddPost(p);
-                // return RedirectToAction("Index", "Home");
-               // await putPosts();
-                return RedirectToAction("AddedPost",new {post=p.Name});
+                //  return RedirectToAction("AddedPost",new {post=p.Name});
+                return Json(true);
             }
             catch
             {
-                await putPosts();
-                return View("Post");
+              //  await putPosts();
+               // return View("Post");
+               return Json(false);
             }
         }
         public async Task<IActionResult> EditPost(int id)
@@ -109,21 +108,19 @@ namespace SportClub.Controllers
                 return Redirect("AddPost");
             }
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet] 
         public async Task<IActionResult> DeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
             PostDTO p = await postService.GetPost(id);
             if (p != null)
             {
-                return View("DeletePost", p);
+                return PartialView("DeletePost", p);
             }
             await putPosts();
             return View("Post");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -131,9 +128,11 @@ namespace SportClub.Controllers
             if (p != null)
             {
                 await postService.DeletePost(id);
-                return Redirect("AddPost");
+                //  return Redirect("AddPost");
+                return Json(true);
             }
-            return Redirect("AddPost");
+            //return Redirect("AddPost");
+            return Json(false);
         }
         public async Task<IActionResult> AddSpeciality()
         {
@@ -145,7 +144,7 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             HttpContext.Session.SetString("speciality", speciality);
-            return View();
+            return PartialView();
         }
         public async Task<IActionResult> EditedSpeciality(string speciality)
         {
@@ -160,7 +159,6 @@ namespace SportClub.Controllers
             return Redirect("AddPost");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddSpeciality(string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -169,7 +167,9 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = new();
                 sp.Name = name;
                 await specialityService.AddSpeciality(sp);
-                return RedirectToAction("AddedSpeciality", new { speciality = sp.Name });
+                //return RedirectToAction("AddedSpeciality", new { speciality = sp.Name });
+                HttpContext.Session.SetString("speciality", name);
+                return Json(true);
             }
             catch
             {
@@ -212,22 +212,20 @@ namespace SportClub.Controllers
                 return Redirect("AddPost");
             }
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> DeleteSpeciality(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
             SpecialityDTO p = await specialityService.GetSpeciality(id);
             if (p != null)
             {
-                return View("DeleteSpeciality", p);
+                return PartialView("DeleteSpeciality", p);
             }
 
             return Redirect("AddPost");
             // return Redirect("AddSpeciality");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDeleteSpeciality(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -236,10 +234,12 @@ namespace SportClub.Controllers
             {
                 await specialityService.DeleteSpeciality(id);
                 // return Redirect("AddSpeciality");
-                return Redirect("AddPost");
+                // return Redirect("AddPost");
+                return Json(true);
             }
             //  return Redirect("AddSpeciality");
-            return Redirect("AddPost");
+            // return Redirect("AddPost");
+            return Json(false);
         }
         public async Task putPosts()
         {

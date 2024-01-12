@@ -1,14 +1,14 @@
 ﻿<form asp-controller="Admin" method="post">
     @model SportClub.BLL.DTO.SpecialityDTO
-    <h2>Потвердите удаление специальности тренера:</h2>
+   @*  <h2>Потвердите удаление специальности тренера:</h2>
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="div_reg padd">
-        <span>@Resources.Resource.Name </span><br />
+    <div class="div_reg padd"> *@
+        <span style="color:white">Удаление специальности тренера:</span><br />
         <input asp-for="Name" class="form-control card _c7" readonly />
         <input asp-for="Id" type="hidden" />     
-        <br />
+        @* <br />
         <a asp-area="" asp-controller="Admin" asp-action="BackToSpeciality" class="btn btn-primary buttons1">Назад</a>
         <br />
         <input type="submit" formaction="ConfirmDeleteSpeciality" value="@Resources.Resource.Delete" class="btn btn-primary red" />
-    </div>
+    </div> *@
 </form>
