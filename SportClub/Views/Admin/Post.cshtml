@@ -1,9 +1,8 @@
 ﻿<div class="flex">
+    
     <div>
 <h2 class="center1"> @Resources.Resource.Post тренера</h2>
-<div class="flex padd1">
-    
-
+<div class="flex padd1">    
         <div class="padd white">
             <h4>Добавить должность</h4>
             <form asp-controller="Login" method="post">
@@ -16,8 +15,7 @@
                     <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group padd">
-                   @*  <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" /> *@
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddPost" style="color:white">Добавить</a>
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddPost" style="color:white">@Resources.Resource.Add</a>
                </div>
             </form>
 
@@ -30,8 +28,6 @@
 
                 <br />
                 <div class="form-group">
-                   @*  <input type="submit" formaction="DeletePost" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
-                    *@
                         <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelPost" style="color:white">Удалить</a>
                         <br /><br />
                         <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
@@ -58,8 +54,7 @@
                         <span asp-validation-for="speciality.Name" class="text-danger"></span>
                     </div> <br />
                 <div class="form-group">
-                      @*   <input type="submit" formaction="AddSpeciality" value="@Resources.Resource.Add" class="btn btn-primary c2 btn-AddSpeciality" /> *@
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddSpec" style="color:white">Добавить</a>
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddSpec" style="color:white">@Resources.Resource.Add</a>
                   </div>
             </form>
 
@@ -71,8 +66,7 @@
                     <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
 
                 <br />
-                <div class="form-group">
-                   @*  <input type="submit" formaction="DeleteSpeciality" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /> *@
+                <div class="form-group">                   
                         <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelSpec" style="color:white">Удалить</a>
                         <br /><br />
                     <input type="submit" formmethod="get" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
@@ -81,6 +75,9 @@
         </div>
    
      </div>
+    </div>
+    <div>
+        <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn btn-primary buttons1">Главная</a>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

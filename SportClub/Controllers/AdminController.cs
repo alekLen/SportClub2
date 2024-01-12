@@ -538,11 +538,10 @@ namespace SportClub.Controllers
             }
             return RedirectToAction("AddRoom");
         }
-        //public async Task putRooms()
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
-        //    IEnumerable<RoomDTO> p = await roomService.GetAllRooms();
-        //    ViewData["RoomId"] = new SelectList(p, "Id", "Name");
-        //}
+        public IActionResult Back()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
