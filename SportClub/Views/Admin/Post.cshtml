@@ -70,7 +70,7 @@
                 <div class="form-group">                   
                         <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelSpec" style="color:white">Удалить</a>
                         <br /><br />
-                    <input type="submit" formmethod="get" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnEditSpec" style="color:white">@Resources.Resource.Edit</a>
                 </div>
             </form>
         </div>
@@ -317,6 +317,68 @@
                                     if (response) {
                                         $("#dialogContent7").remove();
                                         $("<div id='dialogContent8'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Успешно!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+        $("#btnEditSpec").click(function () {
+            var ids = $(".idSpec").val();
+            var puth = "/Admin/EditSpeciality/" + ids;
+            $("<div id='dialogContent9'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Редактирование",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Сохранить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("EditSpeciality", "Admin")",
+                                type: "POST",
+                                data: $('#formSpec').serialize(),
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent9").remove();
+                                        $("<div id='dialogContent10'></div>")
                                             .addClass("dialog")
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")

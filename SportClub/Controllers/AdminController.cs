@@ -183,13 +183,12 @@ namespace SportClub.Controllers
             SpecialityDTO sp = await specialityService.GetSpeciality(id);
             if (sp != null)
             {
-                return View("EditSpeciality", sp);
+                return PartialView("EditSpeciality", sp);
             }
             // return Redirect("AddSpeciality");
             return Redirect("AddPost");
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]  
         public async Task<IActionResult> EditSpeciality(int id, string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -199,7 +198,8 @@ namespace SportClub.Controllers
                 if (sp == null)
                 {
                     // return Redirect("AddSpeciality");
-                    return Redirect("AddPost");
+                   // return Redirect("AddPost");
+                   return Json(true);
                 }
                 sp.Name = name;
                 await specialityService.UpdateSpeciality(sp);
