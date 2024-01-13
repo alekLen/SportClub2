@@ -9,7 +9,7 @@ namespace SportClub.DAL.Entities
     public class TrainingInd
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public string Time { get; set; }
        // public Timetable Timetable { get; set; }
         public int Day {  get; set; }

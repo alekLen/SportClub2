@@ -32,12 +32,12 @@ namespace SportClub.BLL.Services
             //  Speciality s = await Database.Specialitys.Get(pDto.SpecialityId.Value);
             var a = new TrainingInd()
             {
-                Name = pDto.Name,
+                //Name = pDto.Name,
                 Time = pDto.Time,
                 Day = pDto.Day,
                 Room = r,
                 Coach = c,
-                User =u,
+                User = u,
                // Speciality = s
             };
             await Database.TrainingInds.AddItem(a);
