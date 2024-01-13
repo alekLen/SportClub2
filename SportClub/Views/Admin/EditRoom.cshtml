@@ -1,0 +1,40 @@
+﻿@model SportClub.BLL.DTO.RoomDTO
+<div class="flex">
+    <div>
+        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">Назад</a>
+        <br />
+        <h2>Редактирование спортзала:   |</h2>
+    </div>
+    <div class="padd1">
+        <form method="post" enctype="multipart/form-data">
+            <input asp-for="Id" type="hidden" />
+            <div class="form-group">
+                <label class="white-color_size20 font">Название зала</label>
+                <input name="Name" value="@Model.Name" class="form-control" />
+            </div>
+            <div class="form-group" style="margin-left: 40px;">
+                <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />               
+                <input class="white-color_size20" type="file" name="p" id="uploadInput" onchange="previewImage(event)" accept=".jpg, .jpeg, .png" /><br /><br />
+            </div>
+            <input class="btn1n btn btn-outline-light" formaction="EditRoom" type="submit" value="@Resources.Resource.Edit" />
+        </form>
+    </div>
+   <div>
+        <img id="preview" src="@Model.Photo" width="200" height="200" alt="Photo" style="background-color:wheat; margin:20px;" />
+    </div>
+</div>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('preview');
+
+        var reader = new FileReader();
+
+        reader.onload = function () {
+            preview.src = reader.result;    
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+</script>

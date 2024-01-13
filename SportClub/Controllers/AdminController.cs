@@ -20,12 +20,14 @@ namespace SportClub.Controllers
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public AdminController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
+        private readonly IRoom roomService;
+        public AdminController(IAdmin adm,IRoom r, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             postService = p;
+            roomService = r;
             specialityService = sp;
             _appEnvironment = _appEnv;
         }
@@ -34,10 +36,27 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             await putPosts();
+            await putSpecialities();
             return View("Post");
         }
+        public async Task<IActionResult> AddedPost(string post)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("post", post);
+            return View();
+        }
+        public async Task<IActionResult> EditedPost(string post)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("post", post);
+            return View();
+        }
+        public async Task<IActionResult> BackToPost()
+        {
+            HttpContext.Session.SetString("path", Request.Path);           
+            return Redirect("AddPost");
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddPost(string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -46,14 +65,14 @@ namespace SportClub.Controllers
                 PostDTO p = new();
                 p.Name = name;
                 await postService.AddPost(p);
-                // return RedirectToAction("Index", "Home");
-                await putPosts();
-                return View("Post");
+                //  return RedirectToAction("AddedPost",new {post=p.Name});
+                return Json(true);
             }
             catch
             {
-                await putPosts();
-                return View("Post");
+              //  await putPosts();
+               // return View("Post");
+               return Json(false);
             }
         }
         public async Task<IActionResult> EditPost(int id)
@@ -62,7 +81,7 @@ namespace SportClub.Controllers
             PostDTO p = await postService.GetPost(id);
             if (p != null)
             {
-                return View("EditPost", p);
+                return PartialView("EditPost", p);
             }
             await putPosts();
             return View("Post");
@@ -77,34 +96,31 @@ namespace SportClub.Controllers
                 PostDTO p = await postService.GetPost(id);
                 if (p == null)
                 {
-                    await putPosts();
-                    return View("Post");
+                    return Redirect("AddPost");
                 }
                 p.Name = name;
                 await postService.UpdatePost(p);
-                return RedirectToAction("Index", "Home");
+              
+                return RedirectToAction("EditedPost", new { post = p.Name });
             }
             catch
             {
-                await putPosts();
-                return View("Post");
+                return Redirect("AddPost");
             }
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet] 
         public async Task<IActionResult> DeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
             PostDTO p = await postService.GetPost(id);
             if (p != null)
             {
-                return View("DeletePost", p);
+                return PartialView("DeletePost", p);
             }
             await putPosts();
             return View("Post");
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> ConfirmDeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -112,10 +128,11 @@ namespace SportClub.Controllers
             if (p != null)
             {
                 await postService.DeletePost(id);
-                return View("Index", p);
+                //  return Redirect("AddPost");
+                return Json(true);
             }
-            await putPosts();
-            return View("Post");
+            //return Redirect("AddPost");
+            return Json(false);
         }
         public async Task<IActionResult> AddSpeciality()
         {
@@ -123,8 +140,25 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View("Speciality");
         }
+        public async Task<IActionResult> AddedSpeciality(string speciality)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("speciality", speciality);
+            return PartialView();
+        }
+        public async Task<IActionResult> EditedSpeciality(string speciality)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("speciality", speciality);
+            return View();
+        }
+        public async Task<IActionResult> BackToSpeciality()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            //return Redirect("AddSpeciality");
+            return Redirect("AddPost");
+        }
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddSpeciality(string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -133,12 +167,14 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = new();
                 sp.Name = name;
                 await specialityService.AddSpeciality(sp);
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("AddedSpeciality", new { speciality = sp.Name });
+                HttpContext.Session.SetString("speciality", name);
+                return Json(true);
             }
             catch
             {
-                await putSpecialities();
-                return View("Speciality");
+                // return Redirect("AddSpeciality");
+                return Redirect("AddPost");
             }
         }
         public async Task<IActionResult> EditSpeciality(int id)
@@ -147,13 +183,12 @@ namespace SportClub.Controllers
             SpecialityDTO sp = await specialityService.GetSpeciality(id);
             if (sp != null)
             {
-                return View("EditSpeciality", sp);
+                return PartialView("EditSpeciality", sp);
             }
-            await putSpecialities();
-            return View("Speciality");
+            // return Redirect("AddSpeciality");
+            return Redirect("AddPost");
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost]  
         public async Task<IActionResult> EditSpeciality(int id, string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -162,18 +197,49 @@ namespace SportClub.Controllers
                 SpecialityDTO sp = await specialityService.GetSpeciality(id);
                 if (sp == null)
                 {
-                    await putSpecialities();
-                    return View("Speciality");
+                    // return Redirect("AddSpeciality");
+                   // return Redirect("AddPost");
+                   return Json(true);
                 }
                 sp.Name = name;
                 await specialityService.UpdateSpeciality(sp);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("EditedSpeciality", new { speciality = sp.Name });
+
             }
             catch
             {
-                await putSpecialities();
-                return View("Speciality");
+                //return Redirect("AddSpeciality");
+                return Redirect("AddPost");
             }
+        }
+        [HttpGet]
+        public async Task<IActionResult> DeleteSpeciality(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            SpecialityDTO p = await specialityService.GetSpeciality(id);
+            if (p != null)
+            {
+                return PartialView("DeleteSpeciality", p);
+            }
+
+            return Redirect("AddPost");
+            // return Redirect("AddSpeciality");
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteSpeciality(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            SpecialityDTO p = await specialityService.GetSpeciality(id);
+            if (p != null)
+            {
+                await specialityService.DeleteSpeciality(id);
+                // return Redirect("AddSpeciality");
+                // return Redirect("AddPost");
+                return Json(true);
+            }
+            //  return Redirect("AddSpeciality");
+            // return Redirect("AddPost");
+            return Json(false);
         }
         public async Task putPosts()
         {
@@ -368,6 +434,114 @@ namespace SportClub.Controllers
                 return NotFound();
             }
             return View(admin);
+        }
+
+        public async Task<IActionResult> AddRoom()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            //  await putRooms();
+            IEnumerable<RoomDTO> rooms = await roomService.GetAllRooms();
+            return View("Rooms", rooms);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddRoom(string name, IFormFile? p)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                RoomDTO room = new();
+                if (p != null)
+                {
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    // Путь к папке Files
+                    string path = "/Rooms/" + str1; // имя файла
+
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    room.Photo = path;
+                }
+                    room.Name = name;
+                    await roomService.AddRoom(room);
+                    return Redirect("AddRoom");
+               
+            }
+            catch
+            {
+                return Redirect("AddRoom");
+            }
+        }
+        public async Task<IActionResult> EditRoom(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            RoomDTO p = await roomService.GetRoom(id);
+            if (p != null)
+            {
+                return View("EditRoom", p);
+            }
+            return RedirectToAction("AddRoom");
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditRoom(int id, string name, IFormFile? p)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                RoomDTO room = await roomService.GetRoom(id);
+                if (room == null)
+                {
+                    return RedirectToAction("AddRoom");
+                }
+                if (p != null)
+                {
+                    string str = p.FileName.Replace(" ", "_");
+                    string str1 = str.Replace("-", "_");
+                    string path = "/Rooms/" + str1; // имя файла
+                    using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
+                    {
+                        await p.CopyToAsync(fileStream); // копируем файл в поток
+                    }
+                    room.Photo = path;
+                }
+                    room.Name = name;
+                    await roomService.Update(room);
+                return RedirectToAction("AddRoom");
+            }
+            catch
+            {
+                return RedirectToAction("AddRoom");
+            }
+        }
+        [HttpGet]  
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+           RoomDTO p = await roomService.GetRoom(id);
+            if (p != null)
+            {
+                return View("DeleteRoom", p);
+            }
+            return RedirectToAction("AddRoom");
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteRoom(RoomDTO pp)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            RoomDTO p = await roomService.GetRoom(pp.Id);
+            if (p != null)
+            {
+                await roomService.DeleteRoom(pp.Id);             
+            }
+            return RedirectToAction("AddRoom");
+        }
+        public IActionResult Back()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

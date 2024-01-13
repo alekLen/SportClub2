@@ -61,6 +61,11 @@ body {
 .padd{
     padding:20px;
 }
+.padd1 {
+    padding: 10px;
+    background-color: #374566;
+    border-radius:5px;
+}
 .buttons {
     background-color: #374566;
     margin-bottom:10px;
@@ -68,4 +73,12 @@ body {
 .buttons1 {
     background-color: cornflowerblue;
     margin-bottom: 10px;
+}
+.red{
+    background-color:red;
+}
+.center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

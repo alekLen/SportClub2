@@ -50,46 +50,22 @@ namespace SportClub.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
-        {
-            //string pattern = @"^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
-
-            //if (Regex.IsMatch(Start, pattern) && Regex.IsMatch(End, pattern)) {
-
-            //    string[] str1 = Start.Split(':');
-            //    string[] str2 = End.Split(':');
-            //    if (int.Parse(str1[0]) < int.Parse(str2[0]) || (int.Parse(str1[0]) == int.Parse(str2[0]) && int.Parse(str1[1]) < int.Parse(str2[1]))) {
-            //        if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
-            //        {
-            //            ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
-            //        }
-            //        else
-            //        {
-            //            try
-
-            //            {
-            //                await timeService.AddTimeT(Start, End);
-            //            }
-            //            catch { }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
-
-            //    }
-            //}
-            //else
-            //{
-            //    ModelState.AddModelError("", "Введите время в формате 00:00 ");
-            //}
-            if (CheckTime(Start, End))
+        {          
+            if (Start != null && End != null)
             {
-                try
-
+                if (CheckTime(Start, End))
                 {
-                    await timeService.AddTimeT(Start, End);
+                    try
+
+                    {
+                        await timeService.AddTimeT(Start, End);
+                    }
+                    catch { }
                 }
-                catch { }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Заполните время начала и окончания тренировки!");
             }
             await PutTimes();
             return View();
@@ -227,8 +203,8 @@ namespace SportClub.Controllers
                      t.TimesId.Add(time.Id);
                  await timetableService.AddTimetable(t);
                  timesT.Clear();
-                 return Redirect("/Home/Index"); 
-             }
+                return RedirectToAction("GetAllTimetable");
+            }
              else
              {
                 await PutTimes();
