@@ -147,8 +147,7 @@
 
                 <div class="mdropdown">
                     <button class="mdropbtn">
-                        Добавление...
-                        <i class="fa fa-caret-down"></i>
+                        Добавление...<i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
                         <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>
@@ -157,12 +156,11 @@
                 </div>
 
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
-            <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
+                 <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
             <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 <div class="mdropdown">
                     <button class="mdropbtn">
-                        Зал...
-                        <i class="fa fa-caret-down"></i>
+                        Зал...<i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
                         <a asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
@@ -176,8 +174,7 @@
 
                 <div class="mdropdown" style="float:right">
                     <button class="mdropbtn">
-                        Списки..
-                        <i class="fa fa-caret-down"></i>
+                        Списки..<i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
                         @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
@@ -192,9 +189,32 @@
                         {
                             <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
                         }
+                        @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
+                        }
+                        @using (Html.BeginForm("GetTrainingGroups", "TrainingGroup", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />
+                        }
                     </div>
                 </div>
 
+                <div class="mdropdown" style="float:right">
+                    <button class="mdropbtn">
+                        Группы..<i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="mdropdown-content">
+                        @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать группу" />
+                        }
+                        @using (Html.BeginForm("CreateTrainingGroup", "TrainingGroup", FormMethod.Get))
+                        {
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
+                        } 
+                    </div>
+                </div>
 
                 @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
             {

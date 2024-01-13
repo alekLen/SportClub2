@@ -27,7 +27,7 @@ namespace SportClub.BLL.Services
             var a = new TrainingGroup()
             {
                 Name = pDto.Name,
-                Number=pDto.Number,
+                //Number=pDto.Number,
                 Time = t,
                 Room = r,
                 Coach = c,
@@ -37,26 +37,32 @@ namespace SportClub.BLL.Services
             await Database.TrainingGroups.AddItem(a);
             await Database.Save();
         }
+       
         public async Task<TrainingGroupDTO> GetTrainingGroup(int id)
         {
             TrainingGroup a = await Database.TrainingGroups.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong", "");
-            return new TrainingGroupDTO
+                return null;
+            /* return new AdminDTO
+             {
+                 Id = a.Id,
+                 Name = a.Name,
+
+             };*/
+            try
             {
-                Id = a.Id,
-                Name = a.Name,
-                Number=a.Number,
-                TimeId = a.Time.Id,
-                RoomId = a.Room.Id,
-                CoachName = a.Coach.Name,
-                CoachId = a.Coach.Id,
-                GroupName = a.Group.Name,
-                GroupId = a.Group.Id,
-                SpecialityName = a.Speciality.Name,
-                SpecialityId = a.Speciality.Id
-            };
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingGroup, TrainingGroupDTO>()
+                .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                .ForMember("GroupName", opt => opt.MapFrom(c => c.Group.Name)).ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name))
+                .ForMember("TimeId", opt => opt.MapFrom(c => c.Time.Id)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
+                .ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id)).ForMember("TimeName", opt => opt.MapFrom(c => c.Time.StartTime +"/"+ c.Time.EndTime))
+                .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("GroupId", opt => opt.MapFrom(c => c.Group.Id)));
+                var mapper = new Mapper(config);
+                return mapper.Map<TrainingGroupDTO>(a);
+            }
+            catch { return null; }
         }
+
         public async Task<IEnumerable<TrainingGroupDTO>> GetAllTrainingGroups()
         {
             try
@@ -115,7 +121,7 @@ namespace SportClub.BLL.Services
             TrainingGroup tr = await Database.TrainingGroups.Get(a.Id);
             tr.Id = a.Id;
             tr.Name = a.Name;
-            tr.Number = a.Number;
+            //tr.Number = a.Number;
             tr.Time = t;
             tr.Room = r;
             tr.Coach = c;
