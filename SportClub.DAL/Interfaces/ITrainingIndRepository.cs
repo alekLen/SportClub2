@@ -9,7 +9,7 @@ namespace SportClub.DAL.Interfaces
 {
     public interface ITrainingIndRepository :ISetGetRepository<TrainingInd>
     {
-         Task<IEnumerable<TrainingInd>> GetAllOfCoach(int id);
+        Task<IEnumerable<TrainingInd>> GetAllOfCoach(int id);
         Task<IEnumerable<TrainingInd>> GetAllOfClient(int id);
     }
 }
