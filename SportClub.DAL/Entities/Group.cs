@@ -10,8 +10,10 @@ namespace SportClub.DAL.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-      //  public int Number { get; set; }
-       // public Coach Coach { get; set; }
+        public int Number { get; set; }//
+
+        //public int CoachId;
+        public Coach? Coach { get; set; }
       // public virtual List<TrainingGroup> Trainings { get; set; }
         public virtual List<User> users { get; set; }=new List<User>();
     }

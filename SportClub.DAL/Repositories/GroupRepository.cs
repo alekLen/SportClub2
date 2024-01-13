@@ -6,7 +6,7 @@ using SportClub.DAL.Entities;
 
 namespace SportClub.DAL.Repositories
 {
-    public class GroupRepository : ISetGetRepository<Group>
+    public class GroupRepository :IGroupRepository
     {
         private SportClubContext db;
 
@@ -16,12 +16,19 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Group>> GetAll()
         {
-            return await db.Groups.ToListAsync();
+            return await db.Groups.Include((p)=> p.Coach).ToListAsync();
         }
+        
         public async Task<Group> Get(int id)
         {
-            return await db.Groups.FirstOrDefaultAsync(m => m.Id == id);
+            return await db.Groups.Include((p) => p.Coach).Include((p) => p.users).FirstOrDefaultAsync(m => m.Id == id);
         }
+        //public async Task<Group> GetGroupWithUsers(int groupId)
+        //{
+        //    return _context.Groups
+        //        .Include(g => g.Users)
+        //        .FirstOrDefault(g => g.GroupId == groupId);
+        //}
         public async Task AddItem(Group c)
         {
             await db.AddAsync(c);
@@ -37,12 +44,18 @@ namespace SportClub.DAL.Repositories
         }
         public async Task Delete(int id)
         {
-            var c = await db.Coaches.FindAsync(id);
+            var c = await db.Groups.FindAsync(id);
             if (c != null)
             {
-                db.Coaches.Remove(c);
+                db.Groups.Remove(c);
 
             }
         }
+
+        public async Task<Group> GetGroupName(string name)
+        {
+            return await db.Groups.FirstOrDefaultAsync(m => m.Name == name);
+        }
+
     }
 }

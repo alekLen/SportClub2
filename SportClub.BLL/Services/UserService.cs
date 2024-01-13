@@ -41,7 +41,7 @@ namespace SportClub.BLL.Services
                 Age = uDto.Age,
                 Gender = uDto.Gender,
                 Login = uDto.Login,
-                Password = hashedPassword
+                Password = hashedPassword,
             };
             await Database.Users.AddItem(a);
             await Database.Save();
@@ -108,6 +108,7 @@ namespace SportClub.BLL.Services
             u.Age = a.Age;
             u.Gender = a.Gender;
             u.Login = a.Login;
+            
             if (u.Password != a.Password)
             {
 

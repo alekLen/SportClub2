@@ -93,6 +93,7 @@ namespace SportClub.BLL.Services
             await Database.Salts.Delete(salt.Id);
             await Database.Coaches.Delete(id);
 
+
             await Database.Save();
         }
         public async Task UpdateCoach(CoachDTO a)

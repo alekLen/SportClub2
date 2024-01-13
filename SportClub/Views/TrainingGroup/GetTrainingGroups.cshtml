@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SportClub.BLL.DTO.TrainingGroupDTO>
+
+@{
+    ViewData["Title"] = "Groups";
+}
+<div style="background: #374566; border-radius: 10px; padding:25px;color:white">
+    <h1>Groups</h1>
+
+    @* <p>
+    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">зарегестрировать админа</a>
+    </p> *@
+    <table class="table" style="color:white">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.RoomId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CoachId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialityId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.GroupId)
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CoachName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialityName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GroupName)
+                    </td>
+                   @*  <td>
+                        <select class="form-control" style="width: 420px;height:36px">
+                       @for(int i = 0; i< item.UsersId.Count; i++)
+                        {
+                                <option value="@item.UsersId[i].Id">@item.UsersId[i].Name</option>
+                            }
+                        </select>
+                @* @Html.DisplayFor(modelItem => item.UsersId.Count) @*
+                         
+                    </td> *@
+
+                    <td>
+                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="EditTrainingGroup" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="DetailsTrainingGroup" asp-route-id="@item.Id">Details</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="DeleteTrainingGroup" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

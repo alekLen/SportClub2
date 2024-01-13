@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SportClub.DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace SportClub.DAL.Interfaces
         Task<IEnumerable<T>> GetAll();
         Task  Delete(int id);
         Task Update(T s);
+        
     }
 }
