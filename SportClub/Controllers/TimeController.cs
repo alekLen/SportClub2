@@ -483,66 +483,69 @@ namespace SportClub.Controllers
             return View();
         }
         
-        public async Task<IActionResult> RoomWithShedule(/*int RoomId, int CoachId, string Time*/int Id)
-        {
-            RoomDTO room = await roomService.GetRoom(Id);
-            SheduleDTO shDto = null;
-            try
-            {
-                shDto = await sheduleService.GetShedule(room.sheduleId.Value);
-            }
-            catch { }
-            MakeSheduleView m = new();
-            m.room = room;
-           // m.shedule = room.sheduleId;
-            if (shDto != null)
-            {
-                m.times = new();
-                foreach (var t in shDto.timetables)
+        public async Task<IActionResult> RoomWithShedule(/*int RoomId, int CoachId, string Time*/int RoomId)
+        {           
+                RoomDTO room = await roomService.GetRoom(RoomId);
+            if (room != null) {  
+                SheduleDTO shDto = null;
+                try
                 {
-                    TimetableShow t1 = new();
-                    t1.Id = t.Id;
-                    /* foreach (int i in t.TimesId)
-                     {
-                         TimeTDTO td = await timeService.GetTimeT(i);
-                         string st = td.StartTime + "/" + td.EndTime;
-                         t1.Times.Add(st);
-                     }*/
-                    if (t.TimesId.Count == 0)
-                    {
-                        string s = "Выходной";
-                        t1.Times.Add(s);
-                    }
-                    else
-                    {
-                        foreach (int i in t.TimesId)
-                        {
-                            TimeTDTO td = await timeService.GetTimeT(i);
-                            string st = td.StartTime + "/" + td.EndTime;
-                            t1.Times.Add(st);
-                        }
-                    }
-                    m.times.Add(t1);
-                    IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
-                    m.trainingInd = trInd.ToList();
+                    shDto = await sheduleService.GetShedule(room.sheduleId.Value);
                 }
-                //foreach(var t in shDto.trainingInd)
-                //{
-                //    TrainingIndDTO trInd = new();
-                //    trInd.RoomId = t.RoomId;
-                //    trInd.CoachId = t.CoachId;
-                //    trInd.Time = t.Time;
-                //    if(t != null)
-                //    {
-                //        m.trainingInd.Add(trInd);
-                //    }
-                //}
+                catch { }
+                MakeSheduleView m = new();
+                m.room = room;
+                // m.shedule = room.sheduleId;
+                if (shDto != null)
+                {
+                    m.times = new();
+                    foreach (var t in shDto.timetables)
+                    {
+                        TimetableShow t1 = new();
+                        t1.Id = t.Id;
+                        /* foreach (int i in t.TimesId)
+                         {
+                             TimeTDTO td = await timeService.GetTimeT(i);
+                             string st = td.StartTime + "/" + td.EndTime;
+                             t1.Times.Add(st);
+                         }*/
+                        if (t.TimesId.Count == 0)
+                        {
+                            string s = "Выходной";
+                            t1.Times.Add(s);
+                        }
+                        else
+                        {
+                            foreach (int i in t.TimesId)
+                            {
+                                TimeTDTO td = await timeService.GetTimeT(i);
+                                string st = td.StartTime + "/" + td.EndTime;
+                                t1.Times.Add(st);
+                            }
+                        }
+                        m.times.Add(t1);
+                        IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
+                        m.trainingInd = trInd.ToList();
+                    }
+                    //foreach(var t in shDto.trainingInd)
+                    //{
+                    //    TrainingIndDTO trInd = new();
+                    //    trInd.RoomId = t.RoomId;
+                    //    trInd.CoachId = t.CoachId;
+                    //    trInd.Time = t.Time;
+                    //    if(t != null)
+                    //    {
+                    //        m.trainingInd.Add(trInd);
+                    //    }
+                    //}
+                }
+                else
+                {
+                    m.message = "для зала не составлен график";
+                }
+                return View(m);
             }
-            else
-            {
-                m.message = "для зала не составлен график";
-            }
-            return View(m);
+           else { return RedirectToAction("Room_Shedule"); }
         }
         [HttpPost]
         public async Task<IActionResult> AddIndTraining(int day, int roomId, string time, string roomName)
@@ -579,7 +582,7 @@ namespace SportClub.Controllers
             //tr.UserName = userName;
            
             await trainingIndService.AddTrainingInd(tr);
-            return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { Id = roomId });
+            return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { RoomId = roomId });
         }
         [HttpPost]
         public async Task<IActionResult> AddUserToTrainingInd(int day, int roomId, string time, string roomName, int coachId)
