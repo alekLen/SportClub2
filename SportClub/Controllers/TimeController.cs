@@ -10,6 +10,7 @@ using SportClub.Models;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -506,6 +507,31 @@ namespace SportClub.Controllers
            await sheduleService.AddShedule(shedule,r);
             timetables.Clear();
             return RedirectToAction("Room_Shedule");
+        }
+       
+        public async Task<IActionResult> DeleteShedule(int RomId)
+        {
+           // SheduleDTO shedule = await sheduleService.GetShedule(SheduleId);
+            RoomDTO r = await roomService.GetRoom(RomId);
+           
+            return PartialView(r);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteSheduleInRoom(int RomId/*,int SheduleId*/)
+        {
+            
+            RoomDTO r = await roomService.GetRoom(RomId);
+            SheduleDTO shedule = await sheduleService.GetShedule(r.sheduleId.Value);
+            if (shedule != null && r!=null)
+            {
+                int s = r.sheduleId.Value;
+                r.sheduleId = null;
+                await roomService.Update(r);
+                await sheduleService.DeleteShedule(s);
+                return Json(true);
+            }
+            //  return RedirectToAction("RoomWithShedule", new { RoomId = RomId });
+            return Json(false);
         }
         [HttpGet]
         public async Task<IActionResult> Room_Shedule()
