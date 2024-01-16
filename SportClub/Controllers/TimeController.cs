@@ -466,10 +466,17 @@ namespace SportClub.Controllers
         {
             SheduleDTO shedule = new SheduleDTO();
             RoomDTO r = await roomService.GetRoom(rId);
-            foreach (var t in timetables)
+            for (int t = 0; t < 7; t++)
             {
-                
-                shedule.timetables.Add(t);
+                try
+                {
+                    shedule.timetables.Add(timetables[t]);
+                }
+                catch 
+                {
+                    TimetableDTO t1 = new();                                        
+                    shedule.timetables.Add(t1);
+                }               
             }
            await sheduleService.AddShedule(shedule,r);
             timetables.Clear();
