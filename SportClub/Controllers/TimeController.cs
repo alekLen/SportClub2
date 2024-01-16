@@ -480,7 +480,7 @@ namespace SportClub.Controllers
         {
             IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
             ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
-            return View();
+            return View(r);
         }
         
         public async Task<IActionResult> RoomWithShedule(/*int RoomId, int CoachId, string Time*/int RoomId)

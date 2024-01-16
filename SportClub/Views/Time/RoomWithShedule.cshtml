@@ -69,7 +69,14 @@
 
             </tbody>
         </table>
-       <h1>@Model.message</h1>
+        @if(Model.message!=null)
+        { 
+           <h1>@Model.message</h1>
+           <form method="post">
+               <input type="hidden" name="Id" value="@Model.room.Id" />
+               <input type="submit" asp-controller="Time" asp-action="GetAllTimetable" value="Составить расписание зала" />
+           </form>
+        }
      
 <script>
    
