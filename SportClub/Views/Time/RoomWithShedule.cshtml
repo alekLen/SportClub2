@@ -5,7 +5,7 @@
 
 <div class=" center1 padd">
     <div style="padding-right:80px">
-        <a asp-area="" asp-controller="Time" asp-action="BackToRooms" class="btn btn-primary buttons1">@Resources.Resource.Back</a></div>
+        <a asp-area="" asp-controller="Time" asp-action="BackToRooms" class="btn btn-primary padd1 buttons1">@Resources.Resource.Back</a></div>
 
     <h1>@Model.room.Name &nbsp;&nbsp;&nbsp;</h1> 
     <img src="@Model.room.Photo" style="width:70px;height:70px" alt="photo" />
@@ -26,13 +26,15 @@
             <tbody>
         <tr >
                 @for (var t1 = 0; t1 < Model.times.Count; t1++)
+                {
+
+                  <td >
+                   
+                    @for (var t = 0; t < Model.times[t1].Times.Count; t++)
                     {
-
-                <td >
-                     @for (var t = 0; t < Model.times[t1].Times.Count; t++)
-                            {
-
+                    
                         <form method="post" class="padd1 marg">
+                            
                                 <input type="hidden" name="day" value="@t1" />
                                 <input type="hidden" name="roomId" value="@Model.room.Id" />
                                 <input type="hidden" name="roomName" value="@Model.room.Name" />
@@ -42,6 +44,7 @@
                             
                                 @foreach (var it in Model.trainingInd)
                                 {
+                                   
                                 @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                 {
                                     Model.flag = true;
@@ -56,23 +59,29 @@
                                     </div>
                                    
                                 }
+                                   
                                 }
                                @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
-                                {
+                               {
                                     <div id=@t1+@Model.times[t1].Times[t]>
                                     <input type="submit" formaction="AddIndTraining" value="Добавить и.тренировку" /> <br />
                                     <input type="submit" formaction="AddGroupTraining" value="Добавить г.тренировку" />  <br />
                                     </div>
-                                }
-                           
+                          
+                               }
+                            
+                         
                         </form>
-                        Model.flag = false;
+                           
+                            Model.flag = false;
                     }
+                 @*    <a asp-route-SheduleId="@Model.room.sheduleId" asp-route-day="@t1" asp-route-RoomId="@Model.room.Id" asp-controller="Time" asp-action="GetTimetableToEdit" class="btn btn-primary padd1 buttons1">Редактировать график</a> *@
 
-                        </td>
+                </td>
                     
                 }
-                </tr>
+           
+             </tr>
 
             </tbody>
         </table>

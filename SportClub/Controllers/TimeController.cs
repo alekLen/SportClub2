@@ -369,20 +369,33 @@ namespace SportClub.Controllers
             return Redirect("GetAllTimetable");
         }
 
-        [HttpPost]
+       
         public async Task<IActionResult> AddTimetableToShedule(int id, int roomId)
         {
             if (id != 0)
             {
                 TimetableDTO tt = await timetableService.GetTimetable(id);
-                if (timetables.Count < 7)
+                if (timetables.Count > 0 && timetables[timetables.Count-1] ==null)
+                {
+                    timetables[timetables.Count - 1] = tt;
+                }
+               else if (timetables.Count < 7)
                     timetables.Add(tt);
             }
-            else
+            if(id==0)
             {
-                TimetableDTO tt1=new();
-                tt1.Id= id;
-                timetables.Add(tt1);
+                if (timetables.Count > 0 && timetables[timetables.Count - 1] == null)
+                {
+                    TimetableDTO tt1 = new();
+                    tt1.Id = id;
+                    timetables[timetables.Count - 1] = tt1;
+                }
+                else if (timetables.Count < 7)
+                {
+                    TimetableDTO tt1 = new();
+                    tt1.Id = id;
+                    timetables.Add(tt1);
+                }
             }
             RoomDTO r = await roomService.GetRoom(roomId);
             List<TimetableShow> ts = new();
@@ -403,23 +416,26 @@ namespace SportClub.Controllers
             List<TimetableShow> ts2 = new();        
             foreach (var t in timetables)
             {
-                TimetableShow t1 = new();
-                t1.Id = t.Id;
-                if (t.TimesId.Count == 0)
+                if (t != null)
                 {
-                    string s = "Выходной";
-                    t1.Times.Add(s);
-                }
-                else
-                {
-                    foreach (int i in t.TimesId)
+                    TimetableShow t1 = new();
+                    t1.Id = t.Id;
+                    if (t.TimesId.Count == 0)
                     {
-                        TimeTDTO td = await timeService.GetTimeT(i);
-                        string st = td.StartTime + "/" + td.EndTime;
-                        t1.Times.Add(st);
+                        string s = "Выходной";
+                        t1.Times.Add(s);
                     }
+                    else
+                    {
+                        foreach (int i in t.TimesId)
+                        {
+                            TimeTDTO td = await timeService.GetTimeT(i);
+                            string st = td.StartTime + "/" + td.EndTime;
+                            t1.Times.Add(st);
+                        }
+                    }
+                    ts2.Add(t1);
                 }
-                ts2.Add(t1);
             }
 
             MakeSheduleView m = new();
@@ -427,6 +443,15 @@ namespace SportClub.Controllers
             m.room = r;
             m.timesAdded = ts2;
             return View("GetTimetables", m);
+        }
+        public IActionResult CancelAddTimetable(int roId)
+        {
+            try
+            {
+                timetables.RemoveAt(timetables.Count - 1);
+            }
+            catch { }
+            return RedirectToAction("AddTimetableToShedule", new { id = -1 , roomId = roId });
         }
 
         //--------------------------------------------------------------------
@@ -660,6 +685,52 @@ namespace SportClub.Controllers
                 ModelState.AddModelError("", "Введите время в формате 00:00 ");
             }
             return false;
+        }
+        public async Task<IActionResult> GetTimeTableToEdit(int SheduleId,int day, int RoomId)
+        {
+            if (SheduleId != 0)
+            {
+                List<TimetableShow> ts = new();
+                SheduleDTO sh = await sheduleService.GetShedule(SheduleId);
+                TimetableDTO t = sh.timetables[day];
+                List<TimeTDTO> pp = new();
+                //TimetableShow t1 = new();
+                //t1.Id = t.Id;
+
+                //foreach (int i in t.TimesId)
+                //{
+                //    TimeTDTO td = await timeService.GetTimeT(i);
+                //    string st = td.StartTime + "/" + td.EndTime;
+                //    t1.Times.Add(st);
+                //}
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                    pp.Add(td);
+                }
+                IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var i in p2)
+                {
+                    string st = i.StartTime + "/" + i.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts.Add(t1);
+                RoomDTO r = await roomService.GetRoom(RoomId);
+                MakeSheduleView m = new();
+                m.times = ts;
+                m.room = r;
+                return View(m);
+            }
+            else
+                return RedirectToAction("Room_Shedule");
+
+        }
+        public IActionResult BackToShedule(int roomId)
+        {
+            return RedirectToAction("RoomWithShedule", new { RoomId = roomId });
+
         }
     }
 }
