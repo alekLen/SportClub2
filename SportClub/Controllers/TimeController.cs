@@ -479,10 +479,14 @@ namespace SportClub.Controllers
         public async Task<IActionResult> Room_Shedule()
         {
             IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
-            ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
+           // ViewData["RoomsId"] = new SelectList(r, "Id", "Name");
             return View(r);
         }
-        
+        public IActionResult BackToRooms()
+        {
+            return RedirectToAction("Room_Shedule");
+        }
+
         public async Task<IActionResult> RoomWithShedule(/*int RoomId, int CoachId, string Time*/int RoomId)
         {           
                 RoomDTO room = await roomService.GetRoom(RoomId);
