@@ -354,6 +354,9 @@
   <data name="Required" xml:space="preserve">
     <value>Обязательное поле</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
   <data name="Songname" xml:space="preserve">
     <value>Название песни</value>
   </data>

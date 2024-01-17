@@ -354,6 +354,9 @@
   <data name="Required" xml:space="preserve">
     <value>Champ obligatoire</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
   <data name="Songname" xml:space="preserve">
     <value>Titre de la chanson</value>
   </data>

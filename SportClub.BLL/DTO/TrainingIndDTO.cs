@@ -17,6 +17,7 @@ namespace SportClub.BLL.DTO
         public int RoomId { get; set; }
         public string? RoomName { get; set; }
         public string? CoachName { get; set; }
+        public string? CoachPhoto { get; set; }
         public int? CoachId { get; set; }
         public string? UserName { get; set; }
         public int? UserId { get; set; }

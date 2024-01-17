@@ -748,7 +748,13 @@ namespace Resources {
                 return ResourceManager.GetString("Required", resourceCulture);
             }
         }
-
+        public static string Save
+        {
+            get
+            {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Название песни.
         /// </summary>
