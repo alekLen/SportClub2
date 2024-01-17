@@ -496,7 +496,13 @@ namespace SportClub.Controllers
             {
                 try
                 {
-                    shedule.timetables.Add(timetables[t]);
+                    if (timetables[t] != null)
+                        shedule.timetables.Add(timetables[t]);
+                    else
+                    {
+                        TimetableDTO t1 = new();
+                        shedule.timetables.Add(t1);
+                    }
                 }
                 catch 
                 {
@@ -522,6 +528,12 @@ namespace SportClub.Controllers
             
             RoomDTO r = await roomService.GetRoom(RomId);
             SheduleDTO shedule = await sheduleService.GetShedule(r.sheduleId.Value);
+            IEnumerable<TrainingIndDTO> training = await trainingIndService.GetAllTrainingInds();
+            foreach (TrainingIndDTO trainingInd in training)
+            {
+                if (trainingInd.RoomId == RomId)
+                    await trainingIndService.DeleteTrainingInd(trainingInd.Id.Value);
+            }    
             if (shedule != null && r!=null)
             {
                 int s = r.sheduleId.Value;
