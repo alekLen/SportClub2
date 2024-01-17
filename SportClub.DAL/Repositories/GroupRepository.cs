@@ -16,7 +16,7 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<Group>> GetAll()
         {
-            return await db.Groups.Include((p)=> p.Coach).ToListAsync();
+            return await db.Groups.Include((p)=> p.Coach).Include((p) => p.users).ToListAsync();
         }
         
         public async Task<Group> Get(int id)

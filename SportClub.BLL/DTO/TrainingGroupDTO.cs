@@ -22,7 +22,9 @@ namespace SportClub.BLL.DTO
 
         public string CoachName { get; set; } = string.Empty;//имя тренера//
         public int? CoachId { get; set; }//id тренера
-
+        public string? CoachPhoto { get; set; }
         public List<UserDTO> UsersId { get; set; } = new();//список человек
+
+        //public string typeflag { get => "TrainingGroup"; }
     }
 }

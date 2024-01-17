@@ -27,10 +27,11 @@ namespace SportClub.Controllers
         private readonly IShedule sheduleService;
         private readonly ISpeciality specialityService;
         private readonly ITrainingInd trainingIndService;
+        private readonly ITrainingGroup trainingGroupService;
         private static List<TimeTDTO> timesT=new();
         private static List<TimetableDTO> timetables = new();
         //private static List<TrainingIndDTO> trainingsInd = new();
-        public TimeController(IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
+        public TimeController(IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             userService = us;
@@ -41,7 +42,7 @@ namespace SportClub.Controllers
             this.timetableService = timetableService;
             sheduleService = sh;
             trainingIndService = tr;
-
+            trainingGroupService = tg;
         }
         [HttpGet]
         public async Task<IActionResult> AddTimeT()
@@ -587,7 +588,10 @@ namespace SportClub.Controllers
                         }
                         m.times.Add(t1);
                         IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
-                        m.trainingInd = trInd.ToList();
+                        m.trainingInd = trInd.ToList(); 
+                        
+                        IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
+                        m.traininggroup = trg.ToList();
                     }
                     //foreach(var t in shDto.trainingInd)
                     //{
@@ -788,16 +792,16 @@ namespace SportClub.Controllers
         [HttpPost]
         public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int? userId, string? userName)
         {
-            TrainingIndDTO tr = new();
+            TrainingGroupDTO tr = new();
             tr.CoachId = coachId;
             tr.RoomId = roomId;
             tr.RoomName = roomName;
             tr.Day = day;
-            tr.Time = time;
-            tr.UserId = userId;
+            tr.TimeName = time;
+            //tr.UsersId = userId;
             //tr.UserName = userName;
 
-            await trainingIndService.AddTrainingInd(tr);
+            await trainingGroupService.AddTrainingGroup(tr);
             return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { Id = roomId });
         }
     }
