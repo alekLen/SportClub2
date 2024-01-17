@@ -4,63 +4,75 @@
 }
 
 
-   
-        <h1>@Model.room.Name</h1>
-        <table style="border-collapse: collapse; border: 1px solid black;">
-            <thead>
-            <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
-            <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
-            <th style=" padding: 8px; border: 1px solid black;">Среда</th>
-            <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
-            <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
-            <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
-            <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
-            </thead>
-            <tbody>              
-                <tr>
-                @for (var t1 = 0; t1 < Model.times.Count; t1++)
+
+<h1>@Model.room.Name</h1>
+<table style="border-collapse: collapse; border: 1px solid black;">
+    <thead>
+    <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
+    <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
+    <th style=" padding: 8px; border: 1px solid black;">Среда</th>
+    <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
+    <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
+    <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
+    <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
+    </thead>
+    <tbody>
+        <tr>
+            @for (var t1 = 0; t1 < Model.times.Count; t1++)
+            {
+                <td>
+
+                    @for (var t = 0; t < Model.times[t1].Times.Count; t++)
                     {
-                        <td>
+                        <form method="post">
+                            <input type="hidden" name="day" value="@t1" />
+                            <input type="hidden" name="roomId" value="@Model.room.Id" />
+                            <input type="hidden" name="roomName" value="@Model.room.Name" />
 
-                        @for (var t = 0; t < Model.times[t1].Times.Count; t++)
+                            <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:100px;" readonly> <br />
+
+                            @* @foreach (var it in Model.traininggroup)
                             {
-                                <form method="post">
-                                <input type="hidden" name="day" value="@t1" />
-                                <input type="hidden" name="roomId" value="@Model.room.Id" />
-                                <input type="hidden" name="roomName" value="@Model.room.Name" />
-
-                                <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:100px;" readonly> <br />
-                                @foreach (var it in Model.trainingInd)
+                                @if (@Model.times[t1].Times[t] != "Выходной" && @it.TimeName == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                 {
+                                    <div id=@t1+@Model.times[t1].Times[t]+@t1>
+                                        <span>Груповая тренировка</span><br />
+                                        <span>Тренер - @it.CoachName</span><br />
+                    <input type="submit" value="Записаться" class="btn btn-outline-dark" @* formaction="ToAddTrainingInd" @* />
+                                    </div>
+                                }
+                            } *@
+                            
+                            @foreach (var it in Model.trainingInd)
+                            {
                                 @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                 {
                                     <div id=@t1+@Model.times[t1].Times[t]+@t1>
                                         <span>Индивидуальная тренировка</span><br />
                                         <span>Тренер - @it.CoachName</span><br />
-										<input type="submit" value="Записаться" class="btn btn-outline-dark" @* formaction="ToAddTrainingInd" *@ />
-                                    </div>
-                                   
+                                        <input type="submit" value="Записаться" class="btn btn-outline-dark" @* formaction="ToAddTrainingInd" *@ />
+                                    </div> 
                                 }
-                                }
-                            @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
-                                {
-                                    <div id=@t1+@Model.times[t1].Times[t]>
-                                    <input type="submit" formaction="AddIndTraining" value="Добавить индивидуальную тренировку" /> <br />
-                                    <input type="submit" formaction="AddGroupTraining" value="Добавить групповую тренировку" />  <br />
-                                    </div>
-                                }
-                                </form>
-
                             }
+                            @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
+                            {
+                                <div id=@t1+@Model.times[t1].Times[t]>
+                                    <input type="submit" formaction="AddIndTraining" value="Добавить индивидуальную тренировку" /> <br />
+                                    <input type="submit" formaction="AddTrainingGroup" value="Добавить групповую тренировку" />  <br />
+                                </div>
+                            }
+                        </form>
 
-                        </td>
-                    
-                }
-                </tr>
+                    }
 
-            </tbody>
-        </table>
-       <h1>@Model.message</h1>
+                </td>
+
+            }
+        </tr>
+
+    </tbody>
+</table>
+<h1>@Model.message</h1>
 <script>
 
 </script>

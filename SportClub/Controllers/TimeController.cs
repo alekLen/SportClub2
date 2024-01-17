@@ -564,6 +564,8 @@ namespace SportClub.Controllers
             ViewData["CoachId"] = new SelectList(p, "Id", "Name");
             IEnumerable<UserDTO> p_ = await userService.GetAllUsers();
             ViewData["UserId"] = new SelectList(p_, "Id", "Name");
+
+
             return View(training);
         }
         [HttpPost]
@@ -646,6 +648,46 @@ namespace SportClub.Controllers
                 ModelState.AddModelError("", "Введите время в формате 00:00 ");
             }
             return false;
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName)
+        {
+            TrainingGroupDTO training = new();
+            training.RoomId = roomId;
+            training.TimeName = time;
+            training.Day = day;
+            training.RoomName = roomName;
+            training.UsersId = new List<UserDTO>();
+            if (day == 0) training.DayName = "Понедельник";
+            else if (day == 1) training.DayName = "Вторник";
+            else if (day == 2) training.DayName = "Среда";
+            else if (day == 3) training.DayName = "Четверг";
+            else if (day == 4) training.DayName = "Пятница";
+            else if (day == 5) training.DayName = "Суббота";
+            else if (day == 6) training.DayName = "Воскресенье";
+            IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
+            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
+            IEnumerable<UserDTO> p_ = await userService.GetAllUsers();
+            ViewData["UserId"] = new SelectList(p_, "Id", "Name");
+            return View(training);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int? userId, string? userName)
+        {
+            TrainingIndDTO tr = new();
+            tr.CoachId = coachId;
+            tr.RoomId = roomId;
+            tr.RoomName = roomName;
+            tr.Day = day;
+            tr.Time = time;
+            tr.UserId = userId;
+            //tr.UserName = userName;
+
+            await trainingIndService.AddTrainingInd(tr);
+            return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { Id = roomId });
         }
     }
 }

@@ -32,12 +32,12 @@ namespace SportClub.Models
         public int RoomId { get; set; }//id зала
 
 
-        [Required(ErrorMessage = "Required")]
-        [Display(Name = "Group")]
-        public int GroupId { get; set; }//id группы
+        //[Required(ErrorMessage = "Required")]
+        //[Display(Name = "Group")]
+        //public int GroupId { get; set; }//id группы
 
-        [Required(ErrorMessage = "Required")]
-        [Display(Name = "Speciality")]
-        public int? SpecialityId { get; set; }//id специальности тренировки
+        //[Required(ErrorMessage = "Required")]
+        //[Display(Name = "Speciality")]
+        //public int? SpecialityId { get; set; }//id специальности тренировки
     }
 }
