@@ -322,6 +322,8 @@ namespace SportClub.Controllers
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsUserLoginInUse(string login)
         {
+            if (login == "admin")
+                return Json(false);
             UserDTO u = await userService.GetUserByLogin(login);         
             if (u == null)
                 return Json(true);
@@ -340,6 +342,8 @@ namespace SportClub.Controllers
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsCoachLoginInUse(string login)
         {
+            if (login=="admin")
+                return Json(false);
             CoachDTO c = await coachService.GetCoachByLogin(login);
             if (c == null)
                 return Json(true);

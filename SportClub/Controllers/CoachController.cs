@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
 using SportClub.Models;
 using System.IO;
@@ -16,10 +17,12 @@ namespace SportClub.Controllers
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
         private readonly IRoom roomService;
-        
-        private static List<TimeTDTO> timesT = new();
-        private static List<TimetableDTO> timetables = new();
-        public CoachController(IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment)
+        private readonly ITrainingInd trainingIndService;
+        private readonly ITrainingGroup trainingGroupService;
+
+        private static List<TrainingIndDTO> TrI = new();
+        private static List<TrainingGroupDTO> TrG = new();
+        public CoachController(IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             coachService = c;
@@ -27,7 +30,9 @@ namespace SportClub.Controllers
             specialityService = sp;
             _appEnvironment = appEnvironment;
             roomService = room;
-           
+            trainingIndService = tr;
+            trainingGroupService = tg;
+
         }
 
         // GET: Users
@@ -302,14 +307,66 @@ namespace SportClub.Controllers
                 CoachDTO p = await coachService.GetCoach(id);
                 if (p != null)
                 {
+                    List<TrainingToSee> trainings = new();
+                    IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
+                    var sortedTrInd = trInd.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
+                    foreach (TrainingIndDTO tr in sortedTrInd)
+                    {
+                        if(tr.CoachId == id)
+                        {
+                            // TrI.Add(tr);
+                            TrainingToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(tr.RoomId);
+                            training.Room = room;
+                            training.Day = Setday(tr.Day);
+                            training.Time = tr.Time;
+                            training.User = tr.UserName;
+                            trainings.Add(training);
+                        }
+                    }
+                    IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
+                    foreach (TrainingGroupDTO group in trg)
+                    {
+                        if (group.CoachId == id)
+                        {
+                            //TrG.Add(group);
+                        }
+                    }
+                    //MakeSheduleView m = new();
+                    //m.trainingInd = TrI;
+                    //m.traininggroup = TrG;
+                    //return View(m);
 
+                   
+
+                    return View(trainings);
                 }
-                return View();
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+
+        String Setday(int day)
+        {
+            if (day == 0)
+                return "Понедельник";
+            if (day == 1)
+                return "Вторник";
+            if (day == 2)
+                return "Среда";
+            if (day == 3)
+                return "Четверг";
+            if (day == 4)
+                return "Пятница";
+            if (day == 5)
+                return "Суббота";
+            if (day == 6)
+                return "Воскрксенье";
+            return null;
         }
     }
 }
