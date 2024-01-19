@@ -12,18 +12,22 @@ namespace SportClub.Controllers
     {
         IWebHostEnvironment _appEnvironment;
         private readonly IAdmin adminService;
-        private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public CoachController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment)
+        private readonly IRoom roomService;
+        
+        private static List<TimeTDTO> timesT = new();
+        private static List<TimetableDTO> timetables = new();
+        public CoachController(IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment)
         {
             adminService = adm;
-            userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
             _appEnvironment = appEnvironment;
+            roomService = room;
+           
         }
 
         // GET: Users
@@ -288,6 +292,24 @@ namespace SportClub.Controllers
                 return View("YouChangedPassword");
             }
             return View("ErrorChangedPassword");
+        }
+        public async Task<IActionResult> MyShedule()
+        {
+            try
+            {
+                string s = HttpContext.Session.GetString("Id");
+                int id = Int32.Parse(s);
+                CoachDTO p = await coachService.GetCoach(id);
+                if (p != null)
+                {
+
+                }
+                return View();
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

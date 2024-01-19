@@ -348,6 +348,9 @@
   <data name="Post" xml:space="preserve">
     <value>Job title</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
   <data name="Registration" xml:space="preserve">
     <value>Registgration</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
+  </data>
+  <data name="Shedule" xml:space="preserve">
+    <value>Schedule</value>
   </data>
   <data name="Songname" xml:space="preserve">
     <value>Song's name</value>

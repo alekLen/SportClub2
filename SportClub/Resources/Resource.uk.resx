@@ -348,6 +348,9 @@
   <data name="Post" xml:space="preserve">
     <value>Посада</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профіль</value>
+  </data>
   <data name="Registration" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
+  </data>
+  <data name="Shedule" xml:space="preserve">
+    <value>Розклад</value>
   </data>
   <data name="Songname" xml:space="preserve">
     <value>Назва пісні</value>

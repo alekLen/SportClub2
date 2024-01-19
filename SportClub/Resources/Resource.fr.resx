@@ -348,6 +348,9 @@
   <data name="Post" xml:space="preserve">
     <value>Titre d'emploi</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
   <data name="Registration" xml:space="preserve">
     <value>Registre</value>
   </data>
@@ -356,6 +359,9 @@
   </data>
   <data name="Save" xml:space="preserve">
     <value>Sauvegarder</value>
+  </data>
+  <data name="Shedule" xml:space="preserve">
+    <value>Calendrier</value>
   </data>
   <data name="Songname" xml:space="preserve">
     <value>Titre de la chanson</value>

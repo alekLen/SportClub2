@@ -180,7 +180,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrationClient(RegisterClientModel user)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+           // HttpContext.Session.SetString("path", Request.Path);
 
             try
             { 
@@ -227,14 +227,14 @@ namespace SportClub.Controllers
             return View("RegisterClient", user);
         }
         public IActionResult Login()
-        {        
+        {           
             return PartialView();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel user)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+          //  HttpContext.Session.SetString("path", Request.Path);
 
             if (ModelState.IsValid)
             {
