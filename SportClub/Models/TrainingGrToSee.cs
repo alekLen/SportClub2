@@ -1,16 +1,15 @@
 ﻿using SportClub.BLL.DTO;
-using SportClub.DAL.Entities;
 
 namespace SportClub.Models
 {
-    public class TrainingToSee
+    public class TrainingGrToSee
     {
-        public String Day {  get; set; }
+        public String Day { get; set; }
         public String Time { get; set; }
         public CoachDTO? Coach { get; set; }
         public RoomDTO Room { get; set; }
-        public String? User { get; set; }
         public GroupDTO? Group { get; set; }
-        public List<UserDTO>? Users { get; set; }=new List<UserDTO>();
+        public List<UserDTO>? Users { get; set; } = new List<UserDTO>();
+
     }
 }

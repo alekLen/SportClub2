@@ -307,7 +307,7 @@ namespace SportClub.Controllers
                 CoachDTO p = await coachService.GetCoach(id);
                 if (p != null)
                 {
-                    List<TrainingToSee> trainings = new();
+                    List<TrainingIndToSee> trainings = new();
                     IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
                     var sortedTrInd = trInd.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
                     foreach (TrainingIndDTO tr in sortedTrInd)
@@ -315,7 +315,7 @@ namespace SportClub.Controllers
                         if(tr.CoachId == id)
                         {
                             // TrI.Add(tr);
-                            TrainingToSee training = new();
+                            TrainingIndToSee training = new();
                             RoomDTO room = new RoomDTO();
                             room = await roomService.GetRoom(tr.RoomId);
                             training.Room = room;
@@ -325,12 +325,23 @@ namespace SportClub.Controllers
                             trainings.Add(training);
                         }
                     }
+                    List<TrainingGrToSee> trainings2 = new();
                     IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
-                    foreach (TrainingGroupDTO group in trg)
+                    var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.TimeName);
+                    foreach (TrainingGroupDTO group in sortedTrG)
                     {
                         if (group.CoachId == id)
                         {
                             //TrG.Add(group);
+                            TrainingGrToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(group.RoomId);
+                            training.Room = room;
+                            training.Day = Setday(group.Day);
+                            training.Time = group.TimeName;
+                           
+
+                            trainings2.Add(training);
                         }
                     }
                     //MakeSheduleView m = new();
@@ -338,9 +349,10 @@ namespace SportClub.Controllers
                     //m.traininggroup = TrG;
                     //return View(m);
 
-                   
-
-                    return View(trainings);
+                   TrainingsAllToSee all= new TrainingsAllToSee();
+                    all.trInds = trainings;
+                    all.trGrs = trainings2;
+                    return View(all);
                 }
                 return RedirectToAction("Index", "Home");
             }

@@ -1,10 +1,10 @@
-﻿ @model IEnumerable<TrainingToSee>
+﻿ @model TrainingsAllToSee
  
 
 <h2>Индивидуальные тренировки</h2>
 <div class="flex">
-@foreach (var it in Model)
-{           
+    @foreach (var it in Model.trInds)
+    {
        
             <div class="padd1 marg" >
             <div>
@@ -25,11 +25,37 @@
                 <span class="white" >клиенты еще не записаны</span>
             }
                 
-            </div>                   
-}
+            </div> 
+       
+    }
 </div>
 
 <h2>Групповые тренировки</h2>
-<div class="padd1 marg">
-    <span class="white">клиенты еще не записаны</span>
-</div>
+
+    @foreach (var it in Model.trGrs)
+    {
+
+        <div class="padd1 marg">
+            <div>
+                <h3 class="white"> @it.Day</h3>
+                <input type="text" name="time" value="@it.Time" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
+            </div>
+            <img src=@it.Room.Photo width="100" height="100" alt="Photo" style="background-color:wheat" />
+            <div>
+                <span class="white">@it.Room.Name</span>
+
+            </div>
+            @if (it.Group != null)
+            {
+                <span class="white">есть клиенты</span>
+
+                <br />
+            }
+            else
+            {
+                <span class="white">клиенты еще не записаны</span>
+            }
+
+        </div>
+
+    }
