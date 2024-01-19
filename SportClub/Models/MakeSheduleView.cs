@@ -12,6 +12,7 @@ namespace SportClub.Models
         public RoomDTO? room { get; set; }
         public string? message;
         public List<TrainingIndDTO>? trainingInd { get; set; } = new();
+        public List<TrainingGroupDTO>? traininggroup { get; set; } = new();
         public bool flag { get; set; } = false;
         
       // public int? shedule { get;set; }

@@ -21,12 +21,12 @@
                 <th>
                     @Html.DisplayNameFor(model => model.CoachId)
                 </th>
-                <th>
+                @* <th>
                     @Html.DisplayNameFor(model => model.SpecialityId)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.GroupId)
-                </th>
+                </th> *@
 
                 <th></th>
             </tr>
@@ -44,12 +44,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.CoachName)
                     </td>
-                    <td>
+                    @* <td>
                         @Html.DisplayFor(modelItem => item.SpecialityName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.GroupName)
-                    </td>
+                    </td> *@
                    @*  <td>
                         <select class="form-control" style="width: 420px;height:36px">
                        @for(int i = 0; i< item.UsersId.Count; i++)

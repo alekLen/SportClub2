@@ -1,0 +1,42 @@
+﻿@model SportClub.BLL.DTO.TrainingGroupDTO
+
+<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление груповой тренировки</p>
+    <hr style="color:white" />
+    <div class="row">
+        <div>
+            <br />
+            <form method="post">
+                <div style="width: 550px;  justify-content: center; ">
+                    <div class="form-group" style="margin-left: 70px">
+                        <input type="hidden" name="day" value="@Model.Day" />
+                        <input name="dayName" value="@Model.DayName" readonly class="font" style="width: 120px" />
+                        <input name="time" value="@Model.TimeName" readonly class="font" style="width: 120px" />
+                        <input type="hidden" name="roomId" value="@Model.RoomId" />
+                        <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px" />
+                    </div><br />
+                    <div class="form-group" style="margin-left: 40px">
+                        <label style="color: white; font-size: 16px;" class="font">Выбрать тренера</label>
+                        <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
+                        @* @if (@Model.UsersId.length == 0)
+                        { *@
+                        @* <label style="color: white; font-size: 16px;" class="font">Выбрать пользователя</label>
+                        <select asp-for="Id" name="userId" class="form-control card _c7" class="font" asp-items="ViewBag.UserId" style="width: 420px"></select> *@
+                        @* <br /> *@
+                        @* <input type="submit" value="Добавить пользователя" formaction="AddUserToTrainingInd" class="btn btn-outline-light"/> *@
+                        @*  }
+                        else
+                        {
+                        <input name="userId" value="@Model.UserId" type="hidden" />
+                        <input name="userName" value="@Model.UserName" readonly />
+                        } *@
+                    </div><br /><br />
+                    <div style="margin-left: 200px">
+                        <input type="submit" value="Сохранить" formaction="ToAddTrainingGroup" class="btn btn-outline-light" />
+                    </div><br /><br />
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
