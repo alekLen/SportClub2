@@ -27,13 +27,13 @@
                 <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
             </div>
 
-            <div class="form-group" style="margin-left: 40px">
+            @* <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.Post</label>
                 <select asp-for="CoachId" class="form-control" asp-items="ViewBag.CoachListId" style="width: 420px"></select>
                 <span asp-validation-for="CoachId" class="text-danger"></span>
-            </div>
+            </div> *@
 
-            <div>
+           @*  <div>
                 <div class="padd" style="width:229px;margin-left: 20px;float:left">
                     <h4 class="white">График дня</h4>
                     <select name="UsersList" multiple asp-for="UsersId" size="10" id="list2" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
@@ -49,12 +49,12 @@
                     <input style="float:right;width:max-content" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttons1" />
                     
                 </div>
-            </div>
+            </div> *@
 
 
             <div style="margin: 10px auto 10px auto;width: max-content;">
                 <button id="btnsub1" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                <a asp-action="GetGroups" asp-controller="Groups" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                @* <a asp-action="GetGroups" asp-controller="Groups" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br /> *@
             </div><br />
            @*  <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
                 <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />

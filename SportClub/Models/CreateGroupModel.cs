@@ -17,16 +17,16 @@ namespace SportClub.Models
         public int Number { get; set; }//количество человек
 
 
-        [Required(ErrorMessage = "Required")]
-        [Display(Name = "Coach")] 
-        public int CoachId { get; set; }//id тренера
+        //[Required(ErrorMessage = "Required")]
+        //[Display(Name = "Coach")] 
+        //public int CoachId { get; set; }//id тренера
 
         //[Required(ErrorMessage = "Required")]
         //[Display(Name = "Training")]
         //public int TrainingId { get; set; }//id тренировки
 
-        [Required(ErrorMessage = "Required")]
-        [Display(Name = "users")]
-        public List<UserDTO> UsersId { get; set; } = new();//список человек
+        //[Required(ErrorMessage = "Required")]
+        //[Display(Name = "users")]
+        //public List<UserDTO> UsersId { get; set; } = new();//список человек
     }
 }

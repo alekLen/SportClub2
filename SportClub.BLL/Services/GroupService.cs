@@ -20,7 +20,7 @@ namespace SportClub.BLL.Services
         }
         public async Task AddGroup(GroupDTO groupDto)
         {
-            Coach coach = await Database.Coaches.Get(groupDto.CoachId);
+            //Coach coach = await Database.Coaches.Get(groupDto.CoachId);
             List<User> list_us = new();
             for (int i=0; i < groupDto.UsersId.Count;i++)
             {
@@ -31,7 +31,7 @@ namespace SportClub.BLL.Services
             {
                 Name = groupDto.Name,
                 Number = groupDto.Number,
-                Coach = coach,
+                //Coach = coach,
                 users = list_us
             };
             await Database.Groups.AddItem(a);
@@ -70,8 +70,8 @@ namespace SportClub.BLL.Services
                 GroupDTO dTO = new GroupDTO();
                 dTO.Name = a.Name;
                 dTO.Number = a.Number;
-                dTO.CoachId = a.Coach.Id;
-                dTO.CoachName = a.Coach.Name;
+                //dTO.CoachId = a.Coach.Id;
+                //dTO.CoachName = a.Coach.Name;
                 dTO.UsersId = new List<UserDTO>();
                 foreach (var users in a.users)
                 {
@@ -92,7 +92,7 @@ namespace SportClub.BLL.Services
             try
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Group, GroupDTO>()
-                 .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name))/*.ForMember("UsersId", opt => opt.MapFrom(c => c.users))*/);
+                 /*.ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("UsersId", opt => opt.MapFrom(c => c.users))*/);
                 var mapper = new Mapper(config);
                 return mapper.Map<IEnumerable<Group>, IEnumerable<GroupDTO>>(await Database.Groups.GetAll());
             }
@@ -111,8 +111,8 @@ namespace SportClub.BLL.Services
             // admin.Surname = a.Surname;
             // admin.Dopname = a.Dopname;
             group.Number = a.Number;
-            Coach coach = await Database.Coaches.Get(a.CoachId);
-            group.Coach = coach;
+            //Coach coach = await Database.Coaches.Get(a.CoachId);
+            //group.Coach = coach;
             
             List<User> list_us = new();
             for(int i=0; i< a.UsersId.Count;i++)

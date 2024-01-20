@@ -119,7 +119,7 @@ namespace SportClub.Controllers
 
                 u.RoomName = room.Name;
                 u.RoomId = group.RoomId;//
-                u.TimeId = group.TimeId;//
+                //u.TimeId = group.TimeId;
 
                 u.GroupName = gr.Name;
                 u.GroupId = group.GroupId;//
@@ -235,7 +235,7 @@ namespace SportClub.Controllers
 
                     trainingGroupdto.RoomName = room.Name;
                     trainingGroupdto.RoomId = group.RoomId;
-                    trainingGroupdto.TimeId = group.TimeId;
+                    //trainingGroupdto.TimeId = group.TimeId;
 
                     trainingGroupdto.GroupName = room.Name;
                     trainingGroupdto.GroupId = group.GroupId;

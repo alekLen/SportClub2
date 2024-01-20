@@ -32,50 +32,81 @@ namespace SportClub.Controllers
             specialityService = sp;
             _appEnvironment = _appEnv;
         }
-
-
-        public async Task<IActionResult> CreateGroup()
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-            await putCoaches();
-            await putUsers();
-            return View("CreateGroup");
-        }
+        //public async Task<IActionResult> CreateGroup()
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+        //    //await putSpecialities();Speciality 
+        //    return View("CreateGroup");
+        //}
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateGroup(CreateGroupModel group, int[] UsersList)
+        public async Task<IActionResult> CreateGroup(string name, int number)
         {
             HttpContext.Session.SetString("path", Request.Path);
-
-            if (ModelState.IsValid)
+            try
             {
-                var coac = await coachService.GetCoach(group.CoachId);
-                GroupDTO u = new();
-                u.Name = group.Name;
-
-                u.CoachName = coac.Name;
-                u.CoachId = group.CoachId;
-                foreach (var id in UsersList)
-                {
-                    u.UsersId.Add(await userService.GetUser(id));
-                }
-                u.Number = group.Number;
-                // u.UsersId = UsersList.ToList();//group.UsersId
-                //u.Phone = group.Phone;
-                //u.Name = group.Name;
-                //u.DateOfBirth = group.DateOfBirth;
-                //u.Password = group.Password;
-
-                try
-                {
-                    await groupService.AddGroup(u);
-                }
-                catch { }
-                return RedirectToAction("Index", "Home");
+                GroupDTO g = new();
+                g.Name = name;
+                g.Number = number;
+                g.UsersId = new();
+                await groupService.AddGroup(g);
+                //HttpContext.Session.SetString("speciality", name);
+                HttpContext.Session.SetString("Name", name);
+                return Json(true); 
             }
-            return View("CreateGroup", group);
+            catch
+            {
+                return Json(false);
+            }
         }
+        public async Task<IActionResult> AddedGroup(string groupname)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("groupname", groupname);
+            return PartialView();
+        }
+        //public async Task<IActionResult> CreateGroup()
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+        //    //await putCoaches();
+        //    //await putUsers();
+        //    return View("CreateGroup");
+        //}
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> CreateGroup(GroupAndTrainingGroup group, int[] UsersList)
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+
+        //    if (ModelState.IsValid)
+        //    {
+        //        //var coac = await coachService.GetCoach(group.CoachId);
+        //        GroupDTO u = new();
+        //        u.Name = group.group.Name;
+
+        //        //u.CoachName = coac.Name;
+        //        //u.CoachId = group.CoachId;
+        //        foreach (var id in UsersList)
+        //        {
+        //            u.UsersId.Add(await userService.GetUser(id));
+        //        }
+        //        u.Number = group.group.Number;
+        //        // u.UsersId = UsersList.ToList();//group.UsersId
+        //        //u.Phone = group.Phone;
+        //        //u.Name = group.Name;
+        //        //u.DateOfBirth = group.DateOfBirth;
+        //        //u.Password = group.Password;
+
+        //        try
+        //        {
+        //            await groupService.AddGroup(u);
+        //        }
+        //        catch { } 
+        //        //return RedirectToAction("Index", "Home");
+        //    }  
+        //    return View("CreateGroup", group);//дів откривати і закривати
+        //}
 
         public async Task putCoaches()
         {
@@ -135,12 +166,12 @@ namespace SportClub.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    var coac = await coachService.GetCoach(group.CoachId);
+                    //var coac = await coachService.GetCoach(group.CoachId);
 
                     groupdto.Name = group.Name;
                     groupdto.Number = group.Number;
-                    groupdto.CoachName = coac.Name;
-                    groupdto.CoachId = group.CoachId;
+                    //groupdto.CoachName = coac.Name;
+                    //groupdto.CoachId = group.CoachId;
                     groupdto.Id = group.Id;
 
                     foreach (var i in UsersList)

@@ -19,7 +19,7 @@ namespace SportClub.BLL.Services
 
         public async Task AddTrainingGroup(TrainingGroupDTO pDto)
         {
-            TimeT t = await Database.Times.Get(pDto.TimeId);
+            //TimeT t = await Database.Times.Get(pDto.TimeId);
             Room r = await Database.Rooms.Get(pDto.RoomId);
             Coach c = await Database.Coaches.Get(pDto.CoachId.Value);
             Group u = await Database.Groups.Get(pDto.GroupId.Value);
@@ -28,7 +28,7 @@ namespace SportClub.BLL.Services
             {
                 Name = pDto.Name,
                 //Number=pDto.Number,
-                Time = t,
+                //Time = pDto.Time,
                 Room = r,
                 Coach = c,
                 Group = u,
@@ -113,7 +113,7 @@ namespace SportClub.BLL.Services
         }
         public async Task UpdateTrainingGroup(TrainingGroupDTO a)
         {
-            TimeT t = await Database.Times.Get(a.TimeId);
+            //TimeT t = await Database.Times.Get(a.TimeId);
             Room r = await Database.Rooms.Get(a.RoomId);
             Coach c = await Database.Coaches.Get(a.CoachId.Value);
             Group u = await Database.Groups.Get(a.GroupId.Value);
@@ -122,7 +122,7 @@ namespace SportClub.BLL.Services
             tr.Id = a.Id;
             tr.Name = a.Name;
             //tr.Number = a.Number;
-            tr.Time = t;
+            //tr.Time = t;
             tr.Room = r;
             tr.Coach = c;
             tr.Group = u;
