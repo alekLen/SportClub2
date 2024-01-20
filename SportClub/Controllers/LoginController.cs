@@ -180,7 +180,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegistrationClient(RegisterClientModel user)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+           // HttpContext.Session.SetString("path", Request.Path);
 
             try
             { 
@@ -227,14 +227,14 @@ namespace SportClub.Controllers
             return View("RegisterClient", user);
         }
         public IActionResult Login()
-        {        
+        {           
             return PartialView();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginModel user)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+          //  HttpContext.Session.SetString("path", Request.Path);
 
             if (ModelState.IsValid)
             {
@@ -322,6 +322,8 @@ namespace SportClub.Controllers
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsUserLoginInUse(string login)
         {
+            if (login == "admin")
+                return Json(false);
             UserDTO u = await userService.GetUserByLogin(login);         
             if (u == null)
                 return Json(true);
@@ -340,6 +342,8 @@ namespace SportClub.Controllers
         [AcceptVerbs("Get", "Post")]
         public async Task<IActionResult> IsCoachLoginInUse(string login)
         {
+            if (login=="admin")
+                return Json(false);
             CoachDTO c = await coachService.GetCoachByLogin(login);
             if (c == null)
                 return Json(true);

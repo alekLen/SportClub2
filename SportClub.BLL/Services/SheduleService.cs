@@ -19,32 +19,32 @@ namespace SportClub.BLL.Services
         {
             Database = uow;
         }
-        public async Task AddShedule(SheduleDTO pDto,RoomDTO room)
+        public async Task AddShedule(SheduleDTO pDto, RoomDTO room)
         {
             var a = new Shedule();
-          //  a.Week.Clear();
-        /* foreach (var sh in pDto.timetables)
-            {
-                Timetable t = await Database.Timetables.Get(sh.Id);
-             a.Week.Add(t);         
-              }*/
+            //  a.Week.Clear();
+            /* foreach (var sh in pDto.timetables)
+                {
+                    Timetable t = await Database.Timetables.Get(sh.Id);
+                 a.Week.Add(t);         
+                  }*/
             a.Monday = pDto.timetables[0].Id;
             // Timetable t2 = await Database.Timetables.Get(pDto.timetables[1].Id);
             a.Tuesday = pDto.timetables[1].Id;
             //Timetable t3 = await Database.Timetables.Get(pDto.timetables[2].Id);
             a.Wednesday = pDto.timetables[2].Id;
-           // Timetable t4 = await Database.Timetables.Get(pDto.timetables[3].Id);
+            // Timetable t4 = await Database.Timetables.Get(pDto.timetables[3].Id);
             a.Thursday = pDto.timetables[3].Id;
             //Timetable t5 = await Database.Timetables.Get(pDto.timetables[4].Id);
             a.Friday = pDto.timetables[4].Id;
-          //  Timetable t6 = await Database.Timetables.Get(pDto.timetables[5].Id);
+            //  Timetable t6 = await Database.Timetables.Get(pDto.timetables[5].Id);
             a.Saturday = pDto.timetables[5].Id;
-          //  Timetable t7 = await Database.Timetables.Get(pDto.timetables[6].Id);
+            //  Timetable t7 = await Database.Timetables.Get(pDto.timetables[6].Id);
             a.Sunday = pDto.timetables[6].Id;
 
             await Database.Shedules.AddItem(a);
             await Database.Save();
-            Room r= await Database.Rooms.Get(room.Id);
+            Room r = await Database.Rooms.Get(room.Id);
             r.Shedule = a;
             foreach (var sh in pDto.timetables)
             {
@@ -59,26 +59,26 @@ namespace SportClub.BLL.Services
             }
             await Database.Rooms.Update(r);
             await Database.Save();
-                    
+            
         }
-       /* public async Task AddTimetableToShedule(string start, string end, TimetableDTO time)
-        {
-            TimeT t = await Database.Times.Find(start, end);
-            if (t != null)
-                time.TimesId.Add(t.Id);
-            else
-            {
-                var a = new TimeT()
-                {
-                    StartTime = start,
-                    EndTime = end
-                };
-                await Database.Times.AddItem(a);
-                await Database.Save();
-                TimeT t1 = await Database.Times.Find(start, end);
-                time.TimesId.Add(t1.Id);
-            }
-        }*/
+        /* public async Task AddTimetableToShedule(string start, string end, TimetableDTO time)
+         {
+             TimeT t = await Database.Times.Find(start, end);
+             if (t != null)
+                 time.TimesId.Add(t.Id);
+             else
+             {
+                 var a = new TimeT()
+                 {
+                     StartTime = start,
+                     EndTime = end
+                 };
+                 await Database.Times.AddItem(a);
+                 await Database.Save();
+                 TimeT t1 = await Database.Times.Find(start, end);
+                 time.TimesId.Add(t1.Id);
+             }
+         }*/
         public async Task<SheduleDTO> GetShedule(int id)
         {
             Shedule a = await Database.Shedules.Get(id);

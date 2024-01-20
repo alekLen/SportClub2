@@ -732,11 +732,19 @@ namespace Resources {
                 return ResourceManager.GetString("Post", resourceCulture);
             }
         }
+        public static string Profile
+        {
+            get
+            {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to Зарегестрироваться.
         /// </summary>
-        public static string Registration {
+        public static string Registration
+        {
             get {
                 return ResourceManager.GetString("Registration", resourceCulture);
             }
@@ -748,7 +756,20 @@ namespace Resources {
                 return ResourceManager.GetString("Required", resourceCulture);
             }
         }
-
+        public static string Save
+        {
+            get
+            {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        public static string Shedule
+        {
+            get
+            {
+                return ResourceManager.GetString("Shedule", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to Название песни.
         /// </summary>

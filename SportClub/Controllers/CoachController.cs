@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
 using SportClub.Models;
 using System.IO;
@@ -12,18 +13,26 @@ namespace SportClub.Controllers
     {
         IWebHostEnvironment _appEnvironment;
         private readonly IAdmin adminService;
-        private readonly IUser userService;
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public CoachController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment)
+        private readonly IRoom roomService;
+        private readonly ITrainingInd trainingIndService;
+        private readonly ITrainingGroup trainingGroupService;
+
+        private static List<TrainingIndDTO> TrI = new();
+        private static List<TrainingGroupDTO> TrG = new();
+        public CoachController(IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
-            userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
             _appEnvironment = appEnvironment;
+            roomService = room;
+            trainingIndService = tr;
+            trainingGroupService = tg;
+
         }
 
         // GET: Users
@@ -288,6 +297,88 @@ namespace SportClub.Controllers
                 return View("YouChangedPassword");
             }
             return View("ErrorChangedPassword");
+        }
+        public async Task<IActionResult> MyShedule()
+        {
+            try
+            {
+                string s = HttpContext.Session.GetString("Id");
+                int id = Int32.Parse(s);
+                CoachDTO p = await coachService.GetCoach(id);
+                if (p != null)
+                {
+                    List<TrainingIndToSee> trainings = new();
+                    IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
+                    var sortedTrInd = trInd.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
+                    foreach (TrainingIndDTO tr in sortedTrInd)
+                    {
+                        if(tr.CoachId == id)
+                        {
+                            // TrI.Add(tr);
+                            TrainingIndToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(tr.RoomId);
+                            training.Room = room;
+                            training.Day = Setday(tr.Day);
+                            training.Time = tr.Time;
+                            training.User = tr.UserName;
+                            trainings.Add(training);
+                        }
+                    }
+                    List<TrainingGrToSee> trainings2 = new();
+                    IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
+                    var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.TimeName);
+                    foreach (TrainingGroupDTO group in sortedTrG)
+                    {
+                        if (group.CoachId == id)
+                        {
+                            //TrG.Add(group);
+                            TrainingGrToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(group.RoomId);
+                            training.Room = room;
+                            training.Day = Setday(group.Day);
+                            training.Time = group.TimeName;
+                           
+
+                            trainings2.Add(training);
+                        }
+                    }
+                    //MakeSheduleView m = new();
+                    //m.trainingInd = TrI;
+                    //m.traininggroup = TrG;
+                    //return View(m);
+
+                   TrainingsAllToSee all= new TrainingsAllToSee();
+                    all.trInds = trainings;
+                    all.trGrs = trainings2;
+                    return View(all);
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        String Setday(int day)
+        {
+            if (day == 0)
+                return "Понедельник";
+            if (day == 1)
+                return "Вторник";
+            if (day == 2)
+                return "Среда";
+            if (day == 3)
+                return "Четверг";
+            if (day == 4)
+                return "Пятница";
+            if (day == 5)
+                return "Суббота";
+            if (day == 6)
+                return "Воскрксенье";
+            return null;
         }
     }
 }
