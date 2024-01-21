@@ -73,6 +73,7 @@ namespace SportClub.BLL.Services
                 RoomId =a.Room.Id,
                 RoomName=a.Room.Name,
                 CoachName =a.Coach.Name,
+                CoachPhoto=a.Coach.Photo,
                 CoachId =a.Coach.Id,        
                 UserName = usName,
                 UserId = usId
@@ -86,7 +87,7 @@ namespace SportClub.BLL.Services
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingInd, TrainingIndDTO>()
                  .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name))
-                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name))
+                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name)).ForMember("CoachPhoto", opt => opt.MapFrom(c => c.Coach.Photo))
                  .ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
                  .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
                 var mapper = new Mapper(config);
@@ -100,7 +101,7 @@ namespace SportClub.BLL.Services
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingInd, TrainingIndDTO>()
                  .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name))
-                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name))
+                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name)).ForMember("CoachPhoto", opt => opt.MapFrom(c => c.Coach.Photo))
                  .ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
                  .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
                 var mapper = new Mapper(config);
@@ -114,7 +115,7 @@ namespace SportClub.BLL.Services
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingInd, TrainingIndDTO>()
                  .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name))
-                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name))
+                 .ForMember("UserName", opt => opt.MapFrom(c => c.User.Name)).ForMember("CoachPhoto", opt => opt.MapFrom(c => c.Coach.Photo))
                  .ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
                  .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("UserId", opt => opt.MapFrom(c => c.User.Id)));
                 var mapper = new Mapper(config);

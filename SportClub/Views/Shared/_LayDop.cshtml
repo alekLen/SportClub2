@@ -63,7 +63,7 @@
     <header>
         <div class="my_navbar">
             <a style="color:white;" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
-
+            
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
                 <div class="dv1n2">
@@ -94,21 +94,28 @@
             {
                 @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" />
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Profile" />
                 }
             }
             else if (Context.Session.GetString("coach") != null)
             {
+                
+                @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
+                {
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
+                }
+
+               
                 @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Профиль" />
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Profile" />
                 }
             }
             else if (Context.Session.GetString("admin") != null)
             {
                 @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Profile" />
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Profile" />
                 }
             }
             else
@@ -150,8 +157,8 @@
                         Добавление...<i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
-                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>
-                        <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>
+                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a>
+                       @*  <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a> *@
                     </div>
                 </div>
 
@@ -164,8 +171,8 @@
                     </button>
                     <div class="mdropdown-content">
                         <a asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
-                        <a asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
-                        <a asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>
+                     @*    <a asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a> *@
+                        <a asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
                 @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
@@ -200,7 +207,7 @@
                     </div>
                 </div>
 
-                <div class="mdropdown" style="float:right">
+                @* <div class="mdropdown" style="float:right">
                     <button class="mdropbtn">
                         Группы..<i class="fa fa-caret-down"></i>
                     </button>
@@ -214,7 +221,7 @@
                             <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
                         } 
                     </div>
-                </div>
+                </div> *@
 
                 @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
             {

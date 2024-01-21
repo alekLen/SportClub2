@@ -18,5 +18,7 @@ namespace SportClub.BLL.Interfaces
         Task<GroupDTO> GetGroupByName(string name);
         //Task<AdminDTO> GetAdminByEmail(string email);
         //Task ChangeAdminPassword(AdminDTO uDto, string pass);
+
+        Task<IEnumerable<UserDTO>> GetGroupUsers(int id);
     }
 }

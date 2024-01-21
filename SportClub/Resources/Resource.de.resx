@@ -348,11 +348,20 @@
   <data name="Post" xml:space="preserve">
     <value>Berufsbezeichnung</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
   <data name="Registration" xml:space="preserve">
     <value>Registrieren</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>ist ein Pflichtfeld</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="Shedule" xml:space="preserve">
+    <value>Zeitplan</value>
   </data>
   <data name="Songname" xml:space="preserve">
     <value>Name des Liedes</value>

@@ -31,61 +31,7 @@ namespace SportClub.Controllers
             trainingGroupService = t;
             specialityService = sp;
         }
-        //public async Task<IActionResult> GetAllTrainingGroupsOfCoach(int id)
-        //{
-        //    var p = await trainingGroupService.GetAllOfCoachTrainingGroups(id);
-        //    return View(p);
-        //}
-        //public async Task<IActionResult> GetAllTrainingGroupsOfClient(int id)
-        //{
-        //    var p = await trainingGroupService.GetAllOfClientTrainingGroups(id);
-        //    return View(p);
-        //}
-        //public async Task<IActionResult> GetAllTrainingGroups()
-        //{
-        //    var p = await trainingGroupService.GetAllTrainingGroups();
-        //    return View(p);
-        //}
-
-        //public async Task<IActionResult> GetTrainingGroup(int id)
-        //{
-        //    TrainingGroupDTO p = await trainingGroupService.GetTrainingGroup(id);
-        //    return View(p);
-        //}
-        //public async Task<IActionResult> Details(int id)
-        //{
-        //    TrainingGroupDTO t = await trainingGroupService.GetTrainingGroup(id);
-        //    return View(t);
-        //}
-        //[HttpGet]
-        //public async Task<IActionResult> Edit(int id)
-        //{
-        //    TrainingGroupDTO t = await trainingGroupService.GetTrainingGroup(id);
-        //    return View(t);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(TrainingGroupDTO c)
-        //{
-        //    try
-        //    {
-        //        TrainingGroupDTO t = await trainingGroupService.GetTrainingGroup(c.Id);
-        //        t.Id = c.Id;
-        //        t.Name = c.Name;
-        //        t.Number = c.Number;
-        //        t.TimeId = c.TimeId;
-        //        t.RoomId = c.RoomId;
-        //        t.CoachName = c.CoachName;
-        //        t.CoachId = c.CoachId;
-        //        t.GroupName = c.GroupName;
-        //        t.GroupId = c.GroupId;
-        //        t.SpecialityName = c.SpecialityName;
-        //        t.SpecialityId = c.SpecialityId;
-        //        await trainingGroupService.UpdateTrainingGroup(t);
-        //        return RedirectToAction("GetTrainingGroups");
-        //    }
-        //    catch { return View(c); }
-        //}
-
+        
         public async Task<IActionResult> CreateTrainingGroup()
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -107,8 +53,8 @@ namespace SportClub.Controllers
             {
                 var coach = await coachService.GetCoach(group.CoachId);
                 var room = await roomService.GetRoom(group.RoomId);
-                var gr = await groupService.GetGroup(group.GroupId);
-                var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
+                //var gr = await groupService.GetGroup(group.GroupId);
+                //var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
 
                 TrainingGroupDTO u = new();
                 u.Name = group.Name;
@@ -119,13 +65,13 @@ namespace SportClub.Controllers
 
                 u.RoomName = room.Name;
                 u.RoomId = group.RoomId;//
-                u.TimeId = group.TimeId;//
+                //u.TimeId = group.TimeId;
 
-                u.GroupName = gr.Name;
-                u.GroupId = group.GroupId;//
+                //u.GroupName = gr.Name;
+                //u.GroupId = group.GroupId;//
 
-                u.SpecialityName = sp.Name;
-                u.SpecialityId = group.SpecialityId;
+                //u.SpecialityName = sp.Name;
+                //u.SpecialityId = group.SpecialityId;
 
                 try
                 {
@@ -225,7 +171,7 @@ namespace SportClub.Controllers
                 {
                     var coac = await coachService.GetCoach((int)group.CoachId);
                     var room = await roomService.GetRoom((int)group.RoomId);
-                    var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
+                    //var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
 
                     trainingGroupdto.Name = group.Name;
                     //trainingGroupdto.Number = group.Number;
@@ -235,14 +181,14 @@ namespace SportClub.Controllers
 
                     trainingGroupdto.RoomName = room.Name;
                     trainingGroupdto.RoomId = group.RoomId;
-                    trainingGroupdto.TimeId = group.TimeId;
+                    //trainingGroupdto.TimeId = group.TimeId;
 
-                    trainingGroupdto.GroupName = room.Name;
-                    trainingGroupdto.GroupId = group.GroupId;
+                    //trainingGroupdto.GroupName = room.Name;
+                    //trainingGroupdto.GroupId = group.GroupId;
 
-                    trainingGroupdto.SpecialityName = sp.Name;
-                    trainingGroupdto.SpecialityId = group.SpecialityId;
-                    //
+                    //trainingGroupdto.SpecialityName = sp.Name;
+                    //trainingGroupdto.SpecialityId = group.SpecialityId;
+                    
 
 
                     try

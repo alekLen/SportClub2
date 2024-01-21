@@ -14,8 +14,8 @@ namespace SportClub.BLL.DTO
         [Display(Name = "Count users")]
         public int Number { get; set; }//количество человек
 
-        public string CoachName { get; set; } = string.Empty;//имя тренера
-        public int CoachId { get; set; }//id тренера
+        //public string CoachName { get; set; } = string.Empty;//имя тренера
+        //public int CoachId { get; set; }//id тренера
         //public int trainingId { get; set; }//id тренировки
 
         public List<UserDTO> UsersId { get; set; } = new();//список человек
