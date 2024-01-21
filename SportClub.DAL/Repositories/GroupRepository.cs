@@ -21,7 +21,7 @@ namespace SportClub.DAL.Repositories
         
         public async Task<Group> Get(int id)
         {
-            return await db.Groups/*.Include((p) => p.Coach)*/.Include((p) => p.users).FirstOrDefaultAsync(m => m.Id == id);
+            return await db.Groups.Include((p) => p.users).FirstOrDefaultAsync(m => m.Id == id);
         }
         //public async Task<Group> GetGroupWithUsers(int groupId)
         //{

@@ -325,9 +325,10 @@ namespace SportClub.Controllers
                             trainings.Add(training);
                         }
                     }
+
                     List<TrainingGrToSee> trainings2 = new();
                     IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
-                    var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.TimeName);
+                    var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
                     foreach (TrainingGroupDTO group in sortedTrG)
                     {
                         if (group.CoachId == id)
@@ -338,7 +339,7 @@ namespace SportClub.Controllers
                             room = await roomService.GetRoom(group.RoomId);
                             training.Room = room;
                             training.Day = Setday(group.Day);
-                            training.Time = group.TimeName;
+                            training.Time = group.Time;
                            
 
                             trainings2.Add(training);

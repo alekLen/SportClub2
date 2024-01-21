@@ -17,21 +17,18 @@ namespace SportClub.BLL.DTO
 
         public int Day { get; set; }
         public string? DayName { get; set; }
-
-
-        public int Day { get; set; }
-        public string? DayName { get; set; }
+         
 
         public string RoomName { get; set; } = string.Empty;
         public int RoomId { get; set; }//id зала
 
         public string CoachName { get; set; } = string.Empty;//имя тренера//
-        public int? CoachId { get; set; }//id тренера
+        public int CoachId { get; set; }//?id тренера
         public string? CoachPhoto { get; set; }
 
 
         public string GroupName { get; set; } = string.Empty;//имя группы//
-        public int? GroupId { get; set; }//id группы
+        public int GroupId { get; set; }//?id группы
 
         //public string typeflag { get => "TrainingGroup"; }
     }

@@ -14,9 +14,8 @@ namespace SportClub.DAL.Entities
         public int Day { get; set; }
         public Room Room { get; set; }
         public Coach Coach { get; set; }
-        public List<User>? Users { get; set; }//список человек = new();
-        //public int Number { get; set; }
-        //public Speciality Speciality { get; set; }
+        public Group Group { get; set; }
+        
         public bool available { get; set; } = true;
     }
 }

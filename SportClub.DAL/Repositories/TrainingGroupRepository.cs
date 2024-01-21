@@ -18,7 +18,7 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<TrainingGroup>> GetAll()
         {
-            return await db.TrainingsGroup.Include((p) => p.Room).Include((p) => p.Coach).Include((p) => p.Users).ToListAsync();
+            return await db.TrainingsGroup.Include((p) => p.Room).Include((p) => p.Group).Include((p) => p.Coach)/*.Include((p) => p.Time)*/.ToListAsync();
         }
         public async Task<IEnumerable<TrainingGroup>> GetAllOfCoach(int id)
         {
@@ -26,12 +26,12 @@ namespace SportClub.DAL.Repositories
         }
         public async Task<IEnumerable<TrainingGroup>> GetAllOfClient(User u)
         {
-            return await db.TrainingsGroup.Where((p) => p/*.Group.users*/.Users.Contains(u))/*.Include((p) => p.Group)*/.Include((p) => p.Coach)/*.Include((p) => p.Speciality)*/.Include((p) => p.Time).ToListAsync();
+            return await db.TrainingsGroup.Where((p) => p.Group.users.Contains(u)).Include((p) => p.Group).Include((p) => p.Coach)/*.Include((p) => p.Speciality)*/.Include((p) => p.Time).ToListAsync();
         }
 
         public async Task<TrainingGroup> Get(int id)
         {
-            return await db.TrainingsGroup.Include((p) => p.Room)/*.Include((p) => p.Group)*/.Include((p) => p.Coach)/*.Include((p) => p.Speciality)*/.Include((p) => p.Time).FirstOrDefaultAsync(m => m.Id == id);
+            return await db.TrainingsGroup.Include((p) => p.Room).Include((p) => p.Group).Include((p) => p.Coach)/*.Include((p) => p.Speciality).Include((p) => p.Time)*/.FirstOrDefaultAsync(m => m.Id == id);
         }
         public async Task AddItem(TrainingGroup c)
         {

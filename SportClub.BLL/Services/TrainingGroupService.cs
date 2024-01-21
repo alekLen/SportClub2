@@ -19,59 +19,58 @@ namespace SportClub.BLL.Services
 
         //public async Task AddTrainingGroup(TrainingGroupDTO pDto)
         //{
-            ////TimeT t = await Database.Times.Get(pDto.TimeId);
-            //Room r = await Database.Rooms.Get(pDto.RoomId);
-            //Coach c = await Database.Coaches.Get(pDto.CoachId.Value);
-            ////Group u = await Database.Groups.Get(pDto.GroupId.Value);
-            ////Speciality s = await Database.Specialitys.Get(pDto.SpecialityId.Value);
-            //var a = new TrainingGroup()
-            //{
-            //    Name = pDto.Name,
-            //    //Number=pDto.Number,
-            //    //Time = t,
-            //    Room = r,
-            //    Coach = c,
-            //    //Group = u,
-            //    //Speciality = s
-            //};
-            //await Database.TrainingGroups.AddItem(a);
-            //await Database.Save();
-             
+        ////TimeT t = await Database.Times.Get(pDto.TimeId);
+        //Room r = await Database.Rooms.Get(pDto.RoomId);
+        //Coach c = await Database.Coaches.Get(pDto.CoachId.Value);
+        ////Group u = await Database.Groups.Get(pDto.GroupId.Value);
+        ////Speciality s = await Database.Specialitys.Get(pDto.SpecialityId.Value);
+        //var a = new TrainingGroup()
+        //{
+        //    Name = pDto.Name,
+        //    //Number=pDto.Number,
+        //    //Time = t,
+        //    Room = r,
+        //    Coach = c,
+        //    //Group = u,
+        //    //Speciality = s
+        //};
+        //await Database.TrainingGroups.AddItem(a);
+        //await Database.Save();
+
         //}
         public async Task AddTrainingGroup(TrainingGroupDTO pDto)
         {
-            //TimeT t = await Database.Times.Get(pDto.TimeId);
-            Room r = await Database.Rooms.Get(pDto.RoomId);
-            Coach c = await Database.Coaches.Get(pDto.CoachId.Value);
-            List<User> u = null;
             try
             {
-                if (pDto.UsersId.Count != null) {
-                    u = new();
-                    foreach (var user in pDto.UsersId)
-                    {
-                        u.Add(await Database.Users.Get(user.Id));
-                    }
-                    //u = await Database.Users.Get(pDto.UserId.Value);
-                }
+                //TimeT t = await Database.Times.Get(pDto.TimeId);
+                Room r = await Database.Rooms.Get(pDto.RoomId);
+                Coach c = await Database.Coaches.Get(pDto.CoachId);
+                Group u = await Database.Groups.Get(pDto.GroupId);
+
+
+                //  Speciality s = await Database.Specialitys.Get(pDto.SpecialityId.Value);
+                var a = new TrainingGroup()
+                {
+                    
+                    Name = pDto.Name,
+                    Time = pDto.Time,
+                    Day = pDto.Day,
+                    //Name = pDto.Name,
+                    //Number=pDto.Number,
+                    //Time = pDto.Time,
+                    Room = r,
+                    Coach = c,
+                    Group = u,
+                    available = true,
+                    // Speciality = s
+                };
+                await Database.TrainingGroups.AddItem(a);
+                await Database.Save();
             }
-            catch { }
-            //  Speciality s = await Database.Specialitys.Get(pDto.SpecialityId.Value);
-            var a = new TrainingGroup()
+            catch
             {
-                //Name = pDto.Name,
-                Time = pDto.TimeName,
-                Day = pDto.Day,
-                Name = pDto.Name,
-                //Number=pDto.Number,
-                //Time = pDto.Time,
-                Room = r,
-                Coach = c,
-                Users = u,
-                // Speciality = s
-            };
-            await Database.TrainingGroups.AddItem(a);
-            await Database.Save();
+
+            }
         }
         //public async Task<TrainingGroupDTO> GetTrainingGroup(int id)
         //{
@@ -110,27 +109,30 @@ namespace SportClub.BLL.Services
             else if (a.Day == 4) str = "Пятница";
             else if (a.Day == 5) str = "Суббота";
             else if (a.Day == 6) str = "Воскресенье";
-            
+
             try
             {
+
                 TrainingGroupDTO dTO = new TrainingGroupDTO();
                 dTO.Name = a.Name;
-                dTO.TimeName = a.Time;
+                dTO.Time = a.Time;
                 dTO.Day = a.Day;
                 dTO.DayName = str;
                 dTO.RoomId = a.Room.Id;
                 dTO.RoomName = a.Room.Name;
                 dTO.CoachId = a.Coach.Id;
                 dTO.CoachName = a.Coach.Name;
-                dTO.UsersId = new List<UserDTO>();
-                foreach (var users in a.Users)
-                {
-                    UserDTO userDTO = new UserDTO();
-                    var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
-                    var mapper = new Mapper(config);
-                    userDTO = mapper.Map<UserDTO>(users);
-                    dTO.UsersId.Add(userDTO); 
-                } 
+                dTO.GroupId = a.Group.Id;
+                dTO.GroupName = a.Group.Name;
+                //dTO.UsersId = new List<UserDTO>();
+                //foreach (var users in a.Users)
+                //{
+                //    UserDTO userDTO = new UserDTO();
+                //    var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
+                //    var mapper = new Mapper(config);
+                //    userDTO = mapper.Map<UserDTO>(users);
+                //    dTO.UsersId.Add(userDTO);
+                //}
                 return dTO;// 
             }
             catch { return null; }
@@ -153,10 +155,10 @@ namespace SportClub.BLL.Services
             try
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<TrainingGroup, TrainingGroupDTO>()
-                 .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name))
-                 .ForMember("UsersId", opt => opt.MapFrom(c => c.Users)).ForMember("CoachPhoto", opt => opt.MapFrom(c => c.Coach.Photo))
-                 .ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name)).ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id))
-                 .ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id)).ForMember("TimeName", opt => opt.MapFrom(c => c.Time)));
+                 .ForMember("CoachName", opt => opt.MapFrom(c => c.Coach.Name)).ForMember("GroupName", opt => opt.MapFrom(c => c.Group.Name))
+                 .ForMember("CoachPhoto", opt => opt.MapFrom(c => c.Coach.Photo)).ForMember("RoomName", opt => opt.MapFrom(c => c.Room.Name))
+                 .ForMember("RoomId", opt => opt.MapFrom(c => c.Room.Id)).ForMember("CoachId", opt => opt.MapFrom(c => c.Coach.Id))
+                 .ForMember("Time", opt => opt.MapFrom(c => c.Time)).ForMember("GroupId", opt => opt.MapFrom(c => c.Group.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<IEnumerable<TrainingGroup>, IEnumerable<TrainingGroupDTO>>(await Database.TrainingGroups.GetAll());
             }
@@ -196,7 +198,7 @@ namespace SportClub.BLL.Services
         {
             //TimeT t = await Database.Times.Get(a.TimeId);
             Room r = await Database.Rooms.Get(a.RoomId);
-            Coach c = await Database.Coaches.Get(a.CoachId.Value);
+            Coach c = await Database.Coaches.Get(a.CoachId);//.Value
             //Group u = await Database.Groups.Get(a.GroupId.Value);
             //Speciality s = await Database.Specialitys.Get(a.SpecialityId.Value);
             TrainingGroup tr = await Database.TrainingGroups.Get(a.Id);

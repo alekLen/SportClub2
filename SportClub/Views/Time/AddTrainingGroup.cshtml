@@ -22,7 +22,7 @@
 
                         <div class="form-group">
                             <label asp-for="trgroup.GroupId" class="font white-color_size20"></label>
-                            <select asp-for="trgroup.GroupId" class="form-control" asp-items="ViewBag.GroupId" style="width: 420px"></select>
+                            <select asp-for="trgroup.GroupId" name="groupId" class="form-control" asp-items="ViewBag.GroupId" style="width: 420px"></select>
                             <span asp-validation-for="trgroup.GroupId" class="text-danger"></span>
                         </div>
                     </div>
@@ -80,9 +80,7 @@
                 url: "@Url.Action("CreateGroup", "Group")",
                 type: "POST",
                 data: {
-                    name: objectGroupName, number: objectGroupNumber,
-                    day: $("#day").val(), time: $("#time").val(),
-                    roomId: $("#roomId").val(), roomName: $("#roomName").val()
+                     name: objectGroupName, number: objectGroupNumber
                 },
                 datatype: "json",
                 success: function (response) {

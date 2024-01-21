@@ -29,11 +29,11 @@ namespace SportClub.Controllers
         private readonly IShedule sheduleService;
         private readonly ISpeciality specialityService;
         private readonly ITrainingInd trainingIndService;
-        private readonly ITrainingGroup trainingGroupService;
+        
         private static List<TimeTDTO> timesT=new();
         private static List<TimetableDTO> timetables = new();
         //private static List<TrainingIndDTO> trainingsInd = new();
-        public TimeController(IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr, ITrainingGroup tg)
+ 
         public TimeController(ITrainingGroup tg, IGroup g, IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
         {
             adminService = adm;
@@ -44,8 +44,7 @@ namespace SportClub.Controllers
             roomService=room;
             this.timetableService = timetableService;
             sheduleService = sh;
-            trainingIndService = tr;
-            trainingGroupService = tg;
+            trainingIndService = tr; 
             groupService = g;
             trainingGroupService = tg;
         }
@@ -784,53 +783,16 @@ namespace SportClub.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName)
-        {
-            TrainingGroupDTO training = new();
-            training.RoomId = roomId;
-            training.TimeName = time;
-            training.Day = day;
-            training.RoomName = roomName;
-            training.UsersId = new List<UserDTO>();
-            if (day == 0) training.DayName = "Понедельник";
-            else if (day == 1) training.DayName = "Вторник";
-            else if (day == 2) training.DayName = "Среда";
-            else if (day == 3) training.DayName = "Четверг";
-            else if (day == 4) training.DayName = "Пятница";
-            else if (day == 5) training.DayName = "Суббота";
-            else if (day == 6) training.DayName = "Воскресенье";
-            IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
-            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
-            IEnumerable<UserDTO> p_ = await userService.GetAllUsers();
-            ViewData["UserId"] = new SelectList(p_, "Id", "Name");
-            return View(training);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int? userId, string? userName)
-        {
-            TrainingGroupDTO tr = new();
-            tr.CoachId = coachId;
-            tr.RoomId = roomId;
-            tr.RoomName = roomName;
-            tr.Day = day;
-            tr.TimeName = time;
-            //tr.UsersId = userId;
-            //tr.UserName = userName;
-
-            await trainingGroupService.AddTrainingGroup(tr);
-            return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { Id = roomId });
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName)
+        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName, int groupId)
         {
             GroupAndTrainingGroup gatg = new GroupAndTrainingGroup();
-            
+
             TrainingGroupDTO training = new();
             training.RoomId = roomId;
             training.Time = time;
             training.Day = day;
             training.RoomName = roomName;
+            training.GroupId = groupId;
             //training.UsersId = new List<UserDTO>();
             if (day == 0) training.DayName = "Понедельник";
             else if (day == 1) training.DayName = "Вторник";
@@ -847,10 +809,11 @@ namespace SportClub.Controllers
             return View(gatg);
         }
         [HttpPost]
-        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId/*, int? userId, string? userName*/)
+        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int groupId)
         {
-           
+
             TrainingGroupDTO tr = new();
+            tr.GroupId = groupId;
             tr.CoachId = coachId;
             tr.RoomId = roomId;
             tr.RoomName = roomName;
@@ -862,5 +825,6 @@ namespace SportClub.Controllers
             await trainingGroupService.AddTrainingGroup(tr);
             return RedirectToAction("RoomWithShedule", new { Id = roomId });
         }
+
     }
 }

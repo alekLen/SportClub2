@@ -60,6 +60,35 @@ namespace SportClub.BLL.Services
         //    }
         //    catch { return null; }
         //}
+
+        public async Task<IEnumerable<UserDTO>> GetGroupUsers(int id)
+        {
+            Group a = await Database.Groups.Get(id);
+            if (a == null)
+                return null;
+            try
+            {
+                GroupDTO dTO = new GroupDTO();
+                dTO.Id = a.Id;
+                dTO.Name = a.Name;
+                dTO.Number = a.Number;
+                //dTO.CoachId = a.Coach.Id;
+                //dTO.CoachName = a.Coach.Name;
+                dTO.UsersId = new List<UserDTO>();
+                foreach (var users in a.users)
+                {
+                    UserDTO userDTO = new UserDTO();
+                    var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
+                    var mapper = new Mapper(config);
+                    userDTO = mapper.Map<UserDTO>(users);
+                    dTO.UsersId.Add(userDTO);
+
+                }
+
+                return dTO.UsersId;// 
+            }
+            catch { return null; }
+        }
         public async Task<GroupDTO> GetGroup(int id)
         {
             Group a = await Database.Groups.Get(id);
@@ -68,6 +97,7 @@ namespace SportClub.BLL.Services
             try
             {
                 GroupDTO dTO = new GroupDTO();
+                dTO.Id = a.Id;
                 dTO.Name = a.Name;
                 dTO.Number = a.Number;
                 //dTO.CoachId = a.Coach.Id;

@@ -71,7 +71,7 @@
                                 }
                                 @foreach (var it in Model.traininggroup)
                                 {
-                                    @if (@Model.times[t1].Times[t] != "Выходной" && @it.TimeName == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
+                                    @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                     {
                                         Model.flag = true;
                                         <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
@@ -79,7 +79,8 @@
                                                 <span class="white">Групп.тренировка</span><br />
                                                 <span class="white">Тренер : </span><br />
                                                 <span class="white">@it.CoachName</span><br />
-                                                <input type="submit" value="Записаться" class="btn btn-outline-dark" style="background-color:lightgreen" @* formaction="ToAddTrainingInd" *@ />
+                                                <a asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="AddUsersToTrainingGroup">Добавление</a>
+                                                @* <input type="submit" value="Записаться" class="btn btn-outline-dark" style="background-color:lightgreen" @* formaction="ToAddTrainingInd" @* /> *@
                                             </div>
                                             <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
                                         </div>
