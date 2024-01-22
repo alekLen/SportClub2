@@ -32,10 +32,11 @@
 
 <h2>Групповые тренировки</h2>
 
+<div class="flex" >
     @foreach (var it in Model.trGrs)
     {
-
-        <div class="padd1 marg">
+        <div class="flex  marg" >
+        <div class="padd1 ">
             <div>
                 <h3 class="white"> @it.Day</h3>
                 <input type="text" name="time" value="@it.Time" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
@@ -43,19 +44,35 @@
             <img src=@it.Room.Photo width="100" height="100" alt="Photo" style="background-color:wheat" />
             <div>
                 <span class="white">@it.Room.Name</span>
-
+                </div>
             </div>
             @if (it.Group != null)
             {
-                <span class="white">есть клиенты</span>
+                <div class="flex padd1 " style="flex-direction:column">
+                  <h5 class="white" >@it.Group.Name ( @it.Group.Number )</h5>
+                @if (it.Users.Count!=0)
+                {
+                     @for (var index=1;index<= it.Users.Count;index++)
+                    {
+                            <span class="white">@index . @it.Users[index-1].Name</span>
 
+                            <br />
+                    }
+
+                }
+                else
+                {
+                    <span class="white">клиенты еще<br/> не записаны</span>
+                }
+              </div>
                 <br />
             }
             else
             {
-                <span class="white">клиенты еще не записаны</span>
+                <span class="white">Группа не создана</span>
             }
 
         </div>
 
     }
+</div>

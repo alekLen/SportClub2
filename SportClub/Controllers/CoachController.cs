@@ -4,6 +4,7 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.DAL.Interfaces;
 using SportClub.Models;
 using System.IO;
 
@@ -19,10 +20,11 @@ namespace SportClub.Controllers
         private readonly IRoom roomService;
         private readonly ITrainingInd trainingIndService;
         private readonly ITrainingGroup trainingGroupService;
+        private readonly IGroup groupService;
 
         private static List<TrainingIndDTO> TrI = new();
         private static List<TrainingGroupDTO> TrG = new();
-        public CoachController(IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
+        public CoachController(IGroup gr, IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             coachService = c;
@@ -32,7 +34,7 @@ namespace SportClub.Controllers
             roomService = room;
             trainingIndService = tr;
             trainingGroupService = tg;
-
+            groupService = gr;
         }
 
         // GET: Users
@@ -340,8 +342,9 @@ namespace SportClub.Controllers
                             training.Room = room;
                             training.Day = Setday(group.Day);
                             training.Time = group.Time;
-                           
-
+                            training.Group = await groupService.GetGroup(group.GroupId);
+                           IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);
+                            training.Users = users.ToList();
                             trainings2.Add(training);
                         }
                     }
