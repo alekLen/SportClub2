@@ -400,8 +400,12 @@ namespace SportClub.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index","Home");
         }
- 
-        
+
+        [HttpPost]
+        public IActionResult BackToAdminProfile()
+        {
+            return RedirectToAction("AdminProfile");
+        }
         public async Task<IActionResult> Delete(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);

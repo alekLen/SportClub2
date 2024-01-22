@@ -21,14 +21,13 @@
                 <span class="white">@it.Room.Name</span>
 
             </div>
-           
-                <span class="white">@it.User</span>
+                       
 
                 <br />
                 <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
                 <span class="white">Тренер : </span><br />
                 <span class="white">@it.Coach.Name</span><br />
-
+                <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
         </div>
 
     }
@@ -62,6 +61,7 @@
                     <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
                     <span class="white">Тренер : </span><br />
                     <span class="white">@it.Coach.Name</span><br />
+                    <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
                 </div>
                 <br />
             

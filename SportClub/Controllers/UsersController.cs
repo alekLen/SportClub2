@@ -23,7 +23,9 @@ namespace SportClub.Controllers
         private readonly ITrainingInd trainingIndService;
         private readonly ITrainingGroup trainingGroupService;
         private readonly IGroup groupService;
-        public UsersController(IGroup gr, IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg)
+        private readonly IShedule sheduleService;
+        private readonly ITime timeService;
+        public UsersController(ITime t,IShedule sh,IGroup gr, IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             userService = us;
@@ -34,6 +36,8 @@ namespace SportClub.Controllers
             trainingIndService = tr;
             trainingGroupService = tg;
             groupService = gr;
+            sheduleService = sh;
+            timeService = t;
         }
 
         // GET: Users
@@ -231,6 +235,11 @@ namespace SportClub.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        public IActionResult BackToClientProfile()
+        {           
+            return RedirectToAction("ClientProfile");
+        }
         public async Task<IActionResult> Delete(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -352,6 +361,80 @@ namespace SportClub.Controllers
             if (day == 6)
                 return "Воскрксенье";
             return null;
+        }
+        [HttpGet]
+        public async Task<IActionResult> Room_Shedule()
+        {
+            IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
+            return View(r);
+        }
+        public IActionResult BackToRooms()
+        {
+            return RedirectToAction("Room_Shedule");
+        }
+        public async Task<IActionResult> Shedule(int RoomId)
+        {
+            RoomDTO room = await roomService.GetRoom(RoomId);
+            if (room != null)
+            {
+                SheduleDTO shDto = null;
+                try
+                {
+                    shDto = await sheduleService.GetShedule(room.sheduleId.Value);
+                }
+                catch { }
+                MakeSheduleView m = new();
+                m.room = room;
+                if (shDto != null)
+                {
+                    m.times = new();
+                    foreach (var t in shDto.timetables)
+                    {
+                        TimetableShow t1 = new();
+                        t1.Id = t.Id;                      
+                        if (t.TimesId.Count == 0)
+                        {
+                            string s = "Выходной";
+                            t1.Times.Add(s);
+                        }
+                        else
+                        {
+                            foreach (int i in t.TimesId)
+                            {
+                                TimeTDTO td = await timeService.GetTimeT(i);
+                                string st = td.StartTime + "/" + td.EndTime;
+                                t1.Times.Add(st);
+                            }
+                        }
+                        m.times.Add(t1);
+                        IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
+                        m.trainingInd = trInd.ToList();
+
+                        IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
+                        List<TrainingGrToSee> trg1 = new();
+                        foreach (var tr in trg)
+                        {
+                            TrainingGrToSee train = new();
+                            train.Id = tr.Id;
+                            train.Group = await groupService.GetGroup(tr.GroupId);
+                            train.Room = room;
+                            train.Coach = await coachService.GetCoach(tr.CoachId);
+                            IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
+                            train.Users = us.ToList();
+                            train.Time = tr.Time;
+                            train.Day = tr.Day;
+                            trg1.Add(train);
+                        }
+                        m.traininggroup = trg1.ToList();
+                    }                  
+                }
+                else
+                {
+                    m.message = "для зала не составлен график";
+                }
+                return View(m);
+            }
+            else { return RedirectToAction("Room_Shedule"); }
         }
     }
 }

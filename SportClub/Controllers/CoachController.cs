@@ -256,6 +256,11 @@ namespace SportClub.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        public IActionResult BackToCoachProfile()
+        {
+            return RedirectToAction("CoachProfile");
+        }
         public async Task putPosts()
         {
             HttpContext.Session.SetString("path", Request.Path);
