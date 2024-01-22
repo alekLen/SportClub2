@@ -321,7 +321,9 @@ namespace SportClub.Controllers
                             RoomDTO room = new RoomDTO();
                             room = await roomService.GetRoom(tr.RoomId);
                             training.Room = room;
-                            training.Day = Setday(tr.Day);
+                            training.Id = tr.Id;
+                           training.DayName = Setday(tr.Day);
+                            training.Day = tr.Day;
                             training.Time = tr.Time;
                             training.User = tr.UserName;
                             trainings.Add(training);
@@ -339,8 +341,10 @@ namespace SportClub.Controllers
                             TrainingGrToSee training = new();
                             RoomDTO room = new RoomDTO();
                             room = await roomService.GetRoom(group.RoomId);
+                            training.Id= group.Id;
                             training.Room = room;
-                            training.Day = Setday(group.Day);
+                            training.DayName = Setday(group.Day);
+                            training.Day = group.Day;
                             training.Time = group.Time;
                             training.Group = await groupService.GetGroup(group.GroupId);
                            IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);

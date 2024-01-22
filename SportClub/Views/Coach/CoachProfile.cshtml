@@ -6,7 +6,9 @@
 
 @using Microsoft.AspNetCore.Http
 <div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Мой профиль</p>
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" id="preview" />Мой профиль
+    </p>
     <hr style="color:white" />
     <div class="row">
         <div>
@@ -16,7 +18,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @Html.AntiForgeryToken()
                 <div>
-                    <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" id="preview" />
+                   
                     <div class="form-group" style="margin-left: 40px;">
                         <span class="white-color_size20 font">Изменить фото</span><br />               
                         <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" onchange="previewImage(event)" /><br /><br />
@@ -69,7 +71,7 @@
                         <br />
                         <br />
                         
-                        <div style="margin-left: 10px">
+                        <div style="margin-left: 30px;padding-bottom:20px;">
                             <input type="submit" class="btn btn-outline-light" formaction="EditCoachProfile" value="Редактировать" />
                             <input class="btn btn-outline-light" formaction="ChangeCoachPassword" type="submit" value="Изменить пароль" />
                             <input type="submit" class="btn btn-outline-light" formaction="DeleteCoachProfile" value="Удалить и Выйти" />
