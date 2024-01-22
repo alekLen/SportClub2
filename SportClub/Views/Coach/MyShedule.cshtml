@@ -3,6 +3,11 @@
 
 <h2>Индивидуальные тренировки</h2>
 <div class="flex">
+    @if (Model.trInds.Count == 0)
+    {
+        <h4 class="green" style="padding:10px;" >Не назначены</h4>
+    }
+    else{ 
     @foreach (var it in Model.trInds)
     {
        
@@ -27,12 +32,17 @@
                 
             </div> 
        
-    }
+    }}
 </div>
 
 <h2>Групповые тренировки</h2>
 
 <div class="flex" >
+     @if (Model.trGrs.Count == 0)
+    {
+        <h4 class="green" style="padding:10px;" >Не назначены</h4>
+    }
+    else{ 
     @foreach (var it in Model.trGrs)
     {
         <div class="flex  marg" >
@@ -74,5 +84,5 @@
 
         </div>
 
-    }
+    }}
 </div>

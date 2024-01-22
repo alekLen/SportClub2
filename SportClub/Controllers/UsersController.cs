@@ -6,6 +6,7 @@ using SportClub.BLL.Interfaces;
 using SportClub.BLL.DTO;
 using SportClub.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using SportClub.BLL.Services;
 
 
 namespace SportClub.Controllers
@@ -18,13 +19,21 @@ namespace SportClub.Controllers
         private readonly ICoach coachService;
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
-        public UsersController(IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p)
+        private readonly IRoom roomService;
+        private readonly ITrainingInd trainingIndService;
+        private readonly ITrainingGroup trainingGroupService;
+        private readonly IGroup groupService;
+        public UsersController(IGroup gr, IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             userService = us;
             coachService = c;
             postService = p;
             specialityService = sp;
+            roomService = room;
+            trainingIndService = tr;
+            trainingGroupService = tg;
+            groupService = gr;
         }
 
         // GET: Users
@@ -255,146 +264,94 @@ namespace SportClub.Controllers
             }
             return View(user);
         }
-        // GET: Users/Details/5
-        /*  public async Task<IActionResult> Details(int? id)
-          {
-              if (id == null || _context.Users == null)
-              {
-                  return NotFound();
-              }
+        public async Task<IActionResult> MyShedule()
+        {
+            try
+            {
+                string s = HttpContext.Session.GetString("Id");
+                int id = Int32.Parse(s);
+               UserDTO p = await userService.GetUser(id);
+                if (p != null)
+                {
+                    List<TrainingIndToSee> trainings = new();
+                    IEnumerable<TrainingIndDTO> trInd = await trainingIndService.GetAllTrainingInds();
+                    var sortedTrInd = trInd.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
+                    foreach (TrainingIndDTO tr in sortedTrInd)
+                    {
+                        if (tr.UserId == id)
+                        {
+                            // TrI.Add(tr);
+                            TrainingIndToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(tr.RoomId);
+                            training.Room = room;
+                            training.Coach = await coachService.GetCoach(tr.CoachId.Value);
+                            training.Id = tr.Id;
+                            training.DayName = Setday(tr.Day);
+                            training.Day = tr.Day;
+                            training.Time = tr.Time;
+                            training.User = tr.UserName;
+                            trainings.Add(training);
+                        }
+                    }
 
-              var user = await _context.Users
-                  .FirstOrDefaultAsync(m => m.Id == id);
-              if (user == null)
-              {
-                  return NotFound();
-              }
+                    List<TrainingGrToSee> trainings2 = new();
+                    IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
+                    var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
+                    foreach (TrainingGroupDTO group in sortedTrG)
+                    {                                             
+                            //TrG.Add(group);
+                            TrainingGrToSee training = new();
+                            RoomDTO room = new RoomDTO();
+                            room = await roomService.GetRoom(group.RoomId);
+                            training.Id = group.Id;
+                            training.Room = room;
+                        training.Coach = await coachService.GetCoach(group.CoachId);
+                        training.DayName = Setday(group.Day);
+                            training.Day = group.Day;
+                            training.Time = group.Time;
+                            training.Group = await groupService.GetGroup(group.GroupId);
+                            IEnumerable<UserDTO> users = await groupService.GetGroupUsers(group.GroupId);
+                            training.Users = users.ToList();
+                        foreach (var item in users)
+                        {
+                            if(item.Id==id)
+                                trainings2.Add(training);
+                        }
+                       
+                        
+                    }                
 
-              return View(user);
-          }
+                    TrainingsAllToSee all = new TrainingsAllToSee();
+                    all.trInds = trainings;
+                    all.trGrs = trainings2;
+                    return View(all);
+                }
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
-          // GET: Users/Create
-          public IActionResult Create()
-          {
-              return View();
-          }
-
-          // POST: Users/Create
-          // To protect from overposting attacks, enable the specific properties you want to bind to.
-          // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-          [HttpPost]
-          [ValidateAntiForgeryToken]
-          public async Task<IActionResult> Create([Bind("Id,Name,DateOfBirth,Phone,Email,Sex,Description,Photo,Login,Password,Status")] User user)
-          {
-              if (ModelState.IsValid)
-              {
-                  _context.Add(user);
-                  await _context.SaveChangesAsync();
-                  return RedirectToAction(nameof(Index));
-              }
-              return View(user);
-          }
-
-          // GET: Users/Edit/5
-          public async Task<IActionResult> Edit(int? id)
-          {
-              if (id == null || _context.Users == null)
-              {
-                  return NotFound();
-              }
-
-              var user = await _context.Users.FindAsync(id);
-              if (user == null)
-              {
-                  return NotFound();
-              }
-              return View(user);
-          }
-
-          // POST: Users/Edit/5
-          // To protect from overposting attacks, enable the specific properties you want to bind to.
-          // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-          [HttpPost]
-          [ValidateAntiForgeryToken]
-          public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DateOfBirth,Phone,Email,,Description,Photo,Login,Password,Status")] User user)
-          {
-              if (id != user.Id)
-              {
-                  return NotFound();
-              }
-
-              if (ModelState.IsValid)
-              {
-                  try
-                  {
-                      _context.Update(user);
-                      await _context.SaveChangesAsync();
-                  }
-                  catch (DbUpdateConcurrencyException)
-                  {
-                      if (!UserExists(user.Id))
-                      {
-                          return NotFound();
-                      }
-                      else
-                      {
-                          throw;
-                      }
-                  }
-                  return RedirectToAction(nameof(Index));
-              }
-              return View(user);
-          }
-
-          // GET: Users/Delete/5
-          public async Task<IActionResult> Delete(int? id)
-          {
-              if (id == null || _context.Users == null)
-              {
-                  return NotFound();
-              }
-
-              var user = await _context.Users
-                  .FirstOrDefaultAsync(m => m.Id == id);
-              if (user == null)
-              {
-                  return NotFound();
-              }
-
-              return View(user);
-          }
-
-          // POST: Users/Delete/5
-          [HttpPost, ActionName("Delete")]
-          [ValidateAntiForgeryToken]
-          public async Task<IActionResult> DeleteConfirmed(int id)
-          {
-              if (_context.Users == null)
-              {
-                  return Problem("Entity set 'SportClubContext.Users'  is null.");
-              }
-              var user = await _context.Users.FindAsync(id);
-              if (user != null)
-              {
-                  _context.Users.Remove(user);
-              }
-
-              await _context.SaveChangesAsync();
-              return RedirectToAction(nameof(Index));
-          }
-
-          private bool UserExists(int id)
-          {
-              return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
-          }
-          public async Task<IActionResult> GetClients()
-          {
-              HttpContext.Session.SetString("path", Request.Path);
-
-              IEnumerable<User> s = await _context.Users.ToListAsync();
-
-             // ViewBag.Users = s;
-              return View("Clients",s);
-          }*/
+        String Setday(int day)
+        {
+            if (day == 0)
+                return "Понедельник";
+            if (day == 1)
+                return "Вторник";
+            if (day == 2)
+                return "Среда";
+            if (day == 3)
+                return "Четверг";
+            if (day == 4)
+                return "Пятница";
+            if (day == 5)
+                return "Суббота";
+            if (day == 6)
+                return "Воскрксенье";
+            return null;
+        }
     }
 }

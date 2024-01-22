@@ -92,6 +92,10 @@
             }
             @if (Context.Session.GetString("client") != null)
             {
+                @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
+                {
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
+                }
                 @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
                 {
                     <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Profile" />
