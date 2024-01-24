@@ -432,6 +432,7 @@ namespace SportClub.Controllers
                 {
                     m.message = "для зала не составлен график";
                 }
+                ViewBag.MyId= HttpContext.Session.GetString("Id");
                 return View(m);
             }
             else { return RedirectToAction("Room_Shedule"); }
