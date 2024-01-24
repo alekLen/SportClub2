@@ -381,7 +381,7 @@ namespace SportClub.Controllers
             if (id != 0)
             {
                 TimetableDTO tt = await timetableService.GetTimetable(id);
-                if (timetables.Count > 0 && timetables[timetables.Count-1] ==null)
+                if (timetables.Count > 0 && timetables[timetables.Count-1] == null)
                 {
                     timetables[timetables.Count - 1] = tt;
                 }
@@ -454,7 +454,9 @@ namespace SportClub.Controllers
         {
             try
             {
-                timetables.RemoveAt(timetables.Count - 1);
+                int nullCount = timetables.Count(item => item == null);
+                timetables.RemoveAt(timetables.Count - nullCount- 1);
+                
             }
             catch { }
             return RedirectToAction("AddTimetableToShedule", new { id = -1 , roomId = roId });
@@ -612,7 +614,8 @@ namespace SportClub.Controllers
                             TrainingGrToSee train = new();
                             train.Id=tr.Id;
                             train.Group = await groupService.GetGroup(tr.GroupId);
-                            train.Room = room;
+                            RoomDTO r = await roomService.GetRoom(tr.RoomId);
+                            train.Room = r;
                             train.Coach= await coachService.GetCoach(tr.CoachId);
                             IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
                             train.Users= us.ToList();
