@@ -445,6 +445,10 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             IEnumerable<UserDTO> p = await groupService.GetGroupUsers(id);
+            foreach (var item in p)
+            {
+                item.Name += "~";
+            }
             ViewData["UserstableId"] = new SelectList(p, "Id", "Name");
         }
         public async Task putUsers()
@@ -472,7 +476,7 @@ namespace SportClub.Controllers
                 await putUsers();
                 return View("AddUsersToTrainingGroup", groupdto);
             }
-            return View("GetGroups", groupdto);
+            return View("Index", "Home");
         }
 
         [HttpPost]
@@ -510,7 +514,7 @@ namespace SportClub.Controllers
             }
             catch
             {
-                return View("GetGroups", "Group");
+                return View("Index", "Home");
             }
         }
 
@@ -534,43 +538,81 @@ namespace SportClub.Controllers
             return View("Index", "Home");
         }
 
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AddUserToTrainingGroup(int groupId,/* int roomId,*/ int[] UsersList)
+        public async Task<IActionResult> DeleteUsersInTrainingGroup(int Id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(Id);
+            HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+            GroupDTO groupdto = await groupService.GetGroup(trgroupdto.GroupId);
+            if (groupdto != null)
+            {
+                await putGroupUsers(groupdto.Id);
+                //await putUsers();
+                return View("DeleteUsersInTrainingGroup", groupdto);
+            }
+            return View("Index", "Home");
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteUsersInTrainingGroup(int groupId, int UsersId)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                GroupDTO groupdto = await groupService.GetGroup(groupId);
+                if (groupdto == null || UsersId == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    //groupdto.Name = group.Name;
+                    //groupdto.Number = group.Number;
+                    //groupdto.Id = group.Id;
+
+                    foreach (var i in groupdto.UsersId)
+                    {
+                        groupdto.UsersId.Remove(await userService.GetUser(UsersId));
+                    }
+
+                    try
+                    {
+                        await groupService.UpdateGroup(groupdto);
+                    }
+                    catch { return View("DeleteUserInTrainingGroup"/*, group*/); }
+                    return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                }
+                return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+            }
+            catch
+            {
+                return View("Index", "Home");
+            }
+        }
+        //public async Task<IActionResult> Delete(int id)
         //{
         //    HttpContext.Session.SetString("path", Request.Path);
-        //    try
+        //    UserDTO user = await userService.GetUser(id);
+        //    if (user == null)
         //    {
-        //        GroupDTO groupdto = await groupService.GetGroup(groupId);
-        //        if (groupdto == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        if (ModelState.IsValid)
-        //        {
-        //            //groupdto.Name = group.Name;
-        //            //groupdto.Number = group.Number;
-        //            //groupdto.Id = group.Id;
-        //            foreach (var i in UsersList)
-        //            {
-        //                groupdto.UsersId.Add(await userService.GetUser(i));
-        //            }
-
-        //            try
-        //            {
-        //                await groupService.UpdateGroup(groupdto);
-        //            }
-        //            catch { return View("AddUsersToTrainingGroup"/*, group*/); }
-        //            return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
-        //        }
-        //        return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+        //        return NotFound();
         //    }
-        //    catch
-        //    {
-        //        return View("GetGroups", "Group");
-        //    }
+        //    return View(user);
         //}
-        
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> DeleteConfirmed(int id)
+        //{
+        //    UserDTO user = await userService.GetUser(id);
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    await userService.DeleteUser(id);
+        //    return RedirectToAction("GetClients");
+        //}
     }
 }
