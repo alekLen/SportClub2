@@ -34,6 +34,7 @@
                     <br /><br />
                 </div>
             </form>
+
             <div id="div_group" style="display:none">
                 <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление группы</p>
                 <form asp-controller="Group" asp-action="CreateGroup" method="post">
@@ -48,7 +49,7 @@
 
                     <div class="form-group" style="margin-left: 40px">
                         <label asp-for="group.Number" class="control-label font white-color_size20"></label>
-                        <input asp-for="group.Number" id="group_number" type="number" min="1" placeholder="1" class="form-control" style="width: 420px">
+                        <input asp-for="group.Number" id="group_number" type="number" value="1" min="1" placeholder="1" class="form-control" style="width: 420px">
                         <span asp-validation-for="group.Number" class="text-danger" style="width: 450px"></span>
                 </div>
 
@@ -65,11 +66,18 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
+        $("#btn1_dv").text("Создать группу");
+
         $("#btn1_dv").on("click", function (e) {
-            if ($("#div_group").css("display") === "none")
+            if ($("#div_group").css("display") === "none") { 
                 $("#div_group").css("display", "block");
-            else if ($("#div_group").css("display") === "block")
+                $("#btn1_dv").text("Отмена созд. группы").css("margin-left", "-35px");
+            }
+            else if ($("#div_group").css("display") === "block") { 
                 $("#div_group").css("display", "none");
+                $("#div_group").css("display", "none");
+                $("#btn1_dv").text("Создать группу");
+            }
 
         });
         $("#btnCreateGroup").click(function () {

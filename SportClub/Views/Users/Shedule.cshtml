@@ -58,7 +58,7 @@
                                                 <span class="white">@it.CoachName</span><br />
                                                 @if (it.UserId == null)
                                                 {
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
+                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-route-userId="" asp-controller="" asp-action="">Записаться</a>
                                                 }
                                                 else
                                                 {
@@ -90,7 +90,7 @@
                                                     <span class="white">Доступно : @num </span>
 
                                                     <br />
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
+                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Записаться</a>
 
                                                 }
                                                 else

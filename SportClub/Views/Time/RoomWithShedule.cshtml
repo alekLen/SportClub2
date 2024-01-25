@@ -91,7 +91,7 @@
                                                @if(it.Group.Number>it.Group.UsersId.Count)
                                                {
                                                     <span class="white">Доступно : @num </span><br />
-                                                  <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="AddUsersToTrainingGroup">Записать</a>
+                                                  <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup">Записать</a>
                                                    
                                                 }
                                                 else

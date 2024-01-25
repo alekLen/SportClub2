@@ -436,5 +436,141 @@ namespace SportClub.Controllers
             }
             else { return RedirectToAction("Room_Shedule"); }
         }
+
+
+        //new
+        //------------------------------------------------------------------
+
+        public async Task putGroupUsers(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            IEnumerable<UserDTO> p = await groupService.GetGroupUsers(id);
+            ViewData["UserstableId"] = new SelectList(p, "Id", "Name");
+        }
+        public async Task putUsers()
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            IEnumerable<UserDTO> p = await userService.GetAllUsers();
+            ViewData["UsersList"] = new SelectList(p, "Id", "Name");
+        }
+        public async Task putUsers(GroupDTO group)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            int c = group.UsersId.Count;
+            IEnumerable<UserDTO> p = group.UsersId.ToList();
+            ViewData["UsersList"] = new SelectList(p, "Id", "Name");
+        }
+        public async Task<IActionResult> AddUsersToTrainingGroup(int groupId, int roomId)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
+            HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+            GroupDTO groupdto = await groupService.GetGroup(trgroupdto.GroupId);
+            if (groupdto != null)
+            {
+                await putGroupUsers(groupdto.Id);
+                await putUsers();
+                return View("AddUsersToTrainingGroup", groupdto);
+            }
+            return View("GetGroups", groupdto);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddUsersToTrainingGroup(int groupId,/* int roomId,*/ int[] UsersList)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                GroupDTO groupdto = await groupService.GetGroup(groupId);
+                if (groupdto == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    //groupdto.Name = group.Name;
+                    //groupdto.Number = group.Number;
+                    //groupdto.Id = group.Id;
+
+                    foreach (var i in UsersList)
+                    {
+                        groupdto.UsersId.Add(await userService.GetUser(i));
+                    }
+
+                    try
+                    {
+                        await groupService.UpdateGroup(groupdto);
+                    }
+                    catch { return View("AddUsersToTrainingGroup"/*, group*/); }
+                    return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                }
+                return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+            }
+            catch
+            {
+                return View("GetGroups", "Group");
+            }
+        }
+
+        public async Task<IActionResult> AddUserToTrainingGroup(int groupId, int roomId)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
+            HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+            GroupDTO groupdto = await groupService.GetGroup(trgroupdto.GroupId);
+
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+
+            if (groupdto != null)
+            {
+                groupdto.UsersId.Add(await userService.GetUser(userId));
+                await groupService.UpdateGroup(groupdto);
+
+                return RedirectToAction("Room_Shedule", "Time"/*, new { Id = HttpContext.Session.GetInt32("roomId") }*/);
+                //return View("AddUserToTrainingGroup", groupdto);
+            }
+            return View("Index", "Home");
+        }
+
+        //[HttpPost]
+        ////[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> AddUserToTrainingGroup(int groupId,/* int roomId,*/ int[] UsersList)
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+        //    try
+        //    {
+        //        GroupDTO groupdto = await groupService.GetGroup(groupId);
+        //        if (groupdto == null)
+        //        {
+        //            return NotFound();
+        //        }
+
+        //        if (ModelState.IsValid)
+        //        {
+        //            //groupdto.Name = group.Name;
+        //            //groupdto.Number = group.Number;
+        //            //groupdto.Id = group.Id;
+        //            foreach (var i in UsersList)
+        //            {
+        //                groupdto.UsersId.Add(await userService.GetUser(i));
+        //            }
+
+        //            try
+        //            {
+        //                await groupService.UpdateGroup(groupdto);
+        //            }
+        //            catch { return View("AddUsersToTrainingGroup"/*, group*/); }
+        //            return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+        //        }
+        //        return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+        //    }
+        //    catch
+        //    {
+        //        return View("GetGroups", "Group");
+        //    }
+        //}
+        
     }
 }
