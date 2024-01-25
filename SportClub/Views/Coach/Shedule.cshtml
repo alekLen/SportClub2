@@ -54,28 +54,27 @@
                                         <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
                                             <div>
                                                 <span class="white">Инд.тренировка</span><br />
-                                                <span class="white">Тренер : </span><br />
-                                                <span class="white">@it.CoachName</span><br />
-                                                @if (it.UserId == null)
+                                                @if (it.CoachId.ToString() == ViewBag.MyId)
                                                 {
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
-                                                }
-                                                else
-                                                {
-                                                    @if (@it.UserId.ToString() == ViewBag.MyId)
+                                                    <span class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    <br />
+                                                    @if (it.UserId == null)
                                                     {
-                                                        <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                        <span class="white">Клиенты не записаны</span>
                                                     }
                                                     else
                                                     {
-                                                        <span class="white">Не доступно</span>
+                                                        <span class="white">@it.UserName</span>
                                                     }
-
-
                                                 }
-                                            </div>
-                                            <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
+                                                else{ 
+                                                <span class="white">Тренер : </span><br />
+                                                <span class="white">@it.CoachName</span><br />
+                                                }
+                                            </div>         
+                                               
                                         </div>
+                                                
                                     }
                                 }
                                 @foreach (var it in Model.traininggroup)
@@ -89,43 +88,30 @@
                                                     var num = it.Group.Number - it.Users.Count;
                                                 }
                                                 <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
-                                                <span class="white">Тренер : </span><br />
-                                                <span class="white">@it.Coach.Name</span><br />
-                                                @{
-                                                    var you = false;
-                                                }
-                                                @if (it.Group.UsersId.Count > 0)
+
+                                                @if (it.Coach.Id.ToString() == ViewBag.MyId)
                                                 {
-                                                    @foreach (var u in it.Group.UsersId)
+                                                    <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    <br />
+                                                    @if (it.Group.UsersId.Count > 0)
                                                     {
-                                                        @if (u.Id.ToString() == ViewBag.MyId)
+
+                                                        @for (var index = 1; index <= it.Users.Count; index++)
                                                         {
-                                                            you = true;
+                                                            <span class="white">@index . @it.Users[index - 1].Name</span>
+
+                                                            <br />
                                                         }
-                                                    }
-                                                }
-                                                @if (!you)
-                                                {
-                                                    @if (it.Group.Number > it.Group.UsersId.Count)
-                                                    {
-                                                        <span class="white">Доступно : @num </span>
-
-                                                        <br />
-                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
-
-                                                    }
-                                                    else
-                                                    {
-                                                        <span class=" white">Не доступно</span>
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    <span class=" white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    <span class="white">Тренер : </span><br />
+                                                    <span class="white">@it.Coach.Name</span><br />
                                                 }
                                             </div>
-                                            <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" />
-                                        </div>
+
+                                         </div>
                                     }
                                 }
                               
