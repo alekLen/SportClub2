@@ -105,6 +105,7 @@
                 {
                     <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
                 }
+                <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -128,11 +129,14 @@
                 }
             }
             else
-            {
+            {               
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
-            }
 
+                <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
+            
+            }
+           
             @if (Context.Session.GetString("admin") != null)
             {
                 <div class="mdropdown">
@@ -216,6 +220,7 @@
                         }
                     </div>
                 </div>
+               
 
                 @* <div class="mdropdown" style="float:right">
                     <button class="mdropbtn">

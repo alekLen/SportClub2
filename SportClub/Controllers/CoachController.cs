@@ -274,17 +274,17 @@ namespace SportClub.Controllers
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
         }
         [HttpPost]
-        public IActionResult ChangeAdminPassword(AdminDTO user)
+        public IActionResult ChangeCoachPassword(CoachDTO user)
         {
             return View("PutPassword", user);
         }
         [HttpPost]
         public async Task<IActionResult> PutPassword(int id, string pass)
         {
-            AdminDTO u = await adminService.GetAdmin(id);
+            CoachDTO u = await coachService.GetCoach(id);
             try
             {
-                if (await adminService.CheckPasswordA(u, pass))
+                if (await coachService.CheckPasswordC(u, pass))
                 {
                     CangePasswordModel m = new();
                     m.Id = u.Id;
@@ -392,6 +392,12 @@ namespace SportClub.Controllers
             if (day == 6)
                 return "Воскрксенье";
             return null;
+        }
+
+        public async Task<IActionResult> AllCoachesToSee()
+        {
+            var p = await coachService.GetAllCoaches();
+            return View(p);
         }
     }
 }
