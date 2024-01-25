@@ -547,5 +547,10 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> AllRoomsToSee()
+        {
+            IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
+            return View(r);
+        }
     }
 }

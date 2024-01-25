@@ -106,6 +106,7 @@
                     <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
                 }
                 <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
+                <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -134,6 +135,7 @@
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
 
                 <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
+                <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a>
             
             }
            
