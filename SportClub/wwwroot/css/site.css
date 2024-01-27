@@ -18,8 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color:antiquewhite;
+    margin-bottom: 60px;
+    /* background-color:antiquewhite;*/
 }
 .center {
     display: flex;
@@ -94,3 +94,5 @@ body {
 .green {
     background-color:lightgreen;
 }
+
+
