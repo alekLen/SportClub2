@@ -66,11 +66,11 @@
 
 
 
-                    <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-dayNum="@it.Day" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
+                    <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
                 
-                @* @if(){
-                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Пропустить</a>
-                } *@
+                @* @if(){*@
+                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-dayNum="@it.Day" asp-controller="Users" asp-action="UserScipGroupTraining">Пропустить</a>
+                @* }  *@
                 
                 
                 

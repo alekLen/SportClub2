@@ -25,7 +25,11 @@ namespace SportClub.Controllers
         private readonly IGroup groupService;
         private readonly IShedule sheduleService;
         private readonly ITime timeService;
-        public UsersController(ITime t,IShedule sh,IGroup gr, IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg)
+
+        private readonly ISkipShedule skipSheduleService;
+
+
+        public UsersController(ITime t, IShedule sh, IGroup gr, IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg, ISkipShedule sk)
         {
             adminService = adm;
             userService = us;
@@ -38,6 +42,7 @@ namespace SportClub.Controllers
             groupService = gr;
             sheduleService = sh;
             timeService = t;
+            skipSheduleService = sk;
         }
 
         // GET: Users
@@ -537,6 +542,34 @@ namespace SportClub.Controllers
             }
             return View("Index", "Home");
         }
+
+        //public async Task<IActionResult> UserScipGroupTraining(int DayNum)
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+            
+            //TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
+            //HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+            //GroupDTO groupdto = await groupService.GetGroup(trgroupdto.GroupId);
+
+            //int userId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+            //UserDTO userDTO = await userService.GetUser(userId);
+
+            //switch (DayNum)
+            //{
+            //    case 3:
+
+            //        break;
+            //}
+            //if (groupdto != null)
+            //{
+            ////    groupdto.UsersId.Add();
+                //await skipSheduleService.UpdateSkipShedule(groupdto);
+
+            //    return RedirectToAction("Room_Shedule", "Users"/*, new { Id = HttpContext.Session.GetInt32("roomId") }*/);
+            //    //return View("AddUserToTrainingGroup", groupdto);
+            //}
+        //    return View("Index", "Home");
+        //}
 
         public async Task<IActionResult> DeleteUsersInTrainingGroup(int Id)
         {

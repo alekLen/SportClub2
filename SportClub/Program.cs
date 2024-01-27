@@ -23,6 +23,8 @@ builder.Services.AddTransient<IRoom, RoomService>();
 builder.Services.AddTransient<IShedule, SheduleService>();
 builder.Services.AddTransient<ITrainingInd, TrainingIndService>();
 
+builder.Services.AddTransient<ISkipShedule, SkipSheduleService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
