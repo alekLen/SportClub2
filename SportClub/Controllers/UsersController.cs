@@ -532,7 +532,7 @@ namespace SportClub.Controllers
                 groupdto.UsersId.Add(await userService.GetUser(userId));
                 await groupService.UpdateGroup(groupdto);
 
-                return RedirectToAction("Room_Shedule", "Time"/*, new { Id = HttpContext.Session.GetInt32("roomId") }*/);
+                return RedirectToAction("Room_Shedule", "Users"/*, new { Id = HttpContext.Session.GetInt32("roomId") }*/);
                 //return View("AddUserToTrainingGroup", groupdto);
             }
             return View("Index", "Home");
@@ -571,11 +571,18 @@ namespace SportClub.Controllers
                     //groupdto.Name = group.Name;
                     //groupdto.Number = group.Number;
                     //groupdto.Id = group.Id;
-
-                    foreach (var i in groupdto.UsersId)
+                    //int num = 0;
+                    for (int i = 0; i < groupdto.UsersId.Count; i++)
                     {
-                        groupdto.UsersId.Remove(await userService.GetUser(UsersId));
+                        if (groupdto.UsersId[i].Id == UsersId)
+                        {
+                            groupdto.UsersId.RemoveAt(i);
+                        }
                     }
+                    //foreach (var i in groupdto.UsersId)
+                    //{
+                    //groupdto.UsersId.Remove(await userService.GetUser(UsersId));
+                    //}
 
                     try
                     {
