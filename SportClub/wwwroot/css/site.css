@@ -85,6 +85,12 @@ body {
 .marg{
     margin:3px;
 }
+@font-face {
+    font-family: 'MyFontNormal';
+    src: url('fonts/IBMPlexSerif-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
 .green {
     background-color:lightgreen;
 }

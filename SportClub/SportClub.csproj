@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-Bold.ttf" />
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-MediumItalic.ttf" />
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\fonts\IBMPlexSerif-Bold.ttf" />
+    <EmbeddedResource Include="wwwroot\fonts\IBMPlexSerif-MediumItalic.ttf" />
+    <EmbeddedResource Include="wwwroot\fonts\IBMPlexSerif-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
       <PrivateAssets>all</PrivateAssets>
