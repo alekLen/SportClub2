@@ -14,5 +14,7 @@ namespace SportClub.DAL.Entities
         //  public string Password { get; set; } = string.Empty;
         //  public virtual List<TrainingInd> trainingInds { get; set; }
         public virtual List<Group> groups { get; set; } = new List<Group>();
+
+        //public bool Recorded_by { get; set; } = false;
     }
 }

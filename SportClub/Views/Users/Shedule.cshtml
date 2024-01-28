@@ -11,7 +11,7 @@
     <input type="hidden" id="idroom" value="@Model.room.Id" />
     <h1>@Model.room.Name &nbsp;&nbsp;&nbsp;</h1>
     <img src="@Model.room.Photo" style="width:70px;height:70px" alt="photo" />
-    
+
 </div>
 @if (Model.message == null)
 {
@@ -58,7 +58,7 @@
                                                 <span class="white">@it.CoachName</span><br />
                                                 @if (it.UserId == null)
                                                 {
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
+                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-route-userId="" asp-controller="" asp-action="">Записаться</a>
                                                 }
                                                 else
                                                 {
@@ -87,50 +87,44 @@
                                             <div>
                                                 @{
                                                     var num = it.Group.Number - it.Users.Count;
+
                                                 }
                                                 <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
                                                 <span class="white">Тренер : </span><br />
                                                 <span class="white">@it.Coach.Name</span><br />
-                                                @{
-                                                    var you = false;
-                                                }
-                                                @if (it.Group.UsersId.Count > 0)
+                                                @if (it.Group.Number > it.Group.UsersId.Count)
                                                 {
-                                                    @foreach (var u in it.Group.UsersId)
+                                                    bool nflag = false;
+                                                    foreach (var us in it.Users)
                                                     {
-                                                        @if (u.Id.ToString() == ViewBag.MyId)
-                                                        {
-                                                            you = true;
-                                                        }
+                                                        if (us.Id == Convert.ToInt32(Context.Session.GetString("Id")))
+                                                           nflag = true;  
                                                     }
-                                                }
-                                                @if (!you)
-                                                {
-                                                    @if (it.Group.Number > it.Group.UsersId.Count)
+
+                                                    if (!nflag)
                                                     {
                                                         <span class="white">Доступно : @num </span>
-
                                                         <br />
-                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
-
+                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Записаться</a>
                                                     }
-                                                    else
-                                                    {
-                                                        <span class=" white">Не доступно</span>
+                                                    else {
+                                                        <span class=" white">Вы записаны</span>
+                                                        //<br />
+                                                        //<a class="btn btn-outline-dark" style="background-color:lightsalmon" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Пропустить</a>
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    <span class=" white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    <span class=" white">Не доступно</span>
                                                 }
                                             </div>
                                             <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" />
                                         </div>
                                     }
                                 }
-                              
+
                             </form>
-                        
+
                         }
 
                     </td>

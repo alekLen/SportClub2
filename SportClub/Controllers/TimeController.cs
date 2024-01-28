@@ -842,5 +842,116 @@ namespace SportClub.Controllers
             return RedirectToAction("RoomWithShedule", new { Id = roomId });
         }
 
+
+        public async Task<IActionResult> EditTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroupdto != null)
+            {
+                //await putCoaches();
+                //await putGroups();
+                //await putRooms();//
+                //await putTimes();//
+                //await putSpecialitys();//
+                //await putUsers();
+                //await putCoaches(); 
+                return View("EditTrainingGroup", trainingGroupdto);
+            }
+
+            return View("GetTrainingGroups", "TrainingGroup");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditTrainingGroup(int id, TrainingGroupDTO group)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
+                if (trainingGroupdto == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    var coac = await coachService.GetCoach((int)group.CoachId);
+                    var room = await roomService.GetRoom((int)group.RoomId);
+                    //var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
+
+                    trainingGroupdto.Name = group.Name;
+                    //trainingGroupdto.Number = group.Number;
+
+                    trainingGroupdto.CoachName = coac.Name;
+                    trainingGroupdto.CoachId = group.CoachId;
+
+                    trainingGroupdto.RoomName = room.Name;
+                    trainingGroupdto.RoomId = group.RoomId;
+                    //trainingGroupdto.TimeId = group.TimeId;
+
+                    //trainingGroupdto.GroupName = room.Name;
+                    //trainingGroupdto.GroupId = group.GroupId;
+
+                    //trainingGroupdto.SpecialityName = sp.Name;
+                    //trainingGroupdto.SpecialityId = group.SpecialityId;
+
+
+
+                    try
+                    {
+                        await trainingGroupService.UpdateTrainingGroup(trainingGroupdto);
+                    }
+                    catch { return View("EditTrainingGroup", group); }
+                    return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+                    // } 
+                }
+                return RedirectToAction("GetTrainingGroups");
+            }
+            catch
+            {
+                return View("GetTrainingGroups", "TrainingGroup");
+            }
+        }
+
+        public async Task<IActionResult> DeleteTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            return View(trainingGroup);
+        }
+        [HttpPost, ActionName("DeleteTrainingGroup")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            int roomId = trainingGroup.RoomId;
+            int groupId = trainingGroup.GroupId;
+            await trainingGroupService.DeleteTrainingGroup(id);
+            await groupService.DeleteGroup(groupId);
+            return RedirectToAction("RoomWithShedule", new { Id = roomId });
+            //return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+        }
+
+        public async Task<IActionResult> DetailsTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            trainingGroup.Id = id;
+            return View(trainingGroup);
+        }
     }
 }
