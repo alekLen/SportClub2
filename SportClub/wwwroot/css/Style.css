@@ -394,10 +394,12 @@ input[type="date"] {
     border: none;
     box-shadow: 2px 2px 2px navy;
     font-size: 20px;
-
+    font-family: 'MyFontNormal';
     border-radius: 5px;
     width: max-content;
-    background-color: rgb(0, 140, 255);
+    background-color: darkgrey;
+    padding-left:10px;
+    padding-right:10px;
 }
 
     .input_subm2:hover {

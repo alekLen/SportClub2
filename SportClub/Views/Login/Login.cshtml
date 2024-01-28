@@ -8,7 +8,7 @@
   @using (Html.BeginForm())
     {
       @Html.AntiForgeryToken()
-        <div style="background-color: #374566; border-radius: 10px; width: 275px;padding:10px">
+        <div style="background-color:black;  width: 275px;padding:10px">
    
         <span id="error-login1" style="color:red;display:none;">* @Resources.Resource.loginpassword</span>
 
@@ -19,7 +19,7 @@
                 <div>
                         @Html.LabelFor(model => model.Login, new { @class = "white" })
                     <div>
-                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-15px">
+                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-10px">
                             @* @Html.EditorFor(model => model.Login, new { @class = "bordrad7l" }) *@
                         @Html.ValidationMessageFor(model => model.Login, "")
                     </div>
@@ -28,7 +28,7 @@
                 <div>
                         @Html.LabelFor(model => model.Password, new { @class = "white" })
                         <div>
-                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-15px">
+                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-10px">
                             @* @Html.PasswordFor(model => model.Password, new { @class = "bordrad7" }) *@
                         @Html.ValidationMessageFor(model => model.Password, "")
                     </div>

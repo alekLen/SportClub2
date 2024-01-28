@@ -41,7 +41,7 @@ body {
 }
 
 .font {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'MyFontNormal', sans-serif;
 }
 .coach {
     width: 420px;
@@ -94,5 +94,6 @@ body {
 .green {
     background-color:lightgreen;
 }
-
-
+#viewcontent {
+    background-image: url("/Coaches/фон.jpg");
+}

@@ -4,9 +4,12 @@
 @{
     ViewData["Title"] = "SportClub";
 }
-
-<p id="color-changing-paragraph" style="font-size:50px;transition: color 2s ease; font-family: 'MyFontNormal'">
-    Скоро открытие нового спортзала!!!</p>
+     @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
+     {
+             <p id="color-changing-paragraph" style="font-size:100px;transition: color 2s ease; font-family: 'MyFontNormal';color:yellow;text-align:center;font-weight:bold">
+                Скоро открытие нового спортзала!!!
+             </p>
+     }
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var colors = ['red', 'yellow', 'purple']; // Массив цветов
