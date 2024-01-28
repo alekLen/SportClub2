@@ -4,9 +4,19 @@
 @{
     ViewData["Title"] = "SportClub";
 }
+<div  >
+    <span id="contact" style="padding:5px;padding-left:30px;padding-right:50px;background-color:black;color:white;display:inline;font-size:25px;">
+        +38(097)1231231
+    </span>
+</div>
+<div id="contact-info" style="display:none;">   
+    <p>Телефон: +1234567890</p>
+    <p>Email: example@example.com</p>
+    <p>Наш адрес:.....</p>   
+</div>
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {
-             <p id="color-changing-paragraph" style="font-size:100px;transition: color 2s ease; font-family: 'MyFontNormal';color:yellow;text-align:center;font-weight:bold">
+             <p id="color-changing-paragraph" style="font-size:50px;transition: color 2s ease; font-family: 'MyFontNormal';color:yellow;text-align:center;font-weight:bold">
                 Скоро открытие нового спортзала!!!
              </p>
      }
@@ -14,7 +24,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         var colors = ['red', 'yellow', 'purple']; // Массив цветов
         var currentIndex = 0;
-
+        var currentIndex2 = 0;
+        var text = ["Скоро открытие нового спортзала!!!","Скидка на абонементы 30% !!!"]
         setInterval(function () {
             document.getElementById('color-changing-paragraph').style.color = colors[currentIndex];
             currentIndex++;
@@ -22,7 +33,34 @@
             if (currentIndex >= colors.length) {
                 currentIndex = 0;
             }
-        }, 2000); // 2000 миллисекунд = 2 секунды
+        }, 2000);
+        setInterval(function () {
+            document.getElementById('color-changing-paragraph').textContent = text[currentIndex2];
+            currentIndex2++;
+
+            if (currentIndex2 >= text.length) {
+                currentIndex2 = 0;
+            }
+        }, 4000);
+
+        var contact = document.getElementById('contact');
+        var contactInfo = document.getElementById('contact-info');
+
+        // contact.addEventListener('mouseover', function () {
+        //     contactInfo.style.display = 'block';
+        // });
+
+        // contact.addEventListener('mouseout', function () {
+        //     contactInfo.style.display = 'none';
+        // });
+
+        contact.addEventListener('click', function () {
+            if (contactInfo.style.display === 'none') {
+                contactInfo.style.display = 'block';
+            } else {
+                contactInfo.style.display = 'none';
+            }
+        });
     });
 </script>
 @{
