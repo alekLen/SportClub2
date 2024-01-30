@@ -17,7 +17,12 @@ header .my_navbar {
     color: white;
 }
 
-
+@font-face {
+   /* font-family: 'UserFont';
+    src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
+    font-weight: normal;
+    font-style: normal;*/
+}
 
 header .mdropdown {
     float: left;
@@ -31,7 +36,7 @@ header .mdropdown {
         color: white;
         padding: 14px 16px;
         background-color: inherit;
-        font-family: inherit;
+       /* font-family: inherit;*/
         margin: 0;
     }
 
@@ -69,6 +74,7 @@ header .mdropdown:hover .mdropdown-content {
 
 .my_bg-white1 {
     background-color: #042940;
+
 }
 
     .my_bg-white1:hover {
@@ -121,9 +127,7 @@ header .mdropdown:hover .mdropdown-content {
     color: white;
 }*/
 
-* {
-    font-family: 'MyFontNormal';
-}
+
 
 html, body {
 /*    background: linear-gradient( 122deg, rgba(172, 197, 227, 1) 0%, rgba(227, 231, 243, 1) 51%, rgb(187, 202, 236) 80%, rgba(145, 163, 209, 1) 99% ) no-repeat center center fixed;
@@ -359,7 +363,7 @@ input[type="date"] {
 
 .btn1n1n{
     padding: 6px 12px;
-    te
+   
 }
 /*hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh0*/
 
@@ -390,21 +394,43 @@ input[type="date"] {
 
 .input_subm2 {
     height: 40px;
-    color: white;
+    color:#BDB76B;
     border: none;
     box-shadow: 2px 2px 2px navy;
     font-size: 20px;
-    font-family: 'MyFontNormal';
+    
     border-radius: 5px;
     width: max-content;
     background-color: darkgrey;
-    padding-left:10px;
-    padding-right:10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
     .input_subm2:hover {
         color: white;
         border: solid 1px #13678a;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #13678a;
+        
+    }
+.input_subm3 {
+    height: 40px;
+    color: black;
+    border: none;
+    box-shadow: 2px 2px 2px navy;
+    font-size: 20px;
+    border-radius: 3px;
+    width: max-content;
+    background-color: darkgrey;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight:bold;
+}
+
+    .input_subm3:hover {
+        color: #EEE8AA;
+        border: solid 1px #EEE8AA;
         box-shadow: 2px 2px 2px rgb(0, 0, 0);
         height: 40px;
         background-color: #13678a;

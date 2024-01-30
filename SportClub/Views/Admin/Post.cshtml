@@ -1,7 +1,11 @@
-﻿<div class="flex">
+﻿<div style="padding-left:100px;">
+<div>
+    <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons">Главная</a>
+</div>
+<div class="flex" style="flex-wrap:wrap;">
     
     <div>
-<h2 class="center1"> @Resources.Resource.Post тренера</h2>
+        <h2 class="center1 white-shadow" > @Resources.Resource.Post тренера</h2>
 <div class="flex padd1">    
         <div class="padd white">
             <h4>Добавить должность</h4>
@@ -15,7 +19,7 @@
                     <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group padd">
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddPost" style="color:white">@Resources.Resource.Add</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddPost" style="color:white">@Resources.Resource.Add</a>
                </div>
             </form>
 
@@ -28,9 +32,9 @@
 
                 <br />
                 <div class="form-group">
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelPost" style="color:white">Удалить</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelPost" style="color:white">Удалить</a>
                         <br /><br />
-                       <a href="javascript:void(0)" class="btn btn-primary c2" id="btnEditPost" style="color:white">@Resources.Resource.Edit</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditPost" style="color:white">@Resources.Resource.Edit</a>
 
                     </div>
             </form>
@@ -39,12 +43,12 @@
 </div>
 <div style="width:20px"></div>
 <div>
-<h2 class="center1"> @Resources.Resource.Speciality тренера</h2>
+        <h2 class="center1 white-shadow" > @Resources.Resource.Speciality тренера</h2>
 <div class="flex  padd1">
 
 
     <div class="padd white">
-            <h4>Добавить специальность</h4>
+                <h4 >Добавить специальность</h4>
             <form  method="post">
                
 
@@ -55,31 +59,30 @@
                         <span asp-validation-for="speciality.Name" class="text-danger"></span>
                     </div> <br />
                 <div class="form-group">
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnAddSpec" style="color:white">@Resources.Resource.Add</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddSpec" style="color:white">@Resources.Resource.Add</a>
                   </div>
             </form>
 
         </div>
     <div class="padd white">
-            <h4> @Resources.Resource.Editing</h4>
+                <h4 > @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Speciality</label>
                     <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
 
                 <br />
                 <div class="form-group">                   
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnDelSpec" style="color:white">Удалить</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelSpec" style="color:white">Удалить</a>
                         <br /><br />
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnEditSpec" style="color:white">@Resources.Resource.Edit</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditSpec" style="color:white">@Resources.Resource.Edit</a>
                 </div>
             </form>
         </div>
    
      </div>
     </div>
-    <div>
-        <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn btn-primary buttons1">Главная</a>
-    </div>
+   
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>

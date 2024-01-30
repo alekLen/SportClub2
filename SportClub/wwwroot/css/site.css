@@ -40,9 +40,7 @@ body {
     padding-left:20px;
 }
 
-.font {
-    font-family: 'MyFontNormal', sans-serif;
-}
+
 .coach {
     width: 420px;
     height: 20px;
@@ -52,8 +50,8 @@ body {
 .paddingLeft{
     padding-left:20px;
 }
-.white{
-    color:white;
+.white {
+    color: white;
 }
 #dialogContent{
     background-color:gray;
@@ -86,21 +84,36 @@ body {
     margin:3px;
 }
 @font-face {
-    font-family: 'MyFontNormal';
-    src: url('fonts/IBMPlexSerif-Regular.ttf') format('ttf');
+    font-family: 'MyFontNormal2';
+    src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
     font-weight: normal;
     font-style: normal;
 }
 .green {
     background-color:lightgreen;
 }
-#viewcontent {
-    background-image: url("/Coaches/фон.jpg");
+.marquee {
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+  /*  background-color: #EEE8AA;*/
+    color: #EEE8AA;
+    white-space: nowrap;
+  /*  opacity: 0.5;*/
 }
-#contact-info {
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+
+.marquee-content {
+    display: flex;
+    position: relative;
+    animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
