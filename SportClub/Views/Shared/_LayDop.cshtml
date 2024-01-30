@@ -95,12 +95,12 @@
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
                 <div class="dv1n2" >
-                    <select class="my_bg-white1 my_bn" style="color:#EEE8AA;padding: 2px 6px;width:max-content;text-align:center; " name="lang">
-                        <option value="ru">Русский</option>
-                        <option value="en">English</option>
-                        <option value="uk">Українська</option>
-                        <option value="de">Deutsch</option>
-                        <option value="fr">Français</option>
+                    <select class="my_bg-white1 my_bn t_3" style="color:#EEE8AA; padding: 2px 6px;width:max-content;text-align:center; " name="lang">
+                        <option style="color:#EEE8AA; " value="ru">Русский</option>
+                        <option style="color:#EEE8AA; " value="en">English</option>
+                        <option style="color:#EEE8AA;" value="uk">Українська</option>
+                        <option style="color:#EEE8AA;" value="de">Deutsch</option>
+                        <option style="color:#EEE8AA; " value="fr">Français</option>
                     </select>
                     <br />
                     <input class="my_bg-white1 my_bn" style="color:#EEE8AA;width:max-content;height:27px;text-align:center" type="submit" name="submit" value="@Resources.Resource.ChooseLang">
@@ -296,20 +296,20 @@
         </main>
     </div>
 
-    <footer class="border-top text-muted" style="margin-bottom:20px;border-top:1px #EEE8AA;">
+    <footer class="text-muted" style="margin-bottom:20px;border-top:1px solid #EEE8AA;">
         <div style="">
             <span style="color: #EEE8AA;padding-left:25px;">
                 &copy; 2023 - SportClub</span>
             <span id="contact" style="padding:5px;padding-left:30px;color:#EEE8AA;display:inline;font-size:12px;font-weight:bold;">
                     +38(097)1231231
                 </span>
+            <span id="contact2" style="padding:5px;padding-left:30px;padding-right:50px;color:#EEE8AA;display:inline;">
+                Наш адрес
+            </span> 
                 <div id="contact-info" class="flex" style="display:none;">
                 <span style="color: #EEE8AA;padding-left:25px;">Телефон: +1234567890</span>
                 <span style="color: #EEE8AA;padding-left:15px;">Email: example@example.com</span>
                </div>
-            <span id="contact2" style="padding:5px;padding-left:30px;padding-right:50px;color:#EEE8AA;display:inline;font-weight:bold;">
-               Наш адрес
-            </span>
             <div id="contact-info2" class="flex" style="display:none;">
                 <span style="color: #EEE8AA;padding-left:30px;">м.Київ, пр.Дружби Народів, 123/3</span>
             </div>
@@ -369,32 +369,35 @@
                             $(this).closest(".ui-dialog")
                                 .find(".ui-dialog-titlebar")
                                 .css({
-                                    "background-color": "black", // Фон заголовка
+                                    "background-color": "rgb(80, 80, 80)", // Фон заголовка
                                     "color": "#EEE8AA" 
                                 });
                             $(this).closest(".ui-dialog")
                                 .css({
-                                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                                    "border-radius": "10px",
-                                    // "border": "solid 1px #374566",
-                                    
-                                    "background-color": "black"
+                                     "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                    "border-radius": "5px",
+                                    "background-color": "rgb(80, 80, 80)",
+                                    "background - image": "url('~/Coaches/фон5.jpg')"
+
                                 });
                             $(this).closest(".ui-dialog")
                                 .find(".ui-dialog-content")
                                 .css({
-                                    "background-color": "black"
+                                    "background-color": "rgb(80, 80, 80)",
+                                    "background - image": "url('~/Coaches/фон5.jpg')"
                                 });
                             $(this).closest(".ui-widget-content")
                                 .css({
                                     "border": "none",
-                                    "background-color": "black"
+                                    "background-color": "rgb(80, 80, 80)",
+                                    "background - image": "url('~/Coaches/фон5.jpg')"
                                 });
                             $(this).closest(".ui-dialog")
                                 .find(".ui-dialog-buttonpane")
                                 .css({
                                     "border-width": "0px",
-                                    "background-color": "black"
+                                    "background-color": "rgb(80, 80, 80)",
+                                    "background - image": "url('~/Coaches/фон5.jpg')"
                                 });
                         }
                     });
@@ -433,7 +436,7 @@
             contactInfo2.style.display = 'none';
         });
 
-        contact.addEventListener('click', function () {
+        contact2.addEventListener('click', function () {
             if (contactInfo2.style.display === 'none') {
                 contactInfo2.style.display = 'block';
             } else {
