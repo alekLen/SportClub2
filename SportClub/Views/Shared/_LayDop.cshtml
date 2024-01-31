@@ -69,8 +69,8 @@
             height: 100%;
             width: 100%;       
           /*    background-image: url('Coaches/фон4.jpg'); */
-            background-image: linear-gradient(to bottom right, grey, dimgrey);
-            background-color:grey;
+          /*   background-image: linear-gradient(to bottom right, grey, dimgrey); */
+            background-color: dimgrey;
             background-size:cover;
            
         }  
@@ -133,8 +133,10 @@
                 {
                     <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
                 }
-                <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
-                <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a>
+               @*  <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
+                <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
+                <a class="nav-link card2  whiteY" href="#allcoaches">Наша команда</a>
+                <a class="nav-link card2  whiteY" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -164,9 +166,12 @@
             {
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
-
+@* 
                 <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> *@
+                
+            <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
+            <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> 
             
             }
            

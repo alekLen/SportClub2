@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "SportClub";
 }
+@model IEnumerable<SportClub.BLL.DTO.CoachDTO>
 
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {      
@@ -80,6 +81,34 @@
         &nbsp; &nbsp;&nbsp;Занятия йогой улучшают равновесие, координацию и чувство баланса, ведь предусматривают выполнение контролируемых движений, концентрацию внимания и статические позиции.<br />
         Йога помогает повысить выносливость, укрепить кости и мышцы и стать более гибкими и подвижными.<br /> На наших занятиях йогой вы узнаете свое тело поновому.
     </div>
+    
+    <div id="allcoaches" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#EEE8AA;font-size:20px;">Наша команда</div>
+    </div>
+    <div >  
+        <div class="flex" style="flex-wrap:wrap;justify-content:space-around;">
+          @using Microsoft.AspNetCore.Http
+            @foreach (var item in Model)
+            {
+              
+                  <div class="flex marg back_color" style="width:620px; padding:2px;height:330px;">
+                     
+                    <div >
+                        <img src=@item.Photo width="330" height="270" alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
+                       
+                        <h3 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h3>
+                    </div>
+                    <p style="padding:20px;padding-bottom:0px;color:#EEE8AA; background-size:cover; background-image: url('/Coaches/фон5.jpg'); 
+                         margin-bottom:0px;text-align:center;">
+                        @item.Description
+                       </p>
+                  </div>
+             
+            }
+        </div>
+    
+    </div>
+
 </div>
 
 <script>
@@ -159,8 +188,8 @@
                 inf23.style.display = 'none';
             } else {
                 inf21.style.display = 'none';
-                inf22.style.display = 'none';
-                inf23.style.display = 'block';
+                inf23.style.display = 'none';
+                inf22.style.display = 'block';
             }
         });
         im22.addEventListener('click', function () {
@@ -170,8 +199,8 @@
                 inf23.style.display = 'none';
             } else {
                 inf21.style.display = 'none';
-                inf22.style.display = 'none';
-                inf23.style.display = 'block';
+                inf23.style.display = 'none';
+                inf22.style.display = 'block';
             }
         });
         im23.addEventListener('click', function () {
@@ -181,8 +210,8 @@
                 inf21.style.display = 'none';
             } else {
                 inf23.style.display = 'none';
-                inf22.style.display = 'none';
-                inf21.style.display = 'block';
+                inf21.style.display = 'none';
+                inf22.style.display = 'block';
             }
         });
     });
