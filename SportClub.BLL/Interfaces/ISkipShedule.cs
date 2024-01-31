@@ -10,6 +10,7 @@ namespace SportClub.BLL.Interfaces
     public interface ISkipShedule
     {
         Task AddSkipShedule(SkipSheduleDTO skDTO);//
+        Task<SkipSheduleDTO> GetSkipSheduleByTrainingId(int id);
         Task<SkipSheduleDTO> GetSkipShedule(int id);
         //Task<IEnumerable<UserDTO>> GetAllUsers();
         Task DeleteSkipShedule(int id);

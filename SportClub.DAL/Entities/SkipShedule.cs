@@ -11,7 +11,7 @@ namespace SportClub.DAL.Entities
         public int Id { get; set; }
         public TrainingGroup trainingGroup { get; set; }
 
-        //public string? UserName { get; set; }
+        //public string? UserName { get; set; }public List<TrainingGroup> trainingGrId { get; set; } = new();
         public User User { get; set; }
 
         public bool SkipMonday { get; set; } = false;

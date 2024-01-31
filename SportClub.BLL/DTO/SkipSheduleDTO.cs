@@ -9,8 +9,8 @@ namespace SportClub.BLL.DTO
     public class SkipSheduleDTO
     {
         public int Id { get; set; }
-        public int trainingGroup { get; set; }
-
+        public int trainingGroupId { get; set; }//
+        //public List<int> trainingGrId { get; set; } = new();
         public string? UserName { get; set; }
         public int UserId { get; set; }
 

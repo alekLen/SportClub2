@@ -19,5 +19,8 @@ namespace SportClub.BLL.DTO
         //public int trainingId { get; set; }//id тренировки
 
         public List<UserDTO> UsersId { get; set; } = new();//список человек
+
+        //public List<SkipSheduleDTO> skipShedulesId { get; set; } = new();список пропусков
+        //добавляти SkipSheduleDTO в конкретного пользователе про добавлении UserDTO в список группы
     }
 }

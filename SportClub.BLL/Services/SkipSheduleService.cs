@@ -21,7 +21,7 @@ namespace SportClub.BLL.Services
         {
             try
             { 
-                TrainingGroup tg = await Database.TrainingGroups.Get(sk.trainingGroup);
+                TrainingGroup tg = await Database.TrainingGroups.Get(sk.trainingGroupId);
                 User c = await Database.Users.Get(sk.UserId);
                 //Group u = await Database.Groups.Get(pDto.GroupId);
                  
@@ -74,16 +74,30 @@ namespace SportClub.BLL.Services
             }
             catch { return null; }
         }
-        //public async Task<IEnumerable<UserDTO>> GetAllUsers()
-        //{
-        //    try
-        //    {
-        //        var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
-        //        var mapper = new Mapper(config);
-        //        return mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(await Database.Users.GetAll());
-        //    }
-        //    catch { return null; }
-        //}
+        public async Task<SkipSheduleDTO> GetSkipSheduleByTrainingId(int id)
+        {
+            //одна группа и одна неделя пропусков(SkipSheduleDTO)
+            //добавити поле в класс GroupDTO
+
+
+
+            SkipShedule a = await Database.SkipShedule.Get(id);
+            if (a == null)
+                throw new ValidationException("Wrong!", "");
+            /* return new AdminDTO
+             {
+                 Id = a.Id,
+                 Name = a.Name,
+
+             };*/
+            try
+            {
+                var config = new MapperConfiguration(cfg => cfg.CreateMap<SkipShedule, SkipSheduleDTO>());
+                var mapper = new Mapper(config);
+                return mapper.Map<SkipSheduleDTO>(a);
+            }
+            catch { return null; }
+        }
         public async Task DeleteSkipShedule(int id)
         {
             User user = await Database.Users.Get(id);
@@ -95,7 +109,7 @@ namespace SportClub.BLL.Services
         public async Task UpdateSkipShedule(SkipSheduleDTO sk)
         {
             SkipShedule u = await Database.SkipShedule.Get(sk.Id);
-            TrainingGroup tg = await Database.TrainingGroups.Get(sk.trainingGroup);
+            TrainingGroup tg = await Database.TrainingGroups.Get(sk.trainingGroupId);
             User c = await Database.Users.Get(sk.UserId);
 
             u.trainingGroup = tg;

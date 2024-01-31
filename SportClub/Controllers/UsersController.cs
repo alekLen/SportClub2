@@ -51,7 +51,7 @@ namespace SportClub.Controllers
             /* return _context.Users != null ?
                          View(await _context.Users.ToListAsync()) :
                          Problem("Entity set 'SportClubContext.Users'  is null.");*/
-            var p= await coachService.GetAllCoaches();
+            var p = await coachService.GetAllCoaches();
             await putPosts();
             await putSpecialities();
             return View(p);
@@ -66,11 +66,11 @@ namespace SportClub.Controllers
             await putSpecialities();
             return View(p);
         }
-     
+
         public async Task<IActionResult> ClientProfile()
         {
             string s = HttpContext.Session.GetString("Id");
-            int id =Int32.Parse(s);
+            int id = Int32.Parse(s);
             UserDTO p = await userService.GetUser(id);
             return View(p);
         }
@@ -105,11 +105,11 @@ namespace SportClub.Controllers
             IEnumerable<SpecialityDTO> p = await specialityService.GetAllSpecialitys();
             ViewData["SpecialityId"] = new SelectList(p, "Id", "Name");
         }
-        public async Task<IActionResult> EditClientProfile( UserDTO user)
+        public async Task<IActionResult> EditClientProfile(UserDTO user)
         {
             int age = 0;
             try
-            {                
+            {
                 DateTime birthDate;
                 if (DateTime.TryParse(user.DateOfBirth, out birthDate))
                 {
@@ -135,8 +135,8 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-              //  u.Surname = user.Surname;
-               // u.Dopname = user.Dopname;
+                //  u.Surname = user.Surname;
+                // u.Dopname = user.Dopname;
                 u.DateOfBirth = user.DateOfBirth;
                 await userService.UpdateUser(u);
                 return View("YouChangedProfile");
@@ -146,7 +146,7 @@ namespace SportClub.Controllers
         [HttpPost]
         public IActionResult ChangeClientPassword(UserDTO user)
         {
-            return View("PutPassword",user);
+            return View("PutPassword", user);
         }
         [HttpPost]
         public async Task<IActionResult> PutPassword(int id, string pass)
@@ -164,9 +164,9 @@ namespace SportClub.Controllers
         {
             UserDTO u = await userService.GetUser(m.Id);
             string pass = m.Password;
-            if (!string.IsNullOrEmpty(pass) && u!=null)
+            if (!string.IsNullOrEmpty(pass) && u != null)
             {
-               await userService.ChangeUserPassword(u, pass);
+                await userService.ChangeUserPassword(u, pass);
                 return RedirectToAction("ClientProfile");
             }
             return RedirectToAction("ClientProfile");
@@ -242,7 +242,7 @@ namespace SportClub.Controllers
         }
         [HttpPost]
         public IActionResult BackToClientProfile()
-        {           
+        {
             return RedirectToAction("ClientProfile");
         }
         public async Task<IActionResult> Delete(int id)
@@ -284,7 +284,7 @@ namespace SportClub.Controllers
             {
                 string s = HttpContext.Session.GetString("Id");
                 int id = Int32.Parse(s);
-               UserDTO p = await userService.GetUser(id);
+                UserDTO p = await userService.GetUser(id);
                 if (p != null)
                 {
                     List<TrainingIndToSee> trainings = new();
@@ -313,28 +313,28 @@ namespace SportClub.Controllers
                     IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
                     var sortedTrG = trg.OrderBy(dto => dto.Day).ThenBy(dto => dto.Time);
                     foreach (TrainingGroupDTO group in sortedTrG)
-                    {                                             
-                            //TrG.Add(group);
-                            TrainingGrToSee training = new();
-                            RoomDTO room = new RoomDTO();
-                            room = await roomService.GetRoom(group.RoomId);
-                            training.Id = group.Id;
-                            training.Room = room;
+                    {
+                        //TrG.Add(group);
+                        TrainingGrToSee training = new();
+                        RoomDTO room = new RoomDTO();
+                        room = await roomService.GetRoom(group.RoomId);
+                        training.Id = group.Id;
+                        training.Room = room;
                         training.Coach = await coachService.GetCoach(group.CoachId);
                         training.DayName = Setday(group.Day);
-                            training.Day = group.Day;
-                            training.Time = group.Time;
-                            training.Group = await groupService.GetGroup(group.GroupId);
-                            IEnumerable<UserDTO> users = await groupService.GetGroupUsers(group.GroupId);
-                            training.Users = users.ToList();
+                        training.Day = group.Day;
+                        training.Time = group.Time;
+                        training.Group = await groupService.GetGroup(group.GroupId);
+                        IEnumerable<UserDTO> users = await groupService.GetGroupUsers(group.GroupId);
+                        training.Users = users.ToList();
                         foreach (var item in users)
                         {
-                            if(item.Id==id)
+                            if (item.Id == id)
                                 trainings2.Add(training);
                         }
-                       
-                        
-                    }                
+
+
+                    }
 
                     TrainingsAllToSee all = new TrainingsAllToSee();
                     all.trInds = trainings;
@@ -396,7 +396,7 @@ namespace SportClub.Controllers
                     foreach (var t in shDto.timetables)
                     {
                         TimetableShow t1 = new();
-                        t1.Id = t.Id;                      
+                        t1.Id = t.Id;
                         if (t.TimesId.Count == 0)
                         {
                             string s = "Выходной";
@@ -431,7 +431,7 @@ namespace SportClub.Controllers
                             trg1.Add(train);
                         }
                         m.traininggroup = trg1.ToList();
-                    }                  
+                    }
                 }
                 else
                 {
@@ -505,6 +505,11 @@ namespace SportClub.Controllers
 
                     foreach (var i in UsersList)
                     {
+                        //UserDTO userDTO = userDTO;
+
+                        //SkipSheduleDTO skipShedule = new SkipSheduleDTO();
+                        //skipShedule.UserId = userDTO.Id;
+                        
                         groupdto.UsersId.Add(await userService.GetUser(i));
                     }
 
@@ -543,33 +548,58 @@ namespace SportClub.Controllers
             return View("Index", "Home");
         }
 
-        //public async Task<IActionResult> UserScipGroupTraining(int DayNum)
-        //{
-        //    HttpContext.Session.SetString("path", Request.Path);
+        public async Task<IActionResult> UserScipGroupTraining(int DayNum, int groupId)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
             
+            //Четверг = 3
+            //
             //TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
             //HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
             //GroupDTO groupdto = await groupService.GetGroup(trgroupdto.GroupId);
 
-            //int userId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
-            //UserDTO userDTO = await userService.GetUser(userId);
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+            UserDTO userDTO = await userService.GetUser(userId);
 
-            //switch (DayNum)
-            //{
-            //    case 3:
+            //SkipSheduleDTO skipSheduleDTO =  await skipSheduleService.GetSkipShedule();
+            //    if(skipSheduleDTO == null)
+            //    skipSheduleDTO = new SkipSheduleDTO();
 
-            //        break;
-            //}
+            switch (DayNum)
+            {
+                case 0:
+                    //skipSheduleDTO.SkipMonday = true;
+                    //userDTO.ScipShedulesId
+                    break;
+                case 1:
+
+                    break;
+                //case 2:
+
+                //    break;
+                //case 3:
+
+                //    break;
+                //case 4:
+
+                //    break;
+                //case 5:
+
+                //    break;
+                //case 6:
+
+                //    break;
+            }
             //if (groupdto != null)
             //{
             ////    groupdto.UsersId.Add();
-                //await skipSheduleService.UpdateSkipShedule(groupdto);
+            //await skipSheduleService.UpdateSkipShedule(groupdto);
 
             //    return RedirectToAction("Room_Shedule", "Users"/*, new { Id = HttpContext.Session.GetInt32("roomId") }*/);
             //    //return View("AddUserToTrainingGroup", groupdto);
             //}
-        //    return View("Index", "Home");
-        //}
+                return View("Index", "Home");//
+        } //
 
         public async Task<IActionResult> DeleteUsersInTrainingGroup(int Id)
         {

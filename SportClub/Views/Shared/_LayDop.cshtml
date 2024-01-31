@@ -99,7 +99,7 @@
               
                 @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Мои тренировки" />
+                    <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.MyWorkouts" />@* Мои тренировки *@
                 }
                 @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
                 {
@@ -129,7 +129,7 @@
             }
             else
             {
-                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">Войти</a>
+                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:white">@Resources.Resource.Login</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.Registration</a>
             }
 
@@ -137,54 +137,58 @@
             {
                 <div class="mdropdown">
                     <button class="mdropbtn">
-                        Регистрация...
+                        @Resources.Resource.RegistrationM...
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
-                        <a asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">Зарегестрировать админа</a>
-                        <a asp-area="" asp-controller="Login" asp-action="RegistrationCoach">Зарегестрировать тренера</a>
-                        <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">Зарегестрировать клиента</a>
+                        @*                                                                      Регистрация администратора *@
+                        <a asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>@* Зарегестрировать админа*@
+                        <a asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>@* Зарегестрировать тренера *@
+                        <a asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>@* Зарегестрировать клиента *@
                     </div>
                 </div>
 
                 <div class="mdropdown">
                     <button class="mdropbtn">
-                        Время/график
+                        @* Время/график *@
+                        @Resources.Resource.TimeAndSchedule
                         <i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
-                        <a asp-area="" asp-controller="Time" asp-action="AddTimeT">Cоздать время</a>
-                        <a asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
+                        <a asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTime</a>@* Cоздать время *@
+                        <a asp-area="" asp-controller="Time" asp-action="AddTimetable">@Resources.Resource.Create_A_ScheduleForDay</a>@* Создать график дня *@
                     </div>
                 </div>
 
                 @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
+                
 
-
-                <div class="mdropdown">
+                @* <div class="mdropdown">
                     <button class="mdropbtn">
                         Добавление...<i class="fa fa-caret-down"></i>
                     </button>
                     <div class="mdropdown-content">
-                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a>
-                       @*  <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a> *@
+                        <a asp-area="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a> 
                     </div>
-                </div>
+                </div> *@
 
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
                  <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
             <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 <div class="mdropdown">
                     <button class="mdropbtn">
-                        Зал...<i class="fa fa-caret-down"></i>
+                        @Resources.Resource.Rooms...<i class="fa fa-caret-down"></i>@* Зал *@
                     </button>
                     <div class="mdropdown-content">
-                        <a asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
+                        <a asp-area="" asp-controller="Admin" asp-action="AddRoom">@Resources.Resource.AddingAndEditingHall</a>@* Добавление/Редактирование зала *@
                      @*    <a asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a> *@
                         <a asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
+                @* Должности/Специальности *@
+                <a asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+                
                 @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
             <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
@@ -200,47 +204,22 @@
                         }
                         @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Coaches" />//All Coaches
                         }
                         @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Admins" />//All Admins
                         }
-                        @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
+                        @* @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />//
                         }
                         @using (Html.BeginForm("GetTrainingGroups", "TrainingGroup", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />
-                        }
+                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />//
+                        } *@
                     </div>
-                </div>
-
-                @* <div class="mdropdown" style="float:right">
-                    <button class="mdropbtn">
-                        Группы..<i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать группу" />
-                        }
-                        @using (Html.BeginForm("CreateTrainingGroup", "TrainingGroup", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
-                        } 
-                    </div>
-                </div> *@
-
-                @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" />
-            }
-            @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
-            } *@
+                </div> 
             }
 
         </div>
@@ -281,19 +260,20 @@
         $(document).ready(function () {
             $("body").on("click", ".btn-Login", function (e) {
                 e.preventDefault();
+                
                 $("<div id='dialogContent'></div>")
                     .addClass("dialog")
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "АВТОРИЗАЦИЯ",
+                        title: '@Html.Raw(@Resources.Resource.Authorization)',
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm2",//
-                            text: "Войти",
+                            text: '@Html.Raw(@Resources.Resource.Enter)',
                             click: function () {
                                 // "ВХОД" : function () {
                                 $.ajax({

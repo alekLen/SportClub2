@@ -129,11 +129,23 @@
   <data name="AddedStyle" xml:space="preserve">
     <value>Було додано жанр:  </value>
   </data>
+  <data name="AddingAndEditingHall" xml:space="preserve">
+    <value>Додавання/Редагування залів</value>
+  </data>
   <data name="Addition" xml:space="preserve">
     <value>Додавання</value>
   </data>
   <data name="AddSong" xml:space="preserve">
     <value>Додати пісню</value>
+  </data>
+  <data name="AddTimeForCharts" xml:space="preserve">
+    <value>Додати час для графіків</value>
+  </data>
+  <data name="AdminRegistration" xml:space="preserve">
+    <value>Реєстрація адміна</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Всі адміни</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Вік</value>
@@ -171,6 +183,12 @@
   <data name="ChooseLang" xml:space="preserve">
     <value>Вибрати мову</value>
   </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>Всі тренери</value>
+  </data>
+  <data name="CoachRegistration" xml:space="preserve">
+    <value>Реєстрація тренера</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Підтвердити</value>
   </data>
@@ -182,6 +200,12 @@
   </data>
   <data name="Confirmregistration" xml:space="preserve">
     <value>Підтвердити реєстрацію</value>
+  </data>
+  <data name="CreateTime" xml:space="preserve">
+    <value>Cтворити час</value>
+  </data>
+  <data name="Create_A_ScheduleForDay" xml:space="preserve">
+    <value>Створити графік дня</value>
   </data>
   <data name="DateB" xml:space="preserve">
     <value>Дата народження</value>
@@ -197,6 +221,9 @@
   </data>
   <data name="DeletedStyle" xml:space="preserve">
     <value>Було видалено жанр:  </value>
+  </data>
+  <data name="DeleteTime" xml:space="preserve">
+    <value>Видалити час</value>
   </data>
   <data name="DelSong" xml:space="preserve">
     <value>Була видалена пісня:  </value>
@@ -249,6 +276,9 @@
   <data name="enterName" xml:space="preserve">
     <value>Введіть назву</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Вихід</value>
+  </data>
   <data name="female" xml:space="preserve">
     <value>жіноча</value>
   </data>
@@ -275,6 +305,9 @@
   </data>
   <data name="Genres" xml:space="preserve">
     <value>Жанри</value>
+  </data>
+  <data name="GraphOfDay" xml:space="preserve">
+    <value>Графік дня</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Рівень доступу</value>
@@ -315,6 +348,9 @@
   <data name="MusicPortal" xml:space="preserve">
     <value>Музичний портал</value>
   </data>
+  <data name="MyWorkouts" xml:space="preserve">
+    <value>Мої тренування</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Iм'я</value>
   </data>
@@ -345,6 +381,9 @@
   <data name="Photo" xml:space="preserve">
     <value>Завантажте фото</value>
   </data>
+  <data name="PositionsAndSpecialties" xml:space="preserve">
+    <value>Посади/Спеціальності</value>
+  </data>
   <data name="Post" xml:space="preserve">
     <value>Посада</value>
   </data>
@@ -354,11 +393,20 @@
   <data name="Registration" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="RegistrationM" xml:space="preserve">
+    <value>Реєстрація</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Обов'язкове поле</value>
   </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Зал</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
+    <value>Збережений час</value>
   </data>
   <data name="Shedule" xml:space="preserve">
     <value>Розклад</value>
@@ -384,6 +432,15 @@
   <data name="Text" xml:space="preserve">
     <value>Текст</value>
   </data>
+  <data name="TimeAndSchedule" xml:space="preserve">
+    <value>Час/графік</value>
+  </data>
+  <data name="TimeEnd" xml:space="preserve">
+    <value>Час закінчення</value>
+  </data>
+  <data name="TimeStart" xml:space="preserve">
+    <value>Час початку</value>
+  </data>
   <data name="unage" xml:space="preserve">
     <value>*некоректний вік</value>
   </data>
@@ -396,8 +453,11 @@
   <data name="username" xml:space="preserve">
     <value>користувач</value>
   </data>
+  <data name="UserRegistration" xml:space="preserve">
+    <value>Реєстрація клієнта</value>
+  </data>
   <data name="Users" xml:space="preserve">
-    <value>Користувачі</value>
+    <value>Всі користувачі</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>очікування на реєстрацію</value>
