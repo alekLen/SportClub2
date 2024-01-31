@@ -6,10 +6,7 @@
 }
 
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
-     {
-       @*  <p id="color-changing-paragraph" style="padding-left:100px;font-size:20px;transition: color 2s ease; color:#BDB76B;text-align:center;font-weight:bold;">
-          Скоро открытие нового спортзала!!!
-        </p> *@
+     {      
     <div class="marquee">
         <div class="marquee-content">
             <span> Скоро открытие нового спортзала &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Поспешите приобрести абонементы &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  До конца месяца скидка 30%  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  При покупке двух и более абонементов дополнительная скидка 10% &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; тел: +380971231231 &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
@@ -23,18 +20,17 @@
      </div>
      <div class="flex" style="flex-wrap:wrap;">
         <div class="image-container" style="margin:10px;padding:15px;">
-            <img  src="~/Coaches/75.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
-            <div id="imm11" class="info-box">Групповые тренировки</div>
+            <img src="~/Coaches/спорт.png" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm10" class="info-box">Спорт Это здоровье</div>
         </div>
         <div class="image-container" style="margin:10px;padding:15px;">
             <img src="~/Coaches/тренер1.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
             <div id="imm12" class="info-box">Индивидуальные тренировки</div>
         </div>
         <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/йога.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
-            <div id="imm13" class="info-box">Занятия йогой</div>
+            <img src="~/Coaches/75.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm11" class="info-box">Групповые тренировки</div>
         </div>
-       
     </div>
     <div id="inf10" class="inf" style="width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         Спортивные нагрузки помогают улучшить кровоснабжение мышц и регуляцию деятельности нервной системы. <br />
@@ -45,15 +41,42 @@
     <div id="inf11" class="inf" style="display:none;width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp; Групповые тренировки создают уникальную атмосферу занятий. Составляются таким образом, чтобы все занимающиеся чувствовали себя максимально комфортно,
         могли расслабиться и не стесняться своих движений и присутствия других людей. У нас представлено огромное количество групповых программ по различным направлениям.<br />
-        &nbsp; &nbsp;&nbsp; Вы можете выбрать то, что Вам по душе, комбинировать тренировки, посещая параллельно сразу несколько занятий
+        &nbsp; &nbsp;&nbsp; Вы можете выбрать то, что Вам по душе, комбинировать тренировки, посещая параллельно сразу несколько занятий.
     </div>
     <div id="inf12" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp; Личный тренер по фитнесу позволит вам комфортно заниматься
         и в кратчайшие сроки достигать желаемых результатов. В процессе тренировки инструктор все внимание уделяет одному
-        человеку, сможет предупредить ошибки, поможет строго соблюдать технику выполнения упражненийю<br />
+        человеку, сможет предупредить ошибки, поможет строго соблюдать технику выполнения упражнений.<br />
         Индивидуальный  подход к клиенту обеспечит наилучший результат.
     </div>
-    <div id="inf13" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+    <br />
+    <div class="flex" style="flex-wrap:wrap;">
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/пилатес5.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm21" class="info-box">Пилатес</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/фон.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm22" class="info-box">Кроссфит</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/йога.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm23" class="info-box">Занятия йогой</div>
+        </div>
+
+    </div>
+    
+    <div id="inf21" class="inf" style="display:none;width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; В время пилатеса задействуются глубокие слои мышц, которые не функционируют при других видах спорта.<br />
+        &nbsp; &nbsp;&nbsp; Гимнастика исправляют осанку, избавляют от заболеваний опорно-двигательного аппарата, 
+        повышают эластичность мышц бедер и ягодиц, нормализуют работу сердечно-сосудистой, нервной систем и улучшают концентрацию внимания.
+    </div>
+    <div id="inf22" class="inf" style=" background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; Кроссфит – это высокоинтенсивный вид спорта, включающий элементы кардио, аэробики, тяжелой атлетики, спортивной гимнастики и гребли.<br />
+        &nbsp; &nbsp;&nbsp; Тренировки позволяют быстро избавить тело от лишнего веса. Эффективно воздействуют на внешний 
+        вид – мужчины отмечают рельеф и объемную мускулатуру тела, женщины получают красивые спортивные формы и гибкость.<br />       
+    </div>
+    <div id="inf23" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp;Занятия йогой улучшают равновесие, координацию и чувство баланса, ведь предусматривают выполнение контролируемых движений, концентрацию внимания и статические позиции.<br />
         Йога помогает повысить выносливость, укрепить кости и мышцы и стать более гибкими и подвижными.<br /> На наших занятиях йогой вы узнаете свое тело поновому.
     </div>
@@ -81,51 +104,85 @@
                 currentIndex2 = 0;
             }
         }, 4000);
+        var im0 = document.getElementById('imm10');
         var inf0 = document.getElementById('inf10');
         var im1 = document.getElementById('imm11');
         var inf1 = document.getElementById('inf11');
         var im2 = document.getElementById('imm12');
         var inf2 = document.getElementById('inf12');
-        var im3 = document.getElementById('imm13');
-        var inf3 = document.getElementById('inf13');
+
+        var im21 = document.getElementById('imm21');
+        var inf21 = document.getElementById('inf21');
+        var im22 = document.getElementById('imm22');
+        var inf22 = document.getElementById('inf22');
+        var im23 = document.getElementById('imm23');
+        var inf23 = document.getElementById('inf23');
 
         im1.addEventListener('click', function () {
             if (inf1.style.display === 'none') {
                 inf1.style.display = 'block';
-                inf2.style.display = 'none'; 
-                inf3.style.display = 'none';
+                inf2.style.display = 'none';               
                 inf0.style.display = 'none';
             } else {
                 inf1.style.display = 'none';
-                inf2.style.display = 'none';
-                inf3.style.display = 'none';
+                inf2.style.display = 'none';           
                 inf0.style.display = 'block';
             }
         });
         im2.addEventListener('click', function () {
             if (inf2.style.display === 'none') {
                 inf2.style.display = 'block';
-                inf1.style.display = 'none';
-                inf3.style.display = 'none';
+                inf1.style.display = 'none';               
                 inf0.style.display = 'none';
             } else {
                 inf1.style.display = 'none';
                 inf2.style.display = 'none';
-                inf3.style.display = 'none';
                 inf0.style.display = 'block';
             }
         });
-        im3.addEventListener('click', function () {
-            if (inf3.style.display === 'none') {
-                inf3.style.display = 'block';
+        im0.addEventListener('click', function () {
+            if (inf0.style.display === 'none') {
+                inf0.style.display = 'block';
                 inf1.style.display = 'none';
                 inf2.style.display = 'none';
-                inf0.style.display = 'none';
+               
             } else {
                 inf1.style.display = 'none';
-                inf2.style.display = 'none';
-                inf3.style.display = 'none';
+                inf2.style.display = 'none';               
                 inf0.style.display = 'block';
+            }
+        });
+        im21.addEventListener('click', function () {
+            if (inf21.style.display === 'none') {
+                inf21.style.display = 'block';
+                inf22.style.display = 'none';
+                inf23.style.display = 'none';
+            } else {
+                inf21.style.display = 'none';
+                inf22.style.display = 'none';
+                inf23.style.display = 'block';
+            }
+        });
+        im22.addEventListener('click', function () {
+            if (inf22.style.display === 'none') {
+                inf22.style.display = 'block';
+                inf21.style.display = 'none';
+                inf23.style.display = 'none';
+            } else {
+                inf21.style.display = 'none';
+                inf22.style.display = 'none';
+                inf23.style.display = 'block';
+            }
+        });
+        im23.addEventListener('click', function () {
+            if (inf23.style.display === 'none') {
+                inf23.style.display = 'block';
+                inf22.style.display = 'none';
+                inf21.style.display = 'none';
+            } else {
+                inf23.style.display = 'none';
+                inf22.style.display = 'none';
+                inf21.style.display = 'block';
             }
         });
     });
