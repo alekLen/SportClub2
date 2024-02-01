@@ -113,11 +113,33 @@ namespace SportClub.DAL.EF
                     Photo = "/Coaches/тренер_11.jpg",
                     Description = "Самодостаточный и преданный своему делу инструктор по йоге с 12-летним опытом работы по укреплению здоровья и правильному питанию . Успешно проводил четыре занятия в день для клиентов разных возрастных групп, включая детей и пожилых людей. "
                     };
-                Coaches.Add(c);
+                Coaches.Add(c);               
+                SaveChanges();
+                Salt s1 = new();
+                s1.salt = salt;
+                s1.coach = c;
+                Salts.Add(s1);
+                SaveChanges();
                 Coaches.Add(c1);
+                SaveChanges();
+                Salt s2 = new();
+                s2.salt = salt;
+                s2.coach = c1;
+                Salts.Add(s2);
+                SaveChanges();
                 Coaches.Add(c2);
+                SaveChanges();
+                Salt s3 = new();
+                s3.salt = salt;
+                s3.coach = c2;
+                Salts.Add(s3);
+                SaveChanges();
                 Coaches.Add(c3);
-
+                SaveChanges();
+                Salt s4 = new();
+                s4.salt = salt;
+                s4.coach = c3;
+                Salts.Add(s4);
                 SaveChanges();
             }
         }

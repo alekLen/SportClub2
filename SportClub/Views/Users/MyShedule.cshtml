@@ -28,7 +28,9 @@
                 <span class="white">Тренер : </span><br />
                 <span class="white">@it.Coach.Name</span><br />
 
-                <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
+                <br /> 
+             @*    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="MyAction">Отменить</a> *@
+                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a>
             </div>
         </div>
     }
@@ -83,4 +85,69 @@
     }
     }
 </div>
+<script>
+    $(document).ready(function () {
+       $(".btnDelTR").click(function () {
+            var buttonId = $(this).attr('id');
+            var puth = "/Admin/MyAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтвердите!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmMyAction", "Admin")",
+                                type: "POST",
+                                data: { id: buttonId },
+                                datatype: "json",
+                                success: function (response) {
 
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        
+       });
+    });
+</script>
