@@ -819,6 +819,13 @@ namespace Resources {
                 return ResourceManager.GetString("Surname", resourceCulture);
             }
         }
+        public static string Subcrip
+        {
+            get
+            {
+                return ResourceManager.GetString("Subcrip", resourceCulture);
+            }
+        }
 
         /// <summary>
         ///   Looks up a localized string similar to Текст.

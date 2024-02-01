@@ -90,7 +90,7 @@
  
     <header >
         <div class="my_navbar" style="color:#EEE8AA;padding-right:10px;">
-            <a style="color:#EEE8AA;" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
+            <a id="sportclub" style="color:#EEE8AA;" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
             
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
@@ -137,6 +137,7 @@
                 <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
                 <a class="nav-link card2  whiteY" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2  whiteY" href="#allrooms">Залы для тренировок</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -172,6 +173,7 @@
                 
             <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
 
             }
            

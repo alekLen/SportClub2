@@ -378,6 +378,9 @@
   <data name="StyleSort" xml:space="preserve">
     <value>genre</value>
   </data>
+  <data name="Subcrip" xml:space="preserve">
+    <value>Abonnement</value>
+  </data>
   <data name="Surname" xml:space="preserve">
     <value>Nachname</value>
   </data>

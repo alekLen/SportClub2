@@ -173,18 +173,20 @@ body {
   text-align: center;
 }*/
 .ticket {
-    width: 250px;
+    width: 240px;
     display: inline-block;
     margin: 5px;
     border: 1px solid black;
-    border-radius: 5%;
+    border-radius: 5px;
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     font-weight: bold;
     font-size: 20px;
-    background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 1px, rgba(0, 0, 0, 0.1) 0px 4px 2px, rgba(0, 0, 0, 0.2) 0px 8px 4px, rgba(0, 0, 0, 0.2) -3px -6px 8px, rgba(0, 0, 0, 0.2) 3px 8px 16px;
+    /* background-color: #2F4F4F;*/
+    background-image: linear-gradient(to bottom right, #2F4F4F, rgba(50,50,50));
+    box-shadow: 0px 4px 8px 0px #F0E68C;
+    color: #EEE8AA;
 }
 
 .s {
@@ -192,16 +194,15 @@ body {
 }
 
 .s1 {
-    color: black;
-   
-    opacity: 0.3;
+    color: #F0E68C;
+    opacity: 0.8;
     font-weight: bold;
     font-family: sans-serif;
+   
 }
 
 .s2 {
-    font-size: 15px;
-    line-height: 2;
+    font-size: 15px;    
 }
 
 .s3 {
@@ -219,5 +220,5 @@ body {
 
 
 .ticket:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
