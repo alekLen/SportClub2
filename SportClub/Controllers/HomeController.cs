@@ -11,17 +11,23 @@ namespace SportClub.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ICoach coachService;
+        private readonly IRoom roomService;
 
-        public HomeController(ICoach c, ILogger<HomeController> logger)
+        public HomeController(IRoom r, ICoach c, ILogger<HomeController> logger)
         {
             _logger = logger;
             coachService = c;
+            roomService = r;
         }
 
         public async Task<IActionResult> Index()
         {
             var p = await coachService.GetAllCoaches();
-            return View(p);
+            var r= await roomService.GetAllRooms();
+            StartViewModel  start = new StartViewModel();
+            start.coaches=p.ToList();
+            start.rooms=r.ToList();
+            return View(start);
         }
 
         public IActionResult Privacy()

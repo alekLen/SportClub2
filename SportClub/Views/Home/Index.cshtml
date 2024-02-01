@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "SportClub";
 }
-@model IEnumerable<SportClub.BLL.DTO.CoachDTO>
+@model  SportClub.Models.StartViewModel
 
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {      
@@ -85,13 +85,13 @@
     <div id="allcoaches" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         <div style="text-align:center;color:#EEE8AA;font-size:20px;">Наша команда</div>
     </div>
-    <div >  
-        <div class="flex" style="flex-wrap:wrap;justify-content:space-around;">
+    <div >
+        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">
           @using Microsoft.AspNetCore.Http
-            @foreach (var item in Model)
+            @foreach (var item in Model.coaches)
             {
-              
-                  <div class="flex marg back_color" style="width:620px; padding:2px;height:330px;">
+
+                <div class="flex marg back_color " style="width:620px; padding:2px;height:330px;">
                      
                     <div >
                         <img src=@item.Photo width="330" height="270" alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
@@ -108,6 +108,92 @@
         </div>
     
     </div>
+    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#EEE8AA;font-size:20px;">Залы для тренировок</div>
+    </div>
+    <div>
+        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">          
+            @foreach (var item in Model.rooms)
+            {
+
+                <div class="flex " style="flex-direction:column;" >
+
+                    <div style="padding:10px;background-color:#2F4F4F;margin-bottom:10px;padding-bottom:0px;">
+                        <img src=@item.Photo width="600" height="470" alt="photoSportroom"  />
+                        <h6 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h6>
+                    </div>
+                   
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#F0E68C;font-size:20px;">SportClub</div>
+    </div>
+   @*  <div class="flex">
+        <div class="ticket">
+            ENTERPRISE
+            <hr size="4" style="background-color: rgb(190, 62, 83);">
+            <span class="s">$69</span>
+            <br><br>
+            <span class="s1">per month</span>
+            <br><br>
+            <span class="s2">
+                10GB disk space<br>100GB monthly bandwidth<br>
+                20 email acounts<br>Unlimited subdomens<br>
+            </span>
+            <hr size="20" class="h">
+            <span class="s3">BUY</span>
+            <hr class="h">
+        </div>
+        <div class="ticket">
+            PROFESSIONAL
+            <hr size="4px" style="background-color: rgb(231, 180, 71);">
+            <span class="s">$29</span>
+            <br><br>
+            <span class="s1">per month</span>
+            <br><br>
+            <span class="s2">
+                5GB disk space<br>60GB monthly bandwidth<br>
+                10 email acounts<br>Unlimited subdomens<br>
+            </span>
+            <hr size="20" class="h">
+            <span class="s3" style="background-color: rgb(231, 180, 71)">BUY</span>
+            <hr class="h">
+        </div>
+        <div class="ticket">
+            STANDART
+            <hr size="4px" style="background-color: rgb(103, 134, 201);">
+            <span class="s">$19</span>
+            <br><br>
+            <span class="s1">per month</span>
+            <br><br>
+            <span class="s2">
+                3GB disk space<br>30GB monthly bandwidth<br>
+                5 email acounts<br>Unlimited subdomens<br>
+            </span>
+            <hr size="20" class="h">
+            <span class="s3" style="background-color: rgb(103, 134, 201);">BUY</span>
+            <hr class="h">
+        </div>
+        <div class="ticket">
+            BASIC
+            <hr size="4px" style="background-color: rgb(52, 182, 69)">
+            <span class="s">$9</span>
+            <br><br>
+            <span class="s1">per month</span>
+            <br><br>
+            <span class="s2">
+                1GB disk space<br>10GB monthly bandwidth<br>
+                2 email acounts<br>Unlimited subdomens<br>
+            </span>
+            <hr size="20" class="h">
+            <span class="s3" style="background-color: rgb(52, 182, 69);">BUY</span>
+            <hr class="h">
+        </div>
+    </div> *@
 
 </div>
 
@@ -214,6 +300,7 @@
                 inf22.style.display = 'block';
             }
         });
+       
     });
 </script>
 @{

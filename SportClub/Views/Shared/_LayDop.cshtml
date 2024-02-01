@@ -136,7 +136,7 @@
                @*  <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
                 <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
                 <a class="nav-link card2  whiteY" href="#allcoaches">Наша команда</a>
-                <a class="nav-link card2  whiteY" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a>
+                <a class="nav-link card2  whiteY" href="#allrooms">Залы для тренировок</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -171,8 +171,8 @@
                 <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> *@
                 
             <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
-            <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> 
-            
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
+
             }
            
             @if (Context.Session.GetString("admin") != null)
@@ -311,7 +311,7 @@
             <span id="contact2" style="padding:5px;padding-left:30px;padding-right:50px;color:#EEE8AA;display:inline;">
                 Наш адрес
             </span> 
-                <div id="contact-info" class="flex" style="display:none;">
+                <div id="contact-info" class="flex" >
                 <span style="color: #EEE8AA;padding-left:25px;">Телефон: +1234567890</span>
                 <span style="color: #EEE8AA;padding-left:15px;">Email: example@example.com</span>
                </div>
@@ -413,39 +413,34 @@
         });
 
         var contact = document.getElementById('contact');
-        var contactInfo = document.getElementById('contact-info');
-
-        contact.addEventListener('mouseover', function () {
-            contactInfo.style.display = 'block';
-        });
-
-        contact.addEventListener('mouseout', function () {
-            contactInfo.style.display = 'none';
-        });
+        var contactInfo = document.getElementById('contact-info');      
 
         contact.addEventListener('click', function () {
             if (contactInfo.style.display === 'none') {
                 contactInfo.style.display = 'block';
-            } else {
-                contactInfo.style.display = 'none';
-            }
+                contactInfo2.style.display = 'none';
+            } 
         });
         var contact2 = document.getElementById('contact2');
         var contactInfo2 = document.getElementById('contact-info2');
 
         contact2.addEventListener('mouseover', function () {
             contactInfo2.style.display = 'block';
+            contactInfo.style.display = 'none';
         });
 
         contact2.addEventListener('mouseout', function () {
             contactInfo2.style.display = 'none';
+            contactInfo.style.display = 'block';
         });
 
         contact2.addEventListener('click', function () {
             if (contactInfo2.style.display === 'none') {
                 contactInfo2.style.display = 'block';
+                contactInfo.style.display = 'none';
             } else {
                 contactInfo2.style.display = 'none';
+                contactInfo.style.display = 'block';
             }
         });
 
