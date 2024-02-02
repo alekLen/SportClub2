@@ -32,7 +32,7 @@ namespace SportClub.Controllers
         
         private static List<TimeTDTO> timesT=new();
         private static List<TimetableDTO> timetables = new();
-        //private static List<TrainingIndDTO> trainingsInd = new();
+       
  
         public TimeController(ITrainingGroup tg, IGroup g, IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
         {
@@ -52,6 +52,7 @@ namespace SportClub.Controllers
         public async Task<IActionResult> AddTimeT()
         {
             await PutTimes();
+            PutTimesToTable();
             return View();
         }
         [HttpPost]
@@ -191,13 +192,14 @@ namespace SportClub.Controllers
              await PutTimes();
              return View();
          }
-         public async Task<IActionResult> AddTimesToTable(int id)
+         public async Task<IActionResult> AddTimesToTable(int Tid)
          {
-             TimeTDTO p = await timeService.GetTimeT(id);
+             TimeTDTO p = await timeService.GetTimeT(Tid);
              timesT.Add(p);
              await PutTimes();
               PutTimesToTable();
-             return View("AddTimetable");
+            //return View("AddTimetable");
+            return View ("AddTimeT");
          }
          [HttpPost]
          public async Task<IActionResult> AddTimeTable()
@@ -259,17 +261,20 @@ namespace SportClub.Controllers
          {
 
              List<TimeShow> p1 = new();
-             IEnumerable<TimeTDTO> p2 = timesT.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-             foreach (var t in p2)
-             {
-                 TimeShow ts = new()
-                 {
-                     Id = t.Id,
-                     Time = t.StartTime + "/" + t.EndTime
-                 };
-                 p1.Add(ts);
-             }
-             ViewData["TimetableId"] = new SelectList(p1, "Id", "Time");
+            if (timesT.Count > 0)
+            {
+                IEnumerable<TimeTDTO> p2 = timesT.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var t in p2)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p1.Add(ts);
+                }
+                ViewData["TimetableId"] = new SelectList(p1, "Id", "Time");
+            }
          }
         [HttpGet]
         public async Task <IActionResult> ChoseRomm()
