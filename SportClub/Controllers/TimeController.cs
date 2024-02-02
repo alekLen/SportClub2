@@ -682,9 +682,9 @@ namespace SportClub.Controllers
             return RedirectToAction("RoomWithShedule", /*new { RoomId = tr.RoomId, CoachId = tr.CoachId, Time = tr.Time }*/new { RoomId = roomId });
         }
         [HttpPost]
-        public async Task<IActionResult> AddUserToTrainingInd(int day, int roomId, string time, string roomName, int coachId)
+        public async Task<IActionResult> AddUserToTrainingInd(int id, int day, int roomId, string time, string roomName, int coachId)
         {
-            TrainingIndDTO tr = new();
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(id);
             tr.CoachId = coachId;
             tr.RoomId = roomId;
             tr.RoomName = roomName;
@@ -693,9 +693,10 @@ namespace SportClub.Controllers
             IEnumerable<UserDTO> p = await userService.GetAllUsers();
             ViewData["UserId"] = new SelectList(p, "Id", "Name");
 
-            await trainingIndService.AddTrainingInd(tr);
+            await trainingIndService.UpdateTrainingInd(tr);
             return View(tr);
         }
+     
         [HttpPost]
         public async Task<IActionResult> AddingToTrainingInd(int day, int roomId, string time, string roomName, int coachId,int userId)
         {
