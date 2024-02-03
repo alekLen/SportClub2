@@ -31,7 +31,18 @@ namespace SportClub.Controllers
             specialityService = sp;
             _appEnvironment = _appEnv;
         }
-
+        [HttpGet]
+        public async Task<IActionResult> MyAction(int id)
+        {
+            int id1 = id;
+            return Json(true);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmMyAction(int id)
+        {
+            int id1 = id;
+            return Json(true);
+        }
         public async Task<IActionResult> AddPost()
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -303,11 +314,13 @@ namespace SportClub.Controllers
         [HttpPost]
         public IActionResult ChangeAdminPassword(AdminDTO user)
         {
+            HttpContext.Session.SetString("path", Request.Path);
             return View("PutPassword", user);
         }
         [HttpPost]
         public async Task<IActionResult> PutPassword(int id, string pass)
         {
+            HttpContext.Session.SetString("path", Request.Path);
             AdminDTO u = await adminService.GetAdmin(id);
             try
             {
@@ -323,6 +336,7 @@ namespace SportClub.Controllers
         }
         public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
         {
+            HttpContext.Session.SetString("path", Request.Path);
             AdminDTO u = await adminService.GetAdmin(m.Id);
             string pass = m.Password;
             if (!string.IsNullOrEmpty(pass) && u != null)

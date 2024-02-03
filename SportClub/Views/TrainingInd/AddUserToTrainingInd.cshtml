@@ -1,4 +1,6 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
+@* <h1>Hello</h1>
+<span>@ViewBag.mynewId</span> *@
 
 <h3>Добавить клиенту тренировку</h3>
 <form method="post">
@@ -13,7 +15,8 @@
         <label>Выбрать клиента</label>
         <select asp-for="Id" name="userId" class="form-control card _c7" asp-items="ViewBag.UserId"></select>
 
-        <input type="submit" value="Добавить клиента" formaction="AddUserToTrainingInd" />
-       
+        <input type="submit" value="Добавить клиента" formaction="AddUserToTraining" />
+
     </div>
 </form>
+

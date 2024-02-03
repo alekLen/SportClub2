@@ -4,11 +4,8 @@
     ViewData["Title"] = "Admins";
 }
 <div style="background: #374566; border-radius: 10px; padding:25px;color:white">
-    <h1>Admins</h1>
+    <h1>@Resources.Resource.Admins</h1>
 
-    @* <p>
-    <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">зарегестрировать админа</a>
-    </p> *@
     <table class="table" style="color:white">
         <thead>
             <tr>
@@ -52,9 +49,9 @@
                     </td>
 
                     <td>
-                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
                         <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">@Resources.Resource.Delete</a>
                     </td>
                 </tr>
             }

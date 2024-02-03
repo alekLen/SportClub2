@@ -88,3 +88,38 @@ body {
 .green {
     background-color:lightgreen;
 }
+.ftco-section {
+    padding: 7em 0;
+    background-color: #242424;
+    border-radius: 15px;
+    width: 600px;
+    margin-left: 350px;
+}
+.container1 {
+    max-width: 1000px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #195e5a;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #c4c72c;
+    border-radius: 15px;
+}
+.row {
+    display:flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.column {
+    max-width: 50%;
+    flex: 0 0 25%;
+    min-height: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 15px;
+}
+.justify-content-center {
+    justify-content: center;
+    left:50%;
+
+}

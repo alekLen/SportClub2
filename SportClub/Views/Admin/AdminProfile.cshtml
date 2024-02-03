@@ -6,7 +6,7 @@
 @model SportClub.BLL.DTO.AdminDTO
 @using Microsoft.AspNetCore.Http
 <div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Мой профиль</p>
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">@Resources.Resource.Profile</p>
     <hr style="color:white" />
     <div class="row">
         <div>
@@ -21,25 +21,18 @@
                     <div style="width: 500px;  justify-content: center; ">
 
                         <div class="form-group" style="margin-left: 40px"> 
-                            <label asp-for="Name" class="control-label" style="color: white" class="font"></label>
+                            <label asp-for="Name" class="control-label" style="color: white" class="font">@Resources.Resource.Name</label>
                             <input asp-for="Name" type="text" class="form-control" name="name" id="name" class="font" style="width: 420px">
                             <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                         </div>
                         <div class="form-group" style="margin-left: 40px">
                              
-                            <label asp-for="Login" class="control-label" style="color: white" class="font"></label>
+                            <label asp-for="Login" class="control-label" style="color: white" class="font">@Resources.Resource.Login</label>
                             <input asp-for="Login" type="text" class="form-control" name="login" id="login" style="width: 420px">
                             <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
-                        </div>
-                       
-                        
-                      @*   <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Password" class="control-label" style="color: white" class="font"></label>
-                            <input asp-for="Password" type="password" class="form-control" name="password" id="password" style="width: 420px">
-                            <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
-                        </div>  *@                      
+                        </div>                   
                         <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Email" class="control-label" style="color: white" class="font"></label>
+                            <label asp-for="Email" class="control-label" style="color: white" class="font">@Resources.Resource.email</label>
                             <input asp-for="Email"  class="form-control"  id="emailInput" style="width: 420px">
                             <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
                         </div>                    
@@ -77,9 +70,9 @@
                             <input formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" class="y btn btn-primary font " style="color: white; font-weight:bold" /><br /><br />
                         </div> *@
                         <div style="margin-left: 30px;padding-bottom:20px;">
-                            <input type="submit" class="btn btn-outline-light" formaction="EditAdminProfile" value="Редактировать" />
-                            <input class="btn btn-outline-light" formaction="ChangeAdminPassword" type="submit" value="Изменить пароль" />
-                            <input type="submit" class="btn btn-outline-light" formaction="DeleteAdminProfile" value="Удалить и Выйти" />
+                            <input type="submit" class="btn btn-outline-light" formaction="EditAdminProfile" value="@Resources.Resource.Edit" />
+                            <input class="btn btn-outline-light" formaction="ChangeAdminPassword" type="submit" value="@Resources.Resource.changePassword" />
+                            <input type="submit" class="btn btn-outline-light" formaction="DeleteAdminProfile" value="@Resources.Resource.DeleteAndExit" />
                         </div>
                     </div>
                 </div>

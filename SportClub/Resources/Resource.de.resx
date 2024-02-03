@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
+  <data name="added" xml:space="preserve">
+    <value>hinzugefügt</value>
+  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>Sänger wurde hinzugefügt:  </value>
   </data>
@@ -134,6 +137,15 @@
   </data>
   <data name="AddSong" xml:space="preserve">
     <value>Fügen Sie ein Lied hinzu</value>
+  </data>
+  <data name="AdminDetails" xml:space="preserve">
+    <value>Admin-Details</value>
+  </data>
+  <data name="AdminProfileNameErrorMessage" xml:space="preserve">
+    <value>Das Feld „Name“ darf nur Buchstaben enthalten</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Admins</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Alter</value>
@@ -165,14 +177,23 @@
   <data name="Cancel" xml:space="preserve">
     <value>Stornieren</value>
   </data>
+  <data name="ChangeAdmin" xml:space="preserve">
+    <value>Administrator wechseln</value>
+  </data>
   <data name="Changelevel" xml:space="preserve">
     <value>Zugriffsebene ändern</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Kennwort ändern</value>
   </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Sprache auswählen</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
+  </data>
+  <data name="ConfirmDeletingARoom" xml:space="preserve">
+    <value>Bestätigen Sie das Löschen des Raums</value>
   </data>
   <data name="Confirmdeletion" xml:space="preserve">
     <value>Löschung bestätigen</value>
@@ -189,8 +210,26 @@
   <data name="Delete" xml:space="preserve">
     <value>löschen</value>
   </data>
+  <data name="DeleteAdmin" xml:space="preserve">
+    <value>Entfernen eines Administrators</value>
+  </data>
+  <data name="DeleteAdminQuestion" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie den Administrator entfernen möchten?</value>
+  </data>
+  <data name="DeleteAdminQuestion2" xml:space="preserve">
+    <value>Möchten Sie Ihr Profil dauerhaft löschen?</value>
+  </data>
+  <data name="DeleteAndExit" xml:space="preserve">
+    <value>Löschen und beenden</value>
+  </data>
   <data name="DeleteArt" xml:space="preserve">
     <value>Künstler entfernen</value>
+  </data>
+  <data name="DeleteCoachPost" xml:space="preserve">
+    <value>Streichung einer Trainerposition</value>
+  </data>
+  <data name="DeleteCoachSpec" xml:space="preserve">
+    <value>Entfernen einer Trainerspezialität</value>
   </data>
   <data name="DeletedArtist" xml:space="preserve">
     <value>Der Sänger wurde entfernt:</value>
@@ -203,6 +242,9 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Beschreibung</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Einzelheiten</value>
   </data>
   <data name="Dopname" xml:space="preserve">
     <value>Nachname</value>
@@ -219,8 +261,14 @@
   <data name="EditArt" xml:space="preserve">
     <value>Sänger bearbeiten</value>
   </data>
+  <data name="edited" xml:space="preserve">
+    <value>bearbeitet</value>
+  </data>
   <data name="Editing" xml:space="preserve">
     <value>Bearbeitung</value>
+  </data>
+  <data name="EditRoom" xml:space="preserve">
+    <value>Bearbeiten einer Halle</value>
   </data>
   <data name="EditSong" xml:space="preserve">
     <value>Einen Song bearbeiten</value>
@@ -232,7 +280,7 @@
     <value>Genre bearbeitet:  </value>
   </data>
   <data name="email" xml:space="preserve">
-    <value>email</value>
+    <value>Email</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>*email pflichtfeld</value>
@@ -248,6 +296,9 @@
   </data>
   <data name="enterName" xml:space="preserve">
     <value>Geben Sie den Titel ein</value>
+  </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Geben Sie ein neues Kennwort ein</value>
   </data>
   <data name="female" xml:space="preserve">
     <value>weiblich</value>
@@ -336,6 +387,9 @@
   <data name="password" xml:space="preserve">
     <value>Passwort</value>
   </data>
+  <data name="PasswordChangeError" xml:space="preserve">
+    <value>Fehler bei der Passwortänderung</value>
+  </data>
   <data name="passwordConf" xml:space="preserve">
     <value>Bestätigen Sie das Passwort</value>
   </data>
@@ -356,6 +410,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>ist ein Pflichtfeld</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Hallenname</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
@@ -401,6 +458,9 @@
   </data>
   <data name="waiting" xml:space="preserve">
     <value>warte auf die Anmeldung</value>
+  </data>
+  <data name="WarningAboutDeletingTheRoom" xml:space="preserve">
+    <value>Sein Terminplan und alle Trainingseinheiten werden gelöscht!</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Guten Tag</value>

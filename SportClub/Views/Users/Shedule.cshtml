@@ -58,14 +58,17 @@
                                                 <span class="white">@it.CoachName</span><br />
                                                 @if (it.UserId == null)
                                                 {
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
+                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen"  asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTraining_UserSide">Записаться</a>
                                                 }
                                                 else
                                                 {
                                                     <span class="white">@it.UserName</span>
 
                                                     <br />
-                                                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Просмотр</a>
+                                                    <input type="hidden" class="viewId" value="@it.Id"/>
+                                                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Отменить запись</a>
+                                                    @* href = "javascript:void(0)" *@
+                                                    @* id = "btnCancelAppointment" *@
                                                 }
                                             </div>
                                             <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
@@ -135,3 +138,70 @@
         </div>
     </div>
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btnDelTR").click(function () {
+            var buttonId = $(this).attr('id');
+            var puth = "/Admin/MyAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтвердите отмену записи на тренировку",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Подтвердить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("CancelAppointment_UserSide", "TrainingInd")",
+                                type: "POST",
+                                data: { id: buttonId },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Вы отменили тренировку!",
+                                                close: function () { window.location.href = "@Url.Action("Shedule", "Users")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("Shedule", "Users")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+
+        });
+    });
+</script>

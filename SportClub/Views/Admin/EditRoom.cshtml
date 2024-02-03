@@ -1,15 +1,15 @@
 ﻿@model SportClub.BLL.DTO.RoomDTO
 <div class="flex">
     <div>
-        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">Назад</a>
+        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">@Resources.Resource.Back</a>
         <br />
-        <h2>Редактирование спортзала:   |</h2>
+        <h2>@Resources.Resource.EditRoom:</h2>
     </div>
     <div class="padd1">
         <form method="post" enctype="multipart/form-data">
             <input asp-for="Id" type="hidden" />
             <div class="form-group">
-                <label class="white-color_size20 font">Название зала</label>
+                <label class="white-color_size20 font">@Resources.Resource.RoomName</label>
                 <input name="Name" value="@Model.Name" class="form-control" />
             </div>
             <div class="form-group" style="margin-left: 40px;">

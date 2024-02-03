@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="added" xml:space="preserve">
+    <value>added</value>
+  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>Artist has been added:  </value>
   </data>
@@ -134,6 +137,15 @@
   </data>
   <data name="AddSong" xml:space="preserve">
     <value>Add Song</value>
+  </data>
+  <data name="AdminDetails" xml:space="preserve">
+    <value>Admin details</value>
+  </data>
+  <data name="AdminProfileNameErrorMessage" xml:space="preserve">
+    <value>The 'Name' field must contain letters only</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Admins</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>age</value>
@@ -165,14 +177,23 @@
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="ChangeAdmin" xml:space="preserve">
+    <value>Change of the admin</value>
+  </data>
   <data name="Changelevel" xml:space="preserve">
     <value>Change level</value>
+  </data>
+  <data name="changePassword" xml:space="preserve">
+    <value>Change password</value>
   </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Choose the Language</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
+  </data>
+  <data name="ConfirmDeletingARoom" xml:space="preserve">
+    <value>Confirm deleting the room</value>
   </data>
   <data name="Confirmdeletion" xml:space="preserve">
     <value>Confirm deletion</value>
@@ -189,8 +210,26 @@
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="DeleteAdmin" xml:space="preserve">
+    <value>Removing an admin</value>
+  </data>
+  <data name="DeleteAdminQuestion" xml:space="preserve">
+    <value>Are you sure you want to remove the admin?</value>
+  </data>
+  <data name="DeleteAdminQuestion2" xml:space="preserve">
+    <value>Do you want to permanently delete your profile?</value>
+  </data>
+  <data name="DeleteAndExit" xml:space="preserve">
+    <value>Delete and exit</value>
+  </data>
   <data name="DeleteArt" xml:space="preserve">
     <value>Delete the Artist</value>
+  </data>
+  <data name="DeleteCoachPost" xml:space="preserve">
+    <value>Removing a coach position</value>
+  </data>
+  <data name="DeleteCoachSpec" xml:space="preserve">
+    <value>Removing a trainer specialty</value>
   </data>
   <data name="DeletedArtist" xml:space="preserve">
     <value>The singer was removed:  </value>
@@ -203,6 +242,9 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
   </data>
   <data name="Dopname" xml:space="preserve">
     <value>Surname</value>
@@ -219,8 +261,14 @@
   <data name="EditArt" xml:space="preserve">
     <value>Edit the Artist</value>
   </data>
+  <data name="edited" xml:space="preserve">
+    <value>edited</value>
+  </data>
   <data name="Editing" xml:space="preserve">
     <value>Editing</value>
+  </data>
+  <data name="EditRoom" xml:space="preserve">
+    <value>Editing of the room</value>
   </data>
   <data name="EditSong" xml:space="preserve">
     <value>Edit the Song</value>
@@ -232,7 +280,7 @@
     <value>Genre edited:</value>
   </data>
   <data name="email" xml:space="preserve">
-    <value>email</value>
+    <value>Email</value>
   </data>
   <data name="EmailRequired" xml:space="preserve">
     <value>*email required</value>
@@ -248,6 +296,9 @@
   </data>
   <data name="enterName" xml:space="preserve">
     <value>Enter the name</value>
+  </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Enter new password</value>
   </data>
   <data name="female" xml:space="preserve">
     <value>female</value>
@@ -336,8 +387,11 @@
   <data name="password" xml:space="preserve">
     <value>password</value>
   </data>
+  <data name="PasswordChangeError" xml:space="preserve">
+    <value>Password change error</value>
+  </data>
   <data name="passwordConf" xml:space="preserve">
-    <value>confirm password</value>
+    <value>Confirm password</value>
   </data>
   <data name="Phone" xml:space="preserve">
     <value>Telephone</value>
@@ -356,6 +410,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>is Required</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Room name</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
@@ -401,6 +458,9 @@
   </data>
   <data name="waiting" xml:space="preserve">
     <value>waiting for confirm registration</value>
+  </data>
+  <data name="WarningAboutDeletingTheRoom" xml:space="preserve">
+    <value>It's schedule and all training sessions will be deleted!</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Hello</value>
