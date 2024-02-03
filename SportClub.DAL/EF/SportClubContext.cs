@@ -59,7 +59,6 @@ namespace SportClub.DAL.EF
         public DbSet<TrainingGroup> TrainingsGroup { get; set; }
         public DbSet<TimeT> Times { get; set; }
         public DbSet<Shedule> Shedules { get; set; }
-        public DbSet<SkipShedule> SkipShedule { get; set; }
 
         public DbSet<TypeOfTraining> TypeOfTrainings { get; set; }
         public DbSet<Timetable> Timetables { get; set; }

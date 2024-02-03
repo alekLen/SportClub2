@@ -24,8 +24,6 @@ namespace SportClub.DAL.Interfaces
         ITrainingIndRepository TrainingInds { get; }
         ITrainingGroupRepository TrainingGroups { get; }
         ISetGetRepository<TypeOfTraining> TypeOfTrainings { get; }
-
-        ISetGetRepository<SkipShedule> SkipShedule { get; }
         
 
         Task Save();

@@ -27,10 +27,8 @@ namespace SportClub.Controllers
         private readonly IShedule sheduleService;
         private readonly ITime timeService;
 
-        private readonly ISkipShedule skipSheduleService;
 
-
-        public UsersController(ITime t, IShedule sh, /*IGroup gr,*/ IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg, ISkipShedule sk)
+        public UsersController(ITime t, IShedule sh, /*IGroup gr,*/ IRoom room, IAdmin adm, IUser us, ICoach c, ISpeciality sp, IPost p, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             userService = us;
@@ -43,7 +41,6 @@ namespace SportClub.Controllers
             //groupService = gr;
             sheduleService = sh;
             timeService = t;
-            skipSheduleService = sk;
         }
 
         // GET: Users

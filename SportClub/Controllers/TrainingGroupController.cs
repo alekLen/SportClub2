@@ -45,7 +45,7 @@ namespace SportClub.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTrainingGroup(CreateGroupTrainingModel group)
+        public async Task<IActionResult> CreateTrainingGroup(TrainingGroupDTO group)
         {
             HttpContext.Session.SetString("path", Request.Path);
 
