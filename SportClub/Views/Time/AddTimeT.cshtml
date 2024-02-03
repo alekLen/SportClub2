@@ -1,5 +1,9 @@
 ﻿@Html.AntiForgeryToken()
+
 <div class="flex" style="justify-content:space-around;">
+    <div >
+        <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttonsGY">X</a>
+    </div>
    <div >
         <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">Создать время для графиков</h4>
         @model SportClub.Models.TimeTimetableModel
@@ -83,15 +87,43 @@
                         <input type="submit" formmethod="get" formaction="AddTimesToTable" value="Добавить время в график" class="btn btn-primary  buttonsGY" />
                    
                 </div>
-                    <br /><br />
-                    <a asp-area="" asp-controller="Time" asp-action="GetAllTimetable" class="btn btn-primary buttonsGY">Все сохраненные  графики</a>
+                    <br />
+                    <a href="#all" class="btn btn-primary buttonsGY">Все сохраненные  графики</a>
             </form>
         </div>
     </div>
   </div>
 
 </div>
- 
+<div style="padding-top:20px;">
+<h4 id="all" class="whiteY" style="text-align:center;padding:5px;box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">Графики:</h4>
+</div>
+<div class="flex padd" style="flex-wrap:wrap;background-color:  #2F4F4F;padding-top:0px;justify-content:space-around;">
+    @foreach (var item in Model.times)
+    {
+        <div class="padd" style="border-radius:3px;">
+            <form method="get">
+                <div class="padd" style="background-color:dimgray">
+                    <input type="hidden"  name="id" value="@item.Id" />
+                    @foreach (var t in item.Times)
+                    {
+                        <input type="text" value="@t" style="width:150px;"> <br />
+                    }
+                    <br />
+                   @*  <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" readonly value="Удалить" class="btn btn-primary c2" /> *@
+                   @{var s="btn"+@item.Id;}
+                    <a id=@s class="btn btn-primary buttonsGY btnDelTimeTable">@Resources.Resource.Delete</a>
+                </div>
+            </form>
+        </div>
+    }
+    <form>
+        <div class="padd1">
+            <input value="ВЫХОДНОЙ" readonly style="width:120px;" />
+        </div>
+    </form>
+
+</div>
 
 @section Scripts {
     @{
@@ -212,10 +244,92 @@
                         open: function (event, ui) {
                             StyleDialog($(this).closest(".ui-dialog"));
                         }
-                    });
+                    });         
+        });
+
+        $(".btnDelTimeTable").click(function () {
+            var idd = $(this).attr('id');
+            var result = idd.match(/\d+/);
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load("Admin/AddedPost")
+                .dialog({
+                    title: "Подтвердите!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteTimetable", "Time")",
+                                type: "POST",
+                                data: { Id: result },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Закрыть",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddTimeT", "Time")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Ошибка удаления!",
+                                                close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Закрыть",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddTimeT", "Time")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
 
 
-          
+
         });
 
     });

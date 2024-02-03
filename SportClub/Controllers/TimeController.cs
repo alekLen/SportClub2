@@ -53,7 +53,9 @@ namespace SportClub.Controllers
         {
             await PutTimes();
             PutTimesToTable();
-            return View();
+            TimeTimetableModel model = new();
+            model.times = await makeListTimetables();
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
@@ -224,7 +226,8 @@ namespace SportClub.Controllers
                      t.TimesId.Add(time.Id);
                  await timetableService.AddTimetable(t);
                  timesT.Clear();
-                return RedirectToAction("GetAllTimetable");
+                //return RedirectToAction("GetAllTimetable");
+                return RedirectToAction("AddTimeT");
             }
              else
              {
@@ -329,6 +332,31 @@ namespace SportClub.Controllers
             m.room = r;
             return View("GetTimetables", m);
         }
+        public async Task< List<TimetableShow>> makeListTimetables()
+        {
+            List<TimetableShow> ts = new();
+            IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
+            List<TimeTDTO> pp = new();
+            foreach (var t in p)
+            {
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                    pp.Add(td);
+                }
+                IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var i in p2)
+                {
+                    string st = i.StartTime + "/" + i.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts.Add(t1);
+                pp.Clear();
+            }
+            return ts;
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllTimetable()
         {
@@ -357,43 +385,43 @@ namespace SportClub.Controllers
             m.times = ts;
             return View("GetTimetablesToSee",m);
         }
-        [HttpGet]
-        public async Task<IActionResult> DeleteTimetable(int id)
+        //[HttpGet]
+        //public async Task<IActionResult> DeleteTimetable(int id)
+        //{
+        //    if (id != 0)
+        //    {
+        //        TimetableDTO tt = await timetableService.GetTimetable(id);
+        //        List<TimetableShow> ts = new();              
+        //        List<TimeTDTO> pp = new();
+        //        TimetableShow tss = new();
+        //        tss.Id = tt.Id;
+        //            foreach (var i in tt.TimesId)
+        //            {
+        //                TimeTDTO td = await timeService.GetTimeT(i);
+        //                pp.Add(td);
+        //            }
+        //            IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+        //            foreach (var i in p2)
+        //            {
+        //                string st = i.StartTime + "/" + i.EndTime;
+        //                tss.Times.Add(st);
+        //            }
+        //            ts.Add(tss);                             
+        //        MakeSheduleView m = new();
+        //        m.times = ts;
+        //        return View(m);
+        //    }
+        //    return Redirect("GetAllTimetable");
+        //}
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteTimetable(int Id)
         {
-            if (id != 0)
+            if (Id != 0)
             {
-                TimetableDTO tt = await timetableService.GetTimetable(id);
-                List<TimetableShow> ts = new();              
-                List<TimeTDTO> pp = new();
-                TimetableShow tss = new();
-                tss.Id = tt.Id;
-                    foreach (var i in tt.TimesId)
-                    {
-                        TimeTDTO td = await timeService.GetTimeT(i);
-                        pp.Add(td);
-                    }
-                    IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                    foreach (var i in p2)
-                    {
-                        string st = i.StartTime + "/" + i.EndTime;
-                        tss.Times.Add(st);
-                    }
-                    ts.Add(tss);                             
-                MakeSheduleView m = new();
-                m.times = ts;
-                return View(m);
-            }
-            return Redirect("GetAllTimetable");
-        }
-        [HttpGet]
-        public async Task<IActionResult> ConfirmDeleteTimetable(int id)
-        {
-            if (id != 0)
-            {
-                await timetableService.DeleteTimetable(id);
+                await timetableService.DeleteTimetable(Id);
 
             }
-            return Redirect("GetAllTimetable");
+            return RedirectToAction("AddTimeT");
         }
 
        
