@@ -74,8 +74,8 @@ namespace SportClub.Controllers
             {
                 ModelState.AddModelError("", "Заполните время начала и окончания тренировки!");
             }
-            await PutTimes();
-            return View();
+           // await PutTimes();
+            return RedirectToAction("AddTimeT");
         }    
         public async Task PutTimes()
         {
@@ -95,10 +95,10 @@ namespace SportClub.Controllers
             p1.OrderBy(x => x.Time).ToList();
             ViewData["TimeId"] = new SelectList(p1, "Id", "Time");
         }
-        public async Task<IActionResult> EditTime(int Id)
+        public async Task<IActionResult> EditTime(int timeId)
         {
            // HttpContext.Session.SetString("path", Request.Path);
-            TimeTDTO p = await timeService.GetTimeT(Id);
+            TimeTDTO p = await timeService.GetTimeT(timeId);
             if (p != null)
             {
                 if (TempData.ContainsKey("ErrorMessage"))
@@ -108,8 +108,10 @@ namespace SportClub.Controllers
                 }
                 return View("EditTimeT",p);
             }
-            await PutTimes();
-            return View("AddTimeT");
+            //await PutTimes();
+            //return View("AddTimeT");
+
+            return RedirectToAction("AddTimeT");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -141,57 +143,67 @@ namespace SportClub.Controllers
                     return RedirectToAction("EditTime", new { Id = t.Id });
                    
                 }
-
+                timesT.Clear();
                 return RedirectToAction("AddTimeT");
             }
             catch
             {
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+              return   RedirectToAction("AddTimeT");
             }
         }
-        public async Task<IActionResult> DeleteTime(int Id)
-        {
+      
+        //public async Task<IActionResult> DeleteTime(int idp)
+        //{
             // HttpContext.Session.SetString("path", Request.Path);
-            TimeTDTO p = await timeService.GetTimeT(Id);
-            if (p != null)
-            {
-               
-                return View("DeleteTimeT", p);
-            }
-            await PutTimes();
-            return View("AddTimeT");
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDeleteTime(TimeTDTO t)
+            //TimeTDTO p = await timeService.GetTimeT(idp);
+            //if (p != null)
+            //{
+            //    return Json(true);
+            //    //return View("DeleteTimeT", p);
+            //}
+            //await PutTimes();
+            //return View("AddTimeT");
+            //return RedirectToAction("AddTimeT");
+        //    return Json(true);
+        //}
+        
+        public async Task<IActionResult> ConfirmDeleteTime(int Id)
         {
             //  HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                TimeTDTO p = await timeService.GetTimeT(t.Id);
+                TimeTDTO p = await timeService.GetTimeT(Id);
                 if (p == null)
                 {
-                    await PutTimes();
-                    return View("AddTimeT");
+                    //await PutTimes();
+                    //return View("AddTimeT");
+                    return Json(false);
                 }               
                 await timeService.DeleteTimeT(p.Id);
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+                timesT.Clear();
+                //return RedirectToAction("AddTimeT");
+                return Json(true);
             }
             catch
             {
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+                //return RedirectToAction("AddTimeT");
+                return Json(false);
             }
         }
         [HttpGet]
       
          public async Task<IActionResult> AddTimetable()
-         {           
-             await PutTimes();
-             return View();
-         }
+         {
+            //await PutTimes();
+            //return View();
+            return RedirectToAction("AddTimeT");
+        }
          public async Task<IActionResult> AddTimesToTable(int Tid)
          {
              TimeTDTO p = await timeService.GetTimeT(Tid);
@@ -199,8 +211,9 @@ namespace SportClub.Controllers
              await PutTimes();
               PutTimesToTable();
             //return View("AddTimetable");
-            return View ("AddTimeT");
-         }
+            //return View ("AddTimeT");
+            return RedirectToAction("AddTimeT");
+        }
          [HttpPost]
          public async Task<IActionResult> AddTimeTable()
          {
@@ -215,10 +228,11 @@ namespace SportClub.Controllers
             }
              else
              {
-                await PutTimes();
-                PutTimesToTable();
-                 return View();
-             }
+                //await PutTimes();
+                //PutTimesToTable();
+                // return View();
+                return RedirectToAction("AddTimeT");
+            }
          }
         [HttpGet]
         public async Task<IActionResult> Cancel()
@@ -226,9 +240,10 @@ namespace SportClub.Controllers
             if (timesT.Count > 0)
             {              
                 timesT.RemoveAt(timesT.Count-1);
-                await PutTimes();
-                PutTimesToTable();
-                return View("AddTimetable");              
+                //await PutTimes();
+                //PutTimesToTable();
+                //return View("AddTimetable");              
+                return RedirectToAction("AddTimeT");
             }
             else
             {
@@ -249,8 +264,9 @@ namespace SportClub.Controllers
         }
         [HttpGet]
         public IActionResult Back()
-        {         
-            return RedirectToAction("AddTimetable");
+        {
+            //return RedirectToAction("AddTimetable");
+            return RedirectToAction("AddTimeT");
         }
         [HttpGet]
         public IActionResult BackToAll()

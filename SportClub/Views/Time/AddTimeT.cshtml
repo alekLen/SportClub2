@@ -38,12 +38,14 @@
                 <form asp-controller="Time" method="post" style="border:0px;">
                     <label class="whiteY" style="text-align:center;">Сохраненное время</label><br />
              @*    <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> *@
-                    <select asp-for=@Model.Time.Id size="10" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> 
-                <br />
+                    <select asp-for=@Model.Time.Id size="10"  name="timeId" class="idTime form-control card _c7" asp-items="ViewBag.TimeId"></select>
+                    <br />
                 <div class="form-group">
                         <input type="submit" formmethod="get" formaction="EditTime" value="@Resources.Resource.Edit" class="btn btn-primary  buttonsGY" /><br /><br />
-                        <input type="submit" formaction="DeleteTime" value="Удалить время" class="btn btn-primary   buttonsGY " /><br /><br />
+                        
                 </div>
+                
+                    <a id="btnDelTime" class="btn btn-primary   buttonsGY ">@Resources.Resource.Delete</a><br /><br />
             </form>
         </div>
     </div>
@@ -96,6 +98,7 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
 
@@ -123,7 +126,97 @@
                 $("#en").css("display", "none");
             }
         });
+        var idTi;
+        var selectElement = document.querySelector('.idTime');    
+        selectElement.addEventListener('change', function () {
+            idTi = this.value; 
+        });
 
-        
+       
+
+        $("#btnDelTime").click(function () { 
+            
+                $("<div id='dialogContent3'></div>")
+                    .addClass("dialog")
+                    .appendTo("body")
+                .load("Admin/AddedPost")
+                    .dialog({
+                        title: "Подтвердите!",
+                        close: function () { $(this).remove(); },
+                        dialogClass: 'myTitleClass',
+                        modal: true,
+                        resizable: false,
+                        buttons: [{
+                            class: "input_subm2",//
+                            text: "Удалить",
+                            click: function () {
+                                $.ajax({
+                                    url: "@Url.Action("ConfirmDeleteTime", "Time")",
+                                    type: "POST",
+                                    data: { Id: idTi },
+                                    datatype: "json",
+                                    success: function (response) {
+
+                                        if (response) {
+                                            $("#dialogContent3").remove();
+                                            $("<div id='dialogContent4'></div>")
+                                                .addClass("dialog")
+                                                .appendTo("body")
+                                                .load("/Admin/AddedPost")
+                                                .dialog({
+                                                    title: "Удалено!",
+                                                    close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
+                                                    dialogClass: 'myTitleClass',
+                                                    modal: true,
+                                                    resizable: false,
+                                                    buttons: [{
+                                                        class: "input_subm2",//
+                                                        text: "Закрыть",
+                                                        click: function () {
+                                                        window.location.href = "@Url.Action("AddTimeT", "Time")";
+                                                        }
+                                                    }],
+                                                    open: function (event, ui) {
+                                                        StyleDialog($(this).closest(".ui-dialog"));
+                                                    }
+                                                });
+                                        }
+                                        else {
+                                            $("#dialogContent3").remove();
+                                            $("<div id='dialogContent4'></div>")
+                                                .addClass("dialog")
+                                                .appendTo("body")
+                                                .load("/Admin/AddedPost")
+                                                .dialog({
+                                                    title: "Ошибка удаления!",
+                                                    close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
+                                                    dialogClass: 'myTitleClass',
+                                                    modal: true,
+                                                    resizable: false,
+                                                    buttons: [{
+                                                        class: "input_subm2",//
+                                                        text: "Закрыть",
+                                                        click: function () {
+                                                        window.location.href = "@Url.Action("AddTimeT", "Time")";
+                                                        }
+                                                    }],
+                                                    open: function (event, ui) {
+                                                        StyleDialog($(this).closest(".ui-dialog"));
+                                                    }
+                                                });
+                                        }
+                                    }
+                                });
+                            }
+                        }],
+                        open: function (event, ui) {
+                            StyleDialog($(this).closest(".ui-dialog"));
+                        }
+                    });
+
+
+          
+        });
+
     });
 </script>
