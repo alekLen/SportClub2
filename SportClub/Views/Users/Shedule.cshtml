@@ -1,4 +1,5 @@
-﻿@model MakeSheduleView
+﻿
+@model MakeSheduleView
 @{
     ViewData["Title"] = "Timetables";
 }
@@ -71,8 +72,7 @@
                                                         <span class="white">Не доступно</span>
                                                     }
 
-
-                                                }
+                                            }
                                             </div>
                                             <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
                                         </div>
@@ -99,7 +99,7 @@
                                                     foreach (var us in it.Users)
                                                     {
                                                         if (us.Id == Convert.ToInt32(Context.Session.GetString("Id")))
-                                                           nflag = true;  
+                                                            nflag = true;
                                                     }
 
                                                     if (!nflag)
@@ -108,7 +108,8 @@
                                                         <br />
                                                         <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Записаться</a>
                                                     }
-                                                    else {
+                                                    else
+                                                    {
                                                         <span class=" white">Вы записаны</span>
                                                         //<br />
                                                         //<a class="btn btn-outline-dark" style="background-color:lightsalmon" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Пропустить</a>
@@ -133,7 +134,7 @@
                 }
 
             </tr>
-
+          
         </tbody>
     </table>
 }
@@ -156,3 +157,4 @@
         </div>
     </div>
 }
+

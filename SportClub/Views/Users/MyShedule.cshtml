@@ -1,4 +1,5 @@
-﻿ @model TrainingsAllToSee
+﻿ > Іскра Олександр:
+@model TrainingsAllToSee
 
 
 <h2>Индивидуальные тренировки</h2>
@@ -77,9 +78,35 @@
 
         </div>
 
-    }
+
+}
     }
 </div>
+<script>
+    $(document).ready(function () {
+       $(".btnDelTR").click(function () {
+            var buttonId = $(this).attr('id');
+            var puth = "/Admin/MyAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтвердите!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmMyAction", "Admin")",
+                                type: "POST",
+                                data: { id: buttonId },
+                                datatype: "json",
+                                success: function (response) {
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -107,7 +134,8 @@
                                 datatype: "json",
                                 success: function (response) {
 
-                                    if (response) {
+> Іскра Олександр:
+if (response) {
                                         $("#dialogContent3").remove();
                                         $("<div id='dialogContent4'></div>")
                                             .addClass("dialog")
@@ -148,42 +176,6 @@
 
         });
 
-        function StyleDialog(dialog) {
-            dialog
-                .find(".ui-dialog-titlebar")
-                .css({
-                    "background-color": "#374566", // Фон заголовка
-                    "color": "white" // Цвет текста заголовка black
-                });
-            dialog
-                .css({
-                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                    "border-radius": "10px",
-                    "border": "solid 1px #374566",
-                    "background-color": "#374566"
-                });
-            dialog
-                .find(".ui-dialog-content")
-                .css({
-                    "background-color": "#374566"
-                });
-            dialog
-                .find(".ui-widget-content")
-                .css({
-                    "border": "none",
-                    "background-color": "#374566",
-                    "color": "white", // Цвет текста заголовка black
-                    "padding-left":"15px"
-                });
-            dialog
-                .find(".ui-dialog-buttonpane")
-                .css({
-                    "border-width": "0px",
-                    "background-color": "#374566"
-                });
-        }
-    });
-</script>
 
 
 
