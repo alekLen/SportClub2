@@ -6,6 +6,7 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 using SportClub.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Xml;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class TimeController : Controller
     {
         private readonly ITrainingGroup trainingGroupService;
@@ -51,6 +53,7 @@ namespace SportClub.Controllers
         [HttpGet]
         public async Task<IActionResult> AddTimeT()
         {
+            HttpContext.Session.SetString("path", Request.Path);
             await PutTimes();
             PutTimesToTable();
             TimeTimetableModel model = new();

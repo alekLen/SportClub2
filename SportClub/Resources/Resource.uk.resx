@@ -135,6 +135,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Додати пісню</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Додати час у графік</value>
+  </data>
   <data name="age" xml:space="preserve">
     <value>Вік</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Album" xml:space="preserve">
     <value>Альбом</value>
+  </data>
+  <data name="AllSc" xml:space="preserve">
+    <value>Усі збережені графіки</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
     <value>Усі пісні</value>
@@ -168,8 +174,14 @@
   <data name="Changelevel" xml:space="preserve">
     <value>Змінити рівень доступу</value>
   </data>
+  <data name="ChDay" xml:space="preserve">
+    <value>Графік дня</value>
+  </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Вибрати мову</value>
+  </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Виберіть час для графіка</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Підтвердити</value>
@@ -240,6 +252,9 @@
   <data name="emailused" xml:space="preserve">
     <value>*пошта вже зареєстрована</value>
   </data>
+  <data name="endT" xml:space="preserve">
+    <value>Час закінчення</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Увійти</value>
   </data>
@@ -309,6 +324,12 @@
   <data name="LogRequired" xml:space="preserve">
     <value>*логін обов'язкове поле</value>
   </data>
+  <data name="MakeCh" xml:space="preserve">
+    <value>Створення графіка дня</value>
+  </data>
+  <data name="MakeTime" xml:space="preserve">
+    <value>Створити час для графіків</value>
+  </data>
   <data name="man" xml:space="preserve">
     <value>чоловіча</value>
   </data>
@@ -323,6 +344,9 @@
   </data>
   <data name="Newusers" xml:space="preserve">
     <value>Нові користувачі</value>
+  </data>
+  <data name="oDay" xml:space="preserve">
+    <value>ВИХІДНИЙ</value>
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*підтвердження пароля обов'язково</value>
@@ -360,6 +384,12 @@
   <data name="Save" xml:space="preserve">
     <value>Зберегти</value>
   </data>
+  <data name="saveSc" xml:space="preserve">
+    <value>Зберегти графік</value>
+  </data>
+  <data name="SavT" xml:space="preserve">
+    <value>Збережений час</value>
+  </data>
   <data name="Shedule" xml:space="preserve">
     <value>Розклад</value>
   </data>
@@ -371,6 +401,9 @@
   </data>
   <data name="Speciality" xml:space="preserve">
     <value>Спеціальність</value>
+  </data>
+  <data name="startT" xml:space="preserve">
+    <value>Час початку</value>
   </data>
   <data name="Style" xml:space="preserve">
     <value>Жанр</value>

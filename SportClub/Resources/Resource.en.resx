@@ -135,6 +135,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Add Song</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Add_time_to_schedule</value>
+  </data>
   <data name="age" xml:space="preserve">
     <value>age</value>
   </data>
@@ -143,6 +146,9 @@
   </data>
   <data name="Album" xml:space="preserve">
     <value>Album</value>
+  </data>
+  <data name="AllSc" xml:space="preserve">
+    <value>All saved charts</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
     <value>All songs</value>
@@ -168,8 +174,14 @@
   <data name="Changelevel" xml:space="preserve">
     <value>Change level</value>
   </data>
+  <data name="ChDay" xml:space="preserve">
+    <value>Daily schedule</value>
+  </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Choose the Language</value>
+  </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Select time for schedule</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -240,6 +252,9 @@
   <data name="emailused" xml:space="preserve">
     <value>*email is used</value>
   </data>
+  <data name="endT" xml:space="preserve">
+    <value>End time</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Enter</value>
   </data>
@@ -309,6 +324,12 @@
   <data name="LogRequired" xml:space="preserve">
     <value>*login is required</value>
   </data>
+  <data name="MakeCh" xml:space="preserve">
+    <value>Creating a daily schedule</value>
+  </data>
+  <data name="MakeTime" xml:space="preserve">
+    <value>Create time for charts</value>
+  </data>
   <data name="man" xml:space="preserve">
     <value>male</value>
   </data>
@@ -323,6 +344,9 @@
   </data>
   <data name="Newusers" xml:space="preserve">
     <value>New users</value>
+  </data>
+  <data name="oDay" xml:space="preserve">
+    <value>DAY_OFF</value>
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*confirm password is required</value>
@@ -360,6 +384,12 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
+  <data name="saveSc" xml:space="preserve">
+    <value>Save_schedule</value>
+  </data>
+  <data name="SavT" xml:space="preserve">
+    <value>Saved time</value>
+  </data>
   <data name="Shedule" xml:space="preserve">
     <value>Schedule</value>
   </data>
@@ -371,6 +401,9 @@
   </data>
   <data name="Speciality" xml:space="preserve">
     <value>Speciality</value>
+  </data>
+  <data name="startT" xml:space="preserve">
+    <value>Start time</value>
   </data>
   <data name="Style" xml:space="preserve">
     <value>Genre</value>
