@@ -1,23 +1,30 @@
 header .my_navbar {
-    background-color: #042940;
+     background-color: #042940;
+   
     overflow: hidden;
     /*margin: -4px;*/
 }
 
     header .my_navbar a {
         float: left;
-        color: white;
+        color: #EEE8AA;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
         font-size: 17px;
     }
 .active {
-    background-color: #0089c2;
-    color: white;
+    /* background-color: #0089c2;*/
+    background-color: #2F4F4F;
+    color: #EEE8AA;
 }
 
-
+@font-face {
+   /* font-family: 'UserFont';
+    src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
+    font-weight: normal;
+    font-style: normal;*/
+}
 
 header .mdropdown {
     float: left;
@@ -28,16 +35,17 @@ header .mdropdown {
         font-size: 17px;
         border: none;
         outline: none;
-        color: white;
+        color:  #EEE8AA;      
         padding: 14px 16px;
         background-color: inherit;
-        font-family: inherit;
+        /* font-family: inherit;*/
         margin: 0;
     }
 
     header .my_navbar a:hover,
     header .mdropdown:hover .mdropbtn {
-        background-color: #0089c2;
+        /*  background-color: #0089c2;*/
+        background-color: #2F4F4F;
     }
 
 header .mdropdown-content {
@@ -52,7 +60,7 @@ header .mdropdown-content {
 
     header .mdropdown-content a {
         float: none;
-        color: white;
+        color: #EEE8AA;
         padding: 15px 16px;
         text-decoration: none;
         display: block;
@@ -60,7 +68,8 @@ header .mdropdown-content {
     }
 
         header .mdropdown-content a:hover {
-            background-color: #0089c2;
+            /*background-color: #0089c2;*/
+            background-color: #2F4F4F;
         }
 
 header .mdropdown:hover .mdropdown-content {
@@ -69,17 +78,19 @@ header .mdropdown:hover .mdropdown-content {
 
 .my_bg-white1 {
     background-color: #042940;
+
 }
 
     .my_bg-white1:hover {
-        background-color: #0089c2;
-        color: white;
+        background-color: #2F4F4F;
+        color: #EEE8AA;
     }
 
 .dv1n2 {
     width: max-content;
     height: 46px;
     float: right;
+  
 }
 
 .dv1n {
@@ -121,13 +132,11 @@ header .mdropdown:hover .mdropdown-content {
     color: white;
 }*/
 
-* {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+
 
 html, body {
-    background: linear-gradient( 122deg, rgba(172, 197, 227, 1) 0%, rgba(227, 231, 243, 1) 51%, rgb(187, 202, 236) 80%, rgba(145, 163, 209, 1) 99% ) no-repeat center center fixed;
-}
+/*    background: linear-gradient( 122deg, rgba(172, 197, 227, 1) 0%, rgba(227, 231, 243, 1) 51%, rgb(187, 202, 236) 80%, rgba(145, 163, 209, 1) 99% ) no-repeat center center fixed;
+*/}
 
  /*------------*/
 
@@ -359,7 +368,7 @@ input[type="date"] {
 
 .btn1n1n{
     padding: 6px 12px;
-    te
+   
 }
 /*hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh0*/
 
@@ -390,14 +399,16 @@ input[type="date"] {
 
 .input_subm2 {
     height: 40px;
-    color: white;
+    color:#BDB76B;
     border: none;
     box-shadow: 2px 2px 2px navy;
     font-size: 20px;
-
+    
     border-radius: 5px;
     width: max-content;
-    background-color: rgb(0, 140, 255);
+    background-color: darkgrey;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
     .input_subm2:hover {
@@ -406,4 +417,34 @@ input[type="date"] {
         box-shadow: 2px 2px 2px rgb(0, 0, 0);
         height: 40px;
         background-color: #13678a;
+        
+    }
+.input_subm3 {
+    height: 40px;
+    color: rgb(80,80,80);
+    border: 0px;
+    font-size: 20px;
+    border-radius: 3px;
+    width: max-content;
+    background-color: #EEE8AA;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+    .input_subm3:hover {
+        /*  color: #EEE8AA;*/
+        border: solid 1px #EEE8AA;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #2F4F4F;
+        color: #EEE8AA;
+        box-shadow: 0px 2px 4px 0px #F0E68C;
+    }
+
+    .t_s3:hover {
+      
+        border: solid 1px #EEE8AA;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);       
+        background-color: #2F4F4F;
     }

@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-Bold.ttf" />
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-MediumItalic.ttf" />
+    <Content Remove="wwwroot\fonts\IBMPlexSerif-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
       <PrivateAssets>all</PrivateAssets>
@@ -21,6 +27,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Coaches\" />
+    <Folder Include="wwwroot\fonts\" />
     <Folder Include="wwwroot\Rooms\" />
     <Folder Include="wwwroot\Sport\" />
   </ItemGroup>

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<SportClub.BLL.DTO.RoomDTO>
+
+
+<div class="flex" style="flex-wrap:wrap;">
+        @using Microsoft.AspNetCore.Http
+        @foreach (var item in Model)
+        {
+            <div class="flex padd1 marg" style="width:580px;">
+            <div style="padding:20px;padding-bottom:10px;">
+                    <img src=@item.Photo width="500" height:"auto" alt="photo1" style="padding:20px;background-color:white;" />
+                    <h3 class="white">@item.Name</h3>
+                </div>                
+            </div>
+        }
+    </div>
+

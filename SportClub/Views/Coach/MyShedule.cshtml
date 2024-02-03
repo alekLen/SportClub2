@@ -2,7 +2,7 @@
  
 
 <h2>Индивидуальные тренировки</h2>
-<div class="flex">
+<div class="flex" style="flex-wrap:wrap">
     @if (Model.trInds.Count == 0)
     {
         <h4 class="green" style="padding:10px;" >Не назначены</h4>
@@ -37,7 +37,7 @@
 
 <h2>Групповые тренировки</h2>
 
-<div class="flex" >
+<div class="flex" style="flex-wrap:wrap">
      @if (Model.trGrs.Count == 0)
     {
         <h4 class="green" style="padding:10px;" >Не назначены</h4>

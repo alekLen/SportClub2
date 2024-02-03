@@ -62,10 +62,16 @@
                                                 }
                                                 else
                                                 {
-                                                    <span class="white">@it.UserName</span>
+                                                    @if (@it.UserId.ToString() == ViewBag.MyId)
+                                                    {
+                                                        <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="white">Не доступно</span>
+                                                    }
 
-                                                    <br />
-                                                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Просмотр</a>
+
                                                 }
                                             </div>
                                             <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />

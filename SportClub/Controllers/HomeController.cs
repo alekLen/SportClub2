@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SportClub.BLL.Interfaces;
 using SportClub.Filters;
 using SportClub.Models;
 using System.Diagnostics;
@@ -9,15 +10,24 @@ namespace SportClub.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ICoach coachService;
+        private readonly IRoom roomService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IRoom r, ICoach c, ILogger<HomeController> logger)
         {
             _logger = logger;
+            coachService = c;
+            roomService = r;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var p = await coachService.GetAllCoaches();
+            var r= await roomService.GetAllRooms();
+            StartViewModel  start = new StartViewModel();
+            start.coaches=p.ToList();
+            start.rooms=r.ToList();
+            return View(start);
         }
 
         public IActionResult Privacy()

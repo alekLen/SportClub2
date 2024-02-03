@@ -138,6 +138,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Добавить песню</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Добавить время в график</value>
+  </data>
   <data name="AddTimeForCharts" xml:space="preserve">
     <value>Добавить время для графиков</value>
   </data>
@@ -155,6 +158,9 @@
   </data>
   <data name="Album" xml:space="preserve">
     <value>Альбом</value>
+  </data>
+  <data name="AllSc" xml:space="preserve">
+    <value>Все сохраненные графики</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
     <value>Все песни</value>
@@ -180,8 +186,14 @@
   <data name="Changelevel" xml:space="preserve">
     <value>Изменить уровень доступа</value>
   </data>
+  <data name="ChDay" xml:space="preserve">
+    <value>График дня</value>
+  </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Выбрать язык</value>
+  </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Выберите время для графика</value>
   </data>
   <data name="Coaches" xml:space="preserve">
     <value>Все тренеры</value>
@@ -267,6 +279,9 @@
   <data name="emailused" xml:space="preserve">
     <value>*почта уже зарегестрирована</value>
   </data>
+  <data name="endT" xml:space="preserve">
+    <value>Время окончания</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Войти</value>
   </data>
@@ -342,6 +357,12 @@
   <data name="LogRequired" xml:space="preserve">
     <value>*логин обязательное поле</value>
   </data>
+  <data name="MakeCh" xml:space="preserve">
+    <value>Создание графика дня</value>
+  </data>
+  <data name="MakeTime" xml:space="preserve">
+    <value>Создать время для графиков</value>
+  </data>
   <data name="man" xml:space="preserve">
     <value>мужской</value>
   </data>
@@ -359,6 +380,9 @@
   </data>
   <data name="Newusers" xml:space="preserve">
     <value>Новые пользователи</value>
+  </data>
+  <data name="oDay" xml:space="preserve">
+    <value>ВЫХОДНОЙ</value>
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*подтверждение пароля обязательно</value>
@@ -405,6 +429,12 @@
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
+  <data name="saveSc" xml:space="preserve">
+    <value>Сохранить график</value>
+  </data>
+  <data name="SavT" xml:space="preserve">
+    <value>Сохраненное время</value>
+  </data>
   <data name="SavedTime" xml:space="preserve">
     <value>Сохраненное время</value>
   </data>
@@ -420,11 +450,17 @@
   <data name="Speciality" xml:space="preserve">
     <value>Специальность</value>
   </data>
+  <data name="startT" xml:space="preserve">
+    <value>Время начала</value>
+  </data>
   <data name="Style" xml:space="preserve">
     <value>Жанр</value>
   </data>
   <data name="StyleSort" xml:space="preserve">
     <value>жанрам</value>
+  </data>
+  <data name="Subcrip" xml:space="preserve">
+    <value>Абонементы</value>
   </data>
   <data name="Surname" xml:space="preserve">
     <value>Фамилия</value>

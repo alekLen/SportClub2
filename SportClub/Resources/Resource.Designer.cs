@@ -68,7 +68,78 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
+        public static string startT
+        {
+            get
+            {
+                return ResourceManager.GetString("startT", resourceCulture);
+            }
+        }
+        public static string endT
+        {
+            get
+            {
+                return ResourceManager.GetString("endT", resourceCulture);
+            }
+        }
         
+             public static string saveSc
+        {
+            get
+            {
+                return ResourceManager.GetString("saveSc", resourceCulture);
+            }
+        }
+        public static string oDay
+        {
+            get
+            {
+                return ResourceManager.GetString("oDay", resourceCulture);
+            }
+        }
+        public static string addTtoCh
+        {
+            get
+            {
+                return ResourceManager.GetString("addTtoCh", resourceCulture);
+            }
+        }
+        public static string AllSc
+        {
+            get
+            {
+                return ResourceManager.GetString("AllSc", resourceCulture);
+            }
+        }
+        public static string chooseTime
+        {
+            get
+            {
+                return ResourceManager.GetString("chooseTime", resourceCulture);
+            }
+        }
+        public static string ChDay
+        {
+            get
+            {
+                return ResourceManager.GetString("ChDay", resourceCulture);
+            }
+        }
+
+        public static string SavT
+        {
+            get
+            {
+                return ResourceManager.GetString("SavT", resourceCulture);
+            }
+        }
+        public static string MakeCh
+        {
+            get
+            {
+                return ResourceManager.GetString("MakeCh", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to добавить исполнителя.
         /// </summary>
@@ -625,6 +696,7 @@ namespace Resources {
                 return ResourceManager.GetString("LogRequired", resourceCulture);
             }
         }
+     
         public static string man
         {
             get
@@ -635,7 +707,14 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Музыкальный портал.
         /// </summary>
-        public static string MusicPortal {
+         public static string MakeTime
+        {
+            get
+            {
+                return ResourceManager.GetString("MakeTime", resourceCulture);
+            }
+         }
+public static string MusicPortal {
             get {
                 return ResourceManager.GetString("MusicPortal", resourceCulture);
             }
@@ -817,6 +896,13 @@ namespace Resources {
             get
             {
                 return ResourceManager.GetString("Surname", resourceCulture);
+            }
+        }
+        public static string Subcrip
+        {
+            get
+            {
+                return ResourceManager.GetString("Subcrip", resourceCulture);
             }
         }
 

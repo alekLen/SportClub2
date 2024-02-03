@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
@@ -548,8 +549,24 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             return RedirectToAction("Index", "Home");
         }
+        public async Task<IActionResult> AllRoomsToSee()
+        {
+            IEnumerable<RoomDTO> r = await roomService.GetAllRooms();
+            return View(r);
+        }
 
 
-        
+        [HttpGet]
+        public async Task<IActionResult> MyAction(int id)
+        {
+            int id1 = id;
+            return Json(true);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ConfirmMyAction(int id)
+        {
+            int id1 = id;
+            return Json(true);
+        }
     }
 }
