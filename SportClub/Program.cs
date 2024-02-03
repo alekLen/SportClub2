@@ -2,6 +2,7 @@ using SportClub.BLL.Services;
 using SportClub.BLL.Infrastructure;
 using SportClub.BLL.Interfaces;
 using SportClub.Models;
+using SportClub.DAL.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -9,6 +10,10 @@ builder.Services.AddSportClubContext(connection);
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IAdmin, AdminService>();
 builder.Services.AddTransient<IUser, UserService>();
+//builder.Services.AddTransient<IGroup, GroupService>();
+
+builder.Services.AddTransient<ITrainingGroup, TrainingGroupService>();
+
 builder.Services.AddTransient<ICoach, CoachService>();
 builder.Services.AddTransient<IPost, PostService>();
 builder.Services.AddTransient<ISpeciality, SpecialityService>();
@@ -16,6 +21,7 @@ builder.Services.AddTransient<ITime, TimeTService>();
 builder.Services.AddTransient<ITimetable, TimetableService>();
 builder.Services.AddTransient<IRoom, RoomService>();
 builder.Services.AddTransient<IShedule, SheduleService>();
+builder.Services.AddTransient<ITrainingInd, TrainingIndService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

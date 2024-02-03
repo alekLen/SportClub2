@@ -3,43 +3,37 @@
 *@
 @model SportClub.Models.LoginModel
 @using Microsoft.AspNetCore.Http
-
+@* box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-left:-10px; *@
 <form id="formLog">
   @using (Html.BeginForm())
     {
       @Html.AntiForgeryToken()
-        @* <div class="center ">*@
+        <div style="background-color:rgb(80, 80, 80);  width: 275px;padding:10px">
+   
         <span id="error-login1" style="color:red;display:none;">* @Resources.Resource.loginpassword</span>
 
-        <div class="paddingLeft ">
+        <div >
             @if (Context.Session.GetString("login") == null)
             {
                 @Html.ValidationSummary(true, "")
                 <div>
-                    @Html.LabelFor(model => model.Login)
+                        @Html.LabelFor(model => model.Login, new { @class = "whiteY" })
                     <div>
-                        @Html.EditorFor(model => model.Login)
+                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-10px">                          
                         @Html.ValidationMessageFor(model => model.Login, "")
                     </div>
                 </div>
 
                 <div>
-                    @Html.LabelFor(model => model.Password)
-                    <div>
-                        @Html.PasswordFor(model => model.Password)
+                        @Html.LabelFor(model => model.Password, new { @class = "whiteY" })
+                        <div>
+                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-10px">
                         @Html.ValidationMessageFor(model => model.Password, "")
                     </div>
                 </div>
-
-               @* <div>
-                    <br>
-                    <div>
-                        <input type="submit" class="y" value="Вход" />
-                    </div>
-                </div>*@
             }
         </div>
-        @* </div>*@
+        </div>
     }
 </form>
 <script>

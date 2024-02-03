@@ -1,0 +1,450 @@
+header .my_navbar {
+     background-color: #042940;
+   
+    overflow: hidden;
+    /*margin: -4px;*/
+}
+
+    header .my_navbar a {
+        float: left;
+        color: #EEE8AA;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+.active {
+    /* background-color: #0089c2;*/
+    background-color: #2F4F4F;
+    color: #EEE8AA;
+}
+
+@font-face {
+   /* font-family: 'UserFont';
+    src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
+    font-weight: normal;
+    font-style: normal;*/
+}
+
+header .mdropdown {
+    float: left;
+    overflow: hidden;
+}
+
+    header .mdropdown .mdropbtn {
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color:  #EEE8AA;      
+        padding: 14px 16px;
+        background-color: inherit;
+        /* font-family: inherit;*/
+        margin: 0;
+    }
+
+    header .my_navbar a:hover,
+    header .mdropdown:hover .mdropbtn {
+        /*  background-color: #0089c2;*/
+        background-color: #2F4F4F;
+    }
+
+header .mdropdown-content {
+    display: none;
+    /* border: solid 1px #0089c2; */
+    position: absolute;
+    background-color: #042940;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+    header .mdropdown-content a {
+        float: none;
+        color: #EEE8AA;
+        padding: 15px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+        header .mdropdown-content a:hover {
+            /*background-color: #0089c2;*/
+            background-color: #2F4F4F;
+        }
+
+header .mdropdown:hover .mdropdown-content {
+    display: block;
+}
+
+.my_bg-white1 {
+    background-color: #042940;
+
+}
+
+    .my_bg-white1:hover {
+        background-color: #2F4F4F;
+        color: #EEE8AA;
+    }
+
+.dv1n2 {
+    width: max-content;
+    height: 46px;
+    float: right;
+  
+}
+
+.dv1n {
+    width: max-content;
+    height: 61px;
+    float: right;
+    /*border: solid 1px green;*/
+    margin-top: 4px;
+    margin-right: 7px;
+}
+
+.dv1n1 {
+    width: max-content;
+    height: 54px;
+    float: right;
+    /*border: solid 1px green;*/
+    /*margin-top: 4px;*/
+    /*margin-right: 7px;*/
+}
+/*.dv1n2 {
+    width: max-content;
+    height: 56px;
+    float: right;*/
+    /*border: solid 3px #00008000;*/
+    /*margin-top: 3px;
+    margin-right: 7px;
+}*/
+/*    .dv1n:hover {
+        background-color: #0089c2;
+        color: white;
+    }*/
+/*.my_nav a:hover {
+    background-color: #0089c2;
+    color: white;
+}
+
+.my_nav a.active {
+    background-color: #0089c2;
+    color: white;
+}*/
+
+
+
+html, body {
+/*    background: linear-gradient( 122deg, rgba(172, 197, 227, 1) 0%, rgba(227, 231, 243, 1) 51%, rgb(187, 202, 236) 80%, rgba(145, 163, 209, 1) 99% ) no-repeat center center fixed;
+*/}
+
+ /*------------*/
+
+.div_subm {
+    margin: 25px auto 25px auto;
+    width: 274px;
+}
+
+.dv1 {
+    width: 430px;
+    margin: 0px auto 0px auto;
+    height: 400px;
+}
+
+.dv1 {
+    margin-top: -15px;
+}
+
+.div_l1 {
+    width: 270px;
+    margin: 0px auto 0px auto;
+}
+
+.div_l2 {
+    border: solid 3px #042940;
+    width: 410px;
+    height: 350px;
+    border-radius: 5px;
+    background: #bababf;
+}
+
+.div_l2n {
+    height: 720px;
+}
+
+.div_l2n1 {
+    height: 850px;
+}
+
+.div_l3 {
+    /*width: 412px;350*/
+    width: 318px;
+    /*margin-left: 25px;
+    margin-top: 25px;*/
+    margin: 25px auto 0px auto;
+}
+.div_l3n {
+    /*350  */
+    width: 318px;
+/*    margin-left: 25px;
+    margin-top: 5px;*/
+    margin: 5px auto 0px auto;
+}
+.div_l4 {
+    height: 70px;
+    width: 288px;
+    /*width: 412px;310*/
+}
+
+.label_l1 {
+    font-size: 22px;
+    float: left;
+}
+.label_l1n {
+    font-size: 22px;
+}
+.label_l1n1 {
+    font-size: 18px;
+}
+.span_error {
+    font-size: 18px;
+    margin-top: 10px; 
+    color: red;
+    width: 330px;
+    display: block;
+    text-align: left;
+}
+
+.input1 {
+    width: 320px;
+    margin-top: 5px;
+    height: 33px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(42, 117, 255);
+    font-size: 18px;
+    float: left;
+}
+
+.input_subm {
+    height: 40px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 2px navy;
+    font-size: 20px;
+    border-radius: 5px;
+    width: 274px; 
+    background-color: rgb(0, 140, 255);
+}
+
+    .input_subm:hover {
+        color: white;
+        border: solid 1px navy;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #13678a;
+    }
+
+    /*-------------------*/
+
+/*input[type="file"] {
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    width: 320px;
+    margin-left: -3px;
+    padding-left: 3px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    height: 36px;
+}
+
+    input[type="file"]::-webkit-file-upload-button {
+        border-radius: 5px;
+        border: none;
+        padding-top: 5px;
+        margin-top: -7px;
+        margin-bottom: 2px;
+        height: 33px;
+    }
+
+    input[type="file"]:hover {
+        border: solid 2px navy;
+        margin-left: -3px;
+        padding-left: 3px;
+        border-radius: 5px;
+        width: 320px;
+        margin-top: 5px;
+        padding-top: 5px;
+        padding-bottom: 3px;
+        height: 33px;
+    }*/
+input[type="file"] {
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    width: 420px;
+    padding-left: 3px;
+    margin-left: -3px;
+    margin-top: 5px;
+    margin-bottom: 2px;
+    height: 36px;
+   /* color: black;*/
+    background: rgba(255, 255, 255, 0.226);
+    border-radius: 5px;
+}
+
+    input[type="file"]::-webkit-file-upload-button {
+        border-radius: 5px;
+        border: none;
+        width: 170px;
+        margin-top: 1px;
+        height: 33px;
+        color: black;
+    }
+
+    input[type="file"]:hover {
+        border: solid 2px navy;
+        height: 39px;
+        border-radius: 5px;
+    }
+
+
+.div_i {
+    float: left;
+    padding-top: 7px;
+    background: seashell;
+    border: solid 1px silver;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(0, 89, 255);
+}
+
+.div_com {
+    width: 284px;
+    height: 33px;
+    margin: 8px auto 10px 12px;
+}
+
+.white-color_size20 {
+    color:white;
+    font-size: 20px;
+}
+
+textarea{
+    border-radius:5px;
+    min-height:35px;
+}
+
+input[type="date"] {
+    text-align: center;
+    font-size: 16px; 
+    height: 36px; 
+    border-radius: 5px;
+}
+/*///////*/
+.input_subm_del {
+    height: 40px;
+    color: white;
+    border: none;
+    box-shadow: 2px 2px 2px darkred;
+    font-size: 20px;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: max-content;
+    background-color: rgb(228, 20, 0);
+}
+
+    .input_subm_del:hover {
+        color: white;
+        border: solid 1px navy;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #b10f00;
+    }
+
+.btn1n {
+    background: #374566;
+}
+
+.btn1n1n{
+    padding: 6px 12px;
+   
+}
+/*hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh0*/
+
+.myTitleClass .ui-dialog-titlebar {
+    font-size: 26px;
+    border: none;
+    color: white;
+        
+}
+
+.myTitleClass1 .ui-dialog-titlebar {
+    font-size: 20px;
+    border: none;
+}
+
+.myTitleClass1v .ui-dialog-titlebar {
+    font-size: 20px;
+    border: none;
+    text-align: center;
+}
+/*
+.bordrad7 {
+    border-radius: 7px;
+}
+.bordrad7l {
+    border-radius: 7px;
+}*/
+
+.input_subm2 {
+    height: 40px;
+    color:#BDB76B;
+    border: none;
+    box-shadow: 2px 2px 2px navy;
+    font-size: 20px;
+    
+    border-radius: 5px;
+    width: max-content;
+    background-color: darkgrey;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    .input_subm2:hover {
+        color: white;
+        border: solid 1px #13678a;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #13678a;
+        
+    }
+.input_subm3 {
+    height: 40px;
+    color: rgb(80,80,80);
+    border: 0px;
+    font-size: 20px;
+    border-radius: 3px;
+    width: max-content;
+    background-color: #EEE8AA;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+    .input_subm3:hover {
+        /*  color: #EEE8AA;*/
+        border: solid 1px #EEE8AA;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        height: 40px;
+        background-color: #2F4F4F;
+        color: #EEE8AA;
+        box-shadow: 0px 2px 4px 0px #F0E68C;
+    }
+
+    .t_s3:hover {
+      
+        border: solid 1px #EEE8AA;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);       
+        background-color: #2F4F4F;
+    }

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<SportClub.BLL.DTO.CoachDTO>
+
+<div  class="flex" style="padding-left:100px;" >
+   <div style="justify-content:center">
+  @using Microsoft.AspNetCore.Http
+   @foreach(var item in Model)
+    {
+     <div class="flex padd1 marg" style="width:1000px;">
+        <div>
+                    <img src=@item.Photo width="350" height:"auto" alt="photo1" style="padding:20px;margin-left:30px;background-color:white;" />
+                    <h3 class="white" >@item.Name</h3>
+        </div>
+       <p style="width:600px;padding:30px;font-size:25px;color:white;">
+            @item.Description
+       </p>
+     </div>
+   }
+   </div>
+</div>

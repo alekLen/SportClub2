@@ -1,9 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SportClub</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script> *@
+    @* <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> *@
+ @*    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
@@ -38,13 +44,13 @@
                     <option value="uk">Українська</option>
                     <option value="de">Deutsch</option>
                     <option value="fr">Français</option>
-                </select><br>
+                </select><br> *@
                @* <input type="hidden" value="@(Model.FilterViewModel.SelectedArtist)" name="art">
                 <input type="hidden" value="@(Model.FilterViewModel.SelectedStyle)" name="st">
                 <input type="hidden" value="@(Model.SortViewModel.Current)" name="sortorder">
                 <input type="hidden" value="@(Model.PageViewModel.PageNumber)" name="page">
             <input type="hidden" value="@(Model.find)" name="str">*@
-              <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="btn btn-default c20 yellow-link p">
+             @*  <input type="submit" name="submit" value="@Resources.Resource.ChooseLang" class="btn btn-default c20 yellow-link p">
             </div>
         }
       
@@ -79,9 +85,9 @@
         else
         {
             <ul class="navbar-nav flex-grow-1 c c1">
-                <li class="nav-item">
+                <li class="nav-item"> *@
                   @*  <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="Login">@Resources.Resource.Login</a>*@
-                    <a href="javascript:void(0)" class="nav-link text-dark card2 btn-Login">Войти</a>
+                  @*   <a href="javascript:void(0)" class="nav-link text-dark card2 btn-Login">Войти</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="Registration">@Resources.Resource.Registration</a>
@@ -117,4 +123,4 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>
+</html> *@

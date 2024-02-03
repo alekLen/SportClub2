@@ -1,0 +1,50 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SportClub.BLL.DTO.CoachDTO
+<div class="div_reg">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        Удаление тренера
+    </p>
+    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> тренера? </p>
+
+    <div class="row">
+        <div>
+            <div>
+                <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" />
+            </div>
+            <div class="row">
+                <div style="width: 500px;  justify-content: center; ">
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
+                    </div>
+                    <div class="form-group" style="margin-left: 40px">
+
+                        <label  class="control-label font  white-color_size20" style="color: white">Должность</label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.PostName)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label  class="control-label font  white-color_size20" style="color: white">Специальность</label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.SpecialityName)</h1>
+                    </div>
+                </div>
+                   <br />
+ 
+                <div style="margin: 10px auto 10px auto;width: max-content;">
+                    <form method="post" asp-action="DeleteGroup" asp-controller="Group"
+                          style="width: max-content; float: left;height: 38px;">
+                        <input type="hidden" asp-for="Id" name="id" />
+                        <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
+                    </form>
+                    <a asp-action="GetCoaches" asp-controller="Coach" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                </div><br />
+            </div>
+
+        </div>
+    </div>
+</div>
+ 

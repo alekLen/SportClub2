@@ -1,0 +1,158 @@
+﻿@model MakeSheduleView
+@{
+    ViewData["Title"] = "Timetables";
+}
+
+<div class=" center1 padd">
+    <div style="padding-right:80px">
+        <a asp-area="" asp-controller="Users" asp-action="BackToRooms" class="btn btn-primary padd1 buttons1">@Resources.Resource.Back</a>
+    </div>
+    <input type="hidden" id="idshed" value="@Model.room.sheduleId" />
+    <input type="hidden" id="idroom" value="@Model.room.Id" />
+    <h1>@Model.room.Name &nbsp;&nbsp;&nbsp;</h1>
+    <img src="@Model.room.Photo" style="width:70px;height:70px" alt="photo" />
+
+</div>
+@if (Model.message == null)
+{
+    <table style=" border: 1px solid black; margin-left:-100px;">
+        <thead>
+            <tr>
+                <td><h6 class="padd1 white marg ">Понедельник</h6></td>
+                <td><h6 class="padd1 white marg ">Вторник </h6></td>
+                <td><h6 class="padd1 white marg ">Среда</h6></td>
+                <td><h6 class="padd1 white marg ">Четверг</h6></td>
+                <td><h6 class="padd1 white marg ">Пятница</h6></td>
+                <td><h6 class="padd1 white marg ">Суббота</h6></td>
+                <td><h6 class="padd1 white marg ">Воскресенье</h6></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @for (var t1 = 0; t1 < Model.times.Count; t1++)
+                {
+
+                    <td>
+
+                        @for (var t = 0; t < Model.times[t1].Times.Count; t++)
+                        {
+
+                            <form method="post" class="padd1 marg">
+
+                                <input type="hidden" name="day" value="@t1" />
+                                <input type="hidden" name="roomId" value="@Model.room.Id" />
+                                <input type="hidden" name="roomName" value="@Model.room.Name" />
+
+                                <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
+
+
+                                @foreach (var it in Model.trainingInd)
+                                {
+                                    @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
+                                    {
+                                        Model.flag = true;
+                                        <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
+                                            <div>
+                                                <span class="white">Инд.тренировка</span><br />
+                                                <span class="white">Тренер : </span><br />
+                                                <span class="white">@it.CoachName</span><br />
+                                                @if (it.UserId == null)
+                                                {
+                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.RoomId" asp-route-groupId="@it.Id" asp-route-userId="" asp-controller="" asp-action="">Записаться</a>
+                                                }
+                                                else
+                                                {
+                                                    @if (@it.UserId.ToString() == ViewBag.MyId)
+                                                    {
+                                                        <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="white">Не доступно</span>
+                                                    }
+
+
+                                                }
+                                            </div>
+                                            <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
+                                        </div>
+                                    }
+                                }
+                                @foreach (var it in Model.traininggroup)
+                                {
+                                    @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.Room.Id == @Model.room.Id)
+                                    {
+                                        Model.flag = true;
+                                        <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
+                                            <div>
+                                                @{
+                                                    var num = it.Number - it.Users.Count;
+                                                    // var num = it.Group.Number - it.Users.Count;
+                                                }
+                                                <span class="white"> ( @it.Number )</span><br />
+                                                @* <span class="white">@it.Group.Name ( @it.Group.Number )</span><br /> *@
+                                                <span class="white">Тренер : </span><br />
+                                                <span class="white">@it.Coach.Name</span><br />
+                                                @if (it.Number > it.Users.Count)@* (it.Group.Number > it.Group.UsersId.Count) *@
+                                                {
+                                                    bool nflag = false;
+                                                    foreach (var us in it.Users)
+                                                    {
+                                                        if (us.Id == Convert.ToInt32(Context.Session.GetString("Id")))
+                                                           nflag = true;  
+                                                    }
+
+                                                    if (!nflag)
+                                                    {
+                                                        <span class="white">Доступно : @num </span>
+                                                        <br />
+                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Записаться</a>
+                                                    }
+                                                    else {
+                                                        <span class=" white">Вы записаны</span>
+                                                        //<br />
+                                                        //<a class="btn btn-outline-dark" style="background-color:lightsalmon" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Пропустить</a>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <span class=" white">Не доступно</span>
+                                                }
+                                            </div>
+                                            <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" />
+                                        </div>
+                                    }
+                                }
+
+                            </form>
+
+                        }
+
+                    </td>
+
+                }
+
+            </tr>
+
+        </tbody>
+    </table>
+}
+@if (Model.message != null)
+{
+    <div class="center">
+        <div style="display:flex;flex-direction:column;">
+            <div>
+                <h1>@Model.message</h1><div style="display:flex;flex-direction:column;">
+                </div><br /><br />
+                <div>
+                    <form method="post">
+
+                        <input type="hidden" name="Id" value="@Model.room.Id" />
+                        <input type="submit" asp-controller="Time" asp-action="GetAllTimetable" class="padd1 white" value="Составить расписание зала" />
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

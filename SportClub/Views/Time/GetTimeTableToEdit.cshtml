@@ -1,0 +1,31 @@
+﻿@model MakeSheduleView
+
+<div>
+    <a asp-route-roomId="@Model.room.Id" asp-controller="Time" asp-action="BackToShedule" class="btn btn-primary buttons">Назад</a>
+</div>
+<div class="flex" style="flex-wrap:wrap">
+    @foreach (var item in Model.times)
+    {
+        <div>
+            <form method="get">
+                <div class="padd1">
+                    <input type="hidden" name="id" value="@item.Id" />
+                    @foreach (var t in item.Times)
+                    {
+                        <input type="text" value="@t" style="width:150px;"> <br />
+                    }
+                    @if (item.Times.Count == 0)
+                    {
+                        <input value="ВЫХОДНОЙ" readonly style="width:120px;" />
+                    }
+                    <br />
+                    <a asp-route-roomId="@Model.room.Id" asp-controller="Time" asp-action="BackToShedule" class="btn btn-primary buttons">Редактировать</a>
+                    <br /> <br />
+                  @*   <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" readonly value="Удалить" class="btn btn-primary c2" /> *@
+                </div>
+            </form>
+        </div>
+    }
+   
+
+</div>

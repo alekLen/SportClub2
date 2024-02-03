@@ -73,5 +73,10 @@ namespace SportClub.Controllers
             }
             catch { return View(c); }
         }
+        public async Task<IActionResult> Hello(int groupId, int roomId)
+        {
+            ViewData["mynewId"]  = roomId + groupId;
+            return View(); 
+        }
     }
 }

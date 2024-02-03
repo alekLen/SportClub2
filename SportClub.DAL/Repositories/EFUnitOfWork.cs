@@ -16,7 +16,7 @@ namespace SportClub.DAL.Repositories
         private PostRepository postRepository;
         private AdminRepository adminRepository;
         private UserRepository userRepository;
-        private GroupRepository groupRepository;
+        
         private RoomRepository roomRepository;
         private SaltRepository saltRepository;
         private SheduleRepository sheduleRepository;
@@ -26,7 +26,6 @@ namespace SportClub.DAL.Repositories
         private TrainingIndRepository trainingIndRepository;
         private TrainingGroupRepository trainingGroupRepository;
         private TypeOfTrainingRepository typeoftrainingRepository;
-
 
         public EFUnitOfWork(SportClubContext context)
         {
@@ -70,15 +69,15 @@ namespace SportClub.DAL.Repositories
                 return userRepository;
             }
         }
-        public ISetGetRepository<Group> Groups
-        {
-            get
-            {
-                if (groupRepository == null)
-                    groupRepository = new GroupRepository(db);
-                return groupRepository;
-            }
-        }
+        //public IGroupRepository Groups
+        //{
+        //    get
+        //    {
+        //        if (groupRepository == null)
+        //            groupRepository = new GroupRepository(db);
+        //        return groupRepository;
+        //    }
+        //}
         public ISetGetRepository<Room> Rooms
         {
             get
@@ -160,7 +159,7 @@ namespace SportClub.DAL.Repositories
                 return typeoftrainingRepository;
             }
         }
-
+  
         public async Task Save()
         {
             await db.SaveChangesAsync();

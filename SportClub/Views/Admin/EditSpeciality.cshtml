@@ -1,14 +1,13 @@
-﻿<form asp-controller="Login" method="post">
+﻿<form asp-controller="Login" method="post" id="formSpec">
     @model SportClub.BLL.DTO.SpecialityDTO
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <span>@Resources.Resource.Name </span><br />
+   @*  <div class="div_reg padd"> *@
+        <span style="color:white">@Resources.Resource.Speciality </span><br />
         <input asp-for="Name" class="form-control card _c7" />
         <input asp-for="Id" type="hidden" />
         <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
+   @*  <br />
         <input type="submit" formaction="EditSpeciality" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
-    </div>
+    </div> *@
 </form>

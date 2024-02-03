@@ -3,81 +3,78 @@
 *@
 @model SportClub.Models.RegisterAdminModel
 @using Microsoft.AspNetCore.Http
-<div class="center pr">
-<form id="registrationForm" action="RegistrationAdmin" method="post">
-    @Html.AntiForgeryToken()
-    <div class="card c22">
-        @Html.ValidationSummary(true, "")
-            <div>
-                @Html.DisplayNameFor(model => model.Name)
-                <div>
-                    @Html.EditorFor(model => model.Name)
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-            </div>
-           
-        <div>
-            @Html.DisplayNameFor(model => model.Login)
-            <div>
-                @Html.EditorFor(model => model.Login, new { id = "login" })
-                    @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
-                <span asp-validation-for="Login"  class="text-danger"></span>
-            </div>
-        </div>
 
-        <div>
-            @Html.DisplayNameFor(model => model.Password)
-            <div>
-                @Html.PasswordFor(model => model.Password, new { id = "Password" })
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-        </div>
+<div class="div_reg">
+    <p class="font">@Resources.Resource.AdminRegistration</p>@* Регистрация админа *@
+    <div class="row">
+        <form id="registrationForm" action="RegistrationAdmin" method="post" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "")
 
-        <div>
-            @Html.DisplayNameFor(model => model.PasswordConfirm)
+            <div class="form-group" style="margin-left: 40px">
 
-            <div>
-                @Html.PasswordFor(model => model.PasswordConfirm)
-                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                <label asp-for="Name" class="control-label font white-color_size20"></label>
+                <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
+                <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
-        </div>
-        <div>
-            @Html.DisplayNameFor(model => model.Email)
-            <div>
-                @Html.EditorFor(model => model.Email, new { id = "emailInput" })
-                <span asp-validation-for="Email"  class="text-danger"></span>
+
+            <div class="form-group" style="margin-left: 40px">
+
+                <label asp-for="Login" class="control-label font white-color_size20" ></label>
+                <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px" autocomplete="off">
+                <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
             </div>
-        </div>
-            <div class="form-group">
-                <label asp-for="Phone">@Resources.Resource.Phone:</label>
-                <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="Password" class="control-label font white-color_size20"></label>
+                <input asp-for="Password" type="password" class="form-control" style="width: 420px" autocomplete="off">
+                <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
             </div>
-            <div class="form-group">
-                <label>@Resources.Resource.gender:</label>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="PasswordConfirm" style=" width: 200px" class="control-label font white-color_size20"></label>
+                <input asp-for="PasswordConfirm" type="password" class="form-control" style="width: 420px">
+                <span asp-validation-for="PasswordConfirm" class="text-danger" style="width: 450px"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="Email" class="control-label font white-color_size20"></label>
+                <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
+                <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
+            </div>
+             
+            <div class="form-group" style="margin-left: 40px">
+                <label asp-for="Phone" class="font white-color_size20">@Resources.Resource.Phone</label>
+                <input asp-for="Phone" class="form-control" placeholder="+380971234567" style="width: 420px" />
+                <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
+            </div>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.gender</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
-                    <label class="form-check-label" for="male">@Resources.Resource.man:</label>
+                    <label class="font form-check-label white-color_size20" for="male">@Resources.Resource.man</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
-                    <label class="form-check-label" for="female">@Resources.Resource.female:</label>
+                    <label class="font form-check-label white-color_size20" for="female">@Resources.Resource.female</label>
                 </div>
+                <span asp-validation-for="Gender" class="text-danger" style="width: 450px"></span>
             </div>
-        <div>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-            <div>
-                @Html.EditorFor(model => model.DateOfBirth)
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+
+            <div class="form-group" style="margin-left: 40px">
+                <label class="font white-color_size20">@Resources.Resource.DateB</label><br />
+                <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
+                <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
-        </div>
-        <div><br />
-            <div>
-                    <button class="y" type="submit">@Resources.Resource.Confirm</button>
-            </div>
-        </div>
+
+            <div style="margin: 10px auto 10px auto;width: max-content;">
+                <input style="height: 38px;" type="submit" class="btn btn-primary font y" value="@Resources.Resource.Confirm" />
+                <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back</a><br />@* Back *@
+            </div><br />
+        </form>
     </div>
-</form>
 </div>
 @section Scripts {
     @{

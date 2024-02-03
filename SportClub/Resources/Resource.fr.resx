@@ -129,11 +129,23 @@
   <data name="AddedStyle" xml:space="preserve">
     <value>Le genre a été ajouté:  </value>
   </data>
+  <data name="AddingAndEditingHall" xml:space="preserve">
+    <value>Ajouter/modifier des salles</value>
+  </data>
   <data name="Addition" xml:space="preserve">
     <value>Ajout</value>
   </data>
   <data name="AddSong" xml:space="preserve">
     <value>Ajouter une chanson</value>
+  </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Ajouter du temps à planifier</value>
+  </data>
+  <data name="AddTimeForCharts" xml:space="preserve">
+    <value>Ajouter du temps pour les graphiques</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Tous les admins</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>âge</value>
@@ -143,6 +155,9 @@
   </data>
   <data name="Album" xml:space="preserve">
     <value>Album</value>
+  </data>
+  <data name="AllSc" xml:space="preserve">
+    <value>Tous les graphiques enregistrés</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
     <value>Toutes les chansons</value>
@@ -168,8 +183,17 @@
   <data name="Changelevel" xml:space="preserve">
     <value>Changer le niveau d'accès</value>
   </data>
+  <data name="ChDay" xml:space="preserve">
+    <value>Horaire quotidien</value>
+  </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Choisir la langue</value>
+  </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Sélectionnez l'heure pour le calendrier</value>
+  </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>Tous les entraîneurs</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirmer</value>
@@ -182,6 +206,12 @@
   </data>
   <data name="Confirmregistration" xml:space="preserve">
     <value>Confirmer l'inscription</value>
+  </data>
+  <data name="CreateTime" xml:space="preserve">
+    <value>Créer du temps</value>
+  </data>
+  <data name="Create_A_ScheduleForDay" xml:space="preserve">
+    <value>Créer un horaire quotidien</value>
   </data>
   <data name="DateB" xml:space="preserve">
     <value>Date de naissance</value>
@@ -197,6 +227,9 @@
   </data>
   <data name="DeletedStyle" xml:space="preserve">
     <value>Genre supprimé :  </value>
+  </data>
+  <data name="DeleteTime" xml:space="preserve">
+    <value>Supprimer l'heure</value>
   </data>
   <data name="DelSong" xml:space="preserve">
     <value>La chanson a été supprimée :  </value>
@@ -240,6 +273,9 @@
   <data name="emailused" xml:space="preserve">
     <value>*l'adresse e-mail est déjà utilisée</value>
   </data>
+  <data name="endT" xml:space="preserve">
+    <value>Heure de fin</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Entrer</value>
   </data>
@@ -248,6 +284,9 @@
   </data>
   <data name="enterName" xml:space="preserve">
     <value>Entrez le titre</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Sortie</value>
   </data>
   <data name="female" xml:space="preserve">
     <value>femme</value>
@@ -276,6 +315,9 @@
   <data name="Genres" xml:space="preserve">
     <value>Genre</value>
   </data>
+  <data name="GraphOfDay" xml:space="preserve">
+    <value>Horaire quotidien</value>
+  </data>
   <data name="Level" xml:space="preserve">
     <value>Niveau d'accès</value>
   </data>
@@ -290,6 +332,9 @@
   </data>
   <data name="Login" xml:space="preserve">
     <value>Se connecter</value>
+  </data>
+  <data name="LoginLength" xml:space="preserve">
+    <value>La longueur de connexion doit être comprise entre 3 et 15 caractères</value>
   </data>
   <data name="loginN" xml:space="preserve">
     <value>se connecter</value>
@@ -306,11 +351,20 @@
   <data name="LogRequired" xml:space="preserve">
     <value>*la connexion est un champ obligatoire</value>
   </data>
+  <data name="MakeCh" xml:space="preserve">
+    <value>Création d'un planning quotidien</value>
+  </data>
+  <data name="MakeTime" xml:space="preserve">
+    <value>Créer du temps pour les graphiques</value>
+  </data>
   <data name="man" xml:space="preserve">
     <value>mâle</value>
   </data>
   <data name="MusicPortal" xml:space="preserve">
     <value>Portail musical</value>
+  </data>
+  <data name="MyWorkouts" xml:space="preserve">
+    <value>Mes entraînements</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Nom</value>
@@ -320,6 +374,9 @@
   </data>
   <data name="Newusers" xml:space="preserve">
     <value>Nouveaux utilisateurs</value>
+  </data>
+  <data name="oDay" xml:space="preserve">
+    <value>JOUR_DE_CONGÉ</value>
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*une confirmation du mot de passe est requise</value>
@@ -342,14 +399,41 @@
   <data name="Photo" xml:space="preserve">
     <value>Télécharger une photo</value>
   </data>
+  <data name="PositionsAndSpecialties" xml:space="preserve">
+    <value>Postes/Spécialités</value>
+  </data>
   <data name="Post" xml:space="preserve">
     <value>Titre d'emploi</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registre</value>
   </data>
+  <data name="RegistrationM" xml:space="preserve">
+    <value>Inscription</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Champ obligatoire</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Salle</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="saveSc" xml:space="preserve">
+    <value>Enregistrer le planning</value>
+  </data>
+  <data name="SavT" xml:space="preserve">
+    <value>Temps gagné</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
+    <value>Temps gagné</value>
+  </data>
+  <data name="Shedule" xml:space="preserve">
+    <value>Calendrier</value>
   </data>
   <data name="Songname" xml:space="preserve">
     <value>Titre de la chanson</value>
@@ -360,17 +444,32 @@
   <data name="Speciality" xml:space="preserve">
     <value>Spécialité</value>
   </data>
+  <data name="startT" xml:space="preserve">
+    <value>Heure de début</value>
+  </data>
   <data name="Style" xml:space="preserve">
     <value>Genre</value>
   </data>
   <data name="StyleSort" xml:space="preserve">
     <value>genre</value>
   </data>
+  <data name="Subcrip" xml:space="preserve">
+    <value>Abonnement</value>
+  </data>
   <data name="Surname" xml:space="preserve">
     <value>Nom de famille</value>
   </data>
   <data name="Text" xml:space="preserve">
     <value>Texte</value>
+  </data>
+  <data name="TimeAndSchedule" xml:space="preserve">
+    <value>Heure/calendrier</value>
+  </data>
+  <data name="TimeEnd" xml:space="preserve">
+    <value>Heure de fin</value>
+  </data>
+  <data name="TimeStart" xml:space="preserve">
+    <value>Heure de début</value>
   </data>
   <data name="unage" xml:space="preserve">
     <value>*âge incorrect</value>
@@ -385,13 +484,13 @@
     <value>utilisateur</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Utilisateurs</value>
+    <value>Tous les utilisateurs</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>en attente d'inscription</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Accueillir</value>
+    <value>Bonjour</value>
   </data>
   <data name="Year" xml:space="preserve">
     <value>Année</value>

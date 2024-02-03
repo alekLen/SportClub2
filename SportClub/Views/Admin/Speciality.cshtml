@@ -1,9 +1,9 @@
-﻿<h4 class=" b1 b3 c20 center pr"> @Resources.Resource.Speciality</h4>
-<div class="center pr">
-    <div class="c3">
+﻿<h2 class=" b1 b3 c20 center pr"> @Resources.Resource.Speciality тренера</h2>
+<div class="flex div_reg padd">
 
-        <div class=" card c7">
-            <h4>@Resources.Resource.Addition</h4>
+
+    <div class="padd white">
+            <h4>Добавить специальность</h4>
             <form asp-controller="Login" method="post">
                 @model SportClub.BLL.DTO.SpecialityDTO
 
@@ -19,7 +19,7 @@
             </form>
 
         </div>
-        <div class=" card c7">
+    <div class="padd white">
             <h4> @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Speciality</label>
@@ -32,6 +32,52 @@
                 </div>
             </form>
         </div>
-    </div>
+   
 </div>
 
+@* <br>
+<div>
+    <div class="dv1">
+        <h1 class="h1_n">Стили</h1>
+        <div class="div_l1 div_l2n1">
+            <div class="div_l2 div_l2n wh">
+
+                <hr style="border:none;width:465px" />
+                <a class="a_bt1 " asp-action="Create">Добавить стиль</a>
+
+                <div class="div_l3n wh">
+                    <div class="div_l4 wh">
+                        @if (ViewBag.SpecialityId.Count != 0)
+                        {
+                            <table class="table1">
+                                <thead>
+                                    <tr>
+                                        <th class="th1"> @Resources.Resource.Speciality </th>
+                                        <th class="th1"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.SpecialityId)
+                                    {
+                                        <tr class="tr1">
+                                            <td class="td1"> @item.StyleName </td>
+                                            <td class="td1">
+                                                <a class="a_bt2" asp-action="Edit" asp-route-id="@item.Id">Редактировать</a>
+                                                <a class="a_bt2" asp-action="Delete" asp-route-id="@item.Id">Удалить</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <br /> <br />
+                        }
+                        else
+                        {
+                            <h3 style="width:465px;text-align:center">Стилей нет</h3>
+                        }
+                    </div>
+                </div>  <br /> <br />
+            </div>
+        </div>
+    </div>
+</div> *@

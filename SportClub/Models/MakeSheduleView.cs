@@ -9,8 +9,13 @@ namespace SportClub.Models
 
         public List<TimetableShow> times { get; set; } = new();
         public List<TimetableShow> timesAdded { get; set; } = new();
-        public RoomDTO room { get; set; }
+        public RoomDTO? room { get; set; }
         public string? message;
+        public List<TrainingIndDTO>? trainingInd { get; set; } = new();
+        // public List<TrainingGroupDTO>? traininggroup { get; set; } = new();
+        public List<TrainingGrToSee>? traininggroup { get; set; } = new();
+        public bool flag { get; set; } = false;
+        
       // public int? shedule { get;set; }
     }
 }

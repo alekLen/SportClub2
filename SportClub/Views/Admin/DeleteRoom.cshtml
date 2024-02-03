@@ -1,0 +1,23 @@
+﻿@model SportClub.BLL.DTO.RoomDTO
+<div class="flex">
+    <div>
+        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">Назад</a>
+        <br />
+        <h2>Потвердите удаление спортзала:   </h2>
+        <h3>Будет удалено его расписание и все тренировки! </h3>
+    </div>
+    <div class="padd1">
+        <form method="post" class="padd" >
+            <div class="form-group">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <label class="white-color_size20 font">Название зала</label>
+                <input name="Name" value="@Model.Name" readonly class="form-control" />
+             <br />          
+            <input  class="btn1n btn btn-outline-light red"  type="submit" value="@Resources.Resource.Confirmdeletion" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <img  src="@Model.Photo" width="200" height="200" alt="Photo" style="background-color:wheat; margin:20px;" />
+    </div>
+</div>

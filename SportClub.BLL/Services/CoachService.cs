@@ -88,7 +88,12 @@ namespace SportClub.BLL.Services
         }
         public async Task DeleteCoach(int id)
         {
+            Coach coach = await Database.Coaches.Get(id);
+            Salt salt = await Database.Salts.GetCoachSalt(coach);
+            await Database.Salts.Delete(salt.Id);
             await Database.Coaches.Delete(id);
+
+
             await Database.Save();
         }
         public async Task UpdateCoach(CoachDTO a)
@@ -155,6 +160,16 @@ namespace SportClub.BLL.Services
                 return mapper.Map<CoachDTO>(a);
             }
             catch { return null; }
+        }
+        public async Task ChangeCoachPassword(CoachDTO uDto, string pass)
+        {
+            Coach coach = await Database.Coaches.Get(uDto.Id);
+            Salt s = await Database.Salts.GetCoachSalt(coach);
+            string password = s.salt + pass;
+            string hashedPassword = BCrypt.Net.BCrypt.HashPassword(password);
+            coach.Password = hashedPassword;
+            await Database.Coaches.Update(coach);
+            await Database.Save();
         }
     }
 }

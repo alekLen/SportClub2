@@ -41,7 +41,7 @@ namespace SportClub.BLL.Services
                 Age = uDto.Age,
                 Gender = uDto.Gender,
                 Login = uDto.Login,
-                Password = hashedPassword
+                Password = hashedPassword,
             };
             await Database.Users.AddItem(a);
             await Database.Save();
@@ -90,6 +90,9 @@ namespace SportClub.BLL.Services
         }
         public async Task DeleteUser(int id)
         {
+            User user = await Database.Users.Get(id);
+            Salt salt = await Database.Salts.GetUserSalt(user);
+            await Database.Salts.Delete(salt.Id);
             await Database.Users.Delete(id);
             await Database.Save();
         }
@@ -105,6 +108,7 @@ namespace SportClub.BLL.Services
             u.Age = a.Age;
             u.Gender = a.Gender;
             u.Login = a.Login;
+            
             if (u.Password != a.Password)
             {
 

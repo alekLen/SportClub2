@@ -1,0 +1,26 @@
+﻿@model MakeSheduleView
+<h2>Потвердите удаление:</h2><br />
+<h4>Если график был использован в расписании, то</h4>
+<h2> расписание и тренировки тоже будут удалены!</h2>
+<div >
+    <a asp-area="" asp-controller="Time" asp-action="BackToAll" class="btn btn-primary buttons">Назад</a>
+</div>
+<div class="flex" style="flex-wrap:wrap">
+    @foreach (var item in Model.times)
+    {
+        <div>
+            <form method="get">
+
+                <input type="hidden" name="id" value="@item.Id" />
+                @foreach (var t in item.Times)
+                {
+                    <input type="text" value="@t" style="width:150px;"> <br />
+                }
+                <br />
+                <input type="submit" formaction="ConfirmDeleteTimetable"  value="ВСЕ РАВНО УДАЛИТЬ" class="btn btn-primary c2" />
+            </form>
+        </div>
+    }   
+
+</div>
+

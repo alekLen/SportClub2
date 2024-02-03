@@ -5,65 +5,74 @@
 }
 
 @using Microsoft.AspNetCore.Http
-<div class="center pr">
+<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Персональная информация</p>
+    <hr style="color:white" />
+    <div class="row">
+        <div>
+            <br />
     <form method="post">
         <input type="hidden" asp-for="@Model.Id" />
         @Html.AntiForgeryToken()
-        <div class="card c22">
+            <div style="width: 500px;  justify-content: center; ">
             @Html.ValidationSummary(true, "")
-            <div>
-                @Html.DisplayNameFor(model => model.Name)
+            <div class="form-group" style="margin-left: 40px">
                 <div>
-                    @Html.EditorFor(model => model.Name)
+                    <label asp-for="Name" class="control-label" style="color: white" class="font">@Resources.Resource.Name:</label>
+                    <input asp-for="Name" class="form-control" type="text" class="font" style="width: 420px"/>               
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-            </div>
-           
-            <div>
-                @Html.DisplayNameFor(model => model.Login)
+            </div>           
+            <div class="form-group" style="margin-left: 40px">
                 <div>
-                    @Html.EditorFor(model => model.Login, new { id = "login" })
-                    @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
+                    <label asp-for="Login" class="control-label" style="color: white" class="font">@Resources.Resource.Login:</label>
+                    <input asp-for="Login" class="form-control" type="text" class="font" style="width: 420px" id="login"/>               
                     <span asp-validation-for="Login" class="text-danger"></span>
                 </div>
-            </div>
-            <div>
-                @Html.DisplayNameFor(model => model.Email)
+            <div class="form-group" >
                 <div>
-                    @Html.EditorFor(model => model.Email, new { id = "emailInput" })
+                    <label asp-for="Email" class="control-label" style="color: white" class="font">@Resources.Resource.email:</label>
+                    <input asp-for="Email" class="form-control" type="email" class="font" style="width: 420px" id="emailInput"/>               
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group">
-                <label asp-for="Phone">@Resources.Resource.Phone:</label>
-                <input asp-for="Phone" class="form-control" placeholder="(097)-111 11 11" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
+                <div class="form-group">
+                    <label asp-for="Phone" class="control-label" style="color: white" class="font">@Resources.Resource.Phone:</label>
+                    <input asp-for="Phone" class="form-control" type="text" class="font" style="width: 420px" placeholder="(097)-111 11 11" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+				</div>
+			</div>
             <div class="form-group">
-                <label>@Resources.Resource.gender:</label>
+                <label style="color: white" class="font">@Resources.Resource.gender:</label>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
-                    <label class="form-check-label" for="male">@Resources.Resource.man:</label>
+                    <label class="form-check-label font" for="male" style="color: white">@Resources.Resource.man:</label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
-                    <label class="form-check-label" for="female">@Resources.Resource.female:</label>
+                    <label class="form-check-label font" for="female" style="color: white">@Resources.Resource.female:</label>
                 </div>
             </div>
-            <div>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
+            <div class="form-group" >
                 <div>
-                    @Html.EditorFor(model => model.DateOfBirth)
+                    <label asp-for="DateOfBirth" class="control-label" style="color: white" class="font">@Resources.Resource.DateB:</label>
+                    <input asp-for="DateOfBirth" class="form-control" type="text" class="font" style="width: 420px" id="login"/>               
                     <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                 </div>
             </div>
             <div>
-                <br />
-                <div>
-                   <input type="submit" class="y" formaction="EditClientProfile" value="Edit Profile" />
-                    <input class="y" formaction="ChangeClientPassword"  type="submit" value="Change Password" />
-                    <a class="y" formaction="DeleteClientProfile" asp-route-id="@Model.Id" type="submit">Delete Profile</a>
+                <br /><br />
+                   <div >
+                   <input type="submit" class="btn btn-outline-light" formaction="EditClientProfile" value="Редактировать" />
+                    <input class="btn btn-outline-light" formaction="ChangeClientPassword" type="submit" value="Изменить пароль" />
+                    @* <button type="button" class="btn btn-outline-light">
+                                    <a formaction="DeleteClientProfile" value="Удалить" asp-route-id="@Model.Id" style="text-decoration:none; color: white">Удалить и Выйти</a>
+                    </button> *@
+                                <input type="submit" class="btn btn-outline-light" formaction="DeleteClientProfile" value="Удалить и Выйти" />
+                    @* <input class="btn btn-outline-light" formaction="DeleteClientProfile" value="Удалить" type="submit" /> *@
                 </div>
+                <br /><br />
             </div>
         </div>
     </form>

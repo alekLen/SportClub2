@@ -16,5 +16,7 @@ namespace SportClub.BLL.Interfaces
         Task<IEnumerable<TrainingGroupDTO>> GetAllOfClientTrainingGroups(int id);
         Task DeleteTrainingGroup(int id);
         Task UpdateTrainingGroup(TrainingGroupDTO a);
+
+        Task<IEnumerable<UserDTO>> GetTrainingGroupUsers(int id);
     }
 }

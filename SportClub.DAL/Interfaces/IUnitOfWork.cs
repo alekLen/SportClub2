@@ -1,4 +1,5 @@
 ﻿using SportClub.DAL.Entities;
+using SportClub.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,13 +17,15 @@ namespace SportClub.DAL.Interfaces
         IAdminRepository Admins { get; }
         ISaltRepository Salts { get; }
         ISetGetRepository<Room> Rooms { get; }
-        ISetGetRepository<Group> Groups { get; }
+        //IGroupRepository Groups { get; }
         ISetGetRepository<Shedule> Shedules { get; }
         ITimeTRepository Times { get; }
         ISetGetRepository<Timetable> Timetables { get; }
         ITrainingIndRepository TrainingInds { get; }
         ITrainingGroupRepository TrainingGroups { get; }
         ISetGetRepository<TypeOfTraining> TypeOfTrainings { get; }
+        
+
         Task Save();
     }
 }

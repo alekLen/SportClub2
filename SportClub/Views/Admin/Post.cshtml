@@ -1,36 +1,456 @@
-﻿<h4 class=" b1 b3 c20 center pr"> @Resources.Resource.Post</h4>
-<div class="center pr">
-    <div class="c3">
+﻿<div style="padding-left:100px;">
+<div>
+    <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons">Главная</a>
+</div>
+<div class="flex" style="flex-wrap:wrap;">
+    
+    <div>
+        <h2 class="center1 white-shadow" > @Resources.Resource.Post тренера</h2>
+<div class="flex padd1">    
+        <div class="padd white">
+            <h4>Добавить должность</h4>
+                <form asp-controller="Login" method="post" >
+                    @model SportClub.Models.PostSpeciality
 
-        <div class=" card c7">
-            <h4>@Resources.Resource.Addition</h4>
-            <form asp-controller="Login" method="post">
-                @model SportClub.BLL.DTO.PostDTO
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group padd">
+                    <span>Название </span><br />
+                    <input asp-for="post.Name" name="name" id="post" class="form-control card _c7" />
+                    <span asp-validation-for="post.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group padd">
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddPost" style="color:white">@Resources.Resource.Add</a>
+               </div>
+            </form>
+
+        </div>
+    <div class="padd white">
+            <h4> @Resources.Resource.Editing</h4>
+                <form asp-controller="Admin" method="post" >
+                <label>@Resources.Resource.Post</label>
+                <select asp-for="post.Id" class="form-control card _c7 idPost" name="id" asp-items="ViewBag.PostId"></select>
+
+                <br />
+                <div class="form-group">
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelPost" style="color:white">Удалить</a>
+                        <br /><br />
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditPost" style="color:white">@Resources.Resource.Edit</a>
+
+                    </div>
+            </form>
+        </div>   
+    </div>
+</div>
+<div style="width:20px"></div>
+<div>
+        <h2 class="center1 white-shadow" > @Resources.Resource.Speciality тренера</h2>
+<div class="flex  padd1">
+
+
+    <div class="padd white">
+                <h4 >Добавить специальность</h4>
+            <form  method="post">
+               
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <span>@Resources.Resource.Name </span><br />
-                    <input asp-for="Name" name="name" class="form-control card _c7" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
+                    <input asp-for="speciality.Name" name="name" id="spec" class="form-control card _c7" />
+                        <span asp-validation-for="speciality.Name" class="text-danger"></span>
+                    </div> <br />
                 <div class="form-group">
-                    <input type="submit" formaction="AddPost" value="@Resources.Resource.Add" class="btn btn-primary c2" />
-                </div>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddSpec" style="color:white">@Resources.Resource.Add</a>
+                  </div>
             </form>
 
         </div>
-        <div class=" card c7">
-            <h4> @Resources.Resource.Editing</h4>
+    <div class="padd white">
+                <h4 > @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
-                <label>@Resources.Resource.Post</label>
-                <select asp-for="Id" class="form-control card _c7" asp-items="ViewBag.PostId"></select>
+                <label>@Resources.Resource.Speciality</label>
+                    <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
 
                 <br />
-                <div class="form-group">
-                    <input type="submit" formaction="DeletePost" value="@Resources.Resource.Delete" class="btn btn-primary c2 " /><br /><br />
-                    <input type="submit" formmethod="get" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
+                <div class="form-group">                   
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelSpec" style="color:white">Удалить</a>
+                        <br /><br />
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditSpec" style="color:white">@Resources.Resource.Edit</a>
                 </div>
             </form>
         </div>
+   
+     </div>
     </div>
+   
 </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function () {
+
+     $("#btnAddSpec").click(function () {
+        var objectName = $("#spec").val();
+        $.ajax({
+            url: "@Url.Action("AddSpeciality", "Admin")",
+            type: "POST",
+            data: { name: objectName },
+            datatype: "json",
+            success: function (response) {
+
+                if (response) {
+                    $("<div id='dialogContent1'></div>")
+                        .addClass("dialog")
+                        .appendTo("body")
+                        .load("/Admin/AddedSpeciality")
+                        .dialog({
+                            title: "Добавленo!",
+                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                            dialogClass: 'myTitleClass',
+                            modal: true,
+                            resizable: false,
+                            buttons: [{
+                                class: "input_subm2",//
+                                text: "Назад",
+                                click: function () {
+                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                }
+                            }],
+                            open: function (event, ui) {
+                                // Устанавливаем стили для диалога
+                                    StyleDialog($(this).closest(".ui-dialog"));
+                            }
+                        });
+                }
+                else {
+                    let l2 = document.getElementById("error-login1");
+                    l2.style.display = "inline";
+                }
+            }
+        });
+     });
+
+        $("#btnAddPost").click(function () {
+            var objectName1 = $("#post").val();
+            $.ajax({
+                url: "@Url.Action("AddPost", "Admin")",
+                type: "POST",
+                data: { name: objectName1 },
+                datatype: "json",
+                success: function (response) {
+
+                    if (response) {
+                        $("<div id='dialogContent2'></div>")
+                            .addClass("dialog")
+                            .appendTo("body")
+                            .load("/Admin/AddedPost")
+                            .dialog({
+                                title: "Добавленo!",
+                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                dialogClass: 'myTitleClass',
+                                modal: true,
+                                resizable: false,
+                                buttons: [{
+                                    class: "input_subm2",//
+                                    text: "Назад",
+                                    click: function () {
+                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                    }
+                                }],
+                                open: function (event, ui) {
+                                    StyleDialog($(this).closest(".ui-dialog"));
+                                }
+                            });
+                    }
+                    else {
+                        let l2 = document.getElementById("error-login1");
+                        l2.style.display = "inline";
+                    }
+                }
+            });
+        });
+
+        $("#btnDelPost").click(function () {          
+            var idp = $(".idPost").val();
+            var puth = "/Admin/DeletePost/" + idp;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтвердите!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {                         
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeletePost", "Admin")",
+                                type: "POST",
+                                data: { id: idp },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+        $("#btnDelSpec").click(function () {
+            var ids = $(".idSpec").val();
+            var puth = "/Admin/DeleteSpeciality/" + ids;
+            $("<div id='dialogContent5'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Потвердите",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteSpeciality", "Admin")",
+                                type: "POST",
+                                data: { id: ids },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent5").remove();
+                                        $("<div id='dialogContent6'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+        $("#btnEditPost").click(function () {
+            var idp = $(".idPost").val();
+            var puth = "/Admin/EditPost/" + idp;
+            $("<div id='dialogContent7'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Редактирование",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Сохранить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("EditPost", "Admin")",
+                                type: "POST",
+                                data: $('#formPost').serialize(),
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent7").remove();
+                                        $("<div id='dialogContent8'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Успешно!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+        $("#btnEditSpec").click(function () {
+            var ids = $(".idSpec").val();
+            var puth = "/Admin/EditSpeciality/" + ids;
+            $("<div id='dialogContent9'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Редактирование",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Сохранить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("EditSpeciality", "Admin")",
+                                type: "POST",
+                                data: $('#formSpec').serialize(),
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent9").remove();
+                                        $("<div id='dialogContent10'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Успешно!",
+                                                close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("AddPost", "Admin")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+
+
+    function StyleDialog(dialog) {
+            dialog
+                .find(".ui-dialog-titlebar")
+                .css({
+                    "background-color": "#374566", // Фон заголовка
+                    "color": "white" // Цвет текста заголовка black
+                });
+            dialog
+                .css({
+                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                    "border-radius": "10px",
+                    "border": "solid 1px #374566",
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-dialog-content")
+                .css({
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-widget-content")
+                .css({
+                    "border": "none",
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-dialog-buttonpane")
+                .css({
+                    "border-width": "0px",
+                    "background-color": "#374566"
+                });
+    }
+
+});
+</script>
