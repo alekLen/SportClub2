@@ -53,7 +53,7 @@ namespace SportClub.DAL.EF
         public DbSet<Salt> Salts { get; set; }
         public DbSet<Speciality> Specialitys { get; set; }
         public DbSet<Post> Posts { get; set; }
-        public DbSet<SportClub.DAL.Entities.Group> Groups { get; set; }
+        //public DbSet<SportClub.DAL.Entities.Group> Groups { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<TrainingInd> TrainingsInd { get; set; }
         public DbSet<TrainingGroup> TrainingsGroup { get; set; }

@@ -59,21 +59,16 @@
             </div>
            
                 <div class="flex padd1 " style="flex-direction:column">
-                    <h5 class="white">@it.Group.Name ( @it.Group.Number )</h5>
+                    <h5 class="white"> ( @it.Number )</h5>
+                    @* <h5 class="white">@it.Group.Name ( @it.Group.Number )</h5> *@
                     <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
                     <span class="white">Тренер : </span><br />
                     <span class="white">@it.Coach.Name</span><br />
 
-
-
-                    <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
-                
-                @* @if(){*@
-                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-groupId="@it.Id" asp-route-dayNum="@it.Day" asp-controller="Users" asp-action="UserScipGroupTraining">Пропустить</a>
-                @* }  *@
-                
-                
-                
+                    <br />
+                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a>
+                    @* <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="DeleteUserInTrainingGroup">Отменить</a> *@
+          
                 </div>
                 <br />
             
@@ -83,4 +78,111 @@
     }
     }
 </div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".btnDelTR").click(function () {
+            var buttonId = $(this).attr('id');
+            var puth = "/Users/DeleteUserAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтвердите!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteUserAction", "Users")",
+                                type: "POST",
+                                data: { id: buttonId },
+                                datatype: "json",
+                                success: function (response) {
 
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("Index", "Home")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("Index", "Home")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+                    
+                // });
+
+        });
+
+        function StyleDialog(dialog) {
+            dialog
+                .find(".ui-dialog-titlebar")
+                .css({
+                    "background-color": "#374566", // Фон заголовка
+                    "color": "white" // Цвет текста заголовка black
+                });
+            dialog
+                .css({
+                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                    "border-radius": "10px",
+                    "border": "solid 1px #374566",
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-dialog-content")
+                .css({
+                    "background-color": "#374566"
+                });
+            dialog
+                .find(".ui-widget-content")
+                .css({
+                    "border": "none",
+                    "background-color": "#374566",
+                    "color": "white", // Цвет текста заголовка black
+                    "padding-left":"15px"
+                });
+            dialog
+                .find(".ui-dialog-buttonpane")
+                .css({
+                    "border-width": "0px",
+                    "background-color": "#374566"
+                });
+        }
+    });
+</script>
+
+
+
+@* <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a> *@

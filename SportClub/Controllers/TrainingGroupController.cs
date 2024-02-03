@@ -10,7 +10,7 @@ namespace SportClub.Controllers
 {
     public class TrainingGroupController : Controller
     {
-        private readonly IGroup groupService;
+        //private readonly IGroup groupService;
         private readonly ICoach coachService;
 
         //private readonly IUser userService;
@@ -22,10 +22,10 @@ namespace SportClub.Controllers
         private readonly ITime timeService;
         private readonly IRoom roomService;
 
-        public TrainingGroupController(ITime time, IGroup group, ICoach c, IRoom r, ISpeciality sp, ITrainingGroup t)
+        public TrainingGroupController(ITime time, /*IGroup group,*/ ICoach c, IRoom r, ISpeciality sp, ITrainingGroup t)
         {
             timeService = time;
-            groupService = group;
+            //groupService = group;
             roomService = r;
             coachService = c;
             trainingGroupService = t;
@@ -36,8 +36,8 @@ namespace SportClub.Controllers
         {
             HttpContext.Session.SetString("path", Request.Path);
             await putCoaches();
-            await putGroups();
-            await putRooms();//
+            //await putGroups();
+            await putRooms();
             await putTimes();//
             await putSpecialitys();//
             return View("CreateTrainingGroup");
@@ -89,12 +89,12 @@ namespace SportClub.Controllers
             IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
             ViewData["CoachListId"] = new SelectList(p, "Id", "Name");
         }
-        public async Task putGroups()
-        {
-            HttpContext.Session.SetString("path", Request.Path);
-            IEnumerable<GroupDTO> p = await groupService.GetAllGroups();
-            ViewData["GroupTLId"] = new SelectList(p, "Id", "Name");
-        } 
+        //public async Task putGroups()
+        //{
+        //    HttpContext.Session.SetString("path", Request.Path);
+        //    IEnumerable<GroupDTO> p = await groupService.GetAllGroups();
+        //    ViewData["GroupTLId"] = new SelectList(p, "Id", "Name");
+        //} 
         public async Task putTimes()
         {
             IEnumerable<TimeTDTO> p = await timeService.GetAllTimeTs();
@@ -142,8 +142,8 @@ namespace SportClub.Controllers
             if (trainingGroupdto != null)
             {
                 await putCoaches();
-                await putGroups();
-                await putRooms();//
+                //await putGroups();
+                await putRooms();
                 await putTimes();//
                 await putSpecialitys();//
                 //await putUsers();

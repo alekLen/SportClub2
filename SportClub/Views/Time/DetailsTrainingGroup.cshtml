@@ -19,11 +19,6 @@
                 <div style="width: 500px;  justify-content: center; ">
 
                     <input type="hidden" asp-for="Id" />
-                    @* <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
-                    </div> *@
-
 
                     <div class="form-group" style="margin-left: 40px">
                         <label asp-for="CoachName" class="control-label font  white-color_size20" style="color: white"></label>
@@ -40,20 +35,20 @@
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.DayName)</h1>
                     </div>
                     
-                    @*<div class="form-group" style="margin-left: 40px">
-                        <label asp-for="GroupName" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.GroupName)</h1>
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Number" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Number)</h1>
                     </div>
 
-                    @**@ <div class="form-group" style="margin-left: 40px">
+                     <div class="form-group" style="margin-left: 40px">
                         <label asp-for="Time" class="control-label font  white-color_size20" style="color: white"></label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Time)</h1>
                     </div> 
                 </div><br />
 
 
-                <div style="margin: 10px auto 25px auto;width: max-content;">
-                    <a class="btn btn-outline-light" asp-controller="Users" asp-action="DeleteUsersInTrainingGroup" asp-route-id="@Model?.Id">Удаление клиентов </a>
+                <div style="margin: 10px auto 25px auto;width: max-content;"> 
+                    <a class="btn btn-outline-light" asp-controller="Users" asp-action="DeleteUsersInTrainingGroup" asp-route-id="@Model?.Id">Удаление клиентов </a> 
                     <a class="btn btn-outline-light" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id">Удалить группу</a>
                     <a class="btn btn-outline-light" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule" asp-controller="Time">Back to List</a>
                 </div>
@@ -63,3 +58,4 @@
         </div>
     </div>
 </div>
+

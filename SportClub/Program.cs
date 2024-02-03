@@ -10,7 +10,7 @@ builder.Services.AddSportClubContext(connection);
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IAdmin, AdminService>();
 builder.Services.AddTransient<IUser, UserService>();
-builder.Services.AddTransient<IGroup, GroupService>();
+//builder.Services.AddTransient<IGroup, GroupService>();
 
 builder.Services.AddTransient<ITrainingGroup, TrainingGroupService>();
 

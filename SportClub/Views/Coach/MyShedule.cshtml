@@ -56,10 +56,11 @@
                 <span class="white">@it.Room.Name</span>
                 </div>
             </div>
-            @if (it.Group != null)
-            {
+            @* @if (it.Group != null)
+            { *@
                 <div class="flex padd1 " style="flex-direction:column">
-                  <h5 class="white" >@it.Group.Name ( @it.Group.Number )</h5>
+                    <h5 class="white">@* @it.Group.Name *@ ( @it.Number )</h5>
+                  @* <h5 class="white" >@it.Group.Name ( @it.Group.Number )</h5> *@
                 @if (it.Users.Count!=0)
                 {
                      @for (var index=1;index<= it.Users.Count;index++)
@@ -76,11 +77,11 @@
                 }
               </div>
                 <br />
-            }
+            @* }
             else
             {
                 <span class="white">Группа не создана</span>
-            }
+            } *@
 
         </div>
 

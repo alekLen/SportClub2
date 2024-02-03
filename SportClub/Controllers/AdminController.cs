@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol.Core.Types;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
 using SportClub.Filters;
 using SportClub.Models;
@@ -21,7 +22,7 @@ namespace SportClub.Controllers
         private readonly IPost postService;
         private readonly ISpeciality specialityService;
         private readonly IRoom roomService;
-        public AdminController(IAdmin adm,IRoom r, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
+        public AdminController(IAdmin adm, IRoom r, IUser us, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment _appEnv)
         {
             adminService = adm;
             userService = us;
@@ -53,7 +54,7 @@ namespace SportClub.Controllers
         }
         public async Task<IActionResult> BackToPost()
         {
-            HttpContext.Session.SetString("path", Request.Path);           
+            HttpContext.Session.SetString("path", Request.Path);
             return Redirect("AddPost");
         }
         [HttpPost]
@@ -70,9 +71,9 @@ namespace SportClub.Controllers
             }
             catch
             {
-              //  await putPosts();
-               // return View("Post");
-               return Json(false);
+                //  await putPosts();
+                // return View("Post");
+                return Json(false);
             }
         }
         public async Task<IActionResult> EditPost(int id)
@@ -100,7 +101,7 @@ namespace SportClub.Controllers
                 }
                 p.Name = name;
                 await postService.UpdatePost(p);
-              
+
                 return RedirectToAction("EditedPost", new { post = p.Name });
             }
             catch
@@ -108,7 +109,7 @@ namespace SportClub.Controllers
                 return Redirect("AddPost");
             }
         }
-        [HttpGet] 
+        [HttpGet]
         public async Task<IActionResult> DeletePost(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -188,7 +189,7 @@ namespace SportClub.Controllers
             // return Redirect("AddSpeciality");
             return Redirect("AddPost");
         }
-        [HttpPost]  
+        [HttpPost]
         public async Task<IActionResult> EditSpeciality(int id, string name)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -198,8 +199,8 @@ namespace SportClub.Controllers
                 if (sp == null)
                 {
                     // return Redirect("AddSpeciality");
-                   // return Redirect("AddPost");
-                   return Json(true);
+                    // return Redirect("AddPost");
+                    return Json(true);
                 }
                 sp.Name = name;
                 await specialityService.UpdateSpeciality(sp);
@@ -293,7 +294,7 @@ namespace SportClub.Controllers
                 u.Email = user.Email;
                 u.Age = age;
                 u.Phone = user.Phone;
-                u.Name = user.Name;                     
+                u.Name = user.Name;
                 u.DateOfBirth = user.DateOfBirth;
                 await adminService.UpdateAdmin(u);
                 return View("YouChangedProfile");
@@ -319,7 +320,7 @@ namespace SportClub.Controllers
                 }
             }
             catch { }
-            return View("PutPassword",u);
+            return View("PutPassword", u);
         }
         public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
         {
@@ -332,7 +333,7 @@ namespace SportClub.Controllers
             }
             return View("ErrorChangedPassword");
         }
-         
+
         public async Task<IActionResult> Edit(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
@@ -342,9 +343,9 @@ namespace SportClub.Controllers
                 return View("Edit", us);
             }
 
-            return View("GetAdmins", "Admin"); 
+            return View("GetAdmins", "Admin");
         }
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, AdminDTO user)
@@ -357,10 +358,10 @@ namespace SportClub.Controllers
                 {
                     return NotFound();
                 }
-                 
+
                 if (ModelState.IsValid)
                 {
-                    admindto = user; 
+                    admindto = user;
                     try
                     {
                         await adminService.UpdateAdmin(admindto);
@@ -385,7 +386,7 @@ namespace SportClub.Controllers
         [HttpPost]
         public async Task<IActionResult> DeleteAdminProfile(AdminDTO user)
         {
-            HttpContext.Session.SetString("path", Request.Path);           
+            HttpContext.Session.SetString("path", Request.Path);
             return View(user);
         }
         [HttpPost]
@@ -398,7 +399,7 @@ namespace SportClub.Controllers
             }
             await adminService.DeleteAdmin(id);
             HttpContext.Session.Clear();
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
@@ -425,9 +426,9 @@ namespace SportClub.Controllers
             {
                 return NotFound();
             }
-            
+
             await adminService.DeleteAdmin(id);
-            return RedirectToAction("GetAdmins", "Admin"); 
+            return RedirectToAction("GetAdmins", "Admin");
         }
         public async Task<IActionResult> Details(int id)
         {
@@ -468,10 +469,10 @@ namespace SportClub.Controllers
                     }
                     room.Photo = path;
                 }
-                    room.Name = name;
-                    await roomService.AddRoom(room);
-                    return Redirect("AddRoom");
-               
+                room.Name = name;
+                await roomService.AddRoom(room);
+                return Redirect("AddRoom");
+
             }
             catch
             {
@@ -511,8 +512,8 @@ namespace SportClub.Controllers
                     }
                     room.Photo = path;
                 }
-                    room.Name = name;
-                    await roomService.Update(room);
+                room.Name = name;
+                await roomService.Update(room);
                 return RedirectToAction("AddRoom");
             }
             catch
@@ -520,11 +521,11 @@ namespace SportClub.Controllers
                 return RedirectToAction("AddRoom");
             }
         }
-        [HttpGet]  
+        [HttpGet]
         public async Task<IActionResult> DeleteRoom(int id)
         {
             HttpContext.Session.SetString("path", Request.Path);
-           RoomDTO p = await roomService.GetRoom(id);
+            RoomDTO p = await roomService.GetRoom(id);
             if (p != null)
             {
                 return View("DeleteRoom", p);
@@ -538,7 +539,7 @@ namespace SportClub.Controllers
             RoomDTO p = await roomService.GetRoom(pp.Id);
             if (p != null)
             {
-                await roomService.DeleteRoom(pp.Id);             
+                await roomService.DeleteRoom(pp.Id);
             }
             return RedirectToAction("AddRoom");
         }
@@ -547,5 +548,8 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             return RedirectToAction("Index", "Home");
         }
+
+
+        
     }
 }

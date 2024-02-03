@@ -80,13 +80,14 @@
                                         <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
                                             <div>
                                                 @{
-                                                    var num = it.Group.Number - it.Users.Count;
-
+                                                    var num = it.Number - it.Users.Count;
+                                                    // var num = it.Group.Number - it.Users.Count;
                                                 }
-                                                <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
+                                                <span class="white"> ( @it.Number )</span><br />
+                                                @* <span class="white">@it.Group.Name ( @it.Group.Number )</span><br /> *@
                                                 <span class="white">Тренер : </span><br />
                                                 <span class="white">@it.Coach.Name</span><br />
-                                                @if (it.Group.Number > it.Group.UsersId.Count)
+                                                @if (it.Number > it.Users.Count)@* (it.Group.Number > it.Group.UsersId.Count) *@
                                                 {
                                                     bool nflag = false;
                                                     foreach (var us in it.Users)

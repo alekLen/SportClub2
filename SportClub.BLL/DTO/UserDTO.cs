@@ -21,9 +21,9 @@ namespace SportClub.BLL.DTO
         public string Password { get; set; } = string.Empty;      
         public List<int> trainingId { get; set; } = new();
 
-        public List<int> groupsId { get; set; } = new();
+        //public List<int> groupsId { get; set; } = new();
 
-        public List<int> ScipShedulesId { get; } = new();
+        //public List<int> ScipShedulesId { get; } = new();
         //public bool Recorded_by { get; set; } = false;
     }
 }
