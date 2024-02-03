@@ -5,7 +5,7 @@
 @using Microsoft.AspNetCore.Http
 
 <div class="div_reg">
-    <p class="font">Регистрация пользователя </p>
+    <p class="font">@Resources.Resource.UserRegistration</p>@* Регистрация пользователя *@
     <div class="row">
         <form id="registrationForm" action="RegistrationClient" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -69,10 +69,15 @@
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
               
-            <br />
+            @* <br />
             <div class="form-group" style="margin-left: 200px">
                 <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
-            </div>
+            </div> *@
+
+            <div style="margin: 10px auto 10px auto;width: max-content;">
+                <button style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
+                <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back</a><br />@* Back *@
+            </div><br />
         </form>
     </div>
 </div>

@@ -21,7 +21,7 @@ namespace SportClub.Controllers
     public class TimeController : Controller
     {
         private readonly ITrainingGroup trainingGroupService;
-        private readonly IGroup groupService;
+        //private readonly IGroup groupService;
         private readonly IAdmin adminService;
         private readonly IRoom roomService;
         private readonly IUser userService;
@@ -47,7 +47,7 @@ namespace SportClub.Controllers
             this.timetableService = timetableService;
             sheduleService = sh;
             trainingIndService = tr; 
-            groupService = g;
+            //groupService = g;
             trainingGroupService = tg;
         }
         [HttpGet]
@@ -62,7 +62,8 @@ namespace SportClub.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
-        {          
+        {
+            HttpContext.Session.SetString("path", Request.Path);
             if (Start != null && End != null)
             {
                 if (CheckTime(Start, End))
@@ -665,11 +666,13 @@ namespace SportClub.Controllers
                         foreach(var tr in trg){
                             TrainingGrToSee train = new();
                             train.Id=tr.Id;
-                            train.Group = await groupService.GetGroup(tr.GroupId);
-                            RoomDTO r = await roomService.GetRoom(tr.RoomId);
-                            train.Room = r;
+                            //train.Group = await groupService.GetGroup(tr.GroupId);
+                            train.Number = tr.Number;
+                            train.Room = room;
                             train.Coach= await coachService.GetCoach(tr.CoachId);
-                            IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
+
+                            //IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
+                            IEnumerable<UserDTO> us = await trainingGroupService.GetTrainingGroupUsers(tr.Id);
                             train.Users= us.ToList();
                             train.Time = tr.Time;
                             train.Day = tr.Day;
@@ -852,17 +855,17 @@ namespace SportClub.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName, int groupId)
+        public async Task<IActionResult> AddTrainingGroup(int day, int roomId, string time, string roomName, /*int groupId*/ int number)
         {
-            GroupAndTrainingGroup gatg = new GroupAndTrainingGroup();
+            //GroupAndTrainingGroup gatg = new GroupAndTrainingGroup();
 
             TrainingGroupDTO training = new();
             training.RoomId = roomId;
             training.Time = time;
             training.Day = day;
             training.RoomName = roomName;
-            training.GroupId = groupId;
-            //training.UsersId = new List<UserDTO>();
+            training.Number = number;//groupId
+            training.UsersId = new List<UserDTO>();
             if (day == 0) training.DayName = "Понедельник";
             else if (day == 1) training.DayName = "Вторник";
             else if (day == 2) training.DayName = "Среда";
@@ -870,24 +873,26 @@ namespace SportClub.Controllers
             else if (day == 4) training.DayName = "Пятница";
             else if (day == 5) training.DayName = "Суббота";
             else if (day == 6) training.DayName = "Воскресенье";
-            gatg.trgroup = training;
+            //gatg.trgroup = training;
             IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
             ViewData["CoachId"] = new SelectList(p, "Id", "Name");
-            IEnumerable<GroupDTO> p_ = await groupService.GetAllGroups();
-            ViewData["GroupId"] = new SelectList(p_, "Id", "Name");
-            return View(gatg);
+            //IEnumerable<GroupDTO> p_ = await groupService.GetAllGroups();
+            //ViewData["GroupId"] = new SelectList(p_, "Id", "Name");
+            return View(training);/*gatg*/
         }
         [HttpPost]
-        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int groupId)
+        public async Task<IActionResult> ToAddTrainingGroup(int day, int roomId, string time, string roomName, int coachId, int number)
         {
 
             TrainingGroupDTO tr = new();
-            tr.GroupId = groupId;
+            tr.UsersId = new();
             tr.CoachId = coachId;
             tr.RoomId = roomId;
             tr.RoomName = roomName;
             tr.Day = day;
             tr.Time = time;
+            tr.Number = number; 
+            tr.UsersId = new();
             //tr.UsersId = userId;
             //tr.UserName = userName;
 
@@ -988,9 +993,9 @@ namespace SportClub.Controllers
                 return NotFound();
             }
             int roomId = trainingGroup.RoomId;
-            int groupId = trainingGroup.GroupId;
+            //int groupId = trainingGroup.GroupId;
             await trainingGroupService.DeleteTrainingGroup(id);
-            await groupService.DeleteGroup(groupId);
+            //await groupService.DeleteGroup(groupId);
             return RedirectToAction("RoomWithShedule", new { Id = roomId });
             //return RedirectToAction("GetTrainingGroups", "TrainingGroup");
         }

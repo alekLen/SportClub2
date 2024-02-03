@@ -3,7 +3,7 @@
     <div class="flex padd">
 
         <div class="padd">
-            <h4 class="white">График дня</h4>
+            <h4 class="white">@Resources.Resource.GraphOfDay</h4>@* График дня *@
             <form asp-controller="Time" method="post">
                 @model SportClub.BLL.DTO.TimetableDTO
 
@@ -13,8 +13,8 @@
                     <input type="submit" formaction="AddTimetable" value="Сохранить график" class="btn btn-primary buttons1" />
                       </div>
             </form>
-            <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttons1">Отмена</a>
-            <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttons1">Выход</a><br />
+            <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttons1">@Resources.Resource.Cancel</a>@* Отмена *@
+            <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttons1">@Resources.Resource.Exit</a><br />@* Выход *@
             <a asp-area="" asp-controller="Time" asp-action="GetAllTimetable" class="btn btn-primary buttons1">Все сохраненные  графики</a>
 
         </div>

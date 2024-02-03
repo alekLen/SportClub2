@@ -20,6 +20,7 @@ namespace SportClub.Controllers
         private readonly IRoom roomService;
         private readonly ITrainingInd trainingIndService;
         private readonly ITrainingGroup trainingGroupService;
+        //private readonly IGroup groupService;
         private readonly IGroup groupService;
         private readonly ITime timeService;
         private readonly IShedule sheduleService;
@@ -355,8 +356,11 @@ namespace SportClub.Controllers
                             training.DayName = Setday(group.Day);
                             training.Day = group.Day;
                             training.Time = group.Time;
-                            training.Group = await groupService.GetGroup(group.GroupId);
-                           IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);
+                            //training.Group = await groupService.GetGroup(group.GroupId);
+                            //IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);
+                            training.Number = group.Number;
+                            IEnumerable<UserDTO> users = await trainingGroupService.GetTrainingGroupUsers(group.Id);
+
                             training.Users = users.ToList();
                             trainings2.Add(training);
                         }

@@ -211,7 +211,7 @@
 
                 @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
-
+                
 
                 <div class="mdropdown">
                     <button class="mdropbtn whiteY" style="">
@@ -221,7 +221,7 @@
                         <a class=" whiteY" asp-area="" style="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a>
                        @*  <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a> *@
                     </div>
-                </div>
+                </div> *@
 
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
                  <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
@@ -236,6 +236,9 @@
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
+                @* Должности/Специальности *@
+                <a asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+                
                 @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
             <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
@@ -257,7 +260,7 @@
                         {
                             <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
                         }
-                        @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
+                        @* @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
                         {
                             <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
                         }
@@ -345,12 +348,13 @@
         $(document).ready(function () {
             $("body").on("click", ".btn-Login", function (e) {
                 e.preventDefault();
+                
                 $("<div id='dialogContent'></div>")
                     .addClass("dialog")
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "АВТОРИЗАЦИЯ",
+                        title: '@Html.Raw(@Resources.Resource.Authorization)',
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,

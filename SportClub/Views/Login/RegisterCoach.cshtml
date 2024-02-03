@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Http
  
 <div class="div_reg">
-    <p class="font">Регистрация тренера </p>
+    <p class="font">@Resources.Resource.CoachRegistration</p>@* Регистрация тренера *@
     <div class="row">
         <form id="registrationCoachForm" action="RegistrationCoach" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -97,7 +97,7 @@
 
             <div style="margin: 10px auto 10px auto;width: max-content;">
                 <button style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn btn-outline-light">Back</a><br />
+                <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back</a><br />@* Back *@
             </div><br />
         </form>
     </div>

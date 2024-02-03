@@ -1,4 +1,4 @@
-﻿@model SportClub.BLL.DTO.GroupDTO//Training
+﻿@model SportClub.BLL.DTO.TrainingGroupDTO//
 
 <div class="div_reg">
     <p class="font">Запись клиентов на тренировку</p>
@@ -8,7 +8,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
-            <input name="idT" type="hidden" asp-for="Id" />
+            <input name="trgroupId" type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="Name" />
             <input type="hidden" asp-for="Number" />
             <div>
@@ -34,13 +34,10 @@
             </div>
 
             <div style="margin: 10px auto 10px auto;width: max-content;">
-                <button id="btnsub1" asp-route-roomId="@Model." asp-route-groupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                @*<a id="btnsub1" asp-area="" asp-route-groupId="@Model.Id" asp-controller="Group" asp-action="AddUsersToTrainingGroup">Добавление</a>*@
+                <button id="btnsub1" asp-route-roomId="@Model.RoomId" asp-route-trgroupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
+                
                 <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
             </div><br />
-            @* <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
-            <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
-            </div> *@
         </form>
     </div>
 </div>
