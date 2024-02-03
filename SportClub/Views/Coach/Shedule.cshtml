@@ -85,15 +85,15 @@
                                         <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
                                             <div>
                                                 @{
-                                                    var num = it.Group.Number - it.Users.Count;
+                                                    var num = it.Number - it.Users.Count;
                                                 }
-                                                <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
+                                                <span class="white"> ( @it.Number )</span><br />
 
                                                 @if (it.Coach.Id.ToString() == ViewBag.MyId)
                                                 {
                                                     <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
                                                     <br />
-                                                    @if (it.Group.UsersId.Count > 0)
+                                                    @if (it.Users.Count > 0)
                                                     {
 
                                                         @for (var index = 1; index <= it.Users.Count; index++)

@@ -36,9 +36,6 @@ namespace SportClub.Controllers
         private static List<TimetableDTO> timetables = new();
        
  
-        public TimeController(ITrainingGroup tg, IGroup g, IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
-        //private static List<TrainingIndDTO> trainingsInd = new();
- 
         public TimeController(ITrainingGroup tg,/* IGroup g,*/ IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
         {
             adminService = adm;
@@ -669,7 +666,7 @@ namespace SportClub.Controllers
                         foreach(var tr in trg){
                             TrainingGrToSee train = new();
                             train.Id=tr.Id;
-                            train.Group = await groupService.GetGroup(tr.GroupId);
+                            //train.Group = await groupService.GetGroup(tr.GroupId);
                             RoomDTO r = await roomService.GetRoom(tr.RoomId);
                             train.Room = r;
                             //train.Group = await groupService.GetGroup(tr.GroupId);
