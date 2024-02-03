@@ -49,7 +49,7 @@
                         
                 </div>
                 
-                    <a id="btnDelTime" class="btn btn-primary   buttonsGY ">@Resources.Resource.Delete</a><br /><br />
+                    <a id="btnDelTime" class="btn btn-primary   buttonsGY ">@Resources.Resource.Delete</a><br />
             </form>
         </div>
     </div>
@@ -95,15 +95,15 @@
   </div>
 
 </div>
-<div style="padding-top:20px;">
+<div style="padding-top:30px;">
 <h4 id="all" class="whiteY" style="text-align:center;padding:5px;box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">Графики:</h4>
 </div>
-<div class="flex padd" style="flex-wrap:wrap;background-color:  #2F4F4F;padding-top:0px;justify-content:space-around;">
+<div class="flex padd div_reg3" style="flex-wrap:wrap;background-color:  #2F4F4F;padding-top:0px;justify-content:space-around;">
     @foreach (var item in Model.times)
     {
         <div class="padd" style="border-radius:3px;">
             <form method="get">
-                <div class="padd" style="background-color:dimgray">
+                <div class="padd" style="background-color:dimgray;border-radius:3px;">
                     <input type="hidden"  name="id" value="@item.Id" />
                     @foreach (var t in item.Times)
                     {
@@ -117,8 +117,8 @@
             </form>
         </div>
     }
-    <form>
-        <div class="padd1">
+    <form class="padd">
+        <div class="padd" style="background-color:  dimgray;">
             <input value="ВЫХОДНОЙ" readonly style="width:120px;" />
         </div>
     </form>
@@ -171,15 +171,15 @@
                 $("<div id='dialogContent3'></div>")
                     .addClass("dialog")
                     .appendTo("body")
-                .load("Admin/AddedPost")
+                   .load("Admin/AddedPost")
                     .dialog({
-                        title: "Подтвердите!",
+                    title: "Удалить?",
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
-                            class: "input_subm2",//
+                            class: "input_subm3",//
                             text: "Удалить",
                             click: function () {
                                 $.ajax({
@@ -226,7 +226,7 @@
                                                     modal: true,
                                                     resizable: false,
                                                     buttons: [{
-                                                        class: "input_subm2",//
+                                                        class: "input_subm3",//
                                                         text: "Закрыть",
                                                         click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
@@ -242,7 +242,39 @@
                             }
                         }],
                         open: function (event, ui) {
-                            StyleDialog($(this).closest(".ui-dialog"));
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-titlebar")
+                            .css({
+                                "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                "color": "#EEE8AA"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .css({
+                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                "border-radius": "5px",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-content")
+                            .css({
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
+                        $(this).closest(".ui-widget-content")
+                            .css({
+                                "border": "none",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-buttonpane")
+                            .css({
+                                "border-width": "0px",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
                         }
                     });         
         });
@@ -255,13 +287,13 @@
                 .appendTo("body")
                 .load("Admin/AddedPost")
                 .dialog({
-                    title: "Подтвердите!",
+                    title: "Удалить?",
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
+                        class: "input_subm3",//
                         text: "Удалить",
                         click: function () {
                             $.ajax({
@@ -308,7 +340,7 @@
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
+                                                    class: "input_subm3",//
                                                     text: "Закрыть",
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
@@ -324,11 +356,43 @@
                         }
                     }],
                     open: function (event, ui) {
-                        StyleDialog($(this).closest(".ui-dialog"));
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-titlebar")
+                            .css({
+                                "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                "color": "#EEE8AA"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .css({
+                                "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                "border-radius": "5px",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-content")
+                            .css({
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
+                        $(this).closest(".ui-widget-content")
+                            .css({
+                                "border": "none",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
+                        $(this).closest(".ui-dialog")
+                            .find(".ui-dialog-buttonpane")
+                            .css({
+                                "border-width": "0px",
+                                "background-color": "rgb(80, 80, 80)",
+                                "background - image": "url('~/Coaches/фон5.jpg')"
+                            });
                     }
                 });
 
-
+            
 
         });
 
