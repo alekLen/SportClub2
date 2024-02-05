@@ -6,6 +6,7 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 using SportClub.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ using System.Xml;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class TimeController : Controller
     {
         private readonly ITrainingGroup trainingGroupService;
@@ -32,7 +34,7 @@ namespace SportClub.Controllers
         
         private static List<TimeTDTO> timesT=new();
         private static List<TimetableDTO> timetables = new();
-        //private static List<TrainingIndDTO> trainingsInd = new();
+       
  
         public TimeController(ITrainingGroup tg, IGroup g, IShedule sh,IRoom room,IAdmin adm, IUser us, ICoach c, ISpeciality sp, ITime t, ITimetable timetableService, ITrainingInd tr)
         {
@@ -51,8 +53,12 @@ namespace SportClub.Controllers
         [HttpGet]
         public async Task<IActionResult> AddTimeT()
         {
+            HttpContext.Session.SetString("path", Request.Path);
             await PutTimes();
-            return View();
+            PutTimesToTable();
+            TimeTimetableModel model = new();
+            model.times = await makeListTimetables();
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
@@ -73,8 +79,8 @@ namespace SportClub.Controllers
             {
                 ModelState.AddModelError("", "Заполните время начала и окончания тренировки!");
             }
-            await PutTimes();
-            return View();
+           // await PutTimes();
+            return RedirectToAction("AddTimeT");
         }    
         public async Task PutTimes()
         {
@@ -94,10 +100,10 @@ namespace SportClub.Controllers
             p1.OrderBy(x => x.Time).ToList();
             ViewData["TimeId"] = new SelectList(p1, "Id", "Time");
         }
-        public async Task<IActionResult> EditTime(int Id)
+        public async Task<IActionResult> EditTime(int timeId)
         {
            // HttpContext.Session.SetString("path", Request.Path);
-            TimeTDTO p = await timeService.GetTimeT(Id);
+            TimeTDTO p = await timeService.GetTimeT(timeId);
             if (p != null)
             {
                 if (TempData.ContainsKey("ErrorMessage"))
@@ -107,8 +113,10 @@ namespace SportClub.Controllers
                 }
                 return View("EditTimeT",p);
             }
-            await PutTimes();
-            return View("AddTimeT");
+            //await PutTimes();
+            //return View("AddTimeT");
+
+            return RedirectToAction("AddTimeT");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -140,65 +148,77 @@ namespace SportClub.Controllers
                     return RedirectToAction("EditTime", new { Id = t.Id });
                    
                 }
-
+                timesT.Clear();
                 return RedirectToAction("AddTimeT");
             }
             catch
             {
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+              return   RedirectToAction("AddTimeT");
             }
         }
-        public async Task<IActionResult> DeleteTime(int Id)
-        {
+      
+        //public async Task<IActionResult> DeleteTime(int idp)
+        //{
             // HttpContext.Session.SetString("path", Request.Path);
-            TimeTDTO p = await timeService.GetTimeT(Id);
-            if (p != null)
-            {
-               
-                return View("DeleteTimeT", p);
-            }
-            await PutTimes();
-            return View("AddTimeT");
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ConfirmDeleteTime(TimeTDTO t)
+            //TimeTDTO p = await timeService.GetTimeT(idp);
+            //if (p != null)
+            //{
+            //    return Json(true);
+            //    //return View("DeleteTimeT", p);
+            //}
+            //await PutTimes();
+            //return View("AddTimeT");
+            //return RedirectToAction("AddTimeT");
+        //    return Json(true);
+        //}
+        
+        public async Task<IActionResult> ConfirmDeleteTime(int Id)
         {
             //  HttpContext.Session.SetString("path", Request.Path);
             try
             {
-                TimeTDTO p = await timeService.GetTimeT(t.Id);
+                TimeTDTO p = await timeService.GetTimeT(Id);
                 if (p == null)
                 {
-                    await PutTimes();
-                    return View("AddTimeT");
+                    //await PutTimes();
+                    //return View("AddTimeT");
+                    return Json(false);
                 }               
                 await timeService.DeleteTimeT(p.Id);
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+                timesT.Clear();
+                //return RedirectToAction("AddTimeT");
+                return Json(true);
             }
             catch
             {
-                await PutTimes();
-                return View("AddTimeT");
+                //await PutTimes();
+                //return View("AddTimeT");
+                //return RedirectToAction("AddTimeT");
+                return Json(false);
             }
         }
         [HttpGet]
       
          public async Task<IActionResult> AddTimetable()
-         {           
-             await PutTimes();
-             return View();
-         }
-         public async Task<IActionResult> AddTimesToTable(int id)
          {
-             TimeTDTO p = await timeService.GetTimeT(id);
+            //await PutTimes();
+            //return View();
+            return RedirectToAction("AddTimeT");
+        }
+         public async Task<IActionResult> AddTimesToTable(int Tid)
+         {
+             TimeTDTO p = await timeService.GetTimeT(Tid);
              timesT.Add(p);
              await PutTimes();
               PutTimesToTable();
-             return View("AddTimetable");
-         }
+            //return View("AddTimetable");
+            //return View ("AddTimeT");
+            return RedirectToAction("AddTimeT");
+        }
          [HttpPost]
          public async Task<IActionResult> AddTimeTable()
          {
@@ -209,14 +229,16 @@ namespace SportClub.Controllers
                      t.TimesId.Add(time.Id);
                  await timetableService.AddTimetable(t);
                  timesT.Clear();
-                return RedirectToAction("GetAllTimetable");
+                //return RedirectToAction("GetAllTimetable");
+                return RedirectToAction("AddTimeT");
             }
              else
              {
-                await PutTimes();
-                PutTimesToTable();
-                 return View();
-             }
+                //await PutTimes();
+                //PutTimesToTable();
+                // return View();
+                return RedirectToAction("AddTimeT");
+            }
          }
         [HttpGet]
         public async Task<IActionResult> Cancel()
@@ -224,9 +246,10 @@ namespace SportClub.Controllers
             if (timesT.Count > 0)
             {              
                 timesT.RemoveAt(timesT.Count-1);
-                await PutTimes();
-                PutTimesToTable();
-                return View("AddTimetable");              
+                //await PutTimes();
+                //PutTimesToTable();
+                //return View("AddTimetable");              
+                return RedirectToAction("AddTimeT");
             }
             else
             {
@@ -247,8 +270,9 @@ namespace SportClub.Controllers
         }
         [HttpGet]
         public IActionResult Back()
-        {         
-            return RedirectToAction("AddTimetable");
+        {
+            //return RedirectToAction("AddTimetable");
+            return RedirectToAction("AddTimeT");
         }
         [HttpGet]
         public IActionResult BackToAll()
@@ -259,17 +283,20 @@ namespace SportClub.Controllers
          {
 
              List<TimeShow> p1 = new();
-             IEnumerable<TimeTDTO> p2 = timesT.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-             foreach (var t in p2)
-             {
-                 TimeShow ts = new()
-                 {
-                     Id = t.Id,
-                     Time = t.StartTime + "/" + t.EndTime
-                 };
-                 p1.Add(ts);
-             }
-             ViewData["TimetableId"] = new SelectList(p1, "Id", "Time");
+            if (timesT.Count > 0)
+            {
+                IEnumerable<TimeTDTO> p2 = timesT.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var t in p2)
+                {
+                    TimeShow ts = new()
+                    {
+                        Id = t.Id,
+                        Time = t.StartTime + "/" + t.EndTime
+                    };
+                    p1.Add(ts);
+                }
+                ViewData["TimetableId"] = new SelectList(p1, "Id", "Time");
+            }
          }
         [HttpGet]
         public async Task <IActionResult> ChoseRomm()
@@ -308,6 +335,31 @@ namespace SportClub.Controllers
             m.room = r;
             return View("GetTimetables", m);
         }
+        public async Task< List<TimetableShow>> makeListTimetables()
+        {
+            List<TimetableShow> ts = new();
+            IEnumerable<TimetableDTO> p = await timetableService.GetAllTimetables();
+            List<TimeTDTO> pp = new();
+            foreach (var t in p)
+            {
+                TimetableShow t1 = new();
+                t1.Id = t.Id;
+                foreach (int i in t.TimesId)
+                {
+                    TimeTDTO td = await timeService.GetTimeT(i);
+                    pp.Add(td);
+                }
+                IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+                foreach (var i in p2)
+                {
+                    string st = i.StartTime + "/" + i.EndTime;
+                    t1.Times.Add(st);
+                }
+                ts.Add(t1);
+                pp.Clear();
+            }
+            return ts;
+        }
         [HttpGet]
         public async Task<IActionResult> GetAllTimetable()
         {
@@ -336,43 +388,43 @@ namespace SportClub.Controllers
             m.times = ts;
             return View("GetTimetablesToSee",m);
         }
-        [HttpGet]
-        public async Task<IActionResult> DeleteTimetable(int id)
+        //[HttpGet]
+        //public async Task<IActionResult> DeleteTimetable(int id)
+        //{
+        //    if (id != 0)
+        //    {
+        //        TimetableDTO tt = await timetableService.GetTimetable(id);
+        //        List<TimetableShow> ts = new();              
+        //        List<TimeTDTO> pp = new();
+        //        TimetableShow tss = new();
+        //        tss.Id = tt.Id;
+        //            foreach (var i in tt.TimesId)
+        //            {
+        //                TimeTDTO td = await timeService.GetTimeT(i);
+        //                pp.Add(td);
+        //            }
+        //            IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
+        //            foreach (var i in p2)
+        //            {
+        //                string st = i.StartTime + "/" + i.EndTime;
+        //                tss.Times.Add(st);
+        //            }
+        //            ts.Add(tss);                             
+        //        MakeSheduleView m = new();
+        //        m.times = ts;
+        //        return View(m);
+        //    }
+        //    return Redirect("GetAllTimetable");
+        //}
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteTimetable(int Id)
         {
-            if (id != 0)
+            if (Id != 0)
             {
-                TimetableDTO tt = await timetableService.GetTimetable(id);
-                List<TimetableShow> ts = new();              
-                List<TimeTDTO> pp = new();
-                TimetableShow tss = new();
-                tss.Id = tt.Id;
-                    foreach (var i in tt.TimesId)
-                    {
-                        TimeTDTO td = await timeService.GetTimeT(i);
-                        pp.Add(td);
-                    }
-                    IEnumerable<TimeTDTO> p2 = pp.OrderBy(x => int.Parse(x.StartTime.Split(':')[0]));
-                    foreach (var i in p2)
-                    {
-                        string st = i.StartTime + "/" + i.EndTime;
-                        tss.Times.Add(st);
-                    }
-                    ts.Add(tss);                             
-                MakeSheduleView m = new();
-                m.times = ts;
-                return View(m);
-            }
-            return Redirect("GetAllTimetable");
-        }
-        [HttpGet]
-        public async Task<IActionResult> ConfirmDeleteTimetable(int id)
-        {
-            if (id != 0)
-            {
-                await timetableService.DeleteTimetable(id);
+                await timetableService.DeleteTimetable(Id);
 
             }
-            return Redirect("GetAllTimetable");
+            return RedirectToAction("AddTimeT");
         }
 
        
@@ -381,7 +433,7 @@ namespace SportClub.Controllers
             if (id != 0)
             {
                 TimetableDTO tt = await timetableService.GetTimetable(id);
-                if (timetables.Count > 0 && timetables[timetables.Count-1] ==null)
+                if (timetables.Count > 0 && timetables[timetables.Count-1] == null)
                 {
                     timetables[timetables.Count - 1] = tt;
                 }
@@ -454,7 +506,9 @@ namespace SportClub.Controllers
         {
             try
             {
-                timetables.RemoveAt(timetables.Count - 1);
+                int nullCount = timetables.Count(item => item == null);
+                timetables.RemoveAt(timetables.Count - nullCount- 1);
+                
             }
             catch { }
             return RedirectToAction("AddTimetableToShedule", new { id = -1 , roomId = roId });
@@ -612,7 +666,8 @@ namespace SportClub.Controllers
                             TrainingGrToSee train = new();
                             train.Id=tr.Id;
                             train.Group = await groupService.GetGroup(tr.GroupId);
-                            train.Room = room;
+                            RoomDTO r = await roomService.GetRoom(tr.RoomId);
+                            train.Room = r;
                             train.Coach= await coachService.GetCoach(tr.CoachId);
                             IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
                             train.Users= us.ToList();
@@ -840,5 +895,116 @@ namespace SportClub.Controllers
             return RedirectToAction("RoomWithShedule", new { Id = roomId });
         }
 
+
+        public async Task<IActionResult> EditTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroupdto != null)
+            {
+                //await putCoaches();
+                //await putGroups();
+                //await putRooms();//
+                //await putTimes();//
+                //await putSpecialitys();//
+                //await putUsers();
+                //await putCoaches(); 
+                return View("EditTrainingGroup", trainingGroupdto);
+            }
+
+            return View("GetTrainingGroups", "TrainingGroup");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditTrainingGroup(int id, TrainingGroupDTO group)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
+                if (trainingGroupdto == null)
+                {
+                    return NotFound();
+                }
+
+                if (ModelState.IsValid)
+                {
+                    var coac = await coachService.GetCoach((int)group.CoachId);
+                    var room = await roomService.GetRoom((int)group.RoomId);
+                    //var sp = await specialityService.GetSpeciality((int)group.SpecialityId);
+
+                    trainingGroupdto.Name = group.Name;
+                    //trainingGroupdto.Number = group.Number;
+
+                    trainingGroupdto.CoachName = coac.Name;
+                    trainingGroupdto.CoachId = group.CoachId;
+
+                    trainingGroupdto.RoomName = room.Name;
+                    trainingGroupdto.RoomId = group.RoomId;
+                    //trainingGroupdto.TimeId = group.TimeId;
+
+                    //trainingGroupdto.GroupName = room.Name;
+                    //trainingGroupdto.GroupId = group.GroupId;
+
+                    //trainingGroupdto.SpecialityName = sp.Name;
+                    //trainingGroupdto.SpecialityId = group.SpecialityId;
+
+
+
+                    try
+                    {
+                        await trainingGroupService.UpdateTrainingGroup(trainingGroupdto);
+                    }
+                    catch { return View("EditTrainingGroup", group); }
+                    return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+                    // } 
+                }
+                return RedirectToAction("GetTrainingGroups");
+            }
+            catch
+            {
+                return View("GetTrainingGroups", "TrainingGroup");
+            }
+        }
+
+        public async Task<IActionResult> DeleteTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            return View(trainingGroup);
+        }
+        [HttpPost, ActionName("DeleteTrainingGroup")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            int roomId = trainingGroup.RoomId;
+            int groupId = trainingGroup.GroupId;
+            await trainingGroupService.DeleteTrainingGroup(id);
+            await groupService.DeleteGroup(groupId);
+            return RedirectToAction("RoomWithShedule", new { Id = roomId });
+            //return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+        }
+
+        public async Task<IActionResult> DetailsTrainingGroup(int id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
+            if (trainingGroup == null)
+            {
+                return NotFound();
+            }
+            trainingGroup.Id = id;
+            return View(trainingGroup);
+        }
     }
 }

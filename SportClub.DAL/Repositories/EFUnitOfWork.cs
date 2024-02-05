@@ -28,6 +28,8 @@ namespace SportClub.DAL.Repositories
         private TypeOfTrainingRepository typeoftrainingRepository;
 
 
+        private SkipSheduleRepository SkipSheduleRepository;
+
         public EFUnitOfWork(SportClubContext context)
         {
 
@@ -160,7 +162,15 @@ namespace SportClub.DAL.Repositories
                 return typeoftrainingRepository;
             }
         }
-
+        public ISetGetRepository<SkipShedule> SkipShedule
+        {
+            get
+            {
+                if (SkipSheduleRepository == null)
+                    SkipSheduleRepository = new SkipSheduleRepository(db);
+                return SkipSheduleRepository;
+            }
+        }
         public async Task Save()
         {
             await db.SaveChangesAsync();

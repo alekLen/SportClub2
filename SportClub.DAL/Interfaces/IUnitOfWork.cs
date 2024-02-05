@@ -1,4 +1,5 @@
 ﻿using SportClub.DAL.Entities;
+using SportClub.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,10 @@ namespace SportClub.DAL.Interfaces
         ITrainingIndRepository TrainingInds { get; }
         ITrainingGroupRepository TrainingGroups { get; }
         ISetGetRepository<TypeOfTraining> TypeOfTrainings { get; }
+
+        ISetGetRepository<SkipShedule> SkipShedule { get; }
+        
+
         Task Save();
     }
 }

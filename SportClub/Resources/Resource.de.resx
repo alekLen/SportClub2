@@ -156,6 +156,9 @@
   <data name="Album" xml:space="preserve">
     <value>Album</value>
   </data>
+  <data name="AllSc" xml:space="preserve">
+    <value>Alle gespeicherten Diagramme</value>
+  </data>
   <data name="AllSongs" xml:space="preserve">
     <value>Alle Lieder</value>
   </data>
@@ -188,6 +191,9 @@
   </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Sprache auswählen</value>
+  </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Wählen Sie die Zeit für den Zeitplan aus</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
@@ -288,6 +294,9 @@
   <data name="emailused" xml:space="preserve">
     <value>*email bereits registriert</value>
   </data>
+  <data name="endT" xml:space="preserve">
+    <value>Endzeit</value>
+  </data>
   <data name="Enter" xml:space="preserve">
     <value>Betreten</value>
   </data>
@@ -360,6 +369,12 @@
   <data name="LogRequired" xml:space="preserve">
     <value>*Login ist ein Pflichtfeld</value>
   </data>
+  <data name="MakeCh" xml:space="preserve">
+    <value>Erstellen eines Tagesplans</value>
+  </data>
+  <data name="MakeTime" xml:space="preserve">
+    <value>Schaffen Sie Zeit für Diagramme</value>
+  </data>
   <data name="man" xml:space="preserve">
     <value>männlich</value>
   </data>
@@ -374,6 +389,9 @@
   </data>
   <data name="Newusers" xml:space="preserve">
     <value>Neue Nutzer</value>
+  </data>
+  <data name="oDay" xml:space="preserve">
+    <value>FREIER_TAG</value>
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*Eine Passwortbestätigung ist erforderlich</value>
@@ -417,6 +435,12 @@
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="saveSc" xml:space="preserve">
+    <value>Zeitplan speichern</value>
+  </data>
+  <data name="SavT" xml:space="preserve">
+    <value>Zeit gespart</value>
+  </data>
   <data name="Shedule" xml:space="preserve">
     <value>Zeitplan</value>
   </data>
@@ -429,11 +453,17 @@
   <data name="Speciality" xml:space="preserve">
     <value>Spezialität</value>
   </data>
+  <data name="startT" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
   <data name="Style" xml:space="preserve">
     <value>Genre</value>
   </data>
   <data name="StyleSort" xml:space="preserve">
     <value>genre</value>
+  </data>
+  <data name="Subcrip" xml:space="preserve">
+    <value>Abonnement</value>
   </data>
   <data name="Surname" xml:space="preserve">
     <value>Nachname</value>

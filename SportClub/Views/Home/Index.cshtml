@@ -2,56 +2,321 @@
     Layout = "_LayDop";
 }
 @{
-    ViewData["Title"] = "Sport Club";
+    ViewData["Title"] = "SportClub";
 }
-<div style="width:800px;height:300px;background-image: url('/Sport/2.jpg')">
+@model  SportClub.Models.StartViewModel
 
+     @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
+     {      
+    <div class="marquee">
+        <div class="marquee-content">
+            <span> Скоро открытие нового спортзала &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Поспешите приобрести абонементы &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  До конца месяца скидка 30%  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  При покупке двух и более абонементов дополнительная скидка 10% &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; тел: +380971231231 &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+            <span> Скоро открытие нового спортзала &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Поспешите приобрести абонементы &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  До конца месяца скидка 30%  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  При покупке двух и более абонементов дополнительная скидка 10% &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; тел: +380971231231 &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        </div>
+    </div>
+     }
+<div style="display:flex;flex-direction:column;">
+     <div style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:70px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+    <div style="text-align:center;color:#F0E68C;font-size:50px;font-weight:bold;">SportClub</div>
+     </div>
+     <div class="flex" style="flex-wrap:wrap;">
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/спорт.png" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm10" class="info-box">Спорт Это здоровье</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/тренер1.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm12" class="info-box">Индивидуальные тренировки</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/75.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm11" class="info-box">Групповые тренировки</div>
+        </div>
+    </div>
+    <div id="inf10" class="inf" style="width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        Спортивные нагрузки помогают улучшить кровоснабжение мышц и регуляцию деятельности нервной системы. <br />
+        Не только ваше тело станет красивее и подтянутее, но и ваши нервы станут значительно крепче! <br />
+        Регулярные занятия спортом повышают иммунитет и улучшают самочувствие.<br />
+        Во время тренировки организм вырабатывает эндорфины.
+    </div>
+    <div id="inf11" class="inf" style="display:none;width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; Групповые тренировки создают уникальную атмосферу занятий. Составляются таким образом, чтобы все занимающиеся чувствовали себя максимально комфортно,
+        могли расслабиться и не стесняться своих движений и присутствия других людей. У нас представлено огромное количество групповых программ по различным направлениям.<br />
+        &nbsp; &nbsp;&nbsp; Вы можете выбрать то, что Вам по душе, комбинировать тренировки, посещая параллельно сразу несколько занятий.
+    </div>
+    <div id="inf12" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; Личный тренер по фитнесу позволит вам комфортно заниматься
+        и в кратчайшие сроки достигать желаемых результатов. В процессе тренировки инструктор все внимание уделяет одному
+        человеку, сможет предупредить ошибки, поможет строго соблюдать технику выполнения упражнений.<br />
+        Индивидуальный  подход к клиенту обеспечит наилучший результат.
+    </div>
+    <br />
+    <div class="flex" style="flex-wrap:wrap;">
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/пилатес5.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm21" class="info-box">Пилатес</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/фон.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm22" class="info-box">Кроссфит</div>
+        </div>
+        <div class="image-container" style="margin:10px;padding:15px;">
+            <img src="~/Coaches/йога.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+            <div id="imm23" class="info-box">Занятия йогой</div>
+        </div>
+
+    </div>
+    
+    <div id="inf21" class="inf" style="display:none;width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; В время пилатеса задействуются глубокие слои мышц, которые не функционируют при других видах спорта.<br />
+        &nbsp; &nbsp;&nbsp; Гимнастика исправляют осанку, избавляют от заболеваний опорно-двигательного аппарата, 
+        повышают эластичность мышц бедер и ягодиц, нормализуют работу сердечно-сосудистой, нервной систем и улучшают концентрацию внимания.
+    </div>
+    <div id="inf22" class="inf" style=" background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp; Кроссфит – это высокоинтенсивный вид спорта, включающий элементы кардио, аэробики, тяжелой атлетики, спортивной гимнастики и гребли.<br />
+        &nbsp; &nbsp;&nbsp; Тренировки позволяют быстро избавить тело от лишнего веса. Эффективно воздействуют на внешний 
+        вид – мужчины отмечают рельеф и объемную мускулатуру тела, женщины получают красивые спортивные формы и гибкость.<br />       
+    </div>
+    <div id="inf23" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        &nbsp; &nbsp;&nbsp;Занятия йогой улучшают равновесие, координацию и чувство баланса, ведь предусматривают выполнение контролируемых движений, концентрацию внимания и статические позиции.<br />
+        Йога помогает повысить выносливость, укрепить кости и мышцы и стать более гибкими и подвижными.<br /> На наших занятиях йогой вы узнаете свое тело поновому.
+    </div>
+    
+    <div id="allcoaches" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#EEE8AA;font-size:20px;">Наша команда</div>
+    </div>
+    <div >
+        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">
+          @using Microsoft.AspNetCore.Http
+            @foreach (var item in Model.coaches)
+            {
+
+                <div class="flex marg back_color " style="width:620px; padding:2px;height:330px;">
+                     
+                    <div >
+                        <img src=@item.Photo width="330" height="270" alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
+                       
+                        <h3 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h3>
+                    </div>
+                    <p style="padding:20px;padding-bottom:0px;color:#EEE8AA; background-size:cover; background-image: url('/Coaches/фон5.jpg'); 
+                         margin-bottom:0px;text-align:center;">
+                        @item.Description
+                       </p>
+                  </div>
+             
+            }
+        </div>
+    
+    </div>
+    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#EEE8AA;font-size:20px;">Залы для тренировок</div>
+    </div>
+    <div>
+        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">          
+            @foreach (var item in Model.rooms)
+            {
+
+                <div class="flex " style="flex-direction:column;" >
+
+                    <div style="padding:10px;background-color:#2F4F4F;margin-bottom:10px;padding-bottom:0px;">
+                        <img src=@item.Photo width="600" height="470" alt="photoSportroom"  />
+                        <h6 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h6>
+                    </div>
+                   
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <div id="abonem" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#EEE8AA;font-size:20px;">@Resources.Resource.Subcrip</div>
+    </div>
+    <div class="flex" style="flex-wrap:wrap;justify-content:space-around;">
+        <div class="ticket">
+            FAMILY
+            <hr size="4" style="background-color: rgb(190, 62, 83);">
+            <span class="s">19 000</span>
+            <br><br>
+            <span class="s1" style="border-bottom: 4px solid rgba(190, 62, 83,0.3); padding:5px; ">один год</span>
+            <br><br>
+            <span class="s2" style=" opacity: 0.8;">
+                бассейн<br>
+                сауна<br>
+                детская комната<br>
+                Заморозка 60 дней<br>
+            </span>
+           
+        </div>
+        <div class="ticket">
+            PROFESSIONAL
+            <hr size="4" style="background-color: rgb(231, 180, 71);">
+            <span class="s">12 000</span>
+            <br><br>
+            <span class="s1" style="border-bottom: 4px solid rgba(231, 180, 71,0.3); padding:5px; ">один год</span>
+            <br><br>
+            <span class="s2" style=" opacity: 0.8;">
+                Массаж<br>бассейн<br>
+                сауна<br>Заморозка 60 дней<br>
+            </span>
+            
+        </div>
+        <div class="ticket">
+            STANDART
+            <hr size="4" style="background-color: rgba(103, 134, 201,0.3);">
+            <span class="s">10 000</span>
+            <br><br>
+            <span class="s1" style="border-bottom: 4px solid rgba(103, 134, 201,0.3); padding:5px; ">один год</span>
+            <br><br>
+            <span class="s2" style=" opacity: 0.8;">
+                бассейн<br>
+                сауна<br>
+                детская комната<br>
+                
+            </span>
+            
+        </div>
+        <div class="ticket">
+            BASIC
+            <hr size="4" style="background-color: rgb(52, 182, 69)">
+            <span class="s">2 000</span>
+            <br><br>
+            <span class="s1" style="border-bottom: 4px solid rgba(52, 182, 69,0.3); padding:5px; ">один месяц</span>
+            <br><br>
+            <span class="s2" style=" opacity: 0.8;">
+                бассейн<br>
+                сауна<br>
+                детская комната<br>
+                
+            </span>
+           
+        </div>
+        <div class="ticket">
+            ONCE
+            <hr size="4" style="background-color: gray">
+            <span class="s" >600</span>
+            <br><br>
+            <span class="s1" style=" border-bottom: 4px solid rgba(105, 105, 105,0.3); padding:5px; ">один день</span>
+            <br><br>
+            <span class="s2" style=" opacity: 0.8;">
+                бассейн<br>
+                сауна<br>
+                детская комната<br>
+            </span>
+
+        </div>
+    </div>
+    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+        <div style="text-align:center;color:#F0E68C;font-size:20px;">SportClub</div>
+    </div>
 </div>
-@*@section Scripts{
-    <script>
-   
-        $(document).ready(function () {
-            $("body").on("click", ".btn-Login", function (e) {
-                e.preventDefault();
-                $("<div id='dialogContent'></div>")
-                    .addClass("dialog")
-                    .appendTo("body")
-                    .load("/Login/Login")
-                    .dialog({
-                        title: "Авторизация" ,
-                       close: function () { $(this).remove(); },
-                        modal: true,
-                        buttons: {
-                            "Вход" : function () {
-                                $.ajax({
-                                    url: "@Url.Action("Login", "Login")",
-                                    type: "POST",
-                                    data: $('#formLog').serialize(),
-                                    datatype: "json",
-                                    success: function (response) {
+<a class="UpScroll whiteY" href="#sportclub"> вверх</a>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var colors = ['#FFFACD','#EEE8AA', '#F0E68C', '#BDB76B']; // Массив цветов
+        var currentIndex = 0;
+        var currentIndex2 = 0;
+        var text = ["Скоро открытие нового спортзала!!!","Скидка на абонементы 30% !!!"]
+        setInterval(function () {
+            document.getElementById('color-changing-paragraph').style.color = colors[currentIndex];
+            currentIndex++;
 
-                                        if (response) {                                       
-                                           // $("#dialogContent").remove();
-                                            location.reload(true);
-                                        }
-                                        else {
-                                            let l2 = document.getElementById("error-login1");
-                                            l2.style.display = "inline";
-                                        }
-                                    }
-                                });
-                            }
-                        }
-                    });
-            });
+            if (currentIndex >= colors.length) {
+                currentIndex = 0;
+            }
+        }, 2000);
+        setInterval(function () {
+            document.getElementById('color-changing-paragraph').textContent = text[currentIndex2];
+            currentIndex2++;
+
+            if (currentIndex2 >= text.length) {
+                currentIndex2 = 0;
+            }
+        }, 4000);
+        var im0 = document.getElementById('imm10');
+        var inf0 = document.getElementById('inf10');
+        var im1 = document.getElementById('imm11');
+        var inf1 = document.getElementById('inf11');
+        var im2 = document.getElementById('imm12');
+        var inf2 = document.getElementById('inf12');
+
+        var im21 = document.getElementById('imm21');
+        var inf21 = document.getElementById('inf21');
+        var im22 = document.getElementById('imm22');
+        var inf22 = document.getElementById('inf22');
+        var im23 = document.getElementById('imm23');
+        var inf23 = document.getElementById('inf23');
+
+        im1.addEventListener('click', function () {
+            if (inf1.style.display === 'none') {
+                inf1.style.display = 'block';
+                inf2.style.display = 'none';               
+                inf0.style.display = 'none';
+            } else {
+                inf1.style.display = 'none';
+                inf2.style.display = 'none';           
+                inf0.style.display = 'block';
+            }
         });
-
-
-
-
-    </script>
-}
-*@
+        im2.addEventListener('click', function () {
+            if (inf2.style.display === 'none') {
+                inf2.style.display = 'block';
+                inf1.style.display = 'none';               
+                inf0.style.display = 'none';
+            } else {
+                inf1.style.display = 'none';
+                inf2.style.display = 'none';
+                inf0.style.display = 'block';
+            }
+        });
+        im0.addEventListener('click', function () {
+            if (inf0.style.display === 'none') {
+                inf0.style.display = 'block';
+                inf1.style.display = 'none';
+                inf2.style.display = 'none';
+               
+            } else {
+                inf1.style.display = 'none';
+                inf2.style.display = 'none';               
+                inf0.style.display = 'block';
+            }
+        });
+        im21.addEventListener('click', function () {
+            if (inf21.style.display === 'none') {
+                inf21.style.display = 'block';
+                inf22.style.display = 'none';
+                inf23.style.display = 'none';
+            } else {
+                inf21.style.display = 'none';
+                inf23.style.display = 'none';
+                inf22.style.display = 'block';
+            }
+        });
+        im22.addEventListener('click', function () {
+            if (inf22.style.display === 'none') {
+                inf22.style.display = 'block';
+                inf21.style.display = 'none';
+                inf23.style.display = 'none';
+            } else {
+                inf21.style.display = 'none';
+                inf23.style.display = 'none';
+                inf22.style.display = 'block';
+            }
+        });
+        im23.addEventListener('click', function () {
+            if (inf23.style.display === 'none') {
+                inf23.style.display = 'block';
+                inf22.style.display = 'none';
+                inf21.style.display = 'none';
+            } else {
+                inf23.style.display = 'none';
+                inf21.style.display = 'none';
+                inf22.style.display = 'block';
+            }
+        });
+       
+    });
+</script>
 @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }

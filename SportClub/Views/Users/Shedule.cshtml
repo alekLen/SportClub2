@@ -11,7 +11,7 @@
     <input type="hidden" id="idroom" value="@Model.room.Id" />
     <h1>@Model.room.Name &nbsp;&nbsp;&nbsp;</h1>
     <img src="@Model.room.Photo" style="width:70px;height:70px" alt="photo" />
-    
+
 </div>
 @if (Model.message == null)
 {
@@ -62,7 +62,15 @@
                                                 }
                                                 else
                                                 {
-                                                    <span class="white">@it.UserName</span>
+                                                    @if (@it.UserId.ToString() == ViewBag.MyId)
+                                                    {
+                                                        <span class="white" class="white" style="color:coral;font-size:15px;font-weight:bold">Ваша тренировка</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="white">Не доступно</span>
+                                                    }
+
 
                                                     <br />
                                                     <input type="hidden" class="viewId" value="@it.Id"/>
@@ -84,17 +92,31 @@
                                             <div>
                                                 @{
                                                     var num = it.Group.Number - it.Users.Count;
+
                                                 }
                                                 <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
                                                 <span class="white">Тренер : </span><br />
                                                 <span class="white">@it.Coach.Name</span><br />
                                                 @if (it.Group.Number > it.Group.UsersId.Count)
                                                 {
-                                                    <span class="white">Доступно : @num </span>
+                                                    bool nflag = false;
+                                                    foreach (var us in it.Users)
+                                                    {
+                                                        if (us.Id == Convert.ToInt32(Context.Session.GetString("Id")))
+                                                           nflag = true;  
+                                                    }
 
-                                                    <br />
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="" asp-action="">Записаться</a>
-
+                                                    if (!nflag)
+                                                    {
+                                                        <span class="white">Доступно : @num </span>
+                                                        <br />
+                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Записаться</a>
+                                                    }
+                                                    else {
+                                                        <span class=" white">Вы записаны</span>
+                                                        //<br />
+                                                        //<a class="btn btn-outline-dark" style="background-color:lightsalmon" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">Пропустить</a>
+                                                    }
                                                 }
                                                 else
                                                 {
@@ -105,9 +127,9 @@
                                         </div>
                                     }
                                 }
-                              
+
                             </form>
-                        
+
                         }
 
                     </td>

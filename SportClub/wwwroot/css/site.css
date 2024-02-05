@@ -18,8 +18,8 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
-  background-color:antiquewhite;
+    margin-bottom: 60px;
+    /* background-color:antiquewhite;*/
 }
 .center {
     display: flex;
@@ -40,9 +40,7 @@ body {
     padding-left:20px;
 }
 
-.font {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+
 .coach {
     width: 420px;
     height: 20px;
@@ -52,8 +50,11 @@ body {
 .paddingLeft{
     padding-left:20px;
 }
-.white{
-    color:white;
+.white {
+    color: white;
+}
+.whiteY {
+    color: #EEE8AA;
 }
 #dialogContent{
     background-color:gray;
@@ -84,6 +85,12 @@ body {
 }
 .marg{
     margin:3px;
+}
+@font-face {
+    font-family: 'MyFontNormal2';
+    src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
+    font-weight: normal;
+    font-style: normal;
 }
 .green {
     background-color:lightgreen;
@@ -122,4 +129,163 @@ body {
     justify-content: center;
     left:50%;
 
+}
+.marquee {
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+  /*  background-color: #EEE8AA;*/
+    color: #EEE8AA;
+    white-space: nowrap;
+  /*  opacity: 0.5;*/
+}
+
+.marquee-content {
+    display: flex;
+    position: relative;
+    animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.info-box {
+    position: absolute;
+    bottom: 0%; 
+    left: 0%;
+    transform: translateX(15%);
+    width: 300px;
+    background-color: #2F4F4F;
+    color: #F0E68C;
+    text-align: center;
+    border: 1px solid #F0E68C;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px #F0E68C;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.image-container:hover .info-box {
+    visibility: visible;
+    opacity: 1;
+}
+.inf {
+    background-color: #2F4F4F;
+    color: #EEE8AA;
+    text-align: center;  
+    padding:10px
+}
+.back_color {
+    background-color: #2F4F4F;
+}
+/*.slider {
+  overflow: hidden;
+  width: 300px;*/ /* ширина трех фото */
+/*}
+
+.slider-window {
+  display: flex;
+  width: 600px;*/ /* общая ширина всех фото */
+/*}
+
+.slide {
+  width: 100px;*/ /* ширина одного фото */
+  /*flex-shrink: 0;
+  text-align: center;
+}*/
+.ticket {
+    width: 240px;
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    /* background-color: #2F4F4F;*/
+    background-image: linear-gradient(to bottom right, #2F4F4F, rgba(50,50,50));
+    box-shadow: 0px 4px 8px 0px #F0E68C;
+    color: #EEE8AA;
+}
+
+.s {
+    font-size: 20px;
+}
+
+.s1 {
+    color: #F0E68C;
+    opacity: 0.8;
+    font-weight: bold;
+    font-family: sans-serif;
+   
+}
+
+.s2 {
+    font-size: 15px;    
+}
+
+.s3 {
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 15%;
+    background-color: rgb(190, 62, 83);
+    color: white;
+}
+
+.h {
+    visibility: hidden;
+}
+
+
+.ticket:hover {
+    transform: scale(1.1);
+}
+.UpScroll {
+    position: fixed;
+    left: 95%;
+    bottom: 10%;
+    width: 60px;
+    height: 45px;
+    padding: 5px;
+    background-color: #2F4F4F;
+    border: 1px solid #2F4F4F;
+    box-shadow: 0px 4px 8px 0px #F0E68C;
+    border-radius: 50%;
+    text-decoration: none;
+}
+    .UpScroll:hover {
+        color: #F0E68C;
+        text-decoration: none;
+    }
+.buttonsGY {
+    background-color: dimgray;
+    box-shadow: 0px 4px 8px 0px black;
+    color: #EEE8AA;
+    border:0px;
+}
+    .buttonsGY:hover {
+        background-color: dimgray;
+        box-shadow: 0px 8px 16px 0px #F0E68C;
+    }
+.div_reg3 {
+    background-color: #2F4F4F;
+    box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
+    border-radius: 5px;
 }

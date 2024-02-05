@@ -2,7 +2,7 @@
 
 
 <h2>Индивидуальные тренировки</h2>
-<div class="flex">
+<div class="flex" style="flex-wrap:wrap">
     @if (Model.trInds.Count == 0)
     {
         <h4 class="green" style="padding:10px;">Не назначены</h4>
@@ -22,7 +22,7 @@
 
             </div>
                        
-
+            <div class="marg">
                 <br />
                 <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
                 <span class="white">Тренер : </span><br />
@@ -30,13 +30,18 @@
                 <br /> <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Отменить запись</a>
         </div>
 
+                <br /> 
+             @*    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="MyAction">Отменить</a> *@
+                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a>
+            </div>
+        </div>
     }
     }
 </div>
 
 <h2>Групповые тренировки</h2>
 
-<div class="flex">
+<div class="flex" style="flex-wrap:wrap">
      @if (Model.trGrs.Count == 0)
     {
         <h4 class="green" style="padding:10px;" >Не назначены</h4>
@@ -47,6 +52,7 @@
         <div class="flex  marg">
             <div class="padd1 ">
                 <div>
+                    <input type="hidden" value="@it.Day"/>
                     <h3 class="white"> @it.DayName</h3>
                     <input type="text" name="time" value="@it.Time" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
                 </div>
@@ -61,7 +67,17 @@
                     <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
                     <span class="white">Тренер : </span><br />
                     <span class="white">@it.Coach.Name</span><br />
+
+
+
                     <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="">Отменить</a>
+                
+                @* @if(){*@
+                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-dayNum="@it.Day" asp-controller="Users" asp-action="UserScipGroupTraining">Пропустить</a>
+                @* }  *@
+                
+                
+                
                 </div>
                 <br />
             
