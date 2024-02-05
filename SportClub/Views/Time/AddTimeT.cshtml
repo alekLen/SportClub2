@@ -1,9 +1,9 @@
 ﻿@Html.AntiForgeryToken()
-
-<div class="flex" style="justify-content:space-around;">
-    <div >
-        <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttonsGY">X</a>
-    </div>
+<div>
+    <a  asp-controller="Time" asp-action="Exit" class="btn btn-primary buttonsGY ex" style="">X</a>
+</div>
+<div class="flex" style="justify-content:space-around;flex-wrap:wrap;">
+  
    <div >
         <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
             @Resources.Resource.MakeTime
@@ -15,19 +15,17 @@
 
             <div class=" card c7 padd" style=" background-color: #2F4F4F;padding-top:0px;">
                 <h4 class="whiteY" style="text-align:center;">@Resources.Resource.Addition</h4>
-                <form asp-controller="Time" method="post" style="border-radius:3px; background-color: white;padding:10px;border:0px;">
-               @*  @model SportClub.BLL.DTO.TimeTDTO
-                @Html.AntiForgeryToken() *@
-             
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form asp-controller="Time" method="post" style="border-radius:3px; background-color: white;padding:10px;border:0px;">           
+
+                    <div id="messageDiv" class="text-danger">@Context.Session.GetString("TimeMessage")</div>
                     <div class="form-group" >
                         <span style="text-align:center;">@Resources.Resource.startT</span><br />
-                        <input name="Start" id="start" class="form-control card _c7" placeholder="00:00" style=" background-color: white" />
+                        <input name="Start" id="start" class="form-control card _c7 TimeM" placeholder="00:00" style=" background-color: white" />
                     <span  id="st" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                         <span style="text-align:center;">@Resources.Resource.endT</span><br />
-                        <input name="End" id="end" class="form-control card _c7" placeholder="00:00" style=" background-color: white" />
+                        <input name="End" id="end" class="form-control card _c7 TimeM" placeholder="00:00" style=" background-color: white" />
                     <span  id="en" class="text-danger"></span>
 
                  </div>
@@ -42,8 +40,7 @@
             <div class=" card c7 padd" style=" background-color: #2F4F4F;padding-top:0px;">
 
                 <form asp-controller="Time" method="post" style="border:0px;">
-                    <label class="whiteY" style="text-align:center;">@Resources.Resource.SavT</label><br />
-             @*    <select asp-for="Id" size="14" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> *@
+                    <label class="whiteY" style="text-align:center;">@Resources.Resource.SavT</label><br />       
                     <select asp-for=@Model.Time.Id size="10"  name="timeId" class="idTime form-control card _c7" asp-items="ViewBag.TimeId"></select>
                     <br />
                 <div class="form-group">
@@ -65,9 +62,7 @@
 
         <div class="padd">
                 <h4 class="whiteY">@Resources.Resource.ChDay</h4>
-                <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:30px;">
-              @*   @model SportClub.BLL.DTO.TimetableDTO *@
-
+                <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:30px;">             
                     <select asp-for=@Model.Timetable.Id size="10" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
                 <br />
                 <div class="form-group">
@@ -75,8 +70,7 @@
                       </div>
             </form>
                 <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttonsGY">@Resources.Resource.Cancel</a>
-               @*  <a asp-area="" asp-controller="Time" asp-action="Exit" class="btn btn-primary buttonsGY">выход</a> *@
-
+              
         </div>
         <div style="width:20px;"></div>
         <div class="padd">
@@ -84,7 +78,6 @@
             <form asp-controller="Time" method="post">
                     <label class="whiteY" style="text-align:center;">@Resources.Resource.chooseTime</label><br />
                 <br />
-               @*  <select asp-for="Id" size="10" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> *@
                      <select asp-for=@Model.Time.Id size="7" name="Tid" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> 
                 <br /> <br />
                 <div class="form-group">
@@ -113,8 +106,7 @@
                     {
                         <input type="text" value="@t" style="width:150px;"> <br />
                     }
-                    <br />
-                   @*  <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" readonly value="Удалить" class="btn btn-primary c2" /> *@
+                    <br />                
                    @{var s="btn"+@item.Id;}
                     <a id=@s class="btn btn-primary buttonsGY btnDelTimeTable">@Resources.Resource.Delete</a>
                 </div>
@@ -177,14 +169,14 @@
                     .appendTo("body")
                    .load("Admin/AddedPost")
                     .dialog({
-                    title: "Удалить?",
+                    title: '@Html.Raw(@Resources.Resource.Delete)?',
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm3",//
-                            text: "Удалить",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                             click: function () {
                                 $.ajax({
                                     url: "@Url.Action("ConfirmDeleteTime", "Time")",
@@ -200,7 +192,7 @@
                                                 .appendTo("body")
                                                 .load("/Admin/AddedPost")
                                                 .dialog({
-                                                    title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)!',
                                                     close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
                                                     dialogClass: 'myTitleClass',
                                                     modal: true,
@@ -224,7 +216,7 @@
                                                 .appendTo("body")
                                                 .load("/Admin/AddedPost")
                                                 .dialog({
-                                                    title: "Ошибка удаления!",
+                                                title: '@Html.Raw(@Resources.Resource.MyError)!',
                                                     close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
                                                     dialogClass: 'myTitleClass',
                                                     modal: true,
@@ -282,7 +274,11 @@
                         }
                     });         
         });
+        $(".TimeM").focus(function () {
+            var $messageDiv = $('#messageDiv');
+            $messageDiv.text("");
 
+        });
         $(".btnDelTimeTable").click(function () {
             var idd = $(this).attr('id');
             var result = idd.match(/\d+/);
@@ -291,14 +287,14 @@
                 .appendTo("body")
                 .load("Admin/AddedPost")
                 .dialog({
-                    title: "Удалить?",
+                    title: '@Html.Raw(@Resources.Resource.Delete)?',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
                         class: "input_subm3",//
-                        text: "Удалить",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeleteTimetable", "Time")",
@@ -314,14 +310,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)',
                                                 close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
                                                     class: "input_subm2",//
-                                                    text: "Закрыть",
+                                                    text: '@Html.Raw(@Resources.Resource.Exit)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
                                                     }
@@ -338,14 +334,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Ошибка удаления!",
+                                                title: '@Html.Raw(@Resources.Resource.MyError)',
                                                 close: function () { window.location.href = "@Url.Action("AddTimeT", "Time")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
                                                     class: "input_subm3",//
-                                                    text: "Закрыть",
+                                                    text: '@Html.Raw(@Resources.Resource.Exit)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
                                                     }

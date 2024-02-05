@@ -150,9 +150,6 @@
   <data name="Admins" xml:space="preserve">
     <value>Всі адміни</value>
   </data>
-  <data name="addTtoCh" xml:space="preserve">
-    <value>Додати час у графік</value>
-  </data>
   <data name="age" xml:space="preserve">
     <value>Вік</value>
   </data>
@@ -509,5 +506,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>роком виходу</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Заповніть час початку та закінчення тренування!</value>
+  </data>
+  <data name="MyEError" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>Такий час вже є у базі!</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>Час тренування не може бути коротшим за 30 хвилин</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>час закінчення повинен бути пізніше, ніж час початку</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Введіть час у форматі 00:00</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>некоректне редагування</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Час буде відредаговано у всіх графіках та розкладах!</value>
   </data>
 </root>

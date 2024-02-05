@@ -147,9 +147,6 @@
   <data name="Admins" xml:space="preserve">
     <value>Alle admins</value>
   </data>
-  <data name="addTtoCh" xml:space="preserve">
-    <value>Fügen Sie dem Zeitplan Zeit hinzu</value>
-  </data>
   <data name="age" xml:space="preserve">
     <value>Alter</value>
   </data>
@@ -500,5 +497,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>erscheinungsjahr</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Geben Sie die Start- und Endzeiten Ihres Trainings ein!</value>
+  </data>
+  <data name="MyError" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Unverschämt</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>Diese Zeit ist bereits in der Datenbank!</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>Die Trainingszeit darf 30 Minuten nicht unterschreiten</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>Die Endzeit muss später als die Startzeit liegen</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Geben Sie die Zeit im 00:00-Format ein</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>fehlerhafte Bearbeitung</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Die Zeit wird in allen Diagrammen und Zeitplänen bearbeitet!</value>
   </data>
 </root>

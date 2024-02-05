@@ -147,9 +147,6 @@
   <data name="Admins" xml:space="preserve">
     <value>Tous les admins</value>
   </data>
-  <data name="addTtoCh" xml:space="preserve">
-    <value>Ajouter du temps à planifier</value>
-  </data>
   <data name="age" xml:space="preserve">
     <value>âge</value>
   </data>
@@ -500,5 +497,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>année de sortie</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Remplissez les heures de début et de fin de votre entraînement !</value>
+  </data>
+  <data name="MyError" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Bien sûr</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>Cette fois est déjà dans la base de données !</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>La durée de la formation ne peut pas être inférieure à 30 minutes</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>l'heure de fin doit être postérieure à l'heure de début</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Entrez l'heure au format 00:00</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>édition incorrecte</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Le temps sera modifié dans tous les graphiques et horaires !</value>
   </data>
 </root>

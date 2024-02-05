@@ -68,6 +68,69 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
+        public static string TimeMes1
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes1", resourceCulture);
+            }
+        }
+        public static string TimeMes2
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes2", resourceCulture);
+            }
+        }
+        public static string TimeMes3
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes3", resourceCulture);
+            }
+        }
+        public static string TimeMes4
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes4", resourceCulture);
+            }
+        }
+        public static string TimeMes5
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes5", resourceCulture);
+            }
+        }
+        public static string TimeMes6
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes6", resourceCulture);
+            }
+        }
+        public static string TimeMes7
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes7", resourceCulture);
+            }
+        }
+        public static string MyError
+        {
+            get
+            {
+                return ResourceManager.GetString("MyError", resourceCulture);
+            }
+        }
+        public static string Sucsess
+        {
+            get
+            {
+                return ResourceManager.GetString("Sucsess", resourceCulture);
+            }
+        }
         public static string startT
         {
             get

@@ -254,3 +254,15 @@ body {
     box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
     border-radius: 5px;
 }
+.ex {
+    position: fixed;
+    left: 6%;
+    top: 10%;
+   
+    text-decoration: none;
+}
+
+    .ex:hover {
+       
+        text-decoration: none;
+    }

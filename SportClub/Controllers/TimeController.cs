@@ -60,6 +60,7 @@ namespace SportClub.Controllers
             model.times = await makeListTimetables();
             return View(model);
         }
+        [Culture]
         [HttpPost]
         public async Task<IActionResult> AddTimeT(string Start, string End)
         {
@@ -73,7 +74,7 @@ namespace SportClub.Controllers
                     {
                         if (await timeService.CheckTimeT(Start, End))
                         {
-                            ModelState.AddModelError("", "Такое время уже есть в базе!");
+                            HttpContext.Session.SetString("TimeMessage", Resources.Resource.TimeMes2);
                         }
                         else
                         {
@@ -85,7 +86,7 @@ namespace SportClub.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Заполните время начала и окончания тренировки!");
+                HttpContext.Session.SetString("TimeMessage", Resources.Resource.TimeMes1);
             }
            // await PutTimes();
             return RedirectToAction("AddTimeT");
@@ -130,7 +131,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTime( TimeTDTO t, string Start, string End)
         {
-          //  HttpContext.Session.SetString("path", Request.Path);
+            HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TimeTDTO p = await timeService.GetTimeT(t.Id);
@@ -152,7 +153,7 @@ namespace SportClub.Controllers
                 }
                 else
                 {
-                    TempData["ErrorMessage"] = "некорректное редактирование";
+                    TempData["ErrorMessage"] = Resources.Resource.TimeMes6;
                     return RedirectToAction("EditTime", new { Id = t.Id });
                    
                 }
@@ -886,7 +887,7 @@ namespace SportClub.Controllers
                 {
                     if ((int.Parse(str1[0]) == int.Parse(str2[0]) && (int.Parse(str2[1]) - int.Parse(str1[1])) < 30))
                     {
-                        ModelState.AddModelError("", "Время тренировки не может быть короче 30 минут ");
+                        HttpContext.Session.SetString("TimeMessage", Resources.Resource.TimeMes3);
                     }
                     else
                     {
@@ -895,13 +896,13 @@ namespace SportClub.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "время окончаня должно быть позже, чем время начала ");
+                    HttpContext.Session.SetString("TimeMessage", Resources.Resource.TimeMes4);
 
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Введите время в формате 00:00 ");
+                HttpContext.Session.SetString("TimeMessage", Resources.Resource.TimeMes5);
             }
             return false;
         }

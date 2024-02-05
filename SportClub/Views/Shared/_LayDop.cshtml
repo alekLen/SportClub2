@@ -173,10 +173,7 @@
             {
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
-                @*
-            <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
-            <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> *@
-
+               
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
@@ -204,33 +201,24 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>Cоздать время/график дня
-                        @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
+                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>
+               
                     </div>
                 </div>
 
-                @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
-
-
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
-            <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
-            <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 <div class="mdropdown">
                     <button class="mdropbtn" style="font-family: 'MyFontNormal';">
                         Зал...<i class="fa fa-caret-down whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
                         <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
-                        @*    <a asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a> *@
+               
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
 
                 <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
-                @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
-            <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
+
 
                 <div class="mdropdown" style="float:right;">
                     <button class="mdropbtn whiteY" style="">
@@ -310,14 +298,16 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "АВТОРИЗАЦИЯ",
+                        title: '@Html.Raw(@Resources.Resource.Authorization)'
+                        ,
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm3",//
-                            text: "Войти",
+                            text: '@Html.Raw(@Resources.Resource.Enter)'
+                            ,
                             click: function () {
                                 // "ВХОД" : function () {
                                 $.ajax({

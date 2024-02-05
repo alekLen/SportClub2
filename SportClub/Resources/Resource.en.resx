@@ -147,9 +147,6 @@
   <data name="Admins" xml:space="preserve">
     <value>All admins</value>
   </data>
-  <data name="addTtoCh" xml:space="preserve">
-    <value>Add_time_to_schedule</value>
-  </data>
   <data name="age" xml:space="preserve">
     <value>age</value>
   </data>
@@ -500,5 +497,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>year</value>
+  </data>
+  <data name="MyError" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Successfully</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Fill in the start and end times!</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>This time is already in the database!</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>Training time cannot be shorter than 30 minutes</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>end time must be later than start time</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Enter time in 00:00 format</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>incorrect editing</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Time will be edited in all charts and schedules!</value>
   </data>
 </root>
