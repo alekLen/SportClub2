@@ -138,6 +138,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Добавить песню</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Добавить время в график</value>
+  </data>
   <data name="AddTimeForCharts" xml:space="preserve">
     <value>Добавить время для графиков</value>
   </data>
@@ -192,14 +195,14 @@
   <data name="ChooseLang" xml:space="preserve">
     <value>Выбрать язык</value>
   </data>
+  <data name="chooseTime" xml:space="preserve">
+    <value>Выберите время для графика</value>
+  </data>
   <data name="Coaches" xml:space="preserve">
     <value>Все тренеры</value>
   </data>
   <data name="CoachRegistration" xml:space="preserve">
     <value>Регистрация тренера</value>
-  </data>
-  <data name="chooseTime" xml:space="preserve">
-    <value>Выберите время для графика</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Подтвердить</value>
@@ -429,13 +432,13 @@
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
   </data>
-  <data name="SavedTime" xml:space="preserve">
-    <value>Сохраненное время</value>
-  </data>
   <data name="saveSc" xml:space="preserve">
     <value>Сохранить график</value>
   </data>
   <data name="SavT" xml:space="preserve">
+    <value>Сохраненное время</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
     <value>Сохраненное время</value>
   </data>
   <data name="Shedule" xml:space="preserve">

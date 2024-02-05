@@ -138,6 +138,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Fügen Sie ein Lied hinzu</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Fügen Sie dem Zeitplan Zeit hinzu</value>
+  </data>
   <data name="AddTimeForCharts" xml:space="preserve">
     <value>Zeit für Fahrpläne hinzufügen</value>
   </data>
@@ -189,11 +192,11 @@
   <data name="ChooseLang" xml:space="preserve">
     <value>Sprache auswählen</value>
   </data>
-  <data name="Coaches" xml:space="preserve">
-    <value>Alle trainers</value>
-  </data>
   <data name="chooseTime" xml:space="preserve">
     <value>Wählen Sie die Zeit für den Zeitplan aus</value>
+  </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>Alle trainers</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
@@ -423,13 +426,13 @@
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
   </data>
-  <data name="SavedTime" xml:space="preserve">
-    <value>Zeit gespart</value>
-  </data>
   <data name="saveSc" xml:space="preserve">
     <value>Zeitplan speichern</value>
   </data>
   <data name="SavT" xml:space="preserve">
+    <value>Zeit gespart</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
     <value>Zeit gespart</value>
   </data>
   <data name="Shedule" xml:space="preserve">

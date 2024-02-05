@@ -20,14 +20,13 @@ namespace SportClub.Controllers
         private readonly IRoom roomService;
         private readonly ITrainingInd trainingIndService;
         private readonly ITrainingGroup trainingGroupService;
-        //private readonly IGroup groupService;
-        //private readonly IGroup groupService;
+        
         private readonly ITime timeService;
         private readonly IShedule sheduleService;
 
         private static List<TrainingIndDTO> TrI = new();
         private static List<TrainingGroupDTO> TrG = new();
-        public CoachController(IShedule sh,ITime tt,/*IGroup gr,*/ IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
+        public CoachController(IShedule sh,ITime tt, IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             coachService = c;
@@ -37,7 +36,7 @@ namespace SportClub.Controllers
             roomService = room;
             trainingIndService = tr;
             trainingGroupService = tg;
-            //groupService = gr;
+            
             timeService = tt;
             sheduleService = sh;
         }

@@ -138,6 +138,9 @@
   <data name="AddSong" xml:space="preserve">
     <value>Add Song</value>
   </data>
+  <data name="addTtoCh" xml:space="preserve">
+    <value>Add_time_to_schedule</value>
+  </data>
   <data name="AddTimeForCharts" xml:space="preserve">
     <value>Add time for charts</value>
   </data>
@@ -189,11 +192,11 @@
   <data name="ChooseLang" xml:space="preserve">
     <value>Choose the Language</value>
   </data>
-  <data name="Coaches" xml:space="preserve">
-    <value>All coaches</value>
-  </data>
   <data name="chooseTime" xml:space="preserve">
     <value>Select time for schedule</value>
+  </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>All coaches</value>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -423,13 +426,13 @@
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
-  <data name="SavedTime" xml:space="preserve">
-    <value>Saved time</value>
-  </data>
   <data name="saveSc" xml:space="preserve">
     <value>Save_schedule</value>
   </data>
   <data name="SavT" xml:space="preserve">
+    <value>Saved time</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
     <value>Saved time</value>
   </data>
   <data name="Shedule" xml:space="preserve">

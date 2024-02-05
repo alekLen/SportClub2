@@ -657,22 +657,41 @@ namespace SportClub.Controllers
 
                         IEnumerable<TrainingGroupDTO> trg = await trainingGroupService.GetAllTrainingGroups();
                         List<TrainingGrToSee> trg1 = new();
-                        foreach (var tr in trg)
+                        if (trg != null)
                         {
-                            TrainingGrToSee train = new();
-                            train.Id = tr.Id;
-                            //train.Group = await groupService.GetGroup(tr.GroupId);
-                            train.Room = room;
-                            train.Coach = await coachService.GetCoach(tr.CoachId);
-                            IEnumerable<UserDTO> users = await trainingGroupService.GetTrainingGroupUsers(tr.Id);
-                            train.Users = users.ToList();
-                            train.Number = tr.Number;
-                            train.Time = tr.Time;
-                            train.Day = tr.Day;
-                            trg1.Add(train);
+                            foreach (var tr in trg)
+                            {
+                                TrainingGrToSee train = new();
+                                train.Id = tr.Id;
+                                //train.Group = await groupService.GetGroup(tr.GroupId);
+                                RoomDTO r = await roomService.GetRoom(tr.RoomId);
+                                train.Room = r;
+                                //train.Group = await groupService.GetGroup(tr.GroupId);
+                                train.Number = tr.Number;
+                                train.Room = room;
+                                train.Coach = await coachService.GetCoach(tr.CoachId);
+
+                                //IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
+                                IEnumerable<UserDTO> us = await trainingGroupService.GetTrainingGroupUsers(tr.Id);
+                                train.Users = us.ToList();
+                                train.Time = tr.Time;
+                                train.Day = tr.Day;
+                                trg1.Add(train);
+                            }
+                            m.traininggroup = trg1.ToList();
                         }
-                        m.traininggroup = trg1.ToList();
                     }
+                    //foreach(var t in shDto.trainingInd)
+                    //{
+                    //    TrainingIndDTO trInd = new();
+                    //    trInd.RoomId = t.RoomId;
+                    //    trInd.CoachId = t.CoachId;
+                    //    trInd.Time = t.Time;
+                    //    if(t != null)
+                    //    {
+                    //        m.trainingInd.Add(trInd);
+                    //    }
+                    //}
                 }
                 else
                 {

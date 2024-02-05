@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -132,7 +133,7 @@
 
                 @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:#EEE8AA;" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Мои тренировки" />
+                    <input style="float: right;width:max-content; color:#EEE8AA;" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
                 @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
                 {
@@ -153,7 +154,7 @@
                 }
                 @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn  whiteY" type="submit" value="Мои тренировки" />
+                    <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn  whiteY" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
 
                 @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
@@ -190,19 +191,20 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="color:#EEE8AA;">
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">Зарегестрировать админа</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">Зарегестрировать тренера</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">Зарегестрировать клиента</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a> 
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a> 
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a> 
+
                     </div>
                 </div>
 
                 <div class="mdropdown">
                     <button class="mdropbtn whiteY" style="">
-                        Время/график
+                        @Resources.Resource.TimeAndSchedule
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">Cоздать время/график дня</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>Cоздать время/график дня
                         @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                     </div>
                 </div>
@@ -210,16 +212,6 @@
                 @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
 
-
-                <div class="mdropdown">
-                    <button class="mdropbtn whiteY" style="">
-                        Добавление...<i class="fa fa-caret-down  whiteY"></i>
-                    </button>
-                    <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" style="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a>
-                        @*  <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a> *@
-                    </div>
-                </div>
 
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
             <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
@@ -234,6 +226,8 @@
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
+
+                <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
                 @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
             <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
                 @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
@@ -249,48 +243,16 @@
                         }
                         @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
+                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Coaches" />
                         }
                         @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
+                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Admins" />
                         }
-                        @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
-                        }
-                        @using (Html.BeginForm("GetTrainingGroups", "TrainingGroup", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />
-                        }
+
                     </div>
                 </div>
 
-
-                @* <div class="mdropdown" style="float:right">
-            <button class="mdropbtn">
-            Группы..<i class="fa fa-caret-down"></i>
-            </button>
-            <div class="mdropdown-content">
-            @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Get))
-            {
-            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать группу" />
-            }
-            @using (Html.BeginForm("CreateTrainingGroup", "TrainingGroup", FormMethod.Get))
-            {
-            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
-            }
-            </div>
-            </div> *@
-
-                @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" />
-            }
-            @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
-            } *@
             }
 
         </div>
