@@ -63,10 +63,10 @@
         <div class="padd">
                 <h4 class="whiteY">@Resources.Resource.ChDay</h4>
                 <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:30px;">             
-                    <select asp-for=@Model.Timetable.Id size="10" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
+                    <select asp-for=@Model.Timetable.Id size="10" id="myselect" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
                 <br />
                 <div class="form-group">
-                        <input type="submit" formaction="AddTimetable" value=@Resources.Resource.saveSc class="btn btn-primary buttonsGY" /><br /><br />
+                        <input type="submit" id="addtimetable" formaction="AddTimetable" value=@Resources.Resource.saveSc class="btn btn-primary buttonsGY" /><br /><br />
                       </div>
             </form>
                 <a asp-area="" asp-controller="Time" asp-action="Cancel" class="btn btn-primary buttonsGY">@Resources.Resource.Cancel</a>
@@ -160,6 +160,10 @@
             idTi = this.value; 
         });
 
+        $("#addtimetable").click(function () {
+            var selectElement = document.getElementById('myselect');
+            selectElement.selectedIndex = selectElement.options.length - 1;
+        });
        
 
         $("#btnDelTime").click(function () { 
@@ -198,14 +202,46 @@
                                                     modal: true,
                                                     resizable: false,
                                                     buttons: [{
-                                                        class: "input_subm2",//
+                                                        class: "input_subm3",//
                                                         text: "Закрыть",
                                                         click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
                                                         }
                                                     }],
                                                     open: function (event, ui) {
-                                                        StyleDialog($(this).closest(".ui-dialog"));
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                                            "color": "#EEE8AA"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "5px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
                                                     }
                                                 });
                                         }
@@ -229,7 +265,39 @@
                                                         }
                                                     }],
                                                     open: function (event, ui) {
-                                                        StyleDialog($(this).closest(".ui-dialog"));
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                                            "color": "#EEE8AA"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "5px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
                                                     }
                                                 });
                                         }
@@ -316,14 +384,46 @@
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
+                                                    class: "input_subm3",//
                                                     text: '@Html.Raw(@Resources.Resource.Exit)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
                                                     }
                                                 }],
                                                 open: function (event, ui) {
-                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                                            "color": "#EEE8AA"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "5px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
                                                 }
                                             });
                                     }
@@ -347,7 +447,39 @@
                                                     }
                                                 }],
                                                 open: function (event, ui) {
-                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-titlebar")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                                                            "color": "#EEE8AA"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .css({
+                                                            "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                                            "border-radius": "5px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-content")
+                                                        .css({
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-widget-content")
+                                                        .css({
+                                                            "border": "none",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
+                                                    $(this).closest(".ui-dialog")
+                                                        .find(".ui-dialog-buttonpane")
+                                                        .css({
+                                                            "border-width": "0px",
+                                                            "background-color": "rgb(80, 80, 80)",
+                                                            "background - image": "url('~/Coaches/фон5.jpg')"
+                                                        });
                                                 }
                                             });
                                     }
