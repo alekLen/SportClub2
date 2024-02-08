@@ -192,21 +192,6 @@ body {
 .back_color {
     background-color: #2F4F4F;
 }
-/*.slider {
-  overflow: hidden;
-  width: 300px;*/ /* ширина трех фото */
-/*}
-
-.slider-window {
-  display: flex;
-  width: 600px;*/ /* общая ширина всех фото */
-/*}
-
-.slide {
-  width: 100px;*/ /* ширина одного фото */
-  /*flex-shrink: 0;
-  text-align: center;
-}*/
 .ticket {
     width: 240px;
     display: inline-block;
