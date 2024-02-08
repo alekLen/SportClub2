@@ -160,10 +160,10 @@
     <value>All saved charts</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>All songs</value>
+    <value>All gyms</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Artist</value>
+    <value>Adding a gym</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Artists</value>

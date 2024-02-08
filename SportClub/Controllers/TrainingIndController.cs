@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.DAL.Entities;
@@ -73,10 +74,34 @@ namespace SportClub.Controllers
             }
             catch { return View(c); }
         }
-        public async Task<IActionResult> Hello(int groupId, int roomId)
+        public async Task<IActionResult> AddUserToTrainingInd(int trId)
         {
-            ViewData["mynewId"]  = roomId + groupId;
-            return View(); 
+            //ViewData["mynewId"]  = roomId + groupId;
+            //return View(); 
+
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(trId);
+           //tr.UserId = userId;
+
+            if (tr.UserId == 0)
+            {
+                IEnumerable<UserDTO> p = await userService.GetAllUsers();
+                ViewData["UserId"] = new SelectList(p, "Id", "Name");
+                return View(tr);
+            }
+            else
+            {
+                await trainingIndService.UpdateTrainingInd(tr);
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Hello2(int id, int userId)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(id);
+            tr.UserId = userId;
+
+            await trainingIndService.UpdateTrainingInd(tr);
+            return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
         }
     }
 }

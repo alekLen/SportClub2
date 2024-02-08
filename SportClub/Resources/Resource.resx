@@ -163,10 +163,10 @@
     <value>Все сохраненные графики</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>Все песни</value>
+    <value>Все спортзалы</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Исполнитель</value>
+    <value>Добавление спортзала</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Исполнители</value>

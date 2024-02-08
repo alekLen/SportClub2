@@ -160,10 +160,10 @@
     <value>Tous les graphiques enregistrés</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>Toutes les chansons</value>
+    <value>Toutes les salles de sport</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Сhanteur</value>
+    <value>Ajout d'une salle de sport</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Сhanteurs</value>
