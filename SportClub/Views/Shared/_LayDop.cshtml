@@ -35,8 +35,8 @@
         }
 
         .div_reg {
-            background-color: #374566;
-            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;
+            background-color: #2F4F4F;
+            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
             border-radius: 15px;
             width: 500px;
             margin-left: 400px;
@@ -204,7 +204,7 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>Cоздать время/график дня
+                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
                         @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                     </div>
                 </div>
@@ -310,14 +310,14 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "АВТОРИЗАЦИЯ",
+                        title: '@Html.Raw(@Resources.Resource.Authorization)',
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm3",//
-                            text: "Войти",
+                            text: '@Html.Raw(@Resources.Resource.Enter)',
                             click: function () {
                                 // "ВХОД" : function () {
                                 $.ajax({

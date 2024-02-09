@@ -507,4 +507,13 @@
   <data name="YearSort" xml:space="preserve">
     <value>роком виходу</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробиці</value>
+  </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Створити час/графік дня</value>
+  </data>
 </root>

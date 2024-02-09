@@ -498,4 +498,13 @@
   <data name="YearSort" xml:space="preserve">
     <value>erscheinungsjahr</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Einzelheiten</value>
+  </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Erstellen Sie einen Zeit-/Tagesplan</value>
+  </data>
 </root>

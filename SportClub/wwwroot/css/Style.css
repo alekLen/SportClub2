@@ -356,7 +356,7 @@ input[type="date"] {
 
     .input_subm_del:hover {
         color: white;
-        border: solid 1px navy;
+        border: solid 1px darkred;
         box-shadow: 2px 2px 2px rgb(0, 0, 0);
         height: 40px;
         background-color: #b10f00;
@@ -389,15 +389,9 @@ input[type="date"] {
     border: none;
     text-align: center;
 }
-/*
-.bordrad7 {
-    border-radius: 7px;
-}
-.bordrad7l {
-    border-radius: 7px;
-}*/
+ 
 
-.input_subm2 {
+.input_subm2 {/*blue*/
     height: 40px;
     color:#BDB76B;
     border: none;
@@ -431,7 +425,7 @@ input[type="date"] {
     padding-right: 10px;
     font-weight: bold;
 }
-
+ 
     .input_subm3:hover {
         /*  color: #EEE8AA;*/
         border: solid 1px #EEE8AA;
@@ -447,4 +441,26 @@ input[type="date"] {
         border: solid 1px #EEE8AA;
         box-shadow: 2px 2px 2px rgb(0, 0, 0);       
         background-color: #2F4F4F;
+    }
+.input_subm4 { /*blue*/
+     text-align:center;
+    color: rgb(80,80,80);
+    border: 0px;
+    /*box-shadow: 2px 2px 2px navy;*/
+    font-size: 20px;
+    border-radius: 5px;
+    width: max-content;
+    background-color: #EEE8AA;
+    padding-top:3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+    .input_subm4:hover {
+        color: #EEE8AA;
+        border: solid 1px #EEE8AA;
+        box-shadow: 2px 2px 2px rgb(0, 0, 0);
+        padding-top: 3px;
+        background-color: #2F4F4F;
+        box-shadow: 0px 2px 4px 0px #F0E68C;
     }
