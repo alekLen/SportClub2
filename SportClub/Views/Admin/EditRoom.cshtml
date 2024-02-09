@@ -1,14 +1,15 @@
 ﻿@model SportClub.BLL.DTO.RoomDTO
-<div class="flex">
+<div class="flex" style="justify-content:space-around">
     <div style="padding-right:20px;padding-top:20px;">
         <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
         <br />
-        <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
-            @Resources.Resource.EditRoom:&nbsp;&nbsp;&nbsp; &nbsp;
-        </h2>
+       
     </div>
-           
-    <div class="flex padd div_reg2">
+    <div>
+    <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+        @Resources.Resource.EditRoom:&nbsp;&nbsp;&nbsp; &nbsp;
+    </h2>
+    <div class="flex padd div_reg2" style="margin-top:30px;">
         <div>
         <form method="post" enctype="multipart/form-data">
             <input asp-for="Id" type="hidden" />
@@ -23,11 +24,12 @@
             <input class="btn1n btn btn-outline-light buttonsGY" formaction="EditRoom" type="submit" value="@Resources.Resource.Save" />
         </form>
         </div>
-        <div>
-            <img id="preview" src="@Model.Photo" width="200" height="200" alt="Photo" style="background-color:wheat; margin:20px;" />
-        </div>
+       
+    </div>       
     </div>
-   
+    <div class=" padd div_reg2" style="margin-top:40px;">
+        <img id="preview" src="@Model.Photo" width="200" height="200" alt="Photo" style="background-color:wheat; margin:20px;" />
+    </div>
 </div>
 
 <script>
