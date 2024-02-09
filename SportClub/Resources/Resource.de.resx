@@ -148,13 +148,10 @@
     <value>Das Feld „Name“ darf nur Buchstaben enthalten</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Admins</value>
+    <value>Alle admins</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Zeit für Fahrpläne hinzufügen</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Alle admins</value>
+    <value>Zeit_für_Fahrpläne_hinzufügen</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Alter</value>

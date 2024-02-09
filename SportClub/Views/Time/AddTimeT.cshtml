@@ -61,9 +61,9 @@
     <div class="flex padd div_reg2">
 
         <div class="padd">
-                <h4 class="whiteY">@Resources.Resource.ChDay</h4>
-                <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:30px;">             
-                    <select asp-for=@Model.Timetable.Id size="10" id="myselect" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
+                <h4 class="whiteY">@Resources.Resource.Create_A_ScheduleForDay</h4>
+                <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:10px;">             
+                    <select asp-for=@Model.Timetable.Id size="8" id="myselect" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
                 <br />
                 <div class="form-group">
                         <input type="submit" id="addtimetable" formaction="AddTimetable" value=@Resources.Resource.saveSc class="btn btn-primary buttonsGY" /><br /><br />
@@ -81,7 +81,7 @@
                      <select asp-for=@Model.Time.Id size="7" name="Tid" class="form-control card _c7" asp-items="ViewBag.TimeId"></select> 
                 <br /> <br />
                 <div class="form-group">
-                        <input type="submit" formmethod="get" formaction="AddTimesToTable" value=@Resources.Resource.addTtoCh class="btn btn-primary2  buttonsGY" />
+                        <input type="submit" formmethod="get" formaction="AddTimesToTable" value=@Resources.Resource.AddTimeForCharts class="btn btn-primary2  buttonsGY" />
                    
                 </div>
                     <br />

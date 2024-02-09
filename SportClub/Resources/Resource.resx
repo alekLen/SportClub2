@@ -148,16 +148,13 @@
     <value>Поле 'Имя' должно содержать только буквы</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Админы</value>
+    <value>Все админы</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Добавить время для графиков</value>
+    <value>Добавить_время_для_графиков</value>
   </data>
   <data name="AdminRegistration" xml:space="preserve">
     <value>Регистрация админа</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Все админы</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Возраст</value>

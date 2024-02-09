@@ -148,13 +148,10 @@
     <value>Le champ 'Nom' doit contenir uniquement des lettres.</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Administrateurs</value>
+    <value>Tous les admins</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Ajouter du temps pour les graphiques</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Tous les admins</value>
+    <value>Ajouter_du_temps_pour_les_graphiques</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>âge</value>

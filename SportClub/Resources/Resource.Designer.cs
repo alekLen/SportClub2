@@ -1213,13 +1213,7 @@ public static string MusicPortal {
         /// <summary>
         ///   Looks up a localized string similar to Админы.
         /// </summary>
-        public static string Admins
-        {
-            get
-            {
-                return ResourceManager.GetString("Admins", resourceCulture);
-            }
-        }
+      
 
         /// <summary>
         ///   Looks up a localized string similar to Регистрация админа.

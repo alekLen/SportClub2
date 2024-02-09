@@ -570,17 +570,6 @@ namespace SportClub.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> MyAction(int id)
-        {
-            int id1 = id;
-            return Json(true);
-        }
-        [HttpPost]
-        public async Task<IActionResult> ConfirmMyAction(int id)
-        {
-            int id1 = id;
-            return Json(true);
-        }
+       
     }
 }

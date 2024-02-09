@@ -148,13 +148,10 @@
     <value>The 'Name' field must contain letters only</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Admins</value>
+    <value>All admins</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Add time for charts</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>All admins</value>
+    <value>Add_time_for_charts</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>age</value>

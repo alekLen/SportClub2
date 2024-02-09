@@ -148,16 +148,13 @@
     <value>Поле 'Ім'я' має містити лише літери</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Адміни</value>
+    <value>Всі адміни</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Додати час для графіків</value>
+    <value>Додати_час_для_графіків</value>
   </data>
   <data name="AdminRegistration" xml:space="preserve">
     <value>Реєстрація адміна</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Всі адміни</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Вік</value>
