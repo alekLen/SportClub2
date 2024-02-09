@@ -311,7 +311,34 @@ namespace Resources {
                 return ResourceManager.GetString("Artists", resourceCulture);
             }
         }
-        
+        public static string EditRoom
+        {
+            get
+            {
+                return ResourceManager.GetString("EditRoom", resourceCulture);
+            }
+        }
+        public static string ChangePasswordError
+        {
+            get
+            {
+                return ResourceManager.GetString("ChangePasswordError", resourceCulture);
+            }
+        }
+        public static string Admins
+        {
+            get
+            {
+                return ResourceManager.GetString("Admins", resourceCulture);
+            }
+        }
+        public static string Details
+        {
+            get
+            {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
         /// <summary>
         ///   Looks up a localized string similar to исполнителям.
         /// </summary>
@@ -320,7 +347,21 @@ namespace Resources {
                 return ResourceManager.GetString("ArtSort", resourceCulture);
             }
         }
-        
+		public static string edited
+		{
+			get
+			{
+				return ResourceManager.GetString("edited", resourceCulture);
+			}
+		}
+		public static string ChangeAdmin
+        {
+            get
+            {
+                return ResourceManager.GetString("ChangeAdmin", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Назад.
         /// </summary>
@@ -338,6 +379,90 @@ namespace Resources {
                 return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
+        public static string added
+        {
+            get
+            {
+                return ResourceManager.GetString("added", resourceCulture);
+            }
+        }
+        public static string AdminProfileNameErrorMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("AdminProfileNameErrorMessage", resourceCulture);
+            }
+        }
+        public static string DeleteAdmin
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteAdmin", resourceCulture);
+            }
+        }
+        public static string AdminDetails
+        {
+            get
+            {
+                return ResourceManager.GetString("AdminDetails", resourceCulture);
+            }
+        }
+        public static string ConfirmDeletingARoom
+        {
+            get
+            {
+                return ResourceManager.GetString("ConfirmDeletingARoom", resourceCulture);
+            }
+        }
+        public static string DeleteCoachSpec
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteCoachSpec", resourceCulture);
+            }
+        }
+        public static string WarningAboutDeletingTheRoom
+        {
+            get
+            {
+                return ResourceManager.GetString("WarningAboutDeletingTheRoom", resourceCulture);
+            }
+        }
+        public static string RoomName
+        {
+            get
+            {
+                return ResourceManager.GetString("RoomName", resourceCulture);
+            }
+        }
+        public static string DeleteCoachPost
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteCoachPost", resourceCulture);
+            }
+        }
+        public static string DeleteAdminQuestion
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteAdminQuestion", resourceCulture);
+            }
+        }
+        public static string DeleteAdminQuestion2
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteAdminQuestion2", resourceCulture);
+            }
+        }
+        public static string EnterNewPassword
+        {
+            get
+            {
+                return ResourceManager.GetString("EnterNewPassword", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Изменить уровень доступа.
@@ -347,7 +472,21 @@ namespace Resources {
                 return ResourceManager.GetString("Changelevel", resourceCulture);
             }
         }
-        
+        public static string changePassword
+        {
+            get
+            {
+                return ResourceManager.GetString("changePassword", resourceCulture);
+            }
+        }
+        public static string DeleteAndExit
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteAndExit", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Выбрать язык.
         /// </summary>

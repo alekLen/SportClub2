@@ -120,6 +120,9 @@
   <data name="Add" xml:space="preserve">
     <value>Додати</value>
   </data>
+  <data name="added" xml:space="preserve">
+    <value>додана</value>
+  </data>
   <data name="AddedArtist" xml:space="preserve">
     <value>Був доданий співак:  </value>
   </data>
@@ -138,8 +141,14 @@
   <data name="AddSong" xml:space="preserve">
     <value>Додати пісню</value>
   </data>
-  <data name="addTtoCh" xml:space="preserve">
-    <value>Додати час у графік</value>
+  <data name="AdminDetails" xml:space="preserve">
+    <value>Деталі адміну</value>
+  </data>
+  <data name="AdminProfileNameErrorMessage" xml:space="preserve">
+    <value>Поле 'Ім'я' має містити лише літери</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Адміни</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
     <value>Додати час для графіків</value>
@@ -183,11 +192,14 @@
   <data name="Cancel" xml:space="preserve">
     <value>Відміна</value>
   </data>
+  <data name="ChangeAdmin" xml:space="preserve">
+    <value>Зміна адміну</value>
+  </data>
   <data name="Changelevel" xml:space="preserve">
     <value>Змінити рівень доступу</value>
   </data>
-  <data name="ChDay" xml:space="preserve">
-    <value>Графік дня</value>
+  <data name="changePassword" xml:space="preserve">
+    <value>Змінити пароль</value>
   </data>
   <data name="ChooseLang" xml:space="preserve">
     <value>Вибрати мову</value>
@@ -203,6 +215,9 @@
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Підтвердити</value>
+  </data>
+  <data name="ConfirmDeletingARoom" xml:space="preserve">
+    <value>Підтвердьте видалення залу</value>
   </data>
   <data name="Confirmdeletion" xml:space="preserve">
     <value>підтвердьте видалення</value>
@@ -225,8 +240,26 @@
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="DeleteAdmin" xml:space="preserve">
+    <value>Видалення адміну</value>
+  </data>
+  <data name="DeleteAdminQuestion" xml:space="preserve">
+    <value>Ви дійсно бажаєте видалити адміна?</value>
+  </data>
+  <data name="DeleteAdminQuestion2" xml:space="preserve">
+    <value>Ви хочете видалити свій профіль назавжди?</value>
+  </data>
+  <data name="DeleteAndExit" xml:space="preserve">
+    <value>Видалити і вийти</value>
+  </data>
   <data name="DeleteArt" xml:space="preserve">
     <value>Видалити співака</value>
+  </data>
+  <data name="DeleteCoachPost" xml:space="preserve">
+    <value>Видалення посади тренера</value>
+  </data>
+  <data name="DeleteCoachSpec" xml:space="preserve">
+    <value>Видалення спеціальності тренера</value>
   </data>
   <data name="DeletedArtist" xml:space="preserve">
     <value>Співак був вилучений:  </value>
@@ -243,6 +276,9 @@
   <data name="Description" xml:space="preserve">
     <value>Додаткові відомості</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Деталі</value>
+  </data>
   <data name="Dopname" xml:space="preserve">
     <value>По-батькові</value>
   </data>
@@ -253,13 +289,19 @@
     <value>Відредаговано співака:  </value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Редагування</value>
+    <value>Редагувати</value>
   </data>
   <data name="EditArt" xml:space="preserve">
     <value>Редагувати співака</value>
   </data>
+  <data name="edited" xml:space="preserve">
+    <value>відредаговано</value>
+  </data>
   <data name="Editing" xml:space="preserve">
     <value>Редагування</value>
+  </data>
+  <data name="EditRoom" xml:space="preserve">
+    <value>Редагування залу</value>
   </data>
   <data name="EditSong" xml:space="preserve">
     <value>Редагування пісні</value>
@@ -290,6 +332,9 @@
   </data>
   <data name="enterName" xml:space="preserve">
     <value>Введіть назву</value>
+  </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Введіть новий пароль</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Вихід</value>
@@ -396,6 +441,9 @@
   <data name="password" xml:space="preserve">
     <value>пароль</value>
   </data>
+  <data name="PasswordChangeError" xml:space="preserve">
+    <value>Помилка зміни пароля</value>
+  </data>
   <data name="passwordConf" xml:space="preserve">
     <value>Підтвердіть пароль</value>
   </data>
@@ -422,6 +470,9 @@
   </data>
   <data name="Required" xml:space="preserve">
     <value>Обов'язкове поле</value>
+  </data>
+  <data name="RoomName" xml:space="preserve">
+    <value>Назва зали</value>
   </data>
   <data name="Rooms" xml:space="preserve">
     <value>Зал</value>
@@ -497,6 +548,9 @@
   </data>
   <data name="waiting" xml:space="preserve">
     <value>очікування на реєстрацію</value>
+  </data>
+  <data name="WarningAboutDeletingTheRoom" xml:space="preserve">
+    <value>Буде видалено його розклад та всі тренування!</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Вітаю</value>

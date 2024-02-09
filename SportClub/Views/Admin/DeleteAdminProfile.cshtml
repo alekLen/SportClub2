@@ -8,9 +8,9 @@
     <form method="post">
         <input type="hidden" asp-for="Id" name="id" />
         <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-          Вы хотите навсегда удалить свой профиль? </p>       
+            @Resources.Resource.DeleteAdminQuestion2</p>
         <input type="submit" formaction="ConfirmDeleteAdminProfile"
-               class="btn btn-outline-light"  value="УДАЛИТЬ И ВЫЙТИ"  />
+               class="btn btn-outline-light" value="@Resources.Resource.DeleteAndExit" />
         <input type="submit" formaction="BackToAdminProfile"
                class="btn btn-outline-light" value="@Resources.Resource.Cancel" />
     </form>

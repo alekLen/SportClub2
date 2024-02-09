@@ -1,18 +1,19 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
 
 <h3>Добавить клиенту тренировку</h3>
-<form>
+<form method="post">
     <div>
-        <input type="hidden" name="day" value="@Model.Day" />
+        <input type="hidden" name="id" value="@Model.Id" />
+        @* <input type="hidden" name="day" value="@Model.Day" />
         <input type="hidden" name="dayName" value="@Model.DayName" readonly />
         <input type="hidden" name="time" value="@Model.Time" readonly /><br />
         <input type="hidden" name="roomId" value="@Model.RoomId" />
-        <input type="hidden" name="roomName" value="@Model.RoomName" readonly /><br />
-        <input type="hidden" name="coachName" value="@Model.CoachName" readonly /><br />
+        <input type="hidden" name="roomName" value="@Model.RoomName" readonly /><br /> *@
+        @* <input type="hidden" name="coachName" value="@Model.CoachName" readonly /><br /> *@
         <label>Выбрать клиента</label>
         <select asp-for="Id" name="userId" class="form-control card _c7" asp-items="ViewBag.UserId"></select>
 
-        <input type="submit" value="Добавить клиента" formaction="AddingToTrainingInd" />
+        <input type="submit" value="Добавить клиента" formaction="AddUserToTrainingInd" />
        
     </div>
 </form>

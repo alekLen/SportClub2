@@ -1,0 +1,39 @@
+﻿@model SportClub.BLL.DTO.TrainingIndDTO
+<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        <span>Удаление тренировки</span>
+    </p>
+    <hr style="color:white" />
+    <div class="row">
+        <div>
+            <form action="EditTraining" method="post">
+                <div style="width: 550px;  justify-content: center; ">
+                    <div style="margin-left: 70px">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <input type="hidden" name="day" value="@Model.Day" />
+                        <input name="dayName" value="@Model.DayName" readonly class="font" style="width: 120px" />
+                        <input name="time" value="@Model.Time" readonly class="font" style="width: 120px" />
+                        <input type="hidden" name="roomId" value="@Model.RoomId" />
+                        <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px" /><br />
+                    </div>
+                    <div style="margin-left: 40px">
+                        <span class="font" style="color: white">Тренер</span><br />
+                        <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px" /><br />
+                    </div>
+                    <div class="form-group" style="margin-left: 40px">
+                        <label style="color: white; font-size: 16px;" class="font">Изменить клиента</label>
+                        <select asp-for="Id" name="userId" class="form-control card _c7" class="font" style="width: 420px" asp-items="ViewBag.UserId"></select>
+                    </div>
+                    <br /><br />
+                    <div style="margin-left: 170px">
+                        <input type="submit" value="Изменить клиента" class="btn btn-outline-light" />
+                        <a class="btn btn-outline-light" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="DeleteTraining">Просмотр</a>
+                    </div>
+                    <br /><br />
+
+
+                </div>
+            </form>
+            <div />
+            <div />
+            <div />

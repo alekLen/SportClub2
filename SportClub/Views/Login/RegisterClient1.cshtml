@@ -1,13 +1,13 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@* @model SportClub.Models.RegisterAdminModel
+@model SportClub.Models.RegisterClientModel
 @using Microsoft.AspNetCore.Http
 
-<div class="div_reg">
-    <p class="font">@Resources.Resource.AdminRegistration</p>@* Регистрация админа *@
+@* <div class="div_reg">
+    <p class="font">Регистрация пользователя </p>
     <div class="row">
-        <form id="registrationForm" action="RegistrationAdmin" method="post" >
+        <form id="registrationForm" action="RegistrationClient" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true, "")
@@ -21,7 +21,7 @@
 
             <div class="form-group" style="margin-left: 40px">
 
-                <label asp-for="Login" class="control-label font white-color_size20" ></label>
+                <label asp-for="Login" class="control-label font white-color_size20"></label>
                 <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px" autocomplete="off">
                 <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
             </div>
@@ -65,55 +65,17 @@
 
             <div class="form-group" style="margin-left: 40px">
                 <label class="font white-color_size20">@Resources.Resource.DateB</label><br />
-                <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
+                 <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
                 <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
             </div>
-
-            <div style="margin: 10px auto 10px auto;width: max-content;">
-                <input style="height: 38px;" type="submit" class="btn btn-primary font y" value="@Resources.Resource.Confirm" />
-                <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back</a><br />@* Back *@
-            </div><br />
+              
+            <br />
+            <div class="form-group" style="margin-left: 200px">
+                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+            </div>
         </form>
     </div>
-</div>
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}
-<script>
-    $(document).ready(function () {
-
-        $("#login").on("change", function (e) {
-            let log = e.target.value;
-            let r = true;
-            $.getJSON('/Login/IsLoginIn', function (data) {
-                $.each(data, function (key, val) {
-                    if (log == val) {
-                        $("#log").css("display", "block");
-                        r = false;
-                    }
-                    if (r) {
-                        $("#log").css("display", "none");
-                    }
-                })
-            });
-        });
-
-
-        $('#emailInput').on('blur', function () {
-            var email = $(this).val();
-            $.get('/Login/IsEmailInUse', { email: email }, function (data) {
-                if (data === true) {
-                    $('#emailStatus').text('Email уже занят.');
-                }
-            });
-        });
-    });
-</script>
- *@
- @model SportClub.Models.RegisterClientModel
-@using Microsoft.AspNetCore.Http
+</div> *@
 <div class="container1">
     <h1 style="padding: 30px 0 40px 0; text-align:center; color: white">
         Регистрация клиента
@@ -189,7 +151,8 @@
         </div>
     </form>
 </div>
-
+ 
+ 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -224,6 +187,6 @@
             });
         });
 
-
+       
     });
 </script>

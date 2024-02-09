@@ -6,7 +6,7 @@
 }
 
 <div class="div_reg">
-    <p class="font">Изменение админа </p>
+    <p class="font">@Resources.Resource.ChangeAdmin </p>
     <div class="row">
         <form asp-action="EditAdmin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,13 +19,13 @@
 
             <div class="form-group" style="margin-left: 40px">
 
-                <label asp-for="Name" class="control-label font white-color_size20"></label>
+                <label asp-for="Name" class="control-label font white-color_size20">@Resources.Resource.Name</label>
                 <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
                 <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 40px">
-                <label asp-for="Email" class="control-label font white-color_size20"></label>
+                <label asp-for="Email" class="control-label font white-color_size20">@Resources.Resource.email</label>
                 <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                 <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
             </div>
@@ -51,7 +51,7 @@
 
             <div style="margin: 10px auto 10px auto;width: max-content;">
                 <button style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back</a><br />
             </div><br />
         </form>
     </div>

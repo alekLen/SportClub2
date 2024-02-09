@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
+using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
 
 namespace SportClub.Controllers
@@ -74,15 +75,14 @@ namespace SportClub.Controllers
             }
             catch { return View(c); }
         }
-        public async Task<IActionResult> AddUserToTrainingInd(int trId)
+
+        //[HttpPost]
+        public async Task<IActionResult> AddUserToTrainingInd(int Id, int userId)
         {
-            //ViewData["mynewId"]  = roomId + groupId;
-            //return View(); 
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            tr.UserId = userId;
 
-            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(trId);
-           //tr.UserId = userId;
-
-            if (tr.UserId == 0)
+            if(tr.UserId == 0)
             {
                 IEnumerable<UserDTO> p = await userService.GetAllUsers();
                 ViewData["UserId"] = new SelectList(p, "Id", "Name");
@@ -92,16 +92,71 @@ namespace SportClub.Controllers
             {
                 await trainingIndService.UpdateTrainingInd(tr);
                 return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
+            }            
+        }
+        
+        public async Task<IActionResult> UpdateTraining(int Id, int userId)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            if(userId == 0) 
+            {
+                IEnumerable<UserDTO> p = await userService.GetAllUsers();
+                ViewData["UserId"] = new SelectList(p, "Id", "Name");
+                return View(tr);
+            }
+            else
+            {
+                tr.UserId = userId;
+                await trainingIndService.UpdateTrainingInd(tr);
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
             }
         }
-        [HttpPost]
-        public async Task<IActionResult> Hello2(int id, int userId)
-        {
-            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(id);
-            tr.UserId = userId;
 
+        public async Task<IActionResult> DeleteTraining(int Id)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            await trainingIndService.DeleteTrainingInd(Id);
+            return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
+        }
+
+        public async Task<IActionResult> CancelAppointment(int Id)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            tr.UserId = 0;
             await trainingIndService.UpdateTrainingInd(tr);
             return RedirectToAction("RoomWithShedule", "Time", new { RoomId = tr.RoomId });
+        }
+
+        public async Task<IActionResult> AddUserToTraining_UserSide(int Id)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            string s = HttpContext.Session.GetString("Id");
+            int id = Int32.Parse(s);
+            tr.UserId = id;
+            await trainingIndService.UpdateTrainingInd(tr);
+            return RedirectToAction("Shedule", "Users", new { RoomId = tr.RoomId });
+        }
+
+        public async Task<IActionResult> CancelAppointment_UserSide(int Id)
+        {
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            tr.UserId = 0;           
+            await trainingIndService.UpdateTrainingInd(tr);
+            return RedirectToAction("Shedule", "Users", new { RoomId = tr.RoomId });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmCancelAppointment_UserSide(int Id)
+        {
+            HttpContext.Session.SetString("path", Request.Path);
+            TrainingIndDTO tr = await trainingIndService.GetTrainingInd(Id);
+            if (tr != null)
+            {
+                tr.UserId = 0;
+                await trainingIndService.UpdateTrainingInd(tr);
+                return Json(true);
+            }
+            return Json(false);
         }
     }
 }
