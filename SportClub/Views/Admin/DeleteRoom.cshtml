@@ -1,23 +1,36 @@
 ﻿@model SportClub.BLL.DTO.RoomDTO
-<div class="flex">
-    <div>
-        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons">@Resources.Resource.Back</a>
-        <br />
-        <h2>@Resources.Resource.ConfirmDeletingARoom:   </h2>
-        <h3>@Resources.Resource.WarningAboutDeletingTheRoom </h3>
-    </div>
-    <div class="padd1">
-        <form method="post" class="padd" >
-            <div class="form-group">
-                <input type="hidden" name="id" value="@Model.Id" />
-                <label class="white-color_size20 font">@Resources.Resource.RoomName</label>
-                <input name="Name" value="@Model.Name" readonly class="form-control" />
-             <br />          
-            <input  class="btn1n btn btn-outline-light red"  type="submit" value="@Resources.Resource.Confirmdeletion" />
-            </div>
-        </form>
-    </div>
-    <div>
-        <img  src="@Model.Photo" width="200" height="200" alt="Photo" style="background-color:wheat; margin:20px;" />
+<div class="flex" style="justify-content:space-around">
+    <div style="padding-right:20px;padding-top:20px;">
+        <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
+        </div>
+        <div>
+        <h2 class="whiteY" style="text-align:center;padding:15px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+            @Resources.Resource.ConfirmDeletingARoom:   </h2>
+        <h3 class="whiteY" style="text-align:center;padding:15px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+            @Resources.Resource.WarningAboutDeletingTheRoom </h3>
     </div>
 </div>
+<form method="post" class="padd">
+<div class="flex padd div_reg2" style="justify-content:space-around">
+        <div>
+                <input type="hidden" name="id" value="@Model.Id" />
+                             
+            <h1 class="whiteY">@Model.Name</h1>
+             <br />
+          
+        </div>
+        <div>
+            <img src="@Model.Photo" width="300" height="auto" alt="Photo" style="background-color:wheat; margin:20px;" />
+        </div>
+        <div>
+        <div  style="background-color:orange;margin-top:40px;border-radius:5px;padding:10px;">
+              <input class="btn1n btn btn-outline-light buttonsGY" type="submit" value="@Resources.Resource.Confirmdeletion" />
+        </div>
+        <br />
+        <div>
+                <a asp-action="AddRoom" asp-controller="Admin" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Cancel</a>
+        </div>
+        </div>
+</div>
+</form>
+

@@ -3,11 +3,12 @@
     <div style="padding-right:20px;padding-top:20px;">
         <a asp-action="Index" asp-controller="Home" style="margin-left: 10px;" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
 <br />
-        <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
+        <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
             @Resources.Resource.Artist :&nbsp;&nbsp;&nbsp; &nbsp;
         </h2>
 </div>
-    <div class="padd div_reg2">
+    <div class="flex padd div_reg2">
+        <div>
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
                 <label class="white-color_size20 font whiteY">@Resources.Resource.enterName</label>
@@ -15,11 +16,16 @@
         </div>
         <div class=" form-group" >
                 <span class="white-color_size20 font whiteY">@Resources.Resource.Photo</span><br />
-                <input class="white-color_size20 whiteY" type="file" name="p" accept=".jpg, .jpeg, .png" /><br /><br />
+                <input class="white-color_size20 whiteY" type="file" name="p" id="uploadInput" onchange="previewImage(event)" accept=".jpg, .jpeg, .png" /><br /><br />
         </div>
             <input class="btn1n btn btn-outline-light buttonsGY" formaction="AddRoom" type="submit" value="@Resources.Resource.Add" />
     </form>
+        </div>
+        <div>
+            <img id="preview" src="~/Rooms/cam.jpg" width="200" height="200" alt="" style="background-color:wheat; margin:20px;" />
+        </div>
 </div>
+    
 </div>
 <hr class="white" />
 <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
@@ -28,7 +34,7 @@
 <div class="flex" style="flex-wrap:wrap;">
 @foreach (var item in Model)
 {
-        <div class="padd div_reg2" style="margin:10px;">
+        <div class="padd div_reg2" style="margin:5px;">
         <img src=@item.Photo width="130" height="130" alt="Photo" style="background-color:wheat" />          
     <div>
         <h4 class="whiteY"> @item.Name</h4>
@@ -38,3 +44,19 @@
     </div>  
 }
 </div>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('preview');
+
+        var reader = new FileReader();
+
+        reader.onload = function () {
+            preview.src = reader.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+        
+    }
+</script>
