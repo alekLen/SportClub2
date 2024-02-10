@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -9,13 +10,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
-  @*   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    @*   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> *@
     <link rel="stylesheet" href="~/css/Style.css">
 
     <style>
-      
+
         .my_bg-white {
             background-color: #042940;
         }
@@ -45,63 +46,61 @@
             background-color: #2F4F4F;
             box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
             border-radius: 5px;
-             max-width:500px;       
+            max-width: 500px;
         }
 
-            .div_reg p {
-                font-size: 32px;
-                color: white;
-                padding-top: 30px;
-                text-align: center
-            }
+        .div_reg p {
+            font-size: 32px;
+            color: white;
+            padding-top: 30px;
+            text-align: center
+        }
 
-            .div_reg p1 {
-                font-size: 20px;
-                color: white;
-                /* padding-top: 30px; */
-                text-align: center
-            }
+        .div_reg p1 {
+            font-size: 20px;
+            color: white;
+            /* padding-top: 30px; */
+            text-align: center
+        }
 
-      /*   footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 40px;                             
-        } */
-       
+        /*   footer {
+                    position: fixed;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 40px;
+                } */
+
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            width: 100%;       
-          /*    background-image: url('Coaches/фон4.jpg'); */
-          /*   background-image: linear-gradient(to bottom right, grey, dimgrey); */
+            width: 100%;
+            /*    background-image: url('Coaches/фон4.jpg'); */
+            /*   background-image: linear-gradient(to bottom right, grey, dimgrey); */
             background-color: dimgrey;
-            background-size:cover;
-           
-        }  
+            background-size: cover;
+        }
 
         .white-shadow {
             color: black;
             text-shadow: 1px 1px 1px #EEE8AA;
             font-weight: bold;
-          
         }
     </style>
-   @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
 </head>
 <body id="changing-background" style=" transition: background-image 2s ease; background-size: cover;width: 100%;height: 100%; ">
- 
-    <header >
+
+    <header>
         <div class="my_navbar" style="color:#EEE8AA;padding-right:10px;">
             <a id="sportclub" style="color:#EEE8AA;" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
-            
+
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
-                <div class="dv1n2" >
+                <div class="dv1n2">
                     <select class="my_bg-white1 my_bn t_3" style="color:#EEE8AA; padding: 2px 6px;width:max-content;text-align:center; " name="lang">
                         <option style="color:#EEE8AA; " value="ru">Русский</option>
                         <option style="color:#EEE8AA; " value="en">English</option>
@@ -131,17 +130,17 @@
                 {
                     <input style="float: right;width:max-content; color:#EEE8AA;" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Profile" />
                 }
-              
+
                 @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:#EEE8AA;" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Мои тренировки" />
+                    <input style="float: right;width:max-content; color:#EEE8AA;" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
                 @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
                 {
                     <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
                 }
-               @*  <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
-                <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
+                @*  <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
+            <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
                 <a class="nav-link card2  whiteY" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2  whiteY" href="#allrooms">Залы для тренировок</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
@@ -155,9 +154,9 @@
                 }
                 @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
                 {
-                    <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn  whiteY" type="submit" value="Мои тренировки" />
+                    <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn  whiteY" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
-               
+
                 @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
                 {
                     <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn  whiteY" type="submit" value="@Resources.Resource.Profile" />
@@ -174,16 +173,13 @@
             {
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
-@* 
-                <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Coach" asp-action="AllCoachesToSee">Наша команда</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" asp-controller="Admin" asp-action="AllRoomsToSee">Залы для тренировок</a> *@
-                
-            <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
+               
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
 
             }
-           
+
             @if (Context.Session.GetString("admin") != null)
             {
                 <div class="mdropdown ">
@@ -192,53 +188,37 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="color:#EEE8AA;">
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">Зарегестрировать админа</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">Зарегестрировать тренера</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">Зарегестрировать клиента</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a> 
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a> 
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a> 
+
                     </div>
                 </div>
 
                 <div class="mdropdown">
                     <button class="mdropbtn whiteY" style="">
-                        Время/график
+                        @Resources.Resource.TimeAndSchedule
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">Cоздать время/график дня</a>
-                     @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
+                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>
+               
                     </div>
                 </div>
 
-                @* <a class=" nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">зарегестрировать тренера</a> *@
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Admin" asp-action="AddPost">Должности</a>*@
-
-
-                <div class="mdropdown">
-                    <button class="mdropbtn whiteY" style="">
-                        Добавление...<i class="fa fa-caret-down  whiteY"></i>
-                    </button>
-                    <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" style="" asp-controller="Admin" asp-action="AddPost">Должности/Специальности</a>
-                       @*  <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a> *@
-                    </div>
-                </div>
-
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimeT">создать время</a>
-                 <a style="width:max-content" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a>
-            <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                 <div class="mdropdown">
                     <button class="mdropbtn" style="font-family: 'MyFontNormal';">
                         Зал...<i class="fa fa-caret-down whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
                         <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
-                     @*    <a asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a> *@
+               
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
-                @*<a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="ChoseRomm">Составить расписание для зала</a>
-            <a asp-area="" asp-controller="Admin" asp-action="AddSpeciality">Специальности</a>*@
-                @* <a class="nav-link text-dark card2" asp-area="" asp-controller="Time" asp-action="Room_Shedule">Расписание зала</a>   *@
+
+                <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+
 
                 <div class="mdropdown" style="float:right;">
                     <button class="mdropbtn whiteY" style="">
@@ -251,48 +231,16 @@
                         }
                         @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
+                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Coaches" />
                         }
                         @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
                         {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Admins" />
+                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Admins" />
                         }
-                        @using (Html.BeginForm("GetGroups", "Group", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Groups" />
-                        }
-                        @using (Html.BeginForm("GetTrainingGroups", "TrainingGroup", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Training Groups" />
-                        }
+
                     </div>
                 </div>
-               
 
-                @* <div class="mdropdown" style="float:right">
-                    <button class="mdropbtn">
-                        Группы..<i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать группу" />
-                        }
-                        @using (Html.BeginForm("CreateTrainingGroup", "TrainingGroup", FormMethod.Get))
-                        {
-                            <input style="float: right;width:100%; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="Создать групповую тренировку" />
-                        } 
-                    </div>
-                </div> *@
-
-                @* @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Users" />
-            }
-            @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
-            {
-            <input style="float: right;width:max-content; color:white" class="dv1n1 my_bg-white1 my_bn" type="submit" value="All Coaches" />
-            } *@
             }
 
         </div>
@@ -305,7 +253,7 @@
 
 
     <div class="container" id="viewcontent" style="padding-bottom:50px;">
-        <main role="main" class="pb-3" style="">     
+        <main role="main" class="pb-3" style="">
             @RenderBody()
         </main>
     </div>
@@ -350,14 +298,16 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: "АВТОРИЗАЦИЯ",
+                        title: '@Html.Raw(@Resources.Resource.Authorization)'
+                        ,
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm3",//
-                            text: "Войти",
+                            text: '@Html.Raw(@Resources.Resource.Enter)'
+                            ,
                             click: function () {
                                 // "ВХОД" : function () {
                                 $.ajax({
@@ -385,11 +335,11 @@
                                 .find(".ui-dialog-titlebar")
                                 .css({
                                     "background-color": "rgb(80, 80, 80)", // Фон заголовка
-                                    "color": "#EEE8AA" 
+                                    "color": "#EEE8AA"
                                 });
                             $(this).closest(".ui-dialog")
                                 .css({
-                                     "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
                                     "border-radius": "5px",
                                     "background-color": "rgb(80, 80, 80)",
                                     "background - image": "url('~/Coaches/фон5.jpg')"
@@ -416,20 +366,20 @@
                                 });
                         }
                     });
-            
+
             });
 
-          
+
         });
 
         var contact = document.getElementById('contact');
-        var contactInfo = document.getElementById('contact-info');      
+        var contactInfo = document.getElementById('contact-info');
 
         contact.addEventListener('click', function () {
             if (contactInfo.style.display === 'none') {
                 contactInfo.style.display = 'block';
                 contactInfo2.style.display = 'none';
-            } 
+            }
         });
         var contact2 = document.getElementById('contact2');
         var contactInfo2 = document.getElementById('contact-info2');
@@ -455,29 +405,29 @@
         });
 
     </script>
-   @*  <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var images = [
-                'url(Coaches/фон.jpg)',
-                'url(Coaches/тренер1.jpg)',
-               
-            ];
-            var currentIndex = 0;
+    @*  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+    var images = [
+    'url(Coaches/фон.jpg)',
+    'url(Coaches/тренер1.jpg)',
 
-            setInterval(function () {
-                document.getElementById('changing-background').style.backgroundImage = images[currentIndex];
-                currentIndex++;
+    ];
+    var currentIndex = 0;
 
-                if (currentIndex >= images.length) {
-                    currentIndex = 0;
-                }
-            }, 5000); // 5000 миллисекунд = 5 секунды
-        });
+    setInterval(function () {
+    document.getElementById('changing-background').style.backgroundImage = images[currentIndex];
+    currentIndex++;
+
+    if (currentIndex >= images.length) {
+    currentIndex = 0;
+    }
+    }, 5000); // 5000 миллисекунд = 5 секунды
+    });
     </script> *@
-  @*   <script>     
-        document.body.style.backgroundImage = "url('/Coaches/фон.jpg')";
-        // document.body.style.backgroundSize = "cover";      
-        // document.body.style.height = "100%";
+    @*   <script>
+    document.body.style.backgroundImage = "url('/Coaches/фон.jpg')";
+    // document.body.style.backgroundSize = "cover";
+    // document.body.style.height = "100%";
     </script> *@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

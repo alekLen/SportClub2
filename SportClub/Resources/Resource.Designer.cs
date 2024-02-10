@@ -68,6 +68,69 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
+        public static string TimeMes1
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes1", resourceCulture);
+            }
+        }
+        public static string TimeMes2
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes2", resourceCulture);
+            }
+        }
+        public static string TimeMes3
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes3", resourceCulture);
+            }
+        }
+        public static string TimeMes4
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes4", resourceCulture);
+            }
+        }
+        public static string TimeMes5
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes5", resourceCulture);
+            }
+        }
+        public static string TimeMes6
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes6", resourceCulture);
+            }
+        }
+        public static string TimeMes7
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeMes7", resourceCulture);
+            }
+        }
+        public static string MyError
+        {
+            get
+            {
+                return ResourceManager.GetString("MyError", resourceCulture);
+            }
+        }
+        public static string Sucsess
+        {
+            get
+            {
+                return ResourceManager.GetString("Sucsess", resourceCulture);
+            }
+        }
         public static string startT
         {
             get
@@ -1188,6 +1251,222 @@ public static string MusicPortal {
         public static string YearSort {
             get {
                 return ResourceManager.GetString("YearSort", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Тренеры.
+        /// </summary>
+        public static string Coaches
+        {
+            get
+            {
+                return ResourceManager.GetString("Coaches", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Админы.
+        /// </summary>
+        public static string Admins
+        {
+            get
+            {
+                return ResourceManager.GetString("Admins", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрация админа.
+        /// </summary>
+        public static string AdminRegistration
+        {
+            get
+            {
+                return ResourceManager.GetString("AdminRegistration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрация клиента.
+        /// </summary>
+        public static string UserRegistration
+        {
+            get
+            {
+                return ResourceManager.GetString("UserRegistration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрация тренера.
+        /// </summary>
+        public static string CoachRegistration
+        {
+            get
+            {
+                return ResourceManager.GetString("CoachRegistration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Регистрация пункт меню.
+        /// </summary>
+        public static string RegistrationM
+        {
+            get
+            {
+                return ResourceManager.GetString("RegistrationM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Должности/Специальности.
+        /// </summary>
+        public static string PositionsAndSpecialties
+        {
+            get
+            {
+                return ResourceManager.GetString("PositionsAndSpecialties", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Время/график.
+        /// </summary>
+        public static string TimeAndSchedule
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeAndSchedule", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Создать время
+        /// </summary>
+        public static string CreateTime
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateTime", resourceCulture);
+            }
+        }
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Создать график дня
+        /// </summary>
+        public static string Create_A_ScheduleForDay
+        {
+            get
+            {
+                return ResourceManager.GetString("Create_A_ScheduleForDay", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Добавление/Редактирование залов
+        /// </summary>
+        public static string AddingAndEditingHall
+        {
+            get
+            {
+                return ResourceManager.GetString("AddingAndEditingHall", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Зал
+        /// </summary>
+        public static string Rooms
+        {
+            get
+            {
+                return ResourceManager.GetString("Rooms", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Мои тренировки
+        /// </summary>
+        public static string MyWorkouts
+        {
+            get
+            {
+                return ResourceManager.GetString("MyWorkouts", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Время начала
+        /// </summary>
+        public static string TimeStart
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeStart", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Время окончания
+        /// </summary>
+        public static string TimeEnd
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeEnd", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Удалить время
+        /// </summary>
+        public static string DeleteTime
+        {
+            get
+            {
+                return ResourceManager.GetString("DeleteTime", resourceCulture);
+            }
+        }
+        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Сохраненное время
+        /// </summary>
+        public static string SavedTime
+        {
+            get
+            {
+                return ResourceManager.GetString("SavedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Создать время для графиков
+        /// </summary>
+        public static string AddTimeForCharts
+        {
+            get
+            {
+                return ResourceManager.GetString("AddTimeForCharts", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to График дня
+        /// </summary>
+        public static string GraphOfDay
+        {
+            get
+            {
+                return ResourceManager.GetString("GraphOfDay", resourceCulture);
+            }
+        }
+        /// <summary>
+        ///   Looks up a localized string similar to Выход
+        /// </summary>
+        public static string Exit
+        {
+            get
+            {
+                return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
     }

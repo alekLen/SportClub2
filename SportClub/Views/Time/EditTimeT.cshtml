@@ -1,8 +1,8 @@
-﻿<div class="div_reg padd">
+﻿
 
-   
-        <div class=" card c7 padd">
-        <h4>@Resources.Resource.Edit</h4>
+<div style="display:flex;justify-content:space-around;">
+    <div class=" card c7 padd div_reg2">
+        <h4 class="whiteY" style="text-align:center;">@Resources.Resource.Edit</h4>
             <form asp-controller="Time" method="post">
             @model SportClub.BLL.DTO.TimeTDTO
                         
@@ -14,23 +14,23 @@
             }
            
                 <div class="form-group">
-                    <span>Время начала</span><br />
+                <span class="whiteY">@Resources.Resource.startT</span><br />
                     <input asp-for="StartTime" name="Start"  class="form-control card _c7" />
                   
                 </div>
                 <div class="form-group">
-                    <span>Время окончания</span><br />
+                <span class="whiteY">@Resources.Resource.endT</span><br />
                     <input asp-for="EndTime"  name="End" class="form-control card _c7" />
                   
                 </div>
                 <br />
-            <h5 style="color:forestgreen">Время будет отредактировано во всех графиках и расписаниях!</h5>
+            <h5 style="color:orange">@Resources.Resource.TimeMes7</h5>
                 <div class="form-group">
-                    <input type="submit" formaction="EditTime" value="Изменить" class="btn btn-primary c2 buttons" />
-                    <input type="submit" formaction="ExitTime" value="Отмена" class="btn btn-primary c2 buttons" />
+                <input type="submit" formaction="EditTime" value=@Resources.Resource.Edit class="btn btn-primary c2 buttonsGY" />
+                <input type="submit" formaction="ExitTime" value=@Resources.Resource.Cancel class="btn btn-primary c2 buttonsGY" />
                 </div>
             </form>
         </div>
-
-
 </div>
+
+

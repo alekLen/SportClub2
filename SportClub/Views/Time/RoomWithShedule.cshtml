@@ -82,18 +82,22 @@
                                     {
                                         Model.flag = true;
                                         <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
-                                            <div>
+                                            <div style="min-width:190px">
                                                 @{
-                                                    var num = it.Group.Number - it.Users.Count;
+                                                    var num = it/* .Group */.Number - it.Users.Count;
                                                 }
-                                                <span class="white">@it.Group.Name ( @it.Group.Number )</span><br />
+                                                <span class="white">Места: @it.Number</span><br />
+                                                @* <span class="white">@it.Group.Name ( @it.Group.Number )</span><br /> *@
                                                 <span class="white">Тренер : </span><br />
                                                 <span class="white">@it.Coach.Name</span><br />
-                                               @if(it.Group.Number>it.Group.UsersId.Count)
-                                               {
-                                                    <span class="white">Доступно : @num </span><br />
-                                                  <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup">Записать</a>
-                                                   
+                                                @if (it.Number > it.Users.Count)@* (it.Group.Number>it.Group.UsersId.Count) *@
+                                                {<span class="white">Доступно : @num </span><br />
+                                                    <div style="margin: 0px auto 0px auto;width: max-content;">
+                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup">Записать</a>
+                                                        <a class="btn btn-outline-dark" style="background-color:coral; " asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
+                                                    </div>
+                                                    
+                                                    
                                                 }
                                                 else
                                                 {
@@ -102,7 +106,7 @@
                                                     <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
                                                 }@* asp-route-roomId="@it.Room.Id"*@
                                             </div>
-                                            <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" />
+                                            <img src="@it.Coach.Photo" style="width:50px;height:50px;margin-left:-50px; margin-top:-35px" alt="photo" class="marg" />
                                         </div>
                                     }
                                 }

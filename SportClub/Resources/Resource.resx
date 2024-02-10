@@ -132,6 +132,9 @@
   <data name="AddedStyle" xml:space="preserve">
     <value>Был добавлен жанр:  </value>
   </data>
+  <data name="AddingAndEditingHall" xml:space="preserve">
+    <value>Добавление/Редактирование залов</value>
+  </data>
   <data name="Addition" xml:space="preserve">
     <value>Добавление</value>
   </data>
@@ -146,6 +149,15 @@
   </data>
   <data name="Admins" xml:space="preserve">
     <value>Админы</value>
+  </data>
+  <data name="AddTimeForCharts" xml:space="preserve">
+    <value>Добавить время для графиков</value>
+  </data>
+  <data name="AdminRegistration" xml:space="preserve">
+    <value>Регистрация админа</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Все админы</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Возраст</value>
@@ -195,6 +207,12 @@
   <data name="chooseTime" xml:space="preserve">
     <value>Выберите время для графика</value>
   </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>Все тренеры</value>
+  </data>
+  <data name="CoachRegistration" xml:space="preserve">
+    <value>Регистрация тренера</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Подтвердить</value>
   </data>
@@ -209,6 +227,12 @@
   </data>
   <data name="Confirmregistration" xml:space="preserve">
     <value>Подтвердить регистрацию</value>
+  </data>
+  <data name="CreateTime" xml:space="preserve">
+    <value>Cоздать время</value>
+  </data>
+  <data name="Create_A_ScheduleForDay" xml:space="preserve">
+    <value>Создать график дня</value>
   </data>
   <data name="DateB" xml:space="preserve">
     <value>Дата рождения</value>
@@ -245,6 +269,9 @@
   </data>
   <data name="DeletedStyle" xml:space="preserve">
     <value>Был удален жанр:  </value>
+  </data>
+  <data name="DeleteTime" xml:space="preserve">
+    <value>Удалить время</value>
   </data>
   <data name="DelSong" xml:space="preserve">
     <value>Была удалена песня:  </value>
@@ -312,6 +339,9 @@
   <data name="EnterNewPassword" xml:space="preserve">
     <value>Введите новый пароль</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Выход</value>
+  </data>
   <data name="female" xml:space="preserve">
     <value>женский</value>
   </data>
@@ -338,6 +368,9 @@
   </data>
   <data name="Genres" xml:space="preserve">
     <value>Жанры</value>
+  </data>
+  <data name="GraphOfDay" xml:space="preserve">
+    <value>График дня</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Уровень доступа</value>
@@ -383,6 +416,9 @@
   </data>
   <data name="MusicPortal" xml:space="preserve">
     <value>Музыкальный портал</value>
+  </data>
+  <data name="MyWorkouts" xml:space="preserve">
+    <value>Мои тренировки</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
@@ -432,6 +468,9 @@
   <data name="Photo" xml:space="preserve">
     <value>Загрузите фото</value>
   </data>
+  <data name="PositionsAndSpecialties" xml:space="preserve">
+    <value>Должности/Специальности</value>
+  </data>
   <data name="Post" xml:space="preserve">
     <value>Должность</value>
   </data>
@@ -450,11 +489,17 @@
   <data name="Registration" xml:space="preserve">
     <value>Зарегестрироваться</value>
   </data>
+  <data name="RegistrationM" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>Обязательное поле</value>
   </data>
   <data name="RoomName" xml:space="preserve">
     <value>Название зала</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Зал</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Сохранить</value>
@@ -463,6 +508,9 @@
     <value>Сохранить график</value>
   </data>
   <data name="SavT" xml:space="preserve">
+    <value>Сохраненное время</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
     <value>Сохраненное время</value>
   </data>
   <data name="Shedule" xml:space="preserve">
@@ -495,6 +543,15 @@
   <data name="Text" xml:space="preserve">
     <value>Текст</value>
   </data>
+  <data name="TimeAndSchedule" xml:space="preserve">
+    <value>Время/график</value>
+  </data>
+  <data name="TimeEnd" xml:space="preserve">
+    <value>Время окончания</value>
+  </data>
+  <data name="TimeStart" xml:space="preserve">
+    <value>Время начала</value>
+  </data>
   <data name="unage" xml:space="preserve">
     <value>*некорректный возраст</value>
   </data>
@@ -507,8 +564,11 @@
   <data name="username" xml:space="preserve">
     <value>пользователь</value>
   </data>
+  <data name="UserRegistration" xml:space="preserve">
+    <value>Регистрация клиента</value>
+  </data>
   <data name="Users" xml:space="preserve">
-    <value>Пользователи</value>
+    <value>Все пользователи</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>ожидание регистрации</value>
@@ -524,5 +584,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>году выхода</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Заполните время начала и окончания тренировки!</value>
+  </data>
+  <data name="MyError" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Успешно</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>Такое время уже есть в базе!</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>Время тренировки не может быть короче 30 минут</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>время окончаня должно быть позже, чем время начала</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Введите время в формате 00:00</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>некорректное редактирование</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Время будет отредактировано во всех графиках и расписаниях!</value>
   </data>
 </root>

@@ -286,3 +286,16 @@ body {
 .color_text {
     color: #F0E68C;
 }
+}
+.ex {
+    position: fixed;
+    left: 6%;
+    top: 10%;
+   
+    text-decoration: none;
+}
+
+    .ex:hover {
+       
+        text-decoration: none;
+    }

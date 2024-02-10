@@ -1,4 +1,4 @@
-﻿@model SportClub.Models.GroupAndTrainingGroup
+﻿@model SportClub.BLL.DTO.TrainingGroupDTO
 
 <div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
     <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление груповой тренировки</p>
@@ -7,35 +7,42 @@
         <div>
             <br />
             <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div style="width: 550px;  justify-content: center; ">
                     <div class="form-group" style="margin-left: 70px">
-                        <input id="day" type="hidden" name="day" value="@Model.trgroup.Day" />
-                        <input id="dayName" name="dayName" value="@Model.trgroup.DayName" readonly class="font" style="width: 120px" />
-                        <input id="time" name="time" value="@Model.trgroup.Time" readonly class="font" style="width: 120px" />
-                        <input id="roomId" type="hidden" name="roomId" value="@Model.trgroup.RoomId" />
-                        <input id="roomName" name="roomName" value="@Model.trgroup.RoomName" readonly class="font" style="width: 120px" />
+                        <input id="day" type="hidden" name="day" value="@Model.Day" />
+                        <input id="dayName" name="dayName" value="@Model.DayName" readonly class="font" style="width: 120px" />
+                        <input id="time" name="time" value="@Model.Time" readonly class="font" style="width: 120px" />
+                        <input id="roomId" type="hidden" name="roomId" value="@Model.RoomId" />
+                        <input id="roomName" name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px" />
 
                     </div><br />
                     <div class="form-group" style="margin-left: 40px">
                         <label style="color: white; font-size: 16px;" class="font">Выбрать тренера</label>
-                        <select asp-for="trgroup.Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
+                        <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
 
-                        <div class="form-group">
+                        @* <div class="form-group">
                             <label asp-for="trgroup.GroupId" class="font white-color_size20"></label>
                             <select asp-for="trgroup.GroupId" name="groupId" class="form-control" asp-items="ViewBag.GroupId" style="width: 420px"></select>
                             <span asp-validation-for="trgroup.GroupId" class="text-danger"></span>
+                        </div> *@
+
+                        <div class="form-group" style="margin-left: 40px">
+                            <label asp-for="Number" class="control-label font white-color_size20"></label>
+                            <input asp-for="Number" id="number" type="number" value="1" min="1" placeholder="1" class="form-control" style="width: 420px">
+                            <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
                         </div>
                     </div>
                     <br /><br />
                     <div style="margin-left: 200px">
-                        <a id="btn1_dv" href="javascript:void(0)" class="btn btn-outline-light">Создать группу</a>
+                        @* <a id="btn1_dv" href="javascript:void(0)" class="btn btn-outline-light">Создать группу</a> *@
                         <input type="submit" value="Сохранить" formaction="ToAddTrainingGroup" class="btn btn-outline-light" />
                     </div>
                     <br /><br />
                 </div>
             </form>
 
-            <div id="div_group" style="display:none">
+           @*  <div id="div_group" style="display:none">
                 <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление группы</p>
                 <form asp-controller="Group" asp-action="CreateGroup" method="post">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -57,13 +64,13 @@
                         <a href="javascript:void(0)" class="btn btn-primary c2" id="btnCreateGroup" style="color:white">@Resources.Resource.Add</a>
                     </div><br />
             </form>
-        </div>
+        </div> *@
 
 
     </div>
 </div>
 </div>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
         $("#btn1_dv").text("Создать группу");
@@ -146,4 +153,4 @@
                 .find(".ui-dialog-buttonpane").css({ "border-width": "0px", "background-color": "#374566" });
         }
     });
-</script>
+</script> *@

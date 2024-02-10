@@ -45,16 +45,13 @@ namespace SportClub.BLL.Services
             }
         }
 
-      /* public async Task AddTimeT(TimeTDTO pDto)
-        {
-            var a = new TimeT()
-            {
-                StartTime = pDto.StartTime,
-                EndTime = pDto.EndTime
-            };
-            await Database.Times.AddItem(a);
-            await Database.Save();
-        }*/
+        public async Task<Boolean> CheckTimeT(string s, string e)
+        {          
+           TimeT a1= await Database.Times.Find(s,e);
+            if(a1 != null) { return true; }
+            else { return false; }
+           
+        }
         public async Task<TimeTDTO> GetTimeT(int id)
         {
             TimeT a = await Database.Times.Get(id);

@@ -20,13 +20,13 @@ namespace SportClub.Controllers
         private readonly IRoom roomService;
         private readonly ITrainingInd trainingIndService;
         private readonly ITrainingGroup trainingGroupService;
-        private readonly IGroup groupService;
+        
         private readonly ITime timeService;
         private readonly IShedule sheduleService;
 
         private static List<TrainingIndDTO> TrI = new();
         private static List<TrainingGroupDTO> TrG = new();
-        public CoachController(IShedule sh,ITime tt,IGroup gr, IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
+        public CoachController(IShedule sh,ITime tt, IAdmin adm, IRoom room, ICoach c, ISpeciality sp, IPost p, IWebHostEnvironment appEnvironment, ITrainingInd tr, ITrainingGroup tg)
         {
             adminService = adm;
             coachService = c;
@@ -36,7 +36,7 @@ namespace SportClub.Controllers
             roomService = room;
             trainingIndService = tr;
             trainingGroupService = tg;
-            groupService = gr;
+            
             timeService = tt;
             sheduleService = sh;
         }
@@ -355,8 +355,11 @@ namespace SportClub.Controllers
                             training.DayName = Setday(group.Day);
                             training.Day = group.Day;
                             training.Time = group.Time;
-                            training.Group = await groupService.GetGroup(group.GroupId);
-                           IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);
+                            //training.Group = await groupService.GetGroup(group.GroupId);
+                            //IEnumerable <UserDTO> users=await groupService.GetGroupUsers(group.GroupId);
+                            training.Number = group.Number;
+                            IEnumerable<UserDTO> users = await trainingGroupService.GetTrainingGroupUsers(group.Id);
+
                             training.Users = users.ToList();
                             trainings2.Add(training);
                         }
@@ -457,11 +460,12 @@ namespace SportClub.Controllers
                         {
                             TrainingGrToSee train = new();
                             train.Id = tr.Id;
-                            train.Group = await groupService.GetGroup(tr.GroupId);
+                            //train.Group = await groupService.GetGroup(tr.GroupId);
                             train.Room = room;
                             train.Coach = await coachService.GetCoach(tr.CoachId);
-                            IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
-                            train.Users = us.ToList();
+                            IEnumerable<UserDTO> users = await trainingGroupService.GetTrainingGroupUsers(tr.Id);
+                            train.Users = users.ToList();
+                            train.Number = tr.Number;
                             train.Time = tr.Time;
                             train.Day = tr.Day;
                             trg1.Add(train);

@@ -132,6 +132,9 @@
   <data name="AddedStyle" xml:space="preserve">
     <value>Genre wurde hinzugefügt:  </value>
   </data>
+  <data name="AddingAndEditingHall" xml:space="preserve">
+    <value>Hinzufügen/Bearbeiten von Hallen</value>
+  </data>
   <data name="Addition" xml:space="preserve">
     <value>Zusatz</value>
   </data>
@@ -146,6 +149,12 @@
   </data>
   <data name="Admins" xml:space="preserve">
     <value>Admins</value>
+  </data>
+  <data name="AddTimeForCharts" xml:space="preserve">
+    <value>Zeit für Fahrpläne hinzufügen</value>
+  </data>
+  <data name="Admins" xml:space="preserve">
+    <value>Alle admins</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Alter</value>
@@ -195,6 +204,9 @@
   <data name="chooseTime" xml:space="preserve">
     <value>Wählen Sie die Zeit für den Zeitplan aus</value>
   </data>
+  <data name="Coaches" xml:space="preserve">
+    <value>Alle trainers</value>
+  </data>
   <data name="Confirm" xml:space="preserve">
     <value>Bestätigen</value>
   </data>
@@ -209,6 +221,12 @@
   </data>
   <data name="Confirmregistration" xml:space="preserve">
     <value>Registrierung bestätigen</value>
+  </data>
+  <data name="CreateTime" xml:space="preserve">
+    <value>Zeit schaffen</value>
+  </data>
+  <data name="Create_A_ScheduleForDay" xml:space="preserve">
+    <value>Erstellen Sie einen Tagesplan</value>
   </data>
   <data name="DateB" xml:space="preserve">
     <value>Geburtsdatum</value>
@@ -245,6 +263,9 @@
   </data>
   <data name="DeletedStyle" xml:space="preserve">
     <value>Genre entfernt:  </value>
+  </data>
+  <data name="DeleteTime" xml:space="preserve">
+    <value>Uhrzeit löschen</value>
   </data>
   <data name="DelSong" xml:space="preserve">
     <value>Lied wurde entfernt:  </value>
@@ -312,6 +333,9 @@
   <data name="EnterNewPassword" xml:space="preserve">
     <value>Geben Sie ein neues Kennwort ein</value>
   </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Ausgabe</value>
+  </data>
   <data name="female" xml:space="preserve">
     <value>weiblich</value>
   </data>
@@ -338,6 +362,9 @@
   </data>
   <data name="Genres" xml:space="preserve">
     <value>Genres</value>
+  </data>
+  <data name="GraphOfDay" xml:space="preserve">
+    <value>Terminplan für den Tag</value>
   </data>
   <data name="Level" xml:space="preserve">
     <value>Zugriffsebene</value>
@@ -383,6 +410,9 @@
   </data>
   <data name="MusicPortal" xml:space="preserve">
     <value>Musikportal</value>
+  </data>
+  <data name="MyWorkouts" xml:space="preserve">
+    <value>Meine Trainingseinheiten</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
@@ -432,6 +462,9 @@
   <data name="Photo" xml:space="preserve">
     <value>Lade ein Foto hochо</value>
   </data>
+  <data name="PositionsAndSpecialties" xml:space="preserve">
+    <value>Positionen/Spezialitäten</value>
+  </data>
   <data name="Post" xml:space="preserve">
     <value>Berufsbezeichnung</value>
   </data>
@@ -450,11 +483,17 @@
   <data name="Registration" xml:space="preserve">
     <value>Registrieren</value>
   </data>
+  <data name="RegistrationM" xml:space="preserve">
+    <value>Registrierung</value>
+  </data>
   <data name="Required" xml:space="preserve">
     <value>ist ein Pflichtfeld</value>
   </data>
   <data name="RoomName" xml:space="preserve">
     <value>Hallenname</value>
+  </data>
+  <data name="Rooms" xml:space="preserve">
+    <value>Saal</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Speichern</value>
@@ -463,6 +502,9 @@
     <value>Zeitplan speichern</value>
   </data>
   <data name="SavT" xml:space="preserve">
+    <value>Zeit gespart</value>
+  </data>
+  <data name="SavedTime" xml:space="preserve">
     <value>Zeit gespart</value>
   </data>
   <data name="Shedule" xml:space="preserve">
@@ -495,6 +537,15 @@
   <data name="Text" xml:space="preserve">
     <value>Text</value>
   </data>
+  <data name="TimeAndSchedule" xml:space="preserve">
+    <value>Zeit/Zeitplan</value>
+  </data>
+  <data name="TimeEnd" xml:space="preserve">
+    <value>Endzeit</value>
+  </data>
+  <data name="TimeStart" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
   <data name="unage" xml:space="preserve">
     <value>*falsches Alter</value>
   </data>
@@ -508,7 +559,7 @@
     <value>Benutzer</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Benutzer</value>
+    <value>Alle benutzer</value>
   </data>
   <data name="waiting" xml:space="preserve">
     <value>warte auf die Anmeldung</value>
@@ -524,5 +575,32 @@
   </data>
   <data name="YearSort" xml:space="preserve">
     <value>erscheinungsjahr</value>
+  </data>
+  <data name="TimeMes1" xml:space="preserve">
+    <value>Geben Sie die Start- und Endzeiten Ihres Trainings ein!</value>
+  </data>
+  <data name="MyError" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Sucsess" xml:space="preserve">
+    <value>Unverschämt</value>
+  </data>
+  <data name="TimeMes2" xml:space="preserve">
+    <value>Diese Zeit ist bereits in der Datenbank!</value>
+  </data>
+  <data name="TimeMes3" xml:space="preserve">
+    <value>Die Trainingszeit darf 30 Minuten nicht unterschreiten</value>
+  </data>
+  <data name="TimeMes4" xml:space="preserve">
+    <value>Die Endzeit muss später als die Startzeit liegen</value>
+  </data>
+  <data name="TimeMes5" xml:space="preserve">
+    <value>Geben Sie die Zeit im 00:00-Format ein</value>
+  </data>
+  <data name="TimeMes6" xml:space="preserve">
+    <value>fehlerhafte Bearbeitung</value>
+  </data>
+  <data name="TimeMes7" xml:space="preserve">
+    <value>Die Zeit wird in allen Diagrammen und Zeitplänen bearbeitet!</value>
   </data>
 </root>

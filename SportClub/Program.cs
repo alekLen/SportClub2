@@ -10,7 +10,7 @@ builder.Services.AddSportClubContext(connection);
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IAdmin, AdminService>();
 builder.Services.AddTransient<IUser, UserService>();
-builder.Services.AddTransient<IGroup, GroupService>();
+//builder.Services.AddTransient<IGroup, GroupService>();
 
 builder.Services.AddTransient<ITrainingGroup, TrainingGroupService>();
 
@@ -22,8 +22,6 @@ builder.Services.AddTransient<ITimetable, TimetableService>();
 builder.Services.AddTransient<IRoom, RoomService>();
 builder.Services.AddTransient<IShedule, SheduleService>();
 builder.Services.AddTransient<ITrainingInd, TrainingIndService>();
-
-builder.Services.AddTransient<ISkipShedule, SkipSheduleService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
