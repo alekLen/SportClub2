@@ -13,31 +13,31 @@
   
      <div class="flex padd div_reg2">
 
-            <div class=" card c7 padd" style=" background-color: #2F4F4F;padding-top:0px;">
+            <div class=" card c7 padd" style="background-color:transparent;">
                 <h4 class="whiteY" style="text-align:center;">@Resources.Resource.Addition</h4>
-                <form asp-controller="Time" method="post" style="border-radius:3px; background-color: white;padding:10px;border:0px;">           
+                <form asp-controller="Time" method="post" style="border-radius:3px; padding:10px;border:0px;">           
 
                     <div id="messageDiv" class="text-danger">@Context.Session.GetString("TimeMessage")</div>
                     <div class="form-group" >
-                        <span style="text-align:center;">@Resources.Resource.startT</span><br />
+                        <span class="whiteY"  style="text-align:center;">@Resources.Resource.startT</span><br />
                         <input name="Start" id="start" class="form-control card _c7 TimeM" placeholder="00:00" style=" background-color: white" />
                     <span  id="st" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                        <span style="text-align:center;">@Resources.Resource.endT</span><br />
+                        <span class="whiteY"  style="text-align:center;">@Resources.Resource.endT</span><br />
                         <input name="End" id="end" class="form-control card _c7 TimeM" placeholder="00:00" style=" background-color: white" />
                     <span  id="en" class="text-danger"></span>
 
                  </div>
-                    <br /><br /><br />
-                    <div class="form-group"  style=" background-color: #2F4F4F;padding:20px;margin:-10px;justify-content:center;">
+                    <br /><br />
+                    <div class="form-group" style="background-color:transparent;padding:20px;margin:-10px;justify-content:center;">
                         <input type="submit" id="add" formaction="AddTimeT" value="@Resources.Resource.Add" class="btn btn-primary  buttonsGY" />
                  </div>
             </form>
 
         </div>
         <div style="width:20px"></div>
-            <div class=" card c7 padd" style=" background-color: #2F4F4F;padding-top:0px;">
+            <div class=" card c7 padd" style="background-color:transparent">
 
                 <form asp-controller="Time" method="post" style="border:0px;">
                     <label class="whiteY" style="text-align:center;">@Resources.Resource.SavT</label><br />       
@@ -62,7 +62,7 @@
 
         <div class="padd">
                 <h4 class="whiteY">@Resources.Resource.Create_A_ScheduleForDay</h4>
-                <form asp-controller="Time" method="post" style=" background-color: #2F4F4F;padding-top:10px;">             
+                <form asp-controller="Time" method="post" style="background-color:transparent">
                     <select asp-for=@Model.Timetable.Id size="8" id="myselect" class="form-control card _c7" asp-items="ViewBag.TimetableId" ></select>
                 <br />
                 <div class="form-group">
@@ -95,7 +95,7 @@
 <div style="padding-top:30px;">
     <h4 id="all" class="whiteY" style="text-align:center;padding:5px;box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">@Resources.Resource.AllSc:</h4>
 </div>
-<div class="flex padd div_reg3" style="flex-wrap:wrap;background-color:  #2F4F4F;padding-top:0px;justify-content:space-around;">
+<div class="flex padd div_reg3" style="flex-wrap:wrap;background-image: linear-gradient(to bottom right, #2F4F4F, rgba(50,50,50));;padding-top:0px;justify-content:space-around;">
     @foreach (var item in Model.times)
     {
         <div class="padd" style="border-radius:3px;">
@@ -259,7 +259,7 @@
                                                     resizable: false,
                                                     buttons: [{
                                                         class: "input_subm3",//
-                                                        text: "Закрыть",
+                                                    text: "'@Html.Raw(@Resources.Resource.Exit)'",
                                                         click: function () {
                                                         window.location.href = "@Url.Action("AddTimeT", "Time")";
                                                         }
