@@ -1411,14 +1411,7 @@ public static string MusicPortal {
         /// <summary>
         ///   Looks up a localized string similar to Подробности
         /// </summary>
-        public static string Details
-        {
-            get
-            {
-                return ResourceManager.GetString("Details", resourceCulture);
-            }
-        }
-
+       
         /// <summary>
         ///   Looks up a localized string similar to Фото
         /// </summary>
