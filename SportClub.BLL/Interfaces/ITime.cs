@@ -15,5 +15,6 @@ namespace SportClub.BLL.Interfaces
         Task DeleteTimeT(int id);
         Task UpdateTimeT(TimeTDTO a);
         Task DeleteAllTimeT();
+        Task<Boolean> CheckTimeT(string s, string e);
     }
 }

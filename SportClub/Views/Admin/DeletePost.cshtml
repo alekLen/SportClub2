@@ -1,16 +1,9 @@
 ﻿<form asp-controller="Admin" method="post">
     @model SportClub.BLL.DTO.PostDTO
-   @*  <h2>Потвердите удаление должности тренера:</h2> *@
-   @*  <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="div_reg padd"> *@
-    <span style="color:white">удаление должности тренера:</span><br />
+ 
+    <span class="whiteY">@Resources.Resource.DeleteCoachPost:</span><br />
         <input asp-for="Name" class="form-control card _c7" readonly />
         <input asp-for="Id" type="hidden" />
         <span asp-validation-for="Name" class="text-danger"></span>
-  @* 
-        <br />
-        <a asp-area="" asp-controller="Admin" asp-action="BackToPost" class="btn btn-primary buttons1">Назад</a>
-        <br />
-        <input type="submit" formaction="ConfirmDeletePost" value="@Resources.Resource.Delete" class="btn btn-primary red" />
-    </div> *@
+
 </form>

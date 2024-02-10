@@ -1,0 +1,107 @@
+﻿@model SportClub.BLL.DTO.TrainingIndDTO
+<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+		<span>Информация о тренировке</span>
+    </p>
+    <hr style="color:white" />
+    <div class="row">
+        <div>
+<form action="EditTraining" method="post">
+    <div style="width: 550px;  justify-content: center; ">
+        <div style="margin-left: 70px">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="day" value="@Model.Day" />
+        <input name="dayName" value="@Model.DayName" readonly class="font" style="width: 120px"/>
+        <input name="time" value="@Model.Time" readonly class="font" style="width: 120px"/>
+        <input type="hidden" name="roomId" value="@Model.RoomId" />
+        <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px"/><br /> 
+        </div>
+        <div style="margin-left: 40px">
+        <span class="font" style="color: white">Тренер</span><br/>
+        <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px"/><br />
+        </div>
+        <div class="form-group" style="margin-left: 40px">
+            <label style="color: white; font-size: 16px;" class="font">Изменить клиента</label>
+            <select asp-for="Id" name="userId" class="form-control card _c7" class="font" style="width: 420px" asp-items="ViewBag.UserId"></select>
+        </div>
+        <br /><br />
+        <div style="margin-left: 5px">
+            <input type="submit" value="Изменить клиента" class="btn btn-outline-light"/>
+            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light btnDelTR" id="@Model.Id">Удалить тренировку</a>
+            <a class="btn btn-outline-light" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="CancelAppointment">Отменить запись</a>
+        </div>
+        <br /><br />
+        
+
+    </div>
+</form>
+<div/>
+<div />
+<div />
+            <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script>
+                $(document).ready(function () {
+                    $(".btnDelTR").click(function () {
+                        var buttonId = $(this).attr('id');
+                        var puth = "/Admin/MyAction/" + buttonId;
+                        $("<div id='dialogContent3'></div>")
+                            .addClass("dialog")
+                            .appendTo("body")
+                            .load(puth)
+                            .dialog({
+                                title: "Подтвердите удаление",
+                                close: function () { $(this).remove(); },
+                                dialogClass: 'myTitleClass',
+                                modal: true,
+                                resizable: false,
+                                buttons: [{
+                                    class: "input_subm2",//
+                                    text: "Подтвердить",
+                                    click: function () {
+                                        $.ajax({
+                                            url: "@Url.Action("DeleteTraining", "TrainingInd")",
+                                            type: "POST",
+                                            data: { id: buttonId },
+                                            datatype: "json",
+                                            success: function (response) {
+
+                                                if (response) {
+                                                    $("#dialogContent3").remove();
+                                                    $("<div id='dialogContent4'></div>")
+                                                        .addClass("dialog")
+                                                        .appendTo("body")
+                                                        .load("/Admin/AddedPost")
+                                                        .dialog({
+                                                            title: "Вы удалили тренировку!",
+                                                            close: function () { window.location.href = "@Url.Action("RoomWithShedule", "Time")"; },
+                                                            dialogClass: 'myTitleClass',
+                                                            modal: true,
+                                                            resizable: false,
+                                                            buttons: [{
+                                                                class: "input_subm2",//
+                                                                text: "Назад",
+                                                                click: function () {
+                                                                    window.location.href = "@Url.Action("RoomWithShedule", "Time")";
+                                                                }
+                                                            }],
+                                                            open: function (event, ui) {
+                                                                StyleDialog($(this).closest(".ui-dialog"));
+                                                            }
+                                                        });
+                                                }
+                                                else {
+                                                    let l2 = document.getElementById("error-login1");
+                                                    l2.style.display = "inline";
+                                                }
+                                            }
+                                        });
+                                    }
+                                }],
+                                open: function (event, ui) {
+                                    StyleDialog($(this).closest(".ui-dialog"));
+                                }
+                            });
+
+                    });
+                });
+            </script>
