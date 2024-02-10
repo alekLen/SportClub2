@@ -213,6 +213,9 @@
   <data name="DateB" xml:space="preserve">
     <value>Дата народження</value>
   </data>
+  <data name="DateFormatError" xml:space="preserve">
+    <value>*введіть дату у форматі день/місяць/рік</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
@@ -355,7 +358,7 @@
     <value>Довжина логіну має бути від 3 до 15 символів</value>
   </data>
   <data name="loginN" xml:space="preserve">
-    <value>логін</value>
+    <value>Логін</value>
   </data>
   <data name="loginpassword" xml:space="preserve">
     <value>логін/пароль не правильний</value>
@@ -387,6 +390,9 @@
   <data name="nameArt" xml:space="preserve">
     <value>Ім'я</value>
   </data>
+  <data name="NameFormatError" xml:space="preserve">
+    <value>*поле 'Ім'я' має містити лише літери</value>
+  </data>
   <data name="Newusers" xml:space="preserve">
     <value>Нові користувачі</value>
   </data>
@@ -396,14 +402,17 @@
   <data name="PassConRequired" xml:space="preserve">
     <value>*підтвердження пароля обов'язково</value>
   </data>
+  <data name="PassLength" xml:space="preserve">
+    <value>*довжина пароля повинна бути від 3 до 15 символів</value>
+  </data>
   <data name="passnoteq" xml:space="preserve">
-    <value>*Паролі не співпадають</value>
+    <value>*паролі не співпадають</value>
   </data>
   <data name="PassRequired" xml:space="preserve">
     <value>*пароль обов'язкове поле</value>
   </data>
   <data name="password" xml:space="preserve">
-    <value>пароль</value>
+    <value>Пароль</value>
   </data>
   <data name="PasswordChangeError" xml:space="preserve">
     <value>Помилка зміни пароля</value>
@@ -411,8 +420,14 @@
   <data name="passwordConf" xml:space="preserve">
     <value>Підтвердіть пароль</value>
   </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Персональна інформація</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Телефон</value>
+  </data>
+  <data name="PhoneFormatError" xml:space="preserve">
+    <value>*введіть номер у форматі +380971315143</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Завантажте фото</value>
@@ -422,6 +437,15 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профіль</value>
+  </data>
+  <data name="RegisterAdmin" xml:space="preserve">
+    <value>Реєстрація адміну</value>
+  </data>
+  <data name="RegisterClient" xml:space="preserve">
+    <value>Реєстрація клієнта</value>
+  </data>
+  <data name="RegisterCoach" xml:space="preserve">
+    <value>Реєстрація тренера</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Зареєструватися</value>

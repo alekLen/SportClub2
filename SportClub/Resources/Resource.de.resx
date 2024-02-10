@@ -213,6 +213,9 @@
   <data name="DateB" xml:space="preserve">
     <value>Geburtsdatum</value>
   </data>
+  <data name="DateFormatError" xml:space="preserve">
+    <value>*Geben Sie das Datum im Format Tag/Monat/Jahr ein</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>löschen</value>
   </data>
@@ -355,7 +358,7 @@
     <value>Die Anmeldelänge muss zwischen 3 und 15 Zeichen liegen</value>
   </data>
   <data name="loginN" xml:space="preserve">
-    <value>login</value>
+    <value>Login</value>
   </data>
   <data name="loginpassword" xml:space="preserve">
     <value>Login/Passwort ist falsch</value>
@@ -387,6 +390,9 @@
   <data name="nameArt" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameFormatError" xml:space="preserve">
+    <value>*das Feld „Name“ darf nur Buchstaben enthalten</value>
+  </data>
   <data name="Newusers" xml:space="preserve">
     <value>Neue Nutzer</value>
   </data>
@@ -395,6 +401,9 @@
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*Eine Passwortbestätigung ist erforderlich</value>
+  </data>
+  <data name="PassLength" xml:space="preserve">
+    <value>*Die Länge des Passworts muss zwischen 3 und 15 Zeichen liegen</value>
   </data>
   <data name="passnoteq" xml:space="preserve">
     <value>*Die Passwörter stimmen nicht überein</value>
@@ -411,8 +420,14 @@
   <data name="passwordConf" xml:space="preserve">
     <value>Bestätigen Sie das Passwort</value>
   </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Persönliche Angaben</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Telefon</value>
+  </data>
+  <data name="PhoneFormatError" xml:space="preserve">
+    <value>*Geben Sie die Nummer im Format +380971315143 ein</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Lade ein Foto hochо</value>
@@ -422,6 +437,15 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
+  </data>
+  <data name="RegisterAdmin" xml:space="preserve">
+    <value>Admin-Registrierung</value>
+  </data>
+  <data name="RegisterClient" xml:space="preserve">
+    <value>Kundenregistrierung</value>
+  </data>
+  <data name="RegisterCoach" xml:space="preserve">
+    <value>Traineranmeldung</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registrieren</value>

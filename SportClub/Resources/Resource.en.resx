@@ -213,6 +213,9 @@
   <data name="DateB" xml:space="preserve">
     <value>Date of Birth</value>
   </data>
+  <data name="DateFormatError" xml:space="preserve">
+    <value>*enter the date in day/month/year format</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -355,7 +358,7 @@
     <value>The login length must be from 3 to 15 characters</value>
   </data>
   <data name="loginN" xml:space="preserve">
-    <value>login</value>
+    <value>Login</value>
   </data>
   <data name="loginpassword" xml:space="preserve">
     <value>login/password  not correct</value>
@@ -387,6 +390,9 @@
   <data name="nameArt" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameFormatError" xml:space="preserve">
+    <value>*the 'Name' field must contain letters only</value>
+  </data>
   <data name="Newusers" xml:space="preserve">
     <value>New users</value>
   </data>
@@ -396,6 +402,9 @@
   <data name="PassConRequired" xml:space="preserve">
     <value>*confirm password is required</value>
   </data>
+  <data name="PassLength" xml:space="preserve">
+    <value>*password length must be from 3 to 15 characters</value>
+  </data>
   <data name="passnoteq" xml:space="preserve">
     <value>*passwords are not equal</value>
   </data>
@@ -403,7 +412,7 @@
     <value>*password is required</value>
   </data>
   <data name="password" xml:space="preserve">
-    <value>password</value>
+    <value>Password</value>
   </data>
   <data name="PasswordChangeError" xml:space="preserve">
     <value>Password change error</value>
@@ -411,8 +420,14 @@
   <data name="passwordConf" xml:space="preserve">
     <value>Confirm password</value>
   </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Personal information</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Telephone</value>
+  </data>
+  <data name="PhoneFormatError" xml:space="preserve">
+    <value>*enter the number in the format +380971315143</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Photo</value>
@@ -422,6 +437,15 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
+  </data>
+  <data name="RegisterAdmin" xml:space="preserve">
+    <value>Admin registration</value>
+  </data>
+  <data name="RegisterClient" xml:space="preserve">
+    <value>Client registration</value>
+  </data>
+  <data name="RegisterCoach" xml:space="preserve">
+    <value>Trainer registration</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registgration</value>

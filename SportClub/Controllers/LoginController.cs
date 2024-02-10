@@ -41,7 +41,7 @@ namespace SportClub.Controllers
             HttpContext.Session.SetString("path", Request.Path);
             await putSpecialities();
             await putPosts();
-            return View("RegisterCoach");/*RegisterCoach1*/
+            return View("RegisterCoach");
         }
         public async Task<IActionResult> RegistrationAdmin()
         {

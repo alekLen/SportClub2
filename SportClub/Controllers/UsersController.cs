@@ -69,6 +69,7 @@ namespace SportClub.Controllers
      
         public async Task<IActionResult> ClientProfile()
         {
+            HttpContext.Session.SetString("path", Request.Path);
             string s = HttpContext.Session.GetString("Id");
             int id =Int32.Parse(s);
             UserDTO p = await userService.GetUser(id);

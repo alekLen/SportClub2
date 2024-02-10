@@ -213,6 +213,9 @@
   <data name="DateB" xml:space="preserve">
     <value>Date de naissance</value>
   </data>
+  <data name="DateFormatError" xml:space="preserve">
+    <value>*saisissez la date au format jour/mois/année</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
@@ -355,7 +358,7 @@
     <value>La longueur de connexion doit être comprise entre 3 et 15 caractères</value>
   </data>
   <data name="loginN" xml:space="preserve">
-    <value>se connecter</value>
+    <value>Se connecter</value>
   </data>
   <data name="loginpassword" xml:space="preserve">
     <value>le login/mot de passe est incorrect</value>
@@ -387,6 +390,9 @@
   <data name="nameArt" xml:space="preserve">
     <value>Nom</value>
   </data>
+  <data name="NameFormatError" xml:space="preserve">
+    <value>*le champ 'Nom' doit contenir uniquement des lettres</value>
+  </data>
   <data name="Newusers" xml:space="preserve">
     <value>Nouveaux utilisateurs</value>
   </data>
@@ -396,6 +402,9 @@
   <data name="PassConRequired" xml:space="preserve">
     <value>*une confirmation du mot de passe est requise</value>
   </data>
+  <data name="PassLength" xml:space="preserve">
+    <value>*la longueur du mot de passe doit être comprise entre 3 et 15 caractères</value>
+  </data>
   <data name="passnoteq" xml:space="preserve">
     <value>*Non concordance des mots de passe</value>
   </data>
@@ -403,7 +412,7 @@
     <value>*Mot de passe est un champ obligatoire</value>
   </data>
   <data name="password" xml:space="preserve">
-    <value>mot de passe</value>
+    <value>Mot de passe</value>
   </data>
   <data name="PasswordChangeError" xml:space="preserve">
     <value>Erreur de changement de mot de passe</value>
@@ -411,8 +420,14 @@
   <data name="passwordConf" xml:space="preserve">
     <value>Confirmez le mot de passe</value>
   </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Informations personnelles</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Téléphone</value>
+  </data>
+  <data name="PhoneFormatError" xml:space="preserve">
+    <value>*entrez le numéro au format +380971315143</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Télécharger une photo</value>
@@ -422,6 +437,15 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
+  </data>
+  <data name="RegisterAdmin" xml:space="preserve">
+    <value>Inscription administrateur</value>
+  </data>
+  <data name="RegisterClient" xml:space="preserve">
+    <value>Inscription des clients</value>
+  </data>
+  <data name="RegisterCoach" xml:space="preserve">
+    <value>Inscription des formateurs</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Registre</value>

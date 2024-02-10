@@ -268,6 +268,7 @@ namespace SportClub.Controllers
         }
         public async Task<IActionResult> AdminProfile()
         {
+            HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 string s = HttpContext.Session.GetString("Id");
@@ -275,7 +276,10 @@ namespace SportClub.Controllers
                 AdminDTO p = await adminService.GetAdmin(id);
                 return View(p);
             }
-            catch { return View("Index", "Home"); }
+            catch {
+                HttpContext.Session.SetString("path", Request.Path);
+                return View("Index", "Home"); 
+            }
         }
         public async Task<IActionResult> EditAdminProfile(AdminDTO user)
         {
@@ -570,17 +574,17 @@ namespace SportClub.Controllers
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> MyAction(int id)
-        {
-            int id1 = id;
-            return Json(true);
-        }
-        [HttpPost]
-        public async Task<IActionResult> ConfirmMyAction(int id)
-        {
-            int id1 = id;
-            return Json(true);
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> MyAction(int id)
+        //{
+        //    int id1 = id;
+        //    return Json(true);
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> ConfirmMyAction(int id)
+        //{
+        //    int id1 = id;
+        //    return Json(true);
+        //}
     }
 }
