@@ -549,6 +549,15 @@
   <data name="YearSort" xml:space="preserve">
     <value>year</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Create  time/schedule for day</value>
+  </data>
   <data name="MyError" xml:space="preserve">
     <value>Error</value>
   </data>

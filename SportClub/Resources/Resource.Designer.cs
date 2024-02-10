@@ -1407,5 +1407,38 @@ public static string MusicPortal {
                 return ResourceManager.GetString("Exit", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности
+        /// </summary>
+        public static string Details
+        {
+            get
+            {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Фото
+        /// </summary>
+        public static string CoachPhoto
+        {
+            get
+            {
+                return ResourceManager.GetString("CoachPhoto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cоздать время/график дня
+        /// </summary>
+        public static string CreateTimeAndScheduleForDay
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateTimeAndScheduleForDay", resourceCulture);
+            }
+        }
     }
 }

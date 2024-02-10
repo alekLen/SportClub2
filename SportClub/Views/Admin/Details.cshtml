@@ -5,8 +5,8 @@
     ViewData["Title"] = "Details";
 }
 <div class="div_reg">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        @Resources.Resource.AdminDetails
+    <p class="font" style="font-size: 32px; color: #EEE8AA; padding-top: 30px; text-align: center">
+        Details admin
     </p>
      
     <div class="row">
@@ -15,39 +15,39 @@
             <div class="row">
                 <div style="width: 500px;  justify-content: center; ">
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: white">@Resources.Resource.Name</label>
+                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
                     </div>
                     <div class="form-group" style="margin-left: 40px">
 
-                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: white">@Resources.Resource.Login</label>
+                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: white">@Resources.Resource.email</label>
+                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20">@Resources.Resource.Phone</label>
+                        <label asp-for="Phone" style="color: #EEE8AA" class="control-label font  white-color_size20"></label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
                     </div>
                 </div>
 
                 <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="Gender" class="control-label font  white-color_size20" style="color: white">@Resources.Resource.gender</label>
+                    <label asp-for="Gender" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
                     <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.Gender)</h1>
                 </div>
 
                 <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white">@Resources.Resource.DateB</label>
+                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
                     <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
                 </div> <br />
 
                 <div style="margin: 10px auto 25px auto;width: max-content;">
-                    <a class="btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@Model?.Id">@Resources.Resource.Edit</a>
-                    <a class="btn btn-outline-light" asp-action="GetAdmins" asp-controller="Admin">@Resources.Resource.Back</a>
+                    <a class="btn btn-primary buttonsGY" asp-controller="Admin" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                    <a class="btn btn-primary buttonsGY" asp-action="GetAdmins" asp-controller="Admin">Back to List</a>@* btn btn-outline-light *@
                 </div>
                 <br /><br />
             </div>

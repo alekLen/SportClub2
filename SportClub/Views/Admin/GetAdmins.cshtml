@@ -3,58 +3,74 @@
 @{
     ViewData["Title"] = "Admins";
 }
-<div style="background: #374566; border-radius: 10px; padding:25px;color:white">
-    <h1>@Resources.Resource.Admins</h1>
+<div>
+    <div style="width:max-content;margin: 10px auto 10px auto;">
+        <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
+            @Resources.Resource.Admins
+        </h4>
+        <div class="div_reg3" style="background-color:#2F4F4F; border-radius: 5px; padding:25px;color: #EEE8AA;width:max-content">
+            @* #374566 Admins*@
+            @* <h1>@Resources.Resource.Admins</h1> *@
 
-    <table class="table" style="color:white">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DateOfBirth)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Gender)
-                </th>
-
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateOfBirth)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Phone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Gender)
-                    </td>
-
-                    <td>
-                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
-                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                        <a class="btn1n btn btn-outline-light" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">@Resources.Resource.Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+            @* <p>
+            <a class="nav-link text-dark card2" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">зарегестрировать админа</a>
+            </p> *@
+            <table class="table" style="color: #EEE8AA;">
+                @* color:white *@
+                <thead>
+                    <tr>
+                        <th>
+                            @Resources.Resource.Name@* @Html.DisplayNameFor(model => model.Name) *@
+                        </th>
+                        <th>
+                            @Resources.Resource.DateB@* @Html.DisplayNameFor(model => model.DateOfBirth) *@
+                        </th>
+                        <th>
+                            @Resources.Resource.Phone @* @Html.DisplayNameFor(model => model.Phone) *@
+                        </th>
+                        <th>
+                            @Resources.Resource.email @* @Html.DisplayNameFor(model => model.Email) *@
+                        </th>
+                        <th>
+                            @Resources.Resource.gender@* @Html.DisplayNameFor(model => model.Gender) *@
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr style="color:#EEE8AA;border-bottom: 1pt solid #EEE8AA;">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Gender)
+                            </td>
+                            <td>
+                                <a class="btn btn-primary buttonsGY" asp-controller="Admin" asp-action="Edit" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary buttonsGY" asp-controller="Admin" asp-action="Details" asp-route-id="@item.Id">@Resources.Resource.Details</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-primary buttonsGY" asp-controller="Admin" asp-action="Delete" asp-route-id="@item.Id">@Resources.Resource.Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
