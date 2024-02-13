@@ -616,7 +616,7 @@ input[type="date"] {
     width: max-content;
     border-radius: 10px;
 }
-@media (min-width: 1130px) and (max-width: 1366px) {
+@media (min-width: 1130px) and (max-width: 1399px) {
     .shedule_div {
         margin-left: -95px;
         width: max-content;
