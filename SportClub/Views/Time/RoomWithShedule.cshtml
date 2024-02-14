@@ -23,13 +23,13 @@
     <table style=" border: 1px solid black; margin-left:-100px;">
         <thead>
             <tr>
-                <td><h6 class="padd1 white marg ">Понедельник</h6></td>
-                <td><h6 class="padd1 white marg ">Вторник </h6></td>
-                <td><h6 class="padd1 white marg ">Среда</h6></td>
-                <td><h6 class="padd1 white marg ">Четверг</h6></td>
-                <td><h6 class="padd1 white marg ">Пятница</h6></td>
-                <td><h6 class="padd1 white marg ">Суббота</h6></td>
-                <td><h6 class="padd1 white marg ">Воскресенье</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Понедельник</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Вторник </h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Среда</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Четверг</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Пятница</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Суббота</h6></td>
+                <td ><h6 class="padd whiteY marg div_reg2">Воскресенье</h6></td>
             </tr>
         </thead>
         <tbody>
@@ -42,13 +42,13 @@
                         @for (var t = 0; t < Model.times[t1].Times.Count; t++)
                         {
 
-                            <form method="post" class="padd1 marg">
+                            <form method="post" class="padd marg div_reg2" style="min-width:200px;min-height:200px;">
 
                                 <input type="hidden" name="day" value="@t1" />
                                 <input type="hidden" name="roomId" value="@Model.room.Id" />
                                 <input type="hidden" name="roomName" value="@Model.room.Name" />
 
-                                <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
+                                <div class="flex" style="justify-content:center;"> <input type="text" name="time" value="@Model.times[t1].Times[t]" style="width:120px; background-color:#F0E68C;" readonly> </div>
 
 
                                 @foreach (var it in Model.trainingInd)
@@ -56,23 +56,33 @@
                                     @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                     {
                                         Model.flag = true;
-                                        <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
-                                            <div>
-                                                <span class="white">Инд.тренировка</span><br />
-                                                <span class="white">Тренер : </span><br />
-                                                <span class="white">@it.CoachName</span><br />
+
+                                        <div class="flex" style="width:150px;height:160px;overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
+                                            <div style="min-width:150px;min-height:150px;">
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
+                                                <div >
+                                               
+                                                <span class="whiteY">Тренер : </span><br />
+                                                <span class="whiteY">@it.CoachName</span><br />
                                                 @if(it.UserId == null)
                                                 {
-                                                    <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">Записать</a>
-                                                    @* asp - route - roomId = "@it.RoomId" asp - route - groupId = "@it.Id" *@
+                                                        <a class="btn btn-outline-dark buttonsGY"  asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">Записать</a>
+                                                   
                                                 }
                                                 else
                                                 {
-                                                    <span class="white">Посетитель - @it.UserName</span><br />
-                                                    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">Просмотр</a>
+                                                       
+                                                    <span class="whiteY">Клиент:</span><br />
+                                                     <span class="whiteY">@it.UserName</span>
+                                                        <br />
+                                                        <a class="btn btn-outline-dark buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">Просмотр</a>
+                                                       
                                                 }
+                                                </div>
                                             </div>
-                                            <img src="@it.CoachPhoto" style="width:50px;height:50px" alt="photo" class="marg" />
+                                            <div style="width:150px;height:150px;">
+                                            <img src="@it.CoachPhoto" style="width:150px;height:auto" alt="photo" class="marg" />
+                                            </div>
                                         </div>
                                     }
                                 }
@@ -81,41 +91,67 @@
                                     @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.Room.Id == @Model.room.Id)
                                     {
                                         Model.flag = true;
-                                        <div id=@t1+@Model.times[t1].Times[t]+@t1 class="flex">
-                                            <div style="min-width:190px">
+                                        <div class="flex" style="width:150px;height:160px;overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
+                                           
+                                            <div style="min-width:150px;min-height:150px;">
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
+                                                <div style="width:100%;height:100%">
                                                 @{
-                                                    var num = it/* .Group */.Number - it.Users.Count;
+                                                    var num = it.Number - it.Users.Count;
                                                 }
-                                                <span class="white">Места: @it.Number</span><br />
-                                                @* <span class="white">@it.Group.Name ( @it.Group.Number )</span><br /> *@
-                                                <span class="white">Тренер : </span><br />
-                                                <span class="white">@it.Coach.Name</span><br />
-                                                @if (it.Number > it.Users.Count)@* (it.Group.Number>it.Group.UsersId.Count) *@
-                                                {<span class="white">Доступно : @num </span><br />
-                                                    <div style="margin: 0px auto 0px auto;width: max-content;">
-                                                        <a class="btn btn-outline-dark" style="background-color:lightgreen" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup">Записать</a>
-                                                        <a class="btn btn-outline-dark" style="background-color:coral; " asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
+                                            
+                                          
+                                                <span class="whiteY">Тренер : </span><br />
+                                                <span class="whiteY">@it.Coach.Name</span><br />
+                                                @if (it.Number > it.Users.Count)
+                                                {<span class="whiteY">Доступно : @num </span><br />
+                                                    <div class="flex" style="flex-wrap:wrap;">
+                                                        <div class="marg">
+                                                            <a class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:1px;min-width:120px;text-align:center;" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup">Записать</a>
+                                                            </div> <div class="marg">
+                                                                <a class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:1px;min-width:120px;text-align:center;" asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
                                                     </div>
-                                                    
+                                                     </div>
                                                     
                                                 }
                                                 else
                                                 {
-                                                    <span class=" white"> заполнена</span>
-
-                                                    <br /> <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
-                                                }@* asp-route-roomId="@it.Room.Id"*@
+                                                    <span class=" whiteY"> заполнена</span>
+                                                        <div>
+                                                         <a class="btn btn-outline-dark  buttonsGY butcoral" asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup">Просмотр</a>
+                                                        </div>
+                                                }
+                                                </div>
                                             </div>
-                                            <img src="@it.Coach.Photo" style="width:50px;height:50px;margin-left:-50px; margin-top:-35px" alt="photo" class="marg" />
+                                            @if (it.Users.Count > 0)
+                                            {                             
+                                                <div class="flex" style="min-width:150px;min-height:150px;flex-direction:column;overflow:scroll;justify-content:center;">
+                                                    <div class="whiteY" style="text-align:center;">Клиенты:</div>
+                                                    @foreach (var a in it.Users)
+                                                    {
+                                                        <div class="whiteY" style="text-align:center;" >@a.Name</div>
+                                                       
+                                                    }
+                                                </div>
+                                            }
+                                            <div style="width:150px;height:150px;">
+                                                <img src="@it.Coach.Photo" style="width:150px;height:auto;" alt="photo" class="marg" />
+                                            </div>
                                         </div>
                                     }
                                 }
 
                                 @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
                                 {
-                                    <div id=@t1+@Model.times[t1].Times[t]>
-                                        <input type="submit" formaction="AddIndTraining" value="Добавить и.тренировку" /> <br />
-                                        <input type="submit" formaction="AddTrainingGroup" value="Добавить г.тренировку" />  <br />
+                                    <div class="flex" style=" min-width:150px;min-height:150px;flex-direction:column;justify-content:space-around" >
+                                        <div><span class="whiteY">индивидуальная</span><br />
+                                        <input class="buttonsGY" type="submit" formaction="AddIndTraining" value="Добавить тренировку" />
+                                        </div>
+                                      
+                                        <div>
+                                            <span class="whiteY">групповая</span><br />
+                                        <input class="buttonsGY" type="submit" formaction="AddTrainingGroup" value="Добавить тренировку" />  
+                                        </div>
                                     </div>
 
                                 }
@@ -125,7 +161,7 @@
 
                             Model.flag = false;
                         }
-                        @*    <a asp-route-SheduleId="@Model.room.sheduleId" asp-route-day="@t1" asp-route-RoomId="@Model.room.Id" asp-controller="Time" asp-action="GetTimetableToEdit" class="btn btn-primary padd1 buttons1">Редактировать график</a> *@
+                      
 
                     </td>
 
