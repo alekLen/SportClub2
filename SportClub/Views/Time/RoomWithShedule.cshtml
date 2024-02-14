@@ -103,7 +103,7 @@
                                     @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
                                     {
                                         <div id=@t1+@Model.times[t1].Times[t] class="sh_card" style="height: 167.19px;">
-                                            <h3 style="margin-top: -8px;margin-left:7px;font-size: 26px;">10:00/11:00</h3>
+                                            <h3 style="margin-top: -8px;margin-left:7px;font-size: 26px;">@Model.times[t1].Times[t]</h3>
                                             <div class="div_a_btn1">
                                                 <input type="submit" formaction="AddIndTraining" class="button_add_training m_bot" value="Добавить и.тренировку" />
                                                 <input type="submit" formaction="AddTrainingGroup" class="button_add_training" value="Добавить г.тренировку" />
