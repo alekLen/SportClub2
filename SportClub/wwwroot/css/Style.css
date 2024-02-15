@@ -471,6 +471,7 @@ input[type="date"] {
     width: max-content;
     border-spacing: 0;
     border-radius: 4px;
+    background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);
     background-color: #355858f5;
     border-collapse: separate;
     /* border-collapse: collapse; */
@@ -478,14 +479,15 @@ input[type="date"] {
 }
 
     .shedule_table th {
+        /*background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);*/
         color: #EEE8AA;
-        background-color: #355858f5;
+        /*background-color: #355858f5;*/
         padding: 10px 5px 10px 5px;
         text-align: center;
     }
 
     .shedule_table td {
-        border: 1px solid #2F4F4F;
+        /*border: 1px solid #2F4F4F;*/
         padding: 6px 6px 6px 6px;
         width: 105px;
     }
@@ -493,11 +495,12 @@ input[type="date"] {
 .sh_card {
     margin: 0px 0px 5px 0px;
     background-color: #355858f5;
+    background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);
     height: max-content;
-    border: 1px solid #2F4F4F;
-    /* background-color: #355858f5; */
+    /*border: 1px solid #2F4F4F;*/
+    /* background-color: #355858f5; rgba(0, 0, 0, 0.1) */
     border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px -2px black;
     padding: 16px;
     color: #EEE8AA;
     padding-bottom: 8px;
@@ -523,11 +526,14 @@ input[type="date"] {
     }
 
 .a_button_green {
+    background-color: dimgray;
+    box-shadow: 0px 3px 6px -1px black;
+    color: #EEE8AA;
     float: left;
-    background-color: lightgreen;
     border: none;
-    color: black;
-    padding: 8px 8px;
+    /*background-color: lightgreen;
+    color: black;*/
+    padding: 5px 7px;
     text-align: center;
     text-decoration: none;
     font-size: 14px;
@@ -536,34 +542,50 @@ input[type="date"] {
 }
 
     .a_button_green:hover {
-        background-color: #45a049;
-        color: black;
+        background-color: dimgray;
+        box-shadow: 0px 3px 5px 0px #F0E68C;
+        color: #F0E68C;
+        /*background-color: #45a049;
+        color: black;*/
     }
 
 .a_button_coral {
+    background-color: dimgray;
+    box-shadow: 0px 3px 6px -1px black;
+    color: #EEE8AA;
     float: right;
-    background-color: coral;
+    /*background-color: coral;
+      color: black;*/
     border: none;
-    color: black;
-    padding: 8px 8px;
+    padding: 5px 7px;
     text-align: center;
     text-decoration: none;
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
+
+    z-index:3;
 }
 
     .a_button_coral:hover {
-        background-color: rgb(235, 98, 49);
-        color: black;
+        background-color: dimgray;
+        box-shadow: 0px 3px 5px 0px #F0E68C;
+        color: #F0E68C;
+        /*background-color: rgb(235, 98, 49);
+        color: black;*/
     }
 
 .div_a_btn {
     overflow: auto;
-    width: 158px;
-    margin-left: -8px;
+    width: 164px;
+    padding-left: 3px;
+    padding-right:3px;
+    padding-top:4px;
+    padding-bottom:6px;
+    margin-left: -11px;
     margin-top: 7px;
     margin-bottom: 3px;
+    /*border: solid 1px red;*/
 }
 
 .shedule_table tbody tr:last-child td:first-child {
