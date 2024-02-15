@@ -36,28 +36,63 @@
 </div>
 @if (Model.message == null)
 {
-    <table style=" border: 1px solid black; margin-left:-100px;" class=" div_reg2">
-        <thead>
-            <tr>
-                <td ><h6 class="padd whiteY marg div_reg2" style="text-align:center;" >Понедельник</h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Вторник </h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Среда</h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Четверг</h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Пятница</h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Суббота</h6></td>
-                <td><h6 class="padd whiteY marg div_reg2" style="text-align:center;">Воскресенье</h6></td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
+
+    <div class="div_reg2_1">
                 @for (var t1 = 0; t1 < Model.times.Count; t1++)
                 {
+         <div class="flex " style=" border:2px solid dimgray">
+             <div class="flex" style="flex-direction:column;justify-content:center">
+            @if (t1 == 0)
+            {
+                <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Понедельник</h6>
+                </div>
+            }
+            @if (t1 == 1)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Вторник</h6>
+                </div>
+            }
+            @if (t1 == 2)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Среда</h6>
+                </div>
+            }
+              @if (t1 == 3)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Четверг</h6>
+                </div >
+            }
+              @if (t1 == 4)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Пятница</h6>
+                </div>
+            }
+              @if (t1 == 5)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Суббота</h6>
+                </div>
+            }
+            @if (t1 == 6)
+            {
+                    <div style="min-width:200px">
+                    <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Воскресенье</h6>
+                </div>
+            }
 
-                    <td>
+                </div>
 
-                        @for (var t = 0; t < Model.times[t1].Times.Count; t++)
-                        {
 
+                <div class="flex " style="flex-wrap:wrap; border:2px solid dimgray">
+        
+                     @for (var t = 0; t < Model.times[t1].Times.Count; t++)
+                     {
+                        <div>
                             <form method="post" class="padd marg div_reg2_1" style="min-width:200px;min-height:200px;">
 
                                 <input type="hidden" name="day" value="@t1" />
@@ -71,7 +106,7 @@
                                 {
                                     @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                     {
-                                        Model.flag = true;
+                                    { Model.flag = true; }
 
                                         <div class="flex" style="width:150px;height:160px;overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
                                             <div style="min-width:150px;min-height:150px;">
@@ -106,8 +141,8 @@
                                 {
                                     @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.Room.Id == @Model.room.Id)
                                     {
-                                        Model.flag = true;
-                                        <div class="flex" style="width:150px;height:160px;overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
+                                    { Model.flag = true; }
+                                    <div class="flex" style="width:150px;height:160px;overflow-x: auto; overflow-y: hidden; white-space: nowrap;">
                                            
                                             <div style="min-width:150px;min-height:150px;">
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
@@ -172,21 +207,19 @@
 
                                 }
 
-
+                   
                             </form>
 
-                            Model.flag = false;
-                        }
-                      
-
-                    </td>
-
+                          @{ Model.flag = false;}
+                    </div>
                 }
+           </div>
 
-            </tr>
+            </div>
+           }
+     </div>
 
-        </tbody>
-    </table>
+     
 }
 @if (Model.message != null)
 {
