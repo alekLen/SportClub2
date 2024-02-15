@@ -274,7 +274,7 @@
     <value>Дополнительные сведения</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Детали</value>
+    <value>Подробности</value>
   </data>
   <data name="Dopname" xml:space="preserve">
     <value>Отчество</value>
@@ -558,9 +558,6 @@
   <data name="YearSort" xml:space="preserve">
     <value>году выхода</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Подробности</value>
-  </data>
   <data name="CoachPhoto" xml:space="preserve">
     <value>Фото</value>
   </data>
@@ -593,5 +590,8 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Время будет отредактировано во всех графиках и расписаниях!</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Добавить тренировку</value>
   </data>
 </root>

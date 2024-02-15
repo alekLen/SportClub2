@@ -549,9 +549,6 @@
   <data name="YearSort" xml:space="preserve">
     <value>year</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
   <data name="CoachPhoto" xml:space="preserve">
     <value>Photo</value>
   </data>
@@ -584,5 +581,8 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Time will be edited in all charts and schedules!</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Add a workout</value>
   </data>
 </root>

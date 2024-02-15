@@ -89,6 +89,14 @@ namespace Resources {
                 return ResourceManager.GetString("TimeMes3", resourceCulture);
             }
         }
+       
+        public static string AddTraining
+        {
+            get
+            {
+                return ResourceManager.GetString("AddTraining", resourceCulture);
+            }
+        }
         public static string TimeMes4
         {
             get
