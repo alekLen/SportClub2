@@ -591,6 +591,15 @@
   <data name="TimeMes7" xml:space="preserve">
     <value>Час буде відредаговано у всіх графіках та розкладах!</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробиці</value>
+  </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Створити час/графік дня</value>
+  </data>
   <data name="AddTraining" xml:space="preserve">
     <value>Додати тренування</value>
   </data>

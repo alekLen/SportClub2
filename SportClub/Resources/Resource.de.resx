@@ -576,6 +576,15 @@
   <data name="TimeMes7" xml:space="preserve">
     <value>Die Zeit wird in allen Diagrammen und Zeitplänen bearbeitet!</value>
   </data>
+  <data name="Details" xml:space="preserve">
+    <value>Einzelheiten</value>
+  </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Foto</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Erstellen Sie einen Zeit-/Tagesplan</value>
+  </data>
   <data name="CoachPhoto" xml:space="preserve">
     <value>Foto</value>
   </data>
