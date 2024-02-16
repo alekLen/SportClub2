@@ -3,7 +3,7 @@
     ViewData["Title"] = "Timetables";
 }
 
-<div class="div_reg2_1 flex" style="justify-content:space-around">
+<div class="div_reg2 flex" style="justify-content:space-around">
 
 
     <div style="padding-top:15px;">
@@ -36,26 +36,63 @@
 </div>
 @if (Model.message == null)
 {
-    <div class="shedule_div">
-        <table class="shedule_table">
-            <thead>
-                <tr>
-                    <th>Понедельник</th>
-                    <th>Вторник</th>
-                    <th>Среда</th>
-                    <th>Четверг</th>
-                    <th>Пятница</th>
-                    <th>Суббота</th>
-                    <th>Воскресенье</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    @for (var t1 = 0; t1 < Model.times.Count; t1++)
+    <div class="div_reg2_1" >
+        @for (var t1 = 0; t1 < Model.times.Count; t1++)
+        {
+            <div class="flex div_reg2_1" style=" border:2px solid dimgray">
+                <div class="flex" style="flex-direction:column;justify-content:center">
+                    @if (t1 == 0)
                     {
-                        <td>
-                            @for (var t = 0; t < Model.times[t1].Times.Count; t++)
-                            {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Пн</h6>
+                        </div>
+                    }
+                    @if (t1 == 1)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Вт</h6>
+                        </div>
+                    }
+                    @if (t1 == 2)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Ср</h6>
+                        </div>
+                    }
+                    @if (t1 == 3)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Чт</h6>
+                        </div >
+                    }
+                    @if (t1 == 4)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Пт</h6>
+                        </div>
+                    }
+                    @if (t1 == 5)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Сб</h6>
+                        </div>
+                    }
+                    @if (t1 == 6)
+                    {
+                        <div style="min-width:30px">
+                            <h6 class="padd whiteY marg div_reg2_1" style="text-align:center;">Вс</h6>
+                        </div>
+                    }
+
+                </div>
+
+
+                <div class="flex" style="flex-wrap:wrap!important; border:2px solid dimgray">
+                    
+                       
+                     @for (var t = 0; t < Model.times[t1].Times.Count; t++)
+                     {
+                        <div >
                                 <form method="post">
                                     <input type="hidden" name="day" value="@t1" />
                                     <input type="hidden" name="roomId" value="@Model.room.Id" />
@@ -64,25 +101,30 @@
 
                                     @foreach (var it in Model.trainingInd)
                                     {
+                                        <div class="info">
                                         @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.RoomId == @Model.room.Id)
                                         {
                                             Model.flag = true;
 
-                                            <div id=@t1+@Model.times[t1].Times[t]+@t1 class="sh_card">
-                                                <p class="p_type"> <strong>Инд.тренировка</strong></p>
-                                                <h3>@Model.times[t1].Times[t]</h3><br>
+                                            <div id=@t1+@Model.times[t1].Times[t]+@t1 class="inner-info sh_card2" >
+                                               @*  <p class="p_type"> <strong>Инд.тренировка</strong></p> *@
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
+                                               <h3>@Model.times[t1].Times[t]</h3><br>
                                                 <div class="div_coach">
-                                                    <img src="@it.CoachPhoto" alt="photo">
-                                                    <p> <strong>Тренер:</strong><br />@it.CoachName</p>
+                                                    <img src="@it.CoachPhoto" alt="photo" >
+                                                    <span style="padding: 3px;">@it.CoachName</span>
                                                 </div>
+                                            </div>
+                                            <div class="inner-info sh_card2" style="display:none;">
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
                                                 @if (it.UserId == null)
                                                 {
                                                     <p class="count_p" style="margin-bottom: -3px;height:48px;display:block;text-align:center;font-weight:bold">
                                                         Нет клиента
                                                     </p>
-                                                    <div class="div_a_btn">
-                                                        <a class="a_button_green" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">Записать</a>
-                                                        <a class="a_button_coral" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">Просмотр</a>
+                                                    <div class="div_a_btn ">
+                                                    <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">Записать</a>
+                                                    <a class="a_button_coral buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">@Resources.Resource.Edit</a>
                                                     </div>
                                                 }
                                                 else
@@ -90,67 +132,93 @@
                                                     <p class="count_p" style="margin-bottom: -3px;height:48px;display:block">
                                                         <strong>Клиент:<br /></strong>@it.UserName
                                                     </p>
-                                                    <div class="div_a_btn">
-                                                        <a class="a_button_coral" style="float:left" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">Просмотр</a>
+                                                <div class="div_a_btn buttonsGY">
+                                                    <a class="a_button_coral buttonsGY" style="float:left" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">@Resources.Resource.Edit</a>
                                                     </div>
                                                 }
-
+                                           
                                             </div>
+                                            
                                         }
+                                    </div>
                                     }
 
                                     @foreach (var it in Model.traininggroup)
                                     {
+                                        <div class="info">
                                         @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.Room.Id == @Model.room.Id)
                                         {
                                             Model.flag = true;
-                                           
-                                            <div id=@t1+@Model.times[t1].Times[t]+@t1 class="sh_card">
-                                                <p class="p_type"> <strong>Груп. тренировка</strong></p>
+
+                                           @*  <div id=@t1+@Model.times[t1].Times[t]+@t1 class=" sh_card" > *@
+                                            <div class="inner-info sh_card2" >
+                                               @*  <p class="p_type"> <strong>Груп. тренировка</strong></p> *@
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
                                                 <h3>@Model.times[t1].Times[t]</h3>
                                                 <p class="count_p"> <strong>Мест занято:</strong> @it.Users.Count/@it.Number </p>
                                                 <div class="div_coach">
                                                     <img src="@it.Coach.Photo" alt="photo">
-                                                    <p> <strong>Тренер:</strong><br />@it.Coach.Name</p>
+                                                <span style="padding: 3px;"> @it.Coach.Name</span>
                                                 </div>
+                                            </div>
+                                        <div class="inner-info sh_card2" style="display:none;">
+                                                <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
                                                 @if (it.Users.Count > 0)
                                                 {
-                                                    <select class="m_select">
+                                                   @*  <select class="m_select">
                                                         <option class="m_option" value="0" selected>Клиенты:</option>
                                                         @foreach (var a in it.Users)
                                                         {
                                                             <option value="@a.Id" class="m_option">@a.Name</option>
                                                         }
-                                                    </select>
+                                                    </select> *@
+                                                    <div class="flex" style="max-width:150px;max-height:120px;flex-direction:column;overflow:scroll;justify-content:center;">
+                                                       
+                                                        <div class="whiteY" style="text-align:center;">Клиенты:</div>
+                                                       
+                                                        @foreach (var a in it.Users)
+                                                        {
+                                                            <div class="whiteY" style="text-align:center;">@a.Name</div>
+
+                                                        }
+                                                    </div>
                                                 }
                                                 else
                                                 {
-                                                    <select disabled class="m_select">
+                                                    @* <select disabled class="m_select">
                                                         <option class="m_option" selected>Клиентов нет</option>
-                                                    </select>
+                                                    </select> *@
+                                                    <p>Клиентов нет</p>
                                                 }
                                                 <div class="div_a_btn">
                                                     @if (it.Number > it.Users.Count)
                                                     {
                                                         <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">Записать</a>
-                                                        <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_coral">Просмотр</a>
+                                                    <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_coral">@Resources.Resource.Edit</a>
                                                     }
                                                     else
                                                     {
                                                         //<span class=" white"> заполнена</span>
-                                                        <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" style="float:left" class="a_button_coral">Просмотр</a>
+                                                        <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" style="float:left" class="a_button_coral">@Resources.Resource.Edit</a>
                                                     }
                                                 </div>
                                             </div>
+                                           
                                         }
+                                    </div>
                                     }
                                     @if (@Model.times[t1].Times[t] != "Выходной" && !@Model.flag)
                                     {
-                                        <div id=@t1+@Model.times[t1].Times[t] class="sh_card" style="height: 207.19px;">
+                                        <div id=@t1+@Model.times[t1].Times[t] class="sh_card" >
                                             <h3 style="margin-top: 10px;margin-left:7px;font-size: 26px;">@Model.times[t1].Times[t]</h3>
                                             <div class="div_a_btn1">
-                                                <input type="submit" formaction="AddIndTraining" class="button_add_training m_bot" value="Добавить и.тренировку" />
-                                                <input type="submit" formaction="AddTrainingGroup" class="button_add_training" value="Добавить г.тренировку" />
+                                                <div><span class="whiteY">индивидуальная</span><br />
+                                            <input class="buttonsGY" type="submit" formaction="AddIndTraining" value="@Resources.Resource.Add" />
+                                            </div>
+                                            <div>
+                                                <span class="whiteY">групповая</span><br />
+                                                <input class="buttonsGY" type="submit" formaction="AddTrainingGroup" value="@Resources.Resource.Add" />
+                                            </div>
                                             </div>
                                         </div>
                                     }
@@ -159,21 +227,27 @@
                                         <div class="sh_card" style="height: 207.19px;">
                                             <h2 style="margin-top: 60px;margin-left: -7px;">@Model.times[t1].Times[t]</h2>
                                         </div>
-                                    }
-                                </form>
-                                Model.flag = false;
-                            }
-                        </td>
-                    }
-                </tr>
-            </tbody>
-        </table>
-    </div>
 
+                                    }
+                                    
+                                </form>
+
+                                @{Model.flag = false;}
+
+                            
+                        </div>
+
+                        
+                    }
+                </div>
+            </div>
+
+        }
+    </div>
 }
 @if (Model.message != null)
 {
-    <div class="center">
+    <div class="center div_reg2">
         <div style="display:flex;flex-direction:column;">
             <div>
                 <h1>@Model.message</h1><div style="display:flex;flex-direction:column;">
@@ -267,5 +341,27 @@
                     "background-color": "#374566"
                 });
         }
+
+
+        var containerDivs = document.querySelectorAll('.info');
+
+        containerDivs.forEach(function (container) {
+            container.addEventListener('click', function () {
+               
+                var innerDivs = this.querySelectorAll('.inner-info');
+              
+                var visibleDiv = Array.from(innerDivs).find(div => div.style.display !== 'none');
+                if (visibleDiv) {
+                    visibleDiv.style.display = 'none'; 
+                    var nextDiv = visibleDiv.nextElementSibling || innerDivs[0];
+                    nextDiv.style.display = 'block'; 
+                } else {
+                    innerDivs[0].style.display = 'block';
+                }
+            });
+        });
+
+
     });
 </script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
