@@ -153,8 +153,64 @@ namespace Resources {
                 return ResourceManager.GetString("endT", resourceCulture);
             }
         }
-        
-             public static string saveSc
+        public static string RegisterClient
+        {
+            get
+            {
+                return ResourceManager.GetString("RegisterClient", resourceCulture);
+            }
+        }
+        public static string RegisterCoach
+        {
+            get
+            {
+                return ResourceManager.GetString("RegisterCoach", resourceCulture);
+            }
+        }
+        public static string RegisterAdmin
+        {
+            get
+            {
+                return ResourceManager.GetString("RegisterAdmin", resourceCulture);
+            }
+        }
+        public static string PersonalInformation
+        {
+            get
+            {
+                return ResourceManager.GetString("PersonalInformation", resourceCulture);
+            }
+        }
+        public static string PhoneFormatError
+        {
+            get
+            {
+                return ResourceManager.GetString("PhoneFormatError", resourceCulture);
+            }
+        }
+        public static string PassLength
+        {
+            get
+            {
+                return ResourceManager.GetString("PassLength", resourceCulture);
+            }
+        }
+        public static string NameFormatError
+        {
+            get
+            {
+                return ResourceManager.GetString("NameFormatError", resourceCulture);
+            }
+        }
+        public static string DateFormatError
+        {
+            get
+            {
+                return ResourceManager.GetString("DateFormatError", resourceCulture);
+            }
+        }
+
+        public static string saveSc
         {
             get
             {

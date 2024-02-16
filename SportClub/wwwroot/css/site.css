@@ -107,9 +107,18 @@ body {
     margin: auto;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: #195e5a;
-    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #c4c72c;
-    border-radius: 15px;
+    background-color: #2F4F4F;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #F0E68C;
+    border-radius: 5px;
+}
+.container2 {
+    max-width: 600px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #2F4F4F;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #F0E68C;
+    border-radius: 5px;
 }
 .row {
     display:flex;
@@ -274,6 +283,10 @@ body {
     background-color: #2F4F4F;
     box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
     border-radius: 5px;
+}
+.color_text {
+    color: #F0E68C;
+}
 }
 .ex {
     position: fixed;

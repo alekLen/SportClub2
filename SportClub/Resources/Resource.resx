@@ -234,6 +234,9 @@
   <data name="DateB" xml:space="preserve">
     <value>Дата рождения</value>
   </data>
+  <data name="DateFormatError" xml:space="preserve">
+    <value>*введите дату в формате день/месяц/год</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Удалить</value>
   </data>
@@ -420,6 +423,9 @@
   <data name="nameArt" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="NameFormatError" xml:space="preserve">
+    <value>*поле 'Имя' должно содержать только буквы</value>
+  </data>
   <data name="Newusers" xml:space="preserve">
     <value>Новые пользователи</value>
   </data>
@@ -428,6 +434,9 @@
   </data>
   <data name="PassConRequired" xml:space="preserve">
     <value>*подтверждение пароля обязательно</value>
+  </data>
+  <data name="PassLength" xml:space="preserve">
+    <value>*длина пароля должна быть от 3 до 15 символов</value>
   </data>
   <data name="passnoteq" xml:space="preserve">
     <value>*пароли не совпадают</value>
@@ -444,8 +453,14 @@
   <data name="passwordConf" xml:space="preserve">
     <value>Подтвердите пароль</value>
   </data>
+  <data name="PersonalInformation" xml:space="preserve">
+    <value>Персональная информация</value>
+  </data>
   <data name="Phone" xml:space="preserve">
     <value>Телефон</value>
+  </data>
+  <data name="PhoneFormatError" xml:space="preserve">
+    <value>*введите номер в формате +380971315143</value>
   </data>
   <data name="Photo" xml:space="preserve">
     <value>Загрузите фото</value>
@@ -458,6 +473,15 @@
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
+  </data>
+  <data name="RegisterAdmin" xml:space="preserve">
+    <value>Регистрация админа</value>
+  </data>
+  <data name="RegisterClient" xml:space="preserve">
+    <value>Регистрация клиента</value>
+  </data>
+  <data name="RegisterCoach" xml:space="preserve">
+    <value>Регистрация тренера</value>
   </data>
   <data name="Registration" xml:space="preserve">
     <value>Зарегестрироваться</value>
