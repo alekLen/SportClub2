@@ -1,11 +1,20 @@
 ﻿@model SportClub.BLL.DTO.TrainingGroupDTO
 
-<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление груповой тренировки</p>
-    <hr style="color:white" />
-    <div class="row">
-        <div>
-            <br />
+<div class="flex " style="justify-content:space-around">
+    <div class="flex">
+    <div class=" marg" style="background-color:dimgray">
+        <a class="btn btn-outline-light whiteY buttonsGY" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule"
+               asp-controller="Time" style="border:2px solid #2F4F4F"><strong>X</strong></a>
+    </div>
+
+
+    
+        <div class="div_reg2">
+            <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">Добавление тренировки</p>
+            <hr class="whiteY" />
+            <div class="row">
+                <div>
+                    <br />
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div style="width: 550px;  justify-content: center; ">
@@ -17,17 +26,12 @@
                         <input id="roomName" name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px" />
 
                     </div><br />
-                    <div class="form-group" style="margin-left: 40px">
-                        <label style="color: white; font-size: 16px;" class="font">Выбрать тренера</label>
+                    <div class="form-group" style="margin-left: 70px">
+                        <label style=" font-size: 16px;" class="font whiteY">Выбрать тренера</label>
                         <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
 
-                        @* <div class="form-group">
-                            <label asp-for="trgroup.GroupId" class="font white-color_size20"></label>
-                            <select asp-for="trgroup.GroupId" name="groupId" class="form-control" asp-items="ViewBag.GroupId" style="width: 420px"></select>
-                            <span asp-validation-for="trgroup.GroupId" class="text-danger"></span>
-                        </div> *@
 
-                        <div class="form-group" style="margin-left: 40px">
+                        <div class="form-group" >
                             <label asp-for="Number" class="control-label font white-color_size20"></label>
                             <input asp-for="Number" id="number" type="number" value="1" min="1" placeholder="1" class="form-control" style="width: 420px">
                             <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
@@ -35,122 +39,15 @@
                     </div>
                     <br /><br />
                     <div style="margin-left: 200px">
-                        @* <a id="btn1_dv" href="javascript:void(0)" class="btn btn-outline-light">Создать группу</a> *@
-                        <input type="submit" value="Сохранить" formaction="ToAddTrainingGroup" class="btn btn-outline-light" />
+                        
+                        <input type="submit" value="Сохранить" formaction="ToAddTrainingGroup" class="btn btn-outline-light buttonsGY" />
                     </div>
                     <br /><br />
                 </div>
             </form>
-
-           @*  <div id="div_group" style="display:none">
-                <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление группы</p>
-                <form asp-controller="Group" asp-action="CreateGroup" method="post">
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true, "")
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="group.Name" class="control-label font white-color_size20"></label>
-                        <input asp-for="group.Name" id="group_name" type="text" class="form-control font" style="width: 420px">
-                        <span asp-validation-for="group.Name" class="text-danger" style="width: 450px"></span>
-                    </div>
-
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="group.Number" class="control-label font white-color_size20"></label>
-                        <input asp-for="group.Number" id="group_number" type="number" value="1" min="1" placeholder="1" class="form-control" style="width: 420px">
-                        <span asp-validation-for="group.Number" class="text-danger" style="width: 450px"></span>
                 </div>
-
-                    <div style="margin: 10px auto 10px auto;width: max-content;">
-                        <a href="javascript:void(0)" class="btn btn-primary c2" id="btnCreateGroup" style="color:white">@Resources.Resource.Add</a>
-                    </div><br />
-            </form>
-        </div> *@
-
-
+            </div>
+        </div>
     </div>
 </div>
-</div>
-@* <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#btn1_dv").text("Создать группу");
 
-        $("#btn1_dv").on("click", function (e) {
-            if ($("#div_group").css("display") === "none") { 
-                $("#div_group").css("display", "block");
-                $("#btn1_dv").text("Отмена созд. группы").css("margin-left", "-35px");
-            }
-            else if ($("#div_group").css("display") === "block") { 
-                $("#div_group").css("display", "none");
-                $("#div_group").css("display", "none");
-                $("#btn1_dv").text("Создать группу");
-            }
-
-        });
-        $("#btnCreateGroup").click(function () {
-            var objectGroupName = $("#group_name").val();
-            var objectGroupNumber = $("#group_number").val();
-
-            $.ajax({
-                url: "@Url.Action("CreateGroup", "Group")",
-                type: "POST",
-                data: {
-                     name: objectGroupName, number: objectGroupNumber
-                },
-                datatype: "json",
-                success: function (response) {
-                    if (response) {
-                        $("<div id='dialogContent1'></div>")
-                            .addClass("dialog")
-                            .appendTo("body")
-                            .load("/Group/AddedGroup")
-                            .dialog({
-                                title: "Группа добавлена!",
-                                close: function () {
-                                    $(this).remove();
-                                    document.location.reload();
-                                },
-                                dialogClass: 'myTitleClass',
-                                modal: true,
-                                resizable: false,
-                                buttons: [{
-                                    class: "input_subm2",
-                                    text: "Назад",
-                                    click: function () {
-                                        $(".dialog").remove();
-                                        document.location.reload();
-                                    }
-                                }],
-                                open: function (event, ui) {
-                                    StyleDialog($(this).closest(".ui-dialog"));// Устанавливаем стили для диалога
-                                }
-                            });
-                    }
-                    else {
-                        let l2 = document.getElementById("error-login1");
-                        l2.style.display = "inline";
-                    }
-                }
-            });
-        });
-        function StyleDialog(dialog) {
-            dialog
-                .find(".ui-dialog-titlebar")
-                .css({
-                    "background-color": "#374566", // Фон заголовка
-                    "color": "white"// Цвет текста заголовка black
-                }); 
-            dialog
-                .css({
-                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                    "border-radius": "10px", "border": "solid 1px #374566", "background-color": "#374566"
-                });
-            dialog
-                .find(".ui-dialog-content").css({ "background-color": "#374566" });
-            dialog
-                .find(".ui-widget-content").css({ "border": "none", "background-color": "#374566" });
-            dialog
-                .find(".ui-dialog-buttonpane").css({ "border-width": "0px", "background-color": "#374566" });
-        }
-    });
-</script> *@

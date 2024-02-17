@@ -1,9 +1,17 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
+<div class="flex " style="justify-content:space-around">
+    <div class="flex">
+        <div class=" marg" style="background-color:dimgray">
+            <a class="btn btn-outline-light whiteY buttonsGY" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule"
+               asp-controller="Time" style="border:2px solid #2F4F4F"><strong>X</strong></a>
+        </div>
 
-<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">Добавление тренировки</p>
-    <hr style="color:white" />
-    <div class="row">
+
+
+        <div class="div_reg2">
+        <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">Добавление тренировки</p>
+    <hr class="whiteY"/>
+        <div class="row">
         <div>
             <br />
 <form method="post">
@@ -16,27 +24,20 @@
         <input  name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px"/>
         </div><br />
         <div class="form-group" style="margin-left: 40px">
-        <label style="color: white; font-size: 16px;" class="font">Выбрать тренера</label>
+        <label style=" font-size: 16px;" class="font whiteY">Выбрать тренера</label>
         <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
-        @if (@Model.UserId == 0)
-        {
-            @* <label style="color: white; font-size: 16px;" class="font">Выбрать пользователя</label>
-            <select asp-for="Id" name="userId" class="form-control card _c7" class="font" asp-items="ViewBag.UserId" style="width: 420px"></select> *@
-            <br />
-            @* <input type="submit" value="Добавить пользователя" formaction="AddUserToTrainingInd" class="btn btn-outline-light"/> *@
-        }
-        else
-        {
-            <input name="userId" value="@Model.UserId" type="hidden" />
-            <input name="userName" value="@Model.UserName" readonly />
-        }
-        </div><br /><br />
-        <div style="margin-left: 200px">
-            <input type="submit" value="Сохранить" formaction="ToAddTrainingInd" class="btn btn-outline-light" />
-        </div><br /><br />
+        <div >
+                                    <br /><br />
+          <input type="submit" value="@Resources.Resource.Add" formaction="ToAddTrainingInd" class="btn btn-outline-light buttonsGY" style="min-width:120px"/>
+                                    <br /><br />
+      </div>
+         </div>
+       
         
     </div>
 </form>
+</div>
+</div>
 </div>
 </div>
 </div>
