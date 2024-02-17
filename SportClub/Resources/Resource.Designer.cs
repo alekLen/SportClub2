@@ -68,6 +68,42 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
+       
+         public static string IndTr
+        {
+            get
+            {
+                return ResourceManager.GetString("IndTr", resourceCulture);
+            }
+        }
+        public static string GrTr
+        {
+            get
+            {
+                return ResourceManager.GetString("GrTr", resourceCulture);
+            }
+        }
+        public static string Ind
+        {
+            get
+            {
+                return ResourceManager.GetString("Ind", resourceCulture);
+            }
+        }
+        public static string Gr
+        {
+            get
+            {
+                return ResourceManager.GetString("Gr", resourceCulture);
+            }
+        }
+        public static string NoSh
+        {
+            get
+            {
+                return ResourceManager.GetString("NoSh", resourceCulture);
+            }
+        }
         public static string TimeMes1
         {
             get

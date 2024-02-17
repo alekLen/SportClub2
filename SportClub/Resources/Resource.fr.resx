@@ -609,4 +609,19 @@
   <data name="AddTraining" xml:space="preserve">
     <value>Ajouter un entraînement</value>
   </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Formation de groupe</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Formation individuelle</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>Il n'y a pas d'horaire pour la salle</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>groupe</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>individuelle</value>
+  </data>
 </root>

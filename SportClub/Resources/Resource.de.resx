@@ -600,15 +600,6 @@
   <data name="TimeMes7" xml:space="preserve">
     <value>Die Zeit wird in allen Diagrammen und Zeitplänen bearbeitet!</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Einzelheiten</value>
-  </data>
-  <data name="CoachPhoto" xml:space="preserve">
-    <value>Foto</value>
-  </data>
-  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
-    <value>Erstellen Sie einen Zeit-/Tagesplan</value>
-  </data>
   <data name="CoachPhoto" xml:space="preserve">
     <value>Foto</value>
   </data>
@@ -617,5 +608,20 @@
   </data>
   <data name="AddTraining" xml:space="preserve">
     <value>Fügen Sie ein Training hinzu</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Gruppentraining</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Individuelles Training</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>Es gibt keinen Zeitplan für die Halle</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>gruppen</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>individuelles</value>
   </data>
 </root>

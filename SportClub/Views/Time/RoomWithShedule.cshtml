@@ -7,16 +7,16 @@
 
 
     <div style="padding-top:15px;">
-        <a class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:1px;min-width:120px;text-align:center;max-height:30px;" asp-area="" asp-controller="Time" asp-action="BackToRooms" class="btn btn-primary padd1 buttons1">@Resources.Resource.Back</a>
+        <a class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:5px;min-width:120px;text-align:center;max-height:30px;" asp-area="" asp-controller="Time" asp-action="BackToRooms" class="btn btn-primary padd1 buttons1">@Resources.Resource.Back</a>
     </div>
     <div class="flex" style="flex-direction:column;">
     <div class="flex">
         <div style="min-width:40px;max-width:40px;max-height:7px;background-color:#a758bf;margin:5px;"></div>
-            <div class="whiteY">Индивидуальные тренировки</div>
+            <div class="whiteY">@Resources.Resource.IndTr</div>
     </div>
         <div class="flex">
             <div style="min-width:40px;max-width:40px;max-height:7px;background-color:coral;margin:5px;"></div>
-            <div class="whiteY">Групповые тренировки</div>
+            <div class="whiteY">@Resources.Resource.GrTr</div>
         </div>
     </div>
     <input type="hidden" id="idshed" value="@Model.room.sheduleId" />
@@ -27,7 +27,7 @@
     @if (Model.message == null)
     {
         <div style="padding-top:15px;">
-        <a href="javascript:void(0)" id="btnDelShed" class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:1px;min-width:120px;max-height:30px;text-align:center; ">
+        <a href="javascript:void(0)" id="btnDelShed" class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:5px;min-width:120px;max-height:30px;text-align:center; ">
            @Resources.Resource.Delete&nbsp;&nbsp;@Resources.Resource.Shedule
 
         </a>
@@ -43,43 +43,43 @@
                 <div class="flex" style="flex-direction:column;justify-content:center">
                     @if (t1 == 0)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Пн</h2>
                         </div>
                     }
                     @if (t1 == 1)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Вт</h2>
                         </div>
                     }
                     @if (t1 == 2)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Ср</h2>
                         </div>
                     }
                     @if (t1 == 3)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Чт</h2>
                         </div >
                     }
                     @if (t1 == 4)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Пт</h2>
                         </div>
                     }
                     @if (t1 == 5)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Сб</h2>
                         </div>
                     }
                     @if (t1 == 6)
                     {
-                        <div style="min-width:30px">
+                        <div style="max-width:100px;min-width:100px">
                             <h2 class="padd whiteY marg div_reg2_1" style="text-align:center;">Вс</h2>
                         </div>
                     }
@@ -107,23 +107,30 @@
                                             Model.flag = true;
 
                                             <div id=@t1+@Model.times[t1].Times[t]+@t1 class="inner-info sh_card2" >
-                                               @*  <p class="p_type"> <strong>Инд.тренировка</strong></p> *@
+                                             
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
                                                <h3>@Model.times[t1].Times[t]</h3><br>
+                                              
                                                 <div class="div_coach">
                                                     <img src="@it.CoachPhoto" alt="photo" >
                                                     <span style="padding: 3px;">@it.CoachName</span>
                                                 </div>
+                                                @if (it.UserId == null)
+                                                {
+                                                    <span  style="display:block;text-align:center;font-weight:bold">
+                                                        Нет клиента
+                                                    </span>
+                                                }
                                             </div>
                                             <div class="inner-info sh_card2" style="display:none;">
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
                                                 @if (it.UserId == null)
                                                 {
-                                                    <p class="count_p" style="margin-bottom: -3px;height:48px;display:block;text-align:center;font-weight:bold">
+                                                   @*  <p class="count_p" style="margin-bottom: -3px;height:48px;display:block;text-align:center;font-weight:bold">
                                                         Нет клиента
-                                                    </p>
+                                                    </p> *@
                                                     <div class="div_a_btn ">
-                                                    <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">Записать</a>
+                                                        <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">@Resources.Resource.Add</a>
                                                     <a class="a_button_coral buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">@Resources.Resource.Edit</a>
                                                     </div>
                                                 }
@@ -142,17 +149,14 @@
                                         }
                                     </div>
                                     }
-
                                     @foreach (var it in Model.traininggroup)
                                     {
                                         <div class="info">
                                         @if (@Model.times[t1].Times[t] != "Выходной" && @it.Time == @Model.times[t1].Times[t] && @it.Day == @t1 && it.Room.Id == @Model.room.Id)
                                         {
                                             Model.flag = true;
-
-                                           @*  <div id=@t1+@Model.times[t1].Times[t]+@t1 class=" sh_card" > *@
                                             <div class="inner-info sh_card2" >
-                                               @*  <p class="p_type"> <strong>Груп. тренировка</strong></p> *@
+                                             
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
                                                 <h3>@Model.times[t1].Times[t]</h3>
                                                 <p class="count_p"> <strong>Мест занято:</strong> @it.Users.Count/@it.Number </p>
@@ -164,17 +168,10 @@
                                         <div class="inner-info sh_card2" style="display:none;">
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
                                                 @if (it.Users.Count > 0)
-                                                {
-                                                   @*  <select class="m_select">
-                                                        <option class="m_option" value="0" selected>Клиенты:</option>
-                                                        @foreach (var a in it.Users)
-                                                        {
-                                                            <option value="@a.Id" class="m_option">@a.Name</option>
-                                                        }
-                                                    </select> *@
-                                                    <div class="flex" style="max-width:150px;max-height:80px;flex-direction:column;justify-content:center; overflow-y: scroll;overflow-x: hidden;">
+                                                {                                          
+                                                    <div class="flex" style="max-width:150px;max-height:75px;flex-direction:column;justify-content:center; overflow-y: scroll;overflow-x: hidden;">
                                                        
-                                                        <div class="whiteY" style="text-align:center;font-size:8px;">Клиенты:</div>
+                                                        <div class="whiteY" style="text-align:center;font-size:8px;visibility:hidden">Клиенты:</div>
                                                        
                                                         @foreach (var a in it.Users)
                                                         {
@@ -185,20 +182,16 @@
                                                 }
                                                 else
                                                 {
-                                                    @* <select disabled class="m_select">
-                                                        <option class="m_option" selected>Клиентов нет</option>
-                                                    </select> *@
                                                     <p>Клиентов нет</p>
                                                 }
                                                 <div class="div_a_btn">
                                                     @if (it.Number > it.Users.Count)
                                                     {
-                                                        <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">Записать</a>
-                                                    <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_coral">@Resources.Resource.Edit</a>
+                                                        <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">@Resources.Resource.Add</a>
+                                                        <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_green">@Resources.Resource.Edit</a>
                                                     }
                                                     else
-                                                    {
-                                                        //<span class=" white"> заполнена</span>
+                                                    {                                                
                                                         <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" style="float:left" class="a_button_coral">@Resources.Resource.Edit</a>
                                                     }
                                                 </div>
@@ -212,12 +205,13 @@
                                         <div id=@t1+@Model.times[t1].Times[t] class="sh_card" >
                                             <h3 style="margin-top: 10px;margin-left:7px;font-size: 26px;">@Model.times[t1].Times[t]</h3>
                                             <div class="div_a_btn1">
-                                                <div><span class="whiteY">индивидуальная</span><br />
-                                            <input class=" buttonsGY" type="submit" formaction="AddIndTraining" value="@Resources.Resource.Add" style="min-width:150px;"/>
+                                            <div>
+                                                <span class="whiteY">@Resources.Resource.Ind</span><br />
+                                            <input class=" buttonsGY" type="submit" formaction="AddIndTraining" value="@Resources.Resource.Add" style="min-width:150px;border-radius:3px;"/>
                                             </div>
                                             <div>
-                                                <span class="whiteY">групповая</span><br />
-                                                <input class=" buttonsGY" type="submit" formaction="AddTrainingGroup" value="@Resources.Resource.Add" style="min-width:150px;" />
+                                                <span class="whiteY">@Resources.Resource.Gr</span><br />
+                                                <input class=" buttonsGY" type="submit" formaction="AddTrainingGroup" value="@Resources.Resource.Add" style="min-width:150px;border-radius:3px;" />
                                             </div>
                                             </div>
                                         </div>
@@ -225,7 +219,7 @@
                                     @if (@Model.times[t1].Times[t] == "Выходной" && !@Model.flag)
                                     {
                                         <div class="sh_card" style="height: 207.19px;">
-                                            <h2 style="margin-top: 60px;margin-left: -7px;">@Model.times[t1].Times[t]</h2>
+                                        <h2 style="margin-top: 60px;margin-left: -7px;">@Resources.Resource.oDay</h2>
                                         </div>
 
                                     }
@@ -247,20 +241,22 @@
 }
 @if (Model.message != null)
 {
-    <div class="center div_reg2">
-        <div style="display:flex;flex-direction:column;">
+    <div class="center div_reg2" style="width:100%">
+        <div style="display:flex;flex-direction:column;justify-content:space-around">
             <div>
-                <h1>@Model.message</h1><div style="display:flex;flex-direction:column;">
-                </div><br /><br />
-                <div>
+                <h1 class="whiteY">@Resources.Resource.NoSh</h1>
+            </div>
+                <div class="flex padd" style="justify-content:center">
                     <form method="post">
 
                         <input type="hidden" name="Id" value="@Model.room.Id" />
-                        <input type="submit" asp-controller="Time" asp-action="GetAllTimetable" class="padd1 white" value="Составить расписание зала" />
+                    <input type="submit" asp-controller="Time" asp-action="GetAllTimetable"
+                    class=" buttonsGY" value="@Resources.Resource.Add   @Resources.Resource.Shedule "
+                    style="padding:6px;border-radius:4px;"/>
 
                     </form>
                 </div>
-            </div>
+           
         </div>
     </div>
 }

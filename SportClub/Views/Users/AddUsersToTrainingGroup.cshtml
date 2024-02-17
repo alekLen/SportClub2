@@ -1,6 +1,6 @@
 ﻿@model SportClub.BLL.DTO.TrainingGroupDTO//
-
-<div class="div_reg">
+<div class="flex" style="justify-content:space-around;">
+  <div class="div_reg " id="addUsers">
     <p class="font">Запись клиентов на тренировку</p>
     <div class="row">
 
@@ -38,10 +38,131 @@
                 
                 <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
             </div><br />
-        </form>
-    </div>
-</div>
+               
 
+            @*  <a asp-area="" asp-route-Id="@Model.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_green">@Resources.Resource.Edit</a> *@
+        </form>
+           
+            <button id="buttonDelete" class="buttonsGY">@Resources.Resource.Delete &nbsp;&nbsp;группу</button>
+    </div>
+   </div>
+        <div class="div_reg" style="width:365px;display:none" id="deleteUserFromTr" >
+            <p style="font-size:22px" class="font">Виберите клиента для удаления<br /> из груповой тренировки</p>
+            <div class="row">
+
+                <form asp-action="DeleteUsersInTrainingGroup" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @Html.AntiForgeryToken()
+                    <div>
+                        <div class="padd" style="width:329px;margin-left: 20px;float:left">
+                            <h5 class="white">Пользователи&nbsp;групповой тренировки:</h5>
+                            <select name="UsersId" asp-for="UsersId" size="10" id="list11" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
+                            <span id="spn1t" asp-validation-for="UsersId" class="text-danger"></span>
+                        </div>
+
+                    </div>
+
+                    <div style="margin: 10px auto 10px auto;width: max-content;">
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@Model.Id" style="background-color:coral;color:white">Удаление клиентов</a>
+                        @* <button id="btnsub1" asp-route-roomId="@Model." asp-route-trgroupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button> *@
+                        <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                    </div><br />
+                </form>
+            </div>
+        </div>
+    
+
+  <div class="div_reg "  id="detailsGroup">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        Details training group
+    </p>  
+
+    <div class="row">
+        <div>
+
+            <div class="row">
+                <div style="width: 500px;  justify-content: center; ">
+
+                    <input type="hidden" asp-for="Id" />
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="CoachName" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.CoachName)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="RoomName" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.RoomName)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="DayName" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.DayName)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Number" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Number)</h1>
+                    </div>
+
+                    <div class="form-group" style="margin-left: 40px">
+                        <label asp-for="Time" class="control-label font  white-color_size20" style="color: white"></label>
+                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Time)</h1>
+                    </div>
+                </div><br />
+
+
+                <div style="margin: 10px auto 25px auto;width: max-content;">
+                    @if (Model.UsersId.Count != 0)
+                    {
+                           @*  <a id="buttonEdit" class="btn btn-outline-light" asp-controller="Users" asp-action="DeleteUsersInTrainingGroup" asp-route-id="@Model?.Id">Удаление клиентов </a> *@
+                            <a id="buttonEdit" class="btn btn-outline-light" >Удаление клиентов </a>
+                        <a class="btn btn-outline-light" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id">Удалить группу</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-outline-light">Нет клиентов для удаление</a>
+                        <a class="btn btn-outline-light" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id">Удалить группу</a>
+                        <br />
+
+                        <br />
+                    }
+
+                    <a class="btn btn-outline-light" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule" asp-controller="Time">Back to List</a>
+                </div>
+                <br /><br />
+            </div>
+
+        </div>
+    </div>
+  </div>
+
+
+   <div class="div_reg " style="display:none" id="deleteGroup">
+    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+        Удаление груповой тренировки
+    </p>
+    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> груповую тренировку? </p>
+
+    <div class="row">
+        <div>
+
+            <div class="row">
+               
+                <div style="margin: 10px auto 10px auto;width: max-content;">
+                    <form method="post" asp-action="DeleteTrainingGroup" asp-controller="Time"
+                          style="width: max-content; float: left;height: 38px;">
+                        <input type="hidden" asp-for="Id" name="id" />
+                        <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
+                    </form>
+                    <a asp-action="GetTrainingGroups" asp-controller="TrainingGroup" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                </div><br />
+            </div>
+
+        </div>
+    </div>
+  </div>
+</div>
 
 @section Scripts {
     @{
@@ -100,5 +221,116 @@
                 $('#AddUsersToTable').attr('disabled', 'disabled');
             }
         });
+
+        $('#buttonEdit').on('click', function () {
+            $('#addUsers').css('display','none');
+            $('#deleteUserFromTr').css('display', 'block');
+           
+        });
+        $('#buttonDelete').on('click', function () {
+            $('#deleteGroup').css('display', 'block');
+            $('#addUsers').css('display', 'none');
+        });
+
+        $(".btnDelTR").click(function () {
+            var buttonId = $(this).attr('id');
+            let selectedOptionval = $("#list11 option:selected").val();
+            var puth = "/Users/DeleteUserInTrGroupAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: "Подтверждение удаления!",
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    width: "455px",
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm2",//
+                        text: "Удалить",
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteUserInTrGroupAction", "Users")",
+                                type: "POST",
+                                data: { id: buttonId, UserId: selectedOptionval },
+                                datatype: "json",
+                                success: function (response) {
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: "Удалено!",
+                                                close: function () { window.location.href = "@Url.Action("Index", "Home")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm2",//
+                                                    text: "Назад",
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("Index", "Home")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                            });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+        });
+
+        function StyleDialog(dialog) {
+            dialog
+                .find(".ui-dialog-titlebar")
+                .css({
+                    "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                    "color": "#EEE8AA"
+                });
+            dialog
+                .css({
+                    "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
+                    "border-radius": "5px",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+
+                });
+            dialog
+                .find(".ui-dialog-content")
+                .css({
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+                });
+            dialog
+                .css({
+                    "border": "none",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+                });
+            dialog
+                .find(".ui-dialog-buttonpane")
+                .css({
+                    "border-width": "0px",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+                });
+        }
+
     });
 </script>

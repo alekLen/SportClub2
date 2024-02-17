@@ -606,16 +606,22 @@
   <data name="TimeMes7" xml:space="preserve">
     <value>Time will be edited in all charts and schedules!</value>
   </data>
-  <data name="Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="CoachPhoto" xml:space="preserve">
-    <value>Photo</value>
-  </data>
-  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
-    <value>Create  time/schedule for day</value>
-  </data>
   <data name="AddTraining" xml:space="preserve">
     <value>Add a workout</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Group training</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Individual training</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>There is no schedule for the hall</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>group</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>Individual</value>
   </data>
 </root>
