@@ -366,7 +366,7 @@ namespace SportClub.Controllers
             if (day == 5)
                 return "Суббота";
             if (day == 6)
-                return "Воскрксенье";
+                return "Воскресенье";
             return null;
         }
         [HttpGet]
@@ -455,7 +455,7 @@ namespace SportClub.Controllers
 
         public async Task putTrGroupUsers(int id, bool flag)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             IEnumerable<UserDTO> p = await trainingGroupService.GetTrainingGroupUsers(id);
             if (flag)//true
             {
@@ -475,23 +475,24 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> AddUsersToTrainingGroup(int trgroupId, int roomId)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(trgroupId);
-            HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
             if (trgroupdto != null)
             {
+                HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+           
                 await putTrGroupUsers(trgroupdto.Id, true);
                 await putUsers();
                 return View("AddUsersToTrainingGroup", trgroupdto);
             }
-            return View("Index", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddUsersToTrainingGroup(int trgroupId, int[] UsersList)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(trgroupId);//trgroupId
@@ -525,7 +526,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> AddUserToTrainingGroup(int groupId, int roomId)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
             HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
 
@@ -544,7 +545,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> DeleteUsersInTrainingGroup(int Id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(Id);
             HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
             if (trgroupdto != null)
@@ -559,7 +560,7 @@ namespace SportClub.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUsersInTrainingGroup(int trgroupId, int UsersId)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(trgroupId);
@@ -602,7 +603,7 @@ namespace SportClub.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmDeleteUserAction(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(id);

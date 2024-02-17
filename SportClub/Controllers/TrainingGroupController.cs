@@ -47,7 +47,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateTrainingGroup(TrainingGroupDTO group)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
 
             if (ModelState.IsValid)
             {
@@ -137,7 +137,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> EditTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroupdto != null)
             {
@@ -158,7 +158,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTrainingGroup(int id, TrainingGroupDTO group)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
@@ -209,7 +209,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> DeleteTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroup == null)
             {
@@ -232,7 +232,7 @@ namespace SportClub.Controllers
         }
         public async Task<IActionResult> DetailsTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroup == null)
             {

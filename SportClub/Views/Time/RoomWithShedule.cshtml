@@ -147,7 +147,7 @@
                                             </div>
                                             
                                         }
-                                    </div>
+                                      </div>
                                     }
                                     @foreach (var it in Model.traininggroup)
                                     {
@@ -185,7 +185,7 @@
                                                     <p>Клиентов нет</p>
                                                 }
                                                 <div class="div_a_btn">
-                                                    @if (it.Number > it.Users.Count)
+                                                   @*  @if (it.Number > it.Users.Count)
                                                     {
                                                         <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">@Resources.Resource.Add</a>
                                                         <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_green">@Resources.Resource.Edit</a>
@@ -193,7 +193,8 @@
                                                     else
                                                     {                                                
                                                         <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" style="float:left" class="a_button_coral">@Resources.Resource.Edit</a>
-                                                    }
+                                                    } *@
+                                                    <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">@Resources.Resource.Add/@Resources.Resource.Edit</a>
                                                 </div>
                                             </div>
                                            

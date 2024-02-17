@@ -682,7 +682,7 @@ namespace SportClub.Controllers
                                 train.Room = r;
                                 //train.Group = await groupService.GetGroup(tr.GroupId);
                                 train.Number = tr.Number;
-                                train.Room = room;
+                                //train.Room = room;
                                 train.Coach = await coachService.GetCoach(tr.CoachId);
 
                                 //IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
@@ -766,7 +766,7 @@ namespace SportClub.Controllers
                                 train.Room = r;
                                 //train.Group = await groupService.GetGroup(tr.GroupId);
                                 train.Number = tr.Number;
-                                train.Room = room;
+                                //train.Room = room;
                                 train.Coach = await coachService.GetCoach(tr.CoachId);
 
                                 //IEnumerable<UserDTO> us = await groupService.GetGroupUsers(tr.GroupId);
@@ -817,7 +817,31 @@ namespace SportClub.Controllers
             else if (day == 5) training.DayName = "Суббота";
             else if (day == 6) training.DayName = "Воскресенье";
             IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
-            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
+            List<CoachDTO> p1 = new List<CoachDTO>();
+            foreach (var coach in p) {
+                IEnumerable<TrainingIndDTO> trI = await trainingIndService.GetAllTrainingInds();
+                IEnumerable<TrainingGroupDTO> trG = await trainingGroupService.GetAllTrainingGroups();
+                bool flag = false;
+                foreach(var tt in trI)
+                {
+                    if(tt.Day==day && tt.Time == time &&tt.CoachId==coach.Id)
+                    {
+                        flag = true; break;
+                    }
+                }
+                foreach (var tt in trG)
+                {
+                    if (tt.Day == day && tt.Time == time && tt.CoachId == coach.Id)
+                    {
+                        flag = true; break;
+                    }
+                }
+                if (!flag)
+                {
+                    p1.Add(coach);
+                }
+             }
+            ViewData["CoachId"] = new SelectList(p1, "Id", "Name");
             IEnumerable<UserDTO> p_ = await userService.GetAllUsers();
             ViewData["UserId"] = new SelectList(p_, "Id", "Name");
 
@@ -975,7 +999,32 @@ namespace SportClub.Controllers
             else if (day == 6) training.DayName = "Воскресенье";
             //gatg.trgroup = training;
             IEnumerable<CoachDTO> p = await coachService.GetAllCoaches();
-            ViewData["CoachId"] = new SelectList(p, "Id", "Name");
+            List<CoachDTO> p1 = new List<CoachDTO>();
+            foreach (var coach in p)
+            {
+                IEnumerable<TrainingIndDTO> trI = await trainingIndService.GetAllTrainingInds();
+                IEnumerable<TrainingGroupDTO> trG = await trainingGroupService.GetAllTrainingGroups();
+                bool flag = false;
+                foreach (var tt in trI)
+                {
+                    if (tt.Day == day && tt.Time == time && tt.CoachId == coach.Id)
+                    {
+                        flag = true; break;
+                    }
+                }
+                foreach (var tt in trG)
+                {
+                    if (tt.Day == day && tt.Time == time && tt.CoachId == coach.Id)
+                    {
+                        flag = true; break;
+                    }
+                }
+                if (!flag)
+                {
+                    p1.Add(coach);
+                }
+            }
+            ViewData["CoachId"] = new SelectList(p1, "Id", "Name");
             //IEnumerable<GroupDTO> p_ = await groupService.GetAllGroups();
             //ViewData["GroupId"] = new SelectList(p_, "Id", "Name");
             return View(training);/*gatg*/
@@ -1003,7 +1052,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> EditTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroupdto != null)
             {
@@ -1024,7 +1073,7 @@ namespace SportClub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditTrainingGroup(int id, TrainingGroupDTO group)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             try
             {
                 TrainingGroupDTO trainingGroupdto = await trainingGroupService.GetTrainingGroup(id);
@@ -1075,7 +1124,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> DeleteTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroup == null)
             {
@@ -1102,7 +1151,7 @@ namespace SportClub.Controllers
 
         public async Task<IActionResult> DetailsTrainingGroup(int id)
         {
-            HttpContext.Session.SetString("path", Request.Path);
+            //HttpContext.Session.SetString("path", Request.Path);
             TrainingGroupDTO trainingGroup = await trainingGroupService.GetTrainingGroup(id);
             if (trainingGroup == null)
             {
