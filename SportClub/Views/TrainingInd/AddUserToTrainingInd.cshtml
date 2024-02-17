@@ -1,23 +1,30 @@
-﻿<h1>Hello</h1>
+﻿
 @model SportClub.BLL.DTO.TrainingIndDTO
-@* <h1>Hello</h1>
-<span>@ViewBag.mynewId</span> *@
-
-<h3>Добавить клиенту тренировку</h3>
+<div class="flex " style="justify-content:space-around">
+    <div class="flex">
+        <div class=" marg" style="background-color:dimgray">
+            <a class="btn btn-outline-light whiteY buttonsGY" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule"
+               asp-controller="Time" style="border:2px solid #2F4F4F"><strong>X</strong></a>
+        </div>
+        <div class="div_reg2 " id="addUsers" style="width:500px;">
+            <h3 class="font whiteY" style="text-align:center">Запись клиентов на тренировку</h3>
+            <div class="row">
 <form method="post">
     <div>
         <input type="hidden" name="id" value="@Model.Id" />
-        @* <input type="hidden" name="day" value="@Model.Day" />
-        <input type="hidden" name="dayName" value="@Model.DayName" readonly />
-        <input type="hidden" name="time" value="@Model.Time" readonly /><br />
-        <input type="hidden" name="roomId" value="@Model.RoomId" />
-        <input type="hidden" name="roomName" value="@Model.RoomName" readonly /><br /> *@
-        @* <input type="hidden" name="coachName" value="@Model.CoachName" readonly /><br /> *@
-        <label>Выбрать клиента</label>
+
+                        <h5 class=" whiteY" style="text-align:center">Выбрать клиента</h5>
+                        <div class="padd" >
         <select asp-for="Id" name="userId" class="form-control card _c7" asp-items="ViewBag.UserId"></select>
-
-        <input type="submit" value="Добавить клиента" formaction="AddUserToTraining" />
-
+         </div>
+         <div class="flex" style="justify-content:space-around">
+        <input type="submit" value="Добавить клиента" formaction="AddUserToTraining" class="buttonsGY" style="padding:5px;min-width:150px;border-radius:3px;"/>
+                        </div>           <br />
     </div>
 </form>
 
+    </div>
+        </div>
+
+    </div>
+</div>

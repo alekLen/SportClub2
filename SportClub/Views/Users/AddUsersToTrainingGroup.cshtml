@@ -6,7 +6,7 @@
     </div>
     </div>
     <div class="div_reg2 " id="addUsers" style="width:500px;">
-    <p class="font whiteY">Запись клиентов на тренировку</p>
+    <h3 class="font whiteY" style="text-align:center">@Resources.Resource.GrTr</h3>
     <div class="row">
 
         <form asp-action="AddUsersToTrainingGroup" method="post">
@@ -24,28 +24,28 @@
                     <div class="padd" style="width:231px;float:right;margin-right:20px;">
                         <label class="whiteY">@Resources.Resource.Users</label>
                         <br />
-                        <select id="list1" size="10" style="height:224px" class="form-control card _c7" asp-items="ViewBag.UsersList"></select>
+                        <select id="list1" size="8" style="height:224px" class="form-control card _c7" asp-items="ViewBag.UsersList"></select>
                     </div>
                 <div class="padd" style="width:229px;margin-left: 20px;float:left">
                     <h4 class="whiteY">@Resources.Resource.GrTr</h4>
                     <select name="UsersList" multiple asp-for="UsersId" size="8" id="list2" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
                     <span id="spn1t" asp-validation-for="UsersId" class="text-danger"></span>
                 </div>
-               
-                <div class="form-group" style="margin-left:40px;width:max-content;overflow:auto">
-                   @*  <a style="float:left;margin-right:10px" id="btncancel" class="btn btn-primary buttonsGY">Отмена</a> *@
-                    <input style="float:right;width:max-content" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttonsGY" />
+                </div>
+                <div style="margin: 10px auto 10px auto;width: max-content;">
+                
+                    <input style="min-width:300px" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttonsGY" />
 
                 </div>
-            </div>
+           
 
             <div style="margin: 10px auto 10px auto;width: max-content;">
-                    <button id="btnsub1" asp-route-roomId="@Model.RoomId" asp-route-trgroupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y buttonsGY">@Resources.Resource.Confirm</button>
+                    <button id="btnsub1" asp-route-roomId="@Model.RoomId" asp-route-trgroupId="@Model.Id" style="min-width:300px" type="submit" class="btn btn-primary font y buttonsGY">@Resources.Resource.Confirm</button>
                 
                @*  <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br /> *@
-            </div><br />
+            </div>
                 <div style="margin: 10px auto 10px auto;width: max-content;">
-                <a id="buttonEdit" class="btn btn-outline-light buttonsGY">@Resources.Resource.Delete&nbsp;&nbsp;@Resources.Resource.Users</a>
+                    <a id="buttonEdit" class="btn btn-outline-light buttonsGY" style="min-width:300px">@Resources.Resource.Delete</a>
             </div>
                 @*  <a asp-area="" asp-route-Id="@Model.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_green">@Resources.Resource.Edit</a> *@
         </form>
@@ -70,9 +70,9 @@
                     </div>
 
                     <div style="margin: 10px auto 10px auto;width: max-content;">
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@Model.Id" style="background-color:coral;color:white">Удаление клиентов</a>
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttonsGY btnDelTR" id="@Model.Id" >Удаление клиентов</a>
                         @* <button id="btnsub1" asp-route-roomId="@Model." asp-route-trgroupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button> *@
-                        <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                        <a  id="btc" style="margin-left: 10px;" class="btn btn-outline-light buttonsGY">@Resources.Resource.Cancel</a><br />
                     </div><br />
                 </form>
             </div>
@@ -120,22 +120,8 @@
 
 
                 <div style="margin: 10px auto 25px auto;width: max-content;">
-                    @if (Model.UsersId.Count != 0)
-                    {
-                           @*  <a id="buttonEdit" class="btn btn-outline-light" asp-controller="Users" asp-action="DeleteUsersInTrainingGroup" asp-route-id="@Model?.Id">Удаление клиентов </a> *@
-                          
-                            <a class="btn btn-outline-light buttonsGY" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id">@Resources.Resource.Delete</a>
-                    }
-                    else
-                    {
-                            <a class="btn btn-outline-light whiteY">Нет клиентов для удаление</a>
-                            <a class="btn btn-outline-light" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id">@Resources.Resource.Delete</a>
-                        <br />
-
-                        <br />
-                    }
-
-                   @*  <a class="btn btn-outline-light" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule" asp-controller="Time">Back to List</a> *@
+                       @*  <a class="btn btn-outline-light buttonsGY" asp-controller="Time" asp-action="DeleteTrainingGroup" asp-route-id="@Model?.Id" style="min-width:300px">@Resources.Resource.Delete</a> *@
+                        <a class="btn btn-outline-light buttonsGY" id="btd" style="min-width:300px">@Resources.Resource.Delete</a>
                 </div>
                 <br /><br />
             </div>
@@ -145,29 +131,30 @@
   </div>
 
 
-   <div class="div_reg " style="display:none" id="deleteGroup">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        Удаление груповой тренировки
-    </p>
-    <p class="font" style="font-size: 22px; color: white; text-align: center"> Вы действительно желаете удалить<br /> груповую тренировку? </p>
+   <div  style="display:none" id="deleteGroup">
+      
+            <div class=" padd div_reg2">
+                
+                <h1 class="font whiteY" style="font-size: 22px;  text-align: center"> @Resources.Resource.Confirmdeletion? </h1>
 
-    <div class="row">
-        <div>
+                <div class="row">
+                   
 
-            <div class="row">
-               
-                <div style="margin: 10px auto 10px auto;width: max-content;">
-                    <form method="post" asp-action="DeleteTrainingGroup" asp-controller="Time"
-                          style="width: max-content; float: left;height: 38px;">
-                        <input type="hidden" asp-for="Id" name="id" />
-                        <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
+                            <div style="margin: 10px auto 10px auto;width: max-content;">
+                                <form method="post" asp-action="DeleteTrainingGroup" asp-controller="Time" >
+                                     
+                                    <input type="hidden" asp-for="Id" name="id" />
+                                    <div class="=flex" style="justify-content:space-around">
+                                    <input class="btn btn-outline-light buttonsGY" style="min-width:120px;" type="submit" value="@Resources.Resource.Confirmdeletion" />
+                        <a class="btn btn-outline-light buttonsGY" style="min-width:120px;" id="btc1">@Resources.Resource.Cancel</a>
+                </div>
                     </form>
-                    <a asp-action="GetTrainingGroups" asp-controller="TrainingGroup" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
-                </div><br />
+                               
+                            </div><br />
+                        
+                </div>
             </div>
-
-        </div>
-    </div>
+        
   </div>
 </div>
 
@@ -200,6 +187,25 @@
             // selectedOption.remove();// удаление выбранного элемента
         });//          change
 
+        $('#btc').on('click', function () {
+            $('#addUsers').css('display', 'block');
+            $('#deleteUserFromTr').css('display', 'none');
+            
+        });
+        $('#btd').on('click', function () {
+            $('#addUsers').css('display', 'none');
+            $('#deleteUserFromTr').css('display', 'none');
+            $('#detailsGroup').css('display', 'none');
+            $('#deleteGroup').css('display', 'block');
+
+        });
+        $('#btc1').on('click', function () {
+            $('#addUsers').css('display', 'block');
+            $('#deleteUserFromTr').css('display', 'none');
+            $('#detailsGroup').css('display', 'block');
+            $('#deleteGroup').css('display', 'none');
+
+        });
 
         $('#AddUsersToTable').click(function () {
             let selectedOptionval = $("#list1 option:selected").val();

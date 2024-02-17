@@ -117,21 +117,26 @@
                                                 </div>
                                                 @if (it.UserId == null)
                                                 {
-                                                    <span  style="display:block;text-align:center;font-weight:bold">
+                                                    @* <span  style="display:block;text-align:center;font-weight:bold">
                                                         Нет клиента
-                                                    </span>
+                                                    </span> *@
+                                                    <div >
+                                                        <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd" style="min-width:150px;border-radius:3px;padding 1px;">@Resources.Resource.Add</a>
+                                                    </div>
                                                 }
                                             </div>
                                             <div class="inner-info sh_card2" style="display:none;">
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
                                                 @if (it.UserId == null)
                                                 {
-                                                   @*  <p class="count_p" style="margin-bottom: -3px;height:48px;display:block;text-align:center;font-weight:bold">
+                                                    <p class="count_p" style="margin-bottom: -3px;height:48px;display:block;text-align:center;font-weight:bold">
                                                         Нет клиента
-                                                    </p> *@
+                                                    </p>
+                                                   @*  <div class="div_a_btn ">
+                                                        <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd" style="min-width:150px;border-radius:3px;">@Resources.Resource.Add</a>
+                                                    </div> *@
                                                     <div class="div_a_btn ">
-                                                        <a class="a_button_green buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="AddUserToTrainingInd">@Resources.Resource.Add</a>
-                                                    <a class="a_button_coral buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">@Resources.Resource.Edit</a>
+                                                        <a class="a_button_coral buttonsGY" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining" style="min-width:150px;border-radius:3px;">@Resources.Resource.Edit</a>
                                                     </div>
                                                 }
                                                 else
@@ -140,7 +145,7 @@
                                                         <strong>Клиент:<br /></strong>@it.UserName
                                                     </p>
                                                 <div class="div_a_btn ">
-                                                    <a class="a_button_coral buttonsGY" style="float:left" asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining">@Resources.Resource.Edit</a>
+                                                        <a class="a_button_coral buttonsGY"  asp-area="" asp-route-Id="@it.Id" asp-controller="TrainingInd" asp-action="UpdateTraining" style="min-width:150px;border-radius:3px;">@Resources.Resource.Edit</a>
                                                     </div>
                                                 }
                                            
@@ -194,7 +199,7 @@
                                                     {                                                
                                                         <a asp-area="" asp-route-Id="@it.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" style="float:left" class="a_button_coral">@Resources.Resource.Edit</a>
                                                     } *@
-                                                    <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green">@Resources.Resource.Add/@Resources.Resource.Edit</a>
+                                                    <a asp-area="" asp-route-roomId="@it.Room.Id" asp-route-trgroupId="@it.Id" asp-controller="Users" asp-action="AddUsersToTrainingGroup" class="a_button_green" style="min-width:150px;border-radius:3px;">@Resources.Resource.Add/@Resources.Resource.Edit</a>
                                                 </div>
                                             </div>
                                            
