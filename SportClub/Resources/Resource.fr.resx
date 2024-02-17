@@ -148,13 +148,10 @@
     <value>Le champ 'Nom' doit contenir uniquement des lettres.</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Administrateurs</value>
+    <value>Tous les admins</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Ajouter du temps pour les graphiques</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Tous les admins</value>
+    <value>Ajouter_du_temps_pour_les_graphiques</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>âge</value>
@@ -169,10 +166,10 @@
     <value>Tous les graphiques enregistrés</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>Toutes les chansons</value>
+    <value>Toutes les salles de sport</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Сhanteur</value>
+    <value>Ajout d'une salle de sport</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Сhanteurs</value>
@@ -576,6 +573,12 @@
   <data name="YearSort" xml:space="preserve">
     <value>année de sortie</value>
   </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Créer un planning horaire/journal</value>
+  </data>
   <data name="TimeMes1" xml:space="preserve">
     <value>Remplissez les heures de début et de fin de votre entraînement !</value>
   </data>
@@ -602,5 +605,23 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Le temps sera modifié dans tous les graphiques et horaires !</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Ajouter un entraînement</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Formation de groupe</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Formation individuelle</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>Il n'y a pas d'horaire pour la salle</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>groupe</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>individuelle</value>
   </data>
 </root>

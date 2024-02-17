@@ -4,61 +4,68 @@
 @{
     ViewData["Title"] = "Details";
 }
-<div class="div_reg">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        Details coach
-    </p>
-
-    <div class="row">
-        <div>
-
+<div>
+    <div style="width:max-content;margin: 10px auto 10px auto;">
+        <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
+            Details coach@* @Resources.Resource *@
+        </h4>
+        <div class="div_reg">
+            @*   <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
+            Details coach
+            </p> *@
+            <br />
             <div class="row">
-                <div >
-                    <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" />
-                </div>
-                <div style="width: 500px;  justify-content: center; ">
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Name" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
+                <div>
+
+                    <div class="row">
+                        <div>
+                            <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px;margin-left:30px" />
+                        </div>
+                        <div style="width: 500px;  justify-content: center; ">
+                            <div class="form-group" style="margin-left: 40px">
+                                <label asp-for="Name" class="control-label font  white-color_size20" style="color: white"></label>
+                                <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
+                            </div>
+                            <div class="form-group" style="margin-left: 40px">
+
+                                <label asp-for="Login" class="control-label font  white-color_size20" style="color: white"></label>
+                                <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 40px">
+                                <label asp-for="Email" class="control-label font  white-color_size20" style="color: white"></label>
+                                <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
+                            </div>
+
+                            <div class="form-group" style="margin-left: 40px">
+                                <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20"></label>
+                                <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-left: 40px">
+                            <label asp-for="Gender" class="control-label font  white-color_size20" style="color: white"></label>
+                            <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.Gender)</h1>
+                        </div>
+
+                        <div class="form-group" style="margin-left: 40px">
+                            <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
+                            <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
+                        </div> <br />
+                        <div class="form-group" style="margin-left: 40px">
+                            <label class="font white-color_size20">@Resources.Resource.Description</label>
+                            <textarea asp-for="Description" style="width: 420px" readonly></textarea>
+                            <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
+                        </div><br />
+                        <div style="margin: 10px auto 25px auto;width: max-content;">
+                            <a class="btn btn-primary buttonsGY" asp-controller="Coach" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+                            <a class="btn btn-primary buttonsGY" asp-action="GetCoaches" asp-controller="Coach">Back to List</a>
+                        </div>
+                        <br /><br />
                     </div>
-                    <div class="form-group" style="margin-left: 40px">
 
-                        <label asp-for="Login" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
-                    </div>
-
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Email" class="control-label font  white-color_size20" style="color: white"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
-                    </div>
-
-                    <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Phone" style="color: white" class="control-label font  white-color_size20"></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
-                    </div>
                 </div>
-
-                <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="Gender" class="control-label font  white-color_size20" style="color: white"></label>
-                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.Gender)</h1>
-                </div>
-
-                <div class="form-group" style="margin-left: 40px">
-                    <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: white"></label>
-                    <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
-                </div> <br />
-                <div class="form-group" style="margin-left: 40px">
-                    <label class="font white-color_size20">@Resources.Resource.Description</label>
-                    <textarea asp-for="Description" style="width: 420px" readonly></textarea>
-                    <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
-                </div><br />
-                <div style="margin: 10px auto 25px auto;width: max-content;">
-                    <a class="btn btn-outline-light" asp-controller="Coach" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
-                    <a class="btn btn-outline-light" asp-action="GetCoaches" asp-controller="Coach">Back to List</a>
-                </div>
-                <br /><br />
             </div>
-
         </div>
     </div>
 </div>
@@ -68,7 +75,7 @@
     <h4>Coach</h4>
     <hr />
     <div class="center">
-        <div>          
+        <div>
             <img src=@Model.Photo width="130" height="130" alt="photo1" style="padding:20px" />
         </div>
     <dl class="row">
@@ -107,7 +114,7 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
-        </dd>       
+        </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.PostName)
         </dt>
@@ -126,7 +133,7 @@
 </div>
 <div>
     <a asp-action="GetCoaches" > Назад к списку</a>
-  
+
 </div>
 
  *@

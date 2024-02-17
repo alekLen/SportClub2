@@ -2,12 +2,10 @@
     @model SportClub.BLL.DTO.PostDTO
 
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-@*     <div class="div_reg padd"> *@
-        <span style="color:white">@Resources.Resource.Post </span><br />
+
+        <span class="whiteY">@Resources.Resource.Post </span><br />
         <input asp-for="Name" class="form-control card _c7" />
         <input asp-for="Id" type="hidden" />
         <span asp-validation-for="Name" class="text-danger"></span>
-   @*  <br />
-        <input type="submit" formaction="EditPost" value="@Resources.Resource.Edit" class="btn btn-primary c2" />
-    </div> *@
+ 
 </form>

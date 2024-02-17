@@ -1,30 +1,31 @@
 ﻿<div style="padding-left:100px;">
 <div>
-    <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons">Главная</a>
+        <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
 </div>
 <div class="flex" style="flex-wrap:wrap;">
     
     <div>
-        <h2 class="center1 white-shadow" > @Resources.Resource.Post тренера</h2>
-<div class="flex padd1">    
-        <div class="padd white">
-            <h4>Добавить должность</h4>
+            <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+            @Resources.Resource.Post </h2>
+<div class="flex padd div_reg2">    
+        <div class="padd whiteY">
+                    <h4>@Resources.Resource.Add&nbsp; @Resources.Resource.Post</h4>
                 <form asp-controller="Login" method="post" >
                     @model SportClub.Models.PostSpeciality
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group padd">
-                    <span>Название </span><br />
+                            <span>@Resources.Resource.Name </span><br />
                     <input asp-for="post.Name" name="name" id="post" class="form-control card _c7" />
                     <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
                 <div class="form-group padd">
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddPost" style="color:white">@Resources.Resource.Add</a>
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddPost" >@Resources.Resource.Add</a>
                </div>
             </form>
 
         </div>
-    <div class="padd white">
+    <div class="padd whiteY">
             <h4> @Resources.Resource.Editing</h4>
                 <form asp-controller="Admin" method="post" >
                 <label>@Resources.Resource.Post</label>
@@ -32,9 +33,9 @@
 
                 <br />
                 <div class="form-group">
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelPost" style="color:white">Удалить</a>
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelPost">@Resources.Resource.Delete</a>
                         <br /><br />
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditPost" style="color:white">@Resources.Resource.Edit</a>
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditPost" >@Resources.Resource.Edit</a>
 
                     </div>
             </form>
@@ -43,12 +44,15 @@
 </div>
 <div style="width:20px"></div>
 <div>
-        <h2 class="center1 white-shadow" > @Resources.Resource.Speciality тренера</h2>
-<div class="flex  padd1">
+            <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+                @Resources.Resource.Speciality </h2>
+<div class="flex  padd div_reg2">
 
 
-    <div class="padd white">
-                <h4 >Добавить специальность</h4>
+    <div class="padd whiteY">
+                    <h4>
+                        @Resources.Resource.Add &nbsp;&nbsp; @Resources.Resource.Speciality
+                    </h4>
             <form  method="post">
                
 
@@ -59,22 +63,22 @@
                         <span asp-validation-for="speciality.Name" class="text-danger"></span>
                     </div> <br />
                 <div class="form-group">
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnAddSpec" style="color:white">@Resources.Resource.Add</a>
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddSpec" >@Resources.Resource.Add</a>
                   </div>
             </form>
 
         </div>
-    <div class="padd white">
+    <div class="padd whiteY">
                 <h4 > @Resources.Resource.Editing</h4>
             <form asp-controller="Admin" method="post">
                 <label>@Resources.Resource.Speciality</label>
                     <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
 
                 <br />
-                <div class="form-group">                   
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnDelSpec" style="color:white">Удалить</a>
+                <div class="form-group">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelSpec" >@Resources.Resource.Delete</a>
                         <br /><br />
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons" id="btnEditSpec" style="color:white">@Resources.Resource.Edit</a>
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditSpec">@Resources.Resource.Edit</a>
                 </div>
             </form>
         </div>
@@ -103,20 +107,19 @@
                         .appendTo("body")
                         .load("/Admin/AddedSpeciality")
                         .dialog({
-                            title: "Добавленo!",
+                                title: '@Html.Raw(@Resources.Resource.added)!',
                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                             dialogClass: 'myTitleClass',
                             modal: true,
                             resizable: false,
                             buttons: [{
-                                class: "input_subm2",//
-                                text: "Назад",
+                                class: "input_subm3",//
+                                    text: '@Html.Raw(@Resources.Resource.Back)',
                                 click: function () {
                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                 }
                             }],
                             open: function (event, ui) {
-                                // Устанавливаем стили для диалога
                                     StyleDialog($(this).closest(".ui-dialog"));
                             }
                         });
@@ -144,14 +147,14 @@
                             .appendTo("body")
                             .load("/Admin/AddedPost")
                             .dialog({
-                                title: "Добавленo!",
+                                title: '@Html.Raw(@Resources.Resource.added)!',
                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                                 dialogClass: 'myTitleClass',
                                 modal: true,
                                 resizable: false,
                                 buttons: [{
-                                    class: "input_subm2",//
-                                    text: "Назад",
+                                    class: "input_subm3",//
+                                    text: '@Html.Raw(@Resources.Resource.Back)',
                                     click: function () {
                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                     }
@@ -177,14 +180,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Подтвердите!",
+                    title: '@Html.Raw(@Resources.Resource.Confirm)!',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
-                        text: "Удалить",
+                        class: "input_subm3",//
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {                         
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeletePost", "Admin")",
@@ -200,14 +203,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)!',
                                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
-                                                    text: "Назад",
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Back)!',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                                     }
@@ -239,14 +242,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Потвердите",
+                    title: '@Html.Raw(@Resources.Resource.Confirm)!',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
-                        text: "Удалить",
+                        class: "input_subm3",//
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeleteSpeciality", "Admin")",
@@ -262,14 +265,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)',
                                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
-                                                    text: "Назад",
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Back)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                                     }
@@ -301,14 +304,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Редактирование",
+                    title: '@Html.Raw(@Resources.Resource.Editing)',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
-                        text: "Сохранить",
+                        class: "input_subm3",//
+                        text: '@Html.Raw(@Resources.Resource.Save)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("EditPost", "Admin")",
@@ -324,14 +327,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Успешно!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)!',
                                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
-                                                    text: "Назад",
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Back)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                                     }
@@ -363,14 +366,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Редактирование",
+                    title: '@Html.Raw(@Resources.Resource.Editing)',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
-                        text: "Сохранить",
+                        class: "input_subm3",//
+                        text: '@Html.Raw(@Resources.Resource.Save)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("EditSpeciality", "Admin")",
@@ -386,14 +389,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Успешно!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)',
                                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
-                                                    text: "Назад",
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Back)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("AddPost", "Admin")";
                                                     }
@@ -420,35 +423,38 @@
 
 
     function StyleDialog(dialog) {
-            dialog
+            dialog           
                 .find(".ui-dialog-titlebar")
                 .css({
-                    "background-color": "#374566", // Фон заголовка
-                    "color": "white" // Цвет текста заголовка black
+                    "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                    "color": "#EEE8AA"
                 });
             dialog
                 .css({
                     "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                    "border-radius": "10px",
-                    "border": "solid 1px #374566",
-                    "background-color": "#374566"
+                    "border-radius": "5px",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+
                 });
             dialog
                 .find(".ui-dialog-content")
                 .css({
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
-                .find(".ui-widget-content")
                 .css({
                     "border": "none",
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
                 .find(".ui-dialog-buttonpane")
                 .css({
                     "border-width": "0px",
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
     }
 

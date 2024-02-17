@@ -793,7 +793,7 @@ namespace SportClub.Controllers
                 }
                 else
                 {
-                    m.message = "для зала не составлен график";
+                    m.message = Resources.Resource.NoSh;
                 }
                 ViewBag.MyId = HttpContext.Session.GetString("Id");
                 return View(m);

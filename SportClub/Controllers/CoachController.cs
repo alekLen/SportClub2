@@ -331,7 +331,8 @@ namespace SportClub.Controllers
                             room = await roomService.GetRoom(tr.RoomId);
                             training.Room = room;
                             training.Id = tr.Id;
-                           training.DayName = Setday(tr.Day);
+                            
+                            training.DayName = Setday(tr.Day);
                             training.Day = tr.Day;
                             training.Time = tr.Time;
                             training.User = tr.UserName;

@@ -148,16 +148,13 @@
     <value>Поле 'Имя' должно содержать только буквы</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Админы</value>
+    <value>Все админы</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Добавить время для графиков</value>
+    <value>Добавить_время_для_графиков</value>
   </data>
   <data name="AdminRegistration" xml:space="preserve">
     <value>Регистрация админа</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Все админы</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Возраст</value>
@@ -172,10 +169,10 @@
     <value>Все сохраненные графики</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>Все песни</value>
+    <value>Все спортзалы</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Исполнитель</value>
+    <value>Добавление спортзала</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Исполнители</value>
@@ -280,7 +277,7 @@
     <value>Дополнительные сведения</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Детали</value>
+    <value>Подробности</value>
   </data>
   <data name="Dopname" xml:space="preserve">
     <value>Отчество</value>
@@ -585,6 +582,12 @@
   <data name="YearSort" xml:space="preserve">
     <value>году выхода</value>
   </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Cоздать время/график дня</value>
+  </data>
   <data name="TimeMes1" xml:space="preserve">
     <value>Заполните время начала и окончания тренировки!</value>
   </data>
@@ -611,5 +614,23 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Время будет отредактировано во всех графиках и расписаниях!</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Добавить тренировку</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Групповые тренировки</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Индивидуальные тренировки</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>Для зала не составлено расисание</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>групповые</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>индивидуальные</value>
   </data>
 </root>

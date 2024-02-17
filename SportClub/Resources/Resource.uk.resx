@@ -148,16 +148,13 @@
     <value>Поле 'Ім'я' має містити лише літери</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Адміни</value>
+    <value>Всі адміни</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Додати час для графіків</value>
+    <value>Додати_час_для_графіків</value>
   </data>
   <data name="AdminRegistration" xml:space="preserve">
     <value>Реєстрація адміна</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>Всі адміни</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>Вік</value>
@@ -172,10 +169,10 @@
     <value>Усі збережені графіки</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>Усі пісні</value>
+    <value>Усі спортзали</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Виконавець</value>
+    <value>Додавання спортзалу</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Виконавці</value>
@@ -280,7 +277,7 @@
     <value>Додаткові відомості</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Деталі</value>
+    <value>Подробиці</value>
   </data>
   <data name="Dopname" xml:space="preserve">
     <value>По-батькові</value>
@@ -585,6 +582,12 @@
   <data name="YearSort" xml:space="preserve">
     <value>роком виходу</value>
   </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Фото</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Створити час/графік дня</value>
+  </data>
   <data name="TimeMes1" xml:space="preserve">
     <value>Заповніть час початку та закінчення тренування!</value>
   </data>
@@ -611,5 +614,23 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Час буде відредаговано у всіх графіках та розкладах!</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Додати тренування</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Групові тренування</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Індивідуальні тренування</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>Для зали не складено розсмоктування</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>групові</value>
+  </data>
+  <data name="Ing" xml:space="preserve">
+    <value>Індивідуальні</value>
   </data>
 </root>

@@ -277,6 +277,7 @@ body {
     .buttonsGY:hover {
         background-color: dimgray;
         box-shadow: 0px 8px 16px 0px #F0E68C;
+        color: #F0E68C;       
     }
 .div_reg3 {
     background-color: #2F4F4F;
@@ -298,4 +299,16 @@ body {
     .ex:hover {
        
         text-decoration: none;
+    }
+.buttonsGY2 {
+    background-color: dimgray;
+    box-shadow: 0px 4px 8px 0px black;
+    color: #EEE8AA;
+    border: 0px;
+}
+
+    .buttonsGY2:hover {
+        background-color: dimgray;
+        box-shadow: 0px 8px 16px 0px #F0E68C;
+        color: #F0E68C;
     }

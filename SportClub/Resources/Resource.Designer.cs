@@ -68,6 +68,42 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
+       
+         public static string IndTr
+        {
+            get
+            {
+                return ResourceManager.GetString("IndTr", resourceCulture);
+            }
+        }
+        public static string GrTr
+        {
+            get
+            {
+                return ResourceManager.GetString("GrTr", resourceCulture);
+            }
+        }
+        public static string Ind
+        {
+            get
+            {
+                return ResourceManager.GetString("Ind", resourceCulture);
+            }
+        }
+        public static string Gr
+        {
+            get
+            {
+                return ResourceManager.GetString("Gr", resourceCulture);
+            }
+        }
+        public static string NoSh
+        {
+            get
+            {
+                return ResourceManager.GetString("NoSh", resourceCulture);
+            }
+        }
         public static string TimeMes1
         {
             get
@@ -87,6 +123,14 @@ namespace Resources {
             get
             {
                 return ResourceManager.GetString("TimeMes3", resourceCulture);
+            }
+        }
+       
+        public static string AddTraining
+        {
+            get
+            {
+                return ResourceManager.GetString("AddTraining", resourceCulture);
             }
         }
         public static string TimeMes4
@@ -1269,13 +1313,7 @@ public static string MusicPortal {
         /// <summary>
         ///   Looks up a localized string similar to Админы.
         /// </summary>
-        public static string Admins
-        {
-            get
-            {
-                return ResourceManager.GetString("Admins", resourceCulture);
-            }
-        }
+      
 
         /// <summary>
         ///   Looks up a localized string similar to Регистрация админа.
@@ -1467,6 +1505,43 @@ public static string MusicPortal {
             get
             {
                 return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+
+        ///// <summary>
+        /////   Looks up a localized string similar to Подробности
+        ///// </summary>
+        //public static string Details
+        //{
+        //    get
+        //    {
+        //        return ResourceManager.GetString("Details", resourceCulture);
+        //    }
+        //}
+
+        /// <summary>
+        ///   Looks up a localized string similar to Подробности
+        /// </summary>
+       
+        /// <summary>
+        ///   Looks up a localized string similar to Фото
+        /// </summary>
+        public static string CoachPhoto
+        {
+            get
+            {
+                return ResourceManager.GetString("CoachPhoto", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cоздать время/график дня
+        /// </summary>
+        public static string CreateTimeAndScheduleForDay
+        {
+            get
+            {
+                return ResourceManager.GetString("CreateTimeAndScheduleForDay", resourceCulture);
             }
         }
     }

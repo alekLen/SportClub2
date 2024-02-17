@@ -148,13 +148,10 @@
     <value>The 'Name' field must contain letters only</value>
   </data>
   <data name="Admins" xml:space="preserve">
-    <value>Admins</value>
+    <value>All admins</value>
   </data>
   <data name="AddTimeForCharts" xml:space="preserve">
-    <value>Add time for charts</value>
-  </data>
-  <data name="Admins" xml:space="preserve">
-    <value>All admins</value>
+    <value>Add_time_for_charts</value>
   </data>
   <data name="age" xml:space="preserve">
     <value>age</value>
@@ -169,10 +166,10 @@
     <value>All saved charts</value>
   </data>
   <data name="AllSongs" xml:space="preserve">
-    <value>All songs</value>
+    <value>All gyms</value>
   </data>
   <data name="Artist" xml:space="preserve">
-    <value>Artist</value>
+    <value>Adding a gym</value>
   </data>
   <data name="Artists" xml:space="preserve">
     <value>Artists</value>
@@ -576,6 +573,12 @@
   <data name="YearSort" xml:space="preserve">
     <value>year</value>
   </data>
+  <data name="CoachPhoto" xml:space="preserve">
+    <value>Photo</value>
+  </data>
+  <data name="CreateTimeAndScheduleForDay" xml:space="preserve">
+    <value>Create  time/schedule for day</value>
+  </data>
   <data name="MyError" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -602,5 +605,23 @@
   </data>
   <data name="TimeMes7" xml:space="preserve">
     <value>Time will be edited in all charts and schedules!</value>
+  </data>
+  <data name="AddTraining" xml:space="preserve">
+    <value>Add a workout</value>
+  </data>
+  <data name="GrTr" xml:space="preserve">
+    <value>Group training</value>
+  </data>
+  <data name="IndTr" xml:space="preserve">
+    <value>Individual training</value>
+  </data>
+  <data name="NoSh" xml:space="preserve">
+    <value>There is no schedule for the hall</value>
+  </data>
+  <data name="Gr" xml:space="preserve">
+    <value>group</value>
+  </data>
+  <data name="Ind" xml:space="preserve">
+    <value>Individual</value>
   </data>
 </root>

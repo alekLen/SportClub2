@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
-    @*   <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> *@
+   
     <link rel="stylesheet" href="~/css/Style.css">
 
     <style>
@@ -35,18 +33,34 @@
         }
 
         .div_reg {
-            background-color: #374566;
-            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;
+            background-color: #2F4F4F;
+            box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
             border-radius: 15px;
             width: 500px;
-            margin-left: 400px;
+            /* margin-left: 400px; */
         }
 
+        div {
+             scrollbar-width:thin; 
+            scrollbar-color: dimgray #EEE8AA;
+         
+        }
+
+            div:active {
+                scrollbar-color: lightgreen #EEE8AA;
+            }
         .div_reg2 {
-            background-color: #2F4F4F;
+            /*  background-color: #2F4F4F; */
             box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
             border-radius: 5px;
-            max-width: 500px;
+            background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);
+        }
+
+        .div_reg2_1 {
+            /*  background-color: #2F4F4F; */
+            box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em dimgray;
+            border-radius: 5px;
+            background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);
         }
 
         .div_reg p {
@@ -64,12 +78,12 @@
         }
 
         /*   footer {
-                    position: fixed;
-                    left: 0;
-                    bottom: 0;
-                    width: 100%;
-                    height: 40px;
-                } */
+                            position: fixed;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 40px;
+                        } */
 
         html, body {
             margin: 0;
@@ -173,7 +187,7 @@
             {
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
-               
+
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
                 <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
@@ -188,9 +202,9 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="color:#EEE8AA;">
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a> 
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a> 
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a> 
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
 
                     </div>
                 </div>
@@ -201,8 +215,8 @@
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.Create_A_ScheduleForDay</a>
-               
+                        <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
+                        @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                     </div>
                 </div>
 
@@ -212,7 +226,7 @@
                     </button>
                     <div class="mdropdown-content" style="">
                         <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
-               
+
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
@@ -298,16 +312,14 @@
                     .appendTo("body")
                     .load("/Login/Login")
                     .dialog({
-                        title: '@Html.Raw(@Resources.Resource.Authorization)'
-                        ,
+                        title: '@Html.Raw(@Resources.Resource.Authorization)',
                         close: function () { $(this).remove(); },
                         dialogClass: 'myTitleClass',
                         modal: true,
                         resizable: false,
                         buttons: [{
                             class: "input_subm3",//
-                            text: '@Html.Raw(@Resources.Resource.Enter)'
-                            ,
+                            text: '@Html.Raw(@Resources.Resource.Enter)',
                             click: function () {
                                 // "ВХОД" : function () {
                                 $.ajax({
