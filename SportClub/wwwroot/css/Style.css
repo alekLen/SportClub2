@@ -718,3 +718,20 @@ input[type="date"] {
 .m_option {
     background-color: #2F4F4F;
 }
+.div_coach {
+    width: 160px;
+    /*overflow: auto;*/
+    margin-left: -8px;
+    height: max-content;
+    margin-top: -12px;
+}
+/*.sh_h3 {
+    margin-bottom: 2px;
+    font-size: 22px;
+    margin-left: -8px;
+    margin-top: -1px;
+}*/
+
+/**{
+    border:solid 1px red;
+}*/
