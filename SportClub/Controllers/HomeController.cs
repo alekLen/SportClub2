@@ -20,13 +20,14 @@ namespace SportClub.Controllers
             roomService = r;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string scrollTo)
         {
             var p = await coachService.GetAllCoaches();
             var r= await roomService.GetAllRooms();
             StartViewModel  start = new StartViewModel();
             start.coaches=p.ToList();
             start.rooms=r.ToList();
+            ViewBag.ScrollTo = scrollTo;
             return View(start);
         }
 

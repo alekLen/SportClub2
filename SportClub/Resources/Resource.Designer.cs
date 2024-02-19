@@ -68,8 +68,86 @@ namespace Resources {
                 return ResourceManager.GetString("Add", resourceCulture);
             }
         }
-       
-         public static string IndTr
+        public static string YTr
+        {
+            get
+            {
+                return ResourceManager.GetString("YTr", resourceCulture);
+            }
+        }
+        
+        public static string NoAva
+        {
+            get
+            {
+                return ResourceManager.GetString("NoAva", resourceCulture);
+            }
+        }
+        public static string Subs
+        {
+            get
+            {
+                return ResourceManager.GetString("Subs", resourceCulture);
+            }
+        }
+        public static string OTeam
+        {
+            get
+            {
+                return ResourceManager.GetString("OTeam", resourceCulture);
+            }
+        }
+        public static string Mn
+        {
+            get
+            {
+                return ResourceManager.GetString("Mn", resourceCulture);
+            }
+        }
+        public static string Tu
+        {
+            get
+            {
+                return ResourceManager.GetString("Tu", resourceCulture);
+            }
+        }
+        public static string Wed
+        {
+            get
+            {
+                return ResourceManager.GetString("Wed", resourceCulture);
+            }
+        }
+        public static string Sun
+        {
+            get
+            {
+                return ResourceManager.GetString("Sun", resourceCulture);
+            }
+        }
+        public static string Th
+        {
+            get
+            {
+                return ResourceManager.GetString("Th", resourceCulture);
+            }
+        }
+        public static string Fr
+        {
+            get
+            {
+                return ResourceManager.GetString("Fr", resourceCulture);
+            }
+        }
+        public static string Sat
+        {
+            get
+            {
+                return ResourceManager.GetString("Sat", resourceCulture);
+            }
+        }
+
+        public static string IndTr
         {
             get
             {

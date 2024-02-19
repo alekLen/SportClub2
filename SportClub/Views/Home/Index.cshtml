@@ -314,8 +314,17 @@
                 inf22.style.display = 'block';
             }
         });
-       
+
+        var scrollTo = '@ViewBag.ScrollTo';
+        if (scrollTo) {
+            $('html, body').animate({
+                scrollTop: $('#' + scrollTo).offset().top
+            }, 100);
+        }
+
     });
+
+   
 </script>
 @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");

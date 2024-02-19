@@ -421,9 +421,10 @@ namespace SportClub.Controllers
                         List<TrainingGrToSee> trg1 = new();
                         foreach (var tr in trg)
                         {
+                            RoomDTO room1 = await roomService.GetRoom(tr.RoomId);
                             TrainingGrToSee train = new();
                             train.Id = tr.Id;
-                            train.Room = room;
+                            train.Room = room1;
                             train.Coach = await coachService.GetCoach(tr.CoachId);
 
                             //train.Group = await groupService.GetGroup(tr.GroupId);

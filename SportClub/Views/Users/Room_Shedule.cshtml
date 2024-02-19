@@ -1,20 +1,23 @@
 ﻿
-
-
 @model IEnumerable<SportClub.BLL.DTO.RoomDTO>
-<div class="center"><h2>Расписание</h2></div>
-<div class="flex center" style="flex-wrap:wrap;">
-@foreach (var item in Model)
-{
-    <div class="padd1" style="margin:10px;">
+<div class="center whiteY">
+    <h2 style="width:50%;text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
+        @Resources.Resource.Shedule
+    </h2>
+</div>
+<div class="flex" style="flex-wrap:wrap; justify-content:space-around">
+    @foreach (var item in Model)
+    {
+        <div class="padd div_reg2_1">
       <form method="post">
         <img src=@item.Photo width="200" height="200" alt="Photo" style="background-color:wheat" />
         <div>
-            <h4 class="white"> @item.Name</h4>
+            <h4 class="whiteY"> @item.Name</h4>
         </div>
                 <input type="hidden" value="@item.Id" name="RoomId" />
-    <input type="submit" asp-controller="Users" asp-action="Shedule" value="Выбрать" />
+                <input type="submit" asp-controller="Users" asp-action="Shedule" value=" @Resources.Resource.Shedule" class="buttonsGY" />
       </form>
     </div>
 }
 </div>
+

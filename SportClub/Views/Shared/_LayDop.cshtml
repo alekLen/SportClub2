@@ -153,11 +153,10 @@
                 {
                     <input style="float: right;width:max-content; color:#EEE8AA" class="dv1n1 my_bg-white1 my_bn" type="submit" value="@Resources.Resource.Shedule" />
                 }
-                @*  <a class="nav-link card2  white" asp-controller="Coach" asp-action="AllCoachesToSee" style="">Наша команда</a>
-            <a class="nav-link card2  white" asp-controller="Admin" asp-action="AllRoomsToSee" style="">Залы для тренировок</a> *@
-                <a class="nav-link card2  whiteY" href="#allcoaches">Наша команда</a>
-                <a class="nav-link card2  whiteY" href="#allrooms">Залы для тренировок</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
+
+                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allcoaches">@Resources.Resource.OTeam</a>
+                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allrooms">@Resources.Resource.Rooms</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?abonem">@Resources.Resource.Subcrip</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -188,9 +187,9 @@
                 <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
 
-                <a class="nav-link card2 " style="color:#EEE8AA;" href="#allcoaches">Наша команда</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" href="#allrooms">Залы для тренировок</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" href="#abonem">@Resources.Resource.Subcrip</a>
+                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allcoaches">@Resources.Resource.OTeam</a>
+                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allrooms">@Resources.Resource.Rooms</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?abonem">@Resources.Resource.Subcrip</a>
 
             }
 

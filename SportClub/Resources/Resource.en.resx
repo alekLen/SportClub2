@@ -624,4 +624,37 @@
   <data name="Ind" xml:space="preserve">
     <value>Individual</value>
   </data>
+  <data name="Fr" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="Mn" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Th" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="Tu" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="NoAva" xml:space="preserve">
+    <value>Not available</value>
+  </data>
+  <data name="OTeam" xml:space="preserve">
+    <value>Our team</value>
+  </data>
+  <data name="Subs" xml:space="preserve">
+    <value>Sign up</value>
+  </data>
+  <data name="YTr" xml:space="preserve">
+    <value>Your workout</value>
+  </data>
 </root>

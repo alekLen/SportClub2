@@ -624,4 +624,37 @@
   <data name="Ind" xml:space="preserve">
     <value>individuelle</value>
   </data>
+  <data name="Fr" xml:space="preserve">
+    <value>Ven</value>
+  </data>
+  <data name="Mn" xml:space="preserve">
+    <value>Lun</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sam</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Dim</value>
+  </data>
+  <data name="Th" xml:space="preserve">
+    <value>Jeu</value>
+  </data>
+  <data name="Tu" xml:space="preserve">
+    <value>Mar</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Mer</value>
+  </data>
+  <data name="NoAva" xml:space="preserve">
+    <value>Pas disponible</value>
+  </data>
+  <data name="OTeam" xml:space="preserve">
+    <value>Notre équipe</value>
+  </data>
+  <data name="Subs" xml:space="preserve">
+    <value>S'inscrire</value>
+  </data>
+  <data name="YTr" xml:space="preserve">
+    <value>Votre entraînement</value>
+  </data>
 </root>
