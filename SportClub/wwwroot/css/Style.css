@@ -618,7 +618,7 @@ input[type="date"] {
 .count_p {
     font-size: 16px;
     width: max-content;
-    margin-left: -8px;
+    margin-left: 1px;
     margin-top: 3px;
 }
 
@@ -630,22 +630,6 @@ input[type="date"] {
     margin-top: -12px;
 }
 
-.shedule_table tbody td .div_coach {
-    width: 160px;
-    overflow: auto;
-    margin-left: -8px;
-    height: max-content;
-    margin-top: -12px;
-}
-
-.shedule_table tbody .div_coach p {
-    font-size: 16px;
-    width: 107px;
-    height: 160px;
-    float: right;
-    margin-top: 2px;
-    margin-bottom: 0px;
-}
 
 .shedule_div {
     margin: 15px auto 15px auto;
@@ -719,10 +703,11 @@ input[type="date"] {
     background-color: #2F4F4F;
 }
 .div_coach {
+    display:block;
     width: 160px;
     /*overflow: auto;*/
-    margin-left: -8px;
-    height: max-content;
+    margin-left: 2px;
+    height: 46px;
     margin-top: -12px;
 }
 /*.sh_h3 {
