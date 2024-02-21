@@ -111,6 +111,13 @@ namespace Resources {
                 return ResourceManager.GetString("Us", resourceCulture);
             }
         }
+        public static string old
+        {
+            get
+            {
+                return ResourceManager.GetString("old", resourceCulture);
+            }
+        }
         public static string Free
         {
             get

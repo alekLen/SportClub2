@@ -663,6 +663,9 @@
   <data name="NoUs" xml:space="preserve">
     <value>Aucun client</value>
   </data>
+  <data name="old" xml:space="preserve">
+    <value>Entrez l'ancien mot de passe</value>
+  </data>
   <data name="м" xml:space="preserve">
     <value>Client</value>
   </data>

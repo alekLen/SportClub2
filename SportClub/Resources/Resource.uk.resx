@@ -672,6 +672,9 @@
   <data name="NoUs" xml:space="preserve">
     <value>Немає клієнта</value>
   </data>
+  <data name="old" xml:space="preserve">
+    <value>Введіть старий пароль</value>
+  </data>
   <data name="Us" xml:space="preserve">
     <value>Клієнт</value>
   </data>
