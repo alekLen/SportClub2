@@ -1,46 +1,93 @@
 ﻿
 @model TrainingsAllToSee
 
-
 <div class="whiteY">
     <h2 style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
         @Resources.Resource.IndTr
     </h2>
 </div>
+<div class="marg whiteY" style="background-color:#a758bf; min-height:10px;min-width:100%"></div>
 <div class="flex" style="flex-wrap:wrap">
     @if (Model.trInds.Count == 0)
     {
-        <h4 class="green" style="padding:10px;">Не назначены</h4>
+        <div class="green div_reg2 whiteY" style=" min-height:40px;min-width:100%;padding-top:5px;">&nbsp;&nbsp;&nbsp;-- -- --</div>
     }
-    else{ 
-    @foreach (var it in Model.trInds)
+    else
     {
+        <div class="flex" style="flex-wrap:wrap">
+            @foreach (var it in Model.trInds)
+            {
+                <div class=" div_reg2" style="margin:5px;">
+                    <div>
 
-        <div class="padd1 marg">
-            <div>
-                <h3 class="white"> @it.DayName</h3>
-                <input type="text" name="time" value="@it.Time" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
-            </div>
-            <img src=@it.Room.Photo width="100" height="100" alt="Photo" style="background-color:wheat" />
-            <div>
-                <span class="white">@it.Room.Name</span>
+                        @if (it.Day == 0)
+                        {
 
-            </div>
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Mn</h2>
+
+                        }
+                        @if (it.Day == 1)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Tu</h2>
+
+                        }
+                        @if (it.Day == 2)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Wed</h2>
+
+                        }
+                        @if (it.Day == 3)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Th</h2>
+
+                        }
+                        @if (it.Day == 4)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Fr</h2>
+
+                        }
+                        @if (it.Day == 5)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sat</h2>
+
+                        }
+                        @if (it.Day == 6)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sun</h2>
+
+                        }
+
+                        <p style="color:#EEE8AA;font-size:20px;text-align: center;margin-top:-3px">@it.Time</p>
+                    </div>
+                    <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);" class="flex  marg">
+
+                        <div style="margin-right:5px;">
+
+                            <img src="@it.Room.Photo" width="100" height="100" alt="Photo" style="background-color:wheat;margin: -10px auto 5px auto; border-radius: 4px;" />
+
+                            <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Room.Name</p>
+                        </div>
+                        <div >
+
+                            <img src="@it.Coach.Photo" style="width:100px;height:100px;margin: -10px auto 5px auto; border-radius: 4px;" alt="photo" /><br />
+
+                            <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Coach.Name</p>
+                           
+                        </div>
                        
-            <div class="marg">
-                <br />
-                <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
-                <span class="white">Тренер : </span><br />
-                <span class="white">@it.Coach.Name</span><br />
-                <br /> <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Отменить запись</a>
+                    </div>
+                    <div style="padding:5px;">
+                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttonsGY btnDelTRInd" id="@it.Id" style="min-width:100%">@Resources.Resource.Cancel</a>
+                </div>
+                </div>
+            }
         </div>
-           <div>
-                <br /> 
-             @*    <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Group" asp-action="MyAction">Отменить</a> *@
-                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a>
-            </div>
-        </div>
-    }
     }
 </div>
 
@@ -49,48 +96,92 @@
         @Resources.Resource.GrTr
     </h2>
 </div>
+<div class="marg whiteY" style="background-color:coral; min-height:10px;min-width:100%"></div>
+
 <div class="flex" style="flex-wrap:wrap">
-     @if (Model.trGrs.Count == 0)
+    @if (Model.trGrs.Count == 0)
     {
-        <h4 class="green" style="padding:10px;" >Не назначены</h4>
+        <div class="green div_reg2 whiteY" style=" min-height:40px;min-width:100%;padding-top:5px;">&nbsp;&nbsp;&nbsp;-- -- --</div>
     }
-    else{ 
-    @foreach (var it in Model.trGrs)
+    else
     {
-        <div class="flex  marg">
-            <div class="padd1 ">
-                <div>
-                    <input type="hidden" value="@it.Day"/>
-                    <h3 class="white"> @it.DayName</h3>
-                    <input type="text" name="time" value="@it.Time" style="width:120px; background-color:yellow;font-size:20px;" readonly> <br />
-                </div>
-                <img src=@it.Room.Photo width="100" height="100" alt="Photo" style="background-color:wheat" />
-                <div>
-                    <span class="white">@it.Room.Name</span>
-                </div>
-            </div>
-           
-                <div class="flex padd1 " style="flex-direction:column">
-                    <h5 class="white"> ( @it.Number )</h5>
-                    @* <h5 class="white">@it.Group.Name ( @it.Group.Number )</h5> *@
-                    <img src="@it.Coach.Photo" style="width:50px;height:50px" alt="photo" class="marg" /><br />
-                    <span class="white">Тренер : </span><br />
-                    <span class="white">@it.Coach.Name</span><br />
+        <div class="flex" style="flex-wrap:wrap">
+            @foreach (var it in Model.trGrs)
+            {
+                <div class=" div_reg2" style="margin:5px;">
+                    <div>
 
-                    <br />
-                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons btnDelTR" id="@it.Id" style="background-color:coral;color:white">Удалить</a>
-                    @* <a class="btn btn-outline-dark" style="background-color:coral" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="DeleteUserInTrainingGroup">Отменить</a> *@
-          
-                </div>
-                <br />
-            
+                        @if (it.Day == 0)
+                        {
 
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Mn</h2>
+
+                        }
+                        @if (it.Day == 1)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Tu</h2>
+
+                        }
+                        @if (it.Day == 2)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Wed</h2>
+
+                        }
+                        @if (it.Day == 3)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Th</h2>
+
+                        }
+                        @if (it.Day == 4)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Fr</h2>
+
+                        }
+                        @if (it.Day == 5)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sat</h2>
+
+                        }
+                        @if (it.Day == 6)
+                        {
+
+                            <h2 class=" whiteY div_reg2_1" style="text-align:center;">@Resources.Resource.Sun</h2>
+
+                        }
+
+                        <p style="color:#EEE8AA;font-size:20px;text-align: center;margin-top:-3px">@it.Time</p>
+                    </div>
+                    <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);" class="flex  marg">
+
+                        <div style="margin-right:5px;">
+
+                            <img src="@it.Room.Photo" width="100" height="100" alt="Photo" style="background-color:wheat;margin: -10px auto 5px auto; border-radius: 4px;" />
+
+                            <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Room.Name</p>
+                        </div>
+                        <div >
+
+                            <img src="@it.Coach.Photo" style="width:100px;height:100px;margin: -10px auto 5px auto; border-radius: 4px;" alt="photo" /><br />
+
+                            <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Coach.Name</p>
+
+                        </div>
+
+                    </div>
+                    <div style="padding:5px;">
+                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttonsGY btnDelTR" id="@it.Id" style="min-width:100%">@Resources.Resource.Cancel</a>
+                    </div>
+                </div>
+            }
         </div>
-
-
-}
     }
 </div>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
@@ -102,14 +193,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Подтвердите!",
+                    title: '@Html.Raw(@Resources.Resource.Confirm)!',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",//
-                        text: "Удалить",
+                        class: "input_subm3",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeleteUserAction", "Users")",
@@ -126,14 +217,80 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)!',
                                                 close: function () { window.location.href = "@Url.Action("Index", "Home")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
-                                                    text: "Назад",
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Exit)',
+                                                    click: function () {
+                                                        window.location.href = "@Url.Action("Index", "Home")";
+                                                    }
+                                                }],
+                                                open: function (event, ui) {
+                                                    StyleDialog($(this).closest(".ui-dialog"));
+                                                }
+                                            });
+                                    }
+                                    else {
+                                        let l2 = document.getElementById("error-login1");
+                                        l2.style.display = "inline";
+                                    }
+                                }
+                             });
+                        }
+                    }],
+                    open: function (event, ui) {
+                        StyleDialog($(this).closest(".ui-dialog"));
+                    }
+                });
+                    
+            //});
+
+        });
+
+        $(".btnDelTRInd").click(function () {
+            var buttonId = $(this).attr('id');
+            var puth = "/Users/DeleteUserAction/" + buttonId;
+            $("<div id='dialogContent3'></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .load(puth)
+                .dialog({
+                    title: '@Html.Raw(@Resources.Resource.Confirm)!',
+                    close: function () { $(this).remove(); },
+                    dialogClass: 'myTitleClass',
+                    modal: true,
+                    resizable: false,
+                    buttons: [{
+                        class: "input_subm3",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
+                        click: function () {
+                            $.ajax({
+                                url: "@Url.Action("ConfirmDeleteUserActionInd", "Users")",
+                                type: "POST",
+                                data: { id: buttonId },
+                                datatype: "json",
+                                success: function (response) {
+
+
+                                    if (response) {
+                                        $("#dialogContent3").remove();
+                                        $("<div id='dialogContent4'></div>")
+                                            .addClass("dialog")
+                                            .appendTo("body")
+                                            .load("/Admin/AddedPost")
+                                            .dialog({
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)',
+                                                close: function () { window.location.href = "@Url.Action("Index", "Home")"; },
+                                                dialogClass: 'myTitleClass',
+                                                modal: true,
+                                                resizable: false,
+                                                buttons: [{
+                                                    class: "input_subm3",//
+                                                    text: '@Html.Raw(@Resources.Resource.Exit)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("Index", "Home")";
                                                     }
@@ -155,46 +312,45 @@
                         StyleDialog($(this).closest(".ui-dialog"));
                     }
                 });
-                    
-                // });
+
+            //});
 
         });
 
-             
-    });
 
         function StyleDialog(dialog) {
             dialog
                 .find(".ui-dialog-titlebar")
                 .css({
-                    "background-color": "#374566", // Фон заголовка
-                    "color": "white" // Цвет текста заголовка black
+                    "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                    "color": "#EEE8AA"
                 });
             dialog
                 .css({
                     "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                    "border-radius": "10px",
-                    "border": "solid 1px #374566",
-                    "background-color": "#374566"
+                    "border-radius": "5px",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+
                 });
             dialog
                 .find(".ui-dialog-content")
                 .css({
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
-                .find(".ui-widget-content")
                 .css({
                     "border": "none",
-                    "background-color": "#374566",
-                    "color": "white", // Цвет текста заголовка black
-                    "padding-left":"15px"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
                 .find(".ui-dialog-buttonpane")
                 .css({
                     "border-width": "0px",
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
         }
     });

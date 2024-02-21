@@ -643,6 +643,42 @@ namespace SportClub.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ConfirmDeleteUserActionInd(int id)
+        {
+            //HttpContext.Session.SetString("path", Request.Path);
+            try
+            {
+                TrainingIndDTO trgroupdto = await trainingIndService.GetTrainingInd(id);
+
+                int UserId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+                if (trgroupdto == null || UserId == null)
+                {
+                    return Json(false);
+                }
+
+                if (ModelState.IsValid)
+                {
+                    trgroupdto.UserId = 0;
+
+                    try
+                    {
+                        await trainingIndService.UpdateTrainingInd(trgroupdto);
+                    }
+                    catch
+                    {
+                        return Json(false);
+                    }
+                    return Json(true);
+                }
+                return Json(false);
+            }
+            catch
+            {
+                return Json(false);
+            }
+        }
+
         [HttpGet]
         public IActionResult DeleteUserInTrGroupAction()
         {

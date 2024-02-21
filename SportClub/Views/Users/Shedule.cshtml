@@ -97,7 +97,7 @@
 
                                             <div style="min-width:20px;max-width:20px;min-height:6px;background-color:#a758bf;"></div>
                                             <h3>@Model.times[t1].Times[t]</h3>
-
+                                            <br />
                                             <div class="div_coach">
                                                 <img src="@it.CoachPhoto" alt="photo">
                                                 <span style="padding: 3px;">@it.CoachName</span>
@@ -139,35 +139,36 @@
 
                                                 <div style="min-width:20px;max-width:20px;min-height:6px;background-color:coral;"></div>
                                                 <h3>@Model.times[t1].Times[t]</h3>
-                                             
+                                        <br />
                                                 <div class="div_coach">
                                                     <img src="@it.Coach.Photo" alt="photo">
                                                     <span style="padding: 3px;"> @it.Coach.Name</span>
                                                 </div>
-                                           
-                                                @if (it.Number > it.Users.Count)
+                                        @{
+                                            bool nflag = false;
+                                        }
+                                                @if ( it.Users.Count>0)
                                                 {
-                                                    bool nflag = false;
+                                                   
                                                     foreach (var us in it.Users)
                                                     {
                                                         if (us.Id == Convert.ToInt32(Context.Session.GetString("Id")))
+                                                        {
                                                             nflag = true;
-                                                    }
-
-                                                    if (!nflag)
-                                                    {
-
-                                                <a class="btn btn-outline-dark buttonsGY"  style="padding:2px;border-radius:3px;min-width:120px;text-align:center;max-height:30px;"  asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">@Resources.Resource.Subs</a>
-                                                    }
-                                                    else
-                                                    {
-                                                <span style="color:coral;font-size:15px;font-weight:bold">@Resources.Resource.YTr</span>
-                                                       
+                                                            <span style="color:coral;font-size:15px;font-weight:bold">@Resources.Resource.YTr</span>
+                                                        }
                                                     }
                                                 }
-                                                else
+                                                 @if (it.Number > it.Users.Count && !nflag)
+                                                 {
+                                           
+
+                                                      <a class="btn btn-outline-dark buttonsGY"  style="padding:2px;border-radius:3px;min-width:120px;text-align:center;max-height:30px;"  asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">@Resources.Resource.Subs</a>
+                                                    
+                                                 }
+                                                @if (it.Number <= it.Users.Count && !nflag)
                                                 {
-                                            <span class="whiteY">@Resources.Resource.NoAva</span>
+                                                      <span class="whiteY">@Resources.Resource.NoAva</span>
                                                 }
                                             </div>
                                           
