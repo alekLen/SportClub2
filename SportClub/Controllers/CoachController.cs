@@ -5,11 +5,13 @@ using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
 using SportClub.DAL.Interfaces;
+using SportClub.Filters;
 using SportClub.Models;
 using System.IO;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class CoachController : Controller
     {
         IWebHostEnvironment _appEnvironment;
@@ -398,7 +400,7 @@ namespace SportClub.Controllers
             if (day == 5)
                 return "Суббота";
             if (day == 6)
-                return "Воскрксенье";
+                return "Воскресенье";
             return null;
         }
 
@@ -461,8 +463,8 @@ namespace SportClub.Controllers
                         {
                             TrainingGrToSee train = new();
                             train.Id = tr.Id;
-                            //train.Group = await groupService.GetGroup(tr.GroupId);
-                            train.Room = room;
+                            RoomDTO room1 = await roomService.GetRoom(tr.RoomId);
+                            train.Room = room1;
                             train.Coach = await coachService.GetCoach(tr.CoachId);
                             IEnumerable<UserDTO> users = await trainingGroupService.GetTrainingGroupUsers(tr.Id);
                             train.Users = users.ToList();

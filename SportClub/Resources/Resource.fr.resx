@@ -657,4 +657,13 @@
   <data name="YTr" xml:space="preserve">
     <value>Votre entraînement</value>
   </data>
+  <data name="Free" xml:space="preserve">
+    <value>Gratuit</value>
+  </data>
+  <data name="NoUs" xml:space="preserve">
+    <value>Aucun client</value>
+  </data>
+  <data name="м" xml:space="preserve">
+    <value>Client</value>
+  </data>
 </root>

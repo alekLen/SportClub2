@@ -1,66 +1,194 @@
 ﻿
 @model TrainingsAllToSee
 
-<div class="whiteY">
+<div class="whiteY" >
     <h2 style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
-        Индивидуальные тренировки
+         @Resources.Resource.IndTr
     </h2>
 </div>
+<div class="marg whiteY" style="background-color:#a758bf; min-height:10px;min-width:100%"></div>
 <div class="flex" style="flex-wrap:wrap">
     @if (Model.trInds.Count == 0)
     {
-        <h4 class="green" style="padding:10px;">Не назначены</h4>
+        <div class="green div_reg2" style=" min-height:40px;min-width:100%">&nbsp;&nbsp;&nbsp;-- -- --</div>
     }
     else
     {
+        <div class="flex" style="flex-wrap:wrap">
         @foreach (var it in Model.trInds)
         {
-            <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);border-radius: 4px;" class="flex  marg">
-                <div class="padd1 " style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
-                    <div>
-                        <input type="hidden" name="time" value="@it.Time" readonly>
-                        <input type="hidden" value="@it.Day" />
-                        <p style="color:#EEE8AA;font-size:16px;text-align: center;font-weight: bold;margin-bottom:0px"> @it.DayName</p>
-                        <p style="color:#EEE8AA;font-size:20px;text-align: center;margin-top:-3px">@it.Time</p>
-                    </div>
+            <div class=" div_reg2" style="margin:5px;">
+            <div>
+               
+                    @if (it.Day == 0)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Mn</h2>
+                        
+                    }
+                    @if (it.Day == 1)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Tu</h2>
+                        
+                    }
+                    @if (it.Day == 2)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Wed</h2>
+                        
+                    }
+                    @if (it.Day == 3)
+                    {
+                       
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Th</h2>
+                       
+                    }
+                    @if (it.Day == 4)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Fr</h2>
+                       
+                    }
+                    @if (it.Day == 5)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sat</h2>
+                        
+                    }
+                    @if (it.Day == 6)
+                    {
+                        
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sun</h2>
+                       
+                    }
+               
+                <p style="color:#EEE8AA;font-size:20px;text-align: center;margin-top:-3px">@it.Time</p>
+            </div>
+            <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);" class="flex  marg">
+                
+                <div >
+                   
                     <img src="@it.Room.Photo" width="100" height="100" alt="Photo" style="background-color:wheat;margin: -10px auto 5px auto; border-radius: 4px;" />
 
                     <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Room.Name</p>
                 </div>
+                <div class="whiteY flex" style="flex-direction:column;justify-content:center;">
+                    <strong>@Resources.Resource.Us:<br /></strong>
+                    @if (it.User != null)
+                    {
+                        <p class="count_p" style="margin-bottom: -3px;height:48px;display:block">
+                            @it.User
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="count_p" style="margin-bottom: -3px;height:48px;display:block">
+                            @Resources.Resource.NoUs
+                        </p>
+                    }
+                </div>
+                </div>
             </div>
         }
+        </div>
     }
 </div>
-<div class="whiteY">
+<div class="whiteY" >
     <h2 style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
-        Групповые тренировки
+        @Resources.Resource.GrTr
     </h2>
 </div>
-
+<div class="marg whiteY" style="background-color:coral; min-height:10px;min-width:100%"></div>
 
 <div class="flex" style="flex-wrap:wrap">
     @if (Model.trGrs.Count == 0)
     {
-        <h4 class="green" style="padding:10px;">Не назначены</h4>
+        <div class="green div_reg2" style=" min-height:40px;min-width:100%">&nbsp;&nbsp;&nbsp;-- -- --</div>
     }
     else
     {
+        <div class="flex" style="flex-wrap:wrap">
         @foreach (var it in Model.trGrs)
         {
-            <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);border-radius: 4px;" class="flex  marg">
-                <div class="padd1 " style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
+                <div class=" div_reg2" style="margin:5px;">
                     <div>
-                        <input type="hidden" name="time" value="@it.Time" readonly>
-                        <input type="hidden" value="@it.Day" />
-                        <p style="color:#EEE8AA;font-size:16px;text-align: center;font-weight: bold;margin-bottom:0px"> @it.DayName</p>
+
+                        @if (it.Day == 0)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Mn</h2>
+
+                        }
+                        @if (it.Day == 1)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Tu</h2>
+
+                        }
+                        @if (it.Day == 2)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Wed</h2>
+
+                        }
+                        @if (it.Day == 3)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Th</h2>
+
+                        }
+                        @if (it.Day == 4)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Fr</h2>
+
+                        }
+                        @if (it.Day == 5)
+                        {
+
+                            <h2 class=" whiteY  div_reg2_1" style="text-align:center;">@Resources.Resource.Sat</h2>
+
+                        }
+                        @if (it.Day == 6)
+                        {
+
+                            <h2 class=" whiteY div_reg2_1" style="text-align:center;">@Resources.Resource.Sun</h2>
+
+                        }
+
                         <p style="color:#EEE8AA;font-size:20px;text-align: center;margin-top:-3px">@it.Time</p>
                     </div>
-                    <img src="@it.Room.Photo" width="100" height="100" alt="Photo" style="background-color:wheat;margin: -10px auto 5px auto; border-radius: 4px;" />
+                    <div style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);" class="flex  marg">
 
-                    <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Room.Name</p>
+                        <div>
+
+                            <img src="@it.Room.Photo" width="100" height="100" alt="Photo" style="background-color:wheat;margin: -10px auto 5px auto; border-radius: 4px;" />
+
+                            <p style="color:#EEE8AA;font-size:19px;text-align: center;margin-bottom:4px">@it.Room.Name</p>
+                        </div>
+                        <div class="whiteY flex" style="flex-direction:column;justify-content:center;">
+                            <strong>@Resources.Resource.Us:<br /></strong>
+                            @if (it.Users.Count >0)
+                            {
+                                <div style="overflow-y: scroll;overflow-x: hidden;">
+                                @foreach (var a in it.Users)
+                                {
+                                    <div class="whiteY" style="text-align:center;max-width:140px;">@a.Name</div>
+                                }
+                                </div>
+                            }
+                            else
+                            {
+                                <p class="count_p" style="margin-bottom: -3px;height:48px;display:block">
+                                    @Resources.Resource.NoUs
+                                </p>
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
       }
+        </div>
   }
 </div>
 

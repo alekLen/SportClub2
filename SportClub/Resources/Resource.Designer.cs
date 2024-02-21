@@ -97,6 +97,27 @@ namespace Resources {
                 return ResourceManager.GetString("OTeam", resourceCulture);
             }
         }
+        public static string NoUs
+        {
+            get
+            {
+                return ResourceManager.GetString("NoUs", resourceCulture);
+            }
+        }
+        public static string Us
+        {
+            get
+            {
+                return ResourceManager.GetString("Us", resourceCulture);
+            }
+        }
+        public static string Free
+        {
+            get
+            {
+                return ResourceManager.GetString("Free", resourceCulture);
+            }
+        }
         public static string Mn
         {
             get
