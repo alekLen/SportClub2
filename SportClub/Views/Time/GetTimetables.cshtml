@@ -1,70 +1,88 @@
 ﻿@*@model IEnumerable<SportClub.Models.TimetableShow>*@
- @model  MakeSheduleView
+ @model MakeSheduleView
 @{
     ViewData["Title"] = "Timetables";
 }
 
 <h4>Добавьте один из графиков в расписаиние:</h4>
 <div class="flex">
-    
+
     @foreach (var item in Model.times)
     {
-        <div class="padd1 marg">
-          <form method="post">
-               <input type="hidden" name="roomId" value="@Model.room.Id" />
-              <input type="hidden" name="id" value="@item.Id" />
-            @foreach (var t in item.Times)
-            {
-                <input type="text" value="@t" style="width:150px;"> <br />
-            }
-            <input type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary c2" />
+        <div class="padd1 marg" style="width:125px;background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
+            <form method="post">
+                <input type="hidden" name="roomId" value="@Model.room.Id" />
+                <input type="hidden" name="id" value="@item.Id" />
+                @foreach (var t in item.Times)
+                {
+                    <h5 type="text" style="width:100px;color:#EEE8AA;">@t</h5>
+                }
+                <input type="submit" style="padding-top:3px;padding-bottom:3px" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary buttonsGY" />
             </form>
         </div>
     }
-    <form method="post">
-        <div class="padd1 marg">
-    <input value="ВЫХОДНОЙ" readonly /><br />
-        <input type="hidden" name="roomId" value="@Model.room.Id" />
-        <input type="hidden" name="id" value=0 />
-    <input type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary c2" />
-   </div>
-</form>
+    <div class="padd1 marg" style="width:125px;background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
+        <form method="post">
+            @* <div class="padd1 marg" style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);"> *@
+                <h6 style="width:100px;color:#EEE8AA;">ВЫХОДНОЙ</h6>
+                <input type="hidden" name="roomId" value="@Model.room.Id" />
+                <input type="hidden" name="id" value=0 />
+                <input style="padding-top:3px;padding-bottom:3px" type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary buttonsGY" />
+            @* </div> *@
+        </form>
+    </div>
 </div>
 <div>
     <h1>@Model.room.Name</h1>
-    <table style="border-collapse: collapse; border: 1px solid black;">
+    <table class="shedule_table" style="border-collapse: collapse; border: 1px solid black;min-width:1136px;">
         <thead>
-        <th style=" padding: 8px; border: 1px solid black;">Понедельник</th>
-        <th style=" padding: 8px; border: 1px solid black;">Вторник</th>
-        <th style=" padding: 8px; border: 1px solid black;">Среда</th>
-        <th style=" padding: 8px; border: 1px solid black;">Четверг</th>
-        <th style=" padding: 8px; border: 1px solid black;">Пятница</th>
-        <th style=" padding: 8px; border: 1px solid black;">Суббота</th>
-        <th style=" padding: 8px; border: 1px solid black;">Воскресенье</th>
+            <tr>
+                <th style=" padding: 8px;width:162px ">Понедельник</th>
+                <th style=" padding: 8px;width:162px ">Вторник</th>
+                <th style=" padding: 8px;width:162px ">Среда</th>
+                <th style=" padding: 8px;width:162px ">Четверг</th>
+                <th style=" padding: 8px;width:162px ">Пятница</th>
+                <th style=" padding: 8px;width:162px ">Суббота</th>
+                <th style=" padding: 8px;width:162px ">Воскресенье</th>
+            </tr>
         </thead>
         <tbody>
-<tr>
-                @foreach (var item in Model.timesAdded)
+            <tr>
+                @if (Model.timesAdded.Count > 0)
                 {
-                    <td>
-                        <div class="padd1 marg">
-                        <input type="hidden" name="tId" value="@item.Id" />
-                                                                          
-                            @foreach (var t in item.Times)
-                            {
-                                <input type="text" value="@t" style="width:150px;"> <br />
-                            }                         
-                       </div>
-                    </td>
-                }
-</tr>
-</tbody>
-    </table>
-    <a asp-area="" asp-route-roId="@Model.room.Id" asp-controller="Time" asp-action="CancelAddTimetable" class="btn btn-primary padd1 buttons1">Отмена</a>
-</div>
+                    @foreach (var item in Model.timesAdded)
+                    {
+                        <td>
+                            <div class="sh_card" style="width:125px;background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
+                                <input type="hidden" name="tId" value="@item.Id" />
 
+                                @foreach (var t in item.Times)
+                                {
+                                    <h5 type="text" style="width:100px;color:#EEE8AA;">@t</h5>
+                                }
+                            </div>
+                        </td>
+                    }
+                }
+                else
+                {
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan="2" style="color:#EEE8AA">Графики не добавлены</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        </tbody>
+    </table>
+
+    @* </div> *@
+    <br />
     <form method="post">
         <input type="hidden" name="rId" value="@Model.room.Id" />
-        <input type="submit" asp-controller="Time" asp-action="SaveShedule" value="Сохранить график работы" class="btn btn-primary c2" />
+        <a asp-area="" asp-route-roId="@Model.room.Id" asp-controller="Time" asp-action="CancelAddTimetable" class="btn btn-primary buttonsGY">Отмена</a>
+        <input type="submit" asp-controller="Time" asp-action="SaveShedule" value="Сохранить график работы" class="btn btn-primary buttonsGY" />
     </form>
 </div>
