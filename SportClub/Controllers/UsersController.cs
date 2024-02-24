@@ -539,7 +539,7 @@ namespace SportClub.Controllers
                 trgroupdto.UsersId.Add(await userService.GetUser(userId));
                 await trainingGroupService.UpdateTrainingGroup(trgroupdto);
 
-                return RedirectToAction("Room_Shedule", "Users");
+                return RedirectToAction("Shedule", "Users", new { RoomId = roomId });
             }
             return View("Index", "Home");
         }
