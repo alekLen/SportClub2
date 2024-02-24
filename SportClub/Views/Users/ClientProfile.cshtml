@@ -22,7 +22,7 @@
                     <input asp-for="Name" class="form-control" type="text" class="font" style="width: 420px" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
-
+                <input type="hidden" asp-for="Id" />
                 <div class="form-group" style="margin-left: 70px">
                     <label asp-for="Login" class="control-label font white-color_size20 color_text">@Resources.Resource.Login:</label>
                     <input asp-for="Login" class="form-control" type="text" class="font" style="width: 420px" id="login" />
@@ -62,9 +62,9 @@
         </div>
         <br />
         <div class="form-group" style="margin-left: 66px;padding-bottom:20px;">
-            <input type="submit" style="margin-right: 10px" class="btn btn-outline-light buttonsGY" formaction="EditAdminProfile" value="@Resources.Resource.Edit" />
-            <input class="btn btn-outline-light buttonsGY" style="margin-right: 10px" formaction="ChangeAdminPassword" type="submit" value="@Resources.Resource.changePassword" />
-            <input type="submit" class="btn btn-outline-light buttonsGY" formaction="DeleteAdminProfile" value="@Resources.Resource.DeleteAndExit" />
+            <input type="submit" style="margin-right: 10px" class="btn btn-outline-light buttonsGY" formaction="EditClientProfile" value="@Resources.Resource.Edit" />
+            <input class="btn btn-outline-light buttonsGY" style="margin-right: 10px" formaction="ChangeClientPassword" type="submit" value="@Resources.Resource.changePassword" />
+            <input type="submit" class="btn btn-outline-light buttonsGY" formaction="DeleteClientProfile" value="@Resources.Resource.DeleteAndExit" />
         </div>
         <br />
     </form>

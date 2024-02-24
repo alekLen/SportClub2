@@ -118,6 +118,13 @@ namespace Resources {
                 return ResourceManager.GetString("old", resourceCulture);
             }
         }
+        public static string number
+        {
+            get
+            {
+                return ResourceManager.GetString("number", resourceCulture);
+            }
+        }
         public static string Free
         {
             get

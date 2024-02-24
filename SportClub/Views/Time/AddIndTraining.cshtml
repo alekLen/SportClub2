@@ -9,7 +9,7 @@
 
 
         <div class="div_reg2">
-        <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">Добавление тренировки</p>
+        <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">@Resources.Resource.IndTr</p>
     <hr class="whiteY"/>
         <div class="row">
         <div>
@@ -24,7 +24,7 @@
         <input  name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px"/>
         </div><br />
         <div class="form-group" style="margin-left: 40px">
-        <label style=" font-size: 16px;" class="font whiteY">Выбрать тренера</label>
+                                <label style=" font-size: 16px;" class="font whiteY">@Resources.Resource.Coaches</label>
         <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
         <div >
                                     <br /><br />

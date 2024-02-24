@@ -663,6 +663,9 @@
   <data name="NoUs" xml:space="preserve">
     <value>Aucun client</value>
   </data>
+  <data name="number" xml:space="preserve">
+    <value>Nombre de personnes dans le groupe</value>
+  </data>
   <data name="old" xml:space="preserve">
     <value>Entrez l'ancien mot de passe</value>
   </data>

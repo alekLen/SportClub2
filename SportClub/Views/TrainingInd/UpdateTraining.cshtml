@@ -1,9 +1,10 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
-<div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
-    <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-		<span>Информация о тренировке</span>
+<div class="flex" style="justify-content:center">
+<div style=" width: 500px; " class="div_reg2">
+    <p class="font whiteY" style="font-size: 32px; padding-top: 30px; text-align: center">
+		<span>@Resources.Resource.IndTr</span>
     </p>
-    <hr style="color:white" />
+    <hr class="whiteY" />
     <div class="row">
         <div>
 <form action="EditTraining" method="post">
@@ -17,27 +18,28 @@
         <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px"/><br /> 
         </div>
         <div style="margin-left: 40px">
-        <span class="font" style="color: white">Тренер</span><br/>
+        <span class="font" style="color: white">@Resources.Resource.Coaches</span><br/>
         <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px"/><br />
         </div>
         <div class="form-group" style="margin-left: 40px">
-            <label style="color: white; font-size: 16px;" class="font">Изменить клиента</label>
+                            <label style="color: white; font-size: 16px;" class="font">@Resources.Resource.Us</label>
             <select asp-for="Id" name="userId" class="form-control card _c7" class="font" style="width: 420px" asp-items="ViewBag.UserId"></select>
         </div>
         <br /><br />
         <div style="margin-left: 5px">
-            <input type="submit" value="Изменить клиента" class="btn btn-outline-light"/>
-            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light btnDelTR" id="@Model.Id">Удалить тренировку</a>
-            <a class="btn btn-outline-light" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="CancelAppointment">Отменить запись</a>
+                            <input type="submit" value="@Resources.Resource.Confirm" class="btn btn-outline-light buttonsGY" />
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light btnDelTR buttonsGY" id="@Model.Id">@Resources.Resource.Delete</a>
+                            <a class="btn btn-outline-light buttonsGY" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="CancelAppointment">@Resources.Resource.Cancel</a>
         </div>
         <br /><br />
         
 
     </div>
 </form>
-<div/>
-<div />
-<div />
+        </div>
+    </div>
+</div>
+</div>
             <script src="~/lib/jquery/dist/jquery.min.js"></script>
             <script>
                 $(document).ready(function () {

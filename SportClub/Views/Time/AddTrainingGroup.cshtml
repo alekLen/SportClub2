@@ -10,7 +10,7 @@
 
     
         <div class="div_reg2">
-            <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">Добавление тренировки</p>
+            <p class="font whiteY" style="font-size: 32px;  padding-top: 30px; text-align: center">@Resources.Resource.GrTr</p>
             <hr class="whiteY" />
             <div class="row">
                 <div>
@@ -27,20 +27,20 @@
 
                     </div><br />
                     <div class="form-group" style="margin-left: 70px">
-                        <label style=" font-size: 16px;" class="font whiteY">Выбрать тренера</label>
+                                <label style=" font-size: 16px;" class="font whiteY">@Resources.Resource.Coaches</label>
                         <select asp-for="Id" name="coachId" class="form-control card _c7" class="font" asp-items="ViewBag.CoachId" style="width: 420px"></select>
 
 
                         <div class="form-group" >
-                            <label asp-for="Number" class="control-label font white-color_size20"></label>
+                                    <label asp-for="Number" class="control-label font whiteY">@Resources.Resource.number</label>
                             <input asp-for="Number" id="number" type="number" value="1" min="1" placeholder="1" class="form-control" style="width: 420px">
                             <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
                         </div>
                     </div>
                     <br /><br />
                     <div style="margin-left: 200px">
-                        
-                        <input type="submit" value="Сохранить" formaction="ToAddTrainingGroup" class="btn btn-outline-light buttonsGY" />
+
+                                <input type="submit" value="@Resources.Resource.Add" formaction="ToAddTrainingGroup" class="btn btn-outline-light buttonsGY" />
                     </div>
                     <br /><br />
                 </div>

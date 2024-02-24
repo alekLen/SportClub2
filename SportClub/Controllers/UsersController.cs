@@ -159,6 +159,7 @@ namespace SportClub.Controllers
             }
             return View("PutPassword");
         }
+        [HttpPost]
         public async Task<IActionResult> SaveNewPassword(CangePasswordModel m)
         {
             UserDTO u = await userService.GetUser(m.Id);
@@ -166,7 +167,7 @@ namespace SportClub.Controllers
             if (!string.IsNullOrEmpty(pass) && u != null)
             {
                 await userService.ChangeUserPassword(u, pass);
-                return RedirectToAction("ClientProfile");
+                return View("YouChangedPassword");
             }
             return RedirectToAction("ClientProfile");
         }
