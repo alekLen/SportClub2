@@ -203,6 +203,265 @@ namespace Resources {
                 return ResourceManager.GetString("Ind", resourceCulture);
             }
         }
+        public static string Discount30
+        {
+            get
+            {
+                return ResourceManager.GetString("Discount30", resourceCulture);
+            }
+        }
+        public static string PhNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("PhNumber", resourceCulture);
+            }
+        }
+        public static string GroupTraining
+        {
+            get
+            {
+                return ResourceManager.GetString("GroupTraining", resourceCulture);
+            }
+        }
+        public static string Info_div_1_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_1_1", resourceCulture);
+            }
+        }
+        public static string Info_div_1_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_1_2", resourceCulture);
+            }
+        }
+        public static string Info_div_1_3
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_1_3", resourceCulture);
+            }
+        }
+        public static string Info_div_1_4
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_1_4", resourceCulture);
+            }
+        }
+        public static string Info_div_2_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_2_1", resourceCulture);
+            }
+        }
+        public static string Info_div_2_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_2_2", resourceCulture);
+            }
+        }
+        public static string Info_div_3_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_3_1", resourceCulture);
+            }
+        }
+        public static string Info_div_3_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_3_2", resourceCulture);
+            }
+        }
+        public static string Info_div_4_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_4_1", resourceCulture);
+            }
+        }
+        public static string Info_div_4_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_4_2", resourceCulture);
+            }
+        }
+        public static string Info_div_5_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_5_1", resourceCulture);
+            }
+        }
+        public static string Info_div_5_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_5_2", resourceCulture);
+            }
+        }
+        public static string Info_div_6_1
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_6_1", resourceCulture);
+            }
+        }
+        public static string Info_div_6_2
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_6_2", resourceCulture);
+            }
+        }
+        public static string Info_div_6_3
+        {
+            get
+            {
+                return ResourceManager.GetString("Info_div_6_3", resourceCulture);
+            }
+        }
+        public static string TrainingRooms
+        {
+            get
+            {
+                return ResourceManager.GetString("TrainingRooms", resourceCulture);
+            }
+        }
+        public static string Pool
+        {
+            get
+            {
+                return ResourceManager.GetString("Pool", resourceCulture);
+            }
+        }
+        public static string Sauna
+        {
+            get
+            {
+                return ResourceManager.GetString("Sauna", resourceCulture);
+            }
+        }
+        public static string ChildrensRoom
+        {
+            get
+            {
+                return ResourceManager.GetString("ChildrensRoom", resourceCulture);
+            }
+        }
+        public static string Massage
+        {
+            get
+            {
+                return ResourceManager.GetString("Massage", resourceCulture);
+            }
+        }
+        public static string OneMonth
+        {
+            get
+            {
+                return ResourceManager.GetString("OneMonth", resourceCulture);
+            }
+        }
+        public static string OneDay
+        {
+            get
+            {
+                return ResourceManager.GetString("OneDay", resourceCulture);
+            }
+        }
+        public static string Freeze30Days
+        {
+            get
+            {
+                return ResourceManager.GetString("Freeze30Days", resourceCulture);
+            }
+        }
+        public static string OneYear
+        {
+            get
+            {
+                return ResourceManager.GetString("OneYear", resourceCulture);
+            }
+        }
+        public static string OurTeam
+        {
+            get
+            {
+                return ResourceManager.GetString("OurTeam", resourceCulture);
+            }
+        }
+        public static string Up
+        {
+            get
+            {
+                return ResourceManager.GetString("Up", resourceCulture);
+            }
+        }
+        public static string SportIsHealth
+        {
+            get
+            {
+                return ResourceManager.GetString("SportIsHealth", resourceCulture);
+            }
+        }
+        public static string Pilates
+        {
+            get
+            {
+                return ResourceManager.GetString("Pilates", resourceCulture);
+            }
+        }
+        public static string YogaClasses
+        {
+            get
+            {
+                return ResourceManager.GetString("YogaClasses", resourceCulture);
+            }
+        }
+        public static string Crossfit
+        {
+            get
+            {
+                return ResourceManager.GetString("Crossfit", resourceCulture);
+            }
+        }
+        public static string IndividualTraining
+        {
+            get
+            {
+                return ResourceManager.GetString("IndividualTraining", resourceCulture);
+            }
+        }
+        public static string AdditionalDiscount10
+        {
+            get
+            {
+                return ResourceManager.GetString("AdditionalDiscount10", resourceCulture);
+            }
+        }
+        public static string OpeningIsSoon
+        {
+            get
+            {
+                return ResourceManager.GetString("OpeningIsSoon", resourceCulture);
+            }
+        }
+        public static string HurryToPurchase
+        {
+            get
+            {
+                return ResourceManager.GetString("HurryToPurchase", resourceCulture);
+            }
+        }
         public static string Gr
         {
             get

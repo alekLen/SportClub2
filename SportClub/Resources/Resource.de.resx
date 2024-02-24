@@ -672,4 +672,115 @@
   <data name="Us" xml:space="preserve">
     <value>Klient</value>
   </data>
+  <data name="AdditionalDiscount10" xml:space="preserve">
+    <value>Beim Kauf von zwei oder mehr Abonnements zusätzlich 10 % Rabatt</value>
+  </data>
+  <data name="Discount30" xml:space="preserve">
+    <value>Bis zum Monatsende 30 % Rabatt</value>
+  </data>
+  <data name="GroupTraining" xml:space="preserve">
+    <value>Gruppentraining</value>
+  </data>
+  <data name="HurryToPurchase" xml:space="preserve">
+    <value>Beeilen Sie sich und kaufen Sie Ihre Tickets</value>
+  </data>
+  <data name="IndividualTraining" xml:space="preserve">
+    <value>Individuelles Training</value>
+  </data>
+  <data name="OpeningIsSoon" xml:space="preserve">
+    <value>Bald eröffnet ein neues Fitnessstudio</value>
+  </data>
+  <data name="PhNumber" xml:space="preserve">
+    <value>Tel.: +380971231231</value>
+  </data>
+  <data name="SportIsHealth" xml:space="preserve">
+    <value>Sport ist Gesundheit</value>
+  </data>
+  <data name="Info_div_1_1" xml:space="preserve">
+    <value>Sportliche Aktivitäten tragen zur Verbesserung der Blutversorgung der Muskeln und zur Regulierung des Nervensystems bei.</value>
+  </data>
+  <data name="Info_div_1_2" xml:space="preserve">
+    <value>Ihr Körper wird nicht nur schöner und fitter, auch Ihre Nerven werden deutlich stärker!</value>
+  </data>
+  <data name="Info_div_1_3" xml:space="preserve">
+    <value>Regelmäßige Bewegung stärkt die Immunität und verbessert das Wohlbefinden.</value>
+  </data>
+  <data name="Info_div_1_4" xml:space="preserve">
+    <value>Während des Trainings produziert der Körper Endorphine.</value>
+  </data>
+  <data name="Info_div_2_1" xml:space="preserve">
+    <value>Gruppentraining schafft eine einzigartige Trainingsatmosphäre. Sie sind so gestaltet, dass sich alle Teilnehmer möglichst wohl fühlen, entspannen können und sich nicht durch ihre Bewegungen und die Anwesenheit anderer Menschen schämen. Wir bieten eine Vielzahl von Gruppenprogrammen in verschiedenen Bereichen an.</value>
+  </data>
+  <data name="Info_div_2_2" xml:space="preserve">
+    <value>Sie können wählen, was Ihnen gefällt, das Training kombinieren und mehrere Kurse gleichzeitig besuchen.</value>
+  </data>
+  <data name="Info_div_3_1" xml:space="preserve">
+    <value>Mit einem persönlichen Fitnesstrainer können Sie bequem trainieren und in kürzester Zeit die gewünschten Ergebnisse erzielen. Während des Trainingsprozesses schenkt der Ausbilder seine ganze Aufmerksamkeit einer Person, kann Fehler vermeiden und hilft, die Technik der Übungsausführung strikt einzuhalten.</value>
+  </data>
+  <data name="Info_div_3_2" xml:space="preserve">
+    <value>Eine individuelle Herangehensweise an den Kunden gewährleistet das beste Ergebnis.</value>
+  </data>
+  <data name="ChildrensRoom" xml:space="preserve">
+    <value>Kinderzimmer</value>
+  </data>
+  <data name="Crossfit" xml:space="preserve">
+    <value>Crossfit</value>
+  </data>
+  <data name="Freeze30Days" xml:space="preserve">
+    <value>60 Tage einfrieren</value>
+  </data>
+  <data name="Info_div_4_1" xml:space="preserve">
+    <value>Pilates beansprucht tiefe Muskelschichten, die bei anderen Sportarten nicht funktionieren.</value>
+  </data>
+  <data name="Info_div_4_2" xml:space="preserve">
+    <value>Gymnastik korrigiert die Körperhaltung, lindert Erkrankungen des Bewegungsapparates, erhöht die Elastizität der Oberschenkel- und Gesäßmuskulatur, normalisiert die Funktion des Herz-Kreislauf- und Nervensystems und verbessert die Konzentration.</value>
+  </data>
+  <data name="Info_div_5_1" xml:space="preserve">
+    <value>CrossFit ist eine hochintensive Sportart, die Elemente aus Cardio, Aerobic, Gewichtheben, Gymnastik und Rudern umfasst.</value>
+  </data>
+  <data name="Info_div_5_2" xml:space="preserve">
+    <value>Durch Sport können Sie Ihren Körper schnell von Übergewicht befreien. Sie wirken sich wirkungsvoll auf das Erscheinungsbild aus – Männer bemerken die Entlastung und voluminöse Muskulatur des Körpers, Frauen erhalten schöne athletische Formen und Flexibilität.</value>
+  </data>
+  <data name="Info_div_6_1" xml:space="preserve">
+    <value>Yoga verbessert das Gleichgewicht, die Koordination und das Gleichgewicht durch kontrollierte Bewegungen, Konzentration und statische Positionen.</value>
+  </data>
+  <data name="Info_div_6_2" xml:space="preserve">
+    <value>Yoga hilft Ihnen, Ihre Ausdauer zu steigern, Ihre Knochen und Muskeln zu stärken und flexibler und beweglicher zu werden.</value>
+  </data>
+  <data name="Info_div_6_3" xml:space="preserve">
+    <value>In unseren Yogakursen lernst du deinen Körper auf eine neue Art kennen.</value>
+  </data>
+  <data name="Massage" xml:space="preserve">
+    <value>Massage</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>ein Tag</value>
+  </data>
+  <data name="OneMonth" xml:space="preserve">
+    <value>ein Monat</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>ein Jahr</value>
+  </data>
+  <data name="OurTeam" xml:space="preserve">
+    <value>Unser Team</value>
+  </data>
+  <data name="Pilates" xml:space="preserve">
+    <value>Pilates</value>
+  </data>
+  <data name="Pool" xml:space="preserve">
+    <value>Schwimmbad</value>
+  </data>
+  <data name="Sauna" xml:space="preserve">
+    <value>Sauna</value>
+  </data>
+  <data name="TrainingRooms" xml:space="preserve">
+    <value>Schulungsräume</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>hoch</value>
+  </data>
+  <data name="YogaClasses" xml:space="preserve">
+    <value>Yoga-Kurse</value>
+  </data>
 </root>

@@ -681,4 +681,115 @@
   <data name="Us" xml:space="preserve">
     <value>Клиент</value>
   </data>
+  <data name="AdditionalDiscount10" xml:space="preserve">
+    <value>При покупке двух и более абонементов дополнительная скидка 10%</value>
+  </data>
+  <data name="Discount30" xml:space="preserve">
+    <value>До конца месяца скидка 30%</value>
+  </data>
+  <data name="GroupTraining" xml:space="preserve">
+    <value>Групповые тренировки</value>
+  </data>
+  <data name="HurryToPurchase" xml:space="preserve">
+    <value>Поспешите приобрести абонементы</value>
+  </data>
+  <data name="IndividualTraining" xml:space="preserve">
+    <value>Индивидуальные тренировки</value>
+  </data>
+  <data name="OpeningIsSoon" xml:space="preserve">
+    <value>Скоро открытие нового спортзала</value>
+  </data>
+  <data name="PhNumber" xml:space="preserve">
+    <value>тел: +380971231231</value>
+  </data>
+  <data name="SportIsHealth" xml:space="preserve">
+    <value>Спорт Это здоровье</value>
+  </data>
+  <data name="Info_div_1_1" xml:space="preserve">
+    <value>Спортивные нагрузки помогают улучшить кровоснабжение мышц и регуляцию деятельности нервной системы.</value>
+  </data>
+  <data name="Info_div_1_2" xml:space="preserve">
+    <value>Не только ваше тело станет красивее и подтянутее, но и ваши нервы станут значительно крепче!</value>
+  </data>
+  <data name="Info_div_1_3" xml:space="preserve">
+    <value>Регулярные занятия спортом повышают иммунитет и улучшают самочувствие.</value>
+  </data>
+  <data name="Info_div_1_4" xml:space="preserve">
+    <value>Во время тренировки организм вырабатывает эндорфины.</value>
+  </data>
+  <data name="Info_div_2_1" xml:space="preserve">
+    <value>Групповые тренировки создают уникальную атмосферу занятий. Составляются таким образом, чтобы все занимающиеся чувствовали себя максимально комфортно, могли расслабиться и не стесняться своих движений и присутствия других людей. У нас представлено огромное количество групповых программ по различным направлениям.</value>
+  </data>
+  <data name="Info_div_2_2" xml:space="preserve">
+    <value>Вы можете выбрать то, что Вам по душе, комбинировать тренировки, посещая параллельно сразу несколько занятий.</value>
+  </data>
+  <data name="Info_div_3_1" xml:space="preserve">
+    <value>Личный тренер по фитнесу позволит вам комфортно заниматься и в кратчайшие сроки достигать желаемых результатов. В процессе тренировки инструктор все внимание уделяет одному человеку, сможет предупредить ошибки, поможет строго соблюдать технику выполнения упражнений.</value>
+  </data>
+  <data name="Info_div_3_2" xml:space="preserve">
+    <value>Индивидуальный  подход к клиенту обеспечит наилучший результат.</value>
+  </data>
+  <data name="ChildrensRoom" xml:space="preserve">
+    <value>детская комната</value>
+  </data>
+  <data name="Crossfit" xml:space="preserve">
+    <value>Кроссфит</value>
+  </data>
+  <data name="Freeze30Days" xml:space="preserve">
+    <value>Заморозка 60 дней</value>
+  </data>
+  <data name="Info_div_4_1" xml:space="preserve">
+    <value>В время пилатеса задействуются глубокие слои мышц, которые не функционируют при других видах спорта.</value>
+  </data>
+  <data name="Info_div_4_2" xml:space="preserve">
+    <value>Гимнастика исправляют осанку, избавляют от заболеваний опорно-двигательного аппарата, повышают эластичность мышц бедер и ягодиц, нормализуют работу сердечно-сосудистой, нервной систем и улучшают концентрацию внимания.</value>
+  </data>
+  <data name="Info_div_5_1" xml:space="preserve">
+    <value>Кроссфит – это высокоинтенсивный вид спорта, включающий элементы кардио, аэробики, тяжелой атлетики, спортивной гимнастики и гребли.</value>
+  </data>
+  <data name="Info_div_5_2" xml:space="preserve">
+    <value>Тренировки позволяют быстро избавить тело от лишнего веса. Эффективно воздействуют на внешний вид – мужчины отмечают рельеф и объемную мускулатуру тела, женщины получают красивые спортивные формы и гибкость.</value>
+  </data>
+  <data name="Info_div_6_1" xml:space="preserve">
+    <value>Занятия йогой улучшают равновесие, координацию и чувство баланса, ведь предусматривают выполнение контролируемых движений, концентрацию внимания и статические позиции.</value>
+  </data>
+  <data name="Info_div_6_2" xml:space="preserve">
+    <value>Йога помогает повысить выносливость, укрепить кости и мышцы и стать более гибкими и подвижными.</value>
+  </data>
+  <data name="Info_div_6_3" xml:space="preserve">
+    <value>На наших занятиях йогой вы узнаете свое тело поновому.</value>
+  </data>
+  <data name="Massage" xml:space="preserve">
+    <value>Массаж</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>один день</value>
+  </data>
+  <data name="OneMonth" xml:space="preserve">
+    <value>один месяц</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>один год</value>
+  </data>
+  <data name="OurTeam" xml:space="preserve">
+    <value>Наша команда</value>
+  </data>
+  <data name="Pilates" xml:space="preserve">
+    <value>Пилатес</value>
+  </data>
+  <data name="Pool" xml:space="preserve">
+    <value>бассейн</value>
+  </data>
+  <data name="Sauna" xml:space="preserve">
+    <value>сауна</value>
+  </data>
+  <data name="TrainingRooms" xml:space="preserve">
+    <value>Залы для тренировок</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>вверх</value>
+  </data>
+  <data name="YogaClasses" xml:space="preserve">
+    <value>Занятия йогой</value>
+  </data>
 </root>

@@ -624,6 +624,117 @@
   <data name="Ind" xml:space="preserve">
     <value>individuelle</value>
   </data>
+  <data name="AdditionalDiscount10" xml:space="preserve">
+    <value>A l'achat de deux abonnements ou plus, une remise supplémentaire de 10%</value>
+  </data>
+  <data name="Discount30" xml:space="preserve">
+    <value>Jusqu'à la fin du mois 30% de réduction</value>
+  </data>
+  <data name="GroupTraining" xml:space="preserve">
+    <value>Formation de groupe</value>
+  </data>
+  <data name="HurryToPurchase" xml:space="preserve">
+    <value>Dépêchez-vous d'acheter vos billets</value>
+  </data>
+  <data name="IndividualTraining" xml:space="preserve">
+    <value>Formation individuelle</value>
+  </data>
+  <data name="OpeningIsSoon" xml:space="preserve">
+    <value>Bientôt une nouvelle salle de sport ouverte</value>
+  </data>
+  <data name="PhNumber" xml:space="preserve">
+    <value>tél: +380971231231</value>
+  </data>
+  <data name="SportIsHealth" xml:space="preserve">
+    <value>Le sport, c'est la santé</value>
+  </data>
+  <data name="Info_div_1_1" xml:space="preserve">
+    <value>Les activités sportives contribuent à améliorer l’apport sanguin aux muscles et la régulation du système nerveux.</value>
+  </data>
+  <data name="Info_div_1_2" xml:space="preserve">
+    <value>Non seulement votre corps deviendra plus beau et plus en forme, mais vos nerfs deviendront également beaucoup plus forts !</value>
+  </data>
+  <data name="Info_div_1_3" xml:space="preserve">
+    <value>L'exercice régulier améliore l'immunité et améliore le bien-être.</value>
+  </data>
+  <data name="Info_div_1_4" xml:space="preserve">
+    <value>Pendant l’exercice, le corps produit des endorphines.</value>
+  </data>
+  <data name="Info_div_2_1" xml:space="preserve">
+    <value>La formation en groupe crée une atmosphère de formation unique. Ils sont conçus de manière à ce que tous les participants se sentent le plus à l'aise possible, puissent se détendre et ne pas être gênés par leurs mouvements et la présence d'autres personnes. Nous proposons un grand nombre de programmes de groupe dans divers domaines.</value>
+  </data>
+  <data name="Info_div_2_2" xml:space="preserve">
+    <value>Vous pouvez choisir ce que vous aimez, combiner des formations, suivre plusieurs cours en même temps.</value>
+  </data>
+  <data name="Info_div_3_1" xml:space="preserve">
+    <value>Un entraîneur personnel vous permettra de vous entraîner confortablement et d'obtenir les résultats souhaités dans les plus brefs délais. Pendant le processus de formation, l'instructeur accorde toute son attention à une seule personne, saura éviter les erreurs et aidera à suivre strictement la technique d'exécution des exercices.</value>
+  </data>
+  <data name="Info_div_3_2" xml:space="preserve">
+    <value>Une approche individuelle du client garantira le meilleur résultat.</value>
+  </data>
+  <data name="ChildrensRoom" xml:space="preserve">
+    <value>la Chambre des enfants</value>
+  </data>
+  <data name="Crossfit" xml:space="preserve">
+    <value>Crossfit</value>
+  </data>
+  <data name="Freeze30Days" xml:space="preserve">
+    <value>Congeler 60 jours</value>
+  </data>
+  <data name="Info_div_4_1" xml:space="preserve">
+    <value>Le Pilates utilise des couches profondes de muscles qui ne fonctionnent pas dans d’autres sports.</value>
+  </data>
+  <data name="Info_div_4_2" xml:space="preserve">
+    <value>La gymnastique corrige la posture, soulage les maladies du système musculo-squelettique, augmente l'élasticité des muscles des cuisses et des fesses, normalise le fonctionnement des systèmes cardiovasculaire et nerveux et améliore la concentration.</value>
+  </data>
+  <data name="Info_div_5_1" xml:space="preserve">
+    <value>Le CrossFit est un sport de haute intensité qui comprend des éléments de cardio, d'aérobic, d'haltérophilie, de gymnastique et d'aviron.</value>
+  </data>
+  <data name="Info_div_5_2" xml:space="preserve">
+    <value>L'exercice vous permet de débarrasser rapidement votre corps de l'excès de poids. Ils ont un effet efficace sur l'apparence - les hommes remarquent le relief et les muscles volumineux du corps, les femmes obtiennent de belles formes athlétiques et de la flexibilité.</value>
+  </data>
+  <data name="Info_div_6_1" xml:space="preserve">
+    <value>Le yoga améliore l'équilibre, la coordination et l'équilibre grâce à des mouvements contrôlés, à la concentration et à des positions statiques.</value>
+  </data>
+  <data name="Info_div_6_2" xml:space="preserve">
+    <value>Le yoga vous aide à augmenter votre endurance, à renforcer vos os et vos muscles et à devenir plus flexible et mobile.</value>
+  </data>
+  <data name="Info_div_6_3" xml:space="preserve">
+    <value>Dans nos cours de yoga, vous apprendrez à connaître votre corps d'une nouvelle manière.</value>
+  </data>
+  <data name="Massage" xml:space="preserve">
+    <value>Massage</value>
+  </data>
+  <data name="OneDay" xml:space="preserve">
+    <value>un jour</value>
+  </data>
+  <data name="OneMonth" xml:space="preserve">
+    <value>un mois</value>
+  </data>
+  <data name="OneYear" xml:space="preserve">
+    <value>un ans</value>
+  </data>
+  <data name="OurTeam" xml:space="preserve">
+    <value>Notre équipe</value>
+  </data>
+  <data name="Pilates" xml:space="preserve">
+    <value>Pilates</value>
+  </data>
+  <data name="Pool" xml:space="preserve">
+    <value>piscine</value>
+  </data>
+  <data name="Sauna" xml:space="preserve">
+    <value>sauna</value>
+  </data>
+  <data name="TrainingRooms" xml:space="preserve">
+    <value>Salles de formation</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>en haut</value>
+  </data>
+  <data name="YogaClasses" xml:space="preserve">
+    <value>Cours de yoga</value>
+  </data>
   <data name="Fr" xml:space="preserve">
     <value>Ven</value>
   </data>
