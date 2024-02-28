@@ -60,48 +60,50 @@ namespace SportClub.BLL.Services
         public async Task<TrainingGroupDTO> GetTrainingGroup(int id)
         {
             TrainingGroup a = await Database.TrainingGroups.Get(id);
-            if (a == null)
-                throw new ValidationException("Wrong", "");
-            string str = "";
-            if (a.Day == 0) str = "Понедельник";
-            else if (a.Day == 1) str = "Вторник";
-            else if (a.Day == 2) str = "Среда";
-            else if (a.Day == 3) str = "Четверг";
-            else if (a.Day == 4) str = "Пятница";
-            else if (a.Day == 5) str = "Суббота";
-            else if (a.Day == 6) str = "Воскресенье";
-
-            try
+            if (a != null)
             {
+                string str = "";
+                if (a.Day == 0) str = "Понедельник";
+                else if (a.Day == 1) str = "Вторник";
+                else if (a.Day == 2) str = "Среда";
+                else if (a.Day == 3) str = "Четверг";
+                else if (a.Day == 4) str = "Пятница";
+                else if (a.Day == 5) str = "Суббота";
+                else if (a.Day == 6) str = "Воскресенье";
 
-                TrainingGroupDTO dTO = new TrainingGroupDTO();
-                dTO.Id = a.Id;//
-                dTO.Name = a.Name;
-                dTO.Time = a.Time;
-                dTO.Day = a.Day;
-                dTO.DayName = str;
-                dTO.RoomId = a.Room.Id;
-                dTO.RoomName = a.Room.Name;
-                dTO.CoachId = a.Coach.Id;
-                dTO.CoachName = a.Coach.Name;
-
-                //dTO.GroupId = a.Group.Id;
-                //dTO.GroupName = a.Group.Name;
-                dTO.Number = a.Number;
-                dTO.UsersId = new List<UserDTO>();
-                foreach (var users in a.users)
+                try
                 {
-                    UserDTO userDTO = new UserDTO();
-                    var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
-                    var mapper = new Mapper(config);
-                    userDTO = mapper.Map<UserDTO>(users);
-                    dTO.UsersId.Add(userDTO);
 
+                    TrainingGroupDTO dTO = new TrainingGroupDTO();
+                    dTO.Id = a.Id;//
+                    dTO.Name = a.Name;
+                    dTO.Time = a.Time;
+                    dTO.Day = a.Day;
+                    dTO.DayName = str;
+                    dTO.RoomId = a.Room.Id;
+                    dTO.RoomName = a.Room.Name;
+                    dTO.CoachId = a.Coach.Id;
+                    dTO.CoachName = a.Coach.Name;
+
+                    //dTO.GroupId = a.Group.Id;
+                    //dTO.GroupName = a.Group.Name;
+                    dTO.Number = a.Number;
+                    dTO.UsersId = new List<UserDTO>();
+                    foreach (var users in a.users)
+                    {
+                        UserDTO userDTO = new UserDTO();
+                        var config = new MapperConfiguration(cfg => cfg.CreateMap<User, UserDTO>());
+                        var mapper = new Mapper(config);
+                        userDTO = mapper.Map<UserDTO>(users);
+                        dTO.UsersId.Add(userDTO);
+
+                    }
+
+                    return dTO;// 
                 }
-
-                return dTO;// 
+                catch { return null; }
             }
-            catch { return null; }
+            return null;
         }
         
         public async Task<IEnumerable<TrainingGroupDTO>> GetAllTrainingGroups()
@@ -202,7 +204,7 @@ namespace SportClub.BLL.Services
         {
             TrainingGroup a = await Database.TrainingGroups.Get(id);
             if (a == null)
-                throw new ValidationException("Wrong", "");
+                return null;
 
             string str = "";
             if (a.Day == 0) str = "Понедельник";

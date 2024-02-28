@@ -3,10 +3,13 @@
 @{
     ViewData["Title"] = "CoachProfile";
 }
+@* 
+<div class="container2">
 <img src=@Model.Photo width="100" height="100" alt="photo" />
 <form method="get" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
-    <div class="card c22">
+    <div class="row" style="padding-top: 30px;">
+      <div class="column">
         @Html.ValidationSummary(true, "")
         <div>
             @Html.DisplayNameFor(model => model.Name)
@@ -19,8 +22,7 @@
         <div>
             @Html.DisplayNameFor(model => model.Login)
             <div>
-                @Html.EditorFor(model => model.Login, new { id = "login" })
-                @*<span id="log" style="color:red; display:none">@Resources.Resource.loginused</span>*@
+                @Html.EditorFor(model => model.Login, new { id = "login" })              
                 <span asp-validation-for="Login" class="text-danger"></span>
             </div>
         </div>
@@ -61,6 +63,8 @@
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
         </div>
+      </div>
+        
         <div>
             <br />
             @Html.DisplayNameFor(model => model.Description)
@@ -73,10 +77,12 @@
             </div>
         </div>
     </div>
-</form>
+       
 
+</form>
+</div>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-}
+} *@
