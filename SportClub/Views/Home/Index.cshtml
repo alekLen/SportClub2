@@ -9,31 +9,31 @@
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {      
     <div class="marquee">
-        <div class="marquee-content">
-            <span> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <span> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-        </div>
+        @**@ <div class="marquee-content">
+            <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+            <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+        </div> 
     </div>
      }
 <div style="display:flex;flex-direction:column;">
-     <div style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:70px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
-    <div style="text-align:center;color:#F0E68C;font-size:50px;font-weight:bold;">SportClub</div>
+    <div class="SportClub_div">
+        <div class="SportClub_div_Text">SportClub</div>
      </div>
-     <div class="flex" style="flex-wrap:wrap;">
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/спорт.png" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+    <div class="flex" style="flex-wrap:wrap;">
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/спорт.png" class="img_SportClub" alt="Photo" />
             <div id="imm10" class="info-box">@Resources.Resource.SportIsHealth</div>
         </div>
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/тренер1.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/тренер1.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm12" class="info-box">@Resources.Resource.IndividualTraining</div>
         </div>
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/75.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/75.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm11" class="info-box">@Resources.Resource.GroupTraining</div>
         </div>
     </div>
-    <div id="inf10" class="inf" style="width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
+    <div id="inf10" class="inf" style="background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         @Resources.Resource.Info_div_1_1 <br />
         @Resources.Resource.Info_div_1_2 <br />
         @Resources.Resource.Info_div_1_3 <br />
@@ -49,16 +49,16 @@
     </div>
     <br />
     <div class="flex" style="flex-wrap:wrap;">
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/пилатес5.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/пилатес5.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm21" class="info-box">@Resources.Resource.Pilates</div>
         </div>
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/фон.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/фон.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm22" class="info-box">@Resources.Resource.Crossfit</div>
         </div>
-        <div class="image-container" style="margin:10px;padding:15px;">
-            <img src="~/Coaches/йога.jpg" width="380" height="250" alt="Photo" style="background-color:#2F4F4F;padding:2px;" />
+        <div class="image-container" style="margin:6px;padding:6px;">
+            <img src="~/Coaches/йога.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm23" class="info-box">@Resources.Resource.YogaClasses</div>
         </div>
 
@@ -77,24 +77,22 @@
         @Resources.Resource.Info_div_6_2<br /> @Resources.Resource.Info_div_6_3
     </div>
     
-    <div id="allcoaches" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
-        <div style="text-align:center;color:#EEE8AA;font-size:20px;">@Resources.Resource.OurTeam</div>
+    <div id="allcoaches" class="divOurTeam">
+        <div class="divOurTeamText">@Resources.Resource.OurTeam</div>
     </div>
     <div >
-        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">
+        <div class="divForCoach flex ">
           @using Microsoft.AspNetCore.Http
             @foreach (var item in Model.coaches)
             {
 
-                <div class="flex marg back_color " style="width:620px; padding:2px;height:330px;">
-                     
+                <div class="divCoachHome flex marg back_color ">
                     <div >
-                        <img src=@item.Photo width="330" height="270" alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
+                        <img src=@item.Photo alt="photo1" class="img_Coach_SportClub" />
                        
                         <h3 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h3>
                     </div>
-                    <p style="padding:20px;padding-bottom:0px;color:#EEE8AA; background-size:cover; background-image: url('/Coaches/фон5.jpg'); 
-                         margin-bottom:0px;text-align:center;">
+                    <p class="p_Coach_SportClub">
                         @item.Description
                        </p>
                   </div>
@@ -103,18 +101,18 @@
         </div>
     
     </div>
-    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
-        <div style="text-align:center;color:#EEE8AA;font-size:20px;">@Resources.Resource.TrainingRooms</div>
+    <div id="allrooms" class="divOurTeam">
+        <div class="divOurTeamText">@Resources.Resource.TrainingRooms</div>
     </div>
     <div>
-        <div class="flex " style="flex-wrap:wrap;justify-content:space-around;">          
+        <div class="divForCoach flex">
             @foreach (var item in Model.rooms)
             {
 
                 <div class="flex " style="flex-direction:column;" >
 
                     <div style="padding:10px;background-color:#2F4F4F;margin-bottom:10px;padding-bottom:0px;">
-                        <img src=@item.Photo width="600" height="470" alt="photoSportroom"  />
+                        <img src="@item.Photo" class="img_Rooms_SportClub" alt="photoSportroom" />
                         <h6 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h6>
                     </div>
                    
@@ -201,11 +199,12 @@
 
         </div>
     </div>
-    <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
-        <div style="text-align:center;color:#F0E68C;font-size:20px;">SportClub</div>
+    <div id="allrooms" class="divOurTeam">
+        <div class="divOurTeamText">SportClub</div>
     </div>
+    <a class="UpScroll whiteY" href="#sportclub"> @Resources.Resource.Up</a>
 </div>
-<a class="UpScroll whiteY" href="#sportclub"> @Resources.Resource.Up</a>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var colors = ['#FFFACD','#EEE8AA', '#F0E68C', '#BDB76B']; // Массив цветов
@@ -220,6 +219,7 @@
                 currentIndex = 0;
             }
         }, 2000);
+
         setInterval(function () {
             document.getElementById('color-changing-paragraph').textContent = text[currentIndex2];
             currentIndex2++;

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/Style.css">
+    <link rel="stylesheet" href="~/css/AdaptivStyle.css">
 
     <style>
 
@@ -134,7 +135,7 @@
             {
                 @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.LogOut" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.LogOut" />
                     <a class=" active a_v2">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
                 }
             }
@@ -142,16 +143,16 @@
             {
                 @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.Profile" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
                 }
 
                 @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.MyWorkouts" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
                 @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.Shedule" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
                 }
                 <a class="a_v2" href="#allcoaches">Наша команда</a>
                 <a class="a_v2" href="#allrooms">Залы для тренировок</a>
@@ -162,28 +163,29 @@
 
                 @using (Html.BeginForm("Room_Shedule", "Coach", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.Shedule" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
                 }
                 @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.MyWorkouts" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
                 }
 
                 @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.Profile" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
                 }
             }
             else if (Context.Session.GetString("admin") != null)
             {
                 @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
                 {
-                    <input class="a_v2" type="submit" value="@Resources.Resource.Profile" />
+                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
                 }
             }
             else
             {
-                <a href="javascript:void(0)" class="btn-Login a_v1">Войти</a>
+                <a href="javascript:void(0)" class=" a_v1 btn-Login">@Resources.Resource.Enter</a>
+                @* Войти *@
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="a_v1">@Resources.Resource.Registration</a>
 
                 <a class="a_v1" href="#allcoaches">Наша команда</a>
@@ -194,7 +196,7 @@
 
             @if (Context.Session.GetString("admin") != null)
             {
-                <div class="dropdown ">
+                <div class="dropdown">
                     <button class="dropbtn">
                         Регистрация
                         <i class="fa fa-caret-down "></i>
@@ -232,7 +234,7 @@
                 <a class=" a_v1" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
 
 
-                <div class="dropdown_v2">
+                <div class="dropdown">
                     <button class="dropbtn">
                         Списки<i class="fa fa-caret-down"></i>
                     </button>
@@ -265,13 +267,13 @@
 
 
     <div class="container" id="viewcontent" style="padding-bottom:50px;">
-        <main role="main" class="pb-3" style="">
+        <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
     <footer class="text-muted" style="margin-bottom:20px;border-top:1px solid #EEE8AA;">
-        <div style="">
+        <div class="foter_div1">
             <span style="color: #EEE8AA;padding-left:25px;">
                 &copy; 2023 - SportClub
             </span>

@@ -1,0 +1,463 @@
+﻿.SportClub_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 70px;
+    background-size: cover;
+    background-image: url('/Coaches/фон5.jpg');
+}
+
+.SportClub_div_Text {
+    text-align: center;
+    color: #F0E68C;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.img_SportClub {
+    background-color: #2F4F4F;
+    padding: 1px;
+    width:360px;
+    height:240px;
+}
+
+.img_Coach_SportClub {
+    background-color: #2F4F4F;
+    padding: 10px;
+    width: 330px;
+    height: 270px;
+}
+
+.p_Coach_SportClub {
+    font-size:14px;
+    padding: 20px;
+    padding-bottom: 0px;
+    color: #EEE8AA;
+    background-size: cover;
+    background-image: url('/Coaches/фон5.jpg');
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.marguee_content_span {
+    width: 100%;
+    font-size: 14px;
+}
+.inf {
+    background-color: #2F4F4F;
+    color: #EEE8AA;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+}
+
+foter_div1{
+    width:auto;
+}
+.info-box {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    transform: translateX(15%);
+    width: 300px;
+    background-color: #2F4F4F;
+    color: #F0E68C;
+    text-align: center;
+    border: 1px solid #F0E68C;
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: 0px 8px 16px 0px #F0E68C;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+}
+
+.image-container:hover .info-box {
+    visibility: visible;
+    opacity: 1;
+}
+
+.divCoachHome {
+    width: 620px;
+    padding: 2px;
+    height: 330px;
+}
+
+.divOurTeam {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: 30px;
+    margin: 20px;
+    margin-left: 0px;
+    background-size: cover;
+    background-image: url('/Coaches/фон5.jpg');
+}
+
+    .divOurTeam .divOurTeamText {
+        text-align: center;
+        color: #EEE8AA;
+        font-size: 20px;
+    }
+
+.divForCoach {
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.img_Rooms_SportClub {
+    background-color: #2F4F4F;
+    padding: 10px;
+    width: 600px;
+    height: 470px;
+}
+.UpScroll {
+    position: fixed;
+    left: 90%; /*95% = standart*/
+    bottom: 10%;
+    width: 60px;
+    height: 45px;
+    padding: 5px;
+    background-color: #2F4F4F;
+    border: 1px solid #2F4F4F;
+    box-shadow: 0px 4px 8px 0px #F0E68C;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+    .UpScroll:hover {
+        color: #F0E68C;
+        text-decoration: none;
+    }
+
+@media screen and (max-width: 604px) {
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 120px;
+        height: 80px;
+    }
+    .img_Coach_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 310px;
+        height: 250px;
+    }
+    .SportClub_div_Text {
+        margin-top:-50px;
+        text-align: center;
+        color: #F0E68C;
+        font-size: 34px;
+        font-weight: bold;
+    }
+
+    .SportClub_div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 90%;
+        height: 70px;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+    }
+    .marguee_content_span {
+        width: 100%;
+        font-size:12px;
+    }
+
+    .inf{
+        width:90%;
+        font-size:12px;
+    }
+    .divOurTeam {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 97%;
+        height: 30px;
+        margin: 18px;
+        margin-left: 0px;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+    }
+    .p_Coach_SportClub {
+        font-size: 12px;
+        padding: 16px;
+        padding-bottom: 0px;
+        color: #EEE8AA;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    .divForCoach {
+        width:97%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .divCoachHome {
+        width: 620px;
+        padding: 2px;
+        height: 290px;
+    }
+    .img_Rooms_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 480px;
+        height: 350px;
+    }
+    .UpScroll {
+        position: fixed;
+        left: 60%; /*95% = standart*/
+        bottom: 10%;
+        width: 60px;
+        height: 45px;
+        padding: 5px;
+        background-color: #2F4F4F;
+        border: 1px solid #2F4F4F;
+        box-shadow: 0px 4px 8px 0px #F0E68C;
+        border-radius: 50%;
+        text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 605px) and (max-width: 768px) {
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 130px;
+        height: 80px;
+    }
+
+    .SportClub_div_Text {
+        text-align: center;
+        color: #F0E68C;
+        font-size: 34px;
+        font-weight: bold;
+    }
+
+    .SportClub_div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 100%;
+        height: 70px;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+    }
+    .img_Coach_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 290px;
+        height: 230px;
+    }
+    .p_Coach_SportClub {
+        font-size:12px;
+        padding: 18px;
+        padding-bottom: 0px;
+        color: #EEE8AA;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+        margin-bottom: 0px;
+        text-align: center;
+    }
+    .marguee_content_span {
+        width: 90%;
+    }
+
+    .inf {
+        width: 100%;
+    }
+    .divCoachHome {
+        width: 620px;
+        padding: 2px;
+        height: 280px;
+    }
+    .img_Rooms_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 470px;
+        height: 330px;
+    }
+    .UpScroll {
+        position: fixed;
+        left: 79%; /*95% = standart*/
+        bottom: 10%;
+        width: 60px;
+        height: 45px;
+        padding: 5px;
+        background-color: #2F4F4F;
+        border: 1px solid #2F4F4F;
+        box-shadow: 0px 4px 8px 0px #F0E68C;
+        border-radius: 50%;
+        text-decoration: none;
+    }
+}
+@media screen and (min-width: 513px) and (max-width: 604px) {
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 130px;
+        height: 80px;
+    }
+
+    .SportClub_div_Text {
+        text-align: center;
+        color: #F0E68C;
+        font-size: 34px;
+        font-weight: bold;
+    }
+
+    .SportClub_div {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 97%;
+        height: 70px;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+    }
+
+    .marguee_content_span {
+        width: 80%;
+    }
+
+    .inf {
+        width: 97%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width:993px) {
+
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 185px; /*100px*/
+        height: 125px;
+    }
+    .info-box {
+        position: absolute;
+        bottom: 0%;
+        left: 10px;
+        transform: translateX(15%);
+        width: 150px;
+        background-color: #2F4F4F;
+        color: #F0E68C;
+        text-align: center;
+        border: 1px solid #F0E68C;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 8px 16px 0px #F0E68C;
+        z-index: 1;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width:1114px) {
+
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 250px; /*100px*/
+        height: 165px;
+    }
+
+    .info-box {
+        position: absolute;
+        bottom: 0%;
+        left: 10px;
+        transform: translateX(15%);
+        width: 150px;
+        background-color: #2F4F4F;
+        color: #F0E68C;
+        text-align: center;
+        border: 1px solid #F0E68C;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 8px 16px 0px #F0E68C;
+        z-index: 1;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+}
+@media screen and (min-width: 1114px) and (max-width:1200px) {
+
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 250px; /*100px*/
+        height: 165px;
+    }
+
+    .info-box {
+        position: absolute;
+        bottom: 0%;
+        left: 10px;
+        transform: translateX(15%);
+        width: 150px;
+        background-color: #2F4F4F;
+        color: #F0E68C;
+        text-align: center;
+        border: 1px solid #F0E68C;
+        border-radius: 3px;
+        padding: 10px;
+        box-shadow: 0px 8px 16px 0px #F0E68C;
+        z-index: 1;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s, opacity 0.5s linear;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1366px) {
+
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 345px; /*360px*/
+        height: 220px;/*250px*/
+    }
+    .img_Rooms_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 480px;
+        height: 350px;
+    }
+    .divCoachHome {
+        width: 540px;/*620px*/
+        padding: 2px;
+        height: 330px;
+    }
+    .img_Coach_SportClub {
+        background-color: #2F4F4F;
+        padding: 10px;
+        width: 320px;
+        height: 255px;
+    }
+
+    .p_Coach_SportClub {
+        font-size: 14px;
+        padding: 20px;
+        padding-bottom: 0px;
+        color: #EEE8AA;
+        background-size: cover;
+        background-image: url('/Coaches/фон5.jpg');
+        margin-bottom: 0px;
+        text-align: center;
+    }
+}
+
+/*@media screen and (min-width: 1300px) {
+
+    .img_SportClub {
+        background-color: #2F4F4F;
+        padding: 1px;
+        width: 390px;*/ /*100px*/
+        /*height: 250px;
+    }
+}*/
