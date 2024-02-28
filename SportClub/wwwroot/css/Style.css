@@ -1,9 +1,180 @@
-header .my_navbar {
+.topnav {
+    overflow: hidden;
+    background-color: #042940;
+}
+
+    .topnav .a_v1 {
+        float: left;
+        display: block;
+        color: #EEE8AA;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav .a_v2 {
+        float: right;
+        display: block;
+        color: #EEE8AA;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    .topnav .a_v2btn {
+        float: right;
+        display: block;
+        color: #EEE8AA;
+        text-align: center;
+        padding: 14px 16px;
+        border: none;
+        font-size: 17px;
+        background-color: #042940;
+    }
+
+.active {
+    background-color: #4a8888;
+    color: #EEE8AA;
+}
+
+.topnav .icon {
+    display: none;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown_v2 {
+    float: right;
+    overflow: hidden;
+}
+
+    .dropdown .dropbtn,
+    .dropdown_v2 .dropbtn {
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: #EEE8AA;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #042940;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+    .dropdown-content .a_v1 {
+        float: none;
+        color: #EEE8AA;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+    .dropdown-content .a_v2 {
+        float: none;
+        color: #EEE8AA;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+
+.topnav .a_v1:hover,
+.dropdown:hover .dropbtn,
+.dropdown_v2:hover .dropbtn,
+.topnav .a_v2:hover,
+.topnav .a_v2btn:hover {
+    background-color: #4a8888;
+    color: #EEE8AA;
+}
+
+.dropdown-content .a_v1:hover {
+    background-color: #4a8888;
+    color: #EEE8AA;
+}
+
+.dropdown-content .a_v2:hover {
+    background-color: #4a8888;
+    color: #EEE8AA;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown_v2:hover .dropdown-content {
+    display: block;
+}
+
+@media screen and (max-width: 990px) {
+
+    .topnav .a_v1:not(:first-child),
+    .topnav .a_v2:not(:first-child),
+    .dropdown .dropbtn,
+    .dropdown_v2 .dropbtn {
+        display: none;
+    }
+
+    .topnav .a_v1.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 100px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+        .topnav.responsive .icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .topnav.responsive .a_v1,
+        .topnav.responsive .a_v2,
+        .topnav.responsive .a_v2btn {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+
+        .topnav.responsive .dropdown,
+        .topnav.responsive .dropdown_v2 {
+            float: none;
+        }
+
+        .topnav.responsive .dropdown-content {
+            position: relative;
+        }
+
+        .topnav.responsive .dropdown .dropbtn,
+        .topnav.responsive .dropdown_v2 .dropbtn {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+}
+
+
+
+/*header .my_navbar {
      background-color: #042940;
    
-    overflow: hidden;
+    overflow: hidden;*/
     /*margin: -4px;*/
-}
+/*}
 
     header .my_navbar a {
         float: left;
@@ -13,20 +184,20 @@ header .my_navbar {
         text-decoration: none;
         font-size: 17px;
     }
-.active {
+.active {*/
     /* background-color: #0089c2;*/
-    background-color: #2F4F4F;
+    /*background-color: #2F4F4F;
     color: #EEE8AA;
-}
+}*/
 
-@font-face {
-   /* font-family: 'UserFont';
+/*@font-face {
+    font-family: 'UserFont';
     src: url('fonts/Lordcorps[RUSbyPenka220]-Stencil.ttf') format(ttf);
     font-weight: normal;
-    font-style: normal;*/
-}
+    font-style: normal;
+}*/
 
-header .mdropdown {
+/*header .mdropdown {
     float: left;
     overflow: hidden;
 }
@@ -37,21 +208,21 @@ header .mdropdown {
         outline: none;
         color:  #EEE8AA;      
         padding: 14px 16px;
-        background-color: inherit;
+        background-color: inherit;*/
         /* font-family: inherit;*/
-        margin: 0;
+        /*margin: 0;
     }
 
     header .my_navbar a:hover,
-    header .mdropdown:hover .mdropbtn {
+    header .mdropdown:hover .mdropbtn {*/
         /*  background-color: #0089c2;*/
-        background-color: #2F4F4F;
+        /*background-color: #2F4F4F;
     }
 
 header .mdropdown-content {
-    display: none;
+    display: none;*/
     /* border: solid 1px #0089c2; */
-    position: absolute;
+    /*position: absolute;
     background-color: #042940;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -67,14 +238,14 @@ header .mdropdown-content {
         text-align: left;
     }
 
-        header .mdropdown-content a:hover {
+        header .mdropdown-content a:hover {*/
             /*background-color: #0089c2;*/
-            background-color: #2F4F4F;
+            /*background-color: #2F4F4F;
         }
 
 header .mdropdown:hover .mdropdown-content {
     display: block;
-}
+}*/
 
 .my_bg-white1 {
     background-color: #042940;
@@ -246,38 +417,7 @@ html, body {
 
     /*-------------------*/
 
-/*input[type="file"] {
-    text-align: center;
-    font-size: 16px;
-    border: none;
-    width: 320px;
-    margin-left: -3px;
-    padding-left: 3px;
-    margin-top: 5px;
-    margin-bottom: 2px;
-    height: 36px;
-}
 
-    input[type="file"]::-webkit-file-upload-button {
-        border-radius: 5px;
-        border: none;
-        padding-top: 5px;
-        margin-top: -7px;
-        margin-bottom: 2px;
-        height: 33px;
-    }
-
-    input[type="file"]:hover {
-        border: solid 2px navy;
-        margin-left: -3px;
-        padding-left: 3px;
-        border-radius: 5px;
-        width: 320px;
-        margin-top: 5px;
-        padding-top: 5px;
-        padding-bottom: 3px;
-        height: 33px;
-    }*/
 input[type="file"] {
     text-align: center;
     font-size: 16px;
