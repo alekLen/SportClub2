@@ -5,6 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SportClub</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    
     <link rel="stylesheet" href="~/css/Style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -74,25 +76,14 @@
         .div_reg p1 {
             font-size: 20px;
             color: white;
-            /* padding-top: 30px; */
             text-align: center
         }
-
-        /*   footer {
-                            position: fixed;
-                            left: 0;
-                            bottom: 0;
-                            width: 100%;
-                            height: 40px;
-                        } */
 
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
-            /*    background-image: url('Coaches/фон4.jpg'); */
-            /*   background-image: linear-gradient(to bottom right, grey, dimgrey); */
             background-color: dimgrey;
             background-size: cover;
         }
@@ -110,12 +101,12 @@
 <body id="changing-background" style=" transition: background-image 2s ease; background-size: cover;width: 100%;height: 100%; ">
     
     <header>
-        <div class="topnav" id="myTopnav">
-            <a id="sportclub" class="active a_v1" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
+        <div class="mtopnav" id="my_TopnavId">
+            <a id="sportclub" class="mactive a_v1n" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
 
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
-                <div class="dropdown_v2">
+                <div class="mdropdown_v2">
                     <select class="my_bg-white1 my_bn t_3" style="color:#EEE8AA; padding: 2px 6px;width:max-content;text-align:center; " name="lang">
                         <option style="color:#EEE8AA; " value="ru">Русский</option>
                         <option style="color:#EEE8AA; " value="en">English</option>
@@ -136,7 +127,7 @@
                 @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
                 {
                     <input class="a_v2btn" type="submit" value="@Resources.Resource.LogOut" />
-                    <a class=" active a_v2">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
+                    <a class=" mactive a_v2n">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
                 }
             }
             @if (Context.Session.GetString("client") != null)
@@ -154,9 +145,9 @@
                 {
                     <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
                 }
-                <a class="a_v2" href="#allcoaches">Наша команда</a>
-                <a class="a_v2" href="#allrooms">Залы для тренировок</a>
-                <a class="a_v2 " href="#abonem">@Resources.Resource.Subcrip</a>
+                <a class="a_v2n" href="#allcoaches">Наша команда</a>
+                <a class="a_v2n" href="#allrooms">Залы для тренировок</a>
+                <a class="a_v2n" href="#abonem">@Resources.Resource.Subcrip</a>
             }
             else if (Context.Session.GetString("coach") != null)
             {
@@ -184,81 +175,81 @@
             }
             else
             {
-                <a href="javascript:void(0)" class=" a_v1 btn-Login">@Resources.Resource.Enter</a>
+                <a href="javascript:void(0)" class=" a_v1n btn-Login">@Resources.Resource.Enter</a>
                 @* Войти *@
-                <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="a_v1">@Resources.Resource.Registration</a>
+                <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="a_v1n">@Resources.Resource.Registration</a>
 
-                <a class="a_v1" href="#allcoaches">Наша команда</a>
-                <a class="a_v1" href="#allrooms">Залы для тренировок</a>
-                <a class="a_v1" href="#abonem">@Resources.Resource.Subcrip</a>
+                <a class="a_v1n" href="#allcoaches">Наша команда</a>
+                <a class="a_v1n" href="#allrooms">Залы для тренировок</a>
+                <a class="a_v1n" href="#abonem">@Resources.Resource.Subcrip</a>
 
             }
 
             @if (Context.Session.GetString("admin") != null)
             {
-                <div class="dropdown">
-                    <button class="dropbtn">
+                <div class="mdropdown">
+                    <button class="mdropbtn">
                         Регистрация
                         <i class="fa fa-caret-down "></i>
                     </button>
-                    <div class="dropdown-content" >
-                        <a class="a_v1" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
-                        <a class=" a_v1" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
-                        <a class=" a_v1" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
+                    <div class="mdropdown-content">
+                        <a class="a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
+                        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
+                        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
 
                     </div>
                 </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn">
+                <div class="mdropdown">
+                    <button class="mdropbtn">
                         @Resources.Resource.TimeAndSchedule
                         <i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-content">
-                        <a class=" a_v1" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
+                    <div class="mdropdown-content">
+                        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
                         @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
                     </div>
                 </div>
 
-                <div class="dropdown">
-                    <button class="dropbtn" style="font-family: 'MyFontNormal';">
+                <div class="mdropdown">
+                    <button class="mdropbtn" style="font-family: 'MyFontNormal';">
                         Зал<i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-content">
-                        <a class=" a_v1" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
+                    <div class="mdropdown-content">
+                        <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
 
-                        <a class=" a_v1" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
+                        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
                 </div>
 
-                <a class=" a_v1" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+                <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
 
 
-                <div class="dropdown">
-                    <button class="dropbtn">
+                <div class="mdropdown_v2">
+                    <button class="mdropbtn">
                         Списки<i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-content">
+                    <div class="mdropdown-content">
                         @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
                         {
-                            <input class="a_v1" type="submit" value="@Resources.Resource.Users" />
+                            <input class="a_v2btn" style="float:left" type="submit" value="@Resources.Resource.Users" />
                         }
                         @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                         {
-                            <input class="a_v1" type="submit" value="@Resources.Resource.Coaches" />
+                            <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Coaches" />
                         }
                         @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
                         {
-                            <input class="a_v1" type="submit" value="@Resources.Resource.Admins" />
+                            <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Admins" />
                         }
 
                     </div>
                 </div>
 
             }
-            <a href="javascript:void(0);" style="font-size:15px;margin-left:30px" id="my_Top" class="icon a_v1" >☰</a>
+            <a href="javascript:void(0);" style="font-size:15px;margin-left:30px" id="my_Top" class="a_v1n icon ">☰</a>
         </div>
-
+        @* *@
     </header>
 
     <br />
@@ -293,7 +284,7 @@
         </div>
 
     </footer>
-    
+    <
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
@@ -304,15 +295,16 @@
 
 
     <script>
-       
-        $(document).ready(function () {
-            $("#my_Top").on("click", function (e) { 
-                var x = document.getElementById("myTopnav");
 
-                if (x.className === "topnav") {
-                    x.className += " responsive";
+        $(document).ready(function () {
+            
+            $("#my_Top").on("click", function (e) { 
+                var x = document.getElementById("my_TopnavId");
+                console.log('click');
+                if (x.className === "mtopnav") {
+                    x.className += "mresponsive";
                 } else {
-                    x.className = "topnav";
+                    x.className = "mtopnav";
                 }
             });
 

@@ -132,7 +132,7 @@ foter_div1{
         text-decoration: none;
     }
 
-@media screen and (max-width: 604px) {
+/*@media screen and (max-width: 604px) {
     .img_SportClub {
         background-color: #2F4F4F;
         padding: 1px;
@@ -211,8 +211,8 @@ foter_div1{
     }
     .UpScroll {
         position: fixed;
-        left: 60%; /*95% = standart*/
-        bottom: 10%;
+        left: 60%;*/ /*95% = standart*/
+        /*bottom: 10%;
         width: 60px;
         height: 45px;
         padding: 5px;
@@ -284,8 +284,8 @@ foter_div1{
     }
     .UpScroll {
         position: fixed;
-        left: 79%; /*95% = standart*/
-        bottom: 10%;
+        left: 79%;*/ /*95% = standart*/
+        /*bottom: 10%;
         width: 60px;
         height: 45px;
         padding: 5px;
@@ -334,8 +334,8 @@ foter_div1{
     .img_SportClub {
         background-color: #2F4F4F;
         padding: 1px;
-        width: 185px; /*100px*/
-        height: 125px;
+        width: 185px;*/ /*100px*/
+        /*height: 125px;
     }
     .info-box {
         position: absolute;
@@ -362,8 +362,8 @@ foter_div1{
     .img_SportClub {
         background-color: #2F4F4F;
         padding: 1px;
-        width: 250px; /*100px*/
-        height: 165px;
+        width: 250px;*/ /*100px*/
+        /*height: 165px;
     }
 
     .info-box {
@@ -390,8 +390,8 @@ foter_div1{
     .img_SportClub {
         background-color: #2F4F4F;
         padding: 1px;
-        width: 250px; /*100px*/
-        height: 165px;
+        width: 250px;*/ /*100px*/
+        /*height: 165px;
     }
 
     .info-box {
@@ -419,9 +419,9 @@ foter_div1{
     .img_SportClub {
         background-color: #2F4F4F;
         padding: 1px;
-        width: 345px; /*360px*/
-        height: 220px;/*250px*/
-    }
+        width: 345px;*/ /*360px*/
+        /*height: 220px;*//*250px*/
+    /*}
     .img_Rooms_SportClub {
         background-color: #2F4F4F;
         padding: 10px;
@@ -429,8 +429,8 @@ foter_div1{
         height: 350px;
     }
     .divCoachHome {
-        width: 540px;/*620px*/
-        padding: 2px;
+        width: 540px;*//*620px*/
+        /*padding: 2px;
         height: 330px;
     }
     .img_Coach_SportClub {
@@ -450,7 +450,7 @@ foter_div1{
         margin-bottom: 0px;
         text-align: center;
     }
-}
+}*/
 
 /*@media screen and (min-width: 1300px) {
 
