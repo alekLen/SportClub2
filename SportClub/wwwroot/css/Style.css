@@ -1,60 +1,60 @@
-.topnav {
+.mtopnav {
     overflow: hidden;
     background-color: #042940;
 }
 
-    .topnav .a_v1 {
-        float: left;
-        display: block;
-        color: #EEE8AA;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
+.mtopnav .a_v1n {
+    float: left;
+    display: block;
+    color: #EEE8AA;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
 
-    .topnav .a_v2 {
-        float: right;
-        display: block;
-        color: #EEE8AA;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
+.mtopnav .a_v2n {
+    float: right;
+    display: block;
+    color: #EEE8AA;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
 
-    .topnav .a_v2btn {
-        float: right;
-        display: block;
-        color: #EEE8AA;
-        text-align: center;
-        padding: 14px 16px;
-        border: none;
-        font-size: 17px;
-        background-color: #042940;
-    }
+.mtopnav .a_v2btn {
+    float: right;
+    display: block;
+    color: #EEE8AA;
+    text-align: center;
+    padding: 14px 16px;
+    border: none;
+    font-size: 17px;
+    background-color: #042940;
+}
 
-.active {
+.mactive {
     background-color: #4a8888;
     color: #EEE8AA;
 }
 
-.topnav .icon {
+.mtopnav .icon {
     display: none;
 }
 
-.dropdown {
+.mdropdown {
     float: left;
     overflow: hidden;
 }
 
-.dropdown_v2 {
+.mdropdown_v2 {
     float: right;
     overflow: hidden;
 }
 
-    .dropdown .dropbtn,
-    .dropdown_v2 .dropbtn {
+    .mdropdown .mdropbtn,
+    .mdropdown_v2 .mdropbtn {
         font-size: 17px;
         border: none;
         outline: none;
@@ -65,7 +65,7 @@
         margin: 0;
     }
 
-.dropdown-content {
+.mdropdown-content {
     display: none;
     position: absolute;
     background-color: #042940;
@@ -74,7 +74,7 @@
     z-index: 1;
 }
 
-    .dropdown-content .a_v1 {
+    .mdropdown-content .a_v1n {
         float: none;
         color: #EEE8AA;
         padding: 12px 16px;
@@ -83,7 +83,7 @@
         text-align: left;
     }
 
-    .dropdown-content .a_v2 {
+    .mdropdown-content .a_v2n {
         float: none;
         color: #EEE8AA;
         padding: 12px 16px;
@@ -92,79 +92,79 @@
         text-align: left;
     }
 
-.topnav .a_v1:hover,
-.dropdown:hover .dropbtn,
-.dropdown_v2:hover .dropbtn,
-.topnav .a_v2:hover,
-.topnav .a_v2btn:hover {
+.mtopnav .a_v1n:hover,
+.mdropdown:hover .mdropbtn,
+.mdropdown_v2n:hover .mdropbtn,
+.mtopnav .a_v2n:hover,
+.mtopnav .a_v2btn:hover {
     background-color: #4a8888;
     color: #EEE8AA;
 }
 
-.dropdown-content .a_v1:hover {
+.mdropdown-content .a_v1n:hover {
     background-color: #4a8888;
     color: #EEE8AA;
 }
 
-.dropdown-content .a_v2:hover {
+.mdropdown-content .a_v2n:hover {
     background-color: #4a8888;
     color: #EEE8AA;
 }
 
-.dropdown:hover .dropdown-content,
-.dropdown_v2:hover .dropdown-content {
+.mdropdown:hover .mdropdown-content,
+.mdropdown_v2:hover .mdropdown-content {
     display: block;
 }
 
 @media screen and (max-width: 990px) {
 
-    .topnav .a_v1:not(:first-child),
-    .topnav .a_v2:not(:first-child),
-    .dropdown .dropbtn,
-    .dropdown_v2 .dropbtn {
+    .mtopnav .a_v1n:not(:first-child),
+    .mtopnav .a_v2n:not(:first-child),
+    .mdropdown .mdropbtn,
+    .mdropdown_v2 .mdropbtn {
         display: none;
     }
 
-    .topnav .a_v1.icon {
+    .mtopnav .a_v1n .icon {
         float: right;
         display: block;
     }
 }
 
 @media screen and (max-width: 100px) {
-    .topnav.responsive {
+    .mtopnav .mresponsive {
         position: relative;
     }
 
-        .topnav.responsive .icon {
+        .mtopnav .mresponsive .icon {
             position: absolute;
             right: 0;
             top: 0;
         }
 
-        .topnav.responsive .a_v1,
-        .topnav.responsive .a_v2,
-        .topnav.responsive .a_v2btn {
+        .mtopnav .mresponsive .a_v1n,
+        .mtopnav .mresponsive .a_v2n,
+        .mtopnav .mresponsive .a_v2btn {
             float: none;
             display: block;
             text-align: left;
         }
 
-        .topnav.responsive .dropdown,
-        .topnav.responsive .dropdown_v2 {
-            float: none;
-        }
+    .mtopnav.mresponsive .mdropdown,
+    .mtopnav.mresponsive .mdropdown_v2 {
+        float: none;
+    }
 
-        .topnav.responsive .dropdown-content {
-            position: relative;
-        }
+    .mtopnav.mresponsive .mdropdown-content {
+        position: relative;
+    }
 
-        .topnav.responsive .dropdown .dropbtn,
-        .topnav.responsive .dropdown_v2 .dropbtn {
-            display: block;
-            width: 100%;
-            text-align: left;
-        }
+    .mtopnav.mresponsive .mdropdown .mdropbtn,
+    .mtopnav.mresponsive .mdropdown_v2 .mdropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
 }
 
 
