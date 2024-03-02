@@ -5,17 +5,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SportClub</title>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
     <link rel="stylesheet" href="~/css/Style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
-    <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    @* new *@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/Style.css">
     <link rel="stylesheet" href="~/css/AdaptivStyle.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" />
     <style>
 
         .my_bg-white {
@@ -44,14 +52,14 @@
         }
 
         div {
-             scrollbar-width:thin; 
+            scrollbar-width: thin;
             scrollbar-color: dimgray #EEE8AA;
-         
         }
 
             div:active {
                 scrollbar-color: lightgreen #EEE8AA;
             }
+
         .div_reg2 {
             /*  background-color: #2F4F4F; */
             box-shadow: inset 3em -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em #EEE8AA;
@@ -99,157 +107,391 @@
     <link rel="stylesheet" href="~/SportClub.styles.css" asp-append-version="true" />
 </head>
 <body id="changing-background" style=" transition: background-image 2s ease; background-size: cover;width: 100%;height: 100%; ">
-    
+
     <header>
-        <div class="mtopnav" id="my_TopnavId">
-            <a id="sportclub" class="mactive a_v1n" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
+        @*         <div class="mtopnav" id="my_TopnavId">
+        <a id="sportclub" class="mactive a_v1n" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
 
-            @using (Html.BeginForm("ChangeCulture", "Home"))
-            {
-                <div class="mdropdown_v2">
-                    <select class="my_bg-white1 my_bn t_3" style="color:#EEE8AA; padding: 2px 6px;width:max-content;text-align:center; " name="lang">
-                        <option style="color:#EEE8AA; " value="ru">Русский</option>
-                        <option style="color:#EEE8AA; " value="en">English</option>
-                        <option style="color:#EEE8AA;" value="uk">Українська</option>
-                        <option style="color:#EEE8AA;" value="de">Deutsch</option>
-                        <option style="color:#EEE8AA; " value="fr">Français</option>
-                    </select>
-                    <br />
-                    <input class="my_bg-white1 my_bn" style="color:#EEE8AA;width:max-content;height:27px;text-align:center" type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+        @using (Html.BeginForm("ChangeCulture", "Home"))
+        {
+        <div class="mdropdown_v2">
+        <select class="my_bg-white1 my_bn t_3" style="color:#EEE8AA; padding: 2px 6px;width:max-content;text-align:center; " name="lang">
+        <option style="color:#EEE8AA; " value="ru">Русский</option>
+        <option style="color:#EEE8AA; " value="en">English</option>
+        <option style="color:#EEE8AA;" value="uk">Українська</option>
+        <option style="color:#EEE8AA;" value="de">Deutsch</option>
+        <option style="color:#EEE8AA; " value="fr">Français</option>
+        </select>
+        <br />
+        <input class="my_bg-white1 my_bn" style="color:#EEE8AA;width:max-content;height:27px;text-align:center" type="submit" name="submit" value="@Resources.Resource.ChooseLang">
 
-                </div>
-            }
-
-
-            @using Microsoft.AspNetCore.Http
-            @if (Context.Session.GetString("admin") != null || Context.Session.GetString("client") != null || Context.Session.GetString("coach") != null)
-            {
-                @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.LogOut" />
-                    <a class=" mactive a_v2n">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
-                }
-            }
-            @if (Context.Session.GetString("client") != null)
-            {
-                @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
-                }
-
-                @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
-                }
-                @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
-                }
-                <a class="a_v2n" href="#allcoaches">Наша команда</a>
-                <a class="a_v2n" href="#allrooms">Залы для тренировок</a>
-                <a class="a_v2n" href="#abonem">@Resources.Resource.Subcrip</a>
-            }
-            else if (Context.Session.GetString("coach") != null)
-            {
-
-                @using (Html.BeginForm("Room_Shedule", "Coach", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
-                }
-                @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
-                }
-
-                @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
-                }
-            }
-            else if (Context.Session.GetString("admin") != null)
-            {
-                @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
-                {
-                    <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
-                }
-            }
-            else
-            {
-                <a href="javascript:void(0)" class=" a_v1n btn-Login">@Resources.Resource.Enter</a>
-                @* Войти *@
-                <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="a_v1n">@Resources.Resource.Registration</a>
-
-                <a class="a_v1n" href="#allcoaches">Наша команда</a>
-                <a class="a_v1n" href="#allrooms">Залы для тренировок</a>
-                <a class="a_v1n" href="#abonem">@Resources.Resource.Subcrip</a>
-
-            }
-
-            @if (Context.Session.GetString("admin") != null)
-            {
-                <div class="mdropdown">
-                    <button class="mdropbtn">
-                        Регистрация
-                        <i class="fa fa-caret-down "></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        <a class="a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
-                        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
-                        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
-
-                    </div>
-                </div>
-
-                <div class="mdropdown">
-                    <button class="mdropbtn">
-                        @Resources.Resource.TimeAndSchedule
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
-                        @*    <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="AddTimetable">Создать график дня</a> *@
-                    </div>
-                </div>
-
-                <div class="mdropdown">
-                    <button class="mdropbtn" style="font-family: 'MyFontNormal';">
-                        Зал<i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
-
-                        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
-                    </div>
-                </div>
-
-                <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
-
-
-                <div class="mdropdown_v2">
-                    <button class="mdropbtn">
-                        Списки<i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="mdropdown-content">
-                        @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
-                        {
-                            <input class="a_v2btn" style="float:left" type="submit" value="@Resources.Resource.Users" />
-                        }
-                        @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
-                        {
-                            <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Coaches" />
-                        }
-                        @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
-                        {
-                            <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Admins" />
-                        }
-
-                    </div>
-                </div>
-
-            }
-            <a href="javascript:void(0);" style="font-size:15px;margin-left:30px" id="my_Top" class="a_v1n icon ">☰</a>
         </div>
-        @* *@
+        }
+
+
+        @using Microsoft.AspNetCore.Http
+        @if (Context.Session.GetString("admin") != null || Context.Session.GetString("client") != null || Context.Session.GetString("coach") != null)
+        {
+        @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.LogOut" />
+        <a class=" mactive a_v2n">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
+        }
+        }
+        @if (Context.Session.GetString("client") != null)
+        {
+        @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
+        }
+
+        @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
+        }
+        @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
+        }
+        <a class="a_v2n" href="#allcoaches">Наша команда</a>
+        <a class="a_v2n" href="#allrooms">Залы для тренировок</a>
+        <a class="a_v2n" href="#abonem">@Resources.Resource.Subcrip</a>
+        }
+        else if (Context.Session.GetString("coach") != null)
+        {
+
+        @using (Html.BeginForm("Room_Shedule", "Coach", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.Shedule" />
+        }
+        @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.MyWorkouts" />
+        }
+
+        @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
+        }
+        }
+        else if (Context.Session.GetString("admin") != null)
+        {
+        @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
+        {
+        <input class="a_v2btn" type="submit" value="@Resources.Resource.Profile" />
+        }
+        }
+        else
+        {
+        <a href="javascript:void(0)" class=" a_v1n btn-Login">@Resources.Resource.Enter</a>
+
+        <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="a_v1n">@Resources.Resource.Registration</a>
+
+        <a class="a_v1n" href="#allcoaches">Наша команда</a>
+        <a class="a_v1n" href="#allrooms">Залы для тренировок</a>
+        <a class="a_v1n" href="#abonem">@Resources.Resource.Subcrip</a>
+
+        }
+
+        @if (Context.Session.GetString("admin") != null)
+        {
+        <div class="mdropdown">
+        <button class="mdropbtn">
+        Регистрация
+        <i class="fa fa-caret-down "></i>
+        </button>
+        <div class="mdropdown-content">
+        <a class="a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
+        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
+        <a class=" a_v1n" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
+
+        </div>
+        </div>
+
+        <div class="mdropdown">
+        <button class="mdropbtn">
+        @Resources.Resource.TimeAndSchedule
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="mdropdown-content">
+        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a>
+        </div>
+        </div>
+
+        <div class="mdropdown">
+        <button class="mdropbtn" style="font-family: 'MyFontNormal';">
+        Зал<i class="fa fa-caret-down"></i>
+        </button>
+        <div class="mdropdown-content">
+        <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
+
+        <a class=" a_v1n" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
+        </div>
+        </div>
+
+        <a class=" a_v1n" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+
+
+        <div class="mdropdown_v2">
+        <button class="mdropbtn">
+        Списки<i class="fa fa-caret-down"></i>
+        </button>
+        <div class="mdropdown-content">
+        @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
+        {
+        <input class="a_v2btn" style="float:left" type="submit" value="@Resources.Resource.Users" />
+        }
+        @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
+        {
+        <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Coaches" />
+        }
+        @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
+        {
+        <input class="a_v2btn" style="float:left;width:100%;" type="submit" value="@Resources.Resource.Admins" />
+        }
+
+        </div>
+        </div>
+
+        }
+        <a href="javascript:void(0);" style="font-size:15px;margin-left:30px" id="my_Top" class="a_v1n my_icon ">☰</a>
+        </div> *@
+        <nav class="navbar navbar-expand-lg bg-myBlue">
+            <div class="container-fluid ">
+                <a id="sportclub" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">SportClub</a>
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    @using Microsoft.AspNetCore.Http
+                    @if (Context.Session.GetString("admin") != null || Context.Session.GetString("client") != null || Context.Session.GetString("coach") != null)
+                    {
+                        @using (Html.BeginForm("Logout", "Login", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.LogOut" />
+                                </li>
+                                <li class="nav-item" style="width:max-content">
+                                    <a class="nav-link active" style="width:max-content" aria-current="page">@Resources.Resource.Welcome, @Context.Session.GetString("login")&nbsp;&nbsp;</a>
+                                </li>
+                            </ul>
+                        }
+                    }
+                    @if (Context.Session.GetString("client") != null)
+                    {
+                        @using (Html.BeginForm("ClientProfile", "Users", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Profile" />
+                                </li>
+                            </ul>
+                        }
+
+                        @using (Html.BeginForm("MyShedule", "Users", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.MyWorkouts" />
+                                </li>
+                            </ul>
+                        }
+                        @using (Html.BeginForm("Room_Shedule", "Users", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Shedule" />
+                                </li>
+                            </ul>
+                        }
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#allcoaches">Наша команда</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#allrooms">Залы для тренировок</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#abonem">@Resources.Resource.Subcrip</a>
+                            </li>
+                        </ul>
+                    }
+                    else if (Context.Session.GetString("coach") != null)
+                    {
+
+                        @using (Html.BeginForm("Room_Shedule", "Coach", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Shedule" />
+                                </li>
+                            </ul>
+                        }
+                        @using (Html.BeginForm("MyShedule", "Coach", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.MyWorkouts" />
+                                </li>
+                            </ul>
+
+                        }
+
+                        @using (Html.BeginForm("CoachProfile", "Coach", FormMethod.Get))
+                        {
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Profile" />
+                                </li>
+                            </ul>
+
+                        }
+                    }
+                    else if (Context.Session.GetString("admin") != null)
+                    {
+                        <ul class="navbar-nav ml-auto">
+                            @using (Html.BeginForm("AdminProfile", "Admin", FormMethod.Get))
+                            {
+                                <li class="nav-item">
+                                    <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Profile" />
+                                </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a href="javascript:void(0)" class="nav-link active btn-Login">@Resources.Resource.Enter</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" class="nav-link active">@Resources.Resource.Registration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#allcoaches">Наша команда</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#allrooms">Залы для тренировок</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#abonem">@Resources.Resource.Subcrip</a>
+                            </li>
+                        </ul>
+                    }
+
+                    @if (Context.Session.GetString("admin") != null)
+                    {
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="color: #EEE8AA;" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Регистрация
+                                </a>
+                                <ul class="dropdown-menu bg-myBlue">
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a></li>
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a></li>
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="color: #EEE8AA;" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    @Resources.Resource.TimeAndSchedule
+                                </a>
+                                <ul class="dropdown-menu bg-myBlue">
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Time" asp-action="AddTimeT">@Resources.Resource.CreateTimeAndScheduleForDay</a></li>
+
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="color: #EEE8AA;" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Зал
+                                </a>
+                                <ul class="dropdown-menu bg-myBlue">
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a></li>
+                                    <li><a class="dropdown-item a_hove" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="navbar-nav mr-auto">
+                            <li>
+                                <a class=" dropdown-item a_hove" asp-area="" asp-controller="Admin" asp-action="AddPost">@Resources.Resource.PositionsAndSpecialties</a>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" style="color: #EEE8AA;" href="#" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Списки
+                                </a>
+                                <ul class="dropdown-menu bg-myBlue">
+                                    @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))
+                                    {
+                                        <li>
+                                            <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Users" />
+                                        </li>
+                                    }
+                                    @using (Html.BeginForm("nav-btn_m active", "Coach", FormMethod.Get))
+                                    {
+                                        <li>
+                                            <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Coaches" />
+                                        </li>
+                                    }
+                                    @using (Html.BeginForm("GetAdmins", "Admin", FormMethod.Get))
+                                    {
+                                        <li>
+                                            <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Admins" />
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                        
+
+                    }
+
+                    @* <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" style="color: #EEE8AA;" href="#" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown link
+                    </a>
+                    <ul class="dropdown-menu bg-myBlue">
+                    <li><a class="dropdown-item a_hove" href="#">Action</a></li>
+                    <li><a class="dropdown-item a_hove" href="#">Another action</a></li>
+                    <li><a class="dropdown-item a_hove" href="#">Something else here</a></li>
+                    </ul>
+                    </li> *@
+                    @* </ul> *@
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <select class=" bg-myBlue"
+                                    style="border: none;width: 20px;color:#EEE8AA;margin-top: -3px; padding: 2px 2px;width:max-content;text-align:center; "
+                                    name="lang">
+                                <option style="color:#EEE8AA; " value="ru">Русский</option>
+                                <option style="color:#EEE8AA; " value="en">English</option>
+                                <option style="color:#EEE8AA;" value="uk">Українська</option>
+                                <option style="color:#EEE8AA;" value="de">Deutsch</option>
+                                <option style="color:#EEE8AA; " value="fr">Français</option>
+                            </select> <br /><input class="my_bg-white1 my_bn"
+                                                   style="border: none;color:#EEE8AA;width:max-content;height:27px;text-align:center"
+                                                   type="submit" name="submit" value="ChooseLang">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <br />
@@ -284,8 +526,8 @@
         </div>
 
     </footer>
-    <
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @* <script src="~/lib/jquery/dist/jquery.min.js"></script> *@
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -297,16 +539,16 @@
     <script>
 
         $(document).ready(function () {
-            
-            $("#my_Top").on("click", function (e) { 
-                var x = document.getElementById("my_TopnavId");
-                console.log('click');
-                if (x.className === "mtopnav") {
-                    x.className += "mresponsive";
-                } else {
-                    x.className = "mtopnav";
-                }
-            });
+
+            // $("#my_Top").on("click", function (e) {
+            //     var x = document.getElementById("my_TopnavId");
+            //     console.log('click');
+            //     if (x.className === "mtopnav") {
+            //         x.className += "mresponsive";
+            //     } else {
+            //         x.className = "mtopnav";
+            //     }
+            // });
 
             $("body").on("click", ".btn-Login", function (e) {
                 e.preventDefault();

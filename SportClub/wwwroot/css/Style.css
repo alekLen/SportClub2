@@ -1,4 +1,88 @@
-.mtopnav {
+.a_hove:hover {
+    background-color: #4a8888;
+}
+
+header .nav-item a:hover {
+    background-color: #4a8888;
+}
+
+
+header .navbar-brand {
+    color: #EEE8AA;
+}
+
+    header .navbar-brand:hover {
+        color: #EEE8AA;
+    }
+
+.bg-myBlue {
+    background-color: #042940;
+}
+
+.bg-myDarkGreen {
+    background-color: #4a8888;
+}
+
+header .navbar {
+    padding: 0;
+}
+
+header .navbar-nav .nav-link.active {
+    color: #EEE8AA;
+    height: 53px;
+}
+
+header .nav-link.active {
+    height: 53px;
+    padding: 15px 12px;
+}
+
+header .nav-item .dropdown-menu .dropdown-item {
+    color: #EEE8AA;
+}
+
+header .nav-item .nav-link {
+    color: #EEE8AA;
+    padding: 15px 12px;
+    height: 53px;
+}
+
+header .nav-item .nav-btn_m {
+    color: #EEE8AA;
+    padding: 15px 12px;
+    height: 53px;
+    background-color: initial;
+    border: none;
+}
+
+    header .nav-item .nav-btn_m:hover {
+        color: #EEE8AA;
+        background-color: #4a8888;
+        border: none;
+    }
+
+header .container-fluid {
+    margin-left: 20px;
+    padding-right: 0px;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(238,232,170)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.custom-toggler.navbar-toggler {
+    border-color: #EEE8AA;
+}
+
+    .custom-toggler.navbar-toggler:focus {
+        border: solid 1px #EEE8AA;
+    }
+
+.my-sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}/*.mtopnav {
     overflow: hidden;
     background-color: #042940;
 }
@@ -37,13 +121,13 @@
 .mactive {
     background-color: #4a8888;
     color: #EEE8AA;
-}
+}*/
 
-.mtopnav .icon {
+/*.mtopnav .icon {
     display: none;
-}
+}*/
 
-.mdropdown {
+/*.mdropdown {
     float: left;
     overflow: hidden;
 }
@@ -131,7 +215,7 @@
     }
 }
 
-@media screen and (max-width: 100px) {
+@media screen and (max-width: 990px) {
     .mtopnav .mresponsive {
         position: relative;
     }
@@ -165,7 +249,7 @@
         width: 100%;
         text-align: left;
     }
-}
+}*/
 
 
 
