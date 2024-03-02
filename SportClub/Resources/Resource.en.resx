@@ -783,4 +783,7 @@
   <data name="Us" xml:space="preserve">
     <value>Client</value>
   </data>
+  <data name="Chpass" xml:space="preserve">
+    <value>Change password</value>
+  </data>
 </root>

@@ -69,7 +69,8 @@ namespace SportClub.BLL.Services
             try
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Coach, CoachDTO>()
-                .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name)));
+                .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                 .ForMember("PostId", opt => opt.MapFrom(c => c.Post.Id)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<CoachDTO>(a);
             }
@@ -80,7 +81,8 @@ namespace SportClub.BLL.Services
             try
             {
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Coach, CoachDTO>()
-                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name)));
+                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                  .ForMember("PostId", opt => opt.MapFrom(c => c.Post.Id)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<IEnumerable<Coach>, IEnumerable<CoachDTO>>(await Database.Coaches.GetAll());
             }
@@ -143,7 +145,8 @@ namespace SportClub.BLL.Services
             {
                 Coach a = await Database.Coaches.GetCoachLogin(login);
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Coach, CoachDTO>()
-                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name)));
+                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                  .ForMember("PostId", opt => opt.MapFrom(c => c.Post.Id)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<CoachDTO>(a);
             }
@@ -155,7 +158,8 @@ namespace SportClub.BLL.Services
             {
                 Coach a = await Database.Coaches.GetCoachEmail(email);
                 var config = new MapperConfiguration(cfg => cfg.CreateMap<Coach, CoachDTO>()
-                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name)));
+                 .ForMember("PostName", opt => opt.MapFrom(c => c.Post.Name)).ForMember("SpecialityName", opt => opt.MapFrom(c => c.Speciality.Name))
+                  .ForMember("PostId", opt => opt.MapFrom(c => c.Post.Id)).ForMember("SpecialityId", opt => opt.MapFrom(c => c.Speciality.Id)));
                 var mapper = new Mapper(config);
                 return mapper.Map<CoachDTO>(a);
             }

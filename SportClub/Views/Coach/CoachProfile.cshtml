@@ -24,6 +24,8 @@
         <div>
             <br />          
                 <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="PostId" value="@Model.PostId"/>
+                    <input type="hidden" asp-for="SpecialityId" value="@Model.SpecialityId" />
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @Html.AntiForgeryToken()
  
@@ -32,25 +34,25 @@
                     <div style="width: 500px;  justify-content: center; ">
 
                         <div class="form-group" style="margin-left: 40px"> 
-                            <label asp-for="Name" class="control-label whiteY" class="font">@Resources.Resource.Name</label>
+                            <label  class="control-label whiteY" class="font">@Resources.Resource.Name</label>
                             <input asp-for="Name" type="text" class="form-control" name="name" id="name" class="font" style="width: 420px">
                             <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                         </div>
                         <div class="form-group" style="margin-left: 40px">
                              
-                            <label asp-for="Login" class="control-label whiteY" class="font">@Resources.Resource.Login</label>
+                            <label  class="control-label whiteY" class="font">@Resources.Resource.loginN</label>
                             <input asp-for="Login" type="text" class="form-control" name="login" id="login" style="width: 420px">
                             <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
                         </div>
                        
                         <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Email" class="control-label whiteY" class="font">@Resources.Resource.email</label>
+                            <label  class="control-label whiteY" class="font">@Resources.Resource.email</label>
                             <input asp-for="Email"  class="form-control"  id="emailInput" style="width: 420px">
                             <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
                         </div>                    
                         
                         <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Phone"  class="font whiteY">@Resources.Resource.Phone</label>
+                            <label   class="font whiteY">@Resources.Resource.Phone</label>
                             <input asp-for="Phone" class="form-control" placeholder="+380971234567" style="width: 420px" />
                             <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
                         </div>
@@ -76,7 +78,7 @@
                         
                         <div class="flex" style="justify-content:space-around;">
                             <input type="submit" class="btn btn-outline-light buttonsGY" formaction="EditCoachProfile" style="min-width:150px;" value="@Resources.Resource.Confirm" />
-                                <input class="btn btn-outline-light buttonsGY" formaction="ChangeCoachPassword" type="submit" style="min-width:150px;" value="@Resources.Resource.Edit &nbsp;@Resources.Resource.password" />
+                                <input class="btn btn-outline-light buttonsGY" formaction="ChangeCoachPassword" type="submit" style="min-width:150px;" value="@Resources.Resource.changePassword" />
                          
                         </div>
                             <br />

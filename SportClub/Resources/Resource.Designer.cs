@@ -111,6 +111,14 @@ namespace Resources {
                 return ResourceManager.GetString("Us", resourceCulture);
             }
         }
+       
+            public static string Chpass
+        {
+            get
+            {
+                return ResourceManager.GetString(" Chpass", resourceCulture);
+            }
+        }
         public static string old
         {
             get

@@ -145,7 +145,10 @@ namespace SportClub.Controllers
                 u.Age = age;
                 u.Phone = user.Phone;
                 u.Name = user.Name;
-                u.DateOfBirth = user.DateOfBirth;              
+                u.DateOfBirth = user.DateOfBirth; 
+                u.PostId = user.PostId;
+                u.SpecialityId= user.SpecialityId;
+               
                 await coachService.UpdateCoach(u);
                 return View("YouChangedProfile");
             }

@@ -792,4 +792,7 @@
   <data name="YogaClasses" xml:space="preserve">
     <value>Заняття йогою</value>
   </data>
+  <data name="Chpass" xml:space="preserve">
+    <value>Змінити пароль</value>
+  </data>
 </root>

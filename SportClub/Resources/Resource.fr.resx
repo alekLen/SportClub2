@@ -783,4 +783,7 @@
   <data name="м" xml:space="preserve">
     <value>Client</value>
   </data>
+  <data name="Chpass" xml:space="preserve">
+    <value>Changer le mot de passe</value>
+  </data>
 </root>

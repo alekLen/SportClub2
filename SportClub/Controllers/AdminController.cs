@@ -367,7 +367,7 @@ namespace SportClub.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, AdminDTO user)
+        public async Task<IActionResult> EditAdmin(int id, AdminDTO user)
         {
             HttpContext.Session.SetString("path", Request.Path);
             try
@@ -375,7 +375,7 @@ namespace SportClub.Controllers
                 AdminDTO admindto = await adminService.GetAdmin(id);
                 if (admindto == null)
                 {
-                    return NotFound();
+                    return View("Edit", user);
                 }
 
                 if (ModelState.IsValid)
