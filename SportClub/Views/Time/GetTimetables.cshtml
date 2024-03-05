@@ -1,5 +1,5 @@
 ﻿@*@model IEnumerable<SportClub.Models.TimetableShow>*@
- @model MakeSheduleView
+ @* @model MakeSheduleView
 @{
     ViewData["Title"] = "Timetables";
 }
@@ -23,12 +23,12 @@
     }
     <div class="padd1 marg" style="width:125px;background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);">
         <form method="post">
-            @* <div class="padd1 marg" style="background-image: linear-gradient(to bottom right, #2F4F4F, #2F3F2F);"> *@
+           
                 <h6 style="width:100px;color:#EEE8AA;">ВЫХОДНОЙ</h6>
                 <input type="hidden" name="roomId" value="@Model.room.Id" />
                 <input type="hidden" name="id" value=0 />
                 <input style="padding-top:3px;padding-bottom:3px" type="submit" formaction="AddTimetableToShedule" value="Добавить" class="btn btn-primary buttonsGY" />
-            @* </div> *@
+           
         </form>
     </div>
 </div>
@@ -78,11 +78,11 @@
         </tbody>
     </table>
 
-    @* </div> *@
+   
     <br />
     <form method="post">
         <input type="hidden" name="rId" value="@Model.room.Id" />
         <a asp-area="" asp-route-roId="@Model.room.Id" asp-controller="Time" asp-action="CancelAddTimetable" class="btn btn-primary buttonsGY">Отмена</a>
         <input type="submit" asp-controller="Time" asp-action="SaveShedule" value="Сохранить график работы" class="btn btn-primary buttonsGY" />
     </form>
-</div>
+</div> *@

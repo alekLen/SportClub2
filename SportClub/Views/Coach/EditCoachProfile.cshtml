@@ -6,7 +6,7 @@
 }
 
 <div class="div_reg">
-    <p class="font">Редактирование тренера </p>
+    <p class="font"> @Resources.Resource.Edit </p>
     <div class="row">
         <form asp-action="Edit" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -16,26 +16,26 @@
 
             <div class="form-group" style="margin-left: 40px">
 
-                <label asp-for="Name" class="control-label font white-color_size20"></label>
+                <label asp-for="Name" class="control-label font white-color_size20"> @Resources.Resource.Name</label>
                 <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
                 <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 40px">
 
-                <label asp-for="Login" class="control-label font white-color_size20"></label>
+                <label asp-for="Login" class="control-label font white-color_size20"> @Resources.Resource.loginN</label>
                 <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px">
                 <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
             </div>
 
-            <div class="form-group" style="margin-left: 40px">
+           @*  <div class="form-group" style="margin-left: 40px">
                 <label asp-for="Password" class="control-label font white-color_size20"></label>
                 <input asp-for="Password" type="password" class="form-control" style="width: 420px">
                 <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
-            </div>
+            </div> *@
              
             <div class="form-group" style="margin-left: 40px">
-                <label asp-for="Email" class="control-label font white-color_size20"></label>
+                <label asp-for="Email" class="control-label font white-color_size20"> @Resources.Resource.email</label>
                 <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                 <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
             </div>
@@ -90,12 +90,12 @@
 
             <br />
             <div class="form-group" style="margin-left: 200px">
-                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
+                <button type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm !&!?</button><br /><br />
             </div>
         </form>
     </div>
     <div>
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index"> @Resources.Resource.Back</a>
     </div>
 </div>
 @section Scripts {

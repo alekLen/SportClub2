@@ -14,31 +14,31 @@
         <div class="row" style="padding-top: 30px;">
          <div class="column">
             <div class="form-group" style="margin-left: 30px">
-                <label asp-for="Name" class="control-label font white-color_size20 color_text"></label>
+                    <label asp-for="Name" class="control-label font white-color_size20 color_text"> @Resources.Resource.Name</label>
                 <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
                 <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 30px">
-                <label asp-for="Login" class="control-label font white-color_size20 color_text"></label>
+                    <label asp-for="Login" class="control-label font white-color_size20 color_text"> @Resources.Resource.loginN</label>
                 <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px" autocomplete="off">
                 <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 30px">
-                <label asp-for="Password" class="control-label font white-color_size20 color_text"></label>
+                    <label asp-for="Password" class="control-label font white-color_size20 color_text"> @Resources.Resource.password</label>
                 <input asp-for="Password" type="password" class="form-control" style="width: 420px" autocomplete="off">
                 <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 30px">
-                <label asp-for="PasswordConfirm" style=" width: 200px" class="control-label font white-color_size20 color_text"></label>
+                    <label asp-for="PasswordConfirm" style=" width: 200px" class="control-label font white-color_size20 color_text"> @Resources.Resource.passwordConf</label>
                 <input asp-for="PasswordConfirm" type="password" class="form-control" style="width: 420px">
                 <span asp-validation-for="PasswordConfirm" class="text-danger" style="width: 450px"></span>
             </div>
 
             <div class="form-group" style="margin-left: 30px">
-                <label asp-for="Email" class="control-label font white-color_size20 color_text"></label>
+                <label asp-for="Email" class="control-label font white-color_size20 color_text"> @Resources.Resource.email</label>
                 <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                 <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
             </div>

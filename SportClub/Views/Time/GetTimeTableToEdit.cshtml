@@ -1,4 +1,4 @@
-﻿@model MakeSheduleView
+﻿@* @model MakeSheduleView
 
 <div>
     <a asp-route-roomId="@Model.room.Id" asp-controller="Time" asp-action="BackToShedule" class="btn btn-primary buttons">Назад</a>
@@ -21,7 +21,7 @@
                     <br />
                     <a asp-route-roomId="@Model.room.Id" asp-controller="Time" asp-action="BackToShedule" class="btn btn-primary buttons">Редактировать</a>
                     <br /> <br />
-                  @*   <input type="submit" style="margin-left:10px;" formaction="DeleteTimetable" readonly value="Удалить" class="btn btn-primary c2" /> *@
+                 
                 </div>
             </form>
         </div>
@@ -29,3 +29,4 @@
    
 
 </div>
+ *@
