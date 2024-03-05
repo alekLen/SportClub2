@@ -7,12 +7,10 @@
 <div>
     <div style="width:max-content;margin: 10px auto 10px auto;">
         <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
-            Изменение админа@* @Resources.Resource *@
+             @Resources.Resource.Edit
         </h4>
         <div class="div_reg">
-            <br /><br />
-           
-            @* <div> *@
+            <br /><br />                 
                 <form asp-action="EditAdmin">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
@@ -24,13 +22,13 @@
 
                     <div class="form-group" style="margin-left: 40px">
 
-                        <label asp-for="Name" style="color:#EEE8AA;" class="control-label font white-color_size20"></label>
+                    <label style="color:#EEE8AA;" class="control-label font white-color_size20">@Resources.Resource.Name</label>
                         <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
                         <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="Email" style="color:#EEE8AA;" class="control-label font white-color_size20"></label>
+                    <label  style="color:#EEE8AA;" class="control-label font white-color_size20">@Resources.Resource.email</label>
                         <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                         <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
                     </div>
@@ -56,10 +54,10 @@
 
                     <div style="margin: 10px auto 10px auto;width: max-content;">
                         <button style="height: 38px;" type="submit" class="input_subm4 btn btn-primary font">@Resources.Resource.Confirm</button>
-                        <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-primary buttonsGY">Back to List</a><br />
+                    <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-primary buttonsGY">@Resources.Resource.Back </a><br />
                     </div><br />
                 </form>
-            @* </div> *@
+          
         </div>
     </div>
 </div>

@@ -87,10 +87,11 @@
             {
 
                 <div class="flex marg back_color " style="width:620px; padding:2px;height:330px;">
-                     
+
                     <div >
-                        <img src=@item.Photo width="330" height="270" alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
-                       
+                        <div class="photo-frame">
+                        <img src=@item.Photo  alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
+                       </div>
                         <h3 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h3>
                     </div>
                     <p style="padding:20px;padding-bottom:0px;color:#EEE8AA; background-size:cover; background-image: url('/Coaches/фон5.jpg'); 
@@ -114,7 +115,9 @@
                 <div class="flex " style="flex-direction:column;" >
 
                     <div style="padding:10px;background-color:#2F4F4F;margin-bottom:10px;padding-bottom:0px;">
-                        <img src=@item.Photo width="600" height="470" alt="photoSportroom"  />
+                        <div class="photo-frame2">
+                        <img src=@item.Photo  alt="photoSportroom"  />
+                        </div>
                         <h6 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h6>
                     </div>
                    
