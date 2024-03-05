@@ -7,13 +7,11 @@
 <div>
     <div style="width:max-content;margin: 10px auto 10px auto;">
         <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
-            Удаление админа@* @Resources.Resource *@
+             @Resources.Resource.DeleteAdmin
         </h4>
         <div class="div_reg">
-            @* <p class="font" style="font-size: 32px; color: #EEE8AA; padding-top: 30px; text-align: center">
-            Удаление админа
-            </p> *@
-            <p class="font" style="font-size: 22px; color: #EEE8AA; text-align: center"> Вы действительно желаете удалить<br /> админа? </p>
+          
+            <p class="font" style="font-size: 22px; color: #EEE8AA; text-align: center"> @Resources.Resource.Confirmdeletion </p>
 
             <div class="row">
                 <div>
@@ -21,38 +19,38 @@
                     <div class="row">
                         <div style="width: 500px;  justify-content: center; ">
                             <div class="form-group" style="margin-left: 40px">
-                                <label asp-for="Name" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
+                                <label asp-for="Name" class="control-label font  white-color_size20" style="color: #EEE8AA">@Resources.Resource.Name</label>
                                 <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Name)</h1>
                             </div>
                             <div class="form-group" style="margin-left: 40px">
 
-                                <label asp-for="Login" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
+                                <label asp-for="Login" class="control-label font  white-color_size20" style="color: #EEE8AA">@Resources.Resource.loginN</label>
                                 <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Login)</h1>
                             </div>
 
                             <div class="form-group" style="margin-left: 40px">
-                                <label asp-for="Email" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
+                                <label asp-for="Email" class="control-label font  white-color_size20" style="color: #EEE8AA">@Resources.Resource.email</label>
                                 <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Email)</h1>
                             </div>
 
                             <div class="form-group" style="margin-left: 40px">
-                                <label asp-for="Phone" style="color: #EEE8AA" class="control-label font  white-color_size20"></label>
+                                <label asp-for="Phone" style="color: #EEE8AA" class="control-label font  white-color_size20">@Resources.Resource.Phone</label>
                                 <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Phone)</h1>
                             </div>
                         </div>
 
                         <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: #EEE8AA"></label>
+                            <label asp-for="DateOfBirth" class="control-label font  white-color_size20" style="color: #EEE8AA">@Resources.Resource.DateB</label>
                             <h1 class="form-control p1" style="width: 420px;height: 33px">@Html.DisplayFor(model => model.DateOfBirth)</h1>
                         </div> <br />
 
                         <div style="margin: 10px auto 10px auto;width: max-content;">
-                            <form method="post" asp-action="Delete" asp-controller="Users"
+                            <form method="post" asp-action="Delete" asp-controller="Admin"
                                   style="width: max-content; float: left;height: 38px;">
                                 <input type="hidden" asp-for="Id" name="id" />
-                                <input class="input_subm_del font y" style="height: 38px;" type="submit" value="УДАЛИТЬ" />
+                                <input class="input_subm_del font y buttonsGY" style="height: 38px;" type="submit" value="@Resources.Resource.Confirmdeletion" />
                             </form>
-                            <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-primary buttonsGY">Back to List</a><br />@* btn btn-outline-light *@
+                            <a asp-action="GetAdmins" asp-controller="Admin" style="margin-left: 10px;" class="btn btn-primary buttonsGY">@Resources.Resource.Back</a><br />
                         </div><br />
                     </div>
                     <br />
