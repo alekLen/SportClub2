@@ -6,7 +6,7 @@
     </div>
     </div>
     <div class="div_reg2 " id="addUsers" style="width:500px;">
-    <h3 class="font whiteY" style="text-align:center">@Resources.Resource.GrTr</h3>
+    <h3 class="font whiteY" style="text-align:center">@Resources.Resource.GroupTraining</h3>
     <div class="row">
 
         <form asp-action="AddUsersToTrainingGroup" method="post">
@@ -45,7 +45,7 @@
                @*  <a asp-action="RoomWithShedule" asp-controller="Time" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br /> *@
             </div>
                 <div style="margin: 10px auto 10px auto;width: max-content;">
-                    <a id="buttonEdit" class="btn btn-outline-light buttonsGY" style="min-width:300px">@Resources.Resource.Delete</a>
+                    <a id="buttonEdit" class="btn btn-outline-light buttonsGY" style="min-width:300px">@Resources.Resource.DelSong</a>
             </div>
                 @*  <a asp-area="" asp-route-Id="@Model.Id" asp-controller="Time" asp-action="DetailsTrainingGroup" class="a_button_green">@Resources.Resource.Edit</a> *@
         </form>
@@ -62,7 +62,7 @@
                     @Html.AntiForgeryToken()
                     <div>
                         <div class="padd" style="width:329px;margin-left: 20px;float:left">
-                            <h5 class="whiteY">@Resources.Resource.Users&nbsp;&nbsp;@Resources.Resource.GrTr</h5>
+                        <h5 class="whiteY">@Resources.Resource.Users&nbsp;&nbsp;@Resources.Resource.GroupTraining</h5>
                             <select name="UsersId" asp-for="UsersId" size="10" id="list11" class="form-control card _c7" asp-items="ViewBag.UserstableId"></select>
                             <span id="spn1t" asp-validation-for="UsersId" class="text-danger"></span>
                         </div>
@@ -254,7 +254,7 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Подтверждение удаления!",
+                    title: '@Html.Raw(@Resources.Resource.Delete)?',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
@@ -262,7 +262,7 @@
                     resizable: false,
                     buttons: [{
                         class: "input_subm3",//
-                        text: "Удалить",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeleteUserInTrGroupAction", "Users")",
@@ -278,14 +278,14 @@
                                             .appendTo("body")
                                             .load("/Admin/AddedPost")
                                             .dialog({
-                                                title: "Удалено!",
+                                                title: '@Html.Raw(@Resources.Resource.Sucsess)',
                                                 close: function () { window.location.href = "@Url.Action("Index", "Home")"; },
                                                 dialogClass: 'myTitleClass',
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
                                                     class: "input_subm3",//
-                                                    text: "Назад",
+                                                    text: '@Html.Raw(@Resources.Resource.Exit)',
                                                     click: function () {
                                                         window.location.href = "@Url.Action("Index", "Home")";
                                                        

@@ -7,12 +7,11 @@
 <div>
     <div style="width:max-content;margin: 10px auto 10px auto;">
         <h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;">
-            Изменение пользователя@* @Resources.Resource *@
+            @Resources.Resource.Edit
         </h4>
         <div class="div_reg">
             <br />
-            @* <p style="color:#EEE8AA;" class="font">Изменение пользователя </p>
-            <div class="row"> *@
+            
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <input type="hidden" asp-for="Id" />
@@ -23,13 +22,13 @@
                     @Html.ValidationSummary(true, "")
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label style="color:#EEE8AA;" asp-for="Name" class="control-label font white-color_size20"></label>
+                    <label style="color:#EEE8AA;" asp-for="Name" class="control-label font white-color_size20"> @Resources.Resource.Name</label>
                         <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
                         <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label style="color:#EEE8AA;" asp-for="Email" class="control-label font white-color_size20"></label>
+                    <label style="color:#EEE8AA;" asp-for="Email" class="control-label font white-color_size20"> @Resources.Resource.email</label>
                         <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
                         <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
                     </div>
@@ -55,7 +54,7 @@
 
                     <div style="margin: 10px auto 10px auto;width: max-content;">
                         <button style="height: 38px;" type="submit" class="input_subm4 btn btn-primary font">@Resources.Resource.Confirm</button>
-                        <a asp-action="GetClients" asp-controller="Users" style="margin-left: 10px;" class="btn btn-primary buttonsGY">Back to List</a><br />
+                    <a asp-action="GetClients" asp-controller="Users" style="margin-left: 10px;" class="btn btn-primary buttonsGY"> @Resources.Resource.Back</a><br />
                     </div><br />
                 </form>
             @* </div> *@
