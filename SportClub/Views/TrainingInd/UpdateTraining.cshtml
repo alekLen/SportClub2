@@ -1,8 +1,12 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
-<div class="flex" style="justify-content:center">
-<div style=" width: 500px; " class="div_reg2">
+<div class="flex" style="justify-content:center;justify-content:center">
+    <div>
+        <a class="btn btn-outline-light whiteY buttonsGY" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule"
+           asp-controller="Time" style="border:2px solid #2F4F4F"><strong>@Resources.Resource.Back</strong></a>
+    </div>
+<div style=" width: 500px; margin-left:30px; " class="div_reg2">
     <p class="font whiteY" style="font-size: 32px; padding-top: 30px; text-align: center">
-		<span>@Resources.Resource.IndTr</span>
+		<span>@Resources.Resource.IndividualTraining</span>
     </p>
     <hr class="whiteY" />
     <div class="row">
@@ -17,20 +21,27 @@
         <input type="hidden" name="roomId" value="@Model.RoomId" />
         <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px"/><br /> 
         </div>
-        <div style="margin-left: 40px">
-        <span class="font" style="color: white">@Resources.Resource.Coaches</span><br/>
-        <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px"/><br />
-        </div>
+                 <div class="flex" style="justify-content: center;">
+                            <div>
+          <span class="font whiteY">@Resources.Resource.Album</span><br />
+                            <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px" />
+                            </div><div style="margin-left: 20px">
+                            <span class="font whiteY">@Resources.Resource.Us</span><br />
+         <input name="userName" value="@Model.UserName" readonly class="font" style="width: 120px" />
+                        </div>
+                 </div>
+                        <br />
         <div class="form-group" style="margin-left: 40px">
-                            <label style="color: white; font-size: 16px;" class="font">@Resources.Resource.Us</label>
+               <label  class="font whiteY">@Resources.Resource.Users</label>
             <select asp-for="Id" name="userId" class="form-control card _c7" class="font" style="width: 420px" asp-items="ViewBag.UserId"></select>
         </div>
         <br /><br />
-        <div style="margin-left: 5px">
-                            <input type="submit" value="@Resources.Resource.Confirm" class="btn btn-outline-light buttonsGY" />
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light btnDelTR buttonsGY" id="@Model.Id">@Resources.Resource.Delete</a>
-                            <a class="btn btn-outline-light buttonsGY" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="CancelAppointment">@Resources.Resource.Cancel</a>
-        </div>
+                        <div class="flex" style=" justify-content:space-around;width: 500px; ">
+                            <input type="submit" value="@Resources.Resource.AddSong" class="btn btn-outline-light buttonsGY" />
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light btnDelTR buttonsGY" id="@Model.Id">@Resources.Resource.DeleteArt</a>
+                            <a class="btn btn-outline-light buttonsGY" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="CancelAppointment">@Resources.Resource.DelSong</a>
+                           
+                        </div>
         <br /><br />
         
 

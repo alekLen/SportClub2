@@ -4,11 +4,13 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 using SportClub.Models;
 using System.Collections.Generic;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class SheduleController : Controller
     {
         IWebHostEnvironment _appEnvironment;

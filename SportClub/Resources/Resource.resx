@@ -139,7 +139,7 @@
     <value>Добавление</value>
   </data>
   <data name="AddSong" xml:space="preserve">
-    <value>Добавить песню</value>
+    <value>Добавить клиента</value>
   </data>
   <data name="AdminDetails" xml:space="preserve">
     <value>Детали админа</value>
@@ -163,7 +163,7 @@
     <value>*введите возраст</value>
   </data>
   <data name="Album" xml:space="preserve">
-    <value>Альбом</value>
+    <value>Тренер</value>
   </data>
   <data name="AllSc" xml:space="preserve">
     <value>Все сохраненные графики</value>
@@ -253,7 +253,7 @@
     <value>Удалить и выйти</value>
   </data>
   <data name="DeleteArt" xml:space="preserve">
-    <value>Удалить исполнителя</value>
+    <value>Удалить тренировку</value>
   </data>
   <data name="DeleteCoachPost" xml:space="preserve">
     <value>Удаление должности тренера</value>
@@ -271,7 +271,7 @@
     <value>Удалить время</value>
   </data>
   <data name="DelSong" xml:space="preserve">
-    <value>Была удалена песня:  </value>
+    <value>Удалить клиента</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Дополнительные сведения</value>
@@ -694,7 +694,7 @@
     <value>Поспешите приобрести абонементы</value>
   </data>
   <data name="IndividualTraining" xml:space="preserve">
-    <value>Индивидуальные тренировки</value>
+    <value>Индивидуальная тренировка</value>
   </data>
   <data name="OpeningIsSoon" xml:space="preserve">
     <value>Скоро открытие нового спортзала</value>

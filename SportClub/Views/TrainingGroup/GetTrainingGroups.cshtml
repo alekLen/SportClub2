@@ -62,9 +62,9 @@
                     </td> *@
 
                     <td>
-                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="EditTrainingGroup" asp-route-id="@item.Id">Edit</a>
-                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="DetailsTrainingGroup" asp-route-id="@item.Id">Details</a>
-                        <a class="btn1n btn btn-outline-light" asp-controller="TrainingGroup" asp-action="DeleteTrainingGroup" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn1n btn btn-outline-light buttonsGY" asp-controller="TrainingGroup" asp-action="EditTrainingGroup" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
+                        <a class="btn1n btn btn-outline-light buttonsGY" asp-controller="TrainingGroup" asp-action="DetailsTrainingGroup" asp-route-id="@item.Id">@Resources.Resource.Details</a>
+                        <a class="btn1n btn btn-outline-light buttonsGY" asp-controller="TrainingGroup" asp-action="DeleteTrainingGroup" asp-route-id="@item.Id">@Resources.Resource.Delete</a>
                     </td>
                 </tr>
             }

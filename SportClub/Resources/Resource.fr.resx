@@ -139,7 +139,7 @@
     <value>Ajout</value>
   </data>
   <data name="AddSong" xml:space="preserve">
-    <value>Ajouter une chanson</value>
+    <value>Ajouter un client</value>
   </data>
   <data name="AdminDetails" xml:space="preserve">
     <value>Détails de l'administrateur</value>
@@ -160,7 +160,7 @@
     <value>*entrez l'âge</value>
   </data>
   <data name="Album" xml:space="preserve">
-    <value>Album</value>
+    <value>Entraîneur</value>
   </data>
   <data name="AllSc" xml:space="preserve">
     <value>Tous les graphiques enregistrés</value>
@@ -247,7 +247,7 @@
     <value>Supprimer et quitter</value>
   </data>
   <data name="DeleteArt" xml:space="preserve">
-    <value>Supprimer l'artiste</value>
+    <value>Supprimer l'formation</value>
   </data>
   <data name="DeleteCoachPost" xml:space="preserve">
     <value>Supprimer un poste de coach</value>
@@ -265,7 +265,7 @@
     <value>Supprimer l'heure</value>
   </data>
   <data name="DelSong" xml:space="preserve">
-    <value>La chanson a été supprimée :  </value>
+    <value>Supprimer le client</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>

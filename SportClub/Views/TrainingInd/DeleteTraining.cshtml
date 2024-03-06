@@ -1,7 +1,7 @@
 ﻿@model SportClub.BLL.DTO.TrainingIndDTO
 <div style="background-color: #374566; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; border-radius: 15px; width: 500px; margin-left: 400px;">
     <p class="font" style="font-size: 32px; color: white; padding-top: 30px; text-align: center">
-        <span>Удаление тренировки</span>
+        <span>@Resources.Resource.Confirmdeletion</span>
     </p>
     <hr style="color:white" />
     <div class="row">
@@ -17,23 +17,27 @@
                         <input name="roomName" value="@Model.RoomName" readonly class="font" style="width: 120px" /><br />
                     </div>
                     <div style="margin-left: 40px">
-                        <span class="font" style="color: white">Тренер</span><br />
+                        <span class="font" style="color: white">@Resources.Resource.Coaches</span><br />
                         <input name="coachName" value="@Model.CoachName" readonly class="font" style="width: 120px" /><br />
                     </div>
                     <div class="form-group" style="margin-left: 40px">
-                        <label style="color: white; font-size: 16px;" class="font">Изменить клиента</label>
+                        <label style="color: white; font-size: 16px;" class="font">@Resources.Resource.Users</label>
                         <select asp-for="Id" name="userId" class="form-control card _c7" class="font" style="width: 420px" asp-items="ViewBag.UserId"></select>
                     </div>
                     <br /><br />
                     <div style="margin-left: 170px">
-                        <input type="submit" value="Изменить клиента" class="btn btn-outline-light" />
-                        <a class="btn btn-outline-light" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="DeleteTraining">Просмотр</a>
+                       @*  <input type="submit" value="@Resources.Resource.Confirm" class="btn btn-outline-light buttonsGY" /> *@
+                        <a class="btn btn-outline-light buttonsGY" asp-area="" asp-route-Id="@Model.Id" asp-controller="TrainingInd" asp-action="DeleteTraining">@Resources.Resource.Confirm</a>
+                  
+                       <a class="btn btn-outline-light whiteY buttonsGY" asp-route-RoomId="@Model?.RoomId" asp-action="RoomWithShedule"
+                           asp-controller="Time" style="border:2px solid #2F4F4F"><strong>@Resources.Resource.Cancel</strong></a>
+                       
                     </div>
                     <br /><br />
 
 
                 </div>
             </form>
-            <div />
-            <div />
-            <div />
+            </div >
+            </div >
+            </div >

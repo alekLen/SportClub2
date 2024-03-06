@@ -7,18 +7,18 @@
                asp-controller="Time" style="border:2px solid #2F4F4F"><strong>X</strong></a>
         </div>
         <div class="div_reg2 " id="addUsers" style="width:500px;">
-            <h3 class="font whiteY" style="text-align:center">Запись клиентов на тренировку</h3>
+            <h3 class="font whiteY" style="text-align:center">@Resources.Resource.IndividualTraining</h3>
             <div class="row">
 <form method="post">
     <div>
         <input type="hidden" name="id" value="@Model.Id" />
 
-                        <h5 class=" whiteY" style="text-align:center">Выбрать клиента</h5>
+                        <h5 class=" whiteY" style="text-align:center">@Resources.Resource.Users</h5>
                         <div class="padd" >
         <select asp-for="Id" name="userId" class="form-control card _c7" asp-items="ViewBag.UserId"></select>
          </div>
          <div class="flex" style="justify-content:space-around">
-        <input type="submit" value="Добавить клиента" formaction="AddUserToTraining" class="buttonsGY" style="padding:5px;min-width:150px;border-radius:3px;"/>
+                            <input type="submit" value="@Resources.Resource.Add" formaction="AddUserToTraining" class="buttonsGY" style="padding:5px;min-width:150px;border-radius:3px;" />
                         </div>           <br />
     </div>
 </form>

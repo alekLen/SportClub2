@@ -139,7 +139,7 @@
     <value>Додавання</value>
   </data>
   <data name="AddSong" xml:space="preserve">
-    <value>Додати пісню</value>
+    <value>Додати клієнта</value>
   </data>
   <data name="AdminDetails" xml:space="preserve">
     <value>Деталі адміну</value>
@@ -163,7 +163,7 @@
     <value>*введіть вік</value>
   </data>
   <data name="Album" xml:space="preserve">
-    <value>Альбом</value>
+    <value>Тренер</value>
   </data>
   <data name="AllSc" xml:space="preserve">
     <value>Усі збережені графіки</value>
@@ -253,7 +253,7 @@
     <value>Видалити і вийти</value>
   </data>
   <data name="DeleteArt" xml:space="preserve">
-    <value>Видалити співака</value>
+    <value>Видалити тренування</value>
   </data>
   <data name="DeleteCoachPost" xml:space="preserve">
     <value>Видалення посади тренера</value>
@@ -271,7 +271,7 @@
     <value>Видалити час</value>
   </data>
   <data name="DelSong" xml:space="preserve">
-    <value>Була видалена пісня:  </value>
+    <value>Видалити клієнта</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Додаткові відомості</value>
@@ -688,13 +688,13 @@
     <value>До кінця місяця знижка 30%</value>
   </data>
   <data name="GroupTraining" xml:space="preserve">
-    <value>Групові тренування</value>
+    <value>Групове тренування</value>
   </data>
   <data name="HurryToPurchase" xml:space="preserve">
     <value>Поспішіть придбати абонементи</value>
   </data>
   <data name="IndividualTraining" xml:space="preserve">
-    <value>Індивідуальні тренування</value>
+    <value>Індивідуальне тренування</value>
   </data>
   <data name="OpeningIsSoon" xml:space="preserve">
     <value>Незабаром відкриття нового спортзалу</value>

@@ -5,9 +5,9 @@
 @using Microsoft.AspNetCore.Http
 
 <div class="div_reg">
-    <p class="font">Создание групповой тренировки</p>
+    <p class="font">@Resources.Resource.GroupTraining</p>
     <div class="row">
-        @* id="CreateGroup" action="CreateGroup" *@
+      
         <form asp-action="CreateTrainingGroup" asp-controller="TrainingGroup" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @Html.AntiForgeryToken()
@@ -20,48 +20,25 @@
                 <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
             </div>
 
-    @*         <div class="form-group" style="margin-left: 40px"> 
-                <label asp-for="Number" class="control-label font white-color_size20"></label>
-                <input asp-for="Number" type="number" class="form-control" style="width: 420px">
-                <span asp-validation-for="Number" class="text-danger" style="width: 450px"></span>
-            </div> *@
-
             <div class="form-group" style="margin-left: 40px">
                 <label asp-for="CoachId" class="font white-color_size20"></label>
                 <select asp-for="CoachId" class="form-control" asp-items="ViewBag.CoachListId" style="width: 420px"></select>
                 <span asp-validation-for="CoachId" class="text-danger"></span>
             </div>
 
-            @* <div class="form-group" style="margin-left: 40px">
-                <label asp-for="SpecialityId" class="font white-color_size20"></label>
-                <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId" style="width: 420px"></select>
-                <span asp-validation-for="SpecialityId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group" style="margin-left: 40px">
-                <label asp-for="GroupId" class="font white-color_size20"></label>
-                <select asp-for="GroupId" class="form-control" asp-items="ViewBag.GroupTLId" style="width: 420px"></select>
-                <span asp-validation-for="GroupId" class="text-danger"></span>
-            </div> *@
+          
             <div class="form-group" style="margin-left: 40px">
                 <label asp-for="RoomId" class="font white-color_size20"></label>
                 <select asp-for="RoomId" class="form-control" asp-items="ViewBag.RoomId" style="width: 420px"></select>
                 <span asp-validation-for="RoomId" class="text-danger"></span>
             </div>
 
-           @*  <div class="form-group" style="margin-left: 40px">
-                <label asp-for="TimeId" class="font white-color_size20"></label>
-                <select asp-for="TimeId" class="form-control" asp-items="ViewBag.TimeId" style="width: 420px"></select>
-                <span asp-validation-for="TimeId" class="text-danger"></span>
-            </div> *@
-
+          
             <div style="margin: 10px auto 10px auto;width: max-content;">
                 <button id="btnsub1" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button>
-                <a asp-action="GetTrainingGroups" asp-controller="TrainingGroups" style="margin-left: 10px;" class="btn btn-outline-light">Back to List</a><br />
+                <a asp-action="GetTrainingGroups" asp-controller="TrainingGroups" style="margin-left: 10px;" class="btn btn-outline-light">@Resources.Resource.Back </a><br />
             </div><br />
-            @* <div class="form-group" style="margin-left: 200px;margin-top:30px;display:block">
-                <button id="btnsub1" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button><br /><br />
-            </div> *@
+            
         </form>
     </div>
 </div>

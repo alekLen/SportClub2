@@ -4,10 +4,12 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 using SportClub.Models;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class TrainingGroupController : Controller
     {
         //private readonly IGroup groupService;
