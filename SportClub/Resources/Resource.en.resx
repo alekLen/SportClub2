@@ -124,10 +124,10 @@
     <value>added</value>
   </data>
   <data name="AddedArtist" xml:space="preserve">
-    <value>Artist has been added:  </value>
+    <value>Select client to delete</value>
   </data>
   <data name="AddedSong" xml:space="preserve">
-    <value>Song has been added:  </value>
+    <value>from group training</value>
   </data>
   <data name="AddedStyle" xml:space="preserve">
     <value>Genre has been added:  </value>

@@ -516,9 +516,9 @@ namespace SportClub.Controllers
                         await trainingGroupService.UpdateTrainingGroup(trgroupdto);
                     }
                     catch { return View("AddUsersToTrainingGroup"/*, group*/); }
-                    return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                    return RedirectToAction("RoomWithShedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
                 }
-                return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
             }
             catch
             {
@@ -539,7 +539,7 @@ namespace SportClub.Controllers
                 trgroupdto.UsersId.Add(await userService.GetUser(userId));
                 await trainingGroupService.UpdateTrainingGroup(trgroupdto);
 
-                return RedirectToAction("Shedule", "Users", new { RoomId = roomId });
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = roomId });
             }
             return View("Index", "Home");
         }
@@ -586,9 +586,9 @@ namespace SportClub.Controllers
                         await trainingGroupService.UpdateTrainingGroup(trgroupdto);
                     }
                     catch { return View("DeleteUserInTrainingGroup"/*, group*/); }
-                    return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                    return RedirectToAction("RoomWithShedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
                 }
-                return RedirectToAction("RoomWithShedule", "Time", new { Id = HttpContext.Session.GetInt32("roomId") });
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
             }
             catch
             {

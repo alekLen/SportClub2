@@ -124,10 +124,10 @@
     <value>ajoutée</value>
   </data>
   <data name="AddedArtist" xml:space="preserve">
-    <value>L'artiste a été ajouté :  </value>
+    <value>Sélectionnez le client à supprimer</value>
   </data>
   <data name="AddedSong" xml:space="preserve">
-    <value>La chanson a été ajoutée :  </value>
+    <value>de la formation de groupe</value>
   </data>
   <data name="AddedStyle" xml:space="preserve">
     <value>Le genre a été ajouté:  </value>

@@ -124,10 +124,10 @@
     <value>додана</value>
   </data>
   <data name="AddedArtist" xml:space="preserve">
-    <value>Був доданий співак:  </value>
+    <value>Виберіть клієнта для видалення</value>
   </data>
   <data name="AddedSong" xml:space="preserve">
-    <value>Була додана пісня:  </value>
+    <value>з групового тренування</value>
   </data>
   <data name="AddedStyle" xml:space="preserve">
     <value>Було додано жанр:  </value>

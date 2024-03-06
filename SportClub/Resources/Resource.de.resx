@@ -124,10 +124,10 @@
     <value>hinzugefügt</value>
   </data>
   <data name="AddedArtist" xml:space="preserve">
-    <value>Sänger wurde hinzugefügt:  </value>
+    <value>Wählen Sie den zu löschenden Client aus</value>
   </data>
   <data name="AddedSong" xml:space="preserve">
-    <value>Lied wurde hinzugefügt:  </value>
+    <value>aus dem Gruppentraining</value>
   </data>
   <data name="AddedStyle" xml:space="preserve">
     <value>Genre wurde hinzugefügt:  </value>

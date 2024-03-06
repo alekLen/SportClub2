@@ -34,7 +34,7 @@
                 </div>
                 <div style="margin: 10px auto 10px auto;width: max-content;">
                 
-                    <input style="min-width:300px" id="AddUsersToTable" type="button" value="Добавить клиента в группу" class="btn btn-primary  buttonsGY" />
+                    <input style="min-width:300px" id="AddUsersToTable" type="button" value="@Resources.Resource.AddSong" class="btn btn-primary  buttonsGY" />
 
                 </div>
            
@@ -54,7 +54,7 @@
     </div>
    </div>
         <div class="div_reg" style="width:365px;display:none" id="deleteUserFromTr" >
-            <p style="font-size:22px" class="font whiteY">Виберите клиента для удаления<br /> из груповой тренировки</p>
+        <p style="font-size:22px;color:#EEE8AA" class="font whiteY">@Resources.Resource.AddedArtist<br /> @Resources.Resource.AddedSong</p>
             <div class="row">
 
                 <form asp-action="DeleteUsersInTrainingGroup" method="post">
@@ -70,7 +70,7 @@
                     </div>
 
                     <div style="margin: 10px auto 10px auto;width: max-content;">
-                        <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttonsGY btnDelTR" id="@Model.Id" >Удаление клиентов</a>
+                    <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttonsGY btnDelTR" id="@Model.Id">@Resources.Resource.DelSong</a>
                         @* <button id="btnsub1" asp-route-roomId="@Model." asp-route-trgroupId="@Model.Id" style="height: 38px;" type="submit" class="btn btn-primary font y">@Resources.Resource.Confirm</button> *@
                         <a  id="btc" style="margin-left: 10px;" class="btn btn-outline-light buttonsGY">@Resources.Resource.Cancel</a><br />
                     </div><br />
@@ -81,7 +81,7 @@
 
   <div class="div_reg2 "  id="detailsGroup" style="width:500px;">
     <p class="font whiteY" style="font-size: 32px; padding-top: 30px; text-align: center">
-        Details training group
+            @Resources.Resource.GroupTraining
     </p>  
 
     <div class="row">
@@ -93,29 +93,30 @@
                     <input type="hidden" asp-for="Id" />
 
                     <div class="form-group" style="margin-left: 40px">
-                        <label asp-for="CoachName" class="control-label font  white-color_size20 whiteY" ></label>
+                            <label asp-for="CoachName" class="control-label font  white-color_size20 whiteY">@Resources.Resource.Album</label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.CoachName)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="RoomName" class="control-label font  white-color_size20 whiteY"></label>
+                            <label asp-for="RoomName" class="control-label font  white-color_size20 whiteY">@Resources.Resource.Rooms</label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.RoomName)</h1>
                     </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="DayName" class="control-label font  white-color_size20 whiteY" ></label>
+                          @*   <label asp-for="DayName" class="control-label font  white-color_size20 whiteY" ></label> *@
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.DayName)</h1>
                     </div>
+                        <div class="form-group" style="margin-left: 40px">
+                            @*  <label asp-for="Time" class="control-label font  white-color_size20 whiteY" ></label> *@
+                            <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Time)</h1>
+                        </div>
 
                     <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Number" class="control-label font  white-color_size20 whiteY"></label>
+                            <label asp-for="Number" class="control-label font  white-color_size20 whiteY">@Resources.Resource.number</label>
                         <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Number)</h1>
                     </div>
 
-                    <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Time" class="control-label font  white-color_size20 whiteY" ></label>
-                        <h1 class="form-control p1" style="width: 420px">@Html.DisplayFor(model => model.Time)</h1>
-                    </div>
+                  
                 </div><br />
 
 
@@ -131,7 +132,7 @@
   </div>
 
 
-   <div  style="display:none" id="deleteGroup">
+   <div  style="display:none;margin-left:-300px;" id="deleteGroup" >
       
             <div class=" padd div_reg2">
                 
@@ -183,9 +184,8 @@
                 $('#count_add').text("Количество свободных мест: " + num);
                 $('#AddUsersToTable').removeAttr('disabled');
             }
-            // var selectedOption = $("#list2 option:selected");// получение выделенного элемента <option>
-            // selectedOption.remove();// удаление выбранного элемента
-        });//          change
+            
+        });
 
         $('#btc').on('click', function () {
             $('#addUsers').css('display', 'block');
@@ -284,10 +284,11 @@
                                                 modal: true,
                                                 resizable: false,
                                                 buttons: [{
-                                                    class: "input_subm2",//
+                                                    class: "input_subm3",//
                                                     text: "Назад",
                                                     click: function () {
                                                         window.location.href = "@Url.Action("Index", "Home")";
+                                                       
                                                     }
                                                 }],
                                                 open: function (event, ui) {
