@@ -452,7 +452,7 @@ foter_div1{
     }
 }
 
-/*@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1300px) {
 
     .img_SportClub {
         background-color: #2F4F4F;
@@ -460,4 +460,4 @@ foter_div1{
         width: 390px;
         height: 250px;
     }
-}*/
+}
