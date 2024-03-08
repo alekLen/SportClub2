@@ -184,12 +184,12 @@
             }
             else
             {
-                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">Войти</a>
+                <a href="javascript:void(0)" class="nav-link card2 btn-Login" style="color:#EEE8AA;">@Resources.Resource.Login</a>
                 <a asp-area="" asp-controller="Login" asp-action="RegistrationClient" style="color:#EEE8AA;">@Resources.Resource.Registration</a>
 
-                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allcoaches">@Resources.Resource.OTeam</a>
-                <a class="nav-link card2  whiteY" href="/Home/Index?scrollTo=allrooms">@Resources.Resource.Rooms</a>
-                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?abonem">@Resources.Resource.Subcrip</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?scrollTo=allcoaches">@Resources.Resource.OTeam</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?scrollTo=allrooms">@Resources.Resource.Rooms</a>
+                <a class="nav-link card2 " style="color:#EEE8AA;" href="/Home/Index?scrollTo=abonem">@Resources.Resource.Subcrip</a>
 
             }
 
@@ -197,13 +197,13 @@
             {
                 <div class="mdropdown ">
                     <button class="mdropbtn">
-                        Регистрация...
+                       @Resources.Resource.Registration
                         <i class="fa fa-caret-down  whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="color:#EEE8AA;">
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.AdminRegistration</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.CoachRegistration</a>
-                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.UserRegistration</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationAdmin">@Resources.Resource.RegisterAdmin</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationCoach">@Resources.Resource.RegisterCoach</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Login" asp-action="RegistrationClient">@Resources.Resource.RegisterClient</a>
 
                     </div>
                 </div>
@@ -221,10 +221,10 @@
 
                 <div class="mdropdown">
                     <button class="mdropbtn" style="font-family: 'MyFontNormal';">
-                        Зал...<i class="fa fa-caret-down whiteY"></i>
+                        @Resources.Resource.Shedule<i class="fa fa-caret-down whiteY"></i>
                     </button>
                     <div class="mdropdown-content" style="">
-                        <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddRoom">Добавление/Редактирование зала</a>
+                        <a class=" whiteY" asp-area="" asp-controller="Admin" asp-action="AddRoom">@Resources.Resource.Edit/@Resources.Resource.Artist</a>
 
                         <a class=" whiteY" asp-area="" asp-controller="Time" asp-action="Room_Shedule">@Resources.Resource.Shedule</a>
                     </div>
@@ -235,7 +235,7 @@
 
                 <div class="mdropdown" style="float:right;">
                     <button class="mdropbtn whiteY" style="">
-                        Списки..<i class="fa fa-caret-down whiteY"></i>
+                        @Resources.Resource.list<i class="fa fa-caret-down whiteY"></i>
                     </button>
                     <div class="mdropdown-content">
                         @using (Html.BeginForm("GetClients", "Users", FormMethod.Get))

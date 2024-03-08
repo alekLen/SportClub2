@@ -792,4 +792,7 @@
   <data name="YogaClasses" xml:space="preserve">
     <value>Занятия йогой</value>
   </data>
+  <data name="list" xml:space="preserve">
+    <value>Списки</value>
+  </data>
 </root>

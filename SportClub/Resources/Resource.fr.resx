@@ -783,4 +783,10 @@
   <data name="м" xml:space="preserve">
     <value>Client</value>
   </data>
+  <data name="AdminRegistration" xml:space="preserve">
+    <value>Inscription administrateur</value>
+  </data>
+  <data name="list" xml:space="preserve">
+    <value>Listes</value>
+  </data>
 </root>

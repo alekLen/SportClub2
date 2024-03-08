@@ -256,7 +256,7 @@ body {
 }
 .UpScroll {
     position: fixed;
-    left: 95%;
+    left: 90%;
     bottom: 10%;
     width: 60px;
     height: 45px;
@@ -343,6 +343,23 @@ body {
 }
 
     .photo-frame2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Подгоняет изображение по высоте или ширине, обрезая лишнее */
+        object-position: center; /* Центрирует изображение */
+    }
+
+.photo-frame3 {
+    width: 100px; /* Желаемая ширина рамки */
+    height: 100px; /* Желаемая высота рамки */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000; /* Пример рамки */
+}
+
+    .photo-frame3 img {
         width: 100%;
         height: 100%;
         object-fit: cover; /* Подгоняет изображение по высоте или ширине, обрезая лишнее */

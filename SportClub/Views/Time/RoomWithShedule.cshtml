@@ -284,14 +284,14 @@
                 .appendTo("body")
                 .load(puth)
                 .dialog({
-                    title: "Подтвердите!",
+                    title: '@Html.Raw(@Resources.Resource.Delete)?',
                     close: function () { $(this).remove(); },
                     dialogClass: 'myTitleClass',
                     modal: true,
                     resizable: false,
                     buttons: [{
-                        class: "input_subm2",
-                        text: "Удалить",
+                        class: "input_subm3",
+                        text: '@Html.Raw(@Resources.Resource.Delete)',
                         click: function () {
                             $.ajax({
                                 url: "@Url.Action("DeleteSheduleInRoom", "Time")",
@@ -319,32 +319,35 @@
             dialog
                 .find(".ui-dialog-titlebar")
                 .css({
-                    "background-color": "#374566", // Фон заголовка
-                    "color": "white" // Цвет текста заголовка black
+                    "background-color": "rgb(80, 80, 80)", // Фон заголовка
+                    "color": "#EEE8AA"
                 });
             dialog
                 .css({
                     "box-shadow": "inset 0 - 3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black",
-                    "border-radius": "10px",
-                    "border": "solid 1px #374566",
-                    "background-color": "#374566"
+                    "border-radius": "5px",
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
+
                 });
             dialog
                 .find(".ui-dialog-content")
                 .css({
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
-                .find(".ui-widget-content")
                 .css({
                     "border": "none",
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
             dialog
                 .find(".ui-dialog-buttonpane")
                 .css({
                     "border-width": "0px",
-                    "background-color": "#374566"
+                    "background-color": "rgb(80, 80, 80)",
+                    "background - image": "url('~/Coaches/фон5.jpg')"
                 });
         }
 
