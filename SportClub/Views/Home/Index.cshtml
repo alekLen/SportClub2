@@ -9,10 +9,10 @@
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {      
     <div class="marquee">
-        @**@ <div class="marquee-content">
+        @* <div class="marquee-content">
             <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
             <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-        </div> 
+    </div> *@
     </div>
      }
 <div style="display:flex;flex-direction:column;">
@@ -20,6 +20,7 @@
         <div class="SportClub_div_Text">SportClub</div>
      </div>
     <div class="flex" style="flex-wrap:wrap;">
+        @* *@
         <div class="image-container" style="margin:6px;padding:6px;">
             <img src="~/Coaches/спорт.png" class="img_SportClub" alt="Photo" />
             <div id="imm10" class="info-box">@Resources.Resource.SportIsHealth</div>
@@ -49,15 +50,15 @@
     </div>
     <br />
     <div class="flex" style="flex-wrap:wrap;">
-        <div class="image-container" style="margin:6px;padding:6px;">
+        <div class="image-container" style="margin:5px;padding:5px;">
             <img src="~/Coaches/пилатес5.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm21" class="info-box">@Resources.Resource.Pilates</div>
         </div>
-        <div class="image-container" style="margin:6px;padding:6px;">
+        <div class="image-container" style="margin:5px;padding:5px;">
             <img src="~/Coaches/фон.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm22" class="info-box">@Resources.Resource.Crossfit</div>
         </div>
-        <div class="image-container" style="margin:6px;padding:6px;">
+        <div class="image-container" style="margin:5px;padding:5px;">
             <img src="~/Coaches/йога.jpg" class="img_SportClub" alt="Photo" />
             <div id="imm23" class="info-box">@Resources.Resource.YogaClasses</div>
         </div>

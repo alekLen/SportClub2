@@ -168,8 +168,8 @@ body {
     }
 }
 .image-container {
-    position: relative;
-    display: inline-block;
+    /*position: relative;inline-*/
+    display: block;
 }
 
 
