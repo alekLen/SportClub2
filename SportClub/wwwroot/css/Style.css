@@ -1,8 +1,32 @@
-.a_hove:hover {
-    background-color: #4a8888;
+
+    .a_hove:hover {
+        color: #EEE8AA;
+        background-color: #4a8888;
+    }
+.a1_hove {
+    margin-left: -9px;
+}
+
+    .a1_hove:hover {
+        margin-left: -9px;
+        color: #EEE8AA;
+        background-color: #4a8888;
+    }
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #EEE8AA;
+    text-align: left;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
 }
 
 header .nav-item a:hover {
+    color: #EEE8AA;
     background-color: #4a8888;
 }
 

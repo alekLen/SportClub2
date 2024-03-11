@@ -1,7 +1,7 @@
 ﻿@model SportClub.Models.RegisterCoachModel
 @using Microsoft.AspNetCore.Http
  
-<h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; width: 1000px; margin: auto; margin-bottom: 10px;">
+<h4 class="myRegTitle whiteY">
     @Resources.Resource.RegisterCoach
 </h4>
 <div class="container1">
@@ -12,62 +12,62 @@
 
         <div class="row" style="padding-top: 30px;">
             <div class="column">
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label asp-for="Name" class="control-label font white-color_size20 color_text"></label>
-                    <input asp-for="Name" type="text" class="form-control font" style="width: 420px">
+                    <input asp-for="Name" type="text" class="form-control font" >
                     <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label asp-for="Login" class="control-label font white-color_size20 color_text"></label>
-                    <input asp-for="Login" type="text" class="form-control" id="login" style="width: 420px" autocomplete="off">
+                    <input asp-for="Login" type="text" class="form-control" id="login" autocomplete="off">
                     <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label asp-for="Password" class="control-label font white-color_size20 color_text"></label>
-                    <input asp-for="Password" type="password" class="form-control" style="width: 420px" autocomplete="off">
+                    <input asp-for="Password" type="password" class="form-control" autocomplete="off">
                     <span asp-validation-for="Password" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label asp-for="PasswordConfirm" style=" width: 200px" class="control-label font white-color_size20 color_text"></label>
-                    <input asp-for="PasswordConfirm" type="password" class="form-control" style="width: 420px">
+                    <input asp-for="PasswordConfirm" type="password" class="form-control">
                     <span asp-validation-for="PasswordConfirm" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label asp-for="Email" class="control-label font white-color_size20 color_text"></label>
-                    <input asp-for="Email" type="email" class="form-control" id="emailInput" style="width: 420px">
+                    <input asp-for="Email" type="email" class="form-control" id="emailInput" >
                     <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <span class="white-color_size20 font color_text">@Resources.Resource.Photo</span><br />
                     <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" /><br />
                 </div>
 
-                <div class="form-group" style="margin-left: 40px">
+                <div class="form-group">
                     <label class="font white-color_size20 color_text">@Resources.Resource.Post</label>
-                    <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId" style="width: 420px"></select>
+                    <select asp-for="PostId" class="form-control" asp-items="ViewBag.PostId"></select>
                     <span asp-validation-for="PostId" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="column">
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group">
                     <label class="font white-color_size20 color_text">@Resources.Resource.Speciality</label>
-                    <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId" style="width: 420px"></select>
+                    <select asp-for="SpecialityId" class="form-control" asp-items="ViewBag.SpecialityId" ></select>
                     <span asp-validation-for="SpecialityId" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group">
                     <label asp-for="Phone" class="font white-color_size20 color_text">@Resources.Resource.Phone</label>
-                    <input asp-for="Phone" class="form-control" placeholder="+380973456789" style="width: 420px" />
+                    <input asp-for="Phone" class="form-control" placeholder="+380973456789" />
                     <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group">
                     <label class="font white-color_size20 color_text">@Resources.Resource.gender</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
@@ -80,21 +80,21 @@
                     <span asp-validation-for="Gender" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group">
                     <label class="font white-color_size20 color_text">@Resources.Resource.DateB</label><br />
-                    <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
+                    <input class="form-control font" asp-for="DateOfBirth" />
                     <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
                 </div>
 
-                <div class="form-group" style="margin-left: 10px">
+                <div class="form-group">
                     <label class="font white-color_size20 color_text">@Resources.Resource.Description</label>
-                    <textarea asp-for="Description" style="width: 420px"></textarea>
+                    <textarea asp-for="Description" style="width:333px"></textarea>
                     <span asp-validation-for="Description" class="text-danger" style="width: 450px"></span><br />
                 </div>
             </div>
         </div>
         <br />
-        <div class="form-group" style="margin-left: 420px;">
+        <div class="form-group conf">
             <button type="submit" class="btn btn-outline-light buttonsGY"><b>@Resources.Resource.Confirm</b></button><br /><br />
         </div>
         <br />

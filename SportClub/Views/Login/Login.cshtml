@@ -19,7 +19,7 @@
                 <div>
                         @Html.LabelFor(model => model.Login, new { @class = "whiteY" })
                     <div>
-                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-10px">                          
+                            <input asp-for="Login" type="text" class="form-control" style="margin-left:-10px;width:265px">                          
                         @Html.ValidationMessageFor(model => model.Login, "")
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                 <div>
                         @Html.LabelFor(model => model.Password, new { @class = "whiteY" })
                         <div>
-                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-10px">
+                            <input asp-for="Password" type="password" class="form-control" style="margin-left:-10px;width:265px">
                         @Html.ValidationMessageFor(model => model.Password, "")
                     </div>
                 </div>
