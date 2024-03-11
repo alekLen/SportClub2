@@ -4,21 +4,21 @@
 @{
     ViewData["Title"] = "SportClub";
 }
-@model  SportClub.Models.StartViewModel
+@model SportClub.Models.StartViewModel
 
-     @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
-     {      
+@if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
+{
     <div class="marquee">
         @* <div class="marquee-content">
-            <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
-            <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+    <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+    <span class="marguee_content_span"> @Resources.Resource.OpeningIsSoon &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.HurryToPurchase &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.Discount30  &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  @Resources.Resource.AdditionalDiscount10 &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; @Resources.Resource.PhNumber &nbsp; +380503213213 </span> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
     </div> *@
     </div>
-     }
+}
 <div style="display:flex;flex-direction:column;">
     <div class="SportClub_div">
         <div class="SportClub_div_Text">SportClub</div>
-     </div>
+    </div>
     <div class="flex" style="flex-wrap:wrap;">
         <div class="image-container" style="margin:5px;padding:5px;">
             <img src="~/Coaches/спорт.png" class="img_SportClub" alt="Photo" />
@@ -63,48 +63,43 @@
         </div>
 
     </div>
-    
+
     <div id="inf21" class="inf" style="display:none;width:100%; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp; @Resources.Resource.Info_div_4_1 <br />
         &nbsp; &nbsp;&nbsp; @Resources.Resource.Info_div_4_2
     </div>
     <div id="inf22" class="inf" style=" background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp; @Resources.Resource.Info_div_5_1 <br />
-        &nbsp; &nbsp;&nbsp; @Resources.Resource.Info_div_5_2<br />       
+        &nbsp; &nbsp;&nbsp; @Resources.Resource.Info_div_5_2<br />
     </div>
     <div id="inf23" class="inf" style="display:none; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         &nbsp; &nbsp;&nbsp;@Resources.Resource.Info_div_6_1<br />
         @Resources.Resource.Info_div_6_2<br /> @Resources.Resource.Info_div_6_3
     </div>
-    
+
     <div id="allcoaches" class="divOurTeam">
         <div class="divOurTeamText">@Resources.Resource.OurTeam</div>
     </div>
-    <div >
+    <div>
         <div class="divForCoach flex ">
-          @using Microsoft.AspNetCore.Http
+            @using Microsoft.AspNetCore.Http
             @foreach (var item in Model.coaches)
             {
 
-                <div class="flex marg back_color " style="width:620px; padding:2px;height:330px;">
-
                 <div class="divCoachHome flex marg back_color ">
-                    <div >
-                        <div class="photo-frame">
-                        <img src=@item.Photo  alt="photo1" style="padding:10px;background-color:#2F4F4F;" />
-                       </div>
+                    <div>
                         <img src=@item.Photo alt="photo1" class="img_Coach_SportClub" />
-                       
+
                         <h3 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h3>
                     </div>
                     <p class="p_Coach_SportClub">
                         @item.Description
-                       </p>
-                  </div>
-             
+                    </p>
+                </div>
+
             }
         </div>
-    
+
     </div>
     <div id="allrooms" class="divOurTeam">
         <div class="divOurTeamText">@Resources.Resource.TrainingRooms</div>
@@ -114,16 +109,13 @@
             @foreach (var item in Model.rooms)
             {
 
-                <div class="flex " style="flex-direction:column;" >
+                <div class="flex " style="flex-direction:column;">
 
                     <div style="padding:10px;background-color:#2F4F4F;margin-bottom:10px;padding-bottom:0px;">
-                        <div class="photo-frame2">
-                        <img src=@item.Photo  alt="photoSportroom"  />
-                        </div>
                         <img src="@item.Photo" class="img_Rooms_SportClub" alt="photoSportroom" />
                         <h6 style="text-align:center;color:#F0E68C;border-bottom:1px solid black; box-shadow: 0px 0px 5px 0px #F0E68C;">@item.Name</h6>
                     </div>
-                   
+
                 </div>
 
             }
@@ -147,7 +139,7 @@
                 @Resources.Resource.ChildrensRoom<br>
                 @Resources.Resource.Freeze30Days<br>
             </span>
-           
+
         </div>
         <div class="ticket">
             PROFESSIONAL
@@ -160,7 +152,7 @@
                 @Resources.Resource.Massage<br>@Resources.Resource.Pool<br>
                 @Resources.Resource.Sauna<br>@Resources.Resource.Freeze30Days<br>
             </span>
-            
+
         </div>
         <div class="ticket">
             STANDART
@@ -173,9 +165,9 @@
                 @Resources.Resource.Pool<br>
                 @Resources.Resource.Sauna<br>
                 @Resources.Resource.ChildrensRoom<br>
-                
+
             </span>
-            
+
         </div>
         <div class="ticket">
             BASIC
@@ -188,14 +180,14 @@
                 @Resources.Resource.Pool<br>
                 @Resources.Resource.Sauna<br>
                 @Resources.Resource.ChildrensRoom<br>
-                
+
             </span>
-           
+
         </div>
         <div class="ticket">
             ONCE
             <hr size="4" style="background-color: gray">
-            <span class="s" >600</span>
+            <span class="s">600</span>
             <br><br>
             <span class="s1" style=" border-bottom: 4px solid rgba(105, 105, 105,0.3); padding:5px; ">@Resources.Resource.OneDay</span>
             <br><br>
@@ -207,8 +199,6 @@
 
         </div>
     </div>
-</div>
-<a class="UpScroll whiteY" href="#sportclub" style="text-align:center"> @Resources.Resource.Up</a>
     <div id="allrooms" class="divOurTeam">
         <div class="divOurTeamText">SportClub</div>
     </div>
@@ -217,10 +207,10 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var colors = ['#FFFACD','#EEE8AA', '#F0E68C', '#BDB76B']; // Массив цветов
+        var colors = ['#FFFACD', '#EEE8AA', '#F0E68C', '#BDB76B']; // Массив цветов
         var currentIndex = 0;
         var currentIndex2 = 0;
-        var text = ["Скоро открытие нового спортзала!!!","Скидка на абонементы 30% !!!"]
+        var text = ["Скоро открытие нового спортзала!!!", "Скидка на абонементы 30% !!!"]
         // setInterval(function () {
         //     document.getElementById('color-changing-paragraph').style.color = colors[currentIndex];
         //     currentIndex++;
@@ -255,18 +245,18 @@
         im1.addEventListener('click', function () {
             if (inf1.style.display === 'none') {
                 inf1.style.display = 'block';
-                inf2.style.display = 'none';               
+                inf2.style.display = 'none';
                 inf0.style.display = 'none';
             } else {
                 inf1.style.display = 'none';
-                inf2.style.display = 'none';           
+                inf2.style.display = 'none';
                 inf0.style.display = 'block';
             }
         });
         im2.addEventListener('click', function () {
             if (inf2.style.display === 'none') {
                 inf2.style.display = 'block';
-                inf1.style.display = 'none';               
+                inf1.style.display = 'none';
                 inf0.style.display = 'none';
             } else {
                 inf1.style.display = 'none';
@@ -279,10 +269,10 @@
                 inf0.style.display = 'block';
                 inf1.style.display = 'none';
                 inf2.style.display = 'none';
-               
+
             } else {
                 inf1.style.display = 'none';
-                inf2.style.display = 'none';               
+                inf2.style.display = 'none';
                 inf0.style.display = 'block';
             }
         });
@@ -329,7 +319,7 @@
 
     });
 
-   
+
 </script>
 @{
     await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -443,7 +443,8 @@
                                             <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Users" />
                                         </li>
                                     }
-                                    @using (Html.BeginForm("nav-btn_m active", "Coach", FormMethod.Get))
+
+                                    @using (Html.BeginForm("GetCoaches", "Coach", FormMethod.Get))
                                     {
                                         <li>
                                             <input class="nav-btn_m active" type="submit" value="@Resources.Resource.Coaches" />
