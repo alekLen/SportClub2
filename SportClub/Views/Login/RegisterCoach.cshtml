@@ -5,7 +5,7 @@
     @Resources.Resource.RegisterCoach
 </h4>
 <div class="container1">
-    <form id="registrationForm" action="RegistrationClient" method="post" enctype="multipart/form-data">
+    <form id="registrationForm" action="RegistrationCoach" method="post" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "")

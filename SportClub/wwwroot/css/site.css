@@ -62,6 +62,9 @@ body {
 .padd{
     padding:20px;
 }
+.padd3 {
+    padding: 10px;
+}
 .padd1 {
     padding: 10px;
     background-color: #374566;
@@ -220,6 +223,23 @@ body {
 .ticket:hover {
     transform: scale(1.1);
 }
+.UpScroll {
+    position: fixed;
+    left: 90%;
+    bottom: 10%;
+    width: 60px;
+    height: 45px;
+    padding: 5px;
+    background-color: #2F4F4F;
+    border: 1px solid #2F4F4F;
+    box-shadow: 0px 4px 8px 0px #F0E68C;
+    border-radius: 50%;
+    text-decoration: none;
+}
+    .UpScroll:hover {
+        color: #F0E68C;
+        text-decoration: none;
+    }
 
 .buttonsGY {
     background-color: dimgray;
@@ -264,4 +284,54 @@ body {
         background-color: dimgray;
         box-shadow: 0px 8px 16px 0px #F0E68C;
         color: #F0E68C;
+    }
+
+.photo-frame {
+    width: 330px; /* Желаемая ширина рамки */
+    height: 270px; /* Желаемая высота рамки */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000; /* Пример рамки */
+}
+
+    .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Подгоняет изображение по высоте или ширине, обрезая лишнее */
+        object-position: center; /* Центрирует изображение */
+    }
+.photo-frame2 {
+    width: 600px; /* Желаемая ширина рамки */
+    height: 470px; /* Желаемая высота рамки */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000; /* Пример рамки */
+}
+
+    .photo-frame2 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Подгоняет изображение по высоте или ширине, обрезая лишнее */
+        object-position: center; /* Центрирует изображение */
+    }
+
+.photo-frame3 {
+    width: 100px; /* Желаемая ширина рамки */
+    height: 100px; /* Желаемая высота рамки */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #000; /* Пример рамки */
+}
+
+    .photo-frame3 img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Подгоняет изображение по высоте или ширине, обрезая лишнее */
+        object-position: center; /* Центрирует изображение */
     }

@@ -1160,5 +1160,12 @@ namespace SportClub.Controllers
             trainingGroup.Id = id;
             return View(trainingGroup);
         }
+
+        public IActionResult GetRedirectUrl()
+        {
+            var roomId = HttpContext.Session.GetInt32("roomId");
+            var url = Url.Action("RoomWithSchedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
+            return Json(new { url = url });
+        }
     }
 }

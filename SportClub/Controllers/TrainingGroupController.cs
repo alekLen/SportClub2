@@ -4,10 +4,12 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 using SportClub.Models;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class TrainingGroupController : Controller
     {
         //private readonly IGroup groupService;
@@ -78,7 +80,8 @@ namespace SportClub.Controllers
                     await trainingGroupService.AddTrainingGroup(u);
                 }
                 catch { }
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home");
+                return RedirectToAction("RoomWithShedule", "Time", new { RoomId = u.RoomId });
             }
             return View("CreateTrainingGroup", group);
         }
@@ -228,7 +231,8 @@ namespace SportClub.Controllers
             }
 
             await trainingGroupService.DeleteTrainingGroup(id);
-            return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+            //return RedirectToAction("GetTrainingGroups", "TrainingGroup");
+            return RedirectToAction("RoomWithShedule", "Time", new { RoomId = HttpContext.Session.GetInt32("roomId") });
         }
         public async Task<IActionResult> DetailsTrainingGroup(int id)
         {

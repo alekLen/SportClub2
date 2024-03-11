@@ -4,9 +4,11 @@ using SportClub.BLL.DTO;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.Services;
 using SportClub.DAL.Entities;
+using SportClub.Filters;
 
 namespace SportClub.Controllers
 {
+    [Culture]
     public class TrainingIndController : Controller
     {
         private readonly IUser userService;

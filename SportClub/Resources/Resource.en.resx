@@ -124,10 +124,10 @@
     <value>added</value>
   </data>
   <data name="AddedArtist" xml:space="preserve">
-    <value>Artist has been added:  </value>
+    <value>Select client to delete</value>
   </data>
   <data name="AddedSong" xml:space="preserve">
-    <value>Song has been added:  </value>
+    <value>from group training</value>
   </data>
   <data name="AddedStyle" xml:space="preserve">
     <value>Genre has been added:  </value>
@@ -139,7 +139,7 @@
     <value>Addition</value>
   </data>
   <data name="AddSong" xml:space="preserve">
-    <value>Add Song</value>
+    <value>Add a client</value>
   </data>
   <data name="AdminDetails" xml:space="preserve">
     <value>Admin details</value>
@@ -160,7 +160,7 @@
     <value>*age is required</value>
   </data>
   <data name="Album" xml:space="preserve">
-    <value>Album</value>
+    <value>Trainer</value>
   </data>
   <data name="AllSc" xml:space="preserve">
     <value>All saved charts</value>
@@ -247,7 +247,7 @@
     <value>Delete and exit</value>
   </data>
   <data name="DeleteArt" xml:space="preserve">
-    <value>Delete the Artist</value>
+    <value>Delete the training</value>
   </data>
   <data name="DeleteCoachPost" xml:space="preserve">
     <value>Removing a coach position</value>
@@ -265,7 +265,7 @@
     <value>Delete Time</value>
   </data>
   <data name="DelSong" xml:space="preserve">
-    <value>Song has been removed:  </value>
+    <value>Delete client</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -782,5 +782,11 @@
   </data>
   <data name="Us" xml:space="preserve">
     <value>Client</value>
+  </data>
+  <data name="AdminRegistration" xml:space="preserve">
+    <value>Admin registration</value>
+  </data>
+  <data name="list" xml:space="preserve">
+    <value>Lists</value>
   </data>
 </root>

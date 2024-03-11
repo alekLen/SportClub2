@@ -15,7 +15,7 @@
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group padd">
-                            <span>@Resources.Resource.Name </span><br />
+                            <span>@Resources.Resource.Post </span><br />
                     <input asp-for="post.Name" name="name" id="post" class="form-control card _c7" />
                     <span asp-validation-for="post.Name" class="text-danger"></span>
                 </div>
@@ -58,7 +58,7 @@
 
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <span>@Resources.Resource.Name </span><br />
+                    <span>@Resources.Resource.Speciality </span><br />
                     <input asp-for="speciality.Name" name="name" id="spec" class="form-control card _c7" />
                         <span asp-validation-for="speciality.Name" class="text-danger"></span>
                     </div> <br />

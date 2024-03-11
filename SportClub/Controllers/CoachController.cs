@@ -231,7 +231,7 @@ namespace SportClub.Controllers
             }
             return View(coach);
         }
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
