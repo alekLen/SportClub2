@@ -1,93 +1,91 @@
 ﻿@model SportClub.BLL.DTO.CoachDTO
+@using Microsoft.AspNetCore.Http
 
 @{
     ViewData["Title"] = "CoachProfile";
 }
-<h4 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black; width: 600px; margin: auto; margin-bottom: 10px;">
+<h4 class="myRegTitleProf whiteY">
     @Resources.Resource.Profile
 </h4>
-@using Microsoft.AspNetCore.Http
-<div class="flex" style="justify-content:center;">
-<div class="div_reg2" style="width:600px">
-    <form method="post" enctype="multipart/form-data">
-    <div class="flex" style="justify-content:center;">
-        <img src=@Model.Photo width="130" height="auto" alt="photo1" style="padding:20px;margin-left:30px" id="preview" />
-            <div class="form-group" style="margin-left: 40px;">
-                    <br />
-                    <br />
-                <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
-                <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" onchange="previewImage(event)" style="width:300px;"/><br /><br />
-            </div>
-    </div>
-    <hr class="whiteY" />
-    <div class="row">
-        <div>
-            <br />          
-                <input type="hidden" asp-for="Id" />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                @Html.AntiForgeryToken()
- 
-                <div class="row">
-                    @Html.ValidationSummary(true, "")
-                    <div style="width: 500px;  justify-content: center; ">
 
-                        <div class="form-group" style="margin-left: 40px"> 
-                            <label asp-for="Name" class="control-label whiteY" class="font">@Resources.Resource.Name</label>
-                            <input asp-for="Name" type="text" class="form-control" name="name" id="name" class="font" style="width: 420px">
-                            <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
-                        </div>
-                        <div class="form-group" style="margin-left: 40px">
-                             
-                            <label asp-for="Login" class="control-label whiteY" class="font">@Resources.Resource.Login</label>
-                            <input asp-for="Login" type="text" class="form-control" name="login" id="login" style="width: 420px">
-                            <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
-                        </div>
-                       
-                        <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Email" class="control-label whiteY" class="font">@Resources.Resource.email</label>
-                            <input asp-for="Email"  class="form-control"  id="emailInput" style="width: 420px">
-                            <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
-                        </div>                    
-                        
-                        <div class="form-group" style="margin-left: 40px">
-                            <label asp-for="Phone"  class="font whiteY">@Resources.Resource.Phone</label>
-                            <input asp-for="Phone" class="form-control" placeholder="+380971234567" style="width: 420px" />
-                            <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
-                        </div>
-                        <div class="form-group" style="margin-left: 40px">
-                            <label class="font whiteY">@Resources.Resource.gender</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
-                                <label style="color: white" class="font form-check-label" for="male">@Resources.Resource.man</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
-                                <label style="color: white" class="font form-check-label" for="female">@Resources.Resource.female</label>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-left: 40px">
-                            <label class="font whiteY">@Resources.Resource.DateB</label><br />
-                            <input asp-for="DateOfBirth" type="text"  />
-                            <br />
-                            <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
-                        </div>
-                            <br />
-                          
-                        
-                        <div class="flex" style="justify-content:space-around;">
-                            <input type="submit" class="btn btn-outline-light buttonsGY" formaction="EditCoachProfile" style="min-width:150px;" value="@Resources.Resource.Confirm" />
-                                <input class="btn btn-outline-light buttonsGY" formaction="ChangeCoachPassword" type="submit" style="min-width:150px;" value="@Resources.Resource.Edit &nbsp;@Resources.Resource.password" />
-                         
-                        </div>
-                            <br />
-                            <br />
-                    </div>
+<div class="flex" style="justify-content:center;">
+    <div class="div_n1 div_reg2">
+        <form method="post" enctype="multipart/form-data">
+            <div class="flex" style="justify-content:center;">
+                
+                <div class="f_g form-group">
+                    <img src=@Model.Photo width="130" alt="photo1" class="coachProfPhoto" id="preview" />
+
+                    <span class="white-color_size20 font">@Resources.Resource.Photo</span><br />
+                    <input class="white-color_size20" type="file" name="p" accept=".jpg, .jpeg, .png" onchange="previewImage(event)" style="width:300px;" /><br />
                 </div>
-           
-        </div>
+            </div>
+            <hr class="whiteY" />
+            <div class="row">
+                <div>
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @Html.AntiForgeryToken()
+                    @* width: 500px; *@
+                    <div class="row">
+                        @Html.ValidationSummary(true, "")
+                        <div style="  justify-content: center; ">
+                            <div class="form-group_v1">
+                                <label asp-for="Name" class="control-label whiteY" class="font">@Resources.Resource.Name</label>
+                                <input asp-for="Name" type="text" class="form-control_v1" name="name" id="name" class="font">
+                                <span asp-validation-for="Name" class="text-danger" style="width: 450px"></span>
+                            </div>
+                            <div class="form-group_v1">
+                                <label asp-for="Login" class="control-label whiteY" class="font">@Resources.Resource.Login</label>
+                                <input asp-for="Login" type="text" class="form-control_v1" name="login" id="login">
+                                <span asp-validation-for="Login" class="text-danger" style="width: 450px"></span>
+                            </div>
+
+                            <div class="form-group_v1">
+                                <label asp-for="Email" class="control-label whiteY" class="font">@Resources.Resource.email</label>
+                                <input asp-for="Email" class="form-control_v1" id="emailInput">
+                                <span asp-validation-for="Email" class="text-danger" style="width: 450px"></span>
+                            </div>
+
+                            <div class="form-group_v1">
+                                <label asp-for="Phone" class="font whiteY">@Resources.Resource.Phone</label>
+                                <input asp-for="Phone" class="form-control_v1" placeholder="+380971234567" />
+                                <span asp-validation-for="Phone" class="text-danger" style="width: 450px"></span>
+                            </div>
+                            <div class="form-group_v1">
+                                <label class="font whiteY">@Resources.Resource.gender</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="Мужской" id="male" />
+                                    <label style="color: white" class="font form-check-label" for="male">@Resources.Resource.man</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" asp-for="Gender" value="Женский" id="female" />
+                                    <label style="color: white" class="font form-check-label" for="female">@Resources.Resource.female</label>
+                                </div>
+                            </div>
+                            <div class="form-group_v1">
+                                <label class="font whiteY">@Resources.Resource.DateB</label><br />
+                                <input asp-for="DateOfBirth" type="text" />
+                                <br />
+                                <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
+                            </div>
+                            <br />
+
+
+                            <div class="flex" style="justify-content:space-around;">
+                                <input type="submit" class="btn btn-outline-light buttonsGY" formaction="EditCoachProfile" style="min-width:150px;" value="@Resources.Resource.Confirm" />
+                                <input class="btn btn-outline-light buttonsGY" formaction="ChangeCoachPassword" type="submit" style="min-width:150px;" value="@Resources.Resource.Edit &nbsp;@Resources.Resource.password" />
+
+                            </div>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
-    </form>
-</div>
 </div>
 @section Scripts {
     @{
@@ -109,8 +107,8 @@
                     if (r) {
                         $("#log").css("display", "none");
                     }
-                }) 
-            }); 
+                })
+            });
         });
 
 
@@ -119,7 +117,7 @@
             $.get('/Login/IsEmailInUse', { email: email }, function (data) {
                 if (data === true) {
                     $('#emailStatus').text('Email уже занят.');
-                } 
+                }
             });
         });
     });
