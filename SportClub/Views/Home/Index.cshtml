@@ -5,7 +5,12 @@
     ViewData["Title"] = "SportClub";
 }
 @model  SportClub.Models.StartViewModel
-
+@{
+    var prevcoach = Model.CurrentPageCoaches == 1 ? "disabled" : "";
+    var nextcoach = Model.CurrentPageCoaches== Model.TotalPagesCoaches ? "disabled" : "";
+    var prevroom = Model.CurrentPageRooms == 1 ? "disabled" : "";
+    var nextroom= Model.CurrentPageRooms == Model.TotalPagesRooms ? "disabled" : "";
+}
      @if (Context.Session.GetString("admin") == null && Context.Session.GetString("client") == null && Context.Session.GetString("coach") == null)
      {      
     <div class="marquee">
@@ -102,7 +107,10 @@
              
             }
         </div>
-    
+        <div style="justify-content:center;color:#EEE8AA;" class="flex">
+            <a href="@Url.Action("Index", new { coachpage = Model.CurrentPageCoaches - 1 ,ispresscoach=true})" class="btn btn-default @prevcoach" style="color:#EEE8AA;font-weight: bold"><i class="fas fa-arrow-left"></i></a>
+            <a href="@Url.Action("Index", new { coachpage = Model.CurrentPageCoaches + 1 ,ispresscoach=true})" class="btn btn-default @nextcoach" style="color:#EEE8AA;font-weight: bold"><i class="fas fa-arrow-right"></i></a>
+        </div>
     </div>
     <div id="allrooms" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         <div style="text-align:center;color:#EEE8AA;font-size:20px;">@Resources.Resource.TrainingRooms</div>
@@ -125,7 +133,10 @@
 
             }
         </div>
-
+        <div style="justify-content:center;" class="flex">
+            <a href="@Url.Action("Index", new { roompage = Model.CurrentPageRooms - 1 ,ispressroom=true})" class="btn btn-default @prevroom" style="color:#EEE8AA;font-weight: bold"><i class="fas fa-arrow-left"></i></a>
+            <a href="@Url.Action("Index", new { roompage = Model.CurrentPageRooms + 1 ,ispressroom=true})" class="btn btn-default @nextroom" style="color:#EEE8AA;font-weight: bold"><i class="fas fa-arrow-right"></i></a>
+        </div>
     </div>
     <div id="abonem" style="display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:30px;margin:20px;margin-left:0px; background-size:cover;background-image: url('/Coaches/фон5.jpg');">
         <div style="text-align:center;color:#EEE8AA;font-size:20px;">@Resources.Resource.Subcrip</div>
@@ -210,6 +221,7 @@
 </div>
 <a class="UpScroll whiteY" href="#sportclub" style="text-align:center"> @Resources.Resource.Up</a>
 <script>
+
     document.addEventListener('DOMContentLoaded', function () {
         var colors = ['#FFFACD','#EEE8AA', '#F0E68C', '#BDB76B']; // Массив цветов
         var currentIndex = 0;
