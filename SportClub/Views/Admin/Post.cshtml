@@ -1,136 +1,171 @@
-﻿<div style="padding-left:100px;">
-<div>
-        <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
-</div>
-<div class="flex" style="flex-wrap:wrap;">
-    
+﻿<div class="div_post_padd">
     <div>
-            <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
-            @Resources.Resource.Post </h2>
-<div class="flex padd div_reg2">    
-        <div class="padd whiteY">
-                    <h4>@Resources.Resource.Add&nbsp; @Resources.Resource.Post</h4>
-                <form asp-controller="Login" method="post" >
-                    @model SportClub.Models.PostSpeciality
-
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group padd">
-                            <span>@Resources.Resource.Post </span><br />
-                    <input asp-for="post.Name" name="name" id="post" class="form-control card _c7" />
-                    <span asp-validation-for="post.Name" class="text-danger"></span>
-                </div>
-                <div class="form-group padd">
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddPost" >@Resources.Resource.Add</a>
-               </div>
-            </form>
-
-        </div>
-    <div class="padd whiteY">
-            <h4> @Resources.Resource.Editing</h4>
-                <form asp-controller="Admin" method="post" >
-                <label>@Resources.Resource.Post</label>
-                <select asp-for="post.Id" class="form-control card _c7 idPost" name="id" asp-items="ViewBag.PostId"></select>
-
-                <br />
-                <div class="form-group">
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelPost">@Resources.Resource.Delete</a>
-                        <br /><br />
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditPost" >@Resources.Resource.Edit</a>
-
-                    </div>
-            </form>
-        </div>   
+        <a asp-area="" asp-controller="Admin" asp-action="Back" class="btn1n btn  btn-outline-light buttons buttonsGY">@Resources.Resource.Back</a>
     </div>
-</div>
-<div style="width:20px"></div>
-<div>
-            <h2 class="whiteY" style="text-align:center;padding:5px; box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0.3em 0.3em 1em black;margin-top:30px;">
-                @Resources.Resource.Speciality </h2>
-<div class="flex  padd div_reg2">
+    <div class="flex" style="flex-wrap:wrap;">
+        <div>
+            <h2 class="myRegTitlePost whiteY">
+                @Resources.Resource.Post
+            </h2>
+            <div class="flex padd padd_div div_reg2">
+                <div class="padd_v whiteY">
+                    <h4>@Resources.Resource.Add&nbsp; @Resources.Resource.Post</h4>
+                    <form asp-controller="Login" method="post">
+                        @model SportClub.Models.PostSpeciality
 
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group_v2 padd_v1">
+                            <span>@Resources.Resource.Post </span><br />
+                            <input asp-for="post.Name" name="name" id="post" class="form-control_v1 card _c7" />
+                            <span asp-validation-for="post.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group_v2 padd_v1">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddPost">@Resources.Resource.Add</a>
+                        </div>
+                    </form>
 
-    <div class="padd whiteY">
+                </div>
+                <div class="gt padd_v2 padd whiteY">
+                    <h4> @Resources.Resource.Editing</h4>
+                    <form asp-controller="Admin" method="post">
+                        <div class="form-group_v2 padd_v1" style="padding-right: 0px;">
+                            <span>@Resources.Resource.Post</span>
+                            <select asp-for="post.Id" class="form-control_v1 card _c7 idPost" name="id" asp-items="ViewBag.PostId"></select>
+                        </div>
+
+                        <div class="form-group_v2">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelPost">@Resources.Resource.Delete</a>
+                            <br /><br />
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditPost">@Resources.Resource.Edit</a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+@*         <div style="width:20px"></div>
+        <div>
+            <h2 class="myRegTitlePost whiteY">
+                @Resources.Resource.Speciality
+            </h2>
+            <div class="flex padd padd_div div_reg2" style="margin-top:40px">
+                <div class="padd whiteY">
                     <h4>
                         @Resources.Resource.Add &nbsp;&nbsp; @Resources.Resource.Speciality
                     </h4>
-            <form  method="post">
-               
-
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <span>@Resources.Resource.Speciality </span><br />
-                    <input asp-for="speciality.Name" name="name" id="spec" class="form-control card _c7" />
-                        <span asp-validation-for="speciality.Name" class="text-danger"></span>
-                    </div> <br />
-                <div class="form-group">
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddSpec" >@Resources.Resource.Add</a>
-                  </div>
-            </form>
-
-        </div>
-    <div class="padd whiteY">
-                <h4 > @Resources.Resource.Editing</h4>
-            <form asp-controller="Admin" method="post">
-                <label>@Resources.Resource.Speciality</label>
-                    <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
-
-                <br />
-                <div class="form-group">
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelSpec" >@Resources.Resource.Delete</a>
-                        <br /><br />
-                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditSpec">@Resources.Resource.Edit</a>
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group_v2">
+                            <span>@Resources.Resource.Speciality </span><br />
+                            <input asp-for="speciality.Name" name="name" id="spec" class="form-control card _c7" />
+                            <span asp-validation-for="speciality.Name" class="text-danger"></span>
+                        </div> <br />
+                        <div class="form-group_v2">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddSpec">@Resources.Resource.Add</a>
+                        </div>
+                    </form>
                 </div>
-            </form>
+                <div class="padd whiteY">
+                    <h4> @Resources.Resource.Editing</h4>
+                    <form asp-controller="Admin" method="post">
+                        <label>@Resources.Resource.Speciality</label>
+                        <select asp-for="speciality.Id" name="id" class="form-control card _c7 idSpec" asp-items="ViewBag.SpecialityId"></select>
+
+                        <br />
+                        <div class="form-group_v2">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelSpec">@Resources.Resource.Delete</a>
+                            <br /><br />
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditSpec">@Resources.Resource.Edit</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div> *@
+        <div>
+            <h2 class="myRegTitlePost whiteY">
+                @Resources.Resource.Speciality
+            </h2>
+            <div class="flex padd padd_div div_reg2">
+                <div class="padd_v whiteY">
+                    <h4>@Resources.Resource.Add&nbsp; @Resources.Resource.Speciality</h4>
+                    <form asp-controller="Login" method="post">
+                        
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group_v2 padd_v1">
+                            <span>@Resources.Resource.Speciality </span><br />
+                            <input asp-for="speciality.Name" name="name" id="spec" class="form-control_v1 card _c7" />
+                            <span asp-validation-for="speciality.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group_v2 padd_v1">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnAddPost">@Resources.Resource.Add</a>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="gt padd_v2 padd whiteY">
+                    <h4> @Resources.Resource.Editing</h4>
+                    <form asp-controller="Admin" method="post">
+                        <div class="form-group_v2 padd_v1" style="padding-right: 0px;">
+                            <span>@Resources.Resource.Speciality</span>
+                            <select asp-for="speciality.Id" class="form-control_v1 card _c7 idPost" name="id" asp-items="ViewBag.SpecialityId"></select>
+                        </div>
+
+                        <div class="form-group_v2">
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnDelSpec">@Resources.Resource.Delete</a>
+                            <br /><br />
+                            <a href="javascript:void(0)" class="btn1n btn  btn-outline-light buttons buttonsGY" id="btnEditSpec">@Resources.Resource.Edit</a>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-   
-     </div>
     </div>
-   
-</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
-  $(document).ready(function () {
+    $(document).ready(function () {
 
-     $("#btnAddSpec").click(function () {
-        var objectName = $("#spec").val();
-        $.ajax({
-            url: "@Url.Action("AddSpeciality", "Admin")",
-            type: "POST",
-            data: { name: objectName },
-            datatype: "json",
-            success: function (response) {
+        $("#btnAddSpec").click(function () {
+            var objectName = $("#spec").val();
+            $.ajax({
+                url: "@Url.Action("AddSpeciality", "Admin")",
+                type: "POST",
+                data: { name: objectName },
+                datatype: "json",
+                success: function (response) {
 
-                if (response) {
-                    $("<div id='dialogContent1'></div>")
-                        .addClass("dialog")
-                        .appendTo("body")
-                        .load("/Admin/AddedSpeciality")
-                        .dialog({
+                    if (response) {
+                        $("<div id='dialogContent1'></div>")
+                            .addClass("dialog")
+                            .appendTo("body")
+                            .load("/Admin/AddedSpeciality")
+                            .dialog({
                                 title: '@Html.Raw(@Resources.Resource.added)!',
                                 close: function () { window.location.href = "@Url.Action("AddPost", "Admin")"; },
-                            dialogClass: 'myTitleClass',
-                            modal: true,
-                            resizable: false,
-                            buttons: [{
-                                class: "input_subm3",//
+                                dialogClass: 'myTitleClass',
+                                modal: true,
+                                resizable: false,
+                                buttons: [{
+                                    class: "input_subm3",//
                                     text: '@Html.Raw(@Resources.Resource.Back)',
-                                click: function () {
+                                    click: function () {
                                         window.location.href = "@Url.Action("AddPost", "Admin")";
-                                }
-                            }],
-                            open: function (event, ui) {
+                                    }
+                                }],
+                                open: function (event, ui) {
                                     StyleDialog($(this).closest(".ui-dialog"));
-                            }
-                        });
+                                }
+                            });
+                    }
+                    else {
+                        let l2 = document.getElementById("error-login1");
+                        l2.style.display = "inline";
+                    }
                 }
-                else {
-                    let l2 = document.getElementById("error-login1");
-                    l2.style.display = "inline";
-                }
-            }
+            });
         });
-     });
 
         $("#btnAddPost").click(function () {
             var objectName1 = $("#post").val();
@@ -172,7 +207,7 @@
             });
         });
 
-        $("#btnDelPost").click(function () {          
+        $("#btnDelPost").click(function () {
             var idp = $(".idPost").val();
             var puth = "/Admin/DeletePost/" + idp;
             $("<div id='dialogContent3'></div>")
@@ -188,7 +223,7 @@
                     buttons: [{
                         class: "input_subm3",//
                         text: '@Html.Raw(@Resources.Resource.Delete)',
-                        click: function () {                         
+                        click: function () {
                             $.ajax({
                                 url: "@Url.Action("ConfirmDeletePost", "Admin")",
                                 type: "POST",
@@ -422,8 +457,8 @@
 
 
 
-    function StyleDialog(dialog) {
-            dialog           
+        function StyleDialog(dialog) {
+            dialog
                 .find(".ui-dialog-titlebar")
                 .css({
                     "background-color": "rgb(80, 80, 80)", // Фон заголовка
@@ -456,7 +491,7 @@
                     "background-color": "rgb(80, 80, 80)",
                     "background - image": "url('~/Coaches/фон5.jpg')"
                 });
-    }
+        }
 
-});
+    });
 </script>
