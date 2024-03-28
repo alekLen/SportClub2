@@ -15,7 +15,7 @@ namespace SportClub.Controllers
         //private readonly IGroup groupService;
         private readonly ICoach coachService;
 
-        //private readonly IUser userService;
+       private readonly IUser userService;
         // private readonly IPost postService;
 
         private readonly ISpeciality specialityService;
@@ -24,7 +24,7 @@ namespace SportClub.Controllers
         private readonly ITime timeService;
         private readonly IRoom roomService;
 
-        public TrainingGroupController(ITime time, /*IGroup group,*/ ICoach c, IRoom r, ISpeciality sp, ITrainingGroup t)
+        public TrainingGroupController(ITime time, IUser ius, ICoach c, IRoom r, ISpeciality sp, ITrainingGroup t)
         {
             timeService = time;
             //groupService = group;
@@ -32,6 +32,7 @@ namespace SportClub.Controllers
             coachService = c;
             trainingGroupService = t;
             specialityService = sp;
+            userService = ius;
         }
         
         public async Task<IActionResult> CreateTrainingGroup()
@@ -243,6 +244,25 @@ namespace SportClub.Controllers
                 return NotFound();
             }
             return View(trainingGroup);
+        }
+
+       
+        public async Task<IActionResult> AddUserToTrainingGroup(int groupId, int roomId)
+        {
+            //HttpContext.Session.SetString("path", Request.Path);
+            TrainingGroupDTO trgroupdto = await trainingGroupService.GetTrainingGroup(groupId);
+            HttpContext.Session.SetInt32("roomId", trgroupdto.RoomId);
+
+            int userId = Convert.ToInt32(HttpContext.Session.GetString("Id"));
+
+            if (trgroupdto != null)
+            {
+                trgroupdto.UsersId.Add(await userService.GetUser(userId));
+                await trainingGroupService.UpdateTrainingGroup(trgroupdto);
+
+                return RedirectToAction("Shedule", "Users", new { RoomId = roomId });
+            }
+            return View("Index", "Home");
         }
     }
 }

@@ -161,9 +161,9 @@
                                                 }
                                                  @if (it.Number > it.Users.Count && !nflag)
                                                  {
-                                           
 
-                                                      <a class="btn btn-outline-dark buttonsGY"  style="padding:2px;border-radius:3px;min-width:120px;text-align:center;max-height:30px;"  asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="Users" asp-action="AddUserToTrainingGroup">@Resources.Resource.Subs</a>
+
+                                            <a class="btn btn-outline-dark buttonsGY" style="padding:2px;border-radius:3px;min-width:120px;text-align:center;max-height:30px;" asp-area="" asp-route-roomId="@it.Room.Id" asp-route-groupId="@it.Id" asp-controller="TrainingGroup" asp-action="AddUserToTrainingGroup">@Resources.Resource.Subs</a>
                                                     
                                                  }
                                                 @if (it.Number <= it.Users.Count && !nflag)

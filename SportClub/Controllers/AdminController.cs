@@ -37,7 +37,7 @@ namespace SportClub.Controllers
         public async Task<IActionResult> MyAction(int id)
         {
             int id1 = id;
-            return Json(true);
+            return PartialView("");
         }
         [HttpPost]
         public async Task<IActionResult> ConfirmMyAction(int id)
