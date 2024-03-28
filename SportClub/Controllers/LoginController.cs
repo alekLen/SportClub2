@@ -5,6 +5,7 @@ using SportClub.Filters;
 using SportClub.Models;
 using SportClub.BLL.Interfaces;
 using SportClub.BLL.DTO;
+using System.Globalization;
 
 
 namespace SportClub.Controllers
@@ -59,7 +60,7 @@ namespace SportClub.Controllers
             try
             {
                 DateTime birthDate;
-                if (DateTime.TryParse(user.DateOfBirth, out birthDate))
+                if (DateTime.TryParse(user.DateOfBirth,  out birthDate))
                 {
                     // 2. Вычисление возраста
                     DateTime currentDate = DateTime.Now;

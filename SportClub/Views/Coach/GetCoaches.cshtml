@@ -15,26 +15,20 @@
                 <thead>
                     <tr>
                         <th>
-                            @Resources.Resource.Name@* @Html.DisplayNameFor(model => model.Name) *@
+                            @Resources.Resource.Name
                         </th>
                         <th>
-                            @Resources.Resource.DateB@* @Html.DisplayNameFor(model => model.DateOfBirth) *@
+                            @Resources.Resource.DateB
                         </th>
                         <th>
-                            @Resources.Resource.Phone@* @Html.DisplayNameFor(model => model.Phone) *@
+                            @Resources.Resource.Phone
+                        <th>
+                            @Resources.Resource.email
                         </th>
                         <th>
-                            @Resources.Resource.email@* @Html.DisplayNameFor(model => model.Email) *@
-                        </th>
-                        <th>
-                            @Resources.Resource.gender@* @Html.DisplayNameFor(model => model.Gender) *@
-                        </th>
-                        @* <th>
-                            @Html.DisplayNameFor(model => model.Description)
-                        </th> *@
-                        <th>
-                            @Resources.Resource.CoachPhoto@* @Html.DisplayNameFor(model => model.Photo) *@
-                        </th> 
+                            @Resources.Resource.gender
+                        </th>                     
+                        
                         <th></th>
                         <th></th>
                         <th></th>
@@ -59,14 +53,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Gender)
                             </td>
-                            @* <td>
-                                <textarea style="width: 230px;" readonly>
-                                    @Html.DisplayFor(modelItem => item.Description)
-                           </textarea>
-                            </td> *@
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Photo)
-                            </td>
+                                                     
                             <td>
                                 <a class="btn btn-primary buttonsGY" asp-controller="Coach" asp-action="Edit" asp-route-id="@item.Id">@Resources.Resource.Edit</a>
                             </td>

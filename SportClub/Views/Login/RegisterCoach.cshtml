@@ -82,7 +82,7 @@
 
                 <div class="form-group" style="margin-left: 10px">
                     <label class="font white-color_size20 color_text">@Resources.Resource.DateB</label><br />
-                    <input class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
+                    <input id="datep" class="form-control font" style="width: 420px" asp-for="DateOfBirth" />
                     <span asp-validation-for="DateOfBirth" class="text-danger" style="width: 450px"></span>
                 </div>
 
@@ -107,6 +107,9 @@
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
     }
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/themes/sunny/jquery-ui.css">
     <script>
         $(document).ready(function () {
 
@@ -126,6 +129,13 @@
             });
         });
 
+        $(function () {
+
+            $('#datep').datepicker({
+                dateFormat: "dd.mm.yy"
+            });
+
+        });
 
         $('#emailInput').on('blur', function () {
             var email = $(this).val();
